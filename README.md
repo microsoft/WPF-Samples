@@ -29,3 +29,27 @@ The easiest way to use these samples without using Git is to download the zip fi
    * By default, all the sample target .NET 4.5.2, you can change this to .NET 4.6 in the Project->Properties page in Visual Studio.
 
 For more info about the programming models, platforms, languages, and APIs demonstrated in these samples, please refer to the guidance  available in  [MSDN](https://msdn.microsoft.com/en-us/library/ms754130.aspx). These samples are provided as-is in order to indicate or demonstrate the functionality of the programming models and feature APIs for WPF.
+
+##Samples by category
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Accessibility</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
