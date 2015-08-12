@@ -1,0 +1,38 @@
+﻿<Window x:Class="Span.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Span"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel >
+
+        <TextBlock FontSize="20" FlowDirection="RightToLeft">
+      <Run FlowDirection="LeftToRight">العالم</Run>
+      <Run FlowDirection="LeftToRight" Foreground="Red" >فى سلام</Run>
+        </TextBlock>
+
+        <TextBlock FontSize="20" FlowDirection="LeftToRight">
+      <Run FlowDirection="RightToLeft">العالم</Run>
+      <Run FlowDirection="RightToLeft" Foreground="Red" >فى سلام</Run>
+        </TextBlock>
+
+        <TextBlock FontSize="20" Foreground="Blue">العالم فى سلام</TextBlock>
+
+        <Separator/>
+
+        <TextBlock FontSize="20" FlowDirection="RightToLeft">
+      <Span Foreground="Red" FlowDirection="LeftToRight">Hello</Span>
+      <Span FlowDirection="LeftToRight">World</Span>
+        </TextBlock>
+
+        <TextBlock FontSize="20" FlowDirection="LeftToRight">
+      <Span Foreground="Red" FlowDirection="RightToLeft">Hello</Span>
+      <Span FlowDirection="RightToLeft">World</Span>
+        </TextBlock>
+
+        <TextBlock FontSize="20" Foreground="Blue">Hello World</TextBlock>
+
+    </StackPanel>
+</Window>

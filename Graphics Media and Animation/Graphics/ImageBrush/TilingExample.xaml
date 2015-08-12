@@ -1,0 +1,103 @@
+<!-- TilingExample.xaml
+     In this example, several ImageBrushes are set with different tile modes.
+     The Stretch property of the ImageBrush's have been set to "None" so that
+     a single tile isn't automatically stretched to fill the entire shape.
+     The ImageBrush content is also aligned to the top left of the shape to
+     make it easier to compare the tile modes. -->
+<Page 
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   x:Class="ImageBrush.TilingExample" >
+
+  <Grid Margin="20">
+  
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <!-- The ImageBrush's content is not tiled in this example. -->
+    <Rectangle Name="noTileRectangle" Grid.Row="3" Grid.Column="0" Width="150" Height="150" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush Viewport="0,0,50,50" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ImageSource="sampleImages\triangle.jpg"  />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's content is tiled in this example. -->
+    <Rectangle Name="tileRectangle" Grid.Row="3" Grid.Column="1" Width="150" Height="150" Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush Viewport="0,0,50,50" ViewportUnits="Absolute"  TileMode="Tile" AlignmentX="Left" AlignmentY="Top" ImageSource="sampleImages\triangle.jpg"  />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's content is flipped horizontally as it is
+             tiled in this example. -->
+    <Rectangle Name="flipXTileRectangle" Grid.Row="3" Grid.Column="2" Width="150" Height="150" Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush Viewport="0,0,50,50" ViewportUnits="Absolute"  TileMode="FlipX" AlignmentX="Left" AlignmentY="Top" ImageSource="sampleImages\triangle.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's content is flipped vertically as it is
+             tiled in this example. -->
+    <Rectangle Name="flipYTileRectangle" Grid.Row="6" Grid.Column="1" Width="150" Height="150" Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush Viewport="0,0,50,50" ViewportUnits="Absolute"  TileMode="FlipY" AlignmentX="Left" AlignmentY="Top" ImageSource="sampleImages\triangle.jpg"  />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's content is flipped horizontally
+             and vertically as it is tiled in this example. -->
+    <Rectangle Name="flipXYTileRectangle" Grid.Row="6" Grid.Column="2" Width="150" Height="150" Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush Viewport="0,0,50,50" ViewportUnits="Absolute" TileMode="FlipXY" AlignmentX="Left" AlignmentY="Top" ImageSource="sampleImages\triangle.jpg"  />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Provides a background for the page header. -->
+    <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+      Stroke="LimeGreen" StrokeThickness="6">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.0" Color="LimeGreen" />
+            <GradientStop Offset="1.0" Color="Yellow" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Describes the sample. -->
+    <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+
+      <!-- A description of this sample. -->
+      <TextBlock DockPanel.Dock="Left" Margin="10" MaxWidth="400">
+        The TileMode property enables you to specify how an ImageBrush
+        is tiled to fill the output area.
+      </TextBlock>
+      <Image 
+       HorizontalAlignment="Right" DockPanel.Dock="Right" Source="sampleImages\triangle.jpg" Margin="0,0,40,0"
+        Width="100" Height="100"/>
+    </DockPanel>
+
+    <TextBlock Grid.Row="2" Grid.Column="0">No Tile</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="1">TileMode="Tile"</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="2">TileMode="FlipX"</TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="1">TileMode="FlipY"</TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="2">TileMode="FlipXY"</TextBlock>
+
+  </Grid>
+</Page>

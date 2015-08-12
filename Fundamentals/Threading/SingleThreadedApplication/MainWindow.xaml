@@ -1,0 +1,19 @@
+﻿<Window x:Class="SingleThreadedApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SingleThreadedApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Button Content="Start"  
+            Click="StartOrStop"
+            Name="startStopButton"
+            Margin="5,0,5,0"
+            />
+        <TextBlock Margin="10,5,0,0">Biggest Prime Found:</TextBlock>
+        <TextBlock Name="bigPrime" Margin="4,5,0,0">3</TextBlock>
+        <TextBlock Name="elapsed" Margin="4,5,0,0">3</TextBlock>
+    </StackPanel>
+</Window>

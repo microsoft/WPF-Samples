@@ -1,0 +1,154 @@
+<!-- This example shows how to control the size of an ImageBrush's tiles. -->
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ImageBrush.TileSizeExample">
+  <Grid Margin="20" VerticalAlignment="Top">
+  
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- The ImageBrush's content is not tiled in this example. -->
+    <Rectangle
+      Grid.Row="3" Grid.Column="0"
+      Width="200" Height="150"
+      Stroke="Black" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush
+          Stretch="None"
+          AlignmentX="Left"
+          AlignmentY="Top"
+          ImageSource="sampleImages\cherries_larger.jpg"  />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's tiles are set to 10% by 10% of the output area. -->
+    <Rectangle
+      Grid.Row="3" Grid.Column="1"
+      Width="200" Height="150"
+      Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush
+          Viewport="0,0,0.1,0.1"
+          TileMode="Tile"
+          AlignmentX="Left"
+          AlignmentY="Top"
+          ImageSource="sampleImages\cherries_larger.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's tiles are set to 10% by 30% of the output area. -->
+    <Rectangle
+      Grid.Row="3" Grid.Column="2"
+      Width="200" Height="150"
+      Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush
+          Viewport="0,0,0.1,0.3"
+          TileMode="Tile"
+          AlignmentX="Left"
+          AlignmentY="Top"
+          ImageSource="sampleImages\cherries_larger.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's tiles are set to 50% by 50% of the output area. -->
+    <Rectangle
+          Grid.Row="6" Grid.Column="0"
+      Width="200" Height="150"
+      Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush
+          Viewport="0,0,0.5,0.5"
+          TileMode="Tile"
+          AlignmentX="Left"
+          AlignmentY="Top"
+          ImageSource="sampleImages\cherries_larger.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's tiles are set to 25 by 25 pixels. -->
+    <Rectangle
+      Grid.Row="6" Grid.Column="1"
+      Width="200" Height="150"
+      Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush
+          Viewport="0,0,25,25"
+          ViewportUnits="Absolute"
+          TileMode="Tile"
+          AlignmentX="Left"
+          AlignmentY="Top"
+          ImageSource="sampleImages\cherries_larger.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- The ImageBrush's tiles are set to 25 by 50 pixels. -->
+    <Rectangle
+      Grid.Row="6" Grid.Column="2"
+      Width="200" Height="150"
+      Stroke="LimeGreen" StrokeThickness="1" HorizontalAlignment="Left">
+      <Rectangle.Fill>
+        <ImageBrush
+          Viewport="0,0,25,50"
+          ViewportUnits="Absolute"
+          TileMode="Tile"
+          AlignmentX="Left"
+          AlignmentY="Top"
+          ImageSource="sampleImages\cherries_larger.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Provides a background for the page header. -->
+    <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+        Stroke="LimeGreen" StrokeThickness="6">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.0" Color="LimeGreen" />
+            <GradientStop Offset="1.0" Color="Yellow" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <!-- Describes the sample and enables the user to change the image displayed. -->
+    <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+      <!-- A description of this sample. -->
+      <TextBlock DockPanel.Dock="Left" Margin="10" MaxWidth="400">
+        The Viewport and ViewportUnits properties enable
+        you to control the size of the ImageBrush's tiles.
+      </TextBlock>
+
+      <Image HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,40,0"
+          Height="100" Width="100"  
+          Source="sampleImages\cherries_larger.jpg" />
+
+    </DockPanel>
+
+    <TextBlock Grid.Row="2" Grid.Column="0">Without Tiling</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="1">Viewport="0,0,0.1,0.1"</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="2">Viewport="0,0,0.1,0.3"</TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="0">
+      Viewport="0,0,0.5,0.5" <LineBreak />
+    </TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="1">
+      Viewport="0,0,0.25,0.25" <LineBreak /> ViewportUnits="Absolute"
+    </TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="2">
+      Viewport="0,0,0.25,0.50" <LineBreak /> ViewportUnits="Absolute"
+    </TextBlock>
+  </Grid>
+</Page>

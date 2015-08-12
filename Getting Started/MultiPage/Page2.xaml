@@ -1,0 +1,12 @@
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Background="LightGreen">
+    <TextBlock DockPanel.Dock="Top"
+          Margin="10,10,10,10">Page 2</TextBlock>
+    <TextBlock  HorizontalAlignment="Left"
+                Margin="10,10,10,10">
+      <Hyperlink  NavigateUri="Page1.xaml">Go To The Start Page</Hyperlink>
+    </TextBlock>
+  </StackPanel>
+</Page>

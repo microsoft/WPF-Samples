@@ -1,0 +1,78 @@
+﻿<Window x:Class="ImageView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageView"
+        mc:Ignorable="d"
+        Title="MainWindow" Loaded="WindowLoaded" SizeToContent="WidthAndHeight">
+
+    <DockPanel Background="White" LastChildFill="True">
+        <Border DockPanel.Dock="Left" Margin="3">
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style x:Key="ScrollingListBox" TargetType="{x:Type ListBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border 
+                              BorderThickness ="{TemplateBinding BorderThickness}"
+                              BorderBrush     ="{TemplateBinding BorderBrush}">
+                                        <ScrollViewer Height="{TemplateBinding Height}" 
+                                 Width="{TemplateBinding Width}">
+                                            <StackPanel Name="ListBoxStackPanel" IsItemsHost="true" Margin="10"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="ThumbnailStyle" TargetType="{x:Type Border}">
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="100" />
+                        <Setter Property="Margin" Value="3" />
+                        <Setter Property="BorderThickness" Value="1" />
+                    </Style>
+                    <Style x:Key="ImageListStyle">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel Width="100px" Margin="3">
+                                        <Image Source="{Binding Path=FullName}" />
+                                        <TextBlock Text="{Binding Path=FullName}" />
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <Border Style="{StaticResource DarkVerGradient}">
+                    <TextBlock Style="{StaticResource Header1}" Text="Select An Image:" />
+                </Border>
+                <ListBox
+					Name="imageListBox"
+					Style="{StaticResource ScrollingListBox}"
+					ItemContainerStyle="{StaticResource ImageListStyle}"
+					ItemsSource="{Binding}"
+					SelectionChanged="ShowImage"
+               Height="200px" />
+                <StackPanel Background="#E5E5E5" Margin="0,10,0,10">
+                    <Border Style="{StaticResource DarkVerGradient}">
+                        <TextBlock Style="{StaticResource Header1}" Text="METADATA" />
+                    </Border>
+                    <TextBlock Style="{StaticResource Header2}" Text="Image Size"/>
+                    <TextBlock Style="{StaticResource Normal}" Name="imageSize" />
+                    <TextBlock Style="{StaticResource Header2}" Text="Pixel Format"/>
+                    <TextBlock Style="{StaticResource Normal}" Name="imageFormat" />
+                    <TextBlock Style="{StaticResource Header2}" Text="File Size"/>
+                    <TextBlock Style="{StaticResource Normal}" Name="fileSize" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <DockPanel Width="800" Height="600">
+            <Border DockPanel.Dock="Top">
+                <Image Margin="10" Name="currentImage" />
+            </Border>
+        </DockPanel>
+    </DockPanel>
+</Window>

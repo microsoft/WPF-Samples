@@ -1,0 +1,282 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Sample Title"
+      x:Class="ListBoxStyle.Page1"
+      Loaded="CheckLang">
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+                <TabItem Style="{StaticResource TabStyle}" Header="List Box Sample" IsSelected="true">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource HeaderStyle}">List Box Styles</TextBlock>
+
+                        <TextBlock Style="{StaticResource MainContentStyle}">This example demonstrates ListBox controls with styles applied.</TextBlock>
+
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML" />
+    <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                    <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+                      
+&lt;Canvas>
+  &lt;Canvas.Resources>
+    &lt;Style x:Key="Simple" TargetType="{x:Type ListBox}">
+      &lt;Setter Property = "SelectionMode" Value="Single"/>
+      &lt;Setter Property = "Background" Value="Red"/>
+    &lt;/Style>
+
+    &lt;Style x:Key="SimpleListBoxItem" TargetType="{x:Type ListBoxItem}">
+      &lt;Setter Property = "FontSize" Value="14"/>
+      &lt;Setter Property = "Background" Value="Pink"/>
+      &lt;Setter Property = "Foreground" Value="Purple"/>
+    &lt;/Style>
+
+    &lt;Style x:Key="Triggers" TargetType="{x:Type ListBoxItem}">
+      &lt;Style.Triggers>
+        &lt;Trigger Property="ListBoxItem.IsMouseOver" Value="true">
+          &lt;Setter Property = "Foreground" Value="Red"/>
+          &lt;Setter Property = "Background" Value="LightBlue"/>
+        &lt;/Trigger>
+      &lt;/Style.Triggers>
+    &lt;/Style>
+  &lt;/Canvas.Resources>
+
+
+  &lt;Grid Name="grid" ShowGridLines ="false" Background ="White" >
+    &lt;Grid.ColumnDefinitions>
+    &lt;ColumnDefinition Width="300"/>
+    &lt;ColumnDefinition Width="250"/>
+    &lt;/Grid.ColumnDefinitions>
+    &lt;Grid.RowDefinitions>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;RowDefinition/>
+    &lt;/Grid.RowDefinitions>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" FontSize="24">List Boxes&lt;/TextBlock>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2">The following list box examples are created using styles:&lt;/TextBlock>
+
+    &lt;DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2">
+      &lt;TextBox Name="tb" Width="140" Height="30">&lt;/TextBox>
+
+      &lt;ListBox Style="{StaticResource Simple}" Width="100" Height="55" SelectionChanged="PrintText">
+
+        &lt;ListBoxItem>Item 1&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 2&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 3&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 4&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 5&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 6&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 7&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 8&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 9&lt;/ListBoxItem>
+        &lt;ListBoxItem>Item 10&lt;/ListBoxItem>
+      &lt;/ListBox>
+    &lt;/DockPanel>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Style sets the list box to only allow one item to be selected at a time and changes the background color.&lt;/TextBlock>
+
+    &lt;DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3">
+      &lt;ListBox Width="260" Height="55" HorizontalAlignment="Left">
+
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 1&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 2&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 3&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 4&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 5&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 6&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 7&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 8&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 9&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 10&lt;/ListBoxItem>
+      &lt;/ListBox>
+    &lt;/DockPanel>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Style changes the background, foreground, and font size of the list box items.&lt;/TextBlock>
+
+    &lt;DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="4">
+      &lt;ListBox Width="260" Height="55" HorizontalAlignment="Left">
+
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 1&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 2&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 3&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 4&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 5&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 6&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 7&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 8&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 9&lt;/ListBoxItem>
+        &lt;ListBoxItem Style="{StaticResource Triggers}">Item 10&lt;/ListBoxItem>
+      &lt;/ListBox>
+    &lt;/DockPanel>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Style changes the background and foreground colors of the list box items in response to a mouse over event.&lt;/TextBlock>
+
+  &lt;/Grid>
+&lt;/Canvas>
+             
+            </TextBox>
+                        </ScrollViewer>
+                </TabItem>
+                <TabItem Style="{StaticResource TabStyle2}" Header="C#">
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Data;
+
+namespace ListBoxEvent_wcp
+{
+	/// Interaction logic for Pane1.xaml
+
+	public partial class Pane1 : Canvas
+	{
+		void PrintText(object sender, RoutedEventArgs args)
+		{
+			ListBoxItem li = ((sender as ListBox).SelectedItem as ListBoxItem);
+
+			tb.Text = "   You selected " + li.Content.ToString() + ".";
+		}
+	}
+}
+</TextBox>
+                        </ScrollViewer>
+                </TabItem>
+            </TabControl>  
+        </TabItem>
+        
+         <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+            </TabControl>
+         </TabItem> 
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+
+                    
+  
+                    <Canvas>
+                        <Canvas.Resources>
+                            <Style x:Key="Simple" TargetType="{x:Type ListBox}">
+                                <Setter Property = "SelectionMode" Value="Single"/>
+                                <Setter Property = "Background" Value="Red"/>
+                            </Style>
+
+                            <Style x:Key="SimpleListBoxItem" TargetType="{x:Type ListBoxItem}">
+                                <Setter Property = "FontSize" Value="14"/>
+                                <Setter Property = "Background" Value="Pink"/>
+                                <Setter Property = "Foreground" Value="Purple"/>
+                            </Style>
+
+                            <Style x:Key="Triggers" TargetType="{x:Type ListBoxItem}">
+                                <Style.Triggers>
+                                    <Trigger Property="ListBoxItem.IsMouseOver" Value="true">
+                                        <Setter Property = "Foreground" Value="Red"/>
+                                        <Setter Property = "Background" Value="LightBlue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Canvas.Resources>
+
+
+                        <Grid Name="grid" ShowGridLines ="false" Background ="White" >
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="250"/>
+                          </Grid.ColumnDefinitions>
+                          <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                          </Grid.RowDefinitions>
+                            <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" FontSize="24">List Boxes</TextBlock>
+                            <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2">The following list box examples are created using styles:</TextBlock>
+                            <DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2">
+
+                                <TextBox Name="tb" Width="140" Height="30" />
+
+                                <ListBox Style="{StaticResource Simple}" Width="100" Height="55" SelectionChanged="PrintText">
+
+                                    <ListBoxItem>Item 1</ListBoxItem>
+                                    <ListBoxItem>Item 2</ListBoxItem>
+                                    <ListBoxItem>Item 3</ListBoxItem>
+                                    <ListBoxItem>Item 4</ListBoxItem>
+                                    <ListBoxItem>Item 5</ListBoxItem>
+                                    <ListBoxItem>Item 6</ListBoxItem>
+                                    <ListBoxItem>Item 7</ListBoxItem>
+                                    <ListBoxItem>Item 8</ListBoxItem>
+                                    <ListBoxItem>Item 9</ListBoxItem>
+                                    <ListBoxItem>Item 10</ListBoxItem>
+                                </ListBox>
+                            </DockPanel>
+                            <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Style sets the list box to only allow one item to be selected at a time and changes the background color.</TextBlock>
+
+                            <DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3">
+                                <ListBox Width="260" Height="55" HorizontalAlignment="Left">
+
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 1</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 2</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 3</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 4</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 5</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 6</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 7</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 8</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 9</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource SimpleListBoxItem}">Item 10</ListBoxItem>
+                                </ListBox>
+                            </DockPanel>
+                            <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Style changes the background, foreground, and font size of the list box items.</TextBlock>
+
+                            <DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="4">
+                                <ListBox Width="260" Height="55" HorizontalAlignment="Left">
+
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 1</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 2</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 3</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 4</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 5</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 6</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 7</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 8</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 9</ListBoxItem>
+                                    <ListBoxItem Style="{StaticResource Triggers}">Item 10</ListBoxItem>
+                                </ListBox>
+                            </DockPanel>
+                            <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Style changes the background and foreground colors of the list box items in response to a mouse over event.</TextBlock>
+
+                        </Grid>
+                    </Canvas>
+                </TabItem>
+            </TabControl>
+</Page>

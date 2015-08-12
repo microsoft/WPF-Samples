@@ -1,0 +1,21 @@
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="PathAnimations.SampleViewer"
+  WindowTitle="Animating Along a Path" >
+  <DockPanel Background="White">
+    <TabControl Name="sampleSelector">
+      <TabItem Header="Point Animation Using Path Example">
+        <Frame Source="PointAnimationUsingPathExample.xaml" Background="White" />
+      </TabItem>
+      <TabItem Header="Double Animation Using Path Example">
+        <Frame Source="DoubleAnimationUsingPathExample.xaml" Background="White" />
+      </TabItem>
+      <TabItem Header="Rotate Animation Using Path Example">
+        <Frame Source="RotateAnimationUsingPathExample.xaml" Background="White" />
+      </TabItem>
+      <TabItem Header="Matrix Animation Using Path Example">
+        <Frame Source="MatrixAnimationUsingPathExample.xaml" Background="White" />
+      </TabItem>
+    </TabControl>
+  </DockPanel>
+</Page>

@@ -1,0 +1,96 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="MediaGallery.MediaElementExample" 
+  Background="{StaticResource MyGridBrushResource}">
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Margin="20,10,0,0" Width="1000">
+        <TextBlock>
+          The following example shows how to control playback of media using a MediaElement. 
+          The example creates a simple media player that allows you to play, pause, stop, and skip 
+          back and forth in the media as well as adjust the volume and speed ratio.
+
+        </TextBlock>
+      </Border>
+
+      <StackPanel Orientation="Horizontal">
+
+      <!-- This StackPanel contains the MediaElement and the controls -->
+      <StackPanel HorizontalAlignment="Left" Margin="20" Width="500" Background="Black" >
+        <!-- To interactively stop, pause, and play the media, the LoadedBehavior 
+           property of the MediaElement must be set to "Manual". -->
+        <MediaElement Source="media\xbox.wmv" Name="myMediaElement" 
+         Width="450" Height="250" LoadedBehavior="Manual" Stretch="Fill" 
+         MediaOpened="Element_MediaOpened"/>
+
+        <StackPanel Orientation="Horizontal">
+
+        <!-- Play button. -->
+        <Image Source="images\UI_play.gif" MouseDown="OnMouseDownPlayMedia" Margin="5" />
+
+        <!-- Pause button. -->
+        <Image Source="images\UI_pause.gif" MouseDown="OnMouseDownPauseMedia" Margin="5" />
+
+        <!-- Stop button. -->
+        <Image Source="images\UI_stop.gif" MouseDown="OnMouseDownStopMedia" Margin="5" />
+
+        <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
+        <TextBlock Foreground="White" VerticalAlignment="Center" Margin="5"  >Volume</TextBlock>
+        <Slider Name="volumeSlider" VerticalAlignment="Center" ValueChanged="ChangeMediaVolume" 
+         Minimum="0" Maximum="1" Value="0.5" Width="70"/>
+
+        <!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
+        <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center">Seek To</TextBlock>
+        <Slider Name="timelineSlider" Margin="5" ValueChanged="SeekToMediaPosition" Width="70"/>
+        </StackPanel>
+      </StackPanel>
+        
+      <!-- This StackPanel contains all the demonstration code -->
+      <StackPanel Margin="10,20,0,0">
+      <!-- Displays functional code for demonstration. -->
+      <TextBlock Margin="0,5,0,0" FontWeight="Bold">The MediaElement below displays the media</TextBlock>
+      <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="470">
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" Width="700" xml:space="preserve">
+      ...
+        <Bold Foreground="Green">&lt;!-- To interactively stop, pause, and play the media, the 
+        LoadedBehavior property of the MediaElement must be set to 
+        "Manual". --&gt;</Bold>
+        &lt;MediaElement Source="media\xbox.wmv" Name="myMediaElement" 
+        Width="450" Height="250" LoadedBehavior="Manual" 
+        Stretch="Fill" /&gt;
+      ...
+      </TextBlock>
+      </Border>
+      <TextBlock Margin="0,5,0,0" FontWeight="Bold">The code below provides control over media playback</TextBlock>
+      <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="470">
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        <Bold Foreground="Green">' Play the media.</Bold>
+        myMediaElement.Play()
+      ...
+        <Bold Foreground="Green">' Stop the media.</Bold>
+        myMediaElement.Stop()
+      ...
+        <Bold Foreground="Green">' Pause the media.</Bold>
+        myMediaElement.Pause()
+      ...
+        <Bold Foreground="Green">' Change the volume of the media.</Bold>
+        myMediaElement.Volume = System.Convert.ToDouble(volumeSlider.Value)
+      ...
+        <Bold Foreground="Green">' Jump to different parts of the media (seek to).</Bold> 
+        Dim SliderValue As Integer = CType(timelineSlider.Value, Integer)
+
+        <Bold Foreground="Green">' Overloaded constructor takes the arguments days, 
+        ' hours, minutes, seconds, miniseconds.</Bold>
+        <Bold Foreground="Green">' Create a TimeSpan with miliseconds equal to the slider value.</Bold>
+        Dim ts As New TimeSpan(0, 0, 0, 0, SliderValue)
+        myMediaElement.Position = ts
+      </TextBlock>
+      </Border>
+      </StackPanel>  
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

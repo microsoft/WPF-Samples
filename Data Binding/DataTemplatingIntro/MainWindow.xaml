@@ -1,0 +1,75 @@
+﻿<Window x:Class="DataTemplatingIntro.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataTemplatingIntro"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <local:Tasks x:Key="MyTodoList"/>
+
+        <local:TaskListDataTemplateSelector x:Key="MyDataTemplateSelector"/>
+
+        <DataTemplate x:Key="ImportantTaskTemplate">
+            <DataTemplate.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </DataTemplate.Resources>
+            <Border Name="border" BorderBrush="Red" BorderThickness="1"
+              Padding="5" Margin="5">
+                <DockPanel HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Path=Description}" />
+                    <TextBlock>!</TextBlock>
+                </DockPanel>
+            </Border>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="MyTaskTemplate">
+            <Border Name="border" BorderBrush="Aqua" BorderThickness="1"
+              Padding="5" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=TaskName}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Description:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Description}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Priority:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Priority}"/>
+                </Grid>
+            </Border>
+
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=TaskType}">
+                    <DataTrigger.Value>
+                        <local:TaskType>Home</local:TaskType>
+                    </DataTrigger.Value>
+                    <Setter TargetName="border" Property="BorderBrush" Value="Yellow"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+
+        </DataTemplate>
+    </Window.Resources>
+
+    <StackPanel>
+        <TextBlock FontSize="20" Text="My Task List:"/>
+        <ListBox Width="400" Margin="10"
+             ItemsSource="{Binding Source={StaticResource MyTodoList}}"
+             ItemTemplateSelector="{StaticResource MyDataTemplateSelector}"
+             HorizontalContentAlignment="Stretch" 
+             IsSynchronizedWithCurrentItem="True"/>
+        <TextBlock FontSize="20" Text="Information:"/>
+        <ContentControl Content="{Binding Source={StaticResource MyTodoList}}"
+                    ContentTemplate="{StaticResource MyTaskTemplate}"/>
+    </StackPanel>
+</Window>

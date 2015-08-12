@@ -1,0 +1,445 @@
+﻿<Window x:Class="EditingCommands.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EditingCommands"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" Height="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border
+        Grid.Row="0" Grid.Column="2"
+        BorderBrush="Black" BorderThickness="1"
+        Margin="5"
+      >
+            <StackPanel
+          Orientation="Horizontal"
+          VerticalAlignment="Center" HorizontalAlignment="Center"
+        >
+                <TextBlock
+            Margin="5" Foreground="DarkGreen"
+          >
+            <Bold>Route editing commands to:</Bold>
+                </TextBlock>
+                <RadioButton
+            Name="routeToRTB"
+            Margin="5"
+            IsChecked="True" 
+            Content=" RichTextBox"
+          />
+                <RadioButton
+            Name="routeToTB"  
+            Margin="5"
+            Content=" TextBox"
+          />
+                <RadioButton
+            Name="routeToPWB"  
+            Margin="5"
+            Content=" PasswordBox"
+          />
+            </StackPanel>
+        </Border>
+
+        <Border 
+        Grid.Column="0" Grid.RowSpan="4" 
+        BorderBrush="Black" BorderThickness="1"
+      >
+            <StackPanel 
+          VerticalAlignment="Center"
+          Margin="10"
+        >
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Paragraph Alignment</Bold>
+                </TextBlock>
+
+                <Button Name="AlignCenter" Click="ExecuteCommand">
+                    AlignCenter (Ctrl+E)
+                </Button>
+                <Button Name="AlignRight" Click="ExecuteCommand">
+                    AlignRight (Ctrl+R)
+                </Button>
+                <Button Name="AlignLeft" Click="ExecuteCommand">
+                    AlignLeft (Ctrl+L)
+                </Button>
+                <Button Name="AlignJustify" Click="ExecuteCommand">
+                    AlignJustify (Ctrl+J)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Paragraph Formatting</Bold>
+                </TextBlock>
+                <Button Name="IncreaseIndentation" Click="ExecuteCommand">
+                    IncreaseIndentation (Ctrl+T)
+                </Button>
+                <Button Name="DecreaseIndentation" Click="ExecuteCommand">
+                    DecreaseIndentation (Ctrl+Shift+T)
+                </Button>
+                <Button Name="ToggleBullets" Click="ExecuteCommand">
+                    ToggleBullets (Ctrl+Shift+L)
+                </Button>
+                <Button Name="ToggleNumbering" Click="ExecuteCommand">
+                    ToggleNumbering (Ctrl+Shift+N)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Movement By Line</Bold>
+                </TextBlock>
+                <Button Name="MoveUpByLine" Click="ExecuteCommand">
+                    MoveUpByLine (Up)
+                </Button>
+                <Button Name="MoveDownByLine" Click="ExecuteCommand">
+                    MoveDownByLine (Down)
+                </Button>
+                <Button Name="MoveToLineStart" Click="ExecuteCommand">
+                    MoveToLineStart (Home)
+                </Button>
+                <Button Name="MoveToLineEnd" Click="ExecuteCommand">
+                    MoveToLineEnd (End)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Movement By Character</Bold>
+                </TextBlock>
+                <Button Name="MoveLeftByCharacter" Click="ExecuteCommand">
+                    MoveLeftByCharacter (Left)
+                </Button>
+                <Button Name="MoveRightByCharacter" Click="ExecuteCommand">
+                    MoveRightByCharacter (Right)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Movement By Word</Bold>
+                </TextBlock>
+                <Button Name="MoveLeftByWord" Click="ExecuteCommand">
+                    MoveLeftByWord (Ctrl+Left)
+                </Button>
+                <Button Name="MoveRightByWord" Click="ExecuteCommand">
+                    MoveRightByWord (Ctrl+Right)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Movement By Paragraph</Bold>
+                </TextBlock>
+                <Button Name="MoveUpByParagraph" Click="ExecuteCommand">
+                    MoveUpByParagraph (Ctrl+Up)
+                </Button>
+                <Button Name="MoveDownByParagraph" Click="ExecuteCommand">
+                    MoveDownByParagraph (Ctrl+Down)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Movement By Page</Bold>
+                </TextBlock>
+                <Button Name="MoveUpByPage" Click="ExecuteCommand">
+                    MoveUpByPage (PageUp)
+                </Button>
+                <Button Name="MoveDownByPage" Click="ExecuteCommand">
+                    MoveDownByPage (PageDown)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Movement By Document</Bold>
+                </TextBlock>
+                <Button Name="MoveToDocumentStart" Click="ExecuteCommand">
+                    MoveToDocumentStart (Ctrl+Home)
+                </Button>
+                <Button Name="MoveToDocumentEnd" Click="ExecuteCommand">
+                    MoveToDocumentEnd (Ctrl+End)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Deletion</Bold>
+                </TextBlock>
+                <Button Name="Delete" Click="ExecuteCommand">
+                    Delete (Delete)
+                </Button>
+                <Button Name="DeleteNextWord" Click="ExecuteCommand">
+                    DeleteNextWord (Ctrl+Delete)
+                </Button>
+                <Button Name="DeletePreviousWord" Click="ExecuteCommand">
+                    DeletePreviousWord (Ctrl+Backspace)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Toggle Insert</Bold>
+                </TextBlock>
+                <Button Name="ToggleInsert" Click="ExecuteCommand">
+                    ToggleInsert (Insert)
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <Border 
+        Grid.Column="1" Grid.RowSpan="4" 
+        BorderBrush="Black" BorderThickness="1"
+      >
+            <StackPanel 
+          VerticalAlignment="Center"
+          Margin="10"
+        >
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Symbol Entry</Bold>
+                </TextBlock>
+                <Button Name="Backspace" Click="ExecuteCommand">
+                    Backspace (Backspace)
+                </Button>
+                <Button Name="EnterLineBreak" Click="ExecuteCommand">
+                    EnterLineBreak (Shift+Enter)
+                </Button>
+                <Button Name="EnterParagraphBreak" Click="ExecuteCommand">
+                    EnterParagraphBreak (Enter)
+                </Button>
+                <Button Name="TabBackward" Click="ExecuteCommand">
+                    TabBackward (Shift+Tab)
+                </Button>
+                <Button Name="TabForward" Click="ExecuteCommand">
+                    TabForward (Tab)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Formatting</Bold>
+                </TextBlock>
+                <Button Name="IncreaseFontSize" Click="ExecuteCommand">
+                    IncreaseFontSize (Ctrl+])
+                </Button>
+                <Button Name="DecreaseFontSize" Click="ExecuteCommand">
+                    DecreaseFontSize (Ctrl+[)
+                </Button>
+                <Button Name="ToggleBold" Click="ExecuteCommand">
+                    ToggleBold (Ctrl+B)
+                </Button>
+                <Button Name="ToggleItalic" Click="ExecuteCommand">
+                    ToggleItalic (Ctrl+I)
+                </Button>
+                <Button Name="ToggleSubscript" Click="ExecuteCommand">
+                    ToggleSubscript (Ctrl+Shift+Plus)
+                </Button>
+                <Button Name="ToggleSuperscript" Click="ExecuteCommand">
+                    ToggleSuperscript (Ctrl+Plus)
+                </Button>
+                <Button Name="ToggleUnderline" Click="ExecuteCommand">
+                    ToggleUnderline (Ctrl+U)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Selection By Line</Bold>
+                </TextBlock>
+                <Button Name="SelectUpByLine" Click="ExecuteCommand">
+                    SelectUpByLine (Up)
+                </Button>
+                <Button Name="SelectDownByLine" Click="ExecuteCommand">
+                    SelectDownByLine (Down)
+                </Button>
+                <Button Name="SelectToLineStart" Click="ExecuteCommand">
+                    SelectToLineStart (Home)
+                </Button>
+                <Button Name="SelectToLineEnd" Click="ExecuteCommand">
+                    SelectToLineEnd (End)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Selection By Character</Bold>
+                </TextBlock>
+                <Button Name="SelectLeftByCharacter" Click="ExecuteCommand">
+                    SelectLeftByCharacter (Left)
+                </Button>
+                <Button Name="SelectRightByCharacter" Click="ExecuteCommand">
+                    SelectRightByCharacter (Right)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Selection By Word</Bold>
+                </TextBlock>
+                <Button Name="SelectLeftByWord" Click="ExecuteCommand">
+                    SelectLeftByWord (Ctrl+Left)
+                </Button>
+                <Button Name="SelectRightByWord" Click="ExecuteCommand">
+                    SelectRightByWord (Ctrl+Right)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Selection By Paragraph</Bold>
+                </TextBlock>
+                <Button Name="SelectUpByParagraph" Click="ExecuteCommand">
+                    SelectUpByParagraph (Ctrl+Up)
+                </Button>
+                <Button Name="SelectDownByParagraph" Click="ExecuteCommand">
+                    SelectDownByParagraph (Ctrl+Down)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Selection By Page</Bold>
+                </TextBlock>
+                <Button Name="SelectUpByPage" Click="ExecuteCommand">
+                    SelectUpByPage (PageUp)
+                </Button>
+                <Button Name="SelectDownByPage" Click="ExecuteCommand">
+                    SelectDownByPage (PageDown)
+                </Button>
+
+                <TextBlock
+            Foreground="DarkGreen"
+          >
+            <Bold>Caret Selection By Document</Bold>
+                </TextBlock>
+                <Button Name="SelectToDocumentStart" Click="ExecuteCommand">
+                    SelectToDocumentStart (Ctrl+Home)
+                </Button>
+                <Button Name="SelectToDocumentEnd" Click="ExecuteCommand">
+                    SelectToDocumentEnd (Ctrl+End)
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="2">
+            <StackPanel>
+                <TextBlock
+            Margin="5"
+            Foreground="DarkGreen"
+          >
+            <Bold>RichTextBox with sample content.</Bold>
+                </TextBlock>
+                <RichTextBox
+            Name="sampleRTB"
+            Margin="5" Background="Ivory"
+            AcceptsTab="True"
+          >
+                    <FlowDocument>
+                        <Paragraph>
+                            <Bold>Xbox 360: Feel the Power</Bold>
+                        </Paragraph>
+                        <Paragraph>
+                            We all know that Xbox 360™ blows the doors off today's consoles in the power department. But just how much power
+                does Xbox 360 have, and why do developers and gamers agree that it's the system to beat? Glad you asked!
+                        </Paragraph>
+                        <Paragraph>
+                            By now you've already heard how Xbox 360 puts you at the center of the most powerful games on the planet—hence
+                the "360," as in 360 degrees (geometry students will recognize that as the number of degrees in a circle).
+                To accomplish this feat, Microsoft® has brought together a full circle of powerful factors.
+                        </Paragraph>
+                        <Paragraph>
+                            <Bold>Processing Powerhouse</Bold>
+                        </Paragraph>
+                        <Paragraph>
+                            The custom-designed Xbox 360 central processing unit (CPU) runs at a breakneck speed, thanks to its three
+                separate core processors that clock in at 3.2 GHz each.
+                        </Paragraph>
+                        <Paragraph>
+                            Xbox 360 boasts a custom ATI graphics processor that clocks in at a blistering 500 MHz. If you want to get
+                even more technical (and who doesn't?) Xbox 360 can take advantage of more than four times as many polygons
+                as the original Xbox® console, and more than four times (seeing a pattern here?) the number of pixels per second.
+                        </Paragraph>
+                        <Paragraph>
+                            The 512 MB of RAM in Xbox 360 is eight times more powerful than the original Xbox, in terms of simple arithmetic.
+                The system RAM gives developers a unified memory architecture. Game creators decide how to partition it, and all
+                of the hardware components (like the CPU and GPU) can access the memory...
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="2">
+            <StackPanel>
+                <TextBlock
+            Margin="5"
+            Foreground="DarkGreen"
+          >
+            <Bold>TextBox with sample content.</Bold>
+                </TextBlock>
+                <TextBox
+            Name="sampleTB"    
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            xml:space="preserve"
+            Margin="5" Background="Ivory"
+          >Xbox 360: Feel the Power
+
+We all know that Xbox 360™ blows the doors off today's consoles in the power department. But just how much
+power does Xbox 360 have, and why do developers and gamers agree that it's the system to beat? Glad you asked!
+
+By now you've already heard how Xbox 360 puts you at the center of the most powerful games on the planet—hence
+the "360," as in 360 degrees (geometry students will recognize that as the number of degrees in a circle). To
+accomplish this feat, Microsoft® has brought together a full circle of powerful factors.
+
+Processing Powerhouse
+
+The custom-designed Xbox 360 central processing unit (CPU) runs at a breakneck speed, thanks to its three separate
+core processors that clock in at 3.2 GHz each.
+
+Xbox 360 boasts a custom ATI graphics processor that clocks in at a blistering 500 MHz. If you want to get even 
+more technical (and who doesn't?) Xbox 360 can take advantage of more than four times as many polygons as the 
+original Xbox® console, and more than four times (seeing a pattern here?) the number of pixels per second.
+
+The 512 MB of RAM in Xbox 360 is eight times more powerful than the original Xbox, in terms of simple arithmetic.
+The system RAM gives developers a unified memory architecture. Game creators decide how to partition it, and all of
+the hardware components (like the CPU and GPU) can access the memory...</TextBox>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="2">
+            <StackPanel>
+                <TextBlock
+            Margin="5"
+            Foreground="DarkGreen"
+          >
+            <Bold>PasswordBox with sample content.</Bold>
+                </TextBlock>
+                <PasswordBox
+            Name="samplePWB"    
+            Margin="5" Background="Ivory"
+            Password="password"
+          />
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>

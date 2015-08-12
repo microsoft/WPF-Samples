@@ -1,0 +1,2204 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Brush Types"
+      x:Class="BrushTypes.Page1"
+      Loaded="CheckLang">
+  <Page.Resources>
+          <Style x:Key="HeaderRectangleStyle">
+    <Setter Property="Rectangle.RadiusX" Value="0"/>
+    <Setter Property="Rectangle.RadiusY" Value="0"/>
+    <Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Rectangle.VerticalAlignment" Value="Stretch"/>
+    <Setter Property="Rectangle.Margin" Value="0"/>
+    <Setter Property="Rectangle.StrokeThickness" Value="0" />
+      </Style>
+      <Style x:Key="FooterRectangleStyle">
+    <Setter Property="Rectangle.RadiusX" Value="0"/>
+    <Setter Property="Rectangle.RadiusY" Value="0"/>
+    <Setter Property="Rectangle.Height" Value="20"/>
+    <Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Rectangle.VerticalAlignment" Value="Bottom" />
+    <Setter Property="Rectangle.Margin" Value="0" />
+      </Style>
+          <Style x:Key="IntroTextStyle">
+    <Setter Property="TextBlock.FontFamily" Value="Verdana"/>
+    <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+    <Setter Property="TextBlock.Foreground" Value="Black"/>
+    <Setter Property="TextBlock.Margin" Value="10"/>
+    <Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+    <Setter Property="TextBlock.MaxWidth" Value="600" />
+      </Style>
+    
+  </Page.Resources>
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Brush Types Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Brush Types Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This example demonstrates different types of brushes.</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">The preview window renders code from the XAML tab. The C#+Markup and VB+markup code is provided for reference purposes.</TextBlock>
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            
+
+          <TextBlock Name="xamlCheck">
+          <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+            
+&lt;!-- BrushTypes.xaml
+     Shows examples of several different brush types. TODO: scrollbar to see the whole example
+     -->
+&lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   x:Class="BrushesIntroduction.BrushTypesExample" 
+   Title="Different Types of Brushes">
+   &lt;Page.Resources>
+      &lt;Style TargetType="{x:Type Rectangle}">
+	   &lt;Setter Property="Stroke" Value="Black"/>
+	   &lt;Setter Property="StrokeThickness" Value="2"/>
+	   &lt;Setter Property="Margin" Value="0,0,5,5"/>
+	   &lt;Setter Property="VerticalAlignment" Value="Top"/>
+      &lt;/Style>
+      &lt;Style TargetType="{x:Type Ellipse}">
+	   &lt;Setter Property="Stroke" Value="Black"/>
+	   &lt;Setter Property="StrokeThickness" Value="2"/>
+	   &lt;Setter Property="Margin" Value="0,0,5,5"/>
+      &lt;/Style>
+   &lt;/Page.Resources>
+  
+   &lt;Grid Margin="10" Background="White">
+      &lt;ColumnDefinition Width="Auto" />
+      &lt;ColumnDefinition Width="10" />
+      &lt;ColumnDefinition Width="Auto" />
+      &lt;ColumnDefinition Width="10" />
+      &lt;ColumnDefinition Width="Auto" />
+      &lt;ColumnDefinition Width="*" />
+      
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="40" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="10" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="*" />
+      &lt;RowDefinition Height="Auto" />
+      
+      &lt;!-- Sample header. -->
+      &lt;Rectangle Style="{StaticResource headerRectangleStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Fill="Black" />
+      &lt;TextBlock Style="{StaticResource introTextStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+        Width="400" Foreground="White">
+         This example demonstrates the usage of several brushes defined in the System.Windows.Media namespace.
+      &lt;/TextBlock>
+      
+      &lt;!-- SolidColorBrush Examples -->
+      &lt;TextBlock Grid.Row="2" Grid.Column="0" >SolidColorBrush&lt;/TextBlock>
+      &lt;Grid Grid.Row="3" Grid.Column="0"  >
+         &lt;ColumnDefinition />
+         &lt;ColumnDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         
+         &lt;!-- The following four rectangles are painted using predefined
+              SolidColorBrush objects: Brushes.Red, Brushes.MediumBlue,
+              Brushes.Purple, and Brushes.Gold. -->
+         &lt;Rectangle Fill="Red" Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" />
+         &lt;Rectangle Fill="MediumBlue" Width="50" Height="50" Grid.Row="0" Grid.Column="1" />
+         &lt;Rectangle Fill="Purple" Width="50" Height="50" Grid.Row="1" Grid.Column="1" />
+         &lt;Rectangle Fill="Gold" Width="50" Height="50" Grid.Row="2" Grid.Column="1" />
+      &lt;/Grid>
+      
+      &lt;!-- LinearGradientBrush Examples -->
+      &lt;TextBlock Grid.Row="2" Grid.Column="2">LinearGradientBrush&lt;/TextBlock>
+      &lt;Grid Grid.Row="3" Grid.Column="2" >
+         &lt;ColumnDefinition />
+         &lt;ColumnDefinition />
+         &lt;ColumnDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         
+         &lt;!-- The following four rectangles are painted using 
+              LinearGradientBrush objects. -->  
+         &lt;Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            &lt;Rectangle.Fill>
+               &lt;LinearGradientBrush>
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="Yellow" Offset="0.0" />
+                     &lt;GradientStop Color="Orange" Offset="0.5" />
+                     &lt;GradientStop Color="Red" Offset="1.0" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         &lt;Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;LinearGradientBrush>
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="Blue" Offset="0.0" />
+                     &lt;GradientStop Color="Purple" Offset="1.0" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         &lt;Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;LinearGradientBrush>
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="Purple" Offset="0.0" />
+                     &lt;GradientStop Color="BlueViolet" Offset="0.5" />
+                     &lt;GradientStop Color="White" Offset="1.0" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         &lt;Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;LinearGradientBrush>
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="Gold" Offset="0.0" />
+                     &lt;GradientStop Color="Red" Offset="0.5" />
+                     &lt;GradientStop Color="Orange" Offset="1.0" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+      &lt;/Grid>
+      
+      &lt;!-- RadialGradientBrush Examples. -->
+      &lt;TextBlock Grid.Row="2" Grid.Column="4">RadialGradientBrush&lt;/TextBlock>
+      &lt;Grid Grid.Row="3" Grid.Column="4">
+         &lt;ColumnDefinition />
+         &lt;ColumnDefinition />
+         &lt;ColumnDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         
+         &lt;!-- The following four shapes are painted with
+              RadialGradientBrush objects. -->
+         &lt;Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            &lt;Rectangle.Fill>
+               &lt;RadialGradientBrush GradientOrigin="0.75,0.25">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="Yellow" Offset="0.0" />
+                     &lt;GradientStop Color="Orange" Offset="0.5" />
+                     &lt;GradientStop Color="Red" Offset="1.0" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         &lt;Ellipse Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            &lt;Ellipse.Fill>
+               &lt;RadialGradientBrush GradientOrigin="0.75,0.25">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0.0" />
+                     &lt;GradientStop Color="MediumBlue" Offset="0.5" />
+                     &lt;GradientStop Color="Black" Offset="1.0" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Ellipse.Fill>
+         &lt;/Ellipse>
+         &lt;Ellipse Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            &lt;Ellipse.Fill>
+               &lt;RadialGradientBrush GradientOrigin="0.75,0.25">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="AliceBlue" Offset="0.0" />
+                     &lt;GradientStop Color="Purple" Offset="0.5" />
+                     &lt;GradientStop Color="#330033" Offset="1.0" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Ellipse.Fill>
+         &lt;/Ellipse>
+         &lt;Ellipse Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            &lt;Ellipse.Fill>
+               &lt;RadialGradientBrush GradientOrigin="0.75,0.25">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="Yellow" Offset="0.0" />
+                     &lt;GradientStop Color="Orange" Offset="0.5" />
+                     &lt;GradientStop Color="Red" Offset="1.0" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Ellipse.Fill>
+         &lt;/Ellipse>
+      &lt;/Grid>
+      
+      &lt;!-- ImageBrush Examples. -->
+      &lt;TextBlock Grid.Row="5" Grid.Column="0" >ImageBrush&lt;/TextBlock>
+      &lt;Grid Grid.Row="6" Grid.Column="0" >
+         &lt;ColumnDefinition />
+         &lt;ColumnDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition /> 
+         
+         &lt;!-- Paints a rectangle with an image. 
+              The image expands to fill the rectangle. -->
+         &lt;Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            &lt;Rectangle.Fill>
+               &lt;ImageBrush>
+                 &lt;ImageBrush.ImageSource>
+                   &lt;BitmapImage UriSource="\images\pinkcherries.jpg" />
+                 &lt;/ImageBrush.ImageSource>
+               &lt;/ImageBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Paints a rectangle with an image. The ImageBrush's
+              Stretch property is set to None, so the image is not resized. -->
+         &lt;Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;ImageBrush Stretch="None" TileMode="Tile" >
+                 &lt;ImageBrush.ImageSource>
+                   &lt;BitmapImage UriSource="\images\pinkcherries.jpg" />
+                 &lt;/ImageBrush.ImageSource>
+               &lt;/ImageBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Paints a rectangle with an image. The ImageBrush's 
+              Viewport and TileMode properties are set so that
+              the image is tiled. -->
+         &lt;Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;ImageBrush Viewport="0,0,25,25" ViewportUnits="Absolute" TileMode="Tile" >
+                 &lt;ImageBrush.ImageSource>
+                   &lt;BitmapImage UriSource="\images\pinkcherries.jpg" />
+                 &lt;/ImageBrush.ImageSource>
+               &lt;/ImageBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Paints a rectangle with an image.  The ImageBrush's 
+              Viewport and TileMode properties are set so that
+              the image is tiled. -->
+         &lt;Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;ImageBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile" >
+                 &lt;ImageBrush.ImageSource>
+                   &lt;BitmapImage UriSource="\images\pinkcherries.jpg" />
+                 &lt;/ImageBrush.ImageSource>
+               &lt;/ImageBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+      &lt;/Grid>
+      
+      &lt;!-- DrawingBrush Examples -->
+      &lt;TextBlock Grid.Row="5" Grid.Column="2">DrawingBrush&lt;/TextBlock>
+      &lt;Grid Grid.Row="6" Grid.Column="2">
+         &lt;ColumnDefinition Width="Auto" />
+         &lt;ColumnDefinition Width="Auto" />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         &lt;RowDefinition />
+         
+         
+         &lt;!-- Paints a rectangle with a checkered pattern.
+              The tile size and a tile mode using the DrawingBrush's
+             Viewport and TileMode properties. The tile's content is defined
+             by the DrawingBrush's Drawing property. -->
+         &lt;Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            &lt;Rectangle.Fill>
+               &lt;DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+                  &lt;DrawingBrush.Drawing>
+                    &lt;DrawingGroup>
+                      &lt;DrawingGroup.Children>
+                        &lt;GeometryDrawing Brush="White">
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0,0,1,1" />
+                          &lt;/GeometryDrawing.Geometry>
+                        &lt;/GeometryDrawing>
+                        &lt;GeometryDrawing Brush="LightGray"
+                          Geometry="M 0,0 L0,0.5 0.5,0.5 0.5,1 1,1 1,0.5 0.5,0.5 0.5,0" />                      
+                      &lt;/DrawingGroup.Children>
+                    &lt;/DrawingGroup>
+                  &lt;/DrawingBrush.Drawing>
+               &lt;/DrawingBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         
+         &lt;!-- Demonstrates the use of an ImageBrush within a DrawingBrush.
+             Two of the drawing's rectangles are filled using an ImageBrush,
+             creating a checkered pattern of images. -->
+         &lt;Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;DrawingBrush Viewport="0,0,1,1" TileMode="Tile">
+                  &lt;DrawingBrush.Drawing>
+                     &lt;DrawingGroup>
+                      &lt;DrawingGroup.Children>                
+                        &lt;GeometryDrawing Brush="Pink">
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0,0,1,1" />
+                          &lt;/GeometryDrawing.Geometry>
+                        &lt;/GeometryDrawing>
+                        &lt;GeometryDrawing>
+                          &lt;GeometryDrawing.Brush>
+                            &lt;ImageBrush ImageSource="sampleImages\cherries.jpg"  />
+                          &lt;/GeometryDrawing.Brush>
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0,0,0.5,0.5" />
+                          &lt;/GeometryDrawing.Geometry>
+                        &lt;/GeometryDrawing>
+                        &lt;GeometryDrawing>
+                          &lt;GeometryDrawing.Brush>
+                            &lt;ImageBrush ImageSource="sampleImages\cherries.jpg"  />
+                          &lt;/GeometryDrawing.Brush>                        
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0.5,0.5,0.5,0.5" />
+                          &lt;/GeometryDrawing.Geometry>
+                        &lt;/GeometryDrawing>                        
+                      &lt;/DrawingGroup.Children>
+                     &lt;/DrawingGroup>
+                  &lt;/DrawingBrush.Drawing>
+               &lt;/DrawingBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Paints a rectangle with a grid pattern. -->
+         &lt;Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+                  &lt;DrawingBrush.Drawing>
+                    &lt;DrawingGroup>
+                      &lt;DrawingGroup.Children>
+                        &lt;GeometryDrawing Brush="White">
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0,0,1,1" />
+                          &lt;/GeometryDrawing.Geometry>
+                        &lt;/GeometryDrawing>
+                        &lt;GeometryDrawing Brush="Blue"
+                          Geometry="M 0,0 L 0,1 0.1,1 0.1,0.1 1,0.1 1,0 Z" />                      
+                      &lt;/DrawingGroup.Children>
+                    &lt;/DrawingGroup>
+                  &lt;/DrawingBrush.Drawing>
+               &lt;/DrawingBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Demonstrates the use of gradient brushes within a 
+              DrawingBrush. Two overlapping gradients are layered to 
+              create a complex gradient. -->
+         &lt;Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            &lt;Rectangle.Fill>
+               &lt;DrawingBrush Viewport="0,0,1,1" TileMode="Tile">  
+                  &lt;DrawingBrush.Drawing>
+                     &lt;DrawingGroup>
+                      &lt;DrawingGroup.Children>                
+                        &lt;GeometryDrawing>
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0,0,1,1" />
+                          &lt;/GeometryDrawing.Geometry>
+                          &lt;GeometryDrawing.Brush>
+                           &lt;LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                              &lt;LinearGradientBrush.GradientStops>
+                                 &lt;GradientStop Color="Blue" Offset="0.0" />
+                                 &lt;GradientStop Color="#9966CC" Offset="0.5" />
+                                 &lt;GradientStop Color="MediumBlue" Offset="1.0" />
+                              &lt;/LinearGradientBrush.GradientStops>
+                           &lt;/LinearGradientBrush>                          
+                          &lt;/GeometryDrawing.Brush>
+                        &lt;/GeometryDrawing>
+                         &lt;GeometryDrawing>
+                          &lt;GeometryDrawing.Geometry>
+                            &lt;RectangleGeometry Rect="0,0,1,1" />
+                          &lt;/GeometryDrawing.Geometry>
+                          &lt;GeometryDrawing.Brush>
+                           &lt;RadialGradientBrush GradientOrigin="0.75,0.25">
+                              &lt;RadialGradientBrush.GradientStops>
+                                 &lt;GradientStop Color="White" Offset="0.0" />
+                                 &lt;GradientStop Color="Transparent" Offset="0.5" />
+                                 &lt;GradientStop Color="Transparent" Offset="0.9" />
+                                 &lt;GradientStop Color="Black" Offset="1.0" />
+                              &lt;/RadialGradientBrush.GradientStops>
+                           &lt;/RadialGradientBrush>                       
+                          &lt;/GeometryDrawing.Brush>
+                        &lt;/GeometryDrawing>                           
+                      &lt;/DrawingGroup.Children>
+                     &lt;/DrawingGroup>
+                  &lt;/DrawingBrush.Drawing>                  
+               &lt;/DrawingBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+      &lt;/Grid>
+      
+      &lt;!-- Footer -->
+      &lt;Rectangle Style="{StaticResource footerRectangleStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6" Fill="Black" />
+   &lt;/Grid>
+   
+&lt;/Page>
+            
+            
+            
+            </TextBox>
+          </TextBlock>
+        </ScrollViewer>
+        </TabItem>
+        <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+                
+&lt;!-- BrushTypes.xaml
+     Shows examples of several different brush types. -->
+&lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   x:Class="BrushesIntroduction.BrushTypesExample" 
+   Title="Different Types of Brushes">
+   &lt;Page.Resources>
+      &lt;Style TargetType="{x:Type Rectangle}">
+	   &lt;Setter Property="Stroke" Value="Black"/>
+	   &lt;Setter Property="StrokeThickness" Value="2"/>
+	   &lt;Setter Property="Margin" Value="0,0,5,5"/>
+	   &lt;Setter Property="VerticalAlignment" Value="Top"/>
+      &lt;/Style>
+      &lt;Style TargetType="{x:Type Ellipse}">
+	   &lt;Setter Property="Stroke" Value="Black"/>
+	   &lt;Setter Property="StrokeThickness" Value="2"/>
+	   &lt;Setter Property="Margin" Value="0,0,5,5"/>
+      &lt;/Style>
+   &lt;/Page.Resources>
+  
+&lt;/Page>
+                
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="C#">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Reflection;
+namespace BrushesIntroduction
+{
+	/// &lt;summary>
+	/// Interaction logic for BrushTypesExample.xaml
+	/// &lt;/summary>
+
+	public partial class BrushTypesExample : Page
+	{
+
+	  
+
+		public BrushTypesExample()
+		{
+      CreateGui();
+			
+	
+		}
+
+    private void CreateGui()
+    {
+      Grid myGrid = new Grid();
+      this.Child = myGrid;
+      myGrid.Margin = new Thickness(10);
+      myGrid.Background = Brushes.White;
+
+      ColumnDefinition col1 = new ColumnDefinition();
+      col1.Width = new GridLength(0, GridUnitType.Auto);
+      myGrid.ColumnDefinitions.Add(col1);
+
+      ColumnDefinition col2 = new ColumnDefinition();
+      col2.Width = new GridLength(10);
+      myGrid.ColumnDefinitions.Add(col2);
+
+      ColumnDefinition col3 = new ColumnDefinition();
+      col3.Width = new GridLength(0, GridUnitType.Auto);
+      myGrid.ColumnDefinitions.Add(col3);
+
+      ColumnDefinition col4 = new ColumnDefinition();
+      col2.Width = new GridLength(10);
+      myGrid.ColumnDefinitions.Add(col4);
+
+      ColumnDefinition col5 = new ColumnDefinition();
+      col5.Width = new GridLength(0, GridUnitType.Auto);
+      myGrid.ColumnDefinitions.Add(col5);
+
+      ColumnDefinition col6 = new ColumnDefinition();
+      col6.Width = new GridLength(10);
+      myGrid.ColumnDefinitions.Add(col6);
+
+      RowDefinition row1 = new RowDefinition();
+      row1.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row1);
+
+      RowDefinition row2 = new RowDefinition();
+      row2.Height = new GridLength(40);
+      myGrid.RowDefinitions.Add(row2);
+
+      RowDefinition row3 = new RowDefinition();
+      row3.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row3);
+
+      RowDefinition row4 = new RowDefinition();
+      row4.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row4);
+
+      RowDefinition row5 = new RowDefinition();
+      row5.Height = new GridLength(10);
+      myGrid.RowDefinitions.Add(row5);
+
+      RowDefinition row6 = new RowDefinition();
+      row6.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row6);
+
+      RowDefinition row7 = new RowDefinition();
+      row7.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row7);
+
+      RowDefinition row8 = new RowDefinition();
+      row8.Height = new GridLength(0, GridUnitType.Star);
+      myGrid.RowDefinitions.Add(row8);
+
+
+      RowDefinition row9 = new RowDefinition();
+      row9.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row9);
+
+
+      //Sample header.
+      Rectangle headerRectangle = new Rectangle();
+      Grid.SetRow(headerRectangle, 0);
+      Grid.SetColumn(headerRectangle, 0);
+      Grid.SetColumnSpan(headerRectangle, 6);
+      myGrid.Children.Add(headerRectangle);
+      headerRectangle.Style = (Style)Application.Current.Resources["headerRectangleStyle"];
+      headerRectangle.Fill = Brushes.Black;
+
+
+      TextBlock headerTextBlock = new TextBlock();
+      Grid.SetRow(headerTextBlock, 0);
+      Grid.SetColumn(headerTextBlock, 0);
+      Grid.SetColumnSpan(headerTextBlock, 6);
+      myGrid.Children.Add(headerTextBlock);
+      headerTextBlock.Style = (Style)Application.Current.Resources["introTextStyle"];
+      headerTextBlock.Width = 400;
+      headerTextBlock.Foreground = Brushes.White;
+      headerTextBlock.Text = "This example demonstrates the usage of several brushes defined in the System.Windows.Media namespace.";
+
+      //SolidColorBrush Examples
+      TextBlock solidColorBrushTextBlock = new TextBlock();
+      Grid.SetRow(solidColorBrushTextBlock, 2);
+      Grid.SetColumn(solidColorBrushTextBlock, 0);
+      myGrid.Children.Add(solidColorBrushTextBlock);
+      solidColorBrushTextBlock.Text = "SolidColorBrush";
+
+      Grid preDefinedBrushesGrid = new Grid();
+      Grid.SetRow(preDefinedBrushesGrid, 3);
+      Grid.SetColumn(preDefinedBrushesGrid, 0);
+      myGrid.Children.Add(preDefinedBrushesGrid);
+
+      ColumnDefinition preDefCol1 = new ColumnDefinition();
+      preDefinedBrushesGrid.ColumnDefinitions.Add(preDefCol1);
+
+      ColumnDefinition preDefCol2 = new ColumnDefinition();
+      preDefinedBrushesGrid.ColumnDefinitions.Add(preDefCol2);
+
+      RowDefinition preDefRow1 = new RowDefinition();
+      preDefinedBrushesGrid.RowDefinitions.Add(preDefRow1);
+
+      RowDefinition preDefRow2 = new RowDefinition();
+      preDefinedBrushesGrid.RowDefinitions.Add(preDefRow2);
+
+      RowDefinition preDefRow3 = new RowDefinition();
+      preDefinedBrushesGrid.RowDefinitions.Add(preDefRow3);
+
+      //The following four rectangles are painted using predefined
+      //SolidColorBrush objects: Brushes.Red, Brushes.MediumBlue,
+      //Brushes.Purple, and Brushes.Gold.
+      Rectangle redRectangle = new Rectangle();
+      Grid.SetRow(redRectangle, 0);
+      Grid.SetColumn(redRectangle, 0);
+      Grid.SetRowSpan(redRectangle, 3);
+      preDefinedBrushesGrid.Children.Add(redRectangle);
+      redRectangle.Width = 150;
+      redRectangle.Height = 150;
+      redRectangle.Fill = Brushes.Red;
+
+      Rectangle blueRectangle = new Rectangle();
+      Grid.SetRow(blueRectangle, 0);
+      Grid.SetColumn(blueRectangle, 1);
+      preDefinedBrushesGrid.Children.Add(blueRectangle);
+      blueRectangle.Width = 50;
+      blueRectangle.Height = 50;
+      blueRectangle.Fill = Brushes.MediumBlue;
+
+      Rectangle purpleRectangle = new Rectangle();
+      Grid.SetRow(purpleRectangle, 1);
+      Grid.SetColumn(purpleRectangle, 1);
+      preDefinedBrushesGrid.Children.Add(purpleRectangle);
+      purpleRectangle.Width = 50;
+      purpleRectangle.Height = 50;
+      purpleRectangle.Fill = Brushes.Purple;
+
+      Rectangle goldRectangle = new Rectangle();
+      Grid.SetRow(goldRectangle, 2);
+      Grid.SetColumn(goldRectangle, 1);
+      preDefinedBrushesGrid.Children.Add(goldRectangle);
+      goldRectangle.Width = 50;
+      goldRectangle.Height = 50;
+      goldRectangle.Fill = Brushes.Gold;
+      
+      //LinearGradientBrush Examples
+      TextBlock linearGradientBrushTextBlock = new TextBlock();
+      Grid.SetRow(linearGradientBrushTextBlock, 2);
+      Grid.SetColumn(linearGradientBrushTextBlock, 2);
+      myGrid.Children.Add(linearGradientBrushTextBlock);
+      linearGradientBrushTextBlock.Text = "LinearGradientBrush";
+
+      Grid linearGradientGrid = new Grid();
+      Grid.SetRow(linearGradientGrid, 3);
+      Grid.SetColumn(linearGradientGrid, 2);
+      myGrid.Children.Add(linearGradientGrid);
+
+      ColumnDefinition linGradeCol1 = new ColumnDefinition();
+      linearGradientGrid.ColumnDefinitions.Add(linGradeCol1);
+
+      ColumnDefinition linGradeCol2 = new ColumnDefinition();
+      linearGradientGrid.ColumnDefinitions.Add(linGradeCol2);
+
+      ColumnDefinition linGradeCol3 = new ColumnDefinition();
+      linearGradientGrid.ColumnDefinitions.Add(linGradeCol3);
+
+      RowDefinition linGradeRow1 = new RowDefinition();
+      linearGradientGrid.RowDefinitions.Add(linGradeRow1);
+
+      RowDefinition linGradeRow2 = new RowDefinition();
+      linearGradientGrid.RowDefinitions.Add(linGradeRow2);
+
+      RowDefinition linGradeRow3 = new RowDefinition();
+      linearGradientGrid.RowDefinitions.Add(linGradeRow3);
+
+      //The following four rectangles are painted using LinearGradientBrush objects.
+      Rectangle linearGradientBrushRectangle = new Rectangle();
+      Grid.SetRow(linearGradientBrushRectangle, 0);
+      Grid.SetColumn(linearGradientBrushRectangle, 0);
+      Grid.SetRowSpan(linearGradientBrushRectangle, 3);
+      linearGradientGrid.Children.Add(linearGradientBrushRectangle);
+      linearGradientBrushRectangle.Width = 150;
+      linearGradientBrushRectangle.Height = 150;
+      LinearGradientBrush threeFillsLinearGradientBrush = new LinearGradientBrush();
+      GradientStopCollection threeFillsGradientStopCollection = new GradientStopCollection();
+      threeFillsGradientStopCollection.Add(new GradientStop(Colors.Yellow, 0.0));
+      threeFillsGradientStopCollection.Add(new GradientStop(Colors.Orange, 0.5));
+      threeFillsGradientStopCollection.Add(new GradientStop(Colors.Red, 1.0));
+      threeFillsLinearGradientBrush.GradientStops = threeFillsGradientStopCollection;
+      linearGradientBrushRectangle.Fill = threeFillsLinearGradientBrush;
+
+      Rectangle twoStopsGradientBrushRectangle = new Rectangle();
+      Grid.SetRow(twoStopsGradientBrushRectangle, 0);
+      Grid.SetColumn(twoStopsGradientBrushRectangle, 1);
+      linearGradientGrid.Children.Add(twoStopsGradientBrushRectangle);
+      twoStopsGradientBrushRectangle.Width = 50;
+      twoStopsGradientBrushRectangle.Height = 50;
+      GradientStopCollection blueToPurpleGradientStops = new GradientStopCollection();
+      blueToPurpleGradientStops.Add(new GradientStop(Colors.Blue, 0.0));
+      blueToPurpleGradientStops.Add(new GradientStop(Colors.Purple, 1.0));
+      twoStopsGradientBrushRectangle.Fill = new LinearGradientBrush(blueToPurpleGradientStops);
+
+      Rectangle threeStopsGradientBrushRectangle = new Rectangle();
+      Grid.SetRow(threeStopsGradientBrushRectangle, 1);
+      Grid.SetColumn(threeStopsGradientBrushRectangle, 1);
+      linearGradientGrid.Children.Add(threeStopsGradientBrushRectangle);
+      threeStopsGradientBrushRectangle.Width = 50;
+      threeStopsGradientBrushRectangle.Height = 50;
+      GradientStopCollection purpleBlueWhiteGradientStops = new GradientStopCollection();
+      purpleBlueWhiteGradientStops.Add(new GradientStop(Colors.Purple, 0.0));
+      purpleBlueWhiteGradientStops.Add(new GradientStop(Colors.Blue, 0.5));
+      purpleBlueWhiteGradientStops.Add(new GradientStop(Colors.White, 1.0));
+      threeStopsGradientBrushRectangle.Fill = new LinearGradientBrush(purpleBlueWhiteGradientStops);
+
+
+      Rectangle threeStopsGradientBrushRectangle2 = new Rectangle();
+      Grid.SetRow(threeStopsGradientBrushRectangle2, 2);
+      Grid.SetColumn(threeStopsGradientBrushRectangle2, 1);
+      linearGradientGrid.Children.Add(threeStopsGradientBrushRectangle2);
+      threeStopsGradientBrushRectangle2.Width = 50;
+      threeStopsGradientBrushRectangle2.Height = 50;
+      GradientStopCollection goldRedOrangeGradientStops = new GradientStopCollection();
+      goldRedOrangeGradientStops.Add(new GradientStop(Colors.Gold, 0.0));
+      goldRedOrangeGradientStops.Add(new GradientStop(Colors.Red, 0.5));
+      goldRedOrangeGradientStops.Add(new GradientStop(Colors.Orange, 1.0));
+      threeStopsGradientBrushRectangle2.Fill = new LinearGradientBrush(goldRedOrangeGradientStops);
+      
+      //RadialGradientBrush Examples.
+      TextBlock radialGradientBrushTextBlock = new TextBlock();
+      Grid.SetRow(radialGradientBrushTextBlock, 2);
+      Grid.SetColumn(radialGradientBrushTextBlock, 4);
+      myGrid.Children.Add(radialGradientBrushTextBlock);
+      radialGradientBrushTextBlock.Text = "RadialGradientBrush";
+
+      Grid radialGradientGrid = new Grid();
+      Grid.SetRow(radialGradientGrid, 3);
+      Grid.SetColumn(radialGradientGrid, 4);
+      myGrid.Children.Add(radialGradientGrid);
+
+      ColumnDefinition radGradeCol1 = new ColumnDefinition();
+      radialGradientGrid.ColumnDefinitions.Add(radGradeCol1);
+
+      ColumnDefinition radGradeCol2 = new ColumnDefinition();
+      radialGradientGrid.ColumnDefinitions.Add(radGradeCol2);
+
+      ColumnDefinition radGradeCol3 = new ColumnDefinition();
+      radialGradientGrid.ColumnDefinitions.Add(radGradeCol3);
+
+      RowDefinition radGradeRow1 = new RowDefinition();
+      radialGradientGrid.RowDefinitions.Add(radGradeRow1);
+
+      RowDefinition radGradeRow2 = new RowDefinition();
+      radialGradientGrid.RowDefinitions.Add(radGradeRow2);
+
+      RowDefinition radGradeRow3 = new RowDefinition();
+      radialGradientGrid.RowDefinitions.Add(radGradeRow3);
+
+      //The following four shapes are painted with RadialGradientBrush objects.
+      Rectangle radGradientRectangle = new Rectangle();
+      Grid.SetRow(radGradientRectangle, 0);
+      Grid.SetColumn(radGradientRectangle, 0);
+      Grid.SetRowSpan(radGradientRectangle, 3);
+      radialGradientGrid.Children.Add(radGradientRectangle);
+      radGradientRectangle.Width = 150;
+      radGradientRectangle.Height = 150;
+      GradientStopCollection myGradientStopCollection1 = new GradientStopCollection();
+      myGradientStopCollection1.Add(new GradientStop(Colors.Yellow, 0.0));
+      myGradientStopCollection1.Add(new GradientStop(Colors.Orange, 0.5));
+      myGradientStopCollection1.Add(new GradientStop(Colors.Red, 1.0));
+      RadialGradientBrush yellowOrangeRedGradientBrush = new RadialGradientBrush(myGradientStopCollection1);
+      yellowOrangeRedGradientBrush.GradientOrigin = new Point(0.75, 0.25);
+      radGradientRectangle.Fill = yellowOrangeRedGradientBrush;
+
+      Ellipse radGradientEllipse2 = new Ellipse();
+      Grid.SetRow(radGradientEllipse2, 0);
+      Grid.SetColumn(radGradientEllipse2, 1);
+      radialGradientGrid.Children.Add(radGradientEllipse2);
+      radGradientEllipse2.Width = 50;
+      radGradientEllipse2.Height = 50;
+      GradientStopCollection myGradientStopCollection2 = new GradientStopCollection();
+      myGradientStopCollection2.Add(new GradientStop(Colors.White, 0.0));
+      myGradientStopCollection2.Add(new GradientStop(Colors.MediumBlue, 0.5));
+      myGradientStopCollection2.Add(new GradientStop(Colors.Black, 1.0));
+      RadialGradientBrush whiteBlueBlackGradientBrush = new RadialGradientBrush(myGradientStopCollection2);
+      whiteBlueBlackGradientBrush.GradientOrigin = new Point(0.75, 0.25);
+      radGradientEllipse2.Fill = whiteBlueBlackGradientBrush;
+
+      Ellipse radGradientEllipse3 = new Ellipse();
+      Grid.SetRow(radGradientEllipse3, 1);
+      Grid.SetColumn(radGradientEllipse3, 1);
+      radialGradientGrid.Children.Add(radGradientEllipse3);
+      radGradientEllipse3.Width = 50;
+      radGradientEllipse3.Height = 50;
+      GradientStopCollection myGradientStopCollection3 = new GradientStopCollection();
+      myGradientStopCollection3.Add(new GradientStop(Colors.AliceBlue, 0.0));
+      myGradientStopCollection3.Add(new GradientStop(Colors.Purple, 0.5));
+      myGradientStopCollection3.Add(new GradientStop(Color.FromRgb(51,0,51), 1.0));
+      RadialGradientBrush bluePurpleStringGradientBrush = new RadialGradientBrush(myGradientStopCollection3);
+      bluePurpleStringGradientBrush.GradientOrigin = new Point(0.75, 0.25);
+      radGradientEllipse3.Fill = bluePurpleStringGradientBrush;
+
+      Ellipse radGradientEllipse4 = new Ellipse();
+      Grid.SetRow(radGradientEllipse4, 2);
+      Grid.SetColumn(radGradientEllipse4, 1);
+      radialGradientGrid.Children.Add(radGradientEllipse4);
+      radGradientEllipse4.Width = 50;
+      radGradientEllipse4.Height = 50;
+      GradientStopCollection myGradientStopCollection4 = new GradientStopCollection();
+      myGradientStopCollection4.Add(new GradientStop(Colors.Yellow, 0.0));
+      myGradientStopCollection4.Add(new GradientStop(Colors.Orange, 0.5));
+      myGradientStopCollection4.Add(new GradientStop(Colors.Red, 1.0));
+      RadialGradientBrush YellowOrangeRedGradientBrush = new RadialGradientBrush(myGradientStopCollection4);
+      YellowOrangeRedGradientBrush.GradientOrigin = new Point(0.75, 0.25);
+      radGradientEllipse4.Fill = YellowOrangeRedGradientBrush;
+      
+      //ImageBrush Examples.
+      TextBlock imageBrushTextBlock = new TextBlock();
+      Grid.SetRow(imageBrushTextBlock, 5);
+      Grid.SetColumn(imageBrushTextBlock, 0);
+      myGrid.Children.Add(imageBrushTextBlock);
+      imageBrushTextBlock.Text = "ImageBrush";
+
+      Grid imageBrushGrid = new Grid();
+      Grid.SetRow(imageBrushGrid, 6);
+      Grid.SetColumn(imageBrushGrid, 0);
+      myGrid.Children.Add(imageBrushGrid);
+
+      ColumnDefinition imgGradeCol1 = new ColumnDefinition();
+      imageBrushGrid.ColumnDefinitions.Add(imgGradeCol1);
+
+      ColumnDefinition imgGradeCol2 = new ColumnDefinition();
+      imageBrushGrid.ColumnDefinitions.Add(imgGradeCol2);
+
+      RowDefinition imgGradeRow1 = new RowDefinition();
+      imageBrushGrid.RowDefinitions.Add(imgGradeRow1);
+
+      RowDefinition imgGradeRow2 = new RowDefinition();
+      imageBrushGrid.RowDefinitions.Add(imgGradeRow2);
+
+      RowDefinition imgGradeRow3 = new RowDefinition();
+      imageBrushGrid.RowDefinitions.Add(imgGradeRow3);
+
+      //Paints a rectangle with an image. The image expands to fill the rectangle.
+      Rectangle imgRectangle1 = new Rectangle();
+      Grid.SetRow(imgRectangle1, 0);
+      Grid.SetColumn(imgRectangle1, 0);
+      Grid.SetRowSpan(imgRectangle1, 3);
+      imageBrushGrid.Children.Add(imgRectangle1);
+      imgRectangle1.Width = 150;
+      imgRectangle1.Height = 150;
+      BitmapImage pinkcherriesBitmapImage = new BitmapImage(new Uri("sampleImages\\pinkcherries.jpg", UriKind.Relative));
+      ImageBrush imageBrush1 = new ImageBrush(pinkcherriesBitmapImage);
+      imgRectangle1.Fill = imageBrush1;
+
+      //Paints a rectangle with an image. The ImageBrush's Stretch property is set to None,
+      //so the image is not resized.
+      Rectangle imgRectangle2 = new Rectangle();
+      Grid.SetRow(imgRectangle2, 0);
+      Grid.SetColumn(imgRectangle2, 1);
+      imageBrushGrid.Children.Add(imgRectangle2);
+      imgRectangle2.Width = 50;
+      imgRectangle2.Height = 50;
+      ImageBrush imageBrush2 = new ImageBrush(pinkcherriesBitmapImage);
+      imageBrush2.Stretch = Stretch.None;
+      imageBrush2.TileMode = TileMode.Tile;
+      imgRectangle2.Fill = imageBrush2;
+
+      //Paints a rectangle with an image. The ImageBrush's Viewport and TileMode properties are set so that
+      //the image is tiled.
+      Rectangle imgRectangle3 = new Rectangle();
+      Grid.SetRow(imgRectangle3, 1);
+      Grid.SetColumn(imgRectangle3, 1);
+      imageBrushGrid.Children.Add(imgRectangle3);
+      imgRectangle3.Width = 50;
+      imgRectangle3.Height = 50;
+      ImageBrush imageBrush3 = new ImageBrush(pinkcherriesBitmapImage);
+      imageBrush3.Viewport = new Rect(0, 0, 25, 25);
+      imageBrush3.ViewportUnits = BrushMappingMode.Absolute;
+      imageBrush3.TileMode = TileMode.Tile;
+      imgRectangle3.Fill = imageBrush3;
+
+      //Paints a rectangle with an image.  The ImageBrush's Viewport and TileMode properties are set so that
+      //the image is tiled
+      Rectangle imgRectangle4 = new Rectangle();
+      Grid.SetRow(imgRectangle4, 2);
+      Grid.SetColumn(imgRectangle4, 1);
+      imageBrushGrid.Children.Add(imgRectangle4);
+      imgRectangle4.Width = 50;
+      imgRectangle4.Height = 50;
+      ImageBrush imageBrush4 = new ImageBrush(pinkcherriesBitmapImage);
+      imageBrush4.Viewport = new Rect(0, 0, 10, 10);
+      imageBrush4.ViewportUnits = BrushMappingMode.Absolute;
+      imageBrush4.TileMode = TileMode.Tile;
+      imgRectangle4.Fill = imageBrush4;
+      
+      //DrawingBrush Examples
+      TextBlock drawingBrushTextBlock = new TextBlock();
+      Grid.SetRow(drawingBrushTextBlock, 5);
+      Grid.SetColumn(drawingBrushTextBlock, 2);
+      myGrid.Children.Add(drawingBrushTextBlock);
+      drawingBrushTextBlock.Text = "DrawingBrush";
+
+      Grid drawingBrushGrid = new Grid();
+      Grid.SetRow(drawingBrushGrid, 6);
+      Grid.SetColumn(drawingBrushGrid, 2);
+      myGrid.Children.Add(drawingBrushGrid);
+
+      ColumnDefinition drawCol1 = new ColumnDefinition();
+      drawCol1.Width = new GridLength(0, GridUnitType.Auto);
+      drawingBrushGrid.ColumnDefinitions.Add(drawCol1);
+
+      ColumnDefinition drawCol2 = new ColumnDefinition();
+      drawCol2.Width = new GridLength(0, GridUnitType.Auto);
+      drawingBrushGrid.ColumnDefinitions.Add(drawCol2);
+
+      RowDefinition drawRow1 = new RowDefinition();
+      drawingBrushGrid.RowDefinitions.Add(drawRow1);
+
+      RowDefinition drawRow2 = new RowDefinition();
+      drawingBrushGrid.RowDefinitions.Add(drawRow2);
+
+      RowDefinition drawRow3 = new RowDefinition();
+      drawingBrushGrid.RowDefinitions.Add(drawRow3);
+
+      //Paints a rectangle with a checkered pattern. The tile size and a tile mode using the DrawingBrush's
+      //Viewport and TileMode properties. The tile's content is defined by the DrawingBrush's Drawing property.
+      Rectangle drawingBrushRectangle1 = new Rectangle();
+      Grid.SetRow(drawingBrushRectangle1, 0);
+      Grid.SetColumn(drawingBrushRectangle1, 0);
+      Grid.SetRowSpan(drawingBrushRectangle1, 3);
+      drawingBrushGrid.Children.Add(drawingBrushRectangle1);
+      drawingBrushRectangle1.Width = 150;
+      drawingBrushRectangle1.Height = 150;
+      DrawingBrush mydrawingBrush1 = new DrawingBrush();
+      drawingBrushRectangle1.Fill = mydrawingBrush1;
+      mydrawingBrush1.Viewport = new Rect(0, 0, 0.25, 0.25);
+      mydrawingBrush1.TileMode = TileMode.Tile;
+      DrawingGroup myDrawingGroup1 = new DrawingGroup();
+      mydrawingBrush1.Drawing = myDrawingGroup1;
+      GeometryDrawing whiteRectangleGeometryDrawing = new GeometryDrawing();
+      myDrawingGroup1.Children.Add(whiteRectangleGeometryDrawing);
+      whiteRectangleGeometryDrawing.Brush = Brushes.White;
+      whiteRectangleGeometryDrawing.Geometry = new RectangleGeometry(new Rect(0, 0, 1, 1));
+
+      GeometryDrawing lightGreyGeometryDrawing = new GeometryDrawing();
+      lightGreyGeometryDrawing.Brush = Brushes.LightGray;
+
+      PathGeometry myPathGeometry = new PathGeometry();
+      PathFigure myPathFigure = new PathFigure();
+      PathSegmentCollection myPathSegmentCollection = new PathSegmentCollection();
+      myPathSegmentCollection.Add(new StartSegment(new Point(0, 0)));
+      myPathSegmentCollection.Add(new LineSegment(new Point(0, 0.5),false));
+      myPathSegmentCollection.Add(new LineSegment(new Point(0.5, 0.5), false));
+      myPathSegmentCollection.Add(new LineSegment(new Point(0.5, 1), false));
+      myPathSegmentCollection.Add(new LineSegment(new Point(1, 1), false));
+      myPathSegmentCollection.Add(new LineSegment(new Point(1, 0.5), false));
+      myPathSegmentCollection.Add(new LineSegment(new Point(0.5, 0.5), false));
+      myPathSegmentCollection.Add(new LineSegment(new Point(0.5, 0), false));
+
+      myPathFigure.Segments = myPathSegmentCollection;
+      myPathGeometry.AddFigure(myPathFigure);
+
+      lightGreyGeometryDrawing.Geometry = myPathGeometry;
+      myDrawingGroup1.Children.Add(lightGreyGeometryDrawing);
+      
+
+      
+      //Demonstrates the use of an ImageBrush within a DrawingBrush.
+      //Two of the drawing's rectangles are filled using an ImageBrush,
+      //creating a checkered pattern of images.
+      Rectangle iBrushInDBrushRectangle = new Rectangle();
+      Grid.SetRow(iBrushInDBrushRectangle, 0);
+      Grid.SetColumn(iBrushInDBrushRectangle, 1);
+      drawingBrushGrid.Children.Add(iBrushInDBrushRectangle);
+      iBrushInDBrushRectangle.Width = 50;
+      iBrushInDBrushRectangle.Height = 50;
+
+      DrawingBrush iBrushInDBrushDrawingBrush = new DrawingBrush();
+      iBrushInDBrushRectangle.Fill = iBrushInDBrushDrawingBrush;
+      iBrushInDBrushDrawingBrush.Viewport = new Rect(0,0,1,1);
+      iBrushInDBrushDrawingBrush.TileMode = TileMode.Tile;
+
+      DrawingGroup iBrushInDBrushDrawingGroup = new DrawingGroup();
+      iBrushInDBrushDrawingBrush.Drawing = iBrushInDBrushDrawingGroup;
+
+      GeometryDrawing pinkRectGeometryDrawing = new GeometryDrawing();
+      pinkRectGeometryDrawing.Brush = Brushes.Pink;
+      pinkRectGeometryDrawing.Geometry = new RectangleGeometry(new Rect(0, 0, 1, 1));
+      iBrushInDBrushDrawingGroup.Children.Add(pinkRectGeometryDrawing);
+  
+      GeometryDrawing cherries1GeometryDrawing = new GeometryDrawing();
+
+
+      BitmapImage cherriesBitmapImage = new BitmapImage(new Uri("sampleImages\\cherries.jpg", UriKind.Relative));
+
+      ImageBrush pinkCherriesImageBrush1 = new ImageBrush(cherriesBitmapImage);
+      cherries1GeometryDrawing.Brush = pinkCherriesImageBrush1;
+      cherries1GeometryDrawing.Geometry = new RectangleGeometry(new Rect(0,0,0.5,0.5));
+      iBrushInDBrushDrawingGroup.Children.Add(cherries1GeometryDrawing);
+
+      GeometryDrawing cherries2GeometryDrawing = new GeometryDrawing();
+      ImageBrush pinkCherriesImageBrush2 = new ImageBrush(cherriesBitmapImage);
+      cherries2GeometryDrawing.Brush = pinkCherriesImageBrush2;
+      cherries2GeometryDrawing.Geometry = new RectangleGeometry(new Rect(0.5, 0.5, 0.5, 0.5));
+      iBrushInDBrushDrawingGroup.Children.Add(cherries2GeometryDrawing);
+      
+      //Paints a rectangle with a grid pattern.
+      Rectangle gridPatternRectangle = new Rectangle();
+      Grid.SetRow(gridPatternRectangle, 1);
+      Grid.SetColumn(gridPatternRectangle, 1);
+      drawingBrushGrid.Children.Add(gridPatternRectangle);
+      gridPatternRectangle.Width = 50;
+      gridPatternRectangle.Height = 50;
+
+      DrawingBrush gridPatternDrawingBrush = new DrawingBrush();
+      gridPatternRectangle.Fill = gridPatternDrawingBrush;
+      gridPatternDrawingBrush.Viewport = new Rect(0, 0, 10, 10);
+      gridPatternDrawingBrush.ViewportUnits = BrushMappingMode.Absolute;
+      gridPatternDrawingBrush.TileMode = TileMode.Tile;
+
+      DrawingGroup gridPatternDrawingGroup = new DrawingGroup();
+      gridPatternDrawingBrush.Drawing = gridPatternDrawingGroup;
+
+      GeometryDrawing whiteRectGeometryDrawing = new GeometryDrawing();
+      gridPatternDrawingGroup.Children.Add(whiteRectGeometryDrawing);
+      whiteRectGeometryDrawing.Brush = Brushes.White;
+      whiteRectGeometryDrawing.Geometry = new RectangleGeometry(new Rect(0, 0, 1, 1));
+
+      GeometryDrawing blueShapeGeometryDrawing = new GeometryDrawing();
+      gridPatternDrawingGroup.Children.Add(blueShapeGeometryDrawing);
+      blueShapeGeometryDrawing.Brush = Brushes.Blue;
+
+      PathGeometry blueFigurePathGeometry = new PathGeometry();
+      blueShapeGeometryDrawing.Geometry = blueFigurePathGeometry;
+
+      PathFigure blueShapePathFigure = new PathFigure();
+      blueFigurePathGeometry.AddFigure(blueShapePathFigure);
+
+      PathSegmentCollection blueShapeSegmentCollection = new PathSegmentCollection();
+      blueShapePathFigure.Segments = blueShapeSegmentCollection;
+
+      blueShapeSegmentCollection.Add(new StartSegment(new Point(0, 0)));
+      blueShapeSegmentCollection.Add(new LineSegment(new Point(0, 1),true));
+      blueShapeSegmentCollection.Add(new LineSegment(new Point(0.1, 1), true));
+      blueShapeSegmentCollection.Add(new LineSegment(new Point(0.1, 0.1), true));
+      blueShapeSegmentCollection.Add(new LineSegment(new Point(1, 0.1), true));
+      blueShapeSegmentCollection.Add(new LineSegment(new Point(1, 0), true));
+      blueShapeSegmentCollection.Add(new CloseSegment());
+
+      //Demonstrates the use of gradient brushes within a DrawingBrush. Two overlapping gradients are layered to 
+      //create a complex gradient.
+
+      Rectangle dBrushGradientRectangle = new Rectangle();
+      Grid.SetRow(dBrushGradientRectangle, 2);
+      Grid.SetColumn(dBrushGradientRectangle, 1);
+      drawingBrushGrid.Children.Add(dBrushGradientRectangle);
+      dBrushGradientRectangle.Width = 50;
+      dBrushGradientRectangle.Height = 50;
+
+      DrawingBrush dBrushGradientDrawingBrush = new DrawingBrush();
+      dBrushGradientRectangle.Fill = dBrushGradientDrawingBrush;
+      dBrushGradientDrawingBrush.Viewport = new Rect(0,0,1,1);
+      dBrushGradientDrawingBrush.TileMode = TileMode.Tile;
+
+      DrawingGroup dBrushGradientDrawingGroup = new DrawingGroup();
+      dBrushGradientDrawingBrush.Drawing = dBrushGradientDrawingGroup;
+
+      GeometryDrawing rect1 = new GeometryDrawing();
+      rect1.Geometry = new RectangleGeometry(new Rect(0,0,1,1));
+      dBrushGradientDrawingGroup.Children.Add(rect1);
+
+      LinearGradientBrush blueGradient = new LinearGradientBrush();
+      rect1.Brush = blueGradient;
+      blueGradient.StartPoint = new Point(0.5, 0);
+      blueGradient.EndPoint = new Point(0.5, 1);
+
+      GradientStopCollection blueGradientStopCollection = new GradientStopCollection();
+      blueGradientStopCollection.Add(new GradientStop(Colors.Blue, 0.0));
+      blueGradientStopCollection.Add(new GradientStop(Color.FromRgb(153,102,204), 0.5));
+      blueGradientStopCollection.Add(new GradientStop(Colors.MediumBlue, 1.0));
+
+      blueGradient.GradientStops = blueGradientStopCollection;
+
+      GeometryDrawing rect2 = new GeometryDrawing();
+      rect2.Geometry = new RectangleGeometry(new Rect(0, 0, 1, 1));
+      dBrushGradientDrawingGroup.Children.Add(rect2);
+
+      RadialGradientBrush whiteTransparentBlackRadialGradientBrush = new RadialGradientBrush();
+      rect2.Brush = whiteTransparentBlackRadialGradientBrush;
+      whiteTransparentBlackRadialGradientBrush.GradientOrigin = new Point(0.75, 0.25);
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(new GradientStop(Colors.White,0.0));
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 0.5));
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 0.9));
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1));
+
+      Rectangle footerRectangle = new Rectangle();
+      Grid.SetRow(footerRectangle, 9);
+      Grid.SetColumn(footerRectangle, 0);
+      Grid.SetColumnSpan(footerRectangle, 6);
+
+      myGrid.Children.Add(footerRectangle);
+      footerRectangle.Fill = Brushes.Black;
+      footerRectangle.Style = (Style)Application.Current.Resources["footerRectangleStyle"];
+    }
+	
+	}
+}
+
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+
+&lt;!-- BrushTypes.xaml
+     Shows examples of several different brush types. -->
+&lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   x:Class="BrushesIntroduction.BrushTypesExample" 
+   Title="Different Types of Brushes">
+   &lt;Page.Resources>
+      &lt;Style TargetType="{x:Type Rectangle}">
+	   &lt;Setter Property="Stroke" Value="Black"/>
+	   &lt;Setter Property="StrokeThickness" Value="2"/>
+	   &lt;Setter Property="Margin" Value="0,0,5,5"/>
+	   &lt;Setter Property="VerticalAlignment" Value="Top"/>
+      &lt;/Style>
+      &lt;Style TargetType="{x:Type Ellipse}">
+	   &lt;Setter Property="Stroke" Value="Black"/>
+	   &lt;Setter Property="StrokeThickness" Value="2"/>
+	   &lt;Setter Property="Margin" Value="0,0,5,5"/>
+      &lt;/Style>
+   &lt;/Page.Resources>
+  
+&lt;/Page>
+                
+                
+              </TextBox>     
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+		  <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+Imports System
+Imports System.Windows
+Imports System.Windows.Controls
+Imports System.Windows.Documents
+Imports System.Windows.Navigation
+Imports System.Windows.Shapes
+Imports System.Windows.Input
+Imports System.Windows.Media
+Imports System.Windows.Media.Imaging
+Imports System.Reflection
+
+Namespace BrushesIntroduction
+  ' &lt;summary>
+  ' Interaction logic for BrushTypesExample.xaml
+  ' &lt;/summary>
+  Partial Public Class BrushTypesExample
+    Inherits Page
+    Public Sub New()
+      CreateGui()
+    End Sub
+
+    Private Sub CreateGui()
+      Dim myGrid As New Grid()
+      Me.Child = myGrid
+      myGrid.Margin = New Thickness(10)
+      myGrid.Background = Brushes.White
+
+      Dim col1 As New ColumnDefinition()
+      col1.Width = New GridLength(0, GridUnitType.Auto)
+      myGrid.ColumnDefinitions.Add(col1)
+
+      Dim col2 As New ColumnDefinition()
+      col2.Width = New GridLength(10)
+      myGrid.ColumnDefinitions.Add(col2)
+
+      Dim col3 As New ColumnDefinition()
+      col3.Width = New GridLength(0, GridUnitType.Auto)
+      myGrid.ColumnDefinitions.Add(col3)
+
+      Dim col4 As New ColumnDefinition()
+      col2.Width = New GridLength(10)
+      myGrid.ColumnDefinitions.Add(col4)
+
+      Dim col5 As New ColumnDefinition()
+      col5.Width = New GridLength(0, GridUnitType.Auto)
+      myGrid.ColumnDefinitions.Add(col5)
+
+      Dim col6 As New ColumnDefinition()
+      col6.Width = New GridLength(10)
+      myGrid.ColumnDefinitions.Add(col6)
+
+      Dim row1 As New RowDefinition()
+      row1.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row1)
+
+      Dim row2 As New RowDefinition()
+      row2.Height = New GridLength(40)
+      myGrid.RowDefinitions.Add(row2)
+
+      Dim row3 As New RowDefinition()
+      row3.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row3)
+
+      Dim row4 As New RowDefinition()
+      row4.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row4)
+
+      Dim row5 As New RowDefinition()
+      row5.Height = New GridLength(10)
+      myGrid.RowDefinitions.Add(row5)
+
+      Dim row6 As New RowDefinition()
+      row6.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row6)
+
+      Dim row7 As New RowDefinition()
+      row7.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row7)
+
+      Dim row8 As New RowDefinition()
+      row8.Height = New GridLength(0, GridUnitType.Star)
+      myGrid.RowDefinitions.Add(row8)
+
+      Dim row9 As New RowDefinition()
+      row9.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row9)
+
+      'Sample header.
+      Dim headerRectangle As New Rectangle()
+      Grid.SetRow(headerRectangle, 0)
+      Grid.SetColumn(headerRectangle, 0)
+      Grid.SetColumnSpan(headerRectangle, 6)
+      myGrid.Children.Add(headerRectangle)
+      headerRectangle.Style = CType(Application.Current.Resources("headerRectangleStyle"), Style)
+      headerRectangle.Fill = Brushes.Black
+
+      Dim headerTextBlock As New TextBlock()
+      Grid.SetRow(headerTextBlock, 0)
+      Grid.SetColumn(headerTextBlock, 0)
+      Grid.SetColumnSpan(headerTextBlock, 6)
+      myGrid.Children.Add(headerTextBlock)
+      headerTextBlock.Style = CType(Application.Current.Resources("introTextStyle"), Style)
+      headerTextBlock.Width = 400
+      headerTextBlock.Foreground = Brushes.White
+      headerTextBlock.Text = "This example demonstrates the usage of several brushes " + _
+          " defined in the System.Windows.Media namespace."
+
+      'SolidColorBrush Examples
+      Dim solidColorBrushTextBlock As New TextBlock()
+      Grid.SetRow(solidColorBrushTextBlock, 2)
+      Grid.SetColumn(solidColorBrushTextBlock, 0)
+      myGrid.Children.Add(solidColorBrushTextBlock)
+      solidColorBrushTextBlock.Text = "SolidColorBrush"
+
+      Dim preDefinedBrushesGrid As New Grid()
+      Grid.SetRow(preDefinedBrushesGrid, 3)
+      Grid.SetColumn(preDefinedBrushesGrid, 0)
+      myGrid.Children.Add(preDefinedBrushesGrid)
+
+      Dim preDefCol1 As New ColumnDefinition()
+      preDefinedBrushesGrid.ColumnDefinitions.Add(preDefCol1)
+
+      Dim preDefCol2 As New ColumnDefinition()
+      preDefinedBrushesGrid.ColumnDefinitions.Add(preDefCol2)
+
+      Dim preDefRow1 As New RowDefinition()
+      preDefinedBrushesGrid.RowDefinitions.Add(preDefRow1)
+
+      Dim preDefRow2 As New RowDefinition()
+      preDefinedBrushesGrid.RowDefinitions.Add(preDefRow2)
+
+      Dim preDefRow3 As New RowDefinition()
+      preDefinedBrushesGrid.RowDefinitions.Add(preDefRow3)
+
+      'The following four rectangles are painted using predefined
+      'SolidColorBrush objects: Brushes.Red, Brushes.MediumBlue,
+      'Brushes.Purple, and Brushes.Gold.
+      Dim redRectangle As New Rectangle()
+      Grid.SetRow(redRectangle, 0)
+      Grid.SetColumn(redRectangle, 0)
+      Grid.SetRowSpan(redRectangle, 3)
+      preDefinedBrushesGrid.Children.Add(redRectangle)
+      redRectangle.Width = 150
+      redRectangle.Height = 150
+      redRectangle.Fill = Brushes.Red
+
+      Dim blueRectangle As New Rectangle()
+      Grid.SetRow(blueRectangle, 0)
+      Grid.SetColumn(blueRectangle, 1)
+      preDefinedBrushesGrid.Children.Add(blueRectangle)
+      blueRectangle.Width = 50
+      blueRectangle.Height = 50
+      blueRectangle.Fill = Brushes.MediumBlue
+
+      Dim purpleRectangle As New Rectangle()
+      Grid.SetRow(purpleRectangle, 1)
+      Grid.SetColumn(purpleRectangle, 1)
+      preDefinedBrushesGrid.Children.Add(purpleRectangle)
+      purpleRectangle.Width = 50
+      purpleRectangle.Height = 50
+      purpleRectangle.Fill = Brushes.Purple
+
+      Dim goldRectangle As New Rectangle()
+      Grid.SetRow(goldRectangle, 2)
+      Grid.SetColumn(goldRectangle, 1)
+      preDefinedBrushesGrid.Children.Add(goldRectangle)
+      goldRectangle.Width = 50
+      goldRectangle.Height = 50
+      goldRectangle.Fill = Brushes.Gold
+
+      'LinearGradientBrush Examples
+      Dim linearGradientBrushTextBlock As New TextBlock()
+      Grid.SetRow(linearGradientBrushTextBlock, 2)
+      Grid.SetColumn(linearGradientBrushTextBlock, 2)
+      myGrid.Children.Add(linearGradientBrushTextBlock)
+      linearGradientBrushTextBlock.Text = "LinearGradientBrush"
+
+      Dim linearGradientGrid As New Grid()
+      Grid.SetRow(linearGradientGrid, 3)
+      Grid.SetColumn(linearGradientGrid, 2)
+      myGrid.Children.Add(linearGradientGrid)
+
+      Dim linGradeCol1 As New ColumnDefinition()
+      linearGradientGrid.ColumnDefinitions.Add(linGradeCol1)
+
+      Dim linGradeCol2 As New ColumnDefinition()
+      linearGradientGrid.ColumnDefinitions.Add(linGradeCol2)
+
+      Dim linGradeCol3 As New ColumnDefinition()
+      linearGradientGrid.ColumnDefinitions.Add(linGradeCol3)
+
+      Dim linGradeRow1 As New RowDefinition()
+      linearGradientGrid.RowDefinitions.Add(linGradeRow1)
+
+      Dim linGradeRow2 As New RowDefinition()
+      linearGradientGrid.RowDefinitions.Add(linGradeRow2)
+
+      Dim linGradeRow3 As New RowDefinition()
+      linearGradientGrid.RowDefinitions.Add(linGradeRow3)
+
+      'The following four rectangles are painted using LinearGradientBrush objects.
+      Dim linearGradientBrushRectangle As New Rectangle()
+      Grid.SetRow(linearGradientBrushRectangle, 0)
+      Grid.SetColumn(linearGradientBrushRectangle, 0)
+      Grid.SetRowSpan(linearGradientBrushRectangle, 3)
+      linearGradientGrid.Children.Add(linearGradientBrushRectangle)
+      linearGradientBrushRectangle.Width = 150
+      linearGradientBrushRectangle.Height = 150
+      Dim threeFillsLinearGradientBrush As New LinearGradientBrush()
+      Dim threeFillsGradientStopCollection As New GradientStopCollection()
+      threeFillsGradientStopCollection.Add(New GradientStop(Colors.Yellow, 0.0))
+      threeFillsGradientStopCollection.Add(New GradientStop(Colors.Orange, 0.5))
+      threeFillsGradientStopCollection.Add(New GradientStop(Colors.Red, 1.0))
+      threeFillsLinearGradientBrush.GradientStops = threeFillsGradientStopCollection
+      linearGradientBrushRectangle.Fill = threeFillsLinearGradientBrush
+
+      Dim twoStopsGradientBrushRectangle As New Rectangle()
+      Grid.SetRow(twoStopsGradientBrushRectangle, 0)
+      Grid.SetColumn(twoStopsGradientBrushRectangle, 1)
+      linearGradientGrid.Children.Add(twoStopsGradientBrushRectangle)
+      twoStopsGradientBrushRectangle.Width = 50
+      twoStopsGradientBrushRectangle.Height = 50
+      Dim blueToPurpleGradientStops As New GradientStopCollection()
+      blueToPurpleGradientStops.Add(New GradientStop(Colors.Blue, 0.0))
+      blueToPurpleGradientStops.Add(New GradientStop(Colors.Purple, 1.0))
+      twoStopsGradientBrushRectangle.Fill = New LinearGradientBrush(blueToPurpleGradientStops)
+
+      Dim threeStopsGradientBrushRectangle As New Rectangle()
+      Grid.SetRow(threeStopsGradientBrushRectangle, 1)
+      Grid.SetColumn(threeStopsGradientBrushRectangle, 1)
+      linearGradientGrid.Children.Add(threeStopsGradientBrushRectangle)
+      threeStopsGradientBrushRectangle.Width = 50
+      threeStopsGradientBrushRectangle.Height = 50
+      Dim purpleBlueWhiteGradientStops As New GradientStopCollection()
+      purpleBlueWhiteGradientStops.Add(New GradientStop(Colors.Purple, 0.0))
+      purpleBlueWhiteGradientStops.Add(New GradientStop(Colors.Blue, 0.5))
+      purpleBlueWhiteGradientStops.Add(New GradientStop(Colors.White, 1.0))
+      threeStopsGradientBrushRectangle.Fill = New LinearGradientBrush(purpleBlueWhiteGradientStops)
+
+
+      Dim threeStopsGradientBrushRectangle2 As New Rectangle()
+      Grid.SetRow(threeStopsGradientBrushRectangle2, 2)
+      Grid.SetColumn(threeStopsGradientBrushRectangle2, 1)
+      linearGradientGrid.Children.Add(threeStopsGradientBrushRectangle2)
+      threeStopsGradientBrushRectangle2.Width = 50
+      threeStopsGradientBrushRectangle2.Height = 50
+      Dim goldRedOrangeGradientStops As New GradientStopCollection()
+      goldRedOrangeGradientStops.Add(New GradientStop(Colors.Gold, 0.0))
+      goldRedOrangeGradientStops.Add(New GradientStop(Colors.Red, 0.5))
+      goldRedOrangeGradientStops.Add(New GradientStop(Colors.Orange, 1.0))
+      threeStopsGradientBrushRectangle2.Fill = New LinearGradientBrush(goldRedOrangeGradientStops)
+
+      'RadialGradientBrush Examples.
+      Dim radialGradientBrushTextBlock As New TextBlock()
+      Grid.SetRow(radialGradientBrushTextBlock, 2)
+      Grid.SetColumn(radialGradientBrushTextBlock, 4)
+      myGrid.Children.Add(radialGradientBrushTextBlock)
+      radialGradientBrushTextBlock.Text = "RadialGradientBrush"
+
+      Dim radialGradientGrid As New Grid()
+      Grid.SetRow(radialGradientGrid, 3)
+      Grid.SetColumn(radialGradientGrid, 4)
+      myGrid.Children.Add(radialGradientGrid)
+
+      Dim radGradeCol1 As New ColumnDefinition()
+      radialGradientGrid.ColumnDefinitions.Add(radGradeCol1)
+
+      Dim radGradeCol2 As New ColumnDefinition()
+      radialGradientGrid.ColumnDefinitions.Add(radGradeCol2)
+
+      Dim radGradeCol3 As New ColumnDefinition()
+      radialGradientGrid.ColumnDefinitions.Add(radGradeCol3)
+
+      Dim radGradeRow1 As New RowDefinition()
+      radialGradientGrid.RowDefinitions.Add(radGradeRow1)
+
+      Dim radGradeRow2 As New RowDefinition()
+      radialGradientGrid.RowDefinitions.Add(radGradeRow2)
+
+      Dim radGradeRow3 As New RowDefinition()
+      radialGradientGrid.RowDefinitions.Add(radGradeRow3)
+
+      'The following four shapes are painted with RadialGradientBrush objects.
+      Dim radGradientRectangle As New Rectangle()
+      Grid.SetRow(radGradientRectangle, 0)
+      Grid.SetColumn(radGradientRectangle, 0)
+      Grid.SetRowSpan(radGradientRectangle, 3)
+      radialGradientGrid.Children.Add(radGradientRectangle)
+      radGradientRectangle.Width = 150
+      radGradientRectangle.Height = 150
+      Dim myGradientStopCollection1 As New GradientStopCollection()
+      myGradientStopCollection1.Add(New GradientStop(Colors.Yellow, 0.0))
+      myGradientStopCollection1.Add(New GradientStop(Colors.Orange, 0.5))
+      myGradientStopCollection1.Add(New GradientStop(Colors.Red, 1.0))
+      Dim yellowOrangeRedGradientBrush As New RadialGradientBrush(myGradientStopCollection1)
+      yellowOrangeRedGradientBrush.GradientOrigin = New Windows.Point(0.75, 0.25)
+      radGradientRectangle.Fill = yellowOrangeRedGradientBrush
+
+      Dim radGradientEllipse2 As New Ellipse()
+      Grid.SetRow(radGradientEllipse2, 0)
+      Grid.SetColumn(radGradientEllipse2, 1)
+      radialGradientGrid.Children.Add(radGradientEllipse2)
+      radGradientEllipse2.Width = 50
+      radGradientEllipse2.Height = 50
+      Dim myGradientStopCollection2 As New GradientStopCollection()
+      myGradientStopCollection2.Add(New GradientStop(Colors.White, 0.0))
+      myGradientStopCollection2.Add(New GradientStop(Colors.MediumBlue, 0.5))
+      myGradientStopCollection2.Add(New GradientStop(Colors.Black, 1.0))
+      Dim whiteBlueBlackGradientBrush As New RadialGradientBrush(myGradientStopCollection2)
+      whiteBlueBlackGradientBrush.GradientOrigin = New Windows.Point(0.75, 0.25)
+      radGradientEllipse2.Fill = whiteBlueBlackGradientBrush
+
+      Dim radGradientEllipse3 As New Ellipse()
+      Grid.SetRow(radGradientEllipse3, 1)
+      Grid.SetColumn(radGradientEllipse3, 1)
+      radialGradientGrid.Children.Add(radGradientEllipse3)
+      radGradientEllipse3.Width = 50
+      radGradientEllipse3.Height = 50
+      Dim myGradientStopCollection3 As New GradientStopCollection()
+      myGradientStopCollection3.Add(New GradientStop(Colors.AliceBlue, 0.0))
+      myGradientStopCollection3.Add(New GradientStop(Colors.Purple, 0.5))
+      myGradientStopCollection3.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#330033"), Color), 1.0))
+      Dim bluePurpleStringGradientBrush As New RadialGradientBrush(myGradientStopCollection3)
+      bluePurpleStringGradientBrush.GradientOrigin = New Windows.Point(0.75, 0.25)
+      radGradientEllipse3.Fill = bluePurpleStringGradientBrush
+
+      Dim radGradientEllipse4 As New Ellipse()
+      Grid.SetRow(radGradientEllipse4, 2)
+      Grid.SetColumn(radGradientEllipse4, 1)
+      radialGradientGrid.Children.Add(radGradientEllipse4)
+      radGradientEllipse4.Width = 50
+      radGradientEllipse4.Height = 50
+      Dim myGradientStopCollection4 As New GradientStopCollection()
+      myGradientStopCollection4.Add(New GradientStop(Colors.Yellow, 0.0))
+      myGradientStopCollection4.Add(New GradientStop(Colors.Orange, 0.5))
+      myGradientStopCollection4.Add(New GradientStop(Colors.Red, 1.0))
+      Dim YellowOrangeRedGradientBrush2 As New RadialGradientBrush(myGradientStopCollection4)
+      YellowOrangeRedGradientBrush2.GradientOrigin = New Windows.Point(0.75, 0.25)
+      radGradientEllipse4.Fill = YellowOrangeRedGradientBrush2
+
+      'ImageBrush Examples.
+      Dim imageBrushTextBlock As New TextBlock()
+      Grid.SetRow(imageBrushTextBlock, 5)
+      Grid.SetColumn(imageBrushTextBlock, 0)
+      myGrid.Children.Add(imageBrushTextBlock)
+      imageBrushTextBlock.Text = "ImageBrush"
+
+      Dim imageBrushGrid As New Grid()
+      Grid.SetRow(imageBrushGrid, 6)
+      Grid.SetColumn(imageBrushGrid, 0)
+      myGrid.Children.Add(imageBrushGrid)
+
+      Dim imgGradeCol1 As New ColumnDefinition()
+      imageBrushGrid.ColumnDefinitions.Add(imgGradeCol1)
+
+      Dim imgGradeCol2 As New ColumnDefinition()
+      imageBrushGrid.ColumnDefinitions.Add(imgGradeCol2)
+
+      Dim imgGradeRow1 As New RowDefinition()
+      imageBrushGrid.RowDefinitions.Add(imgGradeRow1)
+
+      Dim imgGradeRow2 As New RowDefinition()
+      imageBrushGrid.RowDefinitions.Add(imgGradeRow2)
+
+      Dim imgGradeRow3 As New RowDefinition()
+      imageBrushGrid.RowDefinitions.Add(imgGradeRow3)
+
+      'Paints a rectangle with an image. The image expands to fill the rectangle.
+      Dim imgRectangle1 As New Rectangle()
+      Grid.SetRow(imgRectangle1, 0)
+      Grid.SetColumn(imgRectangle1, 0)
+      Grid.SetRowSpan(imgRectangle1, 3)
+      imageBrushGrid.Children.Add(imgRectangle1)
+      imgRectangle1.Width = 150
+      imgRectangle1.Height = 150
+      Dim pinkcherriesBitmapImage As New BitmapImage(New Uri("sampleImages\\pinkcherries.jpg", UriKind.Relative))
+      Dim imageBrush1 As New ImageBrush(pinkcherriesBitmapImage)
+      imgRectangle1.Fill = imageBrush1
+
+      'Paints a rectangle with an image. The ImageBrush's Stretch property is set to None,
+      'so the image is not resized.
+      Dim imgRectangle2 As New Rectangle()
+      Grid.SetRow(imgRectangle2, 0)
+      Grid.SetColumn(imgRectangle2, 1)
+      imageBrushGrid.Children.Add(imgRectangle2)
+      imgRectangle2.Width = 50
+      imgRectangle2.Height = 50
+      Dim imageBrush2 As New ImageBrush(pinkcherriesBitmapImage)
+      imageBrush2.Stretch = Stretch.None
+      imageBrush2.TileMode = TileMode.Tile
+      imgRectangle2.Fill = imageBrush2
+
+      'Paints a rectangle with an image. The ImageBrush's Viewport and TileMode properties are set so that
+      'the image is tiled.
+      Dim imgRectangle3 As New Rectangle()
+      Grid.SetRow(imgRectangle3, 1)
+      Grid.SetColumn(imgRectangle3, 1)
+      imageBrushGrid.Children.Add(imgRectangle3)
+      imgRectangle3.Width = 50
+      imgRectangle3.Height = 50
+      Dim imageBrush3 As New ImageBrush(pinkcherriesBitmapImage)
+      imageBrush3.Viewport = New Rect(0, 0, 25, 25)
+      imageBrush3.ViewportUnits = BrushMappingMode.Absolute
+      imageBrush3.TileMode = TileMode.Tile
+      imgRectangle3.Fill = imageBrush3
+
+      'Paints a rectangle with an image.  The ImageBrush's Viewport and TileMode properties are set so that
+      'the image is tiled
+      Dim imgRectangle4 As New Rectangle()
+      Grid.SetRow(imgRectangle4, 2)
+      Grid.SetColumn(imgRectangle4, 1)
+      imageBrushGrid.Children.Add(imgRectangle4)
+      imgRectangle4.Width = 50
+      imgRectangle4.Height = 50
+      Dim imageBrush4 As New ImageBrush(pinkcherriesBitmapImage)
+      imageBrush4.Viewport = New Rect(0, 0, 10, 10)
+      imageBrush4.ViewportUnits = BrushMappingMode.Absolute
+      imageBrush4.TileMode = TileMode.Tile
+      imgRectangle4.Fill = imageBrush4
+
+      'DrawingBrush Examples
+      Dim drawingBrushTextBlock As New TextBlock()
+      Grid.SetRow(drawingBrushTextBlock, 5)
+      Grid.SetColumn(drawingBrushTextBlock, 2)
+      myGrid.Children.Add(drawingBrushTextBlock)
+      drawingBrushTextBlock.Text = "DrawingBrush"
+
+      Dim drawingBrushGrid As New Grid()
+      Grid.SetRow(drawingBrushGrid, 6)
+      Grid.SetColumn(drawingBrushGrid, 2)
+      myGrid.Children.Add(drawingBrushGrid)
+
+      Dim drawCol1 As New ColumnDefinition()
+      drawCol1.Width = New GridLength(0, GridUnitType.Auto)
+      drawingBrushGrid.ColumnDefinitions.Add(drawCol1)
+
+      Dim drawCol2 As New ColumnDefinition()
+      drawCol2.Width = New GridLength(0, GridUnitType.Auto)
+      drawingBrushGrid.ColumnDefinitions.Add(drawCol2)
+
+      Dim drawRow1 As New RowDefinition()
+      drawingBrushGrid.RowDefinitions.Add(drawRow1)
+
+      Dim drawRow2 As New RowDefinition()
+      drawingBrushGrid.RowDefinitions.Add(drawRow2)
+
+      Dim drawRow3 As New RowDefinition()
+      drawingBrushGrid.RowDefinitions.Add(drawRow3)
+
+      'Paints a rectangle with a checkered pattern. The tile size and a tile mode using the DrawingBrush's
+      'Viewport and TileMode properties. The tile's content is defined by the DrawingBrush's Drawing property.
+      Dim drawingBrushRectangle1 As New Rectangle()
+      Grid.SetRow(drawingBrushRectangle1, 0)
+      Grid.SetColumn(drawingBrushRectangle1, 0)
+      Grid.SetRowSpan(drawingBrushRectangle1, 3)
+      drawingBrushGrid.Children.Add(drawingBrushRectangle1)
+      drawingBrushRectangle1.Width = 150
+      drawingBrushRectangle1.Height = 150
+      Dim mydrawingBrush1 As New DrawingBrush()
+      drawingBrushRectangle1.Fill = mydrawingBrush1
+      mydrawingBrush1.Viewport = New Rect(0, 0, 0.25, 0.25)
+      mydrawingBrush1.TileMode = TileMode.Tile
+      Dim myDrawingGroup1 As New DrawingGroup()
+      mydrawingBrush1.Drawing = myDrawingGroup1
+      Dim whiteRectangleGeometryDrawing As New GeometryDrawing()
+      myDrawingGroup1.Children.Add(whiteRectangleGeometryDrawing)
+      whiteRectangleGeometryDrawing.Brush = Brushes.White
+      whiteRectangleGeometryDrawing.Geometry = New RectangleGeometry(New Rect(0, 0, 1, 1))
+
+      Dim lightGreyGeometryDrawing As New GeometryDrawing()
+      lightGreyGeometryDrawing.Brush = Brushes.LightGray
+
+      Dim myPathGeometry As New PathGeometry()
+      Dim myPathFigure As New PathFigure()
+      Dim myPathSegmentCollection As New PathSegmentCollection()
+      myPathSegmentCollection.Add(New StartSegment(New Windows.Point(0, 0)))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(0, 0.5), False))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(0.5, 0.5), False))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(0.5, 1), False))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(1, 1), False))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(1, 0.5), False))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(0.5, 0.5), False))
+      myPathSegmentCollection.Add(New LineSegment(New Windows.Point(0.5, 0), False))
+
+      myPathFigure.Segments = myPathSegmentCollection
+      myPathGeometry.AddFigure(myPathFigure)
+
+      lightGreyGeometryDrawing.Geometry = myPathGeometry
+      myDrawingGroup1.Children.Add(lightGreyGeometryDrawing)
+
+
+
+      'Demonstrates the use of an ImageBrush within a DrawingBrush.
+      'Two of the drawing's rectangles are filled using an ImageBrush,
+      'creating a checkered pattern of images.
+      Dim iBrushInDBrushRectangle As New Rectangle()
+      Grid.SetRow(iBrushInDBrushRectangle, 0)
+      Grid.SetColumn(iBrushInDBrushRectangle, 1)
+      drawingBrushGrid.Children.Add(iBrushInDBrushRectangle)
+      iBrushInDBrushRectangle.Width = 50
+      iBrushInDBrushRectangle.Height = 50
+
+      Dim iBrushInDBrushDrawingBrush As New DrawingBrush()
+      iBrushInDBrushRectangle.Fill = iBrushInDBrushDrawingBrush
+      iBrushInDBrushDrawingBrush.Viewport = New Rect(0, 0, 1, 1)
+      iBrushInDBrushDrawingBrush.TileMode = TileMode.Tile
+
+      Dim iBrushInDBrushDrawingGroup As New DrawingGroup()
+      iBrushInDBrushDrawingBrush.Drawing = iBrushInDBrushDrawingGroup
+
+      Dim pinkRectGeometryDrawing As New GeometryDrawing()
+      pinkRectGeometryDrawing.Brush = Brushes.Pink
+      pinkRectGeometryDrawing.Geometry = New RectangleGeometry(New Rect(0, 0, 1, 1))
+      iBrushInDBrushDrawingGroup.Children.Add(pinkRectGeometryDrawing)
+
+      Dim cherries1GeometryDrawing As New GeometryDrawing()
+
+
+      Dim cherriesBitmapImage As New BitmapImage(New Uri("sampleImages\\cherries.jpg", UriKind.Relative))
+
+      Dim pinkCherriesImageBrush1 As New ImageBrush(cherriesBitmapImage)
+      cherries1GeometryDrawing.Brush = pinkCherriesImageBrush1
+      cherries1GeometryDrawing.Geometry = New RectangleGeometry(New Rect(0, 0, 0.5, 0.5))
+      iBrushInDBrushDrawingGroup.Children.Add(cherries1GeometryDrawing)
+
+      Dim cherries2GeometryDrawing As New GeometryDrawing()
+      Dim pinkCherriesImageBrush2 As New ImageBrush(cherriesBitmapImage)
+      cherries2GeometryDrawing.Brush = pinkCherriesImageBrush2
+      cherries2GeometryDrawing.Geometry = New RectangleGeometry(New Rect(0.5, 0.5, 0.5, 0.5))
+      iBrushInDBrushDrawingGroup.Children.Add(cherries2GeometryDrawing)
+
+      'Paints a rectangle with a grid pattern.
+      Dim gridPatternRectangle As New Rectangle()
+      Grid.SetRow(gridPatternRectangle, 1)
+      Grid.SetColumn(gridPatternRectangle, 1)
+      drawingBrushGrid.Children.Add(gridPatternRectangle)
+      gridPatternRectangle.Width = 50
+      gridPatternRectangle.Height = 50
+
+      Dim gridPatternDrawingBrush As New DrawingBrush()
+      gridPatternRectangle.Fill = gridPatternDrawingBrush
+      gridPatternDrawingBrush.Viewport = New Rect(0, 0, 10, 10)
+      gridPatternDrawingBrush.ViewportUnits = BrushMappingMode.Absolute
+      gridPatternDrawingBrush.TileMode = TileMode.Tile
+
+      Dim gridPatternDrawingGroup As New DrawingGroup()
+      gridPatternDrawingBrush.Drawing = gridPatternDrawingGroup
+
+      Dim whiteRectGeometryDrawing As New GeometryDrawing()
+      gridPatternDrawingGroup.Children.Add(whiteRectGeometryDrawing)
+      whiteRectGeometryDrawing.Brush = Brushes.White
+      whiteRectGeometryDrawing.Geometry = New RectangleGeometry(New Rect(0, 0, 1, 1))
+
+      Dim blueShapeGeometryDrawing As New GeometryDrawing()
+      gridPatternDrawingGroup.Children.Add(blueShapeGeometryDrawing)
+      blueShapeGeometryDrawing.Brush = Brushes.Blue
+
+      Dim blueFigurePathGeometry As New PathGeometry()
+      blueShapeGeometryDrawing.Geometry = blueFigurePathGeometry
+
+      Dim blueShapePathFigure As New PathFigure()
+      blueFigurePathGeometry.AddFigure(blueShapePathFigure)
+
+      Dim blueShapeSegmentCollection As New PathSegmentCollection()
+      blueShapePathFigure.Segments = blueShapeSegmentCollection
+
+      blueShapeSegmentCollection.Add(New StartSegment(New Windows.Point(0, 0)))
+      blueShapeSegmentCollection.Add(New LineSegment(New Windows.Point(0, 1), True))
+      blueShapeSegmentCollection.Add(New LineSegment(New Windows.Point(0.1, 1), True))
+      blueShapeSegmentCollection.Add(New LineSegment(New Windows.Point(0.1, 0.1), True))
+      blueShapeSegmentCollection.Add(New LineSegment(New Windows.Point(1, 0.1), True))
+      blueShapeSegmentCollection.Add(New LineSegment(New Windows.Point(1, 0), True))
+      blueShapeSegmentCollection.Add(New CloseSegment())
+
+      'Demonstrates the use of gradient brushes within a DrawingBrush. Two overlapping gradients are layered to 
+      'create a complex gradient.
+
+      Dim dBrushGradientRectangle As New Rectangle()
+      Grid.SetRow(dBrushGradientRectangle, 2)
+      Grid.SetColumn(dBrushGradientRectangle, 1)
+      drawingBrushGrid.Children.Add(dBrushGradientRectangle)
+      dBrushGradientRectangle.Width = 50
+      dBrushGradientRectangle.Height = 50
+
+      Dim dBrushGradientDrawingBrush As New DrawingBrush()
+      dBrushGradientRectangle.Fill = dBrushGradientDrawingBrush
+      dBrushGradientDrawingBrush.Viewport = New Rect(0, 0, 1, 1)
+      dBrushGradientDrawingBrush.TileMode = TileMode.Tile
+
+      Dim dBrushGradientDrawingGroup As New DrawingGroup()
+      dBrushGradientDrawingBrush.Drawing = dBrushGradientDrawingGroup
+
+      Dim rect1 As New GeometryDrawing()
+      rect1.Geometry = New RectangleGeometry(New Rect(0, 0, 1, 1))
+      dBrushGradientDrawingGroup.Children.Add(rect1)
+
+      Dim blueGradient As New LinearGradientBrush()
+      rect1.Brush = blueGradient
+      blueGradient.StartPoint = New Windows.Point(0.5, 0)
+      blueGradient.EndPoint = New Windows.Point(0.5, 1)
+
+      Dim blueGradientStopCollection As New GradientStopCollection()
+      blueGradientStopCollection.Add(New GradientStop(Colors.Blue, 0.0))
+      blueGradientStopCollection.Add(New GradientStop(Color.FromRgb(153, 102, 204), 0.5))
+      blueGradientStopCollection.Add(New GradientStop(Colors.MediumBlue, 1.0))
+
+      blueGradient.GradientStops = blueGradientStopCollection
+
+      Dim rect2 As New GeometryDrawing()
+      rect2.Geometry = New RectangleGeometry(New Rect(0, 0, 1, 1))
+      dBrushGradientDrawingGroup.Children.Add(rect2)
+
+      Dim whiteTransparentBlackRadialGradientBrush As New RadialGradientBrush()
+      rect2.Brush = whiteTransparentBlackRadialGradientBrush
+      whiteTransparentBlackRadialGradientBrush.GradientOrigin = New Windows.Point(0.75, 0.25)
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(New GradientStop(Colors.White, 0.0))
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(New GradientStop(Colors.Transparent, 0.5))
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(New GradientStop(Colors.Transparent, 0.9))
+      whiteTransparentBlackRadialGradientBrush.GradientStops.Add(New GradientStop(Colors.Black, 1))
+
+      Dim footerRectangle As New Rectangle()
+      Grid.SetRow(footerRectangle, 8)
+      Grid.SetColumn(footerRectangle, 0)
+      Grid.SetColumnSpan(footerRectangle, 6)
+
+      myGrid.Children.Add(footerRectangle)
+      footerRectangle.Fill = Brushes.Black
+
+    End Sub
+
+  End Class
+End Namespace        
+        
+        
+      </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+
+<!-- BrushTypes.xaml
+     Shows examples of several different brush types. TODO: scrollbar to see the whole example
+     -->
+<Canvas Height="500">
+   <Canvas.Resources>
+      <Style TargetType="{x:Type Rectangle}">
+	   <Setter Property="Stroke" Value="Black"/>
+	   <Setter Property="StrokeThickness" Value="2"/>
+	   <Setter Property="Margin" Value="0,0,5,5"/>
+	   <Setter Property="VerticalAlignment" Value="Top"/>
+      </Style>
+      <Style TargetType="{x:Type Ellipse}">
+	   <Setter Property="Stroke" Value="Black"/>
+	   <Setter Property="StrokeThickness" Value="2"/>
+	   <Setter Property="Margin" Value="0,0,5,5"/>
+      </Style>
+   </Canvas.Resources>
+  
+   <Grid Margin="10" Background="White">
+     <Grid.ColumnDefinitions>
+       <ColumnDefinition Width="Auto" />
+       <ColumnDefinition Width="10" />
+       <ColumnDefinition Width="Auto" />
+       <ColumnDefinition Width="10" />
+       <ColumnDefinition Width="Auto" />
+       <ColumnDefinition Width="*" />
+     </Grid.ColumnDefinitions>
+     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+     </Grid.RowDefinitions>
+      <!-- Sample header. -->
+      <Rectangle Style="{StaticResource HeaderRectangleStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Fill="Black" />
+      <TextBlock Style="{StaticResource IntroTextStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+        Width="400" Foreground="White">
+         This example demonstrates the usage of several brushes defined in the System.Windows.Media namespace.
+      </TextBlock>
+      
+      <!-- SolidColorBrush Examples -->
+      <TextBlock Grid.Row="2" Grid.Column="0" >SolidColorBrush</TextBlock>
+      <Grid Grid.Row="3" Grid.Column="0"  >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+         
+         <!-- The following four rectangles are painted using predefined
+              SolidColorBrush objects: Brushes.Red, Brushes.MediumBlue,
+              Brushes.Purple, and Brushes.Gold. -->
+         <Rectangle Fill="Red" Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" />
+         <Rectangle Fill="MediumBlue" Width="50" Height="50" Grid.Row="0" Grid.Column="1" />
+         <Rectangle Fill="Purple" Width="50" Height="50" Grid.Row="1" Grid.Column="1" />
+         <Rectangle Fill="Gold" Width="50" Height="50" Grid.Row="2" Grid.Column="1" />
+      </Grid>
+      
+      <!-- LinearGradientBrush Examples -->
+      <TextBlock Grid.Row="2" Grid.Column="2">LinearGradientBrush</TextBlock>
+      <Grid Grid.Row="3" Grid.Column="2" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <!-- The following four rectangles are painted using 
+              LinearGradientBrush objects. -->  
+         <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            <Rectangle.Fill>
+               <LinearGradientBrush>
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="Yellow" Offset="0.0" />
+                     <GradientStop Color="Orange" Offset="0.5" />
+                     <GradientStop Color="Red" Offset="1.0" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            <Rectangle.Fill>
+               <LinearGradientBrush>
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="Blue" Offset="0.0" />
+                     <GradientStop Color="Purple" Offset="1.0" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            <Rectangle.Fill>
+               <LinearGradientBrush>
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="Purple" Offset="0.0" />
+                     <GradientStop Color="BlueViolet" Offset="0.5" />
+                     <GradientStop Color="White" Offset="1.0" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            <Rectangle.Fill>
+               <LinearGradientBrush>
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="Gold" Offset="0.0" />
+                     <GradientStop Color="Red" Offset="0.5" />
+                     <GradientStop Color="Orange" Offset="1.0" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+      </Grid>
+      
+      <!-- RadialGradientBrush Examples. -->
+      <TextBlock Grid.Row="2" Grid.Column="4">RadialGradientBrush</TextBlock>
+      <Grid Grid.Row="3" Grid.Column="4">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <!-- The following four shapes are painted with
+              RadialGradientBrush objects. -->
+         <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            <Rectangle.Fill>
+               <RadialGradientBrush GradientOrigin="0.75,0.25">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="Yellow" Offset="0.0" />
+                     <GradientStop Color="Orange" Offset="0.5" />
+                     <GradientStop Color="Red" Offset="1.0" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Ellipse Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            <Ellipse.Fill>
+               <RadialGradientBrush GradientOrigin="0.75,0.25">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0.0" />
+                     <GradientStop Color="MediumBlue" Offset="0.5" />
+                     <GradientStop Color="Black" Offset="1.0" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Ellipse.Fill>
+         </Ellipse>
+         <Ellipse Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            <Ellipse.Fill>
+               <RadialGradientBrush GradientOrigin="0.75,0.25">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="AliceBlue" Offset="0.0" />
+                     <GradientStop Color="Purple" Offset="0.5" />
+                     <GradientStop Color="#330033" Offset="1.0" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Ellipse.Fill>
+         </Ellipse>
+         <Ellipse Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            <Ellipse.Fill>
+               <RadialGradientBrush GradientOrigin="0.75,0.25">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="Yellow" Offset="0.0" />
+                     <GradientStop Color="Orange" Offset="0.5" />
+                     <GradientStop Color="Red" Offset="1.0" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Ellipse.Fill>
+         </Ellipse>
+      </Grid>
+      
+      <!-- ImageBrush Examples. -->
+      <TextBlock Grid.Row="5" Grid.Column="0" >ImageBrush</TextBlock>
+      <Grid Grid.Row="6" Grid.Column="0" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+         
+         <!-- Paints a rectangle with an image. 
+              The image expands to fill the rectangle. -->
+         <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            <Rectangle.Fill>
+                <ImageBrush><ImageBrush.ImageSource><BitmapImage UriSource="\images\pinkcherries.jpg"/></ImageBrush.ImageSource></ImageBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Paints a rectangle with an image. The ImageBrush's
+              Stretch property is set to None, so the image is not resized. -->
+         <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            <Rectangle.Fill>
+                <ImageBrush Stretch="None" TileMode="Tile"><ImageBrush.ImageSource><BitmapImage UriSource="\images\pinkcherries.jpg"/></ImageBrush.ImageSource></ImageBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Paints a rectangle with an image. The ImageBrush's 
+              Viewport and TileMode properties are set so that
+              the image is tiled. -->
+         <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            <Rectangle.Fill>
+                <ImageBrush Viewport="0,0,25,25" ViewportUnits="Absolute" TileMode="Tile"><ImageBrush.ImageSource><BitmapImage UriSource="\images\pinkcherries.jpg"/></ImageBrush.ImageSource></ImageBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Paints a rectangle with an image.  The ImageBrush's 
+              Viewport and TileMode properties are set so that
+              the image is tiled. -->
+         <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            <Rectangle.Fill>
+                <ImageBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile"><ImageBrush.ImageSource><BitmapImage UriSource="\images\pinkcherries.jpg"/></ImageBrush.ImageSource></ImageBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+      </Grid>
+      
+      <!-- DrawingBrush Examples -->
+      <TextBlock Grid.Row="5" Grid.Column="2">DrawingBrush</TextBlock>
+      <Grid Grid.Row="6" Grid.Column="2">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+         
+         
+         <!-- Paints a rectangle with a checkered pattern.
+              The tile size and a tile mode using the DrawingBrush's
+             Viewport and TileMode properties. The tile's content is defined
+             by the DrawingBrush's Drawing property. -->
+         <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            <Rectangle.Fill>
+               <DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+                  <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                      <DrawingGroup.Children>
+                        <GeometryDrawing Brush="White">
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                          </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="LightGray"
+                          Geometry="M 0,0 L0,0.5 0.5,0.5 0.5,1 1,1 1,0.5 0.5,0.5 0.5,0" />                      
+                      </DrawingGroup.Children>
+                    </DrawingGroup>
+                  </DrawingBrush.Drawing>
+               </DrawingBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         
+         <!-- Demonstrates the use of an ImageBrush within a DrawingBrush.
+             Two of the drawing's rectangles are filled using an ImageBrush,
+             creating a checkered pattern of images. -->
+         <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+            <Rectangle.Fill>
+               <DrawingBrush Viewport="0,0,1,1" TileMode="Tile">
+                  <DrawingBrush.Drawing>
+                     <DrawingGroup>
+                      <DrawingGroup.Children>                
+                        <GeometryDrawing Brush="Pink">
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                          </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                          <GeometryDrawing.Brush>
+                              <ImageBrush><ImageBrush.ImageSource><BitmapImage UriSource="\images\cherries.jpg"/></ImageBrush.ImageSource></ImageBrush>
+                          </GeometryDrawing.Brush>
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,0.5,0.5" />
+                          </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                          <GeometryDrawing.Brush>
+                            <ImageBrush><ImageBrush.ImageSource><BitmapImage UriSource="\images\cherries.jpg"/></ImageBrush.ImageSource></ImageBrush>
+                          </GeometryDrawing.Brush>                        
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0.5,0.5,0.5,0.5" />
+                          </GeometryDrawing.Geometry>
+                        </GeometryDrawing>                        
+                      </DrawingGroup.Children>
+                     </DrawingGroup>
+                  </DrawingBrush.Drawing>
+               </DrawingBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Paints a rectangle with a grid pattern. -->
+         <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+            <Rectangle.Fill>
+               <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+                  <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                      <DrawingGroup.Children>
+                        <GeometryDrawing Brush="White">
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                          </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="Blue"
+                          Geometry="M 0,0 L 0,1 0.1,1 0.1,0.1 1,0.1 1,0 Z" />                      
+                      </DrawingGroup.Children>
+                    </DrawingGroup>
+                  </DrawingBrush.Drawing>
+               </DrawingBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Demonstrates the use of gradient brushes within a 
+              DrawingBrush. Two overlapping gradients are layered to 
+              create a complex gradient. -->
+         <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+            <Rectangle.Fill>
+               <DrawingBrush Viewport="0,0,1,1" TileMode="Tile">  
+                  <DrawingBrush.Drawing>
+                     <DrawingGroup>
+                      <DrawingGroup.Children>                
+                        <GeometryDrawing>
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                          </GeometryDrawing.Geometry>
+                          <GeometryDrawing.Brush>
+                           <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                              <LinearGradientBrush.GradientStops>
+                                 <GradientStop Color="Blue" Offset="0.0" />
+                                 <GradientStop Color="#9966CC" Offset="0.5" />
+                                 <GradientStop Color="MediumBlue" Offset="1.0" />
+                              </LinearGradientBrush.GradientStops>
+                           </LinearGradientBrush>                          
+                          </GeometryDrawing.Brush>
+                        </GeometryDrawing>
+                         <GeometryDrawing>
+                          <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                          </GeometryDrawing.Geometry>
+                          <GeometryDrawing.Brush>
+                           <RadialGradientBrush GradientOrigin="0.75,0.25">
+                              <RadialGradientBrush.GradientStops>
+                                 <GradientStop Color="White" Offset="0.0" />
+                                 <GradientStop Color="Transparent" Offset="0.5" />
+                                 <GradientStop Color="Transparent" Offset="0.9" />
+                                 <GradientStop Color="Black" Offset="1.0" />
+                              </RadialGradientBrush.GradientStops>
+                           </RadialGradientBrush>                       
+                          </GeometryDrawing.Brush>
+                        </GeometryDrawing>                           
+                      </DrawingGroup.Children>
+                     </DrawingGroup>
+                  </DrawingBrush.Drawing>                  
+               </DrawingBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+      </Grid>
+      
+      <!-- Footer -->
+      <Rectangle Style="{StaticResource FooterRectangleStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6" Fill="Black" />
+   </Grid>
+   
+</Canvas>
+
+
+
+        </TabItem>
+      </TabControl>
+</Page>

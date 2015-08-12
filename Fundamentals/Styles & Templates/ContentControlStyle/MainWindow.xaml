@@ -1,0 +1,83 @@
+﻿<Window x:Class="ContentControlStyle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContentControlStyle"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <Grid ShowGridLines ="false" Background ="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+
+
+            <Style x:Key="ContentCtrl" TargetType="{x:Type ContentControl}">
+                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Foreground" Value="Green"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ContentControl}">
+                            <Grid>
+                                <!--Keep the Ellipse a circle when ContentControl.Width
+                    is set.-->
+                                <Ellipse Width="{TemplateBinding Width}"
+                         Height="{TemplateBinding Width}"
+                         Fill="{TemplateBinding Background}"/>
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <DataTemplate x:Key="Template1">
+                <TextBlock Text="{Binding}" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" />
+            </DataTemplate>
+
+        </Grid.Resources>
+
+        <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="24" >Using ContentControls</TextBlock>
+
+        <Label Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2">
+            <ContentControl Width="75" Style="{StaticResource ContentCtrl}" 
+                      Content="Hello"/>
+        </Label>
+        <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="14" TextWrapping="WrapWithOverflow">
+      This example demonstrates
+      how to enhance the visual appearance of a ContentControl by applying a style.
+        </TextBlock>
+
+        <!--Put the ContentControl in a Label just to keep the margin and
+        Grid cruft out of the snippet.-->
+        <Label Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3"
+           Background="LightBlue">
+            <ContentControl Name="contCtrl" ContentTemplate="{StaticResource Template1}" 
+          Content="This is the content of the content control."/>
+        </Label>
+        <Button Name="btn2" Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="4" Background="LightBlue" Click="OnClick">
+            <TextBlock TextWrapping="Wrap">
+        Click the button to see if the content control above the button contains content.
+            </TextBlock>
+        </Button>
+        <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="14" TextWrapping="WrapWithOverflow">This example demonstrates how to create and use a ContentTemplate and how to determine whether the control contains content.</TextBlock>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="HandlingEventOnCommand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HandlingEventOnCommand"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Name="root">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open"
+                    Executed="OpenCmdExecuted"
+                    CanExecute="OpenCmdCanExecute"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Open"
+                Gesture="CTRL+R" />
+    </Window.InputBindings>
+    <StackPanel>
+        <Button Command="ApplicationCommands.Open" Name="MyButton"
+            Height="50" Width="200">
+            Open (KeyBindings: Ctrl+R, Ctrl+0)
+        </Button>
+    </StackPanel>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="TextWrapProperty.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextWrapProperty"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="500" Height="500">
+    <StackPanel Margin="0,0,0,10" Background="LightSkyBlue">
+        <TextBlock FontSize="18" FontWeight="Bold" Margin="0,0,0,10">
+      TextWrap Property Sample
+        </TextBlock>
+        <TextBlock FontSize="12" Margin="0,0,0,10" TextWrapping="Wrap">
+      Click any of the buttons below to see the different effects of the TextWrap Property.
+        </TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+            <Button Name="btn1" Background="Silver" Width="100" Click="Wrap">Wrap</Button>
+            <Button Name="btn2" Background="Silver" Width="100" Click="NoWrap">NoWrap</Button>
+            <Button Name="btn4" Background="Silver" Width="100" Click="WrapWithOverflow">WrapWithOverflow</Button>
+        </StackPanel>
+        <TextBlock Name="txt2" TextWrapping="Wrap" Margin="0,0,0,20" Foreground="Black">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, 
+      consectetuer adipiscing elit.Lorem ipsum dolor sit aet, consectetuer adipiscing elit.
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        </TextBlock>
+        <TextBlock FontSize="12" Name="txt1">
+      The TextWrap property is currently set to Wrap.
+        </TextBlock>
+    </StackPanel>
+</Window>

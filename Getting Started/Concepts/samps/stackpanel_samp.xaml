@@ -1,0 +1,82 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="StackPanel Sample"
+      x:Class="StackPanel_Samp.Page1"
+      Loaded="CheckLang">
+
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="StackPanel Element" IsSelected="true">
+            <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">StackPanel Element Sample</TextBlock>
+    
+            <TextBlock Style="{StaticResource MainContentStyle}">StackPanel arranges child elements into a single line that can be oriented horizontally or vertically.</TextBlock>
+
+            </StackPanel>
+        </TabItem>
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            <TextBlock Name="xamlCheck">
+            <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+    &lt;StackPanel>
+        &lt;Border Background="SkyBlue" BorderBrush="Black" BorderThickness="1">
+            &lt;TextBlock Foreground="black" FontSize="12">Stacked Item #1&lt;/TextBlock>
+        &lt;/Border>
+        &lt;Border Width="400" Background="CadetBlue" BorderBrush="Black" BorderThickness="1">
+            &lt;TextBlock Foreground="black" FontSize="14">Stacked Item #2&lt;/TextBlock>
+        &lt;/Border>
+        &lt;Border Background="#ffff99" BorderBrush="Black" BorderThickness="1">
+            &lt;TextBlock Foreground="black" FontSize="16">Stacked Item #3&lt;/TextBlock>
+        &lt;/Border>
+        &lt;Border Width="200" Background="PaleGreen" BorderBrush="Black" BorderThickness="1">
+            &lt;TextBlock Foreground="black" FontSize="18">Stacked Item #4&lt;/TextBlock>
+        &lt;/Border>
+        &lt;Border Background="White" BorderBrush="Black" BorderThickness="1">
+            &lt;TextBlock Foreground="black" FontSize="20">Stacked Item #5&lt;/TextBlock>
+        &lt;/Border>
+    &lt;/StackPanel>
+            </TextBox>
+            </TextBlock>    
+                </ScrollViewer>
+        </TabItem>
+         <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="C#" />
+            </TabControl>  
+        </TabItem>
+        
+         <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+            </TabControl>
+         </TabItem> 
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+    <StackPanel>
+        <Border Background="SkyBlue" BorderBrush="Black" BorderThickness="1">
+            <TextBlock Foreground="black" FontSize="12">Stacked Item #1</TextBlock>
+        </Border>
+        <Border Width="400" Background="CadetBlue" BorderBrush="Black" BorderThickness="1">
+            <TextBlock Foreground="black" FontSize="14">Stacked Item #2</TextBlock>
+        </Border>
+        <Border Background="#ffff99" BorderBrush="Black" BorderThickness="1">
+            <TextBlock Foreground="black" FontSize="16">Stacked Item #3</TextBlock>
+        </Border>
+        <Border Width="200" Background="PaleGreen" BorderBrush="Black" BorderThickness="1">
+            <TextBlock Foreground="black" FontSize="18">Stacked Item #4</TextBlock>
+        </Border>
+        <Border Background="White" BorderBrush="Black" BorderThickness="1">
+            <TextBlock Foreground="black" FontSize="20">Stacked Item #5</TextBlock>
+        </Border>
+    </StackPanel>
+
+        </TabItem>
+    </TabControl>
+</Page>

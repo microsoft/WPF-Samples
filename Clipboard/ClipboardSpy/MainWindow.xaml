@@ -1,0 +1,128 @@
+﻿<Window x:Class="ClipboardSpy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClipboardSpy"
+        mc:Ignorable="d"
+        Loaded="WindowLoaded"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border>
+            <StackPanel>
+                <Button
+          Content="Get Clipboard Contents"
+          Click="GetClipboard"
+          Margin="5"
+        />
+
+                <Separator/>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbContainsAudio"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="4"
+            Padding="0,0,0,0"
+          />
+                    <Label>ContainsAudio</Label>
+                </StackPanel>
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbContainsFileDropList"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="4"
+            Padding="0,0,0,0"
+          />
+                    <Label>ContainsFileDropList</Label>
+                </StackPanel>
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbContainsImage"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="4"
+            Padding="0,0,0,0"
+          />
+                    <Label>ContainsImage</Label>
+                </StackPanel>
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbContainsText"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="4"
+            Padding="0,0,0,0"
+          />
+                    <Label>ContainsText</Label>
+                </StackPanel>
+
+                <Button
+          Content="Check Clipboard"
+          Click="CheckStatus"
+          Margin="5"
+        />
+
+                <Separator Margin="5"/>
+
+                <Button
+          Content="Clear Clipboard Contents"
+          Click="ClearClipboard"
+          Margin="5"
+        />
+
+            </StackPanel>
+        </Border>
+
+        <Border 
+      Grid.Column="1"
+      BorderBrush="Black"
+      BorderThickness="1"
+      >
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0">
+                    Clipboard Status Information
+                </Label>
+                <TextBox
+        Name="tbInfo" 
+        IsReadOnly="True"
+        AcceptsReturn="True"
+        VerticalScrollBarVisibility="Auto"
+        HorizontalScrollBarVisibility="Auto"
+        Grid.Row="1"  
+      />
+            </Grid>
+        </Border>
+
+
+    </Grid>
+</Window>

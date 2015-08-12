@@ -1,0 +1,27 @@
+﻿<Window x:Class="VisibiltyChanges.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisibiltyChanges"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" Background="White">
+            <DockPanel>
+
+                <TextBlock FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="0,0,0,10">UIElement.Visibility Sample</TextBlock>
+                <TextBlock DockPanel.Dock="Top" Margin="0,0,0,10">Click the buttons below to manipulate the Visibility property of the TextBox below.</TextBlock>
+                <StackPanel DockPanel.Dock="Left">
+                    <Button Name="btn1" Height="25" Click="ContentVis">Visibility="Visible"</Button>
+                    <Button Name="btn2" Height="25" Click="ContentHid">Visibility="Hidden"</Button>
+                    <Button Name="btn3" Height="25" Click="ContentCol">Visibility="Collapsed"</Button>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBox Name="tb1" Width="100" Height="50">A TextBox</TextBox>
+                    <TextBlock Name="txt1" TextWrapping="Wrap" FontSize="14"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

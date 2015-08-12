@@ -1,0 +1,184 @@
+﻿<Application x:Class="TargetValues.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TargetValues"
+             xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+             StartupUri="AnimationTargetValuesExample.xaml">
+    <Application.Resources>
+        <DrawingBrush x:Key="MyGridBrushResource"
+      Viewport="0,0,10,10" ViewportUnits="Absolute"
+      TileMode="Tile" Opacity="0.5"
+      AlignmentX="Left" AlignmentY="Top"
+      presentationOptions:Freeze="True">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Geometry="M0,0 L1,1" Brush="#44CCCCFF" />
+                    <GeometryDrawing Geometry="M0,0 L1,0 1,0.05 0.05,0.05 0.05,1 0,1Z" 
+           Brush="Gray" />
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <DrawingBrush x:Key="ArrowBackgroundBrush" Opacity="0.5"
+      Viewbox="0,0,1,1" Viewport="0,0,10,20" ViewportUnits="Absolute"
+      TileMode="Tile" presentationOptions:Freeze="True">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Geometry="M0,0 L1,0, 1,0.5" Brush="#9999FF" />
+                    <GeometryDrawing Geometry="M0,0 L1,0.5, 0,1">
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Offset="0.0" Color="#9999FF" />
+                                <GradientStop Offset="1.0" Color="Transparent" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="M0,1 L1,1, 1,0.5" Brush="#9999FF" />
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <!-- Creates a glass-like fill. -->
+        <LinearGradientBrush x:Key="MyGlassBrushResource"
+      StartPoint="0,0" EndPoint="1,1" Opacity="1"
+      presentationOptions:Freeze="True" >
+            <GradientStop Color="WhiteSmoke" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="WhiteSmoke" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="WhiteSmoke" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1" />
+        </LinearGradientBrush>
+
+        <Style TargetType="{x:Type Button}" x:Key="CustomButtonStyle">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Background="Transparent">
+                            <Rectangle
+               RadiusX="10" RadiusY="10" 
+               StrokeThickness="5" Stroke="{TemplateBinding Background}"/>
+                            <Rectangle 
+                  Margin="10"
+                  Fill="{TemplateBinding Background}" />
+                            <Rectangle x:Name="outlineRect"
+                RadiusX="10" RadiusY="10" 
+                StrokeThickness="5">
+                                <Rectangle.Stroke>
+                                    <SolidColorBrush x:Name="outlineRectangleBrush" Color="Transparent" />
+                                </Rectangle.Stroke>
+                            </Rectangle>
+                            <Rectangle x:Name="sBackingRect"                
+                Margin="10">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="fillRectangleBrush" Color="Transparent" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Name="glassCube"
+                RadiusX="10" RadiusY="10" Opacity="0" 
+                Fill="{DynamicResource MyGlassBrushResource}"
+                StrokeThickness="2"
+                RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Offset="0.0" Color="LightBlue" />
+                                        <GradientStop Offset="1.0" Color="Gray" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+                                <Rectangle.OpacityMask>
+                                    <RadialGradientBrush>
+                                        <GradientStop Offset="0.0" Color="Transparent" />
+                                        <GradientStop Offset="1.0" Color="Black" />
+                                    </RadialGradientBrush>
+                                </Rectangle.OpacityMask>
+                                <Rectangle.RenderTransform>
+                                    <ScaleTransform x:Name="glassCubeScaleTransform" />
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ContentPresenter x:Name="myContentPresenter"
+                Margin="{TemplateBinding Padding}"
+                Grid.Row="0" Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{TemplateBinding Content}"  />
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard HandoffBehavior="Compose">
+                                        <Storyboard>
+                                            <ColorAnimation 
+                       Storyboard.TargetName="outlineRectangleBrush"
+                       Storyboard.TargetProperty="Color"
+                       To="Red" Duration="0:0:0.25"
+                       AutoReverse="True" 
+                       FillBehavior="Stop" />
+                                            <ColorAnimation 
+                      Storyboard.TargetName="fillRectangleBrush"
+                      Storyboard.TargetProperty="Color"
+                      To="{x:Static SystemColors.HighlightColor}" Duration="0:0:0.25"
+                      AutoReverse="True" 
+                      FillBehavior="Stop" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="outlineRect" Property="Rectangle.Opacity" Value="0"  />
+                                <Setter TargetName="glassCube" Property="Rectangle.Opacity" Value="0.75"  />
+                            </Trigger>
+
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="glassCube"
+                        Storyboard.TargetProperty="Opacity"
+                        To="1" Duration="0:0:0.5"
+                       />
+                                            <ColorAnimation 
+                        Storyboard.TargetName="outlineRectangleBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{x:Static SystemColors.HighlightColor}" Duration="0:0:0.5"
+                       />
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="glassCubeScaleTransform"
+                        Storyboard.TargetProperty="ScaleX"
+                        By="-0.1" Duration="0:0:0.5"
+                        AutoReverse="True" RepeatBehavior="Forever" />
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="glassCubeScaleTransform"
+                        Storyboard.TargetProperty="ScaleY"
+                        By="-0.1" Duration="0:0:0.5"
+                        AutoReverse="True" RepeatBehavior="Forever" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <RemoveStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="glassCube"
+                        Storyboard.TargetProperty="Opacity"
+                        To="0" Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

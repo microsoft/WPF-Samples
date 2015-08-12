@@ -1,0 +1,14 @@
+﻿<Window x:Class="StringLocalizationSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StringLocalizationSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <!-- Declarative use of string resource from StringResources.xaml resource dictionary -->
+        <TextBox DockPanel.Dock="Top" Text="{StaticResource LocalizedMessage}" />
+        <Button Click="messageBoxButton_Click">Show Localized Message</Button>
+    </DockPanel>
+</Window>

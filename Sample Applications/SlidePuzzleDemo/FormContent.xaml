@@ -1,0 +1,51 @@
+﻿<Grid x:Class="SlidePuzzleDemo.FormContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid.LayoutTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="4.0" ScaleY="4.0" />
+            <RotateTransform Angle="5" />
+        </TransformGroup>
+    </Grid.LayoutTransform>
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <Grid.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="AliceBlue" />
+                <GradientStop Offset="1" Color="Azure" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </Grid.Background>
+
+    <Label Grid.Row="0" Grid.Column="0" Margin="5">Name:</Label>
+    <TextBox Grid.Row="0" Grid.Column="1" Margin="5">John Smith</TextBox>
+
+    <Label Grid.Row="1" Grid.Column="0" Margin="5">Satisfaction:</Label>
+    <Slider Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="10"
+            VerticalAlignment="Stretch" Value="57" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"
+            Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="5" />
+
+    <Label Grid.Row="2" Grid.Column="0" Margin="5">Category:</Label>
+    <TreeView Grid.Row="2" Grid.Column="1" Margin="5">
+        <TreeViewItem Header="Enterprise" />
+        <TreeViewItem Header="Small Business" />
+        <TreeViewItem Header="Consumer" />
+        <TreeViewItem Header="Education" IsExpanded="True">
+            <TreeViewItem Header="College" />
+            <TreeViewItem Header="School" />
+        </TreeViewItem>
+        <TreeViewItem Header="Government" />
+    </TreeView>
+    <Button Grid.Row="3" Grid.Column="1" Content="OK" Margin="5" />
+</Grid>

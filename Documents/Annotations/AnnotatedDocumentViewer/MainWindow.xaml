@@ -1,0 +1,128 @@
+﻿<Window x:Class="AnnotatedDocumentViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnnotatedDocumentViewer"
+        xmlns:annotations="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+
+        <local:AnnotationDataConverter x:Key="AnnotationDataConverter"/>
+
+        <!-- 
+      Data Template for Annotation Item that shows when an annotation was
+      created, and what data the annotation contains.
+    -->
+        <DataTemplate x:Key="AnnotationDataTemplate">
+            <TextBlock Margin="5" TextWrapping="Wrap">
+        <TextBlock FontWeight="Bold" TextWrapping="Wrap">
+          [<TextBlock Text="{Binding Path=CreationTime}" />]
+        </TextBlock>
+        <TextBlock
+          Text="{Binding Path=Cargos[1].Contents[0].InnerText,Converter={StaticResource AnnotationDataConverter}}"
+          TextWrapping="Wrap" />
+      </TextBlock>
+    </DataTemplate>
+
+        <!-- 
+      To Replace ListBox Template with Template that Allows TextWrapping and
+      also provides a vertical scrollbar when the wrapped text extends below 
+      the bottom of the list box
+    -->
+        <ControlTemplate x:Key="AnnotationsListTemplate">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                <StackPanel IsItemsHost="True" />
+            </ScrollViewer>
+        </ControlTemplate>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+
+        <!-- Example Flow Document -->
+        <FlowDocumentPageViewer Name="flowDocumentReader" Grid.Row="0">
+            <FlowDocument>
+                <FlowDocument.ContextMenu>
+                    <ContextMenu>
+                        <!-- Command to Create a New Text Note -->
+                        <MenuItem
+              Command="annotations:AnnotationService.CreateTextStickyNoteCommand"
+              Header="Add Text Note" />
+                        <!-- Command to Delete an Existing Text Note -->
+                        <MenuItem
+              Command="annotations:AnnotationService.DeleteStickyNotesCommand"
+              Header="Remove Text Note" />
+                    </ContextMenu>
+                </FlowDocument.ContextMenu>
+                <Paragraph FontSize="18" FontWeight="Bold">Flow Document</Paragraph>
+
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+                <Paragraph>
+                    Right-click to add or remove a text note. The scrollable comments pane displays
+          the text of the notes and you can click on a comment to bring into view the
+          paragraph that contains the corresponding sticky note.
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentPageViewer>
+
+        <!-- Splitter bar -->
+        <GridSplitter
+      Grid.Row="1"
+      Background="Black"
+      Height="2"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Center" />
+
+        <!-- Annotations List -->
+        <ListBox
+      Name="annotationsListBox"
+      Grid.Row="2"
+      SelectionChanged="annotationsListBox_SelectionChanged"
+      ItemsSource="{Binding}"
+      Template="{StaticResource AnnotationsListTemplate}"
+      ItemTemplate="{StaticResource AnnotationDataTemplate}" />
+
+    </Grid>
+</Window>

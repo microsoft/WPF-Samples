@@ -1,0 +1,107 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+  <StackPanel>
+
+    <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+     HorizontalAlignment="Left" Padding="20" Margin="20,10,0,0" >
+      <TextBlock TextWrapping="Wrap">
+        The following examples shows how to trigger a sound (wave file) when you click a button.
+        The sample on the right uses a SoundPlayerAction to play sound, making it a lighter
+        weight way of triggering audio playback of wav files.
+      </TextBlock>
+    </Border>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+      </Grid.RowDefinitions>
+      <StackPanel Grid.Column="0" Grid.Row="0" >
+        <!-- The MediaElement control plays the sound. -->
+        <TextBlock HorizontalAlignment="Center">Click this button to play a sound using a MediaElement and Storyboard.</TextBlock>
+        <MediaElement Name="myMediaElement" />
+        <Button Margin="100,20,20,0" Width="200" HorizontalAlignment="Left">
+          Click for Ringing Sound!
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+              <EventTrigger.Actions>
+                <BeginStoryboard>
+                  <Storyboard>
+
+                    <!-- Sound wave from this source is played when the button is clicked.-->
+                    <MediaTimeline Source="media\ringin.wav" Storyboard.TargetName="myMediaElement"  />
+
+                  </Storyboard>
+                </BeginStoryboard>
+              </EventTrigger.Actions>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+      </StackPanel>
+      <StackPanel Grid.Column="1" Grid.Row="0" >
+        <TextBlock HorizontalAlignment="Center">Click this button to play a sound using a SoundPlayerAction.</TextBlock>
+        <Button Margin="100,20,20,0" Width="200" HorizontalAlignment="Left">
+          Click for Ringing Sound!
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+              <EventTrigger.Actions>
+                <SoundPlayerAction Source="media\ringin.wav"/>
+              </EventTrigger.Actions>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+      </StackPanel>
+      <!-- Displays functional code for demonstration. -->
+      <Border Grid.Column="1" Grid.Row="1" Background="#EEEEEE" BorderBrush="Black" Margin="20" HorizontalAlignment="Left" BorderThickness="1" >
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+    <Bold Foreground="Green">&lt;!-- The MediaElement control plays the sound. --&gt;</Bold>
+    &lt;MediaElement Name="myMediaElement" /&gt;
+      
+    &lt;Button Width="200">Click for Ringing Sound!
+      &lt;Button.Triggers&gt;
+        &lt;EventTrigger RoutedEvent="Button.Click"&gt;
+          &lt;EventTrigger.Actions&gt;
+            <Bold Foreground="Green">&lt;!-- Sound wave source played on button click. --&gt;</Bold>
+            &lt;SoundPlayerAction Source="media\ringin.wav"&gt;
+          &lt;/EventTrigger.Actions&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Button.Triggers&gt;
+    &lt;/Button&gt;
+      ...
+      </TextBlock>
+      </Border>
+      <!-- Displays functional code for demonstration. -->
+      <Border Grid.Column="0" Grid.Row="1" Background="#EEEEEE" BorderBrush="Black" Margin="20" HorizontalAlignment="Left" BorderThickness="1" >
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+    <Bold Foreground="Green">&lt;!-- The MediaElement control plays the sound. --&gt;</Bold>
+    &lt;MediaElement Name="myMediaElement" /&gt;
+      
+    &lt;Button Width="200">Click for Ringing Sound!
+      &lt;Button.Triggers&gt;
+        &lt;EventTrigger RoutedEvent="Button.Click"&gt;
+          &lt;EventTrigger.Actions&gt;
+            &lt;BeginStoryboard&gt;
+              &lt;Storyboard&gt;
+                <Bold Foreground="Green">
+                &lt;!-- Sound wave source played on button click. --&gt;</Bold>
+                &lt;MediaTimeline Source="media\ringin.wav" 
+                Storyboard.TargetName="myMediaElement"  /&gt;
+
+              &lt;/Storyboard&gt;
+            &lt;/BeginStoryboard&gt;
+          &lt;/EventTrigger.Actions&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Button.Triggers&gt;
+    &lt;/Button&gt;
+      ...
+      </TextBlock>
+      </Border>
+    </Grid>
+  </StackPanel>
+</Page>

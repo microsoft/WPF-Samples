@@ -1,0 +1,39 @@
+﻿<Window x:Class="MasterDetail.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterDetail"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:LeagueList x:Key="MyList" />
+        <Style TargetType="StackPanel">
+            <Setter Property="DockPanel.Dock" Value="Left"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Height" Value="100"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel DataContext="{Binding Source={StaticResource MyList}}">
+        <StackPanel>
+            <Label>My Soccer Leagues</Label>
+            <ListBox ItemsSource="{Binding}"
+               IsSynchronizedWithCurrentItem="true"/>
+        </StackPanel>
+
+        <StackPanel>
+            <Label Content="{Binding Path=Name}"/>
+            <ListBox ItemsSource="{Binding Path=Divisions}"
+               IsSynchronizedWithCurrentItem="true"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Content="{Binding Path=Divisions/Name}"/>
+            <ListBox ItemsSource="{Binding Path=Divisions/Teams}"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,87 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+        <TextBlock>
+          The following example shows how to animate the ShadowDepth and Softness properties of a 
+          DropShadowBitmapEffect and the Radius property of a BlurBitmapEffect to create the illusion 
+          of a button rising up from toward you.
+        </TextBlock>
+      </Border>
+
+      <StackPanel HorizontalAlignment="Left" Margin="20" Width="550">
+        <TextBlock Margin="40,0,0,0"  FontWeight="Bold">Click to Animate the DropShadowBitmapEffect and BlurBitmapEffect</TextBlock>
+        <Button Margin="20" Width="200">
+          Click Me to Animate
+          <Button.RenderTransform>
+            <ScaleTransform x:Name="MyAnimatedScaleTransform" 
+             ScaleX="1" ScaleY="1" CenterX="100"  />
+          </Button.RenderTransform>
+          <Button.BitmapEffect>
+            <BitmapEffectGroup>
+              <BlurBitmapEffect x:Name="myBlurBitMapEffect" Radius="0" KernelType="Box" />
+              <DropShadowBitmapEffect x:Name="myDropShadowBitMapEffect" Color="Black"   
+               ShadowDepth="0" />
+            </BitmapEffectGroup>
+          </Button.BitmapEffect>
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+              <BeginStoryboard>
+                <Storyboard>
+
+                  <!-- Animate the ScaleX property to make the button
+                   get larger and smaller in the horizontal axis. -->
+                  <DoubleAnimation
+                    Storyboard.TargetName="MyAnimatedScaleTransform"
+                    Storyboard.TargetProperty="ScaleX"
+                    To="5.0" Duration="0:0:1" AutoReverse="True" />
+
+                  <!-- Animate the ScaleY property to make the button
+                   get larger and smaller in the vertical axis. -->
+                  <DoubleAnimation
+                    Storyboard.TargetName="MyAnimatedScaleTransform"
+                    Storyboard.TargetProperty="ScaleY"
+                    To="5.0" Duration="0:0:1" AutoReverse="True" />
+
+                  <!-- Animate the blur to make the object appear to
+                   be comming out of the screen. Use a spline key
+                   frame to make the blur animate suddenly at the 
+                   very end of the animation. -->
+                  <DoubleAnimationUsingKeyFrames
+                   Storyboard.TargetName="myBlurBitMapEffect"
+                   Storyboard.TargetProperty="Radius" AutoReverse="True">
+                    <DoubleAnimationUsingKeyFrames.KeyFrames>
+                      <SplineDoubleKeyFrame KeySpline="0.6,0.0 0.9,0.00" Value="30" KeyTime="0:0:1" />
+                    </DoubleAnimationUsingKeyFrames.KeyFrames>
+                  </DoubleAnimationUsingKeyFrames>
+
+                  <!-- Animate shadow depth of the effect. -->
+                  <DoubleAnimation
+                   Storyboard.TargetName="myDropShadowBitMapEffect"
+                   Storyboard.TargetProperty="ShadowDepth"
+                   From="0" To="50" Duration="0:0:1"
+                   AutoReverse="True" />
+
+                  <!-- Animate shadow softness. As the object gets
+                   farther away, the shadow gets softer. -->
+                  <DoubleAnimation
+                   Storyboard.TargetName="myDropShadowBitMapEffect"
+                   Storyboard.TargetProperty="Softness"
+                   From="0" To="1" Duration="0:0:1"
+                   AutoReverse="True" />
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+      </StackPanel>
+
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

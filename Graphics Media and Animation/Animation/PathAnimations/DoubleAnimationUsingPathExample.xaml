@@ -1,0 +1,134 @@
+<!-- DoubleAnimationUsingPath.XAML
+     This example shows how to use PathGeometry and DoubleAnimationUsingPath to animate along a path. -->
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  WindowTitle="Double Animation Using Path Example"
+  Background="{StaticResource MyGridBrushResource}">
+
+
+  <DockPanel Margin="20">
+
+    <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2"
+      Margin="0,0,0,20" Padding="20" DockPanel.Dock="Top">
+      <TextBlock Width="750">
+        This example animates an object (rectangle) across the screen along a path. To do this, the X and Y property values are animated along a PathGeometry
+        using DoubleAnimationUsingPath. The DoubleAnimationUsingPath object is needed because the X and Y properties use double values.
+      </TextBlock>
+    </Border>
+
+
+    <StackPanel DockPanel.Dock="Left">
+
+      <!-- Canvas Containing the animated object and the path it follows during animation -->
+      <Canvas HorizontalAlignment="Left" Margin="0" Width="340" Height="215" >
+
+        <!-- This Path is only to show the path that the animated object will follow. -->
+        <Path VerticalAlignment="Top" Margin="15,15,15,15" 
+          Data="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100"
+          Stroke="Black" StrokeThickness="2"
+          Stretch="None" />
+
+        <!-- This geometry renders the rectangle that is animated across the screen. -->
+        <Path Fill="Blue" Margin="0,0,15,15">
+          <Path.Data>
+            <RectangleGeometry  x:Name="MyAnimatedRectGeometry" Rect="0,0 30 30" />
+          </Path.Data>
+          <Path.RenderTransform>
+            <TranslateTransform x:Name="MyAnimatedTransform" X="10" Y="100" />
+          </Path.RenderTransform>          
+        </Path>
+      </Canvas>
+      
+      
+    <!-- Create button to restart the animations. -->
+    <Button Width="80" HorizontalAlignment="Left" >Start Animations
+
+      <!-- Trigger and StoryBoard to initiate the animation when the button is clicked. -->
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard Name="MyBeginStoryboard">
+            <Storyboard>
+
+              <!-- Animates the rectangle horizotally along the path. -->
+              <DoubleAnimationUsingPath
+                Storyboard.TargetName="MyAnimatedTransform"
+                Storyboard.TargetProperty="X"
+                Source="X" 
+                Duration="0:0:5" 
+                RepeatBehavior="Forever" AutoReverse="True" >
+                <DoubleAnimationUsingPath.PathGeometry>
+                  <PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" />
+                </DoubleAnimationUsingPath.PathGeometry>
+              </DoubleAnimationUsingPath>
+
+              <!-- Animates the rectangle vertically along the path. -->
+              <DoubleAnimationUsingPath
+                Storyboard.TargetName="MyAnimatedTransform"
+                Storyboard.TargetProperty="Y"
+                Source="Y" 
+                Duration="0:0:5" 
+                RepeatBehavior="Forever" AutoReverse="True" >
+                <DoubleAnimationUsingPath.PathGeometry>
+                  <PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" />
+                </DoubleAnimationUsingPath.PathGeometry>
+              </DoubleAnimationUsingPath>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+
+    </StackPanel>
+
+
+      <!-- Displays functional code for demonstration. -->
+      <Border Background="#EEEEEE" BorderBrush="Black" BorderThickness="1">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;!-- This geometry renders the rectangle that is animated. --&gt;
+        &lt;Path Fill="Blue" Margin="0,0,15,15"&gt;
+          &lt;Path.Data&gt;
+            &lt;RectangleGeometry  x:Name="MyAnimatedRectGeometry" Rect="0,0 30 30" /&gt;
+          &lt;/Path.Data&gt;
+          &lt;Path.RenderTransform&gt;
+            &lt;TranslateTransform x:Name="MyAnimatedTransform" X="10" Y="100" /&gt;
+          &lt;/Path.RenderTransform&gt;          
+        &lt;/Path&gt;
+      ...
+        &lt;Storyboard&gt;
+        
+           <Bold>&lt;!-- Animates the rectangle horizotally along the path. --&gt;
+           &lt;DoubleAnimationUsingPath
+              Storyboard.TargetName="MyAnimatedTransform"
+              Storyboard.TargetProperty="X"
+              Source="X" 
+              Duration="0:0:5" 
+              RepeatBehavior="Forever" AutoReverse="True" &gt;
+              &lt;DoubleAnimationUsingPath.PathGeometry&gt;
+                &lt;PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" /&gt;
+              &lt;/DoubleAnimationUsingPath.PathGeometry&gt;
+            &lt;/DoubleAnimationUsingPath&gt;
+           
+           &lt;!-- Animates the rectangle vertically along the path. --&gt;
+           &lt;DoubleAnimationUsingPath
+              Storyboard.TargetName="MyAnimatedTransform"
+              Storyboard.TargetProperty="Y"
+              Source="Y" 
+              Duration="0:0:5" 
+              RepeatBehavior="Forever" AutoReverse="True" &gt;
+              &lt;DoubleAnimationUsingPath.PathGeometry&gt;
+                &lt;PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" /&gt;
+              &lt;/DoubleAnimationUsingPath.PathGeometry&gt;
+            &lt;/DoubleAnimationUsingPath&gt;   
+           </Bold>
+        &lt;/Storyboard>
+      ...
+      </TextBlock>
+      </ScrollViewer>
+      </Border>
+   
+
+  </DockPanel>
+</Page>

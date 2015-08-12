@@ -1,0 +1,111 @@
+﻿<Window x:Class="DocumentStructure.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DocumentStructure"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open"  Executed="OnOpen"  />
+        <CommandBinding Command="ApplicationCommands.Close" Executed="OnClose" />
+        <CommandBinding Command="ApplicationCommands.Print" Executed="OnPrint" />
+    </Window.CommandBindings>
+
+    <DockPanel>
+
+        <!-- MAIN MENU -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Command="ApplicationCommands.Open" Header="Open..." />
+                <MenuItem Command="ApplicationCommands.Close"
+                  Name="menuFileClose" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Add Structure..."  Name="menuFileAddStructure"
+                  IsEnabled="True" Click="OnAddStructure" />
+                <Separator />
+                <MenuItem Command="ApplicationCommands.Print"
+                  Name="menuFilePrint" IsEnabled="False" Header="Print..." />
+                <Separator />
+                <MenuItem Header="E_xit" Click="OnExit" />
+            </MenuItem>
+            <!--end:MenuItem Header="File"-->
+            <MenuItem Header="View" >
+                <MenuItem Command="NavigationCommands.IncreaseZoom"
+                  Name="menuViewIncreaseZoom" IsEnabled="False" />
+                <MenuItem Command="NavigationCommands.DecreaseZoom"
+                  Name="menuViewDecreaseZoom" IsEnabled="False" />
+                <Separator />
+                <MenuItem Command="ComponentCommands.ScrollPageUp" Header="Previous Page" />
+                <MenuItem Command="ComponentCommands.ScrollPageDown" Header="Next Page" />
+                <MenuItem Command="NavigationCommands.FirstPage" />
+                <MenuItem Command="NavigationCommands.LastPage" />
+                <Separator />
+                <MenuItem Command="ApplicationCommands.Copy" />
+            </MenuItem>
+            <!--end:MenuItem Header="View"-->
+        </Menu>
+        <!--end:Menu Name="MainMenu"-->
+
+        <StackPanel DockPanel.Dock="Top" Background="LightGray">
+            <TextBlock Name="promptBlock" Margin="1" Padding="5"
+                 FontFamily="Verdana" Background="LemonChiffon" />
+        </StackPanel>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="70*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="0" Background="SeaShell">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+
+                <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Background="White">
+                        <TextBlock Padding="3" FontWeight="Bold">
+              Status
+                        </TextBlock>
+                        <TextBlock Name="statusBlock" HorizontalAlignment="Stretch"
+                       Padding="3" TextWrapping="Wrap" />
+                    </StackPanel>
+                </ScrollViewer>
+
+                <GridSplitter Grid.Row="1" Background="LightGray"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                      ShowsPreview="True" />
+
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Background="SeaShell">
+                        <TextBlock Name="descriptionBlockTitle" Padding="3"
+                       FontFamily="Verdana" FontWeight="Bold">
+              Description
+                        </TextBlock>
+                        <TextBlock Name="descriptionBlock" Padding="3"
+                       FontFamily="Verdana" TextWrapping="Wrap" />
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+            <GridSplitter Grid.Column="1" Background="LightGray" HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch" ShowsPreview="True" />
+
+            <DocumentViewer Grid.Column="2" Name="docViewer">
+                <DocumentViewer.CommandBindings>
+                    <CommandBinding Command="ApplicationCommands.Print" Executed="OnPrint" />
+                </DocumentViewer.CommandBindings>
+            </DocumentViewer>
+
+        </Grid>
+
+    </DockPanel>
+</Window>

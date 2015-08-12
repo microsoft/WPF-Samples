@@ -1,0 +1,32 @@
+﻿<Window x:Class="XmlnsBind.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XmlnsBind"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+        <StackPanel.Resources>
+            <XmlNamespaceMappingCollection x:Key="Mapping">
+                <XmlNamespaceMapping Uri="http://purl.org/dc/elements/1.1/" Prefix="dc" />
+            </XmlNamespaceMappingCollection>
+            <XmlDataProvider Source="http://msdn.microsoft.com/subscriptions/rss.xml"
+                     XmlNamespaceManager="{StaticResource Mapping}"
+                     XPath="rss/channel/item" x:Key="Provider"/>
+            <DataTemplate x:Key="DataTemplate">
+                <Border BorderThickness="1" BorderBrush="Gray">
+                    <Grid Width="600" Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="{Binding XPath=title}" />
+                        <TextBlock Grid.Row="1" Text="{Binding XPath=dc:date}" />
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </StackPanel.Resources>
+        <ListBox Width="600" Height="600" Background="Honeydew" ItemsSource="{Binding Source={StaticResource Provider}}" ItemTemplate="{StaticResource DataTemplate}"/>
+    </StackPanel>
+</Window>

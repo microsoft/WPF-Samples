@@ -1,0 +1,171 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Animate Size"
+      x:Class="AnimateSize.Page1"
+      Loaded="CheckLang">
+  
+
+  
+  
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Animate Size Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Animate Size Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This example uses XAML to change the size of a rectangle.</TextBlock>
+
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+
+          <TextBlock Name="xamlCheck">
+          <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve"><![CDATA[
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="Animating Size">   
+  <Page.Resources>
+ 
+    <!-- This ImageBrush is used to fill both rectangles. -->
+    <ImageBrush x:Key="myImageBrush" Viewport="0,0 50,50" ViewportUnits="Absolute" 
+      ImageSource="help.gif" TileMode="Tile"/>
+  </Page.Resources>
+      
+  <StackPanel Orientation="Horizontal">        
+    <StackPanel.Triggers>    
+      <EventTrigger SourceName="animatedWidthRectangle" RoutedEvent="Page.Loaded">
+        <BeginStoryboard Name="myBeginStoryboard">      
+          <Storyboard Name="myStoryboard">
+            <DoubleAnimation Storyboard.TargetName="animatedWidthRectangle"
+              Storyboard.TargetProperty="(Button.Width)"
+              To="600" Duration="0:0:10" AutoReverse="True"/>   
+            <DoubleAnimation Storyboard.TargetName="animatedScaleTransformRectangle"
+              Storyboard.TargetProperty="(Rectangle.RenderTransform).(ScaleTransform.ScaleX)"
+              From="1.0" To="3.0" Duration="0:0:10" AutoReverse="True"/>                   
+          </Storyboard>       
+        </BeginStoryboard>
+      </EventTrigger>   
+    </StackPanel.Triggers>
+    <Canvas Width="650" Height="400">
+      <TextBlock Canvas.Top="5" Canvas.Left="20">Resized by animating the Width property.</TextBlock>
+      <Rectangle Name="animatedWidthRectangle"
+          Canvas.Top="20"
+          Canvas.Left="20"
+          Width="200"
+          Height="150"
+          Fill="{StaticResource myImageBrush}"
+          Stroke="Red"
+          StrokeThickness="5">
+      </Rectangle>
+
+      <TextBlock Canvas.Top="180" Canvas.Left="20">Resized by animating a scale transformation.</TextBlock>
+      <Rectangle Name="animatedScaleTransformRectangle"
+          Canvas.Left="20"
+          Canvas.Top="200"
+          Width="200"
+          Height="150"
+          Fill="{StaticResource myImageBrush}"
+          Stroke="Black"
+          StrokeThickness="3">     
+          <Rectangle.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1"  />
+          </Rectangle.RenderTransform>
+      </Rectangle>
+    </Canvas>
+  </StackPanel>
+</Page>]]>           
+            </TextBox>
+          </TextBlock>
+        </ScrollViewer>
+        </TabItem>
+        <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+              <TabItem Style="{StaticResource TabStyle2}" Header="C#" />
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+              <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+          </TabControl>
+        </TabItem>
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+          
+<StackPanel>
+  <StackPanel.Resources>
+     
+     <!-- This ImageBrush is used to fill both rectangles. -->
+     <ImageBrush x:Key="MyImageBrush" Viewport="0,0 50,50" ViewportUnits="Absolute"  TileMode="Tile">
+         <ImageBrush.ImageSource><BitmapImage UriSource="/images/help.gif"/></ImageBrush.ImageSource>
+     </ImageBrush>
+  </StackPanel.Resources>
+  
+<!--IB: moved storyboards to root-->
+
+
+<Canvas Width="650" Height="400">
+
+  <TextBlock Canvas.Top="5" Canvas.Left="20">Resized by animating the Width property.</TextBlock>
+  <Rectangle Name="animatedWidthRectangle"
+      Canvas.Top="20"
+      Canvas.Left="20"
+      Width="200"
+      Height="150"
+      Fill="{StaticResource MyImageBrush}"
+      Stroke="Red"
+      StrokeThickness="5" />
+
+    <TextBlock Canvas.Top="180" Canvas.Left="20">Resized by animating a scale transformation.</TextBlock>
+  <Rectangle Name="animatedScaleTransformRectangle"
+      Canvas.Left="20"
+      Canvas.Top="200"
+      Width="200"
+      Height="150"
+      Fill="{StaticResource MyImageBrush}"
+      Stroke="Black"
+      StrokeThickness="3">
+      
+      <Rectangle.RenderTransform>
+         <ScaleTransform ScaleX="1" ScaleY="1"  />
+      </Rectangle.RenderTransform>
+
+     </Rectangle>
+     
+    <Canvas.Triggers>
+      <EventTrigger RoutedEvent="Canvas.Loaded">
+        <BeginStoryboard Name="myBeginStoryboard">
+          
+            <Storyboard>
+     <!-- Animate the rectangles. -->
+     <ParallelTimeline RepeatBehavior="Forever">
+        
+      <!-- Animate the Width of the rectangle using a DoubleAnimation. -->
+      <DoubleAnimation  Storyboard.TargetName="animatedWidthRectangle" 
+          Storyboard.TargetProperty="(Rectangle.Width)" 
+          To="600" Duration="0:0:10" AutoReverse="true"  />
+        
+          <!-- Animate the ScaleX factor of a ScaleTransform used to transform
+            the rectangle. -->
+            <DoubleAnimation  Storyboard.TargetName="animatedScaleTransformRectangle" 
+              Storyboard.TargetProperty="(Rectangle.RenderTransform).(ScaleTransform.ScaleX)"
+              From="1.0" To="3.0" AutoReverse="True" Duration="0:0:10" />
+          </ParallelTimeline>
+        </Storyboard>
+      </BeginStoryboard>
+     </EventTrigger>
+  </Canvas.Triggers>     
+</Canvas>
+</StackPanel>
+
+        </TabItem>
+      </TabControl>
+</Page>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="KeyStrokeCounter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyStrokeCounter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Border BorderBrush="Black" BorderThickness="1"
+              Width="100" Height="75" Margin="5">
+                    <StackPanel>
+                        <Label HorizontalAlignment="Center" Content="Number Of Hits" />
+                        <Label Name="lblNumberOfTargetHits"
+                 HorizontalAlignment="Center"
+                 FontSize="14"
+                 FontWeight="DemiBold"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Sets the target key. -->
+                <Border BorderBrush="Black" BorderThickness="1"
+              Width="100" Height="75" Margin="5">
+                    <StackPanel>
+                        <Label HorizontalAlignment="Center" Content="Target Key" />
+                        <TextBox Name="txtTargetKey"
+                   MaxLength="1" 
+                   HorizontalAlignment="Center"
+                   Width="20"
+                   GotKeyboardFocus="TextBoxGotKeyboardFocus"
+                   LostKeyboardFocus="TextBoxLostKeyboardFocus">A</TextBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Border BorderBrush="Black" BorderThickness="1"
+            Width="200" Height="100" Margin="5">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" Content="Type Text In This TextBox" />
+                    <TextBox Width="175"
+                 Height="50" 
+                 Margin="5"
+                 TextWrapping="Wrap"
+                 HorizontalAlignment="Center"
+                 VerticalScrollBarVisibility="Auto"
+                 GotKeyboardFocus="TextBoxGotKeyboardFocus"
+                 LostKeyboardFocus="TextBoxLostKeyboardFocus"
+                 KeyDown="SourceTextKeyDown"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</Window>

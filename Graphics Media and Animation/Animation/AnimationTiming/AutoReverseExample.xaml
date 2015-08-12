@@ -1,0 +1,83 @@
+<!-- AutoReverseExample.xaml
+     This example shows how to use the AutoReverse property to make a timeline play backwards at the end of each iteration. 
+     Several rectangles are animated by DoubleAnimations with identical durations and target values, but with different
+     AutoReverse and RepeatBehavior settings.-->
+     
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.AutoReverseExample" 
+  WindowTitle="AutoReverse Example">
+  <StackPanel Margin="20" Background="{StaticResource MyGridBrushResource}">
+      
+     <!-- <Border Style="{StaticResource myIntroTextBorderStyle}">  -->
+     <Border>
+        <TextBlock Margin="20">
+          This example shows how to use the AutoReverse property to make a timeline play backwards at the end of each iteration. 
+          Several rectangles
+          are animated by DoubleAnimations with identical durations and target values, but with different
+          AutoReverse and RepeatBehavior settings.
+        </TextBlock>
+      </Border>
+      
+      
+      <TextBlock>AutoReverse="False" (Default)</TextBlock>
+      <Rectangle Name="withoutAutoReverseRectangle"
+        Width="100" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+      
+      <TextBlock Margin="0,20,0,0">AutoReverse="True"</TextBlock>
+      <Rectangle Name="autoReverseRectangle"
+        Width="100" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+       
+        
+      <TextBlock Margin="0,20,0,0">AutoReverse="True"<LineBreak /> RepeatBehavior="2x"</TextBlock>
+      <Rectangle Name="autoReverseRectangleWithRepeats"
+        Width="100" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+        
+      <TextBlock Margin="0,20,0,0" >
+       In this example, AutoReverse="True" and RepeatBehavior="2x" have been set on the
+       animation's parent timeline.
+       </TextBlock>
+      <Rectangle Name="complexAutoReverseExample"
+        Width="100" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+    
+    
+    
+    <!-- Create a button to restart the animations. -->
+    <Button Margin="0,30,0,0" HorizontalAlignment="Left">Restart Animations
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <!-- Create an animation that does not automatically play in reverse. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="withoutAutoReverseRectangle" 
+                Storyboard.TargetProperty="(Rectangle.Width)" 
+                Duration="0:0:2" From="100" To="400" AutoReverse="False" />   
+
+              <!-- Create an animation that automatically reverses at the end of each iteration. -->
+              <DoubleAnimation Storyboard.TargetName="autoReverseRectangle" 
+                Storyboard.TargetProperty="(Rectangle.Width)"
+                Duration="0:0:2" From="100" To="400" AutoReverse="True" />
+        
+              <!-- Create an animation that automatically reverses at the end of each iteration.
+                   Set the animation to repeat twice. As a result, then animation plays forward,
+                   the backward, then forward, and then backward again. -->
+              <DoubleAnimation Storyboard.TargetName="autoReverseRectangleWithRepeats" 
+                Storyboard.TargetProperty="(Rectangle.Width)"
+                Duration="0:0:2" From="100" To="400" AutoReverse="True" RepeatBehavior="2x" />  
+                
+              <!-- Set the parent timeline's AutoReverse property to True and set the animation's
+                   RepeatBehavior to 2x. As a result, the animation plays forward twice and then
+                   backwards twice. -->                
+              <ParallelTimeline AutoReverse="True">
+                <DoubleAnimation Storyboard.TargetName="complexAutoReverseExample" Storyboard.TargetProperty="(Rectangle.Width)"
+                  Duration="0:0:2" From="100" To="400" RepeatBehavior="2x"  />  
+              </ParallelTimeline>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+  </StackPanel>
+</Page>

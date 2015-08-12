@@ -1,0 +1,245 @@
+﻿<Application x:Class="ExpenseItDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ExpenseItDemo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <ExpenseReport x:Key="ExpenseData"
+                       xmlns="clr-namespace:ExpenseItDemo"
+                       Alias="Someone@example.com"
+                       EmployeeNumber="57304"
+                       CostCenter="4032">
+            <ExpenseReport.LineItems>
+                <LineItem Type="Meal" Description="Mexican Lunch" Cost="12" />
+                <LineItem Type="Meal" Description="Italian Dinner" Cost="45" />
+                <LineItem Type="Education" Description="Developer Conference" Cost="90" />
+                <LineItem Type="Travel" Description="Taxi" Cost="70" />
+                <LineItem Type="Travel" Description="Hotel" Cost="60" />
+            </ExpenseReport.LineItems>
+        </ExpenseReport>
+
+        <XmlDataProvider x:Key="CostCenters" XPath="/CostCenters/*">
+            <x:XData>
+                <CostCenters xmlns="">
+                    <CostCenter Number="4032" Name="Sales" />
+                    <CostCenter Number="4034" Name="Marketing" />
+                    <CostCenter Number="5061" Name="Human Resources" />
+                    <CostCenter Number="5062" Name="Research and Development" />
+                </CostCenters>
+            </x:XData>
+        </XmlDataProvider>
+
+        <XmlDataProvider x:Key="Employees" XPath="/Employees/*">
+            <x:XData>
+                <Employees xmlns="">
+                    <Employee Name="Terry Adams" Type="FTE" EmployeeNumber="1" />
+                    <Employee Name="Claire O&apos;Donnell" Type="FTE" EmployeeNumber="12345" />
+                    <Employee Name="Palle Peterson" Type="FTE" EmployeeNumber="5678" />
+                    <Employee Name="Amy E. Alberts" Type="CSG" EmployeeNumber="99222" />
+                    <Employee Name="Stefan Hesse" Type="Vendor" EmployeeNumber="-" />
+                </Employees>
+            </x:XData>
+        </XmlDataProvider>
+
+        <Style x:Key="WatermarkImage" TargetType="{x:Type Image}">
+            <Setter Property="Source" Value="watermark.png" />
+            <Setter Property="HorizontalAlignment" Value="left" />
+            <Setter Property="VerticalAlignment" Value="top" />
+            <Setter Property="Width" Value="230" />
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+
+        <Style x:Key="CommandButton" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0,10,5,5" />
+            <Setter Property="Padding" Value="5,2,5,2" />
+            <Setter Property="MinWidth" Value="80" />
+        </Style>
+
+        <Style x:Key="WindowContentGrid" TargetType="{x:Type Grid}">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style x:Key="Label" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="DarkSlateBlue" />
+            <Setter Property="FontSize" Value="10pt" />
+            <Setter Property="Margin" Value="0,3,0,0" />
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+
+        <Style x:Key="ExpenseChart" TargetType="{x:Type ItemsControl}">
+            <Setter Property="DataContext" Value="{DynamicResource ExpenseData}" />
+            <Setter Property="ItemsSource" Value="{Binding Path=LineItems}" />
+            <Setter Property="ItemTemplate" Value="{DynamicResource ExpenseChartBar}" />
+            <Setter Property="Margin" Value="5,5,5,0" />
+            <Setter Property="MinWidth" Value="80" />
+            <Setter Property="MinHeight" Value="50" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ItemsControl}">
+                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+
+                            <Rectangle StrokeThickness="1" RadiusX="10" RadiusY="10">
+
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#4E87D4" Offset="0" />
+                                                <GradientStop Color="#73B2F5" Offset="1" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#73B2F5" Offset="0" />
+                                                <GradientStop Color="#4E87D4" Offset="1" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+
+                            </Rectangle>
+
+                            <Viewbox Margin="1"
+                                     Stretch="Uniform">
+                                <StackPanel Orientation="Horizontal"
+                                            IsItemsHost="True" />
+                            </Viewbox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TotalExpenses" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="18pt" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="0,10,15,10" />
+        </Style>
+
+        <Style x:Key="TotalExpensesFlow" TargetType="{x:Type StackPanel}">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+
+        <Style x:Key="TotalHeaderGrid" TargetType="{x:Type Grid}">
+            <Setter Property="Margin" Value="10,10,10,0" />
+        </Style>
+
+        <Style x:Key="TotalRectangle" TargetType="{x:Type Rectangle}">
+            <Setter Property="Margin" Value="5,5,5,0" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="RadiusX" Value="10" />
+            <Setter Property="RadiusY" Value="10" />
+            <Setter Property="Stroke">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientBrush.GradientStops>
+                            <GradientStopCollection>
+                                <GradientStop Color="#4E87D4" Offset="0" />
+                                <GradientStop Color="#73B2F5" Offset="1" />
+                            </GradientStopCollection>
+                        </GradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientBrush.GradientStops>
+                            <GradientStopCollection>
+                                <GradientStop Color="#73B2F5" Offset="0" />
+                                <GradientStop Color="#4E87D4" Offset="1" />
+                            </GradientStopCollection>
+                        </GradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="ExpenseChartBar">
+            <Grid VerticalAlignment="Bottom" Width="40">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Row="0"
+                           Height="{Binding Path=Cost}"
+                           Margin="10,10,10,0"
+                           Fill="#33000000"
+                           RadiusX="2"
+                           RadiusY="2">
+                    <Rectangle.RenderTransform>
+                        <TranslateTransform X="1"
+                                            Y="1" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Grid.Row="0"
+                           Height="{Binding Path=Cost}"
+                           Margin="10,10,10,0"
+                           RadiusX="2"
+                           RadiusY="2"
+                           Stroke="black"
+                           StrokeThickness="0.5">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientBrush.GradientStops>
+                                <GradientStopCollection>
+                                    <GradientStop Color="LimeGreen"
+                                                  Offset="0" />
+                                    <GradientStop Color="DarkGreen"
+                                                  Offset="1" />
+                                </GradientStopCollection>
+                            </GradientBrush.GradientStops>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.Row="0"
+                           Height="{Binding Path=Cost}"
+                           Margin="11,12,11,0"
+                           RadiusX="1"
+                           RadiusY="1">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="0,1">
+                            <GradientBrush.GradientStops>
+                                <GradientStopCollection>
+                                    <GradientStop Color="#aaffffff"
+                                                  Offset="0" />
+                                    <GradientStop Color="transparent"
+                                                  Offset="1" />
+                                </GradientStopCollection>
+                            </GradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Viewbox Grid.Row="1"
+                         Width="30"
+                         Margin="2">
+                    <TextBlock Grid.Row="1"
+                               Width="100"
+                               FontSize="10pt"
+                               FontFamily="Arial"
+                               TextAlignment="center"
+                               TextTrimming="WordEllipsis"
+                               Text="{Binding Path=Description}" />
+                </Viewbox>
+                <TextBlock Margin="0,5,0,3"
+                           FontSize="4pt"
+                           FontFamily="Arial"
+                           TextAlignment="center"
+                           Foreground="white"
+                           Text="{Binding Path=Cost}" />
+            </Grid>
+        </DataTemplate>
+
+    </Application.Resources>
+</Application>

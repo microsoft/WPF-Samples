@@ -1,0 +1,437 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Sample Title"
+      x:Class="ButtonColor.Page1"
+      Loaded="CheckLang">
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Button Color Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Button Color Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This example demonstrates different button controls.</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">The preview window renders code from the C#+Markup tab. The VB+markup code is provided for reference purposes.</TextBlock>
+
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML" />
+    <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+                 
+&lt;Canvas
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ButtonAlign.Pane1"
+ >
+
+  &lt;Grid ShowGridLines ="false" Background ="White" >
+&lt;Grid.ColumnDefinitions>
+&lt;ColumnDefinition/>
+&lt;ColumnDefinition/>
+&lt;/Grid.ColumnDefinitions>
+&lt;Grid.RowDefinitions>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;/Grid.RowDefinitions>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" FontSize="24">Buttons&lt;/TextBlock>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2">The following button examples demonstrate:&lt;/TextBlock>  
+    &lt;DockPanel Margin="30, 10, 3, 3" Grid.Column="0" Grid.Row="2">
+      &lt;Button Name="btn1" Background="Pink" BorderBrush="Black" BorderThickness="1" Click="OnClick1">ClickMe1&lt;/Button>
+      &lt;Button Name="btn2" Background="LightBlue" BorderBrush="Black" BorderThickness="1" Click="OnClick2">ClickMe2&lt;/Button>
+      &lt;Button Name="btn3" Click="OnClick3">Reset&lt;/Button>
+    &lt;/DockPanel>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center">Changing the background property.&lt;/TextBlock>  
+    &lt;Button Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3" Width="250px" Name="btn4" Click="OnClick4">Click me to change colors and font size.&lt;/Button>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Changing the background, foreground, and font size properties.&lt;/TextBlock> 
+    &lt;DockPanel Margin="30, 10, 3, 3" Grid.Column="0" Grid.Row="4">
+      &lt;Button Name="btn5" Width="50" Height="30" Click="OnClick5">
+        &lt;Image Source="\images\flower.jpg">
+        &lt;/Image>
+      &lt;/Button>
+      &lt;Button Name="btn6" BorderBrush="Black">Click the picture.&lt;/Button>
+    &lt;/DockPanel>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" FontSize="10pt" VerticalAlignment="Center" TextWrapping="Wrap">Adding an image as the button's content.&lt;/TextBlock>
+    &lt;Button Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="5" Width="250" Name="btn7" Click="OnClick6">
+      &lt;DockPanel Height="30">
+        &lt;Image Source="\images\flower.jpg"/>
+        &lt;TextBlock Name="txt">Button with an image. Click me.&lt;/TextBlock>
+      &lt;/DockPanel>
+    &lt;/Button>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="5" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Adding complex content, the button contains a DockPanel with an image and some text.&lt;/TextBlock> 
+    &lt;Button Margin="30, 10, 3, 3" Grid.Column="0" Grid.Row="6" Click="OnClick7">Click me to create a button with C# code.&lt;/Button>
+    &lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="6" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Creating a button with C#.&lt;/TextBlock>
+  &lt;/Grid>
+  &lt;Canvas Name="cv2" Width="550" Height="50" Canvas.Top="290" Canvas.Left="10">&lt;/Canvas> 
+
+&lt;/Canvas>
+</TextBox>
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="C#">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Data;
+using System.Windows.Media;
+
+namespace ButtonAlign
+{
+	/// &lt;summary>
+	/// Interaction logic for Pane1.xaml
+	/// &lt;/summary>
+
+	public partial class Pane1 : Canvas
+	{
+		// To use PaneLoaded put Loaded="PaneLoaded" in root element of .xaml file.
+		// private void PaneLoaded(object sender, EventArgs e) {}
+		// Sample event handler: 
+		static int newcolor = 0;
+		Button btncsharp;
+		void OnClick1(object sender, RoutedEventArgs e)
+		{
+			btn1.Background = Brushes.LightBlue;
+		}
+
+		void OnClick2(object sender, RoutedEventArgs e)
+		{
+			btn2.Background = Brushes.Pink;
+		}
+
+		void OnClick3(object sender, RoutedEventArgs e)
+		{
+			btn1.Background = Brushes.Pink;
+			btn2.Background = Brushes.LightBlue;
+		}
+		void OnClick4(object sender, RoutedEventArgs e)
+		{
+			switch (newcolor)
+			{
+				case 0:
+					btn4.Background = Brushes.Red;
+					btn4.Foreground = Brushes.Beige;
+					btn4.Content = "Font Size 10";
+					btn4.FontSize = 10;
+					break;
+
+				case 1:
+					btn4.Background = Brushes.CadetBlue;
+					btn4.Foreground = Brushes.LemonChiffon;
+					btn4.Content = "Font Size 12";
+					btn4.FontSize = 12;
+					break;
+
+				case 2:
+					btn4.Background = Brushes.Purple;
+					btn4.Foreground = Brushes.PeachPuff;
+					btn4.Content = "Font Size 14";
+					btn4.FontSize = 14;
+					break;
+
+				case 3:
+					btn4.Background = Brushes.BlanchedAlmond;
+					btn4.Foreground = Brushes.DarkRed;
+					btn4.Content = "Font Size 16";
+					btn4.FontSize = 16;
+					break;
+
+				case 4:
+					btn4.Background = Brushes.Green;
+					btn4.Foreground = Brushes.White;
+					btn4.Content = "Font Size 18";
+					btn4.FontSize = 18;
+					break;
+			}
+			newcolor = newcolor + 1;
+			if (newcolor > 4)
+			{
+				newcolor = 0;
+			}
+		}
+		void OnClick5(object sender, RoutedEventArgs e)
+		{
+			btn6.FontSize = 16;
+			btn6.Content = "This is my favorite photo.";
+			btn6.Background = Brushes.Red;
+		}
+		void OnClick6(object sender, RoutedEventArgs e)
+		{
+			btn7.FontSize = 16;
+			txt.Text = "You clicked the button.";
+			btn7.Background = Brushes.Yellow;
+		}
+		void OnClick7(object sender, RoutedEventArgs e)
+		{
+			btncsharp = new Button();
+			btncsharp.Content = "Created with C# code.";
+			btncsharp.Background = SystemColors.ControlDarkDarkBrush;
+                        btncsharp.FontSize = SystemFonts.CaptionFontSize;
+                        cv2.Children.Add(btncsharp);
+	   }
+   }
+}        
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+                           <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+                           
+&lt;StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ButtonAlignM8_vb.Pane1"
+    >
+    &lt;!--  The namespace + class name in the codebehind file and the x:Class attribute in the root of this document, must stay identical.  You can change them, but you must keep them in sync. -->
+&lt;Grid ShowGridLines ="false" Background ="White">
+&lt;Grid.ColumnDefinitions>
+&lt;ColumnDefinition/>
+&lt;ColumnDefinition/>
+&lt;/Grid.ColumnDefinitions>
+&lt;Grid.RowDefinitions>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;RowDefinition/>
+&lt;/Grid.RowDefinitions>
+&lt;TextBlock Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="0" FontSize="24">Buttons&lt;/TextBlock>
+&lt;TextBlock Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2">The following button examples demonstrate:&lt;/TextBlock>  
+&lt;DockPanel Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="2">&lt;Button Name="btn1" Background="Pink" BorderBrush="Black" BorderThickness="1" Click="OnClick1">ClickMe1&lt;/Button>&lt;Button Name="btn2" Background="LightBlue" BorderBrush="Black" BorderThickness="1" Click="OnClick2">ClickMe2&lt;/Button>&lt;Button Name="btn3" Click="OnClick3">Reset&lt;/Button>&lt;/DockPanel>
+&lt;TextBlock Margin="10, 10, 5, 5" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Changing the background property.&lt;/TextBlock>  
+&lt;Button Margin="10, 10, 5, 5" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Width="250" Name="btn4" Click="OnClick4">Click me to change colors and font size.&lt;/Button>
+&lt;TextBlock Margin="10, 10, 5, 5" Grid.Column="1" Grid.Row="3" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Changing the background, foreground, and font size properties.&lt;/TextBlock>
+
+&lt;DockPanel HorizontalAlignment="Left" Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="4">lt;Button Name="btn5" Width="50" Height="30" Click="OnClick5">&lt;Image Source="\images\flower.jpg">&lt;/Image>&lt;/Button>
+&lt;Button Name="btn6" BorderBrush="Black">Click the picture.&lt;/Button>&lt;/DockPanel>
+
+&lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Adding an image as the button's content.&lt;/TextBlock>
+
+&lt;Button HorizontalAlignment="Left" Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="5" Width="250" Name="btn7" Click="OnClick6">
+  &lt;DockPanel Height="30">
+    &lt;Image Source="\images\flower.jpg"/>
+    &lt;TextBlock Name="txt">Button with an image. Click me.&lt;/TextBlock>
+  &lt;/DockPanel>
+&lt;/Button>
+
+&lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="5" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Adding complex content, the button contains a DockPanel with an image and some text.&lt;/TextBlock>
+ 
+&lt;Button HorizontalAlignment="Left" Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="6" Click="OnClick7">Click me to create a button with VB code.&lt;/Button>
+
+&lt;TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="6" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Creating a button with Visual Basic.&lt;/TextBlock>
+   
+&lt;Canvas Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="7" Name="cv2" Width="550" Height="50" Canvas.Top="280" Canvas.Left="10">&lt;/Canvas>
+&lt;/Grid>
+&lt;/StackPanel>
+ 
+                       </TextBox>    
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+                                         <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+Imports System
+Imports System.Windows
+Imports System.Windows.Controls
+Imports System.Windows.Documents
+Imports System.Windows.Navigation
+Imports System.Windows.Media
+Imports System.Windows.Shapes
+Imports System.Windows.Data
+
+Namespace ButtonAlignM8_vb
+
+    '@ &lt;summary>
+    '@ Interaction logic for Pane1_xaml.xaml
+    '@ &lt;/summary>
+    Partial Class Pane1
+
+        Sub OnClick1(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            btn1.Background = Brushes.LightBlue
+        End Sub
+
+        Sub OnClick2(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            btn2.Background = Brushes.Pink
+        End Sub
+
+        Sub OnClick3(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            btn1.Background = System.Windows.Media.Brushes.Pink
+            btn2.Background = System.Windows.Media.Brushes.LightBlue
+        End Sub
+
+        Sub OnClick4(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            Static NewColor As Integer = 0
+
+            Select Case NewColor
+
+                Case 0
+                    btn4.Background = Brushes.Red
+                    btn4.Foreground = Brushes.Beige
+                    btn4.Content = "Font Size 10"
+                    btn4.FontSize = 10
+
+                Case 1
+                    btn4.Background = Brushes.CadetBlue
+                    btn4.Foreground = System.Windows.Media.Brushes.LemonChiffon
+                    btn4.Content = "Font Size 12"
+                    btn4.FontSize = 12
+
+                Case 2
+                    btn4.Background = Brushes.Purple
+                    btn4.Foreground = Brushes.PeachPuff
+                    btn4.Content = "Font Size 14"
+                    btn4.FontSize = 14
+
+                Case 3
+                    btn4.Background = Brushes.BlanchedAlmond
+                    btn4.Foreground = Brushes.DarkRed
+                    btn4.Content = "Font Size 16"
+                    btn4.FontSize = 16
+
+                Case 4
+                    btn4.Background = Brushes.Green
+                    btn4.Foreground = Brushes.White
+                    btn4.Content = "Font Size 18"
+                    btn4.FontSize = 18
+
+            End Select
+
+            NewColor = NewColor + 1
+            If NewColor > 4 Then
+                NewColor = 0
+            End If
+        End Sub
+        Sub OnClick5(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            btn6.FontSize = 16
+	    btn6.Content = "This is my favorite photo."
+	    btn6.Background = Brushes.Red
+        End Sub
+        Sub OnClick6(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            btn7.FontSize = 16
+	    txt.Text = "You clicked the button."
+	    btn7.Background = Brushes.Yellow
+        End Sub
+        Sub OnClick7(ByVal sender As Object, ByVal e As RoutedEventArgs)
+            Dim btnvb As Button
+            btnvb = New Button()
+	    btnvb.Content = "Created with VB code."
+	    btnvb.Background = SystemColors.ControlDarkDarkBrush
+            btnvb.FontSize = SystemFonts.CaptionFontSize
+            cv2.Children.Add(btnvb)
+        End Sub
+                
+    End Class
+
+End Namespace
+                                           
+                                           
+                                           
+                                           </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+
+
+          <Canvas>
+            <Grid ShowGridLines ="false" Background ="White" >
+              <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="300"/>
+              <ColumnDefinition Width="250"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              <RowDefinition/>
+              </Grid.RowDefinitions>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" FontSize="24">Buttons</TextBlock>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2">The following button examples demonstrate:</TextBlock>
+              <DockPanel Margin="30, 10, 3, 3" Grid.Column="0" Grid.Row="2">
+                <Button Name="btn1" Background="Pink" BorderBrush="Black" BorderThickness="1" Click="OnClick1">ClickMe1</Button>
+                <Button Name="btn2" Background="LightBlue" BorderBrush="Black" BorderThickness="1" Click="OnClick2">ClickMe2</Button>
+                <Button Name="btn3" Click="OnClick3">Reset</Button>
+              </DockPanel>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center">Changing the background property.</TextBlock>
+              <Button Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3" Width="250px" Name="btn4" Click="OnClick4">Click me to change colors and font size.</Button>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Changing the background, foreground, and font size properties.</TextBlock>
+              <DockPanel Margin="30, 10, 3, 3" Grid.Column="0" Grid.Row="4">
+                <Button Name="btn5" Width="50" Height="30" Click="OnClick5">
+                    <Image Stretch="None"><Image.Source><BitmapImage UriSource="\images\flower.jpg"/></Image.Source></Image>
+                </Button>
+                <Button Name="btn6" BorderBrush="Black">Click the picture.</Button>
+              </DockPanel>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" FontSize="10pt" VerticalAlignment="Center" TextWrapping="Wrap">Adding an image as the button's content.</TextBlock>
+              <Button Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="5" Width="250" Name="btn7" Click="OnClick6">
+                <DockPanel Height="30">
+                    <Image Stretch="None"><Image.Source><BitmapImage UriSource="\images\flower.jpg"/></Image.Source></Image>
+                  <TextBlock Name="txt">Button with an image. Click me.</TextBlock>
+                </DockPanel>
+              </Button>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="5" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Adding complex content, the button contains a DockPanel with an image and some text.</TextBlock>
+              <Button Margin="30, 10, 3, 3" Grid.Column="0" Grid.Row="6" Click="OnClick7">Click me to create a button with C# code.</Button>
+              <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="6" FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap">Creating a button with C#.</TextBlock>
+            </Grid>
+            <Canvas Name="cv2" Width="550" Height="50" Canvas.Top="290" Canvas.Left="10" />
+
+          </Canvas>
+
+        </TabItem>
+      </TabControl>
+
+</Page>

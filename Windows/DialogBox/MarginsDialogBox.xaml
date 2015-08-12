@@ -1,0 +1,116 @@
+﻿<Window 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="DialogBox.MarginsDialogBox"
+    xmlns:local="clr-namespace:DialogBox"
+    Title="Margins"
+    Height="190"
+    Width="300"
+    MinHeight="10"
+    MinWidth="300"
+    ResizeMode="CanResizeWithGrip"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner" 
+    FocusManager.FocusedElement="{Binding ElementName=leftMarginTextBox}">
+
+  <Grid>
+    
+    <Grid.Resources>
+      <Style TargetType="{x:Type Grid}">
+        <Setter Property="Margin" Value="10" />
+      </Style>
+      <Style TargetType="{x:Type Label}">
+        <Setter Property="Margin" Value="0,3,5,5" />
+        <Setter Property="Padding" Value="0,0,0,5" />
+      </Style>
+      <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Style.Triggers>
+          <Trigger Property="Validation.HasError" Value="true">
+            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+      </Style>
+      <Style TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="70" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+      </Style>
+    </Grid.Resources>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <!-- Left Margin -->
+    <Label Grid.Column="0" Grid.Row="0">Left Margin:</Label>
+    <TextBox Name="leftMarginTextBox" Grid.Column="1" Grid.Row="0">
+      <TextBox.Text>
+        <Binding Path="Left" UpdateSourceTrigger="PropertyChanged">
+          <Binding.ValidationRules>
+            <local:MarginValidationRule MinMargin="0" MaxMargin="10" />
+          </Binding.ValidationRules>
+        </Binding>
+      </TextBox.Text>
+    </TextBox>
+
+    <!-- Top Margin -->
+    <Label Grid.Column="0" Grid.Row="1">Top Margin:</Label>
+    <TextBox Name="topMarginTextBox" Grid.Column="1" Grid.Row="1">
+      <TextBox.Text>
+        <Binding Path="Top" UpdateSourceTrigger="PropertyChanged">
+          <Binding.ValidationRules>
+            <local:MarginValidationRule MinMargin="0" MaxMargin="10" />
+          </Binding.ValidationRules>
+        </Binding>
+      </TextBox.Text>
+    </TextBox>
+
+    <!-- Right Margin -->
+    <Label Grid.Column="0" Grid.Row="2">Right Margin:</Label>
+    <TextBox Name="rightMarginTextBox" Grid.Column="1" Grid.Row="2">
+      <TextBox.Text>
+        <Binding Path="Right" UpdateSourceTrigger="PropertyChanged">
+          <Binding.ValidationRules>
+            <local:MarginValidationRule MinMargin="0" MaxMargin="10" />
+          </Binding.ValidationRules>
+        </Binding>
+      </TextBox.Text>
+    </TextBox>
+
+    <!-- Bottom Margin -->
+    <Label Grid.Column="0" Grid.Row="3">Bottom Margin:</Label>
+    <TextBox Name="bottomMarginTextBox" Grid.Column="1" Grid.Row="3">
+      <TextBox.Text>
+        <Binding Path="Bottom" UpdateSourceTrigger="PropertyChanged">
+          <Binding.ValidationRules>
+            <local:MarginValidationRule MinMargin="0" MaxMargin="10" />
+          </Binding.ValidationRules>
+        </Binding>
+      </TextBox.Text>
+    </TextBox>
+
+    <!-- Accept or Cancel -->
+    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4">
+      <Button Name="okButton" Click="okButton_Click" IsDefault="True">OK</Button>
+      <Button Name="cancelButton" IsCancel="True">Cancel</Button>
+    </StackPanel>
+
+  </Grid >
+
+</Window>
+<!--</SnippetMarginsValidationMARKUP3>-->

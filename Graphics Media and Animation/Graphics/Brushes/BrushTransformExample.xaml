@@ -1,0 +1,316 @@
+<!-- <Snippet11> -->
+<!-- BrushTransformExample.xaml 
+     These examples show how to use the Brush.Transform 
+     and Brush.RelativeTransform properites. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="presentationOptions"
+  Title="Transforming Brushes">
+  <Page.Resources>
+    <Style TargetType="{x:Type Rectangle}">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <!-- This GradientStopCollection is used in the LinearGradientBrush examples. -->
+    <GradientStopCollection x:Key="MyGradientStops"
+      presentationOptions:Freeze="True">
+      <GradientStop Offset="0.0" Color="Blue" />
+      <GradientStop Offset="0.4" Color="Black" />
+      <GradientStop Offset="0.5" Color="White" />
+      <GradientStop Offset="0.6" Color="Black" />
+      <GradientStop Offset="0.7" Color="Blue" />
+    </GradientStopCollection>
+
+    <!-- This drawing is used in the DrawingBrush transform examples. -->
+    <DrawingGroup x:Key="MyDrawing" 
+      presentationOptions:Freeze="True">
+      <GeometryDrawing>
+        <GeometryDrawing.Geometry>
+          <GeometryGroup>
+            <LineGeometry StartPoint="0,0" EndPoint="1,1" />
+            <LineGeometry StartPoint="0,1" EndPoint="1,0" />
+          </GeometryGroup>
+        </GeometryDrawing.Geometry>
+        <GeometryDrawing.Pen>
+          <Pen Thickness="0.2" Brush="#3366FF" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+      <GeometryDrawing Brush="Red"
+       Geometry="M 0.4,0.4 L 0.5,0.2 0.6,0.4 0.5,0.5" />
+      <GeometryDrawing Brush="Blue"
+       Geometry="M 0.4,0.6 L 0.5,0.8 0.6,0.6 0.5,0.5" />
+      <GeometryDrawing Brush="Black"
+       Geometry="M 0.4,0.4 L 0.2,0.5 0.4,0.6 0.5,0.5" />
+      <GeometryDrawing Brush="Green"
+       Geometry="M 0.6,0.4 L 0.8,0.5 0.6,0.6 0.5,0.5" />
+    </DrawingGroup>
+  </Page.Resources>
+
+  <Grid Margin="10">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- Header -->
+    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+      Background="{StaticResource BlueHorizontalGradientBrush}">
+      <TextBlock Style="{StaticResource MyIntroTextBlockStyle}">
+        Brushes have two transformation properties: <Bold>RelativeTransform</Bold> and <Bold>Transform</Bold>.
+        When you set the RelativeTransform property with a transform, it is applied before the brush is
+        stretched to fill the output area. When you set the Transform property, the transform is applied
+        after the brush is stretched to fill the output area. In the following examples, RotateTransforms are applied
+        to the RelativeTransform and Transform properties to demonstrate their differences.
+      </TextBlock>
+    </Border>
+
+    <!-- Labels the different examples. -->
+    <TextBlock Grid.Row="2" Grid.Column="2">No transform</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="4">
+      Brush.RelativeTransform<LineBreak />
+      Center: 0.5,0.5<LineBreak />
+      Angle: 45<LineBreak />
+    </TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="6">
+      Brush.Transform<LineBreak />
+      Center: 200,100<LineBreak />
+      Angle: 45<LineBreak />
+    </TextBlock>
+    <TextBlock Grid.Row="4" Grid.Column="0">
+      <Bold>LinearGradientBrush</Bold>
+    </TextBlock>
+    <TextBlock Grid.Row="6" Grid.Column="0">
+      <Bold>RadialGradientBrush</Bold>
+    </TextBlock>
+    <TextBlock Grid.Row="8" Grid.Column="0">
+      <Bold>ImageBrush</Bold><LineBreak />(Not tiled)
+    </TextBlock>
+    <TextBlock Grid.Row="10" Grid.Column="0">
+      <Bold>ImageBrush</Bold><LineBreak />(Tiled)
+    </TextBlock>
+    <TextBlock Grid.Row="12" Grid.Column="0">
+      <Bold>DrawingBrush</Bold><LineBreak />(Not tiled)
+    </TextBlock>
+    <TextBlock Grid.Row="14" Grid.Column="0">
+      <Bold>DrawingBrush</Bold><LineBreak />(Tiled)
+    </TextBlock>
+    <!-- End labels -->
+
+    <!-- LinearGradientBrush examples -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="4" Grid.Column="2">
+      <Rectangle.Fill>
+        <LinearGradientBrush GradientStops="{StaticResource MyGradientStops}" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's RelativeTransform property. The
+           RotateTransform's center is set to 0.5,0.5, which is the
+           center of the brush's content (in this case, a linear gradient). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="4" Grid.Column="4">
+      <Rectangle.Fill>
+        <LinearGradientBrush GradientStops="{StaticResource MyGradientStops}">
+          <LinearGradientBrush.RelativeTransform>
+            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="45" />
+          </LinearGradientBrush.RelativeTransform>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's Transform property. 
+           The RotateTransform's center is set to 87.5,45, which is
+           the center of the output area (the rectangle). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="4" Grid.Column="6">
+      <Rectangle.Fill>
+        <LinearGradientBrush GradientStops="{StaticResource MyGradientStops}">
+          <LinearGradientBrush.Transform>
+            <RotateTransform CenterX="87.5" CenterY="45" Angle="45" />
+          </LinearGradientBrush.Transform>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- RadialGradientBrush examples -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="6" Grid.Column="2">
+      <Rectangle.Fill>
+        <RadialGradientBrush GradientStops="{StaticResource MyGradientStops}" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's RelativeTransform property. The
+           RotateTransform's center is set to 0.5,0.5, which is the
+           center of the brush's content (in this case, a linear gradient). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="6" Grid.Column="4">
+      <Rectangle.Fill>
+        <RadialGradientBrush GradientStops="{StaticResource MyGradientStops}">
+          <RadialGradientBrush.RelativeTransform>
+            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="45" />
+          </RadialGradientBrush.RelativeTransform>
+        </RadialGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's Transform property. 
+           The RotateTransform's center is set to 87.5,45, which is
+           the center of the output area (the rectangle). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="6" Grid.Column="6">
+      <Rectangle.Fill>
+        <RadialGradientBrush GradientStops="{StaticResource MyGradientStops}">
+          <RadialGradientBrush.Transform>
+            <RotateTransform CenterX="87.5" CenterY="45" Angle="45" />
+          </RadialGradientBrush.Transform>
+        </RadialGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Non-tiled ImageBrush examples -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="8" Grid.Column="2">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="sampleImages\pinkcherries.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="8" Grid.Column="4">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="sampleImages\pinkcherries.jpg">
+          <ImageBrush.RelativeTransform>
+            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="45" />
+          </ImageBrush.RelativeTransform>
+        </ImageBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="8" Grid.Column="6">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="sampleImages\pinkcherries.jpg">
+          <ImageBrush.Transform>
+            <RotateTransform CenterX="87.5" CenterY="45" Angle="45" />
+          </ImageBrush.Transform>
+        </ImageBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Tiled ImageBrush examples -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="10" Grid.Column="2">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="sampleImages\pinkcherries.jpg" Viewport="0,0,0.5,0.5" TileMode="Tile" />
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="10" Grid.Column="4">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="sampleImages\pinkcherries.jpg" Viewport="0,0,0.5,0.5" TileMode="Tile">
+          <ImageBrush.RelativeTransform>
+            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="45" />
+          </ImageBrush.RelativeTransform>
+        </ImageBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="10" Grid.Column="6">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="sampleImages\pinkcherries.jpg" Viewport="0,0,0.5,0.5" TileMode="Tile">
+          <ImageBrush.Transform>
+            <RotateTransform CenterX="87.5" CenterY="45" Angle="45" />
+          </ImageBrush.Transform>
+        </ImageBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Non-tiled Drawingrush examples -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="12" Grid.Column="2">
+      <Rectangle.Fill>
+        <DrawingBrush Drawing="{StaticResource MyDrawing}" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's RelativeTransform property. The
+           RotateTransform's center is set to 0.5,0.5, which is the
+           center of the brush's content (in this case, a Drawing). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="12" Grid.Column="4">
+      <Rectangle.Fill>
+        <DrawingBrush Drawing="{StaticResource MyDrawing}">
+          <DrawingBrush.RelativeTransform>
+            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="45" />
+          </DrawingBrush.RelativeTransform>
+        </DrawingBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's Transform property. 
+         The RotateTransform's center is set to 87.5,45, which is
+         the center of the output area (the rectangle). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="12" Grid.Column="6">
+      <Rectangle.Fill>
+        <DrawingBrush Drawing="{StaticResource MyDrawing}">
+          <DrawingBrush.Transform>
+            <RotateTransform CenterX="87.5" CenterY="45" Angle="45" />
+          </DrawingBrush.Transform>
+        </DrawingBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Tiled DrawingBrush examples -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="14" Grid.Column="2">
+      <Rectangle.Fill>
+        <DrawingBrush Drawing="{StaticResource MyDrawing}" Viewport="0,0,0.5,0.5" TileMode="Tile" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's RelativeTransform property. The
+         RotateTransform's center is set to 0.5,0.5, which is the
+         center of the brush's content (in this case, a Drawing). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="14" Grid.Column="4">
+      <Rectangle.Fill>
+        <DrawingBrush Drawing="{StaticResource MyDrawing}" Viewport="0,0,0.5,0.5" TileMode="Tile">
+          <DrawingBrush.RelativeTransform>
+            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="45" />
+          </DrawingBrush.RelativeTransform>
+        </DrawingBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Applies a RotateTransform to the brush's Transform property. 
+         The RotateTransform's center is set to 87.5,45, which is
+         the center of the output area (the rectangle). -->
+    <Rectangle Width="175" Height="90" Stroke="Black" Grid.Row="14" Grid.Column="6">
+      <Rectangle.Fill>
+        <DrawingBrush Drawing="{StaticResource MyDrawing}" Viewport="0,0,0.5,0.5" TileMode="Tile">
+          <DrawingBrush.Transform>
+            <RotateTransform CenterX="87.5" CenterY="45" Angle="45" />
+          </DrawingBrush.Transform>
+        </DrawingBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Footer -->
+    <Rectangle Style="{StaticResource FooterRectangleStyle}" 
+      Margin="0,20,0,0" 
+      Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="7" 
+      Fill="{StaticResource BlueHorizontalGradientBrush}" />
+  </Grid>
+</Page>
+<!-- </Snippet11> -->

@@ -1,0 +1,355 @@
+<Window 
+  x:Class="CustomAnimation.CustomAnimationExample"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:customAnimations="clr-namespace:CustomAnimation"
+  Title="Custom Animations Sample"
+  Width="800"
+  Height="800">
+    
+    
+    <Grid ShowGridLines="False">
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="AliceBlue"/>
+                <Setter Property="Canvas.Left" Value="10"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition Height="105"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0">
+            <Button Name="linearButton" Canvas.Top="10">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Linear!
+            </Button>
+        </Canvas>
+        
+        <Canvas Grid.Row="1">
+            <TextBlock Canvas.Left="85" Canvas.Top="-16" FontSize="64" Foreground="LightGray">Accelerate / Decelerate</TextBlock>
+            <Button Name="accelButton" Canvas.Top="10">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Accelerate!
+            </Button>
+            <Button Name="decelButton" Canvas.Top="40">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Decelerate!
+            </Button>
+            <Button Name="accelDecelButton" Canvas.Top="70">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Both!
+            </Button>
+        </Canvas>
+        <Canvas Grid.Row="2">
+            <TextBlock Canvas.Left="85" Canvas.Top="-16" FontSize="108" Foreground="LightGray">Bounce!</TextBlock>
+            <Button Name="easeInButtonBounce" Canvas.Top="10">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Beginning!
+            </Button>
+            <Button Name="easeOutButtonBounce" Canvas.Top="40">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                End!
+            </Button>
+            <Button Name="easeInOutButtonBounce" Canvas.Top="70">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Both!
+            </Button>
+        </Canvas>
+        
+        <Canvas Grid.Row="3">
+            <TextBlock Canvas.Left="85" Canvas.Top="-16" FontSize="108" Foreground="LightGray">Elastic</TextBlock>
+            <Button Name="easeInButtonElastic" Canvas.Top="10">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Beginning!
+            </Button>
+            <Button Name="easeOutButtonElastic" Canvas.Top="40">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                End!
+            </Button>
+            <Button Name="easeInOutButtonElastic" Canvas.Top="70">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Both!
+            </Button>
+        </Canvas>
+        <Canvas Grid.Row="4">
+            <TextBlock Canvas.Left="85" Canvas.Top="-16" FontSize="108" Foreground="LightGray">Exponential</TextBlock>
+            <Button Name="easeInButtonExpo" Canvas.Top="10">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Beginning!
+            </Button>
+            <Button Name="easeOutButtonExpo" Canvas.Top="40">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                End!
+            </Button>
+            <Button Name="easeInOutButtonExpo" Canvas.Top="70">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Both!
+            </Button>
+        </Canvas>
+        <Canvas Grid.Row="5">
+            <TextBlock Canvas.Left="85" Canvas.Top="-16" FontSize="80" Foreground="LightGray">Circular Effects</TextBlock>
+            <Button Name="circleButton" Canvas.Top="10">
+                <Button.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Button.RenderTransform>
+                Circle 1!
+            </Button>
+            <Button Name="circleButton2" Canvas.Top="40">
+                <Button.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Button.RenderTransform>
+                Circle 2!
+            </Button>
+        </Canvas>
+        <Canvas Grid.Row="6">
+            <TextBlock Canvas.Left="85" Canvas.Top="-16" FontSize="108" Foreground="LightGray">Back</TextBlock>
+            <Button Name="easeInButtonBack" Canvas.Top="10">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Beginning!
+            </Button>
+            <Button Name="easeOutButtonBack" Canvas.Top="40">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                End!
+            </Button>
+            <Button Name="easeInOutButtonBack" Canvas.Top="70">
+              <Button.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+              </Button.RenderTransform>
+                Both!
+            </Button>
+        </Canvas>        
+        <Canvas Grid.Row="7">
+            <Button Name="goButton" Background="LightGreen" Canvas.Left="10" Canvas.Top="10">
+                Go!
+            </Button>
+        </Canvas>
+    </Grid>
+    
+    <Window.Resources>
+        
+        <Storyboard x:Key="LinearTimeline">
+          <DoubleAnimation From="0" To="500" Duration="0:0:5" Storyboard.TargetName="linearButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="AccelTimeline">
+          <DoubleAnimation From="0" To="500" AccelerationRatio="0.65" Duration="0:0:5" Storyboard.TargetName="accelButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="DecelTimeline">
+          <DoubleAnimation From="0" To="500" DecelerationRatio="0.65" Duration="0:0:5" Storyboard.TargetName="decelButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="AccelDecelTimeline">
+          <DoubleAnimation From="0" To="500" AccelerationRatio="0.325" DecelerationRatio="0.325" Duration="0:0:5" Storyboard.TargetName="accelDecelButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="BounceEaseInTimeline">
+          <customAnimations:BounceDoubleAnimation 
+              From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseIn" Storyboard.TargetName="easeInButtonBounce" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="BounceEaseOutTimeline">
+          <customAnimations:BounceDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseOut" Storyboard.TargetName="easeOutButtonBounce" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="BounceEaseInOutTimeline">
+          <customAnimations:BounceDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseInOut" Storyboard.TargetName="easeInOutButtonBounce" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="ElasticEaseInTimeline">
+          <customAnimations:ElasticDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseIn" Storyboard.TargetName="easeInButtonElastic" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="ElasticEaseOutTimeline">
+          <customAnimations:ElasticDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseOut" Storyboard.TargetName="easeOutButtonElastic" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="ElasticEaseInOutTimeline">
+          <customAnimations:ElasticDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseInOut" Storyboard.TargetName="easeInOutButtonElastic" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="ExpoEaseInTimeline">
+          <customAnimations:ExponentialDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseIn" Power="2" Storyboard.TargetName="easeInButtonExpo" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="ExpoEaseOutTimeline">
+          <customAnimations:ExponentialDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseOut" Power="4" Storyboard.TargetName="easeOutButtonExpo" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="ExpoEaseInOutTimeline">
+          <customAnimations:ExponentialDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseInOut" Power="6" Storyboard.TargetName="easeInOutButtonExpo" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="BackEaseInTimeline">
+          <customAnimations:BackDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseIn" Amplitude="1" Suppression="3" Storyboard.TargetName="easeInButtonBack" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="BackEaseOutTimeline">
+          <customAnimations:BackDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseOut" Amplitude="2" Suppression="5" Storyboard.TargetName="easeOutButtonBack" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="BackEaseInOutTimeline">
+          <customAnimations:BackDoubleAnimation From="0" To="500" Duration="0:0:5" EdgeBehavior="EaseInOut" Amplitude="3" Suppression="0.5" Storyboard.TargetName="easeInOutButtonBack" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="CircleTimeline">
+          <DoubleAnimation Duration="0:0:5" From="0" To="500" Storyboard.TargetName="circleButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+          <DoubleAnimation Duration="0:0:1.5" From="0" Storyboard.TargetName="circleButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"/>
+          <ParallelTimeline BeginTime="0:0:0" Duration="0:0:4.5">
+            <customAnimations:CircleAnimation RepeatBehavior="Forever" Duration="0:0:1" Radius="40" Direction="YDirection" Storyboard.TargetName="circleButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"/>
+            <customAnimations:CircleAnimation RepeatBehavior="Forever" Duration="0:0:1" Radius="40" Direction="XDirection" Storyboard.TargetName="circleButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+          </ParallelTimeline>
+          <ParallelTimeline BeginTime="0:0:4.5">
+            <DoubleAnimation To="500" Duration="0:0:0.5" Storyboard.TargetName="circleButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+            <DoubleAnimation To="0.0" Duration="0:0:0.5" Storyboard.TargetName="circleButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"/>
+          </ParallelTimeline>
+
+        </Storyboard>
+
+        <Storyboard x:Key="CircleTimeline2">
+          <DoubleAnimation Duration="0:0:1.5" From="0" To="290" Storyboard.TargetName="circleButton2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+          <DoubleAnimation Duration="0:0:1.5" From="0" Storyboard.TargetName="circleButton2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"/>
+          <ParallelTimeline BeginTime="0:0:1.5" Duration="0:0:2">
+            <customAnimations:CircleAnimation RepeatBehavior="Forever" Duration="0:0:0.25" Radius="40" Direction="YDirection" Storyboard.TargetName="circleButton2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"/>
+            <customAnimations:CircleAnimation RepeatBehavior="Forever" Duration="0:0:0.25" Radius="40" Direction="XDirection" Storyboard.TargetName="circleButton2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+          </ParallelTimeline>
+          <ParallelTimeline BeginTime="0:0:3.5">
+            <DoubleAnimation To="500" Duration="0:0:1.5" Storyboard.TargetName="circleButton2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"/>
+            <DoubleAnimation To="0.0" Duration="0:0:0.5" Storyboard.TargetName="circleButton2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"/>
+          </ParallelTimeline>
+        </Storyboard>
+
+      </Window.Resources>
+
+      <Window.Triggers>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="goButton">
+          <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource AccelTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource DecelTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource AccelDecelTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseInTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseInOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ElasticEaseInTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ElasticEaseOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ElasticEaseInOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ExpoEaseInTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ExpoEaseOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ExpoEaseInOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BackEaseInTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BackEaseOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BackEaseInOutTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource CircleTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource CircleTimeline2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="linearButton">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="accelButton">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource AccelTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="decelButton">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource DecelTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="accelDecelButton">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource AccelDecelTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInButtonBounce">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseInTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeOutButtonBounce">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInOutButtonBounce">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseInOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInButtonElastic">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ElasticEaseInTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeOutButtonElastic">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ElasticEaseOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInOutButtonElastic">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ElasticEaseInOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInButtonExpo">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ExpoEaseInTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeOutButtonExpo">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ExpoEaseOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInOutButtonExpo">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource ExpoEaseInOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInButtonBack">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BackEaseInTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeOutButtonBack">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BackEaseOutTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="easeInOutButtonBack">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource BackEaseInOutTimeline}"/>
+        </EventTrigger>        
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="circleButton">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource CircleTimeline}"/>
+        </EventTrigger>        
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="circleButton2">
+            <BeginStoryboard Storyboard="{StaticResource LinearTimeline}"/>
+            <BeginStoryboard Storyboard="{StaticResource CircleTimeline2}"/>
+        </EventTrigger>                
+    </Window.Triggers>
+</Window>

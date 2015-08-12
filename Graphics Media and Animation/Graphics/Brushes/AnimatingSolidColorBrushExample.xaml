@@ -1,0 +1,141 @@
+<!-- AnimatingSolidColorBrushExample.xaml 
+     This example shows some of the different ways you can animate a SolidColorBrush. -->
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  WindowTitle="Animating a SolidColorBrush">
+
+  <DockPanel>
+    <Border Background="#996666CC"
+      Margin="10" DockPanel.Dock="Top">
+      <TextBlock Style="{StaticResource MyIntroTextBlockStyle}">
+        The SolidColorBrush objects used to paint these rectangles
+        have been animated in different ways. The first SolidColorBrush has an
+        animated Color property. The second has an animated Opacity property.
+        The Color property of the third SolidColorBrush is animated with a single
+        ColorAnimation so that its red, green, blue, and alpha values change.
+      </TextBlock>
+    </Border>
+    
+    <Rectangle 
+      Style="{StaticResource FooterRectangleStyle}" 
+      DockPanel.Dock="Bottom" Fill="#996666CC"  Margin="10" />
+
+    <Grid Margin="10">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+
+      <!-- Creates a checkered background for the animation examples. -->
+      <Rectangle Style="{StaticResource CheckeredRectangleStyle}" 
+        Stroke="#9999FF" RadiusX="10" RadiusY="10" Grid.Row="1" 
+        Grid.Column="0" Grid.ColumnSpan="5"/>
+
+      <Label HorizontalAlignment="Center">Animated Color Property</Label>
+
+      <!-- The Color property of the SolidColorBrush used to fill this rectangle is animated. -->
+      <Rectangle 
+        Width="100" Height="50" Stroke="Black" StrokeThickness="1"
+        Margin="10" HorizontalAlignment="Center"
+        Grid.Column="0" Grid.Row="1">
+        <Rectangle.Fill>
+          <SolidColorBrush x:Name="solidColorBrush1" Color="Blue" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Button Grid.Column="0" Grid.Row="2"
+        HorizontalAlignment="Center">
+        Start Animation
+        <Button.Triggers>
+          <EventTrigger RoutedEvent="Button.Click">
+            <BeginStoryboard>
+              <Storyboard>
+                
+                <!-- Animates the color of a SolidColorBrush from blue to red over 10 seconds. -->
+                <ColorAnimation Storyboard.TargetName="solidColorBrush1"
+                  Storyboard.TargetProperty="Color"
+                  From="Blue" To="Red" Duration="0:0:10" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Button.Triggers>
+      </Button>
+
+      <Label Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">Animated Opacity Property</Label>
+
+      <!-- The Opacity property of this rectangle's SolidColorBrush is animated. -->
+      <Rectangle 
+        Width="100" Height="50" Stroke="Black" StrokeThickness="1"
+        Grid.Column="2" Grid.Row="1"
+        HorizontalAlignment="Center" Margin="10">
+        <Rectangle.Fill>
+          <SolidColorBrush x:Name="solidColorBrush2" Color="Blue" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Button Grid.Column="2" Grid.Row="2"
+        HorizontalAlignment="Center">
+        Start Animation
+        <Button.Triggers>
+          <EventTrigger RoutedEvent="Button.Click">
+            <BeginStoryboard>
+              <Storyboard>
+                
+                <!-- Animates the opacity of a SolidColorBrush from 1 to 0 over 10 seconds. -->
+                <DoubleAnimation Storyboard.TargetName="solidColorBrush2"
+                  Storyboard.TargetProperty="Opacity"
+                  From="1.0" To="0.0" Duration="0:0:10" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Button.Triggers>
+      </Button>
+
+      <Label Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center">Animated Color Property</Label>
+      <!-- The Color property of this rectangle's SolidColorBrush is animated. -->
+      <Rectangle
+        Width="100" Height="50" Stroke="Black" StrokeThickness="1"
+        Grid.Column="4" Grid.Row="1"
+        HorizontalAlignment="Center" Margin="10">
+        <Rectangle.Fill>
+          <SolidColorBrush x:Name="solidColorBrush3" Color="Blue" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Button Grid.Column="4" Grid.Row="2"
+        HorizontalAlignment="Center">
+        Start Animation
+        <Button.Triggers>
+          <EventTrigger RoutedEvent="Button.Click">
+            <BeginStoryboard>
+              <Storyboard>
+
+                <!-- Animates both the opacity and color of a SolidColorBrush's color by specifying the destination color's 
+                     alpha values. The resulting animation transitions from fully-opaque blue to completely transparent
+                     red over a duration of 10 seconds. -->
+                <ColorAnimation Storyboard.TargetName="solidColorBrush3"
+                  Storyboard.TargetProperty="Color"
+                  From="Blue" To="#00FF0000" Duration="0:0:10" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Button.Triggers>
+      </Button>
+
+    </Grid>
+
+  </DockPanel>
+
+</Page>

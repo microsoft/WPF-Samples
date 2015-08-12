@@ -1,0 +1,95 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              ColumnWidth="220pt" ColumnGap="20pt" PagePadding="20pt">
+
+  <FlowDocument.Background>
+  <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+    <LinearGradientBrush.GradientStops>
+    <GradientStopCollection>
+      <GradientStop Offset="0" Color="#fff" />
+      <GradientStop Offset="1" Color="#3880" />
+    </GradientStopCollection>
+    </LinearGradientBrush.GradientStops>
+  </LinearGradientBrush>
+  </FlowDocument.Background>
+    <FlowDocument.Resources>
+      <Style TargetType="{x:Type Paragraph}">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="TextIndent" Value="12pt" />
+        <Setter Property="FontSize" Value="12pt" />
+        <Setter Property="LineHeight" Value="14pt" />
+        <Setter Property="FontFamily" Value="Candara, Verdana" />
+        <Setter Property="TextAlignment" Value="Justify" />
+      </Style>
+
+      <Style x:Key="FirstParagraph" TargetType="{x:Type Paragraph}" BasedOn="{StaticResource {x:Type Paragraph}}">
+        <Setter Property="TextIndent" Value="0" />
+      </Style>
+
+      <Style x:Key="Heading" TargetType="{x:Type Paragraph}">
+        <Setter Property="FontSize" Value="20pt" />
+        <Setter Property="FontFamily" Value="Cambria, Georgia" />
+        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="Foreground" Value="#840" />
+        <Setter Property="KeepWithNext" Value="True" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="LineHeight" Value="Auto" />
+      </Style>
+
+      <Style x:Key="Title" TargetType="{x:Type Paragraph}" BasedOn="{StaticResource Heading}">
+        <Setter Property="FontSize" Value="30pt" />
+        <Setter Property="Margin" Value="0, 10" />
+      </Style>
+    </FlowDocument.Resources>
+
+
+    <Paragraph Style="{StaticResource FirstParagraph}">
+      <Figure Margin="0" Padding="0" Width="Content" VerticalAnchor="ContentTop" HorizontalAnchor="ContentLeft">
+        <Paragraph Style="{StaticResource Title}">Cocoa &amp; Chocolate</Paragraph>
+      </Figure>The term &#8220;Cocoa,&#8221; a corruption of &#8220;Cacao,&#8221; is almost universally used in English-speaking countries to designate the seeds of the small tropical tree known to botanists as THEOBROMA CACAO, from which a great variety of preparations under the name of cocoa and chocolate for eating and drinking are made. The name &#8220;Chocolatl&#8221; is nearly the same in most European languages, and is taken from the Mexican name of the drink, &#8220;Chocolate&#8221; or &#8220;Cacahuatl.&#8221; The Spaniards found chocolate in common use among the Mexicans at the time of the invasion under Cortez in 1519, and it was introduced into Spain immediately after. The Mexicans not only used chocolate as a staple article of food, but they used the seeds of the cacao tree as a medium of exchange.
+    </Paragraph>
+    <Paragraph>
+      <Figure Margin="0,0,10,0" Padding="0" Width="1.2Column" VerticalAnchor="ContentBottom" HorizontalAnchor="ContentLeft">
+        <BlockUIContainer>
+          <Image Source="Images/chocolate.png" />
+        </BlockUIContainer>
+      </Figure>No better evidence could be offered of the great advance which has been made in recent years in the knowledge of dietetics than the remarkable increase in the consumption of cocoa and chocolate in this country. The amount retained for home consumption in 1860 was only 1,181,054 pounds—about 3-5 of an ounce for each inhabitant. The amount retained for home consumption for the year ending Dec. 31, 1908, was 93,956,721 pounds—over 16 ounces for each inhabitant.
+    </Paragraph>
+    <Paragraph>Although there was a marked increase in the consumption of tea and coffee during the same period, the ratio of increase fell far below that of cocoa. It is evident that the coming American is going to be less of a tea and coffee drinker, and more of a cocoa and chocolate drinker. This is the natural result of a better knowledge of the laws of health, and of the food value of a beverage which nourishes the body while it also stimulates the brain.</Paragraph>
+    <Paragraph>Baron von Liebig, one of the best-known writers on dietetics, says:</Paragraph>
+    <Paragraph>&#8220;It is a perfect food, as wholesome as delicious, a beneficient restorer of exhausted power; but its quality must be good and it must be carefully prepared. It is highly nourishing and easily digested, and is fitted to repair wasted strength, preserve health, and prolong life. It agrees with dry temperaments and convalescents; with mothers who nurse their children; with those whose occupations oblige them to undergo severe mental strains; with public speakers, and with all those who give to work a portion of the time needed for sleep. It soothes both stomach and brain, and for this reason, as well as for others, it is the best friend of those engaged in literary pursuits.&#8221;</Paragraph>
+    <Paragraph>M. Brillat-Savarin, in his entertaining and valuable work, Physiologie du Goût, says: &#8220;Chocolate came over the mountains [from Spain to France] with Anne of Austria, daughter of Philip III and queen of Louis XIII. The Spanish monks also spread the knowledge of it by the presents they made to their brothers in France. It is well known that Linnæus called the fruit of the cocoa tree theobroma, &#8220;food for the gods.&#8221; The cause of this emphatic qualification has been sought, and attributed by some to the fact that he was extravagantly fond of chocolate; by others to his desire to please his confessor; and by others to his gallantry, a queen having first introduced it into France.</Paragraph>
+    <Paragraph Style="{StaticResource Heading}">
+      <Figure Margin="0" Padding="0" VerticalAnchor="ContentTop">
+        <BlockUIContainer>
+          <Grid>
+            <Image Source="Images/truffle.png" />
+            <TextBlock FontFamily="Cambria, Georgia" FontSize="20" Foreground="#880" Width="150" VerticalAlignment="Bottom" Margin="20" FontStyle="Italic" HorizontalAlignment="Right" TextWrapping="Wrap">It soothes both stomach and brain</TextBlock>
+          </Grid>
+        </BlockUIContainer>
+      </Figure> The New World</Paragraph>
+    <Paragraph Style="{StaticResource FirstParagraph}">&#8220;The Spanish ladies of the New World, it is said, carried their love for chocolate to such a degree that, not content with partaking of it several times a day, they had it sometimes carried after them to church. This favoring of the senses often drew upon them the censures of the bishop; but the Reverend Father Escobar, whose metaphysics were as subtle as his morality was accommodating, declared, formally, that a fast was not broken by chocolate prepared with water; thus wire-drawing, in favor of his penitents, the ancient adage, &#8220;Liquidum non frangit jejunium.&#8221;</Paragraph>
+    <Paragraph>&#8220;Time and experience,&#8221; he says further, &#8220;have shown that chocolate, carefully prepared, is an article of food as wholesome as it is agreeable; that it is nourishing, easy of digestion, and does not possess those qualities injurious to beauty with which coffee has been reproached; that it is excellently adapted to persons who are obliged to a great concentration of intellect; in the toils of the pulpit or the bar, and especially to travellers; that it suits the most feeble stomach; that excellent effects have been produced by it in chronic complaints, and that it is a last resource in affections of the pylorus.</Paragraph>
+    <Paragraph>&#8220;Some persons complain of being unable to digest chocolate; others, on the contrary, pretend that it has not sufficient nourishment, and that the effect disappears too soon. It is probable that the former have only themselves to blame, and that the chocolate which they use is of bad quality or badly made; for good and well-made chocolate must suit every stomach which retains the slightest digestive power.</Paragraph>
+    <Paragraph>&#8220;In regard to the others, the remedy is an easy one: they should reinforce their breakfast with a pâté, a cutlet, or a kidney, moisten the whole with a good draught of soconusco chocolate, and be thankful for a stomach of such superior activity.</Paragraph>
+    <Paragraph>&#8220;This gives me an opportunity to make an observation whose accuracy may be depended upon.</Paragraph>
+    <Paragraph Style="{StaticResource Heading}">Digestion</Paragraph>
+    <Paragraph Style="{StaticResource FirstParagraph}">&#8220;After a good, complete, and copious breakfast, if we take, in addition, a cup of well-made chocolate, digestion will be perfectly accomplished in three hours, and we may dine whenever we like. Out of zeal for science, and by dint of eloquence, I have induced many ladies to try this experiment. They all declared, in the beginning, that it would do them in; but they have all thriven on it and have not failed to glorify their teacher.</Paragraph>
+    <Paragraph>&#8220;The people who make constant use of chocolate are the ones who enjoy the most steady health, and are the least subject to a multitude of little ailments which destroy the comfort of life; their plumpness is also more equal. These are two advantages which every one may verify among his own friends, and wherever the practice is in use.&#8221;</Paragraph>
+    <Paragraph>In corroboration of M. Brillat-Savarin's statement as to the value of chocolate as an aid to digestion, we may quote from one of Mme. de Sévigné's letters to her daughter:</Paragraph>
+    <Paragraph>&#8220;I took chocolate night before last to digest my dinner, in order to have a good supper. I took some yesterday for nourishment, so as to be able to fast until night. What I consider amusing about chocolate is that it acts according to the wishes of the one who takes it.&#8221;</Paragraph>
+    <Paragraph>Chocolate appears to have been highly valued as a remedial agent by the leading physicians of that day. Christoph Ludwig Hoffman wrote a treatise entitled, &#8220;Potus Chocolate,&#8221; in which he recommended it in many diseases, and instanced the case of Cardinal Richelieu, who, he stated, was cured of general atrophy by its use.</Paragraph>
+    <Paragraph>A French officer who served in the West Indies for a period of fifteen years, during the early part of the last century, wrote, as the result of his personal observations, a treatise on &#8220;The Natural History of Chocolate, Being a distinct and Particular Account of the Cacao Tree, its Growth and Culture, and the Preparation, Excellent Properties, and Medicinal Virtues of its Fruit,&#8221; which received the approbation of the Regent of the Faculty of Medicine at Paris, and which was translated and published in London, in 1730. After describing the different methods of raising and curing the fruit and preparing it for food (which it is not worth while to reproduce here, as the methods have essentially changed since that time), he goes on to demonstrate, as the result of actual experiment, that chocolate is a substance &#8220;very temperate, very nourishing, and of easy digestion; very proper to repair the exhausted spirits and decayed strength; and very suitable to preserve the health and prolong the lives of old men....</Paragraph>
+    <Paragraph>&#8220;I could produce several instances,&#8221; he says, &#8220;in favor of this excellent nourishment; but I shall content myself with two only, equally certain and decisive, in proof of its goodness. The first is an experiment of chocolate's being taken for the only nourishment—made by a surgeon's wife of Martinico. She had lost, by a very deplorable accident, her lower jaw, which reduced her to such a condition that she did not know how to subsist. She was not capable of taking anything solid, and not rich enough to live upon jellies and nourishing broths. In this strait she determined to take three dishes of chocolate, prepared after the manner of the country, one in the morning, one at noon, and one at night. There chocolate is nothing else but cocoa kernels dissolved in hot water, with sugar, and seasoned with a bit of cinnamon. This new way of life succeeded so well that she has lived a long while since, more lively and robust than before this accident.</Paragraph>
+    <Paragraph>&#8220;I had the second relation from a gentleman of Martinico, and one of my friends not capable of a falsity. He assured me that in his neighborhood an infant of four months old unfortunately lost his nurse, and its parents not being able to put it to another, resolved, through necessity, to feed it with chocolate. The success was very happy, for the infant came on to a miracle, and was neither less healthy nor less vigorous than those who are brought up by the best nurses.</Paragraph>
+    <Paragraph>&#8220;Before chocolate was known in Europe, good old wine was called the milk of old men; but this title is now applied with greater reason to chocolate, since its use has become so common that it has been perceived that chocolate is, with respect to them, what milk is to infants. In reality, if one examines the nature of chocolate a little, with respect to the constitution of aged persons, it seems as though the one was made on purpose to remedy the defects of the other, and that it is truly the panacea of old age.&#8221;</Paragraph>
+    <Paragraph Style="{StaticResource Heading}">The Trinity of Liquids</Paragraph>
+    <Paragraph Style="{StaticResource FirstParagraph}">The three associated beverages, cocoa, tea, and coffee are known to the French as aromatic drinks. Each of these has its characteristic aroma. The fragrance and flavor are so marked that they cannot be imitated by any artificial products, although numerous attempts have been made in regard to all three. Hence the detection of adulteration is not a difficult matter. Designing persons, aware of the extreme difficulty of imitating these substances, have undertaken to employ lower grades, and, by manipulation, copy, as far as may be, the higher sorts. Every one knows how readily tea, and coffee, for that matter, will take up odors and flavors from substances placed near them. This is abundantly exemplified in the country grocery or general store, where the teas and coffees share in the pervasive fragrance of the cheese and kerosene. But perhaps it is not so widely understood that some of these very teas and coffees had been artificially flavored or corrected before they reached their destination in this country.</Paragraph>
+    <Paragraph>Cacao lends itself very readily to such preliminary treatment. In a first-class article, the beans should be of the highest excellence; they should be carefully grown on the plantation and there prepared with great skill, arriving in the factory in good condition. In the factory they should simply receive the mechanical treatment requisite to develop their high and attractive natural flavor and fragrance. They should be most carefully shelled after roasting and finely ground without concealed additions. This is the process in all honest manufactories of the cacao products.</Paragraph>
+    <Paragraph>Now, as a matter of fact, in the preparation of many of the cacao products on the market, a wholly different course has been pursued. Beans of poor quality are used, because of their cheapness, and in some instances they are only imperfectly, if at all, shelled before grinding. Chemical treatment is relied on to correct in part the odor and taste of such inferior goods, and artificial flavors, other than the time-honored natural vanilla and the like, are added freely. The detection of such imposition is easy enough to the expert, but is difficult to the novice; therefore the public is largely unable to discriminate between the good and the inferior, and it is perforce compelled to depend almost entirely on the character and reputation of the manufacturer.</Paragraph>
+    <Paragraph>A distinguished London Physician, in giving some hints concerning the proper preparation of cocoa, says:</Paragraph>
+    <Paragraph>&#8220;Start with a pure cocoa of undoubted quality and excellence of manufacture, and which bears the name of a respectable firm. This point is important, for there are many cocoas on the market which have been doctored by the addition of alkali, starch, malt, kola, hops, etc.&#8221;</Paragraph>
+    <Paragraph>Baker's Breakfast Cocoa is absolutely pure, and, being ground to an extraordinary degree of fineness, is highly soluble. The analyst of the Massachusetts State Board of Health states in his recent valuable work on &#8220;Food Inspection and Analysis,&#8221; that the treatment of cocoa with alkali for the purpose of producing a more perfect emulsion is objectionable, even if not considered as a form of adulteration. Cocoa thus treated is generally darker in color than the pure article. The legitimate means, he says, for making it as soluble as possible is to pulverize it very fine, so that particles remain in even suspension and form a smooth paste.</Paragraph>
+    <Paragraph>That is the way the Baker Cocoa is treated. It has received the Grand Prize—the highest award ever given in this country, and altogether 52 highest awards in Europe and America.</Paragraph>
+</FlowDocument>

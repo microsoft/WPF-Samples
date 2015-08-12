@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!-- Demonstrates the use of DrawingBrush. -->
+<Window  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="DrawingBrush.SampleViewer" 
+  Title="Drawing Brush Examples"
+  Background="LightGray">
+
+  <Window.Triggers>
+    <EventTrigger RoutedEvent="Page.Loaded">
+      <BeginStoryboard Name="backgroundAnimationsBeginStoryboard">
+        <Storyboard >
+          <ColorAnimation 
+            Storyboard.TargetName="mainPanel"
+            Storyboard.TargetProperty="(DockPanel.Background).(DrawingBrush.Drawing).(DrawingGroup.Children)[0].(GeometryDrawing.Brush).(SolidColorBrush.Color)"
+            From="LightGray" To="DarkGray" Duration="0:0:50" RepeatBehavior="Forever" 
+            AutoReverse="True"/>
+          <DoubleAnimation 
+            Storyboard.TargetName="mainPanel"
+            Storyboard.TargetProperty="(DockPanel.Background).(DrawingBrush.Transform).(RotateTransform.Angle)"
+            From="0" To="360" Duration="0:5:00" RepeatBehavior="Forever" 
+            AutoReverse="True"/>   
+          <DoubleAnimation 
+            Storyboard.TargetName="mainPanel"
+            Storyboard.TargetProperty="(DockPanel.Background).(DrawingBrush.Drawing).(DrawingGroup.Children)[1].(GeometryDrawing.Geometry).(EllipseGeometry.RadiusX)"
+            From="0.1" To="0.25" Duration="0:0:5" RepeatBehavior="Forever" 
+            AutoReverse="True"/> 
+          <PointAnimation 
+            Storyboard.TargetName="mainPanel"
+            Storyboard.TargetProperty="(DockPanel.Background).(DrawingBrush.Drawing).(DrawingGroup.Children)[2].(GeometryDrawing.Geometry).(EllipseGeometry.Center)"
+            From="-0.25, -0.25" To="1.25,1.25" Duration="0:0:10" RepeatBehavior="Forever" 
+            AutoReverse="True"/>  
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+    <EventTrigger SourceName="disableAnimationsRadioButton" RoutedEvent="RadioButton.Unchecked">
+      <ResumeStoryboard BeginStoryboardName="backgroundAnimationsBeginStoryboard" />
+    </EventTrigger>       
+    <EventTrigger SourceName="disableAnimationsRadioButton" RoutedEvent="RadioButton.Checked">
+      <PauseStoryboard BeginStoryboardName="backgroundAnimationsBeginStoryboard" />
+    </EventTrigger>    
+  </Window.Triggers>
+  <DockPanel Name="mainPanel">
+    <DockPanel.Background>
+    
+      <DrawingBrush TileMode="Tile"
+        Viewport="0,0,100,100" ViewportUnits="Absolute">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup.Children>            
+            
+              <GeometryDrawing>
+                <GeometryDrawing.Geometry>
+                  <RectangleGeometry Rect="0,0,1,1" />
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Brush>
+                  <SolidColorBrush Color="LightGray" />
+                </GeometryDrawing.Brush>
+                 <GeometryDrawing.Pen>
+                  <Pen Thickness="0.01" Brush="DarkGray" />
+                </GeometryDrawing.Pen>               
+              </GeometryDrawing>
+              
+              <GeometryDrawing Brush="#99CCCCCC">
+                <GeometryDrawing.Geometry>
+                  <EllipseGeometry Center="0.75,0.5" RadiusX="0.25" RadiusY="0.25" />
+                </GeometryDrawing.Geometry>
+              </GeometryDrawing>       
+              <GeometryDrawing Brush="#66CCCCCC">
+                <GeometryDrawing.Geometry>
+                  <EllipseGeometry Center="0.25,0.25" RadiusX="0.1" RadiusY="0.1" />
+                </GeometryDrawing.Geometry>
+              </GeometryDrawing>                
+            </DrawingGroup.Children>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+        <DrawingBrush.Transform>
+          <RotateTransform CenterX="0.5" CenterY="0.5" />
+        </DrawingBrush.Transform>
+      </DrawingBrush>
+    </DockPanel.Background>     
+    
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="File">
+        <MenuItem Header="Exit" Click="ExitApplication" />
+      </MenuItem> 
+      <MenuItem Header="Options">
+        <MenuItem Header="Background Animation">
+          <RadioButton IsChecked="True">On
+          </RadioButton>
+          <RadioButton Name="disableAnimationsRadioButton">Off</RadioButton>
+        </MenuItem>
+      </MenuItem>
+    </Menu>
+    
+    <Border DockPanel.Dock="Left">
+      <StackPanel Margin="10">
+
+        <RadioButton Style="{StaticResource SampleSelectorRadioButtonStyle}"
+          Checked="SampleSelected"
+          Margin="0,0,0,10">Using DrawingBrush Example</RadioButton>
+        <RadioButton Style="{StaticResource SampleSelectorRadioButtonStyle}"
+          Checked="SampleSelected"
+          Margin="0,0,0,10">Transform Example</RadioButton>
+        <RadioButton Style="{StaticResource SampleSelectorRadioButtonStyle}"
+          Checked="SampleSelected"
+          Margin="0,0,0,10">ImageDrawing Example</RadioButton>
+        <RadioButton Style="{StaticResource SampleSelectorRadioButtonStyle}"
+          Checked="SampleSelected">Animate GeometryDrawing Example</RadioButton>
+
+      </StackPanel>
+    </Border>
+    
+      
+    <Frame Name="mainFrame" Background="#AAFFFFFF" />
+  </DockPanel>
+</Window>

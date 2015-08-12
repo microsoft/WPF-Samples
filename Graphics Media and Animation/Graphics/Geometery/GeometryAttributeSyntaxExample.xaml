@@ -1,0 +1,88 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Geometery.GeometryAttributeSyntaxExample"
+  WindowTitle="Geometry Attribute Syntax Examples">
+
+  <Page.Resources>
+    <Style TargetType="{x:Type Border}">
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="Margin" Value="0,0,0,20" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}">
+      <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+  </Page.Resources>
+
+  
+  <Border Background="White" HorizontalAlignment="Stretch">
+    <StackPanel Margin="10" Orientation="Vertical">
+      
+      <!-- Lines -->
+
+      <TextBlock>Line</TextBlock>
+      <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,50 L 200,70</TextBlock>
+      <Border Height="100" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+        
+        <Path Stroke="Black" StrokeThickness="1"  
+          Data="M 10,50 L 200,70" />
+      </Border>
+        
+      <TextBlock>Horizontal Line</TextBlock>
+      <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,50 H 200</TextBlock>
+      <Border Height="100" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+        <Path Stroke="Black" StrokeThickness="1"  Data="M 10,50 H 200" />
+      </Border>
+        
+        <TextBlock>Vertical Line</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,50 V 200</TextBlock>
+        <Border Height="210" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Data="M 10,50 V 200" />
+        </Border>
+
+      
+      <!-- Curves and Arcs -->
+        <TextBlock>Cubic Bezier Curve</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,100 C 100,0 200,200 300,100</TextBlock>
+        <Border Height="200" Width="310" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1"  
+            Data="M 10,100 C 100,0 200,200 300,100" />
+        </Border>
+        
+        <TextBlock>Quadratic Bezier Curve</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,100 Q 200,200 300,100</TextBlock>
+        <Border Height="200" Width="310" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" 
+            Data="M 10,100 Q 200,200 300,100" />
+        </Border>
+        
+        <TextBlock>Smooth Bezier Curve</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,100 C35,0 135,0 160,100 S285,200 310,100</TextBlock>
+        <Border Height="200" Width="320" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Data="M 10,100 C35,0 135,0 160,100 S285,200 310,100" />
+        </Border>   
+        
+        <TextBlock>Elliptical Arc</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,100 A 100,50 45 1 0 200,100</TextBlock>
+        <Border Height="300" Width="310" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1"  
+            Data="M 10,100 A 100,50 45 1 0 200,100" />
+        </Border>
+
+      
+
+        <TextBlock>Close Path Command</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,100 L 100,100 100,50 Z</TextBlock>
+        <Border Height="200" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Data="M 10,100 L 100,100 100,50 Z" />
+        </Border>
+        
+        <TextBlock>Multiple Subpaths</TextBlock>
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}">M 10,100 L 100,100 100,50 Z M 10,10 100,10 100,40 Z</TextBlock>
+        <Border Height="200" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" 
+            Data="M 10,100 L 100,100 100,50 Z M 10,10 100,10 100,40 Z" />
+        </Border>        
+
+    </StackPanel>
+  </Border>
+</Page>

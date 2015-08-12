@@ -1,0 +1,62 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="600" Margin="0,10,0,0">
+      <TextBlock>
+        This example shows a EmbossBitmapEffect applied to an Image. An EmbossBitmapEffect creates a bump
+        mapping of the visual object to give the impression of depth and texture from an artificial light source.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Margin="0,20,20,0" Orientation="Horizontal">
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">No BitMapEffect</TextBlock>
+        <Image Width="300" Source="/images/WaterLilies.jpg" Margin="5" />
+        </StackPanel>
+
+      <StackPanel Margin="0,20,20,20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">With EmbossBitMapEffect</TextBlock>
+        <Image Width="300" Source="/images/WaterLilies.jpg" Margin="5" >
+          <Image.BitmapEffect>
+            
+            <!-- The Relief property determines the amount of relief of the emboss.
+               The valid range of values is 0-1 with 0 having the least relief and
+               1 having the most. The default value is 0.44. The LightAngle determines 
+               from what direction the artificial light is cast upon the embossed 
+               object which effects shadowing. The valid range is from 0-360 (degrees)
+               with 0 specifying the right-hand side of the object and successive values  
+               moving counter-clockwise around the object. -->
+            <EmbossBitmapEffect Relief="0.8" LightAngle="320" />
+          </Image.BitmapEffect>
+        </Image>
+      </StackPanel>
+    </StackPanel>
+    <!-- Displays functional code for demonstration. -->
+    <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="600">
+
+      <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;Image Width="300" Source="/images/WaterLilies.jpg" Margin="5"&gt;
+          &lt;Image.BitmapEffect&gt;
+            <Bold Foreground="Green">
+            &lt;!-- The Relief property determines the amount of relief of the emboss.
+               The valid range of values is 0-1 with 0 having the least relief and
+               1 having the most. The default value is 0.44. The LightAngle determines 
+               from what direction the artificial light is cast upon the embossed 
+               object which effects shadowing. The valid range is from 0-360 (degrees)
+               with 0 specifying the right-hand side of the object and successive values  
+               moving counter-clockwise around the object. --></Bold>
+            &lt;EmbossBitmapEffect Relief="0.8" LightAngle="320" /&gt;
+          &lt;/Image.BitmapEffect&gt;
+        &lt;/Image&gt;
+      ...
+      </TextBlock>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

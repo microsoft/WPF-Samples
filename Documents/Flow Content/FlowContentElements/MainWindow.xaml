@@ -1,0 +1,144 @@
+﻿<Window x:Class="FlowContentElements.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlowContentElements"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <FlowDocument 
+    FontFamily="Palatino Linotype"
+    FontSize="10"
+    FontStyle="Normal"
+    FontWeight="Normal"
+  	Background="Azure"
+    Foreground="Black"
+    ColumnGap="5"
+    ColumnWidth="300"
+    ColumnRuleWidth="15"
+    ColumnRuleBrush="LightGray"
+    IsColumnWidthFlexible="True"    
+    FlowDirection="LeftToRight"
+    LineHeight="12"
+    MaxPageHeight="1000"
+    MaxPageWidth="1000"
+    MinPageHeight="400"
+    MinPageWidth="400"
+    PageHeight="700"
+    PageWidth="700"
+    PagePadding="5,10,5,10"
+    TextAlignment="Left"
+>
+
+        <Paragraph FontSize="18">Flow format Example</Paragraph>
+        <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+ laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+ lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure.
+            <LineBreak/>
+        </Paragraph>
+        <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+ laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+ lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure.
+            <LineBreak/>
+        </Paragraph>
+        <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+ laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+ lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure.
+            <LineBreak/>
+        </Paragraph>
+        <Paragraph>
+            <LineBreak/>
+        </Paragraph>
+        <Paragraph FontSize="18">More flow elements</Paragraph>
+
+        <Paragraph FontSize="15">Inline, font type and weight, and a List</Paragraph>
+
+        <List>
+            <ListItem>
+                <Paragraph>ListItem 1</Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>ListItem 2</Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>ListItem 3</Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>ListItem 4</Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>ListItem 5</Paragraph>
+            </ListItem>
+        </List>
+
+        <Paragraph>
+            <Bold>Bolded</Bold>
+        </Paragraph>
+        <Paragraph>
+            <Underline>Underlined</Underline>
+        </Paragraph>
+        <Paragraph>
+            <Bold>
+                <Underline>Bolded and Underlined</Underline>
+            </Bold>
+        </Paragraph>
+        <Paragraph>
+            <Italic>Italic</Italic>
+        </Paragraph>
+        <Paragraph>
+            <Span>The Span element, no inherent rendering</Span>
+        </Paragraph>
+        <Paragraph>
+            <Run>The Run element, no inherent rendering</Run>
+        </Paragraph>
+
+        <Paragraph>
+            <LineBreak/>
+        </Paragraph>
+
+        <Paragraph FontSize="15">Subscript, Superscript</Paragraph>
+        <Paragraph>
+            <Run Typography.Variants="Superscript">This text is Superscripted.</Run> This text isn't.
+        </Paragraph>
+        <Paragraph>
+            <Run Typography.Variants="Subscript">This text is Subscripted.</Run> This text isn't.
+        </Paragraph>
+        <Paragraph>If a font does not support a particular form (such as Superscript) a default font form
+            will be displayed.
+        </Paragraph>
+
+        <Paragraph>
+            <LineBreak/>
+        </Paragraph>
+
+        <Paragraph FontSize="15">Blocks, breaks, paragraph</Paragraph>
+        <Section>
+            <Paragraph>A block section of text</Paragraph>
+        </Section>
+        <Section>
+            <Paragraph>Another block section of text</Paragraph>
+        </Section>
+        <Paragraph>
+            <LineBreak/>
+        </Paragraph>
+
+        <Section>
+            <Paragraph>... and another section, preceded by a LineBreak</Paragraph>
+        </Section>
+
+        <Section BreakPageBefore="True"/>
+
+        <Section>
+            <Paragraph>... and another section, preceded by a PageBreak</Paragraph>
+        </Section>
+
+        <Paragraph>Finally, a paragraph. Note the break between this paragraph ...</Paragraph>
+
+        <Paragraph TextIndent="25">... and this paragraph, and also the left indention.</Paragraph>
+
+        <Paragraph>
+            <LineBreak/>
+        </Paragraph>
+
+    </FlowDocument>
+</Window>

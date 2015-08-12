@@ -1,0 +1,115 @@
+﻿<Application x:Class="AnimationTiming.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AnimationTiming"
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+        <DrawingBrush x:Key="MyGridBrushResource" 
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="#99FFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#99CCCCFF" />
+                        <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#99CCCCFF" />
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+            <GradientStop Color="White" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="White" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="White" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1.0" />
+        </GradientStopCollection>
+
+        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="1" GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+
+
+        <!-- Styles & Templates -->
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="MaxWidth" Value="500" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="CodeTextBlockStyle">
+            <Setter Property="FontFamily" Value="Courier New" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="MaxWidth" Value="500" />
+        </Style>
+
+        <Style x:Key="MyIntroTextBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="#CCCCFF" />
+                            <GradientStop Offset="1.0" Color="White" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Margin" Value="0,0,0,40" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+
+        <ControlTemplate TargetType="{x:Type local:ElapsedTimeControl}"
+      x:Key="DefaultTimeElapsedControlTemplate">
+            <Border Background="{TemplateBinding Background}" 
+        BorderBrush="{TemplateBinding BorderBrush}"
+        BorderThickness="{TemplateBinding BorderThickness}">
+                <Grid Margin="{TemplateBinding Padding}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0">Time Elapsed:</TextBlock>
+                    <TextBlock Grid.Column="2" Text="{TemplateBinding CurrentTimeAsString}" />
+
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="{x:Type local:ElapsedTimeControl}">
+            <Setter Property="Template" 
+      Value="{StaticResource DefaultTimeElapsedControlTemplate}" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Background" Value="{StaticResource MyGlassBrushResource}" />
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="LightBlue" />
+                            <GradientStop Offset="1.0" Color="Gray" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+
+    </Application.Resources>
+</Application>

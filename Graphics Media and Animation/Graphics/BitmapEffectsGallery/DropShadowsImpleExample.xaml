@@ -1,0 +1,87 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="600" Margin="0,10,0,0">
+      <TextBlock>
+        This example shows a DropShadowBitmapEffect applied to a Button. A DropShadowBitmapEffect
+        applies a shadow behind a visual object at a slight offset. The offset is determined by
+        mimicking a casting shadow from an imaginary light source.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Margin="40,20,20,20" Orientation="Horizontal">
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">No BitMapEffect</TextBlock>
+        <Button Margin="0,40,0,0" Width="200">Normal Button</Button>
+        </StackPanel>
+
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">With DropShadowBitmapEffect</TextBlock>
+        <Button Margin="0,40,0,0" Width="200">
+          DropShadow Under this Button
+          <Button.BitmapEffect>
+
+            <!-- The DropShadowBitMapEffect has several important properties that
+             determine characteristics of the drop shadow: 
+             - Color: Specifies the color of the drop shadow (in this example black).
+             - ShadowDepth: Specifies how far displaced the shadow is from the object
+               casting the shadow. Default is 20.
+             - Direction: Specifies in what direction the shadow is cast from the object. 
+               It is an angle between 0 and 360 with 0 starting on the right hand side 
+               and moving counter-clockwise around the object. The value of 320 in this 
+               example casts the shadow on the lower right hand side of the button.
+             - Noise: Specifies how grainy the drop-shadow is. Range is between 0 and 1.
+               Default is 0.
+             - Softness: Specifies how soft the shadow. The range is between 0 and 1 with 1
+               being the softest. Default is 0.5. 
+             - Opacity: Specifies how transparent the shadow is. The range is between 0 
+               and 1 with 1 being fully opaque and 0 fully transparent (not visible). The
+               default is 1. -->
+            <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="25" Softness="1" 
+             Opacity="0.5"/>
+
+          </Button.BitmapEffect>
+        </Button>
+      </StackPanel>
+    </StackPanel>
+    <!-- Displays functional code for demonstration. -->
+    <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="600">
+
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;Button Width="200"&gt;DropShadow Under this Button&lt;Button.BitmapEffect&gt;
+            <Bold Foreground="Green">
+            &lt;!-- The DropShadowBitMapEffect has several important properties that
+             determine characteristics of the drop shadow: 
+             - Color: Specifies the color of the drop shadow (in this example black).
+             - ShadowDepth: Specifies how far displaced the shadow is from the object
+               casting the shadow. Default is 20.
+             - Direction: Specifies in what direction the shadow is cast from the object. 
+               It is an angle between 0 and 360 with 0 starting on the right hand side 
+               and moving counter-clockwise around the object. The value of 320 in this 
+               example casts the shadow on the lower right hand side of the button.
+             - Noise: Specifies how grainy the drop-shadow is. Range is between 0 and 1.
+               Default is 0.
+             - Softness: Specifies how soft the shadow. The range is between 0 and 1 with 1
+               being the softest. Default is 0.5. 
+             - Opacity: Specifies how transparent the shadow is. The range is between 0 
+               and 1 with 1 being fully opaque and 0 fully transparent (not visible). The
+               default is 1. --&gt;</Bold>
+            &lt;DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="25" Softness="1" 
+               Opacity="0.5"/&gt;
+
+          &lt;/Button.BitmapEffect&gt;
+        &lt;/Button&gt;
+      ...
+      </TextBlock>
+
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

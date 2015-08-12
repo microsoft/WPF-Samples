@@ -1,0 +1,88 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Here is an example of the absolute minimum style that can be defined for a StickyNoteControl -->
+  <Style x:Key="MinimumStyle" TargetType="{x:Type StickyNoteControl}">
+    <!-- Override default style completely -->
+    <Setter Property="OverridesDefaultStyle" Value="true" />
+    <Setter Property="Width" Value="100" />
+    <Setter Property="Height" Value ="100" />
+    <Style.Triggers>
+      <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Ink}">
+        <!-- Custom template that only contains required controls -->
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate>
+                <InkCanvas Name="PART_ContentControl" Background="LightYellow" />
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+      <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Text}">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate>
+                <RichTextBox Name="PART_ContentControl" Background="LightYellow"/>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <!--
+  Example of how you could override the expanded and iconified appearance of a note
+  and maintain the behavior of being able to toggle between modes.
+  -->
+  <Style x:Key="CustomizedExpandableNote" TargetType="{x:Type StickyNoteControl}">
+    <Style.Triggers>
+      <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Ink}">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate>
+              <Grid Background="Green" Name="TheGrid">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition />
+                </Grid.RowDefinitions>
+                <Menu>
+                  <CheckBox Name="CB" Width="20" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=true}" />
+                </Menu>
+                <InkCanvas Grid.Row="1" Name="PART_ContentControl" Background="LightYellow" />
+              </Grid>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+      <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Text}">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate>
+              <Grid Background="Green" Name="TheGrid">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition />
+                </Grid.RowDefinitions>
+                <Menu>
+                  <CheckBox Name="CB" Width="20" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=true}" />
+                </Menu>
+                <RichTextBox Grid.Row="1" Name="PART_ContentControl" Background="LightYellow"/>
+              </Grid>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+      <Trigger Property="StickyNoteControl.IsExpanded" Value="False">
+        <Setter Property="Control.Template">
+          <Setter.Value>
+            <ControlTemplate>
+              <DockPanel Background="Blue">
+                <CheckBox IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=true}" />
+              </DockPanel>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+</ResourceDictionary>

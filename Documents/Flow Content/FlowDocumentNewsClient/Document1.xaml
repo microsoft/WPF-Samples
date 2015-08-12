@@ -1,0 +1,96 @@
+﻿<DockPanel 
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   x:Class="FlowDocumentNewsClient.DockPanel2"
+   LastChildFill="True">
+    <Menu Style="{StaticResource MainContentStyle}" BorderBrush="Black" BorderThickness="1" Background="LightGray" DockPanel.Dock="Top">
+      <Separator/>
+      <MenuItem Margin="0,0,10,0" Header="Adjust Readability">
+               <MenuItem Margin="0,0,15,0" Header="Columns">
+                    <MenuItem Click="ColWidest" Header="Most"/>
+                    <MenuItem Click="ColMore" Header="More"/>
+                    <MenuItem Click="ColAverage" Header="Average"/>
+                    <MenuItem Click="ColFewer" Header="Fewer"/>
+                    <MenuItem Click="ColLeast" Header="Least"/>
+               </MenuItem>
+
+        <Separator/>
+           <MenuItem Margin="0,0,10,0" Header="Text Size">
+                <MenuItem Click="TextLargest" Header="Largest"/>
+                <MenuItem Click="TextLarge" Header="Large"/>
+                <MenuItem Click="TextAverage" Header="Average"/>
+                <MenuItem Click="TextSmall" Header="Small"/>
+                <MenuItem Click="TextSmallest" Header="Smallest"/>
+           </MenuItem>
+           </MenuItem>
+    </Menu>
+<FlowDocumentPageViewer>
+    
+<FlowDocument 
+        Style="{StaticResource MainContentStyle}" 
+        Name="fd2" 
+        ColumnWidth="250" 
+        ColumnGap="12" 
+        ColumnRuleWidth="1" 
+        ColumnRuleBrush="Gray">
+
+    <Paragraph Style="{StaticResource HeaderStyle}">Morbi Eleifend Porttitor Nisl</Paragraph>
+    <Paragraph Style="{StaticResource BylineStyle}">Quisque Lacini</Paragraph>
+    <Paragraph Style="{StaticResource BylineStyle}">Redmond, WA</Paragraph>
+    
+    
+<Paragraph>Nunc quam ligula, dictum in, ultrices vitae, eleifend et, arcu. Nullam at sapien. Cras blandit, dolor et hendrerit varius, nunc ante lobortis augue, et fringilla mauris massa sed tortor. Lum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer eu quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Vestibulum congue neque a nisl. Maecenas eleifend pharetra nisl. Quisque lacinia, elit at consequat tempus, orci elit consequat sem, non tempus est pede non purus. Sed varius, elit nec rhoncus scelerisque, felis purus vestibulum nunc, ut elementum justo ligula vel erat. Integer elit tellus, molestie quis, luctus et, luctus in, nunc. Quisque accumsan elit bibendum neque. Nullam non dui. Morbi eleifend porttitor nisl. Nullam mauris libero, rhoncus et, imperdiet id, cursus sit amet, massa. Phasellus diam. Vestibulum nonummy placerat nulla. </Paragraph>
+<Paragraph />
+    <Paragraph>Phasellus eros magna, laoreet ac, nonummy vitae, congue et, justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque scelerisque quam a libero. Nullam non ante sed mauris convallis imperdiet. Aenean feugiat sem a elit. Pellentesque gravida lacus quis dui. Pellentesque molestie lobortis diam. Sed velit sapien, semper pharetra, adipiscing at, condimentum id, sem. Etiam luctus condimentum mauris. Suspendisse diam. Nulla feugiat, eros nec nonummy ornare, nisl nisl rutrum nibh, vel elementum tellus enim nec mauris. </Paragraph>
+<Paragraph />
+    <Paragraph>
+    <Figure Background="White" Padding="5" CanDelayPlacement="True" HorizontalAnchor="ContentRight" VerticalAnchor="ParagraphTop">
+        <Paragraph>  
+        <StackPanel Height="150" Width="80" >
+                <Image Source="images\smiley.png" Margin="5"/>
+                <TextBlock TextWrapping="Wrap">Lorem ipsum dolor sit amet.</TextBlock>
+            </StackPanel>
+        </Paragraph>    
+       </Figure>
+    Mauris eu tellus. Pellentesque vel lacus. Pellentesque diam risus, lobortis vel, auctor sit amet, porta molestie, tortor. Proin ut magna. Morbi aliquam blandit wisi. Pellentesque suscipit molestie wisi. Proin neque dolor, elementum eget, laoreet ac, accumsan at, magna. Donec consectetuer magna non lectus. Nulla a erat in libero dapibus malesuada. Sed facilisis augue at lectus. Donec eros. Vivamus feugiat imperdiet lorem. Vivamus est enim, sodales molestie, pellentesque eget, blandit vitae, sem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec aliquet nulla nec neque. Donec enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. </Paragraph>
+<Paragraph />
+    <Paragraph>Phasellus elementum. Sed augue eros, blandit ac, fringilla ut, semper vitae, pede. Suspendisse potenti. Duis elit. Quisque posuere accumsan pede. Cras lacinia enim eget neque. Quisque eu leo. Suspendisse in arcu nec mauris placerat posuere. Duis at odio nec arcu lacinia faucibus. Pellentesque nec nibh ut ante aliquet imperdiet. Mauris eu lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Integer sit amet ligula. Aliquam sed enim nec nibh lobortis luctus. Proin tincidunt, ipsum sed malesuada vehicula, mi urna tempus ligula, vel iaculis elit massa id orci. Etiam commodo sem eu quam. </Paragraph>
+<Paragraph />
+    <Paragraph>Nunc quam lacus, dictum ut, rhoncus quis, laoreet nec, pede. In felis. Aliquam hendrerit enim eget velit. Duis gravida leo. Ut at nisl in ante malesuada fermentum. Pellentesque fermentum, nisl id porta faucibus, eros nibh porttitor ipsum, venenatis ultrices mauris ante eu ligula. Aliquam erat volutpat. Aenean placerat, metus vitae semper dictum, lacus nunc interdum orci, vitae accumsan dolor urna vitae orci. Suspendisse commodo pede. Suspendisse convallis pellentesque ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris consectetuer, urna vel scelerisque convallis, dui erat euismod arcu, et euismod arcu libero in lacus. </Paragraph>
+<Paragraph />
+    <Paragraph>In sem magna, scelerisque id, sagittis in, euismod quis, lectus. Pellentesque lacinia, urna porta tincidunt sagittis, orci lorem tincidunt pede, nec adipiscing justo pede ut leo. Suspendisse commodo blandit nunc. Etiam eros. Maecenas dignissim tincidunt diam. Sed blandit lectus et lorem. Donec pharetra elit eu nulla. Mauris rutrum dictum libero. Aenean tellus. Aenean quis ante eget nulla imperdiet imperdiet. Mauris pellentesque elementum augue. Morbi a quam. Quisque commodo enim non velit. Duis vestibulum, magna et elementum dapibus, tortor magna dapibus leo, nec fringilla tortor leo id odio. Quisque pellentesque ante id sem. </Paragraph>
+<Paragraph />
+    <Paragraph>Cras luctus nulla eget justo rhoncus rutrum. Proin in ante. Donec ligula. Etiam vitae ipsum. Sed felis nulla, lobortis at, lacinia nec, posuere nec, quam. Sed consectetuer. Nam diam enim, ornare sed, lacinia a, lobortis nec, lorem. Morbi id orci. Nunc consequat, ante nec eleifend viverra, diam mauris mollis augue, quis posuere orci augue a tellus. Aliquam molestie, ligula ut luctus congue, felis libero scelerisque elit, a eleifend libero magna non dolor. Maecenas eu wisi. Fusce mattis, sem non feugiat dictum, elit lacus bibendum enim, a commodo magna enim et mi. Donec at lectus. </Paragraph>
+<Paragraph />
+    <Paragraph>Donec at metus id mauris mollis venenatis. Donec vestibulum posuere tellus. Integer ultricies odio a magna. In accumsan. Donec sed nisl nec lacus feugiat dictum. Aliquam in neque et purus auctor sagittis. Nulla facilisi. Proin posuere mauris quis purus. Sed suscipit dui quis pede. Sed sit amet eros. Maecenas egestas feugiat libero. Sed sagittis orci sit amet purus. Vivamus dignissim nulla non pede. Donec facilisis ligula vel metus. Cras eu tortor. Donec enim. Sed erat. </Paragraph>
+<Paragraph />
+    <Paragraph>Aliquam wisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris feugiat consectetuer est. Curabitur purus nulla, commodo id, commodo vel, pulvinar quis, wisi. Donec tellus. Curabitur enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus nonummy purus ac turpis. Mauris diam. Integer commodo interdum libero. Sed vel sapien ac felis consectetuer malesuada. Aenean nisl quam, volutpat sed, venenatis vitae, dictum vitae, nisl. </Paragraph>
+<Paragraph />
+    <Paragraph>Sed suscipit libero id pede. Suspendisse accumsan porttitor urna. Nam et libero. Vestibulum id tellus non velit congue malesuada. Nam adipiscing, eros sit amet adipiscing malesuada, dolor nulla euismod ipsum, sit amet elementum enim quam ut eros. Fusce ac urna a ligula molestie sodales. Nulla sagittis, mi non dictum scelerisque, tellus odio laoreet purus, vel vestibulum mi lectus quis odio. In ultrices erat et urna. Nulla nec dui. Cras eu justo. Aliquam erat volutpat. Phasellus molestie. Nullam in nisl et risus pellentesque volutpat. Duis nunc enim, bibendum et, euismod vel, sagittis nec, nisl. Praesent aliquet lorem eget tellus. Donec hendrerit lorem. Proin porta odio at pede. Nunc ac nulla. </Paragraph>
+<Paragraph />
+    <Paragraph>Mauris cursus nisl blandit urna. Etiam laoreet purus non urna. Duis rhoncus tellus eget ligula. Duis et ipsum. Ut quis libero. Vestibulum et nisl sit amet enim rutrum pharetra. Sed elit. Cras dictum mattis dui. Curabitur eros. Morbi in risus. Nunc a diam. Aenean molestie tincidunt risus. Fusce fringilla, metus quis venenatis dictum, velit erat egestas est, id tincidunt tortor nisl sit amet libero. </Paragraph>
+<Paragraph />
+    <Paragraph>Suspendisse rhoncus, nisl id ultrices fermentum, tellus odio auctor dolor, eget consectetuer ipsum tortor vel neque. Proin vitae nibh. Vivamus commodo quam sed pede. Vestibulum rhoncus dictum est. Donec auctor faucibus orci. Phasellus viverra, magna non porttitor aliquet, diam tellus bibendum enim, vitae malesuada dolor velit tempor odio. In nunc justo, aliquam eleifend, commodo et, tempor in, sapien. Vestibulum wisi. Vivamus posuere. Aenean gravida. Fusce luctus dapibus wisi. Maecenas in purus a libero vehicula faucibus. Curabitur adipiscing. Nam commodo ornare nulla. Fusce sit amet est. Aliquam erat volutpat. Donec volutpat justo quis sem. </Paragraph>
+<Paragraph />
+    <Paragraph>Integer pharetra tempus lorem. Nam quam lacus, pretium eu, euismod eget, molestie a, sapien. Duis tempor massa commodo nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Aliquam non nunc a elit rutrum accumsan. Vestibulum eu dolor quis velit rutrum porttitor. Pellentesque ornare, lectus ut pellentesque posuere, leo ligula rhoncus lorem, ac lacinia urna sem id urna. Sed scelerisque. Duis fermentum nonummy enim. Mauris viverra elit at nunc. Vestibulum mattis. Proin sollicitudin enim vitae risus. Vivamus pretium pretium lectus. Nulla magna wisi, euismod quis, vestibulum ultrices, porttitor ac, sapien.</Paragraph> 
+<Paragraph />
+    <Paragraph>Aenean mi dolor, gravida a, aliquam nec, elementum condimentum, turpis. Suspendisse potenti. In hac habitasse platea dictumst. Aliquam scelerisque ligula nec turpis. Aliquam quam metus, facilisis non, porttitor id, viverra id, tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed tempus vehicula augue. Proin suscipit, nulla a semper dapibus, ligula tortor pellentesque arcu, in elementum pede risus vel orci. Aenean fermentum sem. Vestibulum faucibus, eros vitae feugiat suscipit, felis sapien pretium leo, sed mollis mi quam ac eros. Aenean dolor. Suspendisse ullamcorper lorem vel augue. Sed non lectus id pede semper consectetuer. </Paragraph>
+<Paragraph />
+    <Paragraph>Ut elementum ante nec odio. Nam sagittis cursus nisl. Mauris commodo congue dui. Suspendisse ac tellus. Ut posuere tincidunt magna. Etiam sed elit sed velit gravida ultrices. Suspendisse semper placerat neque. Proin mollis. Ut lacinia. Suspendisse pretium, enim vitae posuere volutpat, arcu elit hendrerit ipsum, vel imperdiet quam arcu et erat. Proin nec tellus et pede viverra rutrum. </Paragraph>
+<Paragraph />
+    <Paragraph>Maecenas tristique. Curabitur iaculis, mi vel sodales tempor, arcu wisi faucibus mauris, id egestas dui neque vel arcu. Fusce nibh leo, aliquet ac, consequat vitae, rhoncus et, tortor. Nulla fringilla cursus erat. Curabitur viverra, nunc id suscipit tempus, metus nisl venenatis neque, ut suscipit enim lacus in justo. Quisque vel tortor. Integer pulvinar bibendum purus. Nunc vel ante vitae eros volutpat mattis. Sed nunc nisl, placerat at, consequat ut, sodales vel, est. Aenean nec nunc. Ut iaculis congue risus. Proin sed lorem vitae erat eleifend pellentesque. Etiam cursus, lectus in laoreet suscipit, tellus enim gravida diam, quis hendrerit sem augue sed erat. Quisque mattis, libero in eleifend tincidunt, magna velit imperdiet enim, vel fermentum nisl ante eget orci. Vestibulum sed sem sit amet tortor tempus imperdiet. Duis porta hendrerit velit. </Paragraph>
+<Paragraph />
+    <Paragraph>Nullam placerat. Donec magna erat, faucibus ac, blandit a, cursus at, tellus. Etiam vitae sem vel lectus rhoncus posuere. Integer viverra ipsum nec erat. Quisque tortor est, molestie nec, semper eget, blandit id, neque. Duis sit amet tellus ut mi viverra fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In hac habitasse platea dictumst. Proin vitae enim vitae neque viverra ultrices. Aenean ullamcorper tellus in mi condimentum auctor. Integer molestie posuere dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In hendrerit. Nunc lacus est, aliquam et, hendrerit quis, mattis nec, urna. </Paragraph>
+<Paragraph />
+    <Paragraph>Praesent turpis. Nulla auctor hendrerit dui. Etiam dictum. Quisque a sem ac erat faucibus fringilla. Nunc at urna in lorem sollicitudin semper. Nunc vel mauris non tortor laoreet sagittis. Morbi ut lacus sit amet dolor porta convallis. Ut hendrerit, orci quis semper hendrerit, tellus sapien feugiat wisi, a hendrerit lectus diam nec mi. Donec congue sem ut purus vehicula ultrices. Vestibulum tempor pede ac purus. Nunc tempus viverra justo. Maecenas tincidunt hendrerit quam. Quisque mattis, ante faucibus vulputate venenatis, tortor turpis rutrum purus, interdum pretium leo purus ac justo. Aliquam felis lacus, scelerisque vitae, commodo quis, mattis nec, lacus. Sed sagittis est et nulla. Donec sit amet tortor. Donec eget nibh. Morbi sed odio. Phasellus auctor, orci et elementum vehicula, risus enim tempus wisi, et lacinia massa mi id massa. Quisque dictum augue sed purus. </Paragraph>
+<Paragraph />
+    <Paragraph>Etiam vitae quam a tortor adipiscing eleifend. Integer dolor elit, tempor ut, blandit in, convallis a, tellus. Phasellus bibendum vehicula nunc. Nullam sit amet wisi. In hac habitasse platea dictumst. In faucibus mauris in ipsum. Donec consectetuer nulla in leo. Pellentesque sodales accumsan diam. Sed dolor neque, consequat eget, mollis a, pellentesque in, justo. Aliquam erat volutpat. </Paragraph>
+<Paragraph />
+    <Paragraph>Duis congue. Cras nonummy, enim ac ornare hendrerit, urna ante pretium nibh, eget lobortis ligula turpis nec est. Integer ut justo ut purus viverra condimentum. Duis tellus. Donec quam metus, aliquet sit amet, pharetra congue, fringilla a, felis. Aliquam sit amet felis at metus vulputate posuere. Sed feugiat augue sed sem. Nullam eu leo. Curabitur pulvinar. Suspendisse a est. Vestibulum massa. Nulla erat. Ut quam magna, gravida sed, viverra at, porttitor eget, elit. Phasellus blandit, odio et pharetra pretium, ante urna consequat ligula, et gravida lectus erat ac diam. Phasellus erat. Phasellus vel urna et ligula pharetra ultricies. Pellentesque fermentum ligula. Morbi vel dolor ac metus faucibus vestibulum. Pellentesque lacinia auctor mi. </Paragraph>
+
+<Paragraph />
+
+
+</FlowDocument>
+</FlowDocumentPageViewer>
+    </DockPanel>

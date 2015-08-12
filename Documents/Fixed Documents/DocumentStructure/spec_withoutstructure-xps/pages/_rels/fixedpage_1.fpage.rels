@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/9aa4ea89-755c-4331-be84-0cd43ff87195.ODTTF"
+                Id="RD40854AE3CC62D4D" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+                Id="R22E4F32FA7DDAD4E" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/3b85141b-0969-4d9e-b9c8-e705bb7e6543.ODTTF"
+                Id="R0A2BADFB90F7B742" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+                Id="R6E5FE0E3EEDB3040" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/3f87ce81-fb61-4ea7-8d62-aed569d1b895.ODTTF"
+                Id="R4AE53D061AF22D4A" />
+</Relationships>

@@ -1,0 +1,77 @@
+<!-- RepeatBehaviorExample.xaml
+     This example shows how to use the RepeatBehavior property to make a timeline repeat. -->
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.RepeatBehaviorExample" 
+  WindowTitle="RepeatBehavior Example">
+  
+  <Border HorizontalAlignment="Stretch">
+    <StackPanel Margin="20" Background="{StaticResource MyGridBrushResource}" >
+    
+      <Border Background="#99FFFFFF">
+       <TextBlock Margin="20">
+        This example shows how the RepeatBehavior property is used to make a timeline repeat. 
+          Several rectangles
+          are animated by DoubleAnimations with identical durations and target values, but with different
+          RepeatBehavior settings.
+       </TextBlock>
+      </Border>
+    
+
+      <TextBlock>RepeatBehavior="Forever"</TextBlock>
+      <Rectangle Name="foreverRepeatingRectangle" Fill="#AA3333FF" Width="50" Height="20" HorizontalAlignment="Left" />
+      <TextBlock Margin="0,20,0,0">RepeatBehavior="0:0:4"</TextBlock>
+      <Rectangle Name="fourSecondsRepeatingRectangle" Fill="#AA3333FF" Width="50" Height="20" HorizontalAlignment="Left" />
+      <TextBlock Margin="0,20,0,0">RepeatBehavior="2x"</TextBlock>
+      <Rectangle Name="twiceRepeatingRectangle" Fill="#AA3333FF" Width="50" Height="20" HorizontalAlignment="Left" />
+      <TextBlock Margin="0,20,0,0">RepeatBehavior="0.5x"</TextBlock>
+      <Rectangle Name="halfRepeatingRectangle" Fill="#AA3333FF" Width="50" Height="20" HorizontalAlignment="Left" />
+      <TextBlock Margin="0,20,0,0">RepeatBehavior="0:0:1"</TextBlock>
+      <Rectangle Name="oneSecondRepeatingRectangle" Fill="#AA3333FF" Width="50" Height="20" HorizontalAlignment="Left" />
+
+    
+      <!-- Create buttons to restart and stop the animations. -->
+      <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+        <Button Name="restartButton">Start Animations</Button>
+        <Button Name="stopButton" Background="#669900FF">Stop</Button>
+        
+        <StackPanel.Triggers>
+          <EventTrigger SourceName="restartButton" RoutedEvent="Button.Click">
+            <BeginStoryboard Name="myBeginStoryboard">
+              <Storyboard>
+              
+                <!-- Create an animation that repeats indefinitely. -->
+                <DoubleAnimation 
+                  Storyboard.TargetName="foreverRepeatingRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                  From="50" To="300" Duration="0:0:2" RepeatBehavior="Forever" />
+          
+                <!-- Create an animation that repeats for four seconds. As a result, the
+                     animation repeats twice. -->          
+                <DoubleAnimation Storyboard.TargetName="fourSecondsRepeatingRectangle" Storyboard.TargetProperty="(Rectangle.Width)"
+                  From="50" To="300" Duration="0:0:2" RepeatBehavior="0:0:4" />
+
+                <!-- Create an animation that repeats twice. -->
+                <DoubleAnimation Storyboard.TargetName="twiceRepeatingRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                  From="50" To="300" Duration="0:0:2" RepeatBehavior="2x" />     
+          
+                <!-- Create an animation that repeats 0.5 times. The resulting animation
+                     plays for one second, half of its Duration. It animates from 50 to 150. -->
+                <DoubleAnimation Storyboard.TargetName="halfRepeatingRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                  From="50" To="300" Duration="0:0:2" RepeatBehavior="0.5x" />
+          
+                <!-- Create an animation that repeats for one second. The resulting animation
+                     plays for one second, half of its Duration. It animates from 50 to 150. -->
+                <DoubleAnimation Storyboard.TargetName="oneSecondRepeatingRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                  From="50" To="300" Duration="0:0:2" RepeatBehavior="0:0:1" />          
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>        
+          <EventTrigger SourceName="stopButton" RoutedEvent="Button.Click">
+            <StopStoryboard BeginStoryboardName="myBeginStoryboard" />
+          </EventTrigger>
+        </StackPanel.Triggers>
+      </StackPanel>
+    </StackPanel>
+  </Border>
+</Page>

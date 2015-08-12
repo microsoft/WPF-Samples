@@ -1,0 +1,58 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+      <TextBlock>
+        This example shows how to apply multiple effects to an object. In this example, a DropShadowBitmapEffect and a BlurBitmapEffect 
+        are applied to a button.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Margin="20" Orientation="Horizontal">
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">No BitMapEffect</TextBlock>
+        <Button Margin="0,40,0,0" Width="300">Normal Button</Button>
+        </StackPanel>
+
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">With DropShadowBitmapEffect and BlurBitmapEffect</TextBlock>
+        <Button Margin="0,40,0,0" Width="300">
+          DropShadow and Blur Applied
+          <Button.BitmapEffect>
+            <BitmapEffectGroup>
+              <BlurBitmapEffect Radius="2" />
+              <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="30" Softness="1" 
+               Opacity="0.5"/>
+            </BitmapEffectGroup>
+          </Button.BitmapEffect>
+        </Button>
+      </StackPanel>
+    </StackPanel>
+    <!-- Displays functional code for demonstration. -->
+    <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="550">
+
+      <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;Button Width="300"&gt;DropShadow and Blur Applied&lt;Button.BitmapEffect&gt;
+            <Bold Foreground="Green">
+            &lt;!-- The BitmapEffectGroup is needed to apply multiple effects. --&gt;</Bold>
+            &lt;BitmapEffectGroup&gt;
+              &lt;BlurBitmapEffect Radius="2" /&gt;
+              &lt;DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="30"  
+               Softness="1" Opacity="0.5"/&gt;
+            &lt;/BitmapEffectGroup&gt;
+          &lt;/Button.BitmapEffect&gt;
+        &lt;/Button&gt;
+      ...
+      </TextBlock>
+
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

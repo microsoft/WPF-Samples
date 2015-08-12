@@ -1,0 +1,68 @@
+﻿<FlowDocumentPageViewer
+    Background="White"
+    Zoom="80"
+    Width="500"
+    Height="500"
+    x:Class="SlidePuzzleDemo.Document"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FlowDocumentPageViewer.Template>
+        <ControlTemplate TargetType="{x:Type FlowDocumentPageViewer}">
+            <Grid>
+                <AdornerDecorator>
+                    <DocumentPageView DocumentViewerBase.IsMasterPage="True" PageNumber="0" />
+                </AdornerDecorator>
+            </Grid>
+        </ControlTemplate>
+    </FlowDocumentPageViewer.Template>
+    <FlowDocument ColumnWidth="250" ColumnGap="20" PagePadding="20">
+        <FlowDocument.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="White" />
+                    <GradientStop Offset="1" Color="#3880" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </FlowDocument.Background>
+
+        <FlowDocument.Resources>
+            <Style TargetType="{x:Type Paragraph}">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="TextIndent" Value="12pt" />
+                <Setter Property="FontSize" Value="12pt" />
+                <Setter Property="LineHeight" Value="14pt" />
+                <Setter Property="FontFamily" Value="Candara, Verdana" />
+                <Setter Property="TextAlignment" Value="Justify" />
+            </Style>
+
+            <Style x:Key="FirstParagraph" TargetType="{x:Type Paragraph}" BasedOn="{StaticResource {x:Type Paragraph}}">
+                <Setter Property="TextIndent" Value="0" />
+            </Style>
+
+            <Style x:Key="Heading" TargetType="{x:Type Paragraph}">
+                <Setter Property="FontSize" Value="20pt" />
+                <Setter Property="FontFamily" Value="Cambria, Georgia" />
+                <Setter Property="Margin" Value="0,20,0,0" />
+                <Setter Property="Foreground" Value="#840" />
+                <Setter Property="KeepWithNext" Value="True" />
+                <Setter Property="TextAlignment" Value="Left" />
+                <Setter Property="LineHeight" Value="Auto" />
+            </Style>
+
+            <Style x:Key="Title" TargetType="{x:Type Paragraph}" BasedOn="{StaticResource Heading}">
+                <Setter Property="FontSize" Value="30pt" />
+                <Setter Property="Margin" Value="0, 10" />
+            </Style>
+        </FlowDocument.Resources>
+
+
+        <Paragraph Style="{StaticResource FirstParagraph}">
+            <Figure Margin="0" Padding="0" Width="Content" VerticalAnchor="ContentTop" HorizontalAnchor="ContentLeft">
+                <Paragraph Style="{StaticResource Title}">Cocoa &amp; Chocolate</Paragraph>
+            </Figure>
+            The term &#8220;Cocoa,&#8221; a corruption of &#8220;Cacao,&#8221; is almost universally used in English-speaking countries to designate the seeds of the small tropical tree known to botanists as THEOBROMA CACAO, from which a great variety of preparations under the name of cocoa and chocolate for eating and drinking are made. The name &#8220;Chocolatl&#8221; is nearly the same in most European languages, and is taken from the Mexican name of the drink, &#8220;Chocolate&#8221; or &#8220;Cacahuatl.&#8221; The Spaniards found chocolate in common use among the Mexicans at the time of the invasion under Cortez in 1519, and it was introduced into Spain immediately after. The Mexicans not only used chocolate as a staple article of food, but they used the seeds of the cacao tree as a medium of exchange.
+        </Paragraph>
+        <Paragraph>No better evidence could be offered of the great advance which has been made in recent years in the knowledge of dietetics than the remarkable increase in the consumption of cocoa and chocolate in this country. The amount retained for home consumption in 1860 was only 1,181,054 pounds—about 3-5 of an ounce for each inhabitant. The amount retained for home consumption for the year ending Dec. 31, 1908, was 93,956,721 pounds—over 16 ounces for each inhabitant.</Paragraph>
+        <Paragraph>Although there was a marked increase in the consumption of tea and coffee during the same period, the ratio of increase fell far below that of cocoa. It is evident that the coming American is going to be less of a tea and coffee drinker, and more of a cocoa and chocolate drinker. This is the natural result of a better knowledge of the laws of health, and of the food value of a beverage which nourishes the body while it also stimulates the brain.</Paragraph>
+    </FlowDocument>
+</FlowDocumentPageViewer>

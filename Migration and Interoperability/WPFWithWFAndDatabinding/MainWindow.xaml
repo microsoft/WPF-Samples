@@ -1,0 +1,60 @@
+﻿<Window x:Class="WPFWithWFAndDatabinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFWithWFAndDatabinding"
+        xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"  Loaded="WindowLoaded" >
+    <Grid x:Name="mainGrid">
+
+        <Grid.Resources>
+            <DataTemplate x:Key="ListItemsTemplate">
+                <TextBlock Text="{Binding Path=ContactName}"/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <Label Margin="20,38,5,2">First Name:</Label>
+            <Label Margin="20,0,5,2">Company Name:</Label>
+            <Label Margin="20,0,5,2">Phone:</Label>
+            <Label Margin="20,0,5,2">Address:</Label>
+            <Label Margin="20,0,5,2">City:</Label>
+            <Label Margin="20,0,5,2">Region:</Label>
+            <Label Margin="20,0,5,2">Postal Code:</Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Margin="20,5,5,0">List of Customers:</Label>
+            <ListBox x:Name="listBox1" Height="200" Width="200" HorizontalAlignment="Left" 
+			   ItemTemplate="{StaticResource ListItemsTemplate}" IsSynchronizedWithCurrentItem="True" Margin="20,5,5,5"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2">
+            <TextBox Margin="5,38,5,2" Width="200" Text="{Binding Path=ContactName}"/>
+            <TextBox Margin="5,0,5,2" Width="200" Text="{Binding Path=CompanyName}"/>
+            <TextBox Margin="5,0,5,2" Width="200" Text="{Binding Path=Phone}"/>
+            <TextBox Margin="5,0,5,2" Width="200" Text="{Binding Path=Address}"/>
+            <TextBox Margin="5,0,5,2" Width="200" Text="{Binding Path=City}"/>
+            <TextBox Margin="5,0,5,2" Width="30" HorizontalAlignment="Left" Text="{Binding Path=Region}"/>
+            <TextBox Margin="5,0,5,2" Width="50" HorizontalAlignment="Left" Text="{Binding Path=PostalCode}"/>
+        </StackPanel>
+        <WindowsFormsHost Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="20,5,5,5" Height="300">
+            <forms:DataGridView x:Name="dataGridView1"/>
+        </WindowsFormsHost>
+        <TextBlock Grid.Row="2" FontSize="96" Opacity=".2" Margin="20,5,5,5" Grid.Column="0" Grid.ColumnSpan="3">Northwind</TextBlock>
+    </Grid>
+</Window>

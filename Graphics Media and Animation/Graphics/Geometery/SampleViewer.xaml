@@ -1,0 +1,179 @@
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  WindowTitle="Geometries Sample"
+  x:Class="Geometery.SampleViewer"
+  Loaded="PageLoaded">
+
+  <Page.Resources>
+
+
+    <Storyboard x:Key="ZoomInStoryboard"
+      Completed="ZoomInStoryboardCompleted">
+      <DoubleAnimation Storyboard.TargetName="MyHorizontalAxisAngleRotation3D"
+        Storyboard.TargetProperty="Angle"
+        From="360" To="0" Duration="0:0:1"  AutoReverse="False" FillBehavior="Stop"
+        BeginTime="0:0:0" DecelerationRatio="1"
+            />
+      <DoubleAnimation Storyboard.TargetName="MyScaleTransform3D"
+        Storyboard.TargetProperty="ScaleX"
+        From="0" To="1" Duration="0:0:2"  AutoReverse="False" DecelerationRatio="1"
+            />
+      <DoubleAnimation Storyboard.TargetName="MyScaleTransform3D"
+        Storyboard.TargetProperty="ScaleY"
+        From="0" To="1" Duration="0:0:2"  AutoReverse="False" DecelerationRatio="1"
+            />
+      <DoubleAnimation Storyboard.TargetName="MyScaleTransform3D"
+        Storyboard.TargetProperty="ScaleZ"
+        From="0" To="1" Duration="0:0:2"  AutoReverse="False" DecelerationRatio="1"
+            />
+    </Storyboard>
+
+  </Page.Resources>
+
+  <Page.Triggers>
+    <EventTrigger RoutedEvent="RadioButton.Checked">
+      <BeginStoryboard>
+        <Storyboard Completed="ZoomOutStoryboardCompleted">
+          <DoubleAnimation Storyboard.TargetName="MyHorizontalAxisAngleRotation3D"
+            Storyboard.TargetProperty="Angle"
+            From="0" To="360" Duration="0:0:1"  AutoReverse="False" FillBehavior="Stop"
+            BeginTime="0:0:1" AccelerationRatio="1"
+            />
+          <DoubleAnimation Storyboard.TargetName="MyScaleTransform3D"
+            Storyboard.TargetProperty="ScaleX"
+            From="1" To="0" Duration="0:0:2"  AutoReverse="False" AccelerationRatio="1"
+            />
+          <DoubleAnimation Storyboard.TargetName="MyScaleTransform3D"
+            Storyboard.TargetProperty="ScaleY"
+            From="1" To="0" Duration="0:0:2"  AutoReverse="False" AccelerationRatio="1"
+            />
+          <DoubleAnimation Storyboard.TargetName="MyScaleTransform3D"
+            Storyboard.TargetProperty="ScaleZ"
+            From="1" To="0.1" Duration="0:0:2"  AutoReverse="False" AccelerationRatio="1"
+            />
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </Page.Triggers>
+
+  <DockPanel>
+
+    <Border DockPanel.Dock="Left" Background="{StaticResource MyBlueGridBrushResource}">
+
+
+      <StackPanel VerticalAlignment="Stretch" Margin="10">
+        <RadioButton x:Name="Example1RadioButton" Checked="SampleSelected" Margin="0,0,0,10">Geometry Usage</RadioButton>
+        <RadioButton Checked="SampleSelected" Margin="0,0,0,10">Shape Geometries</RadioButton>
+        <RadioButton Checked="SampleSelected" Margin="0,0,0,10">PathGeometry</RadioButton>
+        <RadioButton Checked="SampleSelected" Margin="0,0,0,10">Geometry Attribute Syntax Example</RadioButton>
+        <RadioButton Checked="SampleSelected">Combining Geometries Example</RadioButton>
+      </StackPanel>
+    </Border>
+
+    <Grid Background="Black">
+    
+    
+      <Rectangle Fill="{StaticResource BlackBackgroundGridBrushResource}">
+        <Rectangle.OpacityMask>
+          <RadialGradientBrush>
+            <GradientStop Offset="0.0" Color="#FF000000" />
+            <GradientStop Offset="1.0" Color="#00000000" />
+          </RadialGradientBrush>
+        </Rectangle.OpacityMask>
+      </Rectangle>
+      
+
+
+
+
+      <Border>
+
+        <Border ClipToBounds="True">
+          <Viewbox 
+            Stretch="Fill"
+            Width="{Binding ElementName=myScrollViewer, Path=ActualWidth}"
+            Height="{Binding ElementName=myScrollViewer, Path=ActualHeight}">
+            <Viewport3D 
+              Name="myViewport3D"
+              Opacity="1" IsHitTestVisible="False">
+              <Viewport3D.Camera>
+                <PerspectiveCamera 
+                  LookDirection="0,0,-2" 
+                  UpDirection="0,1,0"  
+                  Position="0,0,5" 
+                  FieldOfView="90"/>
+              </Viewport3D.Camera>
+              <ModelVisual3D>
+
+                <ModelVisual3D.Children>
+                  <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                      <AmbientLight Color="#FFFFFFFF" />
+                    </ModelVisual3D.Content>
+                  </ModelVisual3D>
+                  <ModelVisual3D>
+                    <ModelVisual3D.Children>
+                      <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                          <GeometryModel3D x:Name="myPlane">
+                            <GeometryModel3D.Geometry>
+                              <MeshGeometry3D 
+                                x:Name="myGeometry"
+                                TriangleIndices="0,1,2 3,4,5, 11,10,9,8,7,6"                           
+                                TextureCoordinates="0,0 0,-1 -1,-1 -1,-1 -1,0 0,0   -1,-1 -1,0 0,0 0,0 0,-1 -1,-1  "
+                                Positions="12,-9,0 12,9,0 -12,9,0 -12,9,0 -12,-9,0 12,-9,0" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                              <DiffuseMaterial>
+                                <DiffuseMaterial.Brush>
+                                  <VisualBrush 
+                                    RenderOptions.CacheInvalidationThresholdMinimum="0"
+                                    RenderOptions.CachingHint="Cache"
+                                    Visual="{Binding ElementName=myScrollViewer}" />
+                                </DiffuseMaterial.Brush>
+                              </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                          </GeometryModel3D>
+                        </ModelVisual3D.Content>
+                        <ModelVisual3D.Transform>
+                          <Transform3DGroup>
+                            <RotateTransform3D x:Name="myHorizontalRotation"
+                              CenterX="0" CenterY="0" CenterZ="0">
+                              <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,1,0" Angle="0"
+                                 x:Name="MyHorizontalAxisAngleRotation3D" />
+                              </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <ScaleTransform3D x:Name="MyScaleTransform3D" 
+                              ScaleX="1" ScaleY="1" ScaleZ="1" />
+                          </Transform3DGroup>
+                        </ModelVisual3D.Transform>
+                      </ModelVisual3D>
+                    </ModelVisual3D.Children>
+                  </ModelVisual3D>
+                </ModelVisual3D.Children>
+              </ModelVisual3D>
+            </Viewport3D>
+          </Viewbox>
+        </Border>
+      </Border>
+      <Border Name="scrollViewerBorder">
+        <ScrollViewer Name="myScrollViewer" Background="White"
+          HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+          <Frame Name="mainFrame" Background="White" ContentRendered="FrameContentRendered"
+            NavigationUIVisibility="Hidden">
+            <Frame.RenderTransform>
+              <ScaleTransform />
+            </Frame.RenderTransform>
+          </Frame>
+        </ScrollViewer>
+      </Border>
+
+
+    </Grid>
+
+  </DockPanel>
+
+</Page>

@@ -1,0 +1,232 @@
+<!-- RadialGradientBrushAnimationExample.xaml 
+     This example shows several different ways of animating
+     GradientBrushes. -->
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="RadialGradientBrush Animation Example">
+  <Page.Resources>
+    <Style TargetType="{x:Type TextBlock}">
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Padding" Value="10" />
+      <Setter Property="BitmapEffect">
+        <Setter.Value>
+          <OuterGlowBitmapEffect GlowColor="White" />
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style TargetType="{x:Type Rectangle}">
+      <Setter Property="BitmapEffect">
+        <Setter.Value>
+          <DropShadowBitmapEffect />
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Page.Resources>
+  <DockPanel>
+
+    <!-- Header -->
+    <Border Margin="10" 
+      Background="{StaticResource BlueHorizontalGradientBrush}" 
+      DockPanel.Dock="Top">
+      <TextBlock Style="{StaticResource MyIntroTextBlockStyle}">
+        The following examples show several different ways of animating gradient brushes.
+        Left-click the shapes to begin their animations.
+      </TextBlock>
+    </Border>
+
+    <!-- Footer -->
+    <Rectangle Margin="10"
+      DockPanel.Dock="Bottom"
+      Style="{StaticResource FooterRectangleStyle}"
+      Fill="{StaticResource BlueHorizontalGradientBrush}" />
+
+    <StackPanel Orientation="Horizontal">
+      <StackPanel Margin="10" Background="{StaticResource CheckeredBackground}">
+
+        <!-- GradientStop Property Animation Samples -->
+
+        <TextBlock>Animated GradientStop Offset</TextBlock>
+
+        <Rectangle Name="animatedGradientStopOffsetExampleRectangle"
+          Width="200" Height="100" 
+          Stroke="Black" StrokeThickness="1" 
+          Margin="10">
+
+          <Rectangle.Fill>
+            <RadialGradientBrush>
+              <GradientStop Color="MediumBlue" Offset="0.0" />
+              <GradientStop x:Name="gradientStopA2" Color="Purple" Offset="0.5" />
+              <GradientStop Color="Red" Offset="1.0" />
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+
+          <Rectangle.Triggers>
+            <EventTrigger RoutedEvent="Rectangle.MouseLeftButtonDown">
+              <BeginStoryboard>
+                <Storyboard>
+                  <DoubleAnimation 
+                    Storyboard.TargetName="gradientStopA2"
+                    Storyboard.TargetProperty="Offset"
+                    From="0.0" To="1.0" Duration="0:0:3" FillBehavior="Stop" />
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Rectangle.Triggers>
+        </Rectangle>
+
+        <TextBlock>Animated GradientStop Color</TextBlock>
+
+        <Rectangle Name="animatedGradientStopColorExampleRectangle"
+          Width="200" Height="100" 
+          Stroke="Black" StrokeThickness="1" 
+          Margin="10">
+          <Rectangle.Fill>
+            <RadialGradientBrush>
+              <GradientStop Color="MediumBlue" Offset="0.0" />
+              <GradientStop x:Name="gradientStopB2" Color="Purple" Offset="0.5" />
+              <GradientStop Color="Red" Offset="1.0" />
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+
+          <Rectangle.Triggers>
+            <EventTrigger RoutedEvent="Rectangle.MouseLeftButtonDown">
+              <BeginStoryboard>
+                <Storyboard>
+                  <ColorAnimation 
+                    Storyboard.TargetName="gradientStopB2"
+                    Storyboard.TargetProperty="Color"
+                    From="Purple" To="Yellow" Duration="0:0:3" FillBehavior="Stop" />
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Rectangle.Triggers>
+        </Rectangle>
+
+        <TextBlock>Animated GradientStop Opacity</TextBlock>
+        <Rectangle Name="animatedGradientStopOpacityExampleRectangle"
+          Width="200" Height="100" 
+          Stroke="Black" StrokeThickness="1"
+          Margin="10">
+          <Rectangle.Fill>
+            <RadialGradientBrush>
+              <GradientStop Color="MediumBlue" Offset="0.0" />
+              <GradientStop x:Name="gradientStopC2" Color="Purple" Offset="0.5" />
+              <GradientStop Color="Red" Offset="1.0" />
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+          <Rectangle.Triggers>
+            <EventTrigger RoutedEvent="Rectangle.MouseLeftButtonDown">
+              <BeginStoryboard>
+                <Storyboard>
+                  <ColorAnimation 
+                    Storyboard.TargetName="gradientStopC2"
+                    Storyboard.TargetProperty="Color" 
+                    Duration="0:0:3" FillBehavior="Stop">
+                    <ColorAnimation.By>
+                      <Color ScA="-1" ScR="0" ScB="0" ScG="0" />
+                    </ColorAnimation.By>
+                  </ColorAnimation>
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Rectangle.Triggers>
+        </Rectangle>
+
+      </StackPanel>
+
+      <StackPanel Margin="10" Background="{StaticResource CheckeredBackground}">
+
+        <!-- RadialGradientBrush Property Animation Samples -->
+
+        <TextBlock>Animated GradientOrigin</TextBlock>
+
+        <Ellipse 
+          Width="200" Height="100" 
+          Stroke="Black" StrokeThickness="1" 
+          Margin="10">
+
+          <Ellipse.Fill>
+            <RadialGradientBrush x:Name="animatedGradientOriginExample"
+              GradientOrigin="0.75,0.25">
+              <GradientStop Color="#CBC8F1" Offset="0.0" />
+              <GradientStop Color="MediumBlue" Offset="0.5" />
+              <GradientStop Color="DarkBlue" Offset="1.0" />
+            </RadialGradientBrush>
+          </Ellipse.Fill>
+
+          <Ellipse.Triggers>
+            <EventTrigger RoutedEvent="Ellipse.MouseLeftButtonDown">
+              <BeginStoryboard>
+                <Storyboard>
+                  <PointAnimation 
+                    Storyboard.TargetName="animatedGradientOriginExample"
+                    Storyboard.TargetProperty="GradientOrigin"
+                    From="1,0" To="0,1" Duration="0:0:3" FillBehavior="Stop" />
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Ellipse.Triggers>
+        </Ellipse>
+
+        <TextBlock>Animated Center</TextBlock>
+        <Ellipse 
+          Width="200" Height="100" 
+          Stroke="Black" StrokeThickness="1" 
+          Margin="10">
+          <Ellipse.Fill>
+            <RadialGradientBrush x:Name="animatedCenterExample"
+              GradientOrigin="0.75,0.25">
+              <GradientStop Color="#CBC8F1" Offset="0.0" />
+              <GradientStop Color="MediumBlue" Offset="0.5" />
+              <GradientStop Color="DarkBlue" Offset="1.0" />
+            </RadialGradientBrush>
+          </Ellipse.Fill>
+
+          <Ellipse.Triggers>
+            <EventTrigger RoutedEvent="Ellipse.MouseLeftButtonDown">
+              <BeginStoryboard>
+                <Storyboard>
+                  <PointAnimation 
+                    Storyboard.TargetName="animatedCenterExample"
+                    Storyboard.TargetProperty="Center"
+                    From="0,0" To="1,1" Duration="0:0:3" FillBehavior="Stop" />
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Ellipse.Triggers>
+        </Ellipse>
+
+        <TextBlock>Animated Radius</TextBlock>
+        <Ellipse
+          Width="200" Height="100" Stroke="Black" StrokeThickness="1"
+          Margin="10">
+          <Ellipse.Fill>
+            <RadialGradientBrush x:Name="animatedRadiusExample"
+              GradientOrigin="0.75,0.25">
+              <GradientStop Color="#CBC8F1" Offset="0.0" />
+              <GradientStop Color="MediumBlue" Offset="0.5" />
+              <GradientStop Color="DarkBlue" Offset="1.0" />
+            </RadialGradientBrush>
+          </Ellipse.Fill>
+          <Ellipse.Triggers>
+            <EventTrigger RoutedEvent="Ellipse.MouseLeftButtonDown">
+              <BeginStoryboard>
+                <Storyboard>
+                  <DoubleAnimation 
+                    Storyboard.TargetName="animatedRadiusExample"
+                    Storyboard.TargetProperty="RadiusX"
+                    From="0" To="1" Duration="0:0:3" FillBehavior="Stop" />
+                  <DoubleAnimation 
+                    Storyboard.TargetName="animatedRadiusExample"
+                    Storyboard.TargetProperty="RadiusY"
+                    From="0" To="1" Duration="0:0:3" FillBehavior="Stop" />
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Ellipse.Triggers>
+        </Ellipse>
+      </StackPanel>
+    </StackPanel>
+  </DockPanel>
+</Page>

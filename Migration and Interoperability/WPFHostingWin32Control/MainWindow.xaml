@@ -1,0 +1,64 @@
+﻿<Window x:Class="WPFHostingWin32Control.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFHostingWin32Control"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="On_UIReady">
+
+  <DockPanel Background="LightGreen">
+    <Border Name="ControlHostElement"
+    Width="200"
+    Height="200"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    BorderBrush="LightGray"
+    BorderThickness="3"
+    DockPanel.Dock="Right"/>
+    <StackPanel>
+      <Label HorizontalAlignment="Center"
+        Margin="0,10,0,0"
+        FontSize="14"
+        FontWeight="Bold">Control the Control</Label>
+      <TextBlock Margin="10,10,10,10" >Selected Text: <TextBlock  Name="selectedText"/></TextBlock>
+      <TextBlock Margin="10,10,10,10" >Number of Items: <TextBlock  Name="numItems"/></TextBlock>
+  
+      <Line X1="0" X2="200"
+        Stroke="LightYellow"
+        StrokeThickness="2"
+        HorizontalAlignment="Center"
+        Margin="0,20,0,0"/>
+  
+      <Label HorizontalAlignment="Center"
+        Margin="10,10,10,10">Append an Item to the List</Label>
+      <StackPanel Orientation="Horizontal">
+        <Label HorizontalAlignment="Left"
+          Margin="10,10,10,10">Item Text</Label>
+        <TextBox HorizontalAlignment="Left"
+          Name="txtAppend"
+          Width="200"
+          Margin="10,10,10,10" />
+      </StackPanel>
+  
+      <Button HorizontalAlignment="Left"
+        Click="AppendText"
+        Width="75"
+        Margin="10,10,10,10">Append</Button>
+
+      <Line X1="0" X2="200"
+        Stroke="LightYellow"
+        StrokeThickness="2"
+        HorizontalAlignment="Center"
+        Margin="0,20,0,0"/>
+  
+      <Label HorizontalAlignment="Center"
+        Margin="10,10,10,10">Delete the Selected Item</Label>
+  
+      <Button Click="DeleteText"
+        Width="125"
+        Margin="10,10,10,10"
+        HorizontalAlignment="Left">Delete</Button>
+    </StackPanel>
+  </DockPanel>
+</Window>

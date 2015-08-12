@@ -1,0 +1,431 @@
+<!-- 
+This is the full default StickyNote Style definition.
+-->
+<ResourceDictionary     
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    >
+  <!-- Define default hight and width. -->
+  <sys:Double x:Key="StickyNoteDefaultIconWidth">40.0</sys:Double>
+  <sys:Double x:Key="ResourceId=StickyNoteDefaultIconHeight">30.0</sys:Double>
+  <!-- 
+        Style Root: this is the main portion of the StickyNote style, it configures all the defaults
+        and defines the overall behavior of the note by referencing other sub-styles.
+        -->
+  <Style x:Key="DefaultStickyNoteStyle" TargetType="{x:Type StickyNoteControl}">
+    <Setter Property="Width" Value="16" />
+    <Setter Property="Height" Value="16" />
+    <Setter Property="Cursor" Value="Arrow" />
+    <Setter Property="FontFamily" Value="Verdana" />
+    <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
+    <Setter Property="KeyboardNavigation.ControlTabNavigation" Value="Once" />
+    <!-- 12(point size) * 96.0 / 72.0 -->
+    <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.MessageFontSizeKey}}" />
+    <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.MessageFontStyleKey}}" />
+    <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.MessageFontWeightKey}}" />
+    <Setter Property="CaptionFontFamily" Value="Segoe UI,Arial" />
+    <Setter Property="CaptionFontSize" Value="9.0" />
+    <Setter Property="CaptionFontStyle" Value="{DynamicResource {x:Static SystemFonts.MessageFontStyleKey}}" />
+    <Setter Property="CaptionFontWeight" Value="{DynamicResource {x:Static SystemFonts.MessageFontWeightKey}}" />
+    <Setter Property="BorderThickness" Value="2" />
+    <Setter Property="BorderBrush" Value="#FF008000" />
+    <Setter Property="Background">
+     <Setter.Value>
+        <DrawingBrush>
+          <DrawingBrush.Drawing>
+      <!-- Drawing a rotated linear gradient rectangle: Angle 20, Width 400 Height 300 -->
+            <GeometryDrawing>
+              <GeometryDrawing.Brush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="163.650855,449.627030" MappingMode="Absolute">
+                  <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="#FFD3F4D3" Offset="0.0" />
+                    <GradientStop Color="#FFAFEBAF" Offset="1.0" />
+                  </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+              </GeometryDrawing.Brush>
+              <GeometryDrawing.Geometry>
+                <RectangleGeometry Rect="0,0, 400, 300" />
+              </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template" Value="{DynamicResource StickyNoteIconTemplate}" />
+    <Style.Triggers>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsExpanded" Value="true" />
+          <Condition Property="StickyNoteType" Value="{x:Static StickyNoteType.Ink}" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Control.Template" Value="{DynamicResource StickyNoteExpandedInkTemplate}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsExpanded" Value="true" />
+          <Condition Property="StickyNoteType" Value="{x:Static StickyNoteType.Text}" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Control.Template" Value="{DynamicResource StickyNoteExpandedTextTemplate}" />
+      </MultiTrigger>
+      <Trigger Property="IsExpanded" Value="true">
+        <Setter Property="Width" Value="220" />
+        <Setter Property="Height" Value="169" />
+        <Setter Property="MinWidth" Value="190.0" />
+        <Setter Property="MinHeight" Value="73.0" />
+      </Trigger>
+      <Trigger Property="IsActive" Value="false">
+        <Setter Property="Background" Value="#FFE1F5E1" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <!-- 
+        Text Template: Style which defines the basic appearance of a Text StickyNoteControl.
+        -->
+  <ControlTemplate x:Key="StickyNoteExpandedTextTemplate">
+    <ControlTemplate.Resources>
+      <!-- StickyNote's RichTextBox Style -->
+      <Style TargetType="{x:Type RichTextBox}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="AcceptsReturn" Value="true" />
+        <Setter Property="IsReadOnly" Value="false" />
+        <Setter Property="TabIndex" Value="0" />
+        <Setter Property="IsTabStop" Value="true" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Once" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Style.Resources>
+          <Style TargetType="{x:Type Paragraph}">
+            <Setter Property="Margin" Value="0" />
+          </Style>
+        </Style.Resources>
+      </Style>
+    </ControlTemplate.Resources>
+    <Canvas Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+      <Border x:Name="NoteBorder" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderThickness="1,1,1,1" BorderBrush="Transparent" CornerRadius="6,6,6,6" />
+      <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6,6,6,6"  xml:lang="en-US">
+        <Grid KeyboardNavigation.TabNavigation="Local">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Thumb x:Name="PART_TitleThumb" Grid.Row="0" Style="{DynamicResource StickyNoteTitleThumbStyleKey}"/>
+          <Button x:Name="PART_CloseButton" TabIndex="2" Style="{DynamicResource StickyNoteCloseButtonStyleKey}"/>
+          <!-- 9(point size) * 96.0 / 72.0 -->
+          <Border Name="MenuBorder" Background="#FFDFF7DF" BorderThickness="0,1,0,1" BorderBrush="#FF2DB32D" Grid.Row="1">
+            <Menu Padding="0" x:Name="Menu" FontFamily="{TemplateBinding StickyNoteControl.CaptionFontFamily}" FontSize="{TemplateBinding StickyNoteControl.CaptionFontSize}" FontStyle="{TemplateBinding StickyNoteControl.CaptionFontStyle}" FontWeight="{TemplateBinding StickyNoteControl.CaptionFontWeight}" FontStretch="{TemplateBinding StickyNoteControl.CaptionFontStretch}" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Background="Transparent" KeyboardNavigation.TabNavigation="Continue">
+              <MenuItem Padding="6,0,6,0" x:Name="EditMenuItem" Header="Edit" TabIndex="1">
+                <MenuItem x:Name="PART_CopyMenuItem" Header="_Copy" Command="ApplicationCommands.Copy" CommandTarget="{Binding ElementName=PART_ContentControl}" />
+                <MenuItem x:Name="PART_PasteMenuItem" Header="_Paste" Command="ApplicationCommands.Paste" CommandTarget="{Binding ElementName=PART_ContentControl}" />
+                <Separator x:Name="PART_ClipboardSeparator" />
+                <MenuItem x:Name="PART_DeleteMenuItem" Header="_Delete Note" Command="StickyNoteControl.DeleteNoteCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+              </MenuItem>
+            </Menu>
+          </Border>
+          <RichTextBox x:Name="PART_ContentControl" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <FlowDocument FlowDirection="{TemplateBinding FlowDirection}" />
+          </RichTextBox>
+          <Border x:Name="TitleBorder" Grid.Row="3" CornerRadius="0,0,6,6" Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#FF2DB32D">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <TextBlock x:Name="AuthorTextBlock" Grid.Column="0" Margin="3,0,3,0" Opacity="0.5" TextElement.FontFamily="{TemplateBinding StickyNoteControl.CaptionFontFamily}" TextElement.FontSize="{TemplateBinding StickyNoteControl.CaptionFontSize}" TextElement.FontStyle="{TemplateBinding StickyNoteControl.CaptionFontStyle}" TextElement.FontWeight="{TemplateBinding StickyNoteControl.CaptionFontWeight}" TextElement.FontStretch="{TemplateBinding StickyNoteControl.CaptionFontStretch}" TextElement.Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" TextAlignment="Left" TextWrapping="NoWrap" Text="{TemplateBinding StickyNoteControl.Author}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+              <Thumb x:Name="PART_ResizeBottomRightThumb" VerticalAlignment="Bottom" Grid.Column="1" Style="{DynamicResource StickyNoteResizeBottomRightThumbStyleKey}"/>
+            </Grid>
+          </Border>
+        </Grid>
+      </Border>
+    </Canvas>
+    <ControlTemplate.Triggers>
+      <Trigger Property="StickyNoteControl.IsActive" Value="false">
+        <Setter TargetName="MenuBorder" Property="Visibility" Value="Hidden" />
+        <Setter TargetName="NoteBorder" Property="Control.BorderThickness" Value="1" />
+        <Setter TargetName="TitleBorder" Property="BorderBrush" Value="Transparent" />
+      </Trigger>
+      <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="PART_CloseButton">
+        <EventTrigger.Actions>
+          <BeginStoryboard Name="HideNoteTimeline">
+            <BeginStoryboard.Storyboard>
+              <Storyboard TargetProperty="(UIElement.Opacity)">
+                <DoubleAnimation From="0.0" To="1.0" Duration="0:0:0.3" FillBehavior="HoldEnd" />
+              </Storyboard>
+            </BeginStoryboard.Storyboard>
+          </BeginStoryboard>
+        </EventTrigger.Actions>
+      </EventTrigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <!-- 
+        Ink Template: Style which defines the basic appearance of an Ink StickyNoteControl
+        -->
+  <ControlTemplate x:Key="StickyNoteExpandedInkTemplate">
+    <ControlTemplate.Resources>
+      <!-- StickyNote's InkCanvas Style -->
+      <Style TargetType="{x:Type InkCanvas}">
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="Control.TabIndex" Value="0" />
+        <Setter Property="Control.IsTabStop" Value="true" />
+        <Setter Property="Background">
+          <Setter.Value>
+            <DrawingBrush Viewbox="0,0,1,32" ViewboxUnits="Absolute" Viewport="0,0,1,32" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" TileMode="Tile" Stretch="None">
+              <DrawingBrush.Drawing>
+                <GeometryDrawing Geometry="M 0, 31.5 L 1, 31.5">
+                  <GeometryDrawing.Pen>
+                    <Pen Brush="#40000000" Thickness="1" />
+                  </GeometryDrawing.Pen>
+                </GeometryDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="StickyNoteControl.IsActive" Value="false">
+            <Setter Property="Background" Value="Transparent" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+    </ControlTemplate.Resources>
+    <Canvas Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+      <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderThickness="1,1,1,1" BorderBrush="Transparent" CornerRadius="6,6,6,6" />
+      <Border x:Name="NoteBorder" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6,6,6,6"  xml:lang="en-US">
+        <Grid KeyboardNavigation.TabNavigation="Local">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Thumb x:Name="PART_TitleThumb" Style="{DynamicResource StickyNoteTitleThumbStyleKey}" Grid.Row="0" />
+          <Button x:Name="PART_CloseButton" Style="{DynamicResource StickyNoteCloseButtonStyleKey}" TabIndex="2" />
+          <Border Name="MenuBorder" Background="#FFDFF7DF" BorderThickness="0,1,0,1" BorderBrush="#FF2DB32D" Grid.Row="1">
+            <Menu Padding="0" x:Name="Menu" FontFamily="{TemplateBinding StickyNoteControl.CaptionFontFamily}" FontSize="{TemplateBinding StickyNoteControl.CaptionFontSize}" FontStyle="{TemplateBinding StickyNoteControl.CaptionFontStyle}" FontWeight="{TemplateBinding StickyNoteControl.CaptionFontWeight}" FontStretch="{TemplateBinding StickyNoteControl.CaptionFontStretch}" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Background="Transparent" KeyboardNavigation.TabNavigation="Continue">
+              <MenuItem Padding="6,0,6,0" x:Name="EditMenuItem" Header="Edit" TabIndex="1">
+                <MenuItem x:Name="PART_CopyMenuItem" Header="_Copy" Command="ApplicationCommands.Copy" CommandTarget="{Binding ElementName=PART_ContentControl}" />
+                <MenuItem  x:Name="PART_PasteMenuItem" Header="_Paste" Command="ApplicationCommands.Paste"  CommandTarget="{Binding ElementName=PART_ContentControl}"/>
+                <Separator  x:Name="PART_ClipboardSeparator" />
+                <MenuItem  x:Name="PART_DeleteMenuItem" Header="_Delete Note" Command="StickyNoteControl.DeleteNoteCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                <Separator  x:Name="InkMenuItemsSeparator" />
+                <MenuItem x:Name="PART_InkMenuItem" Header="_Ink" Command="StickyNoteControl.InkCommand" CommandParameter="{x:Static InkCanvasEditingMode.Ink}" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                <MenuItem  x:Name="PART_SelectMenuItem" Header="_Select" Command="StickyNoteControl.InkCommand" CommandParameter="{x:Static InkCanvasEditingMode.Select}" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                <MenuItem x:Name="PART_EraseMenuItem" Header="_Erase" Command="StickyNoteControl.InkCommand" CommandParameter="{x:Static InkCanvasEditingMode.EraseByStroke}" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+              </MenuItem>
+            </Menu>
+          </Border>
+          <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="2" Margin="3,0,3,0">
+            <InkCanvas x:Name="PART_ContentControl" FlowDirection="LeftToRight" />
+          </ScrollViewer>
+          <Border x:Name="TitleBorder" Grid.Row="3" CornerRadius="0,0,6,6" Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#FF2DB32D">
+            <Grid >
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <TextBlock x:Name="AuthorTextBlock" Grid.Column="0" Margin="3,0,3,0" Opacity="0.5" TextElement.FontFamily="{TemplateBinding StickyNoteControl.CaptionFontFamily}" TextElement.FontSize="{TemplateBinding StickyNoteControl.CaptionFontSize}" TextElement.FontStyle="{TemplateBinding StickyNoteControl.CaptionFontStyle}" TextElement.FontWeight="{TemplateBinding StickyNoteControl.CaptionFontWeight}" TextElement.FontStretch="{TemplateBinding StickyNoteControl.CaptionFontStretch}" TextElement.Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" TextAlignment="Left" TextWrapping="NoWrap" Text="{TemplateBinding StickyNoteControl.Author}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+              <Thumb Style="{DynamicResource StickyNoteResizeBottomRightThumbStyleKey}" x:Name="PART_ResizeBottomRightThumb" VerticalAlignment="Bottom" Grid.Column="1" />
+            </Grid>
+          </Border>
+        </Grid>
+      </Border>
+    </Canvas>
+    <ControlTemplate.Triggers>
+      <Trigger Property="StickyNoteControl.IsActive" Value="false">
+        <Setter TargetName="MenuBorder" Property="Visibility" Value="Hidden" />
+        <Setter TargetName="NoteBorder" Property="Control.BorderThickness" Value="1" />
+        <Setter TargetName="TitleBorder" Property="BorderBrush" Value="Transparent" />
+        <Setter TargetName="ScrollViewer" Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter TargetName="ScrollViewer" Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+      </Trigger>
+      <Trigger Property="StickyNoteControl.IsActive" Value="true">
+        <Setter TargetName="PART_ContentControl" Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+      </Trigger>
+      <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="PART_CloseButton">
+        <EventTrigger.Actions>
+          <BeginStoryboard Name="HideNoteTimeline">
+            <BeginStoryboard.Storyboard>
+              <Storyboard TargetProperty="(UIElement.Opacity)">
+                <DoubleAnimation From="0.0" To="1.0" Duration="0:0:0.3" FillBehavior="HoldEnd" />
+              </Storyboard>
+            </BeginStoryboard.Storyboard>
+          </BeginStoryboard>
+        </EventTrigger.Actions>
+      </EventTrigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <!-- 
+        Title Thumb Style: Controls the appearance of the StickyNoteControl TitleBar.
+        -->
+  <Style x:Key="StickyNoteTitleThumbStyleKey" TargetType="{x:Type Thumb}">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientBrush.GradientStops>
+            <GradientStopCollection x:Uid="GradientStopCollection_78">
+              <GradientStop Color="#FFC1EFC1" Offset="0" />
+              <GradientStop Color="#FF6CDA6C" Offset="1" />
+            </GradientStopCollection>
+          </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate x:Uid="ControlTemplate_21">
+          <Border Background="{TemplateBinding Background}" CornerRadius="5,5,0,0">
+            <Border Margin="0,3,0,0" Width="40" Height="4" Background="{TemplateBinding Foreground}" VerticalAlignment="Top" HorizontalAlignment="Center" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground">
+      <Setter.Value>
+        <DrawingBrush Viewbox="0,0,1,1" Viewport="0,0,4,4" TileMode="Tile" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top">
+          <DrawingBrush.Drawing>
+            <DrawingGroup>
+              <DrawingGroup.Children>
+                <GeometryDrawing Brush="White" Geometry="M 0.6 0.3 A 0.7 0.7 0 1 0 0.6 0.61  z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 0 0 A 0.6 0.6 0 1 0 0 0.01  z" />
+              </DrawingGroup.Children>
+            </DrawingGroup>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="true">
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush x:Uid="LinearGradientBrush_79" StartPoint="0,0" EndPoint="0,1">
+              <GradientBrush.GradientStops>
+                <GradientStopCollection x:Uid="GradientStopCollection_79">
+                  <GradientStop Color="#FFA4E8A4" Offset="0" />
+                  <GradientStop Color="#FF28A028" Offset="1" />
+                </GradientStopCollection>
+              </GradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+      <MultiTrigger >
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="false" />
+          <Condition Property="StickyNoteControl.IsActive" Value="false" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientBrush.GradientStops>
+                <GradientStopCollection x:Uid="GradientStopCollection_80">
+                  <GradientStop Color="#FFECF9EC" Offset="0" />
+                  <GradientStop Color="#FFC3EBC3" Offset="1" />
+                </GradientStopCollection>
+              </GradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
+    </Style.Triggers>
+  </Style>
+  <!-- 
+        Resize Thumb Style: Controls the appearance of the StickyNoteControl resize thumb.
+        -->
+  <Style x:Key="StickyNoteResizeBottomRightThumbStyleKey" TargetType="{x:Type Thumb}">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Cursor" Value="SizeNWSE" />
+    <Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+    <Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <DrawingBrush AlignmentX="Center" AlignmentY="Center" TileMode="None" Stretch="None">
+          <DrawingBrush.Drawing>
+            <DrawingGroup>
+              <DrawingGroup.Children>
+                <GeometryDrawing Brush="White" Geometry="M 5.8 12.8 A 0.8 0.8 0 1 0 5.8 12.9 z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 5 12 A 0.7 0.7 0 1 0 5 12.1 z" />
+                <GeometryDrawing Brush="White" Geometry="M 9.8 8.8 A 0.8 0.8 0 1 0 9.8 8.9 z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 9 8 A 0.7 0.7 0 1 0 9 8.1 z" />
+                <GeometryDrawing Brush="White" Geometry="M 13.8 4.8 A 0.8 0.8 0 1 0 13.8 4.9 z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 13 4 A 0.7 0.7 0 1 0 13 4.1 z" />
+                <GeometryDrawing Brush="White" Geometry="M 9.8 12.8 A 0.8 0.8 0 1 0 9.8 12.9 z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 9 12 A 0.7 0.7 0 1 0 9 12.1 z" />
+                <GeometryDrawing Brush="White" Geometry="M 13.8 8.8 A 0.8 0.8 0 1 0 13.8 8.9 z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 13 8 A 0.7 0.7 0 1 0 13 8.1 z" />
+                <GeometryDrawing Brush="White" Geometry="M 13.8 12.8 A 0.8 0.8 0 1 0 13.8 12.9 z" />
+                <GeometryDrawing Brush="{StaticResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Geometry="M 13 12 A 0.7 0.7 0 1 0 13 12.1 z" />
+              </DrawingGroup.Children>
+            </DrawingGroup>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="FlowDirection" Value="{x:Static FlowDirection.RightToLeft}">
+        <Setter Property="Cursor" Value="SizeNESW" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <!-- 
+        StickyNote's Button Style: Baseline style for all buttons that are used inside StickyNoteControl.
+        -->
+  <Style x:Key="StickyNoteButtonStyleKey" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+    <Setter Property="OverridesDefaultStyle" Value="true" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate >
+          <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+            <Border Background="{TemplateBinding Foreground}" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <!--
+        Close Button Style: Controls the appearance of the StickyNoteControl Close button.
+        -->
+  <Style x:Key="StickyNoteCloseButtonStyleKey" BasedOn="{StaticResource StickyNoteButtonStyleKey}" TargetType="{x:Type Button}">
+    <Setter Property="Width" Value="24" />
+    <Setter Property="Height" Value="18" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalAlignment" Value="Right" />
+    <Setter Property="BorderBrush" Value="#FF60BB60" />
+    <Setter Property="BorderThickness" Value="1,1,1,1" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientBrush.GradientStops>
+            <GradientStopCollection>
+              <GradientStop Color="#FFD8F5D8" Offset="0" />
+              <GradientStop Color="#FFADEBAD" Offset="1" />
+            </GradientStopCollection>
+          </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Margin" Value="0,0,3,0" />
+    <Setter Property="Foreground">
+      <Setter.Value>
+        <DrawingBrush ViewboxUnits="Absolute" Viewbox="0,0,24,18" Viewport="0,0,1,1" TileMode="Tile">
+          <DrawingBrush.Drawing>
+            <GeometryDrawing Geometry="M 6, 12 L 18, 12">
+              <GeometryDrawing.Pen>
+                <Pen Brush="Black" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

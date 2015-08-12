@@ -1,0 +1,482 @@
+<FixedPage xmlns="http://schemas.microsoft.com/xps/2005/06"
+           xmlns:x="http://schemas.microsoft.com/xps/2005/06/resourcedictionary-key"
+           xml:lang="en-us" Width="816" Height="1056">
+
+  <FixedPage.Resources>
+    <ResourceDictionary>
+    </ResourceDictionary>
+  </FixedPage.Resources>
+
+  <!--System.Windows.Documents.FixedPage-->
+  <Path Fill="#FFFFFFFF" Data="F0 M 0, 0 L 816, 0 816, 1056 0, 1056Z" />
+
+  <Canvas Name="Pg1HeaderP1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="58.88" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/9aa4ea89-755c-4331-be84-0cd43ff87195.ODTTF"
+            UnicodeString="XPS" Indices=",72;,61" Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="165.92" OriginY="58.88" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString=" " Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="169.92" OriginY="58.88" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/9aa4ea89-755c-4331-be84-0cd43ff87195.ODTTF"
+            UnicodeString="Specification and Reference Guide"
+            Indices=",70;,64;,63;,55;,29;,38;,29;,55;,63;,41;,29;,64;,64;,39;,61;,66;,64;,37;,72;,61;,39;,61;,45;,61;,66;,55;,61;,38;,80;,66;,28;,66"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="361.92" OriginY="58.88" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="  1 " Indices=",2893;,380;,67" Fill="#FF000000" />
+  </Canvas>
+
+  <!--System.Windows.Documents.Glyphs-->
+  <Glyphs Name="Pg1FooterP1" OriginX="144" OriginY="972" FontRenderingEmSize="10.72"
+          FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+          UnicodeString="Version 0.75 Final 10/11/2005 10:28:00 AM "
+          Indices=";;,42;;;;;,34;;;,63;,63;,1937;;;;;;,1280;;;,43;;;,43;;,63;;,63;,34;;;;,63;;;,62;,63"
+          Fill="#FF999999" />
+
+  <!--System.Windows.Documents.Glyphs-->
+  <Canvas Name="Pg1FooterP2">
+    <Glyphs OriginX="144" OriginY="990.88" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="© 2005 Microsoft Corporation. All rights reserved. By using or providing feedback on these materials, you agree "
+            Indices=",97;,31;,62;,59;,60;,61;,33;,81;,22;,49;,39;,58;,48;,58;,33;,34;,33;,66;,57;,40;,58;,58;,41;,56;,36;,23;,58;,59;,33;,32;,65;,24;,24;,33;,40;,23;,59;,60;,36;,49;,31;,41;,55;,49;,55;,41;,55;,57;,59;,32;,33;,64;,56;,33;,58;,50;,24;,59;,60;,31;,57;,40;,32;,59;,39;,58;,57;,23;,59;,24;,60;,58;,33;,31;,57;,55;,60;,60;,56;,48;,55;,33;,58;,58;,33;,36;,60;,57;,47;,57;,31;,94;,56;,35;,57;,40;,24;,57;,24;,49;,33;,31;,57;,58;,59;,32;,56;,59;,39;,57;,55"
+            Fill="#FF999999" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.16, 978.08 L 136.8, 978.08 136.8, 978.72 136.16, 978.72Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.16, 978.08 L 136.8, 978.08 136.8, 978.72 136.16, 978.72Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.8, 978.08 L 727.2, 978.08 727.2, 978.72 136.8, 978.72Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 727.2, 978.08 L 727.84, 978.08 727.84, 978.72 727.2, 978.72Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 727.2, 978.08 L 727.84, 978.08 727.84, 978.72 727.2, 978.72Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.16, 978.72 L 136.8, 978.72 136.8, 992.96 136.16, 992.96Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 727.2, 978.72 L 727.84, 978.72 727.84, 992.96 727.2, 992.96Z" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="1003.84" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="to the attached license agreement (also available at http://www.microsoft.com/whdc/device/print/metro.mspx)."
+            Indices=",36;,58;,33;,36;,59;,56;,32;,57;,36;,36;,57;,49;,59;,56;,59;,33;,24;,24;,48;,56;,60;,49;,56;,32;,57;,58;,41;,55;,57;,94;,55;,60;,35;,33;,42;,57;,24;,49;,57;,32;,57;,57;,57;,23;,24;,57;,60;,22;,57;,33;,56;,35;,33;,59;,36;,36;,60;,41;,42;,42;,79;,78;,77;,33;,94;,24;,49;,41;,56;,50;,56;,33;,36;,33;,48;,58;,94;,42;,79;,58;,60;,49;,42;,58;,57;,56;,24;,48;,57;,41;,59;,40;,22;,60;,36;,42;,94;,56;,36;,41;,58;,33;,92;,49;,59;,56;,42"
+            Fill="#FF999999" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="713.44" OriginY="1003.84" FontRenderingEmSize="16"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString=" " Fill="#FF999999" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="718.72" OriginY="1003.84" FontRenderingEmSize="16"
+            FontUri="/Resources/Fonts/3b85141b-0969-4d9e-b9c8-e705bb7e6543.ODTTF"
+            UnicodeString=" " Fill="#FF999999" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.16, 1007.36 L 136.8, 1007.36 136.8, 1008 136.16, 1008Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.16, 1007.36 L 136.8, 1007.36 136.8, 1008 136.16, 1008Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.8, 1007.36 L 727.2, 1007.36 727.2, 1008 136.8, 1008Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 727.2, 1007.36 L 727.84, 1007.36 727.84, 1008 727.2, 1008Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 727.2, 1007.36 L 727.84, 1007.36 727.84, 1008 727.2, 1008Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 136.16, 992.96 L 136.8, 992.96 136.8, 1007.36 136.16, 1007.36Z" />
+    <!--System.Windows.Shapes.Path-->
+    <Path Fill="#FF999999" Data="F1 M 727.2, 992.96 L 727.84, 992.96 727.84, 1007.36 727.2, 1007.36Z" />
+  </Canvas>
+
+  <Canvas Name="Pg1Heading1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="149.44" FontRenderingEmSize="21.28"
+            FontUri="/Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+            UnicodeString="Chapter 1." Indices=";;;;;;,51" Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="268.48" OriginY="149.44" FontRenderingEmSize="21.28"
+            FontUri="/Resources/Fonts/3f87ce81-fb61-4ea7-8d62-aed569d1b895.ODTTF"
+            UnicodeString=" " Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="288" OriginY="149.44" FontRenderingEmSize="21.28"
+            FontUri="/Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+            UnicodeString="The XPS Document Format "
+            Indices=";;;;;;,72;;;;,60;;;;;;;;;;;,68" Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="Pg1P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="190.72" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This specification describes a set of conventions for how the XPS Document file format is organized "
+            Indices=";;;;;;;,58;;;;;;;;;;;;;;;,51;;;;,58;;;,58;;;;;;,60;;,34;;;,62;;;;;;;;;;;,59;,42;;;;,80;;;;,58;;;;,67;;,76;;;;;;;;,34;;;;;,34;;,60;;;;;;;,51;;;,42"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="205.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="internally and rendered externally. It is built upon the principles described in the Open Packaging "
+            Indices=";;;;;;;;;;;;;;,34;;;;,61;;;,58;;,34;;;;,58;,42;;;;;;;;,43;;;;,51;;;;;;;;;,61;;;;;;;,34;;;;;,51;;;;;;;,61;;;,51;;;;,59;;;;;;;;,58;;,78;;;;;;,59"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="220.8" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Conventions specification and incorporates the requirements and recommendations of that specification, "
+            Indices=";;;,58;;;;;;;;;,51;;;;,25;;;;;;;;;;;;;,34;;;;;;,61;;;;;,59;;;;;,58;;;,59;;;;;;,95;;;;;;;;;,34;;;,51;;;,95;;;;;;;;;;,34;;,34;;;;;;;;,61"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="235.68" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="except where indicated otherwise. "
+            Indices=";;;,58;;;;;;;;,59;;;;;;;;;;,61;;;;;;,42" Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="Pg1P2">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="262.72" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="The XPS Document format represents a paginated set of related pages with a fixed layout, which are "
+            Indices=";;;;;;,67;;,76;;;;;;;;;,34;;;;;;,34;;,59;,61;;;;;;;,51;;;,34;;;;;;;;;,61;;;;;;,60;;;;;,25;;;;;;;,59;;;,51;;;;;;;,58;;;,25;;;;;;;,58;;;;;;;;;;;;;,41"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="277.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="organized as one or more “documents” in the traditional meaning of the word. A file that implements this "
+            Indices=";,42;;;;;;;;;,59;;,34;;;;,34;;,42;;,95;;;,58;;,45;;,60;;;;;;;;;;;;;;;,59;;;;;;;;;;;;;;,95;,58;;;;;;;;,34;;;;;;;,60;;;,34;;,67;;;;;;;;;;;;,25"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="292.8" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="format includes everything necessary to fully render those documents on a display device or a physical "
+            Indices=";,60;;;;;;;;;;;;;,51;;,59;;,59;;;;;;;;;;,58;;;;;,59;;,58;;;,59;;;;;;;;;;;,61;;,42;;;;;,51;;,34;,61;;;;;;;;;,34;;;;,58;;;;,50;;;;;;;,58;;;;,58;;;,42"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="307.68" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="medium (for example, paper). This includes all resources such as fonts or images that might be required "
+            Indices=";;;;;;;;,34;;,42;;,58;;;;;;;,34;;;,59;;;;;,34;;;;;;;;;;;;;;,51;;;;;;;,58;;;,61;;;;,51;;;,61;;;;;;,34;,34;;;;;;,60;,42;;;;;;;,51;;;;;;;;,25;;;;;;,58;;,42;;;;;;,58;,61"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="322.72" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="to render individual page markings. "
+            Indices=";;;,42;;;;,58;;;;;;,26;;;;;;;;;,58;;;;;;,42" Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="Pg1P3">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="349.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="In addition, the XPS Document format includes several optional components that build on the minimal set "
+            Indices=",43;;;,58;;;;;;;;;;;;;,34;;;;,34;,76;;;;;;,61;;;;,60;;;;;;;;;;;;,58;;;,50;;,58;;;;;,34;;;;;,59;;;;;;;;,61;;;;;;;;;;;;,34;;;;;;;;,61"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="364.8" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="of components required to render a set of pages. This includes the ability to specify print job control "
+            Indices=";;;;,59;;,61;;;;;;;,34;;;;;;,42;;,61;;;,59;;;;,61;;;,42;;;,34;;;;,34;;,34;;;,58;;;;,35;;;;;;;;;;;;,61;;;;;;;;,58;;;;;;;;;,60;;;,61;;;;,34;;,34;;;;;;;,32;;,61;;;;;;,42"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="379.68" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="instructions, to organize the minimal page markings into larger semantic blocks such as paragraphs, and "
+            Indices=";;;;;;;;;;;;;;;;;;,42;;;;;;;;;;,58;,34;;;;;;;;;;;;;,34;;;,42;;;;;;;;;;,60;;;;;;,58;;,34;;;;;;;;;;;;;,51;;;,34;;;;;;;,50;;;;;;,61;;;;;;,34"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="394.72" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="to physically rearrange the contents of the format for easy consumption in a streaming manner, among "
+            Indices=";;;;,61;;;;;;;;;,34;;;,58;;;;;;;;;;,58;;;,60;;;;;;;;;;;;;;,34;;,60;;;;;;;,59;;,34;;;,51;;,34;;;;;;;;;;;,61;;;;;;;;,37;;;;;;;;;,96;;;;;;;;;;;,61"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="409.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="others.  " Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="Pg1P4">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="436.8" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Finally, the XPS Document format implements the common package features specified by the Open "
+            Indices=";;;;;;;;;;;;;;;,67;,34;;;;;,96;;;;;,34;;,42;;;;;;;;;;;;;;;;;;,58;;,51;;;,96;;;,34;;;;;,58;;;,34;;;;;;,42;;;,34;;;,58;;;;;;,61;;,61;,58;,34"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="451.68" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Packaging Conventions specification to provide support for digital signatures and core properties. "
+            Indices=";;;;;;;;,61;;;;,61;;;;;;;;,51;;;,61;;;;;,25;;;;;;;;;;,34;;,42;;;,26;;;;;;;,61;,60;;;;,34;;,41;;;;;;;;;;;;;;;;;;;,50;;;;;;;,60;;,58;;,61;,42;;;,58"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+  </Canvas>
+
+  <Canvas Name="Pg1P5">
+    <Glyphs OriginX="144" OriginY="478.72" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This specification is intended both for producers, who want to emit content in the XPS Document format, "
+            Indices=";;;;;;;,58;;;;;;;;;;;;;,51;;;;;;;;;,61;,34;;;;;,34;;,59;;,34;;,41;;;;,51;;;;,34;;;,61;;,34;;;;;;;;;;;;;,34;;;;;;;;;;;;;;;,34;;;,67;;,76;,60;;;;;;;;,34"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="493.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="and consumers, who want to access and render or process the contents of an XPS Document. "
+            Indices=";;;;,51;;;;;;;,42;;;;;,61;;;;;;;;;,59;;;;;;;,50;;;;,61;;;;,61;;,58;;,34;;,41;;,61;;,59;;;;,50;;;;;;;;;;;;;;,34;;;;;;,34;;;;;,76;;;;,95"
+            Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="Pg1Heading2">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="144" OriginY="544.64" FontRenderingEmSize="16"
+            FontUri="/Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+            UnicodeString="1.1" Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="172.48" OriginY="544.64" FontRenderingEmSize="16"
+            FontUri="/Resources/Fonts/3f87ce81-fb61-4ea7-8d62-aed569d1b895.ODTTF"
+            UnicodeString=" " Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="192" OriginY="544.64" FontRenderingEmSize="16"
+            FontUri="/Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+            UnicodeString="How This Specification Is Organized "
+            Indices=";;;;;;;;;;;;;;;;,60" Fill="#FF000000" />
+  </Canvas>
+
+
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 142.08, 520 L 721.92, 520 721.92, 520.64 142.08, 520.64Z" />
+  <!--System.Windows.Documents.Glyphs-->
+  <Glyphs Name="Pg1P6" OriginX="144" OriginY="572.8" FontRenderingEmSize="10.72"
+          FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+          UnicodeString="Each chapter in this specification focuses on a different aspect of the XPS Document format. "
+          Indices=";;;;;;;;;;;,42;;;;;;;;;;,51;;;;,25;;;;;;;;;;,34;;;;,50;;;;;;;,58;;;,25;;;,58;;;;;;,58;;;,58;;;;,59;;;;;,58;;;;,67;;,76;;;;;;;;;,34;;;;,58"
+          Fill="#FF000000" />
+
+  <!--System.Windows.Documents.Glyphs-->
+  <Glyphs Name="Pg1P7" OriginX="144" OriginY="601.92" FontRenderingEmSize="10.72"
+          FontUri="/Resources/Fonts/9aa4ea89-755c-4331-be84-0cd43ff87195.ODTTF"
+          UnicodeString="Table 1–1. Chapter summary "
+          Indices=";;;;;;,63;,62;;;;;;,58;;;;,42;;;;;;,58" Fill="#FF000000" />
+
+  <!--System.Windows.Documents.Glyphs-->
+  <Glyphs Name="R1C1P1" OriginX="146.88" OriginY="623.2" FontRenderingEmSize="10.72"
+          FontUri="/Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+          UnicodeString="Chapter" Indices=";;;,69;;;" Fill="#FF000000" />
+  <Glyphs Name="R1C2P1" OriginX="256" OriginY="623.2" FontRenderingEmSize="10.72"
+          FontUri="/Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+          UnicodeString="Description" Indices=";;;;;;;,68;;;,67" Fill="#FF000000" />
+
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 143.04, 608 L 251.52, 608 251.52, 608.32 143.04, 608.32Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.52, 608 L 251.84, 608 251.84, 608.32 251.52, 608.32Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.84, 608 L 723.36, 608 723.36, 608.32 251.84, 608.32Z" />
+
+  <Canvas Name="R2C1P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="644.32" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Parts and " Indices=";;;;;;;;,61" Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="659.36" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Relationships " Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="R2C2P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="644.32" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This chapter describes how the XPS Document makes use of the packaging model (as "
+            Indices=";;;;;;;;;;;,41;;,61;;;,51;;;;;,50;;;,60;;;;,62;;;;;;,34;;;;;,95;;;;;;;,58;;;;,61;;;,34;,60;;;;;,58;;;;,50;;;;;;,61;;;,60;;;;;;;,51"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="659.36" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="described in the Open Packaging Conventions specification) to organize its data. All "
+            Indices=";;;,50;;;;,58;;;;;;;;,58;;,77;;;;;;;,50;;;;,25;;;;,69;;;;;;;;;;,51;;,51;;;;;;;;;;;;;;,34;;;;,60;;;;;;;,59;;;;;;;;;;;,34"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="674.24" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="part and relationship types are described in detail, including how they are used and "
+            Indices=";;;;;;;,61;,34;;;;;;;;;;;;;;;;;;,51;;;,42;;;,61;;;,50;;;;,59;;;;;,34;;;;;;;;;;;;;;;;;;;;;,81;;;;;,58;;;,42;;;;,51;;,61"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="689.28" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="what they can contain.  "
+            Indices=";;;;;;;;;,34;;;;;,51" Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="R2C2P2">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="708.32" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This chapter also describes the XPS Document markup model for its parts, as well as "
+            Indices=";;;;;;;;;;;,41;;;;;,60;;,61;;;,50;;;;;,51;;;,62;;;;;;,34;;;;;,95;;;;;;;,42;;;,61;;;,60;,61;;;;;;,42;;;;;;;,58;;;;;;;,51;;,81;;;;;;,51"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="723.36" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="how that XML markup relates to the packaging conventions and recommendations it "
+            Indices=";;;;;;;;;;;,54;;;;,42;;;,61;;,42;;;;;;;,34;;;;;;;;;;;;,58;;;;;;;;,61;;;;;;;;;,34;;;;;,42;;;,60;;;;;;;;;;;,51"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="738.24" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="builds on. " Fill="#FF000000" />
+  </Canvas>
+
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 143.04, 630.24 L 251.52, 630.24 251.52, 630.56 143.04, 630.56Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.52, 630.24 L 251.84, 630.24 251.84, 630.56 251.52, 630.56Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.84, 630.24 L 723.36, 630.24 723.36, 630.56 251.84, 630.56Z" />
+
+  <Canvas Name="R3C1P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="759.52" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Documents " Indices=";;;;,95" Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="778.56" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString=" " Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="R3C2P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="759.52" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="The fundamental building blocks of the XPS Document format are described here. "
+            Indices=";;;;;;;;;,96;;;;;;;;;;;;;;;;;,25;;,51;;;,34;;;;;;;,34;;;;;;;;;;;;;,34;;,60;;,96;;;;;;,58;;;,58;;;;,25;;;,61;;;,58"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="774.56" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This chapter describes how pages are composed into larger documents and how "
+            Indices=";;;;;;;;;;;,41;;,61;;;,51;;;;;,50;;;,60;;,34;;,58;;;,51;;;;,58;;,51;;;,61;;;,59;;;;;;,59;;;;;,61;;,42;,34;;;;;,95;;;;;;;;,61;;;;,80"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="789.44" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="documents are composed into document sequences. These components are "
+            Indices=";;;;,95;;;;;;;,42;;;,50;;,95;;;,51;;;;;;;,59;;,61;;;;;;;;;,50;;;;;;,51;;;;;;;;,50;;;;;;,61;;;;;;;;,59;;,58"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="804.48" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="represented in XML markup. "
+            Indices=";;,61;;;,51;;;;;,61;;;;;;;;;;,59;;;,61" Fill="#FF000000" />
+  </Canvas>
+
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 143.04, 745.44 L 251.52, 745.44 251.52, 745.76 143.04, 745.76Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.52, 745.44 L 251.84, 745.44 251.84, 745.76 251.52, 745.76Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.84, 745.44 L 723.36, 745.44 723.36, 745.76 251.84, 745.76Z" />
+
+  <Canvas Name="R4C1P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="825.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Graphics " Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="844.64" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString=" " Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="R4C2P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="825.76" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This is the first of several chapters that describes page markings, in particular, vector "
+            Indices=";;;;;;;;;;;,34;;;;;,38;;,59;;;,51;;;;;;;,34;;;;;;;;,50;;;;;;;;,58;;;;,25;;;,51;;;,58;;;;;;,42;;;;;;;;;;;;;;;;;;;;;;,34;;;;,37;;,42"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="840.64" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="graphics. The concepts of paths, geometries, and figures are introduced. Vector "
+            Indices=";;;;;;;;,35;;;;;,34;;;;;,58;;;,50;;,60;;,34;;;;;;;;;,59;;;;;;;,59;;;;;;,61;;;;;,62;;;,51;;;,42;;;;;;;,59;;;;;;,35;;;,58;;;,60"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="855.68" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="graphics are represented in XML page-layout markup. "
+            Indices=";;;;;;;,51;;,58;;;,34;;,58;;;,58;;;;;;,61;;;;;,68;;;;;;;;;;;;;;;;;,58"
+            Fill="#FF000000" />
+  </Canvas>
+
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 143.04, 811.68 L 251.52, 811.68 251.52, 812 143.04, 812Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.52, 811.68 L 251.84, 811.68 251.84, 812 251.52, 812Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.84, 811.68 L 723.36, 811.68 723.36, 812 251.84, 812Z" />
+
+  <Canvas Name="R5C1P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="876.96" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="Text " Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="146.88" OriginY="895.84" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString=" " Fill="#FF000000" />
+  </Canvas>
+
+  <Canvas Name="R5C2P1">
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="876.96" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="This chapter describes how to introduce text page markings in XML page-layout "
+            Indices=";;;;;;;;;;;,41;;,61;;;,51;;;;;,50;;;,60;;;,37;,60;;;;;;;;;,50;;;;,58;;;;;;;,58;;;;,41;;;;;,51;;;;;;;;,34;;;;;;;;,58"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="891.84" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="markup. It describes how to reference a font and extract information from that font "
+            Indices=";;;;;;,34;;,43;;;,61;;;,51;;;;,59;;;;,60;;;,37;;;,42;;;,58;;;;;,58;;;,34;;;;,37;;;;;,34;;;;;,58;;;;;;,34;;;;;;;;,61;;,34;;;,95;;;;;;;,34"
+            Fill="#FF000000" />
+    <!--System.Windows.Documents.Glyphs-->
+    <Glyphs OriginX="256" OriginY="906.88" FontRenderingEmSize="10.72"
+            FontUri="/Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+            UnicodeString="to render the page. " Indices=";;;,42;;;;,58;;;;;,59;;;,58"
+            Fill="#FF000000" />
+  </Canvas>
+
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 143.04, 862.88 L 251.52, 862.88 251.52, 863.2 143.04, 863.2Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.52, 862.88 L 251.84, 862.88 251.84, 863.2 251.52, 863.2Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.84, 862.88 L 723.36, 862.88 723.36, 863.2 251.84, 863.2Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 142.08, 914.08 L 252, 914.08 252, 914.4 142.08, 914.4Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.04, 914.08 L 251.36, 914.08 251.36, 914.4 251.04, 914.4Z" />
+  <!--System.Windows.Shapes.Path-->
+  <Path Fill="#FF000000"
+        Data="F1 M 251.36, 914.08 L 723.84, 914.08 723.84, 914.4 251.36, 914.4Z" />
+</FixedPage>

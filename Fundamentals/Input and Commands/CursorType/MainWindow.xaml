@@ -1,0 +1,77 @@
+﻿<Window x:Class="CursorType.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CursorType"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" Loaded="OnLoaded">
+    <Window.Resources>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Margin" Value="3" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="LightBlue" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <Border Width="300">
+            <StackPanel Orientation="Horizontal"
+                  HorizontalAlignment="Center">
+                <StackPanel Margin="10">
+                    <Label HorizontalAlignment="Left">Cursor Type</Label>
+                    <ComboBox Width="100"
+                    SelectionChanged="CursorTypeChanged"
+                    HorizontalAlignment="Left"
+                    Name="CursorSelector">
+                        <ComboBoxItem Content="AppStarting" />
+                        <ComboBoxItem Content="ArrowCD" />
+                        <ComboBoxItem Content="Arrow" />
+                        <ComboBoxItem Content="Cross" />
+                        <ComboBoxItem Content="HandCursor" />
+                        <ComboBoxItem Content="Help" />
+                        <ComboBoxItem Content="IBeam" />
+                        <ComboBoxItem Content="No" />
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Pen" />
+                        <ComboBoxItem Content="ScrollSE" />
+                        <ComboBoxItem Content="ScrollWE" />
+                        <ComboBoxItem Content="SizeAll" />
+                        <ComboBoxItem Content="SizeNESW" />
+                        <ComboBoxItem Content="SizeNS" />
+                        <ComboBoxItem Content="SizeNWSE" />
+                        <ComboBoxItem Content="SizeWE" />
+                        <ComboBoxItem Content="UpArrow" />
+                        <ComboBoxItem Content="WaitCursor" />
+                        <ComboBoxItem Content="Custom" />
+                    </ComboBox>
+                </StackPanel>
+                <!-- The user can select different cursor types using this ComboBox -->
+                <StackPanel Margin="10">
+                    <Label HorizontalAlignment="Left">Scope of Cursor</Label>
+                    <StackPanel>
+                        <RadioButton Name="rbScopeElement" IsChecked="True"
+                         Checked="CursorScopeSelected">Display Area Only</RadioButton>
+                        <RadioButton Name="rbScopeApplication"
+                         Checked="CursorScopeSelected">Entire Appliation</RadioButton>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <!-- When the mouse pointer is over this Border -->
+        <!-- the selected cursor type is shown -->
+        <Border Name="DisplayArea" Height="250" Width="400"
+            Margin="20" Background="AliceBlue">
+            <Label HorizontalAlignment="Center">
+                Move Mouse Pointer Over This Area
+            </Label>
+        </Border>
+    </StackPanel>
+</Window>

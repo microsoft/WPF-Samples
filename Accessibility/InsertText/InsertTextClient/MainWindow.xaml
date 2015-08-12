@@ -1,0 +1,53 @@
+﻿<Window x:Class="InsertTextClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsertTextClient"
+        mc:Ignorable="d"
+        Name="Client"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <StackPanel Name="Controls" DockPanel.Dock="Left">
+            <Button Margin="10,0,10,0" 
+              Name="btnStartApp" 
+              Height="25" 
+              Click="btnStartApp_Click" 
+              IsTabStop="True" 
+              KeyboardNavigation.AcceptsReturn="True"  
+              KeyboardNavigation.IsTabStop="True">Start Target App</Button>
+            <TextBlock Name="tbkInsert" Margin="10,10,10,10" Visibility="Visible" IsEnabled="False">
+        Insert Text Using UI Automation or Win32:
+            </TextBlock>
+            <StackPanel Name="spInsert"
+                  Margin="0,0,0,20"
+                  Orientation="Horizontal" 
+                  Visibility="Visible"
+                  IsEnabled="False">
+                <TextBox Width="250"
+                  Height="25"
+                  Margin="10,0,0,0"
+                  MaxLength="100"
+                  Name="tbInsert"
+                  MaxLines="1" />
+                <Button Margin="10,0,0,0"
+                Name="btnUIAutoInsert"
+                Height="25"
+                Width="50" 
+                Click="btnInsert_Click"
+                IsTabStop="True"
+                KeyboardNavigation.AcceptsReturn="True"
+                KeyboardNavigation.IsTabStop="True">UIAutomation</Button>
+                <Button Margin="10,0,10,0"
+                Name="btnWin32Insert"
+                Height="25"
+                Width="50" 
+                Click="btnInsert_Click"
+                IsTabStop="True"
+                KeyboardNavigation.AcceptsReturn="True"
+                KeyboardNavigation.IsTabStop="True">Win32</Button>
+            </StackPanel>
+            <TextBlock Margin="10,0,10,0" Name="txtFeedback" TextWrapping="WrapWithOverflow" />
+        </StackPanel>
+    </DockPanel>
+</Window>

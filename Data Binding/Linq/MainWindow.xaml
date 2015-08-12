@@ -1,0 +1,48 @@
+﻿<Window x:Class="Linq.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Linq"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" Height="600">
+    <Window.Resources>
+        <local:Tasks x:Key="MyTodoList"/>
+        <DataTemplate x:Key="MyTaskTemplate">
+            <Border Name="border" BorderBrush="Aqua" BorderThickness="1"
+              Padding="5" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=TaskName}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Description:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Description}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Priority:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Priority}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock Margin="10,0,0,0">Choose a Priority:</TextBlock>
+        <ListBox SelectionChanged="ListBox_SelectionChanged"
+                 SelectedIndex="0" Margin="10,0,10,0" >
+            <ListBoxItem>1</ListBoxItem>
+            <ListBoxItem>2</ListBoxItem>
+            <ListBoxItem>3</ListBoxItem>
+        </ListBox>
+        <ListBox Width="400" Margin="10" Name="myListBox"
+                 HorizontalContentAlignment="Stretch"
+                 ItemsSource="{Binding}"
+                 ItemTemplate="{StaticResource MyTaskTemplate}"/>
+
+    </StackPanel>
+</Window>

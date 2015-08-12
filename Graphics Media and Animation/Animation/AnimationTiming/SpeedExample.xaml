@@ -1,0 +1,42 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.SpeedExample" 
+  WindowTitle="Speed Example">
+  <StackPanel Margin="20" Background="{StaticResource MyGridBrushResource}">
+    <StackPanel>
+      <TextBlock>Speed="1"</TextBlock>
+      <Rectangle Name="defaultSpeedRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+      
+      <TextBlock Margin="0,20,0,0">Speed="2"</TextBlock>
+      <Rectangle Name="fasterRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+      
+      <TextBlock Margin="0,20,0,0">Speed="0.5"</TextBlock>
+      <Rectangle Name="slowerRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+    </StackPanel>
+    
+    <!-- Create a button to restart the animations. -->
+    <Button Margin="0,30,0,0" HorizontalAlignment="Left">Restart Animations
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <DoubleAnimation 
+                Storyboard.TargetName="defaultSpeedRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                From="20" To="400" Duration="0:0:2" SpeedRatio="1" />
+
+              <DoubleAnimation 
+                Storyboard.TargetName="fasterRectangle" Storyboard.TargetProperty="(Rectangle.Width)"
+                From="20" To="400" Duration="0:0:2" SpeedRatio="2"  />   
+
+              <DoubleAnimation 
+                Storyboard.TargetName="slowerRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                From="20" To="400" Duration="0:0:2" SpeedRatio="0.5"  />                
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>     
+    </Button>
+  </StackPanel>
+ 
+</Page>

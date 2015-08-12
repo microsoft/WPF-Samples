@@ -1,0 +1,61 @@
+﻿<Window x:Class="UsingSpeech.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UsingSpeech"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <Grid>
+        <StackPanel>
+            <Grid  Margin="10px">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Text to display -->
+                <Label Grid.Column="0" Grid.Row="0">Sample string:</Label>
+                <TextBox
+        Grid.Column="1" Grid.Row="0"
+        HorizontalAlignment="Left"
+        TextWrapping="Wrap"
+        AcceptsReturn="True"
+        VerticalScrollBarVisibility="Visible"
+        FontSize="12"
+        Height="100" 
+        Width="400"
+        Name="TextToDisplay">Hello, world!</TextBox>
+
+                <!-- Volume property: 0 to 100 -->
+                <Label Grid.Column="0" Grid.Row="1">Volume (%):</Label>
+                <Slider Name="VolumeSlider" Grid.Column="1" Grid.Row="1" Value="50" Minimum="0" Maximum="100" TickFrequency="5" ValueChanged="VolumeChanged"/>
+
+                <!-- Rate property: -10 to 10 (adjust to reasonable range of -5 to 7) -->
+                <Label Grid.Column="0" Grid.Row="2">Speaking rate:</Label>
+                <Slider Name="RateSlider" Grid.Column="1" Grid.Row="2" Value="-1" Minimum="-5" Maximum="7" TickFrequency="1" ValueChanged="RateChanged"/>
+
+                <!-- Buttons -->
+                <Button Grid.Column="1" Grid.Row="3" Click="ButtonEchoOnClick">Echo Textbox</Button>
+                <Button Grid.Column="1" Grid.Row="4" Click="ButtonDateOnClick">Say Date</Button>
+                <Button Grid.Column="1" Grid.Row="5" Click="ButtonTimeOnClick">Say Time</Button>
+                <Button Grid.Column="1" Grid.Row="6" Click="ButtonNameOnClick">Say Name</Button>
+
+                <Label Name="DebugLabel" Grid.Column="0" Grid.Row="7" />
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

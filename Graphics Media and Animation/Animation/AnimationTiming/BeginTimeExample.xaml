@@ -1,0 +1,61 @@
+<!-- BeginTimeExample.xaml 
+     This example shows how the BeginTime property determines when a timeline starts.
+     Several rectangles re animated by DoubleAnimations with identical durations and target values, but with different
+     BeginTime settings. -->
+     
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.BeginTimeExample" 
+  WindowTitle="BeginTime Example">
+  <StackPanel Margin="20" Background="{StaticResource MyGridBrushResource}">
+    
+    <Border Background="#99FFFFFF">
+      <TextBlock Margin="20">
+        This example shows how the BeginTime property determines when a timeline starts.
+        Several rectangles are animated by DoubleAnimations with identical durations and target values, but with different
+        BeginTime settings.
+      </TextBlock>
+    </Border>
+    
+
+    <TextBlock> 
+        Animation BeginTime: "0:0:0" </TextBlock>
+    <Rectangle Name="defaultBeginTimeRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+      
+    <TextBlock Margin="0,20,0,0"> 
+        Animation BeginTime: "0:0:5" </TextBlock>
+    <Rectangle Name="delayedBeginTimeRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+    
+    <TextBlock Margin="0,20,0,0"> 
+        Parent Timeline BeginTime: "0:0:5"<LineBreak/>
+        Animation BeginTime: "0:0:5" </TextBlock>
+    <Rectangle Name="delayedAnimationWithDelayedParentRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />      
+    
+    <!-- Create a button to restart the animations. -->
+    <Button Margin="0,30,0,0" HorizontalAlignment="Left">Restart Animations
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <DoubleAnimation 
+                Storyboard.TargetName="defaultBeginTimeRectangle" Storyboard.TargetProperty="(Rectangle.Width)"
+                BeginTime="0:0:0" From="20" To="400" Duration="0:0:2"  FillBehavior="HoldEnd" /> 
+
+              <DoubleAnimation Storyboard.TargetName="delayedBeginTimeRectangle" 
+                Storyboard.TargetProperty="(Rectangle.Width)"  
+                BeginTime="0:0:5" From="20" To="400" Duration="0:0:2" FillBehavior="HoldEnd" />
+                
+              <ParallelTimeline BeginTime="0:0:5">  
+                <DoubleAnimation  
+                  Storyboard.TargetName="delayedAnimationWithDelayedParentRectangle" Storyboard.TargetProperty="(Rectangle.Width)" 
+                  BeginTime="0:0:5" From="20" To="400" Duration="0:0:2" FillBehavior="HoldEnd" />
+              </ParallelTimeline>
+              
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>      
+    </Button>
+  </StackPanel>
+</Page>

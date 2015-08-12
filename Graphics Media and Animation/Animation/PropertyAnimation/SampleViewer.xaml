@@ -1,0 +1,26 @@
+
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Microsoft.Samples.Animation.AnimatingWithStoryboards.SampleViewer"
+  WindowTitle="Animate Properties with Storyboards">
+  <DockPanel>
+  <TabControl>
+    <TabItem Header="Event Trigger Storyboard Example">
+      <Frame Source="StoryboardExample.xaml" /> 
+    </TabItem>
+    <TabItem Header="Property Trigger Storyboard Example">
+      <Frame Source="PropertyTriggerExample.xaml" />
+    </TabItem>    
+    <TabItem Header="Style Storyboard Example">
+      <Frame Source="StyleStoryboardExample.xaml" />
+    </TabItem> 
+    <TabItem Header="ControlTemplate Storyboard Example">
+      <Frame Source="ControlTemplateStoryboardExample.xaml" />
+    </TabItem>
+    <TabItem Header="DataTrigger Storyboard Example">
+      <Frame Source="DataTriggerStoryboardExample.xaml" />
+    </TabItem>
+  </TabControl>
+  </DockPanel>
+</Page>

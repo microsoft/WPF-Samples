@@ -1,0 +1,181 @@
+﻿<Window x:Class="Matrix.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Matrix"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        Title="MainWindow">
+    <Grid Name="mainGridPanel" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- Top Border -->
+        <Rectangle Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Fill="#99CCCCCC" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="10,10,0,10">
+            <Bold>Matrix Sample</Bold>
+        </TextBlock>
+
+        <!--Begin: List of operations-->
+        <Rectangle Grid.Row="2" Grid.Column="0"
+            Fill="#99CCCCFF" RadiusX="10" RadiusY="10"/>
+
+        <DockPanel Grid.Row="2" Grid.Column="0" >
+            <TextBlock Margin ="10,20,0,0" DockPanel.Dock ="Top">
+             <Bold>Matrix Operations</Bold>
+            </TextBlock>
+
+            <!-- A list of radio buttons used to select which operation to perform -->
+            <ScrollViewer Width="400" Height="400" DockPanel.Dock="Left" Margin ="10">
+                <StackPanel>
+                    <RadioButton Checked="PerformOperation"  Name="rb1">Check if a Matrix is invertible</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb2">Translate Matrix1 by (15,25)</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb3">Prepend a translation (15,25) to Matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb4">Set Matrix1 as an Identity Matrix using the method SetIdentity</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb5">Check if Matrix1 is an Identity Matrix</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb6">Set Matrix1 as an Identity Matrix using the static property Identity</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb7">convert a string representation of a Matrix into a Matrix structure</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb8">Check if two Matrices are equal using the static Equals method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb8b">Check if an Object and a Matrix are equal using the static Equals method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb9">Check if two Matrices are equal using the overloaded == operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb10">Check if two Matrices are not equal using the overloaded != operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb11">Invert a matrix</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb12">Prepend  matrix1 onto Matrix2</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb13">Append Mmtrix1 onto Matrix2</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb14">Rotate matrix1 by 90 degrees</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb15">Rotate matrix1 by 90 degrees at the point (2,4)</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb16">Prepend a rotation of 90 degrees onto matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb17">Prepend a rotation of 90 degrees onto matrix1 by the point (2,4)</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb18">Scale matrix1 by (1,2)</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb19">Multiply matrix2 by matrix1 using the static Multiply method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb20">Multiply matrix1 by matrix2 using the overloaded *</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb21">Append a skew to Mmtrix1.  x=45 degrees, y=180 degrees</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb22">Prepend a skew to matrix1.  x=45 degrees, y=180 degrees</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb23">Scale matrix1 by (2,4)</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb24">Scale matrix1 by (2,4) at the point (5,10)</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb25">Prepend a scale of (2,4) to Matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb26">Prepend a scale of (2,4) at point (5,10) to Matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb27">Transform point1 by matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb28">Transform vector1 by matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb29">Transform an array of Points by matrix1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb30">Transform an array of Vectors by matrix1</RadioButton>
+                </StackPanel>
+            </ScrollViewer>
+
+        </DockPanel>
+        <!--End: List of operations-->
+
+        <!-- Begin: The Variable and Result Tables -->
+        <Rectangle Grid.Row="2" Grid.Column="2"
+            Fill="#99CCCCCC" RadiusX="10" RadiusY="10"/>
+        <DockPanel Grid.Row="2" Grid.Column="2" Margin ="0,10,0,30">
+
+            <!-- Displays the variables used in the operations -->
+            <Grid DockPanel.Dock="Top"  Margin="20,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                    <Bold>Variables</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0">
+                    <Bold>Matrix 1:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="txtMatrix1">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0">
+                    <Bold>Matrix 2:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="txtMatrix2">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0">
+                    <Bold>Point 1:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="txtPoint1">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0">
+                    <Bold>Vector 1:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="txtVector1">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="0">
+                    <Bold>Scalar 1:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="1" Name="txtScalar1">
+                    <Bold />
+                </TextBlock>
+            </Grid>
+
+            <!-- Displays the result information of the operations -->
+            <Grid DockPanel.Dock="Top"
+                  Margin="20,110,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                    <Bold>Results</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0">
+                    <Bold>Operation:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="txtOperation">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0">
+                    <Bold>Syntax:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="txtSyntax">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0">
+                    <Bold>Result:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="txtResultValue">
+                    <Bold />
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0">
+                    <Bold>Result Type:</Bold>
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="txtResultType">
+                    <Bold />
+                </TextBlock>
+            </Grid>
+        </DockPanel>
+        <!-- End: The Variable and Result Tables -->
+
+    </Grid>
+</Window>

@@ -1,0 +1,241 @@
+<!-- GradientBrushesExample.xaml 
+     This example shows how to create linear and radial gradients. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="Brushes.GradientBrushesExample" 
+  Loaded="PageLoaded"
+  Title="Gradient Brushes">
+
+  <Page.Resources>
+    <Style x:Key="AxisMarkerStyle">
+      <Setter Property="Line.StrokeThickness" Value="2"/>
+      <Setter Property="Line.Stroke" Value="Black"/>
+      <Setter Property="Line.StrokeDashArray" Value="2,1"/>
+      <Setter Property="Line.StrokeEndLineCap" Value="Flat"/>
+      <Setter Property="Line.StrokeStartLineCap" Value="Flat"/>
+      <Style.Triggers>
+        <EventTrigger RoutedEvent="Path.Loaded">
+          <BeginStoryboard>
+            <Storyboard>
+              <DoubleAnimation Storyboard.TargetProperty="StrokeDashOffset" 
+                From="3" To="0" Duration="0:0:1" RepeatBehavior="Forever" />
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <Style x:Key="GradientMarkerStyle">
+      <Setter Property="Path.Fill" Value="#99FFFFFF"/>
+      <Setter Property="Path.Stroke" Value="Black"/>
+      <Setter Property="Path.StrokeThickness" Value="2"/>
+    </Style>
+    <Style TargetType="{x:Type Canvas}">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="Margin" Value="5"/>
+    </Style>
+  </Page.Resources>
+  <Grid Margin="10">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="20" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="20" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+
+
+
+    <!-- Header -->
+    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" 
+      Background="{StaticResource BlueHorizontalGradientBrush}">
+      <TextBlock Style="{StaticResource MyIntroTextBlockStyle}">
+        This example shows linear and radial gradients. Gradient stop locations are marked with circles,
+        and gradient axis locations are marked with dashed lines.
+      </TextBlock>
+    </Border>
+
+    <Rectangle Grid.Row="1" Grid.Column="0" RadiusX="10" RadiusY="10" 
+      Fill="#773333CC" Margin="0,5,0,5" />
+    <CheckBox Name="showHideGradientStopsCheckBox" 
+      IsChecked="True" Margin="10"
+      Grid.Row="1" Grid.Column="0">
+      Highlight Gradient Stops>
+    </CheckBox>
+
+    <Canvas Grid.Row="3" Grid.Column="0" Width="200" Height="100">
+
+      <!-- This rectangle is painted with a diagonal linear gradient. -->
+      <Rectangle Width="200" Height="100">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Yellow" Offset="0" />
+            <GradientStop Color="Red" Offset="0.25" />
+            <GradientStop Color="Blue" Offset="0.75" />
+            <GradientStop Color="LimeGreen" Offset="1" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Highlights the position of the brush's gradient stops. -->
+      <Line X1="1" Y1="1" X2="199" Y2="99" Style="{StaticResource AxisMarkerStyle}" Name="gradientLine1" />
+      <Path Style="{StaticResource GradientMarkerStyle}" Name="gradientPath1">
+        <Path.Data>
+          <GeometryGroup>
+            <EllipseGeometry Center="0,0" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="50,25" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="150,75" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="200,100" RadiusX="4" RadiusY="4" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Canvas>
+
+    <Canvas Grid.Row="3" Grid.Column="2" Width="200" Height="100">
+
+      <!-- This rectangle is painted with a horizontal linear gradient. -->
+      <Rectangle Width="200" Height="100">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="Yellow" Offset="0" />
+            <GradientStop Color="Red" Offset="0.25" />
+            <GradientStop Color="Blue" Offset="0.75" />
+            <GradientStop Color="LimeGreen" Offset="1" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Highlights the position of the brush's gradient stops. -->
+      <Line X1="1" Y1="50" X2="199" Y2="50" Style="{StaticResource AxisMarkerStyle}" Name="gradientLine2"/>
+      <Path Style="{StaticResource GradientMarkerStyle}" Name="gradientPath2">
+        <Path.Data>
+          <GeometryGroup>
+            <EllipseGeometry Center="0,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="50,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="150,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="200,50" RadiusX="4" RadiusY="4" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Canvas>
+
+    <Canvas Grid.Row="3" Grid.Column="4" Width="200" Height="100">
+
+      <!-- This rectangle is painted with a horizontal linear gradient. 
+               Because the StartPoint is (0.25,0.5) and the EndPoint is (0.75,0.5),
+               the gradient doesn't completely fill the output area. The remaining
+               portion of the rectangle is filled based on the brush's SpreadMethod setting.
+               In this case, the SpreadMethod isn't specified, so the brush defaults to
+               Pad. -->
+      <Rectangle Width="200" Height="100">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0.25,0.5" EndPoint="0.75,0.5">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Color="Yellow" Offset="0" />
+              <GradientStop Color="Red" Offset="0.25" />
+              <GradientStop Color="Blue" Offset="0.75" />
+              <GradientStop Color="LimeGreen" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Highlights the position of the brush's gradient stops. -->
+      <Line X1="49" Y1="50" X2="149" Y2="50" Style="{StaticResource AxisMarkerStyle}" Name="gradientLine3" />
+      <Path Style="{StaticResource GradientMarkerStyle}" Name="gradientPath3">
+        <Path.Data>
+          <GeometryGroup>
+            <EllipseGeometry Center="50,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="75,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="125,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="150,50" RadiusX="4" RadiusY="4" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Canvas>
+    <Canvas Grid.Row="5" Grid.Column="0" Width="200" Height="100">
+
+      <!-- This rectangle is painted with a vertical gradient. -->
+      <Rectangle Width="200" Height="100">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Color="Yellow" Offset="0" />
+              <GradientStop Color="Red" Offset="0.25" />
+              <GradientStop Color="Blue" Offset="0.75" />
+              <GradientStop Color="LimeGreen" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Highlights the position of the brush's gradient stops. -->
+      <Line X1="100" Y1="1" X2="100" Y2="99" Style="{StaticResource AxisMarkerStyle}" Name="gradientLine4" />
+      <Path Style="{StaticResource GradientMarkerStyle}" Name="gradientPath4">
+        <Path.Data>
+          <GeometryGroup>
+            <EllipseGeometry Center="100,0" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="100,25" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="100,75" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="100,100" RadiusX="4" RadiusY="4" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Canvas>
+
+    <Canvas Grid.Row="5" Grid.Column="2" Width="200" Height="100">
+
+      <!-- This rectangle is painted with a radial gradient. -->
+      <Rectangle Width="200" Height="100">
+        <Rectangle.Fill>
+          <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="Yellow" Offset="0" />
+              <GradientStop Color="Red" Offset="0.25" />
+              <GradientStop Color="Blue" Offset="0.75" />
+              <GradientStop Color="LimeGreen" Offset="1" />
+            </RadialGradientBrush.GradientStops>
+          </RadialGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Highlights the position of the brush's gradient stops. -->
+      <Line X1="101" Y1="50" X2="199" Y2="50" Style="{StaticResource AxisMarkerStyle}" Name="gradientLine5" />
+      <Path Style="{StaticResource GradientMarkerStyle}" Name="gradientPath5">
+        <Path.Data>
+          <GeometryGroup>
+            <EllipseGeometry Center="100,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="125,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="175,50" RadiusX="4" RadiusY="4" />
+            <EllipseGeometry Center="200,50" RadiusX="4" RadiusY="4" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Canvas>
+
+    <!-- Labels the examples. -->
+    <TextBlock Grid.Row="2" Grid.Column="0">Diagonal linear gradient</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="2">Horizontal linear gradient</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="4">Condensed horizontal linear gradient</TextBlock>
+    <TextBlock Grid.Row="4" Grid.Column="0">Vertical linear gradient</TextBlock>
+    <TextBlock Grid.Row="4" Grid.Column="2">Radial gradient</TextBlock>
+
+    <!-- Footer -->
+    <Rectangle 
+      Style="{StaticResource FooterRectangleStyle}" 
+      Grid.Row="7" Grid.ColumnSpan="5" 
+      Fill="{StaticResource BlueHorizontalGradientBrush}" />
+  </Grid>
+</Page>

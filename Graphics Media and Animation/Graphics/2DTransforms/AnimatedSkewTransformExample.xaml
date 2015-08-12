@@ -1,0 +1,53 @@
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Microsoft.Samples.Graphics.Transforms.AnimatedSkewTransformExample"
+  WindowTitle="Animated SkewTransform Example">
+  <StackPanel Orientation="Horizontal"> 
+    <Border BorderBrush="LightGray" BorderThickness="2" Background="WhiteSmoke" Margin="10">
+    <StackPanel Margin="10">
+      <TextBlock Margin="0,10,0,0" Width="250">
+        The AngleX and AngleY properties of this SkewTransform are each animated from 0 to 180.
+      </TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Canvas Width="250" Height="250">
+          <Rectangle
+            Height="50" Width="50" Fill="{StaticResource MyGreenGridBrushResource}" Stroke="Blue" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100">
+            <Rectangle.RenderTransform>
+              <SkewTransform x:Name="MyAnimatedSkewTransform" CenterX="25" CenterY="25" AngleX="0" AngleY="0" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          <Rectangle Height="50" Width="50" Stroke="#99000000"
+            StrokeDashArray="4,1" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100" />            
+        </Canvas>
+      </Border>   
+      <StackPanel Orientation="Horizontal">
+        <Button Name="startButton" Margin="0,0,2,0">Start</Button>
+        <Button Name="stopButton">Stop</Button>
+        <StackPanel.Triggers>
+          <EventTrigger SourceName="startButton" RoutedEvent="Button.Click">
+            <BeginStoryboard Name="myBeginStoryboard">
+              <Storyboard>
+                <DoubleAnimation 
+                  Storyboard.TargetName="MyAnimatedSkewTransform" 
+                  Storyboard.TargetProperty="AngleX" 
+                  From="0" To="180" Duration="0:0:4" />
+                <DoubleAnimation 
+                  Storyboard.TargetName="MyAnimatedSkewTransform" 
+                  Storyboard.TargetProperty="AngleY" 
+                  From="0" To="180" Duration="0:0:4" />             
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+          <EventTrigger SourceName="stopButton" RoutedEvent="Button.Click">
+            <StopStoryboard BeginStoryboardName="myBeginStoryboard" />
+          </EventTrigger>          
+        </StackPanel.Triggers>        
+      </StackPanel>  
+    </StackPanel>
+    </Border>
+  </StackPanel>
+</Page>

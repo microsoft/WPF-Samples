@@ -1,0 +1,48 @@
+
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.DataboundSliderAnimationExample" 
+  Background="Cornsilk">
+
+  <Page.Triggers>
+    <EventTrigger RoutedEvent="Button.Click"  SourceName="myButton">
+      <EventTrigger.Actions>
+        <BeginStoryboard >
+
+          <Storyboard FillBehavior="HoldEnd" >
+            <DoubleAnimation 
+              FillBehavior="HoldEnd" 
+              BeginTime="00:00:00" 
+              Storyboard.TargetName="MyAnimatedRectangle" 
+              Storyboard.TargetProperty="Width" 
+              Duration="00:00:03"
+              To="{Binding ElementName=AnimationDestinationValueSlider, Path=Value}"
+              From="0" />
+          </Storyboard>
+        </BeginStoryboard >
+      </EventTrigger.Actions>
+    </EventTrigger>
+  </Page.Triggers>
+
+    
+  <StackPanel Margin="20">
+    
+    <TextBlock>Select a destination value:</TextBlock>
+    <Slider  Name="AnimationDestinationValueSlider"  
+      Orientation="Horizontal"
+      HorizontalAlignment="Left"
+      Minimum="25" Maximum="500" 
+      Width="500" /> 
+    <Rectangle 
+      Width="{Binding ElementName=AnimationDestinationValueSlider, Path=Value}"
+      Height="50" Fill="Red"  
+      HorizontalAlignment="Left" Margin="0,10,0,0" />
+    
+    <TextBlock Margin="0,30,0,0">Animated Rectangle</TextBlock>
+    <Rectangle Width="50" Height="50" Fill="Red" Name="MyAnimatedRectangle"
+      HorizontalAlignment="Left"
+      Margin="0,10,0,0" />
+    <Button Content="Trigger animation" Width="150" Height="40" Name="myButton"/>
+  </StackPanel>
+</Page>

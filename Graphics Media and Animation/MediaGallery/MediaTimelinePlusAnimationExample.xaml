@@ -1,0 +1,171 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Margin="20,10,0,0" Width="600">
+        <TextBlock>
+          One or more MediaTimeline objects can be used in a Storyboard along with other Timeline 
+          objects such as animations. The following example shows how to play media and animations 
+          together using a MediaTimeline and DoubleAnimationUsingKeyFrames within the same Storyboard.
+        </TextBlock>
+      </Border>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="70,20,0,0">
+
+          <!-- Left-hand Canvas contains the animations. -->
+          <Border BorderBrush="Black" BorderThickness="1" >
+            <Canvas Width="250" Height="250" Background="White" >
+
+              <!-- The two Path elements below create the purple and gold rings
+             which are animated while the media is played. -->
+              <Path Stroke="Purple" StrokeThickness="5">
+                <Path.Data>
+                  <EllipseGeometry x:Name="MyEllipseGeometry" 
+                  Center="125,125" RadiusX="15" RadiusY="10" />
+                </Path.Data>
+              </Path>
+              <Path Stroke="Gold" StrokeThickness="5">
+                <Path.Data>
+                  <EllipseGeometry x:Name="MyEllipseGeometry2" 
+                  Center="125,125" RadiusX="10" RadiusY="15" />
+                </Path.Data>
+              </Path>
+            </Canvas>
+          </Border>
+        
+        <!-- Right-hand Canvas contains the video. -->
+        <Canvas Width="250" Height="250" Background="Green">
+          <MediaElement Name="myMediaElement" Width="250" Height="250" 
+           Canvas.Left="0" Canvas.Top="0"/>
+        </Canvas>
+        <StackPanel.Triggers>
+          <EventTrigger RoutedEvent="MediaElement.Loaded">
+          <EventTrigger.Actions>
+            <BeginStoryboard Name="myBegin" >
+
+              <!-- This Storyboard contains both media (video in this example) and animations. Note 
+               the SlipBehavior value of "Slip" specifies that the animation does not progress
+               until the media progresses. This might be desirable if media playback is delayed
+               because of loading time. -->
+              <Storyboard SlipBehavior="Slip">
+
+                <!-- The MediaTimeline controls the timing of the video and acts like other Timeline objects.  
+                 For example, although the video clip (xbox.wmv) lasts longer, playback ends after ten  
+                 seconds because that is the duration of the MediaTimeline (Duration="0:0:10"). -->
+                <MediaTimeline Source="media\xbox.wmv" BeginTime="0:0:0" Duration="0:0:10"
+                 Storyboard.TargetName="myMediaElement"/>
+
+                <!-- The animations below animate the ellipses in the right hand pane. These animations are 
+                 timed to correspond to the counting in the video. -->
+
+                <!-- Animate the RadiusY property of the purple ellipse. -->
+                <DoubleAnimationUsingKeyFrames
+                  Storyboard.TargetName="MyEllipseGeometry"
+                  Storyboard.TargetProperty="RadiusY"
+                  RepeatBehavior="10x">
+                  <DoubleAnimationUsingKeyFrames.KeyFrames>
+                    <LinearDoubleKeyFrame Value="80" KeyTime="0:0:0.4" />
+                    <SplineDoubleKeyFrame KeySpline="0.6,0.0 0.9,0.00" Value="0" KeyTime="0:0:1" />
+                  </DoubleAnimationUsingKeyFrames.KeyFrames>
+                </DoubleAnimationUsingKeyFrames>
+
+                <!-- Animate the RadiusX property of the gold ellipse. -->
+                <DoubleAnimationUsingKeyFrames
+                  Storyboard.TargetName="MyEllipseGeometry2"
+                  Storyboard.TargetProperty="RadiusX"
+                  RepeatBehavior="10x">
+                  <DoubleAnimationUsingKeyFrames.KeyFrames>
+                    <LinearDoubleKeyFrame Value="80" KeyTime="0:0:0.4" />
+                    <SplineDoubleKeyFrame KeySpline="0.6,0.0 0.9,0.00" Value="0" KeyTime="0:0:1" />
+                  </DoubleAnimationUsingKeyFrames.KeyFrames>
+                </DoubleAnimationUsingKeyFrames>
+
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+        </StackPanel.Triggers>
+      </StackPanel>
+      <!-- Displays functional code for demonstration. -->
+      <TextBlock Margin="20,20,0,0" FontWeight="Bold">
+        The two Path elements below create the purple and gold rings which are animated
+      </TextBlock>
+      <Border Background="#EEEEEE" BorderBrush="Black" Margin="20" HorizontalAlignment="Left" BorderThickness="1" Width="600">
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;Path Stroke="Purple" StrokeThickness="5"&gt;
+          &lt;Path.Data&gt;
+            &lt;EllipseGeometry x:Name="MyEllipseGeometry" Center="125,125" RadiusX="15" 
+            RadiusY="10" /&gt;
+          &lt;/Path.Data&gt;
+        &lt;/Path&gt;
+        &lt;Path Stroke="Gold" StrokeThickness="5"&gt;
+          &lt;Path.Data&gt;
+            &lt;EllipseGeometry x:Name="MyEllipseGeometry2" Center="125,125" RadiusX="10" 
+            RadiusY="15" /&gt;
+          &lt;/Path.Data&gt;
+        &lt;/Path&gt;
+      ...
+      </TextBlock>
+      </Border>
+      <TextBlock Margin="20,5,0,0" FontWeight="Bold">The MediaElement below displays the media</TextBlock>
+      <Border Background="#EEEEEE" BorderBrush="Black" Margin="20" HorizontalAlignment="Left" BorderThickness="1" Width="600">
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+          &lt;MediaElement Name="myMediaElement" Width="250" Height="250" 
+           Canvas.Left="0" Canvas.Top="0"/&gt;
+      ...
+      </TextBlock>
+      </Border>
+      <TextBlock Margin="20,5,0,0" FontWeight="Bold">The Storyboard below runs the animations</TextBlock>
+      <Border Background="#EEEEEE" BorderBrush="Black" Margin="20" HorizontalAlignment="Left" BorderThickness="1" Width="600">
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        <Bold Foreground="Green">&lt;!-- This Storyboard contains both media (video in this example) and animations. Note 
+        the SlipBehavior value of "Slip" specifies that the animation does not progress
+        until the media progresses. This might be desirable if media playback is delayed
+        because of loading time. --&gt;</Bold>
+        &lt;Storyboard SlipBehavior="Slip"&gt;
+
+          <Bold Foreground="Green">&lt;!-- The MediaTimeline controls the timing of the video and acts like other 
+          Timeline objects. For example, although the video clip (xbox.wmv) lasts longer, 
+          playback ends after ten seconds because that is the duration of the MediaTimeline 
+          (Duration="0:0:10"). --&gt;</Bold>
+          &lt;MediaTimeline Source="media\xbox.wmv" BeginTime="0:0:0" Duration="0:0:10"
+          Storyboard.TargetName="myMediaElement"/&gt;
+
+          <Bold Foreground="Green">&lt;!-- The animations below animate the ellipses in the right hand pane. These 
+          animations are timed to correspond to the counting in the video. --&gt;</Bold>
+
+          <Bold Foreground="Green">&lt;!-- Animate the RadiusY property of the purple ellipse. --&gt;</Bold>
+          &lt;DoubleAnimationUsingKeyFrames
+          Storyboard.TargetName="MyEllipseGeometry"
+          Storyboard.TargetProperty="RadiusY"
+          RepeatBehavior="10x"&gt;
+            &lt;DoubleAnimationUsingKeyFrames.KeyFrames&gt;
+              &lt;LinearDoubleKeyFrame Value="80" KeyTime="0:0:0.4" /&gt;
+              &lt;SplineDoubleKeyFrame KeySpline="0.6,0.0 0.9,0.00" Value="0" KeyTime="0:0:1" /&gt;
+            &lt;/DoubleAnimationUsingKeyFrames.KeyFrames&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;
+
+          <Bold Foreground="Green">&lt;!-- Animate the RadiusX property of the gold ellipse. --&gt;</Bold>
+          &lt;DoubleAnimationUsingKeyFrames
+          Storyboard.TargetName="MyEllipseGeometry2"
+          Storyboard.TargetProperty="RadiusX"
+          RepeatBehavior="10x"&gt;
+            &lt;DoubleAnimationUsingKeyFrames.KeyFrames&gt;
+              &lt;LinearDoubleKeyFrame Value="80" KeyTime="0:0:0.4" /&gt;
+              &lt;SplineDoubleKeyFrame KeySpline="0.6,0.0 0.9,0.00" Value="0" KeyTime="0:0:1" /&gt;
+            &lt;/DoubleAnimationUsingKeyFrames.KeyFrames&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;
+
+       &lt;/Storyboard&gt;
+      ...
+      </TextBlock>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

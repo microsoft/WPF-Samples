@@ -1,0 +1,52 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+        <TextBlock>
+          This example animates the BevelWidth and LightAngle properties of a BevelBitmapEffect applied to a Button. 
+          Mouseover the button to run the animation.
+        </TextBlock>
+      </Border>
+
+      <StackPanel HorizontalAlignment="Left" Margin="20" Width="550">
+        <TextBlock FontWeight="Bold">Animate the BevelWidth and LightAngle of BevelBitmapEffect</TextBlock>
+        <Button Width="200" Height="80" HorizontalAlignment="Left" Margin="50,20,20,20" >
+          MouseOver ME!
+          <Button.BitmapEffect>
+
+            <!-- This BitmapEffect is targeted by the animation. -->
+            <BevelBitmapEffect x:Name="myBevelBitMapEffect" BevelWidth="0" EdgeProfile="CurvedIn"  />
+          </Button.BitmapEffect>
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+              <BeginStoryboard>
+                <Storyboard>
+
+                  <!-- Animate the BevelWidth from 0 to 15. -->
+                  <DoubleAnimation
+                   Storyboard.TargetName="myBevelBitMapEffect"
+                   Storyboard.TargetProperty="BevelWidth"
+                   From="0" To="15" Duration="0:0:0.5" AutoReverse="True"/>
+
+                  <!-- Animate the LightAngle so that the light source and 
+                   corresponding bevel shadows move around the button. -->
+                  <DoubleAnimation
+                   Storyboard.TargetName="myBevelBitMapEffect"
+                   Storyboard.TargetProperty="LightAngle"
+                   From="360" To="0" Duration="0:0:0.5" AutoReverse="True"/>
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+      </StackPanel>
+
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

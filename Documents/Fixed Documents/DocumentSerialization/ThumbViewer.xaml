@@ -1,0 +1,638 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:tmv="clr-namespace:DocumentSerialization" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ x:Class="DocumentSerialization.ThumbViewer" Title="Thumbnail Viewer" x:Name="Id_ThumbViewer" Initialized="InitializeThumbViewer" Closed="ClosedThumbViewer" xmlns:MappingPIGen1="clr-namespace:DocumentSerialization" >
+  <Grid ShowGridLines="False" Name="MainGrid">
+    <Grid.Resources>
+
+      <!-- Brush used to paint button background ellipse -->
+      <PathGeometry x:Key="FlowViewers_UpArrowIcon">
+        <PathFigure StartPoint="0,5" IsClosed="True">
+          <LineSegment Point="10,5" IsStroked="True"/>
+          <LineSegment Point="5,0" IsStroked="True"/>
+        </PathFigure>
+      </PathGeometry>
+      <PathGeometry x:Key="FlowViewers_DownArrowIcon">
+        <PathFigure StartPoint="0,0" IsClosed="True">
+          <LineSegment Point="10,0" IsStroked="True"/>
+          <LineSegment Point="5,5" IsStroked="True"/>
+        </PathFigure>
+      </PathGeometry>
+      <!-- Base styles for buttons used in FlowDocumentReader, FacingPagesViewer, and FlowDocumentPageViewer -->
+      <Style x:Key="FlowViewers_GrowShrinkOpacityButtonBase" TargetType="{x:Type ButtonBase}" BasedOn="{x:Null}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Opacity" Value=".5"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="3,1"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="MinHeight" Value="0"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type ButtonBase}">
+              <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter x:Name="Content" RenderTransformOrigin=".5, .5"/>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="RenderTransform" TargetName="Content">
+                    <Setter.Value>
+                      <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                    </Setter.Value>
+                  </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                  <Setter Property="RenderTransform" TargetName="Content">
+                    <Setter.Value>
+                      <ScaleTransform ScaleX=".9" ScaleY=".9"/>
+                    </Setter.Value>
+                  </Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                  <Setter Property="Opacity" Value=".3"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="Opacity" Value="1"/>
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="FlowViewers_GrowShrinkOpacityToggleButton" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource FlowViewers_GrowShrinkOpacityButtonBase}">
+        <Style.Triggers>
+          <Trigger Property="IsEnabled" Value="False">
+            <Setter Property="Visibility" Value="Collapsed"/>
+          </Trigger>
+          <Trigger Property="IsChecked" Value="True">
+            <Setter Property="Opacity" Value="1"/>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="FlowViewers_GrowShrinkOpacityRepeatButton" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource FlowViewers_GrowShrinkOpacityButtonBase}">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Delay" Value="1000"/>
+        <Setter Property="Interval" Value="250"/>
+      </Style>
+      <Style x:Key="FlowViewers_GrowShrinkOpacityRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource FlowViewers_GrowShrinkOpacityToggleButton}">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RadioButton}">
+              <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter x:Name="Content" RenderTransformOrigin=".5, .5"/>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                  <Setter Property="RenderTransform" TargetName="Content">
+                    <Setter.Value>
+                      <ScaleTransform ScaleX=".9" ScaleY=".9"/>
+                    </Setter.Value>
+                  </Setter>
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <!-- Slider -->
+      <Style x:Key="FlowViewers_Slider_RepeatButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>  <!--Setter Property="DefaultStyleKey" Value="{x:Null}"/-->
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RepeatButton}">
+              <Border Background="Transparent"/>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <PathGeometry x:Key="FlowViewers_Slider_ThumbGeometry" FillRule="Nonzero">
+        <PathFigure StartPoint="1,0" IsClosed="True">
+          <LineSegment Point="10,0"/>
+          <LineSegment Point="11,1"/>
+          <LineSegment Point="11,13"/>
+          <LineSegment Point="6.5,17"/>
+          <LineSegment Point="4.5,17"/>
+          <LineSegment Point="0,13"/>
+          <LineSegment Point="0,1"/>
+          <LineSegment Point="1,0"/>
+        </PathFigure>
+      </PathGeometry>
+      <Style x:Key="FlowViewers_Slider_Thumb" TargetType="{x:Type Thumb}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>  <!--Setter Property="DefaultStyleKey" Value="{x:Null}"/-->
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Thumb}">
+              <Border Background="Transparent" Padding="{Binding Path=Padding,RelativeSource={RelativeSource TemplatedParent}}" Margin="-2">
+                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Width="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}">
+                  <Viewbox.LayoutTransform>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                  </Viewbox.LayoutTransform>
+                  <Canvas Width="13" Height="17">
+                    <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" Data="{StaticResource FlowViewers_Slider_ThumbGeometry}"/>
+                    <Path Stroke="#6000" StrokeThickness=".75" StrokeMiterLimit="1" StrokeLineJoin="Round" StrokeEndLineCap="Round" StrokeDashCap="Round" Data="{StaticResource FlowViewers_Slider_ThumbGeometry}">
+                      <Path.Fill>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                          <LinearGradientBrush.GradientStops>
+                            <GradientStopCollection>
+                              <GradientStop Color="#3000" Offset="0.5"/>
+                              <GradientStop Color="#9fff" Offset="0.8"/>
+                              <GradientStop Color="#9fff" Offset="0.2"/>
+                            </GradientStopCollection>
+                          </LinearGradientBrush.GradientStops>
+                          <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                              <TranslateTransform X="-0.5" Y="-0.5"/>
+                              <ScaleTransform ScaleX="1" ScaleY="1"/>
+                              <SkewTransform AngleX="0" AngleY="0"/>
+                              <RotateTransform Angle="110"/>
+                              <TranslateTransform X="0.5" Y="0.5"/>
+                            </TransformGroup>
+                          </LinearGradientBrush.RelativeTransform>
+                        </LinearGradientBrush>
+                      </Path.Fill>
+                    </Path>
+                  </Canvas>
+                </Viewbox>
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="FlowViewers_Slider" TargetType="{x:Type Slider}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>  <!--Setter Property="DefaultStyleKey" Value="{x:Null}"/-->
+        <Setter Property="Background" Value="#ccc"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#999"/>
+        <Setter Property="Foreground" Value="#ccc"/>
+        <Setter Property="IsSnapToTickEnabled" Value="True"/>
+        <Setter Property="RenderTransformOrigin" Value=".5,.5"/>
+        <Setter Property="MinWidth" Value="50"/>
+        <Setter Property="MinHeight" Value="0"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Padding" Value="2,0"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Opacity" Value=".75"/>
+        <Setter Property="Delay" Value="1000"/>
+        <Setter Property="Interval" Value="250"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Slider}">
+              <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                <Grid ClipToBounds="False" x:Name="Content">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding Slider.MinHeight}"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <TickBar x:Name="TopTick" Grid.Row="0" Placement="Top" Fill="{TemplateBinding Foreground}" Height="4" Visibility="Collapsed"/>
+                  <Border Height="4" Grid.Row="1" CornerRadius="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                    <Canvas Grid.Row="1" VerticalAlignment="Center" Height="4">
+                    <Rectangle x:Name="PART_SelectionRange" Canvas.Top="1" Fill="{TemplateBinding Foreground}" Height="2.0" Visibility="Hidden"/>
+                  </Canvas>
+                  <Track Grid.Row="1" Name="PART_Track">
+                    <Track.DecreaseRepeatButton>
+                      <Style BasedOn="{StaticResource FlowViewers_Slider_RepeatButton}" TargetType="{x:Type RepeatButton}">
+                        <Setter Property="Command" Value="Slider.DecreaseLarge"/>
+                      </Style>
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                      <Thumb Style="{StaticResource FlowViewers_Slider_Thumb}"/>
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                      <Style BasedOn="{StaticResource FlowViewers_Slider_RepeatButton}" TargetType="{x:Type RepeatButton}">
+                        <Setter Property="Command" Value="Slider.IncreaseLarge"/>
+                      </Style>
+                    </Track.IncreaseRepeatButton>
+                  </Track>
+                  <TickBar x:Name="BottomTick" Grid.Row="2" Fill="{TemplateBinding Foreground}" Placement="Bottom" Height="4" Visibility="Collapsed"/>
+                </Grid>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="TickPlacement" Value="TopLeft">
+                  <Setter TargetName="TopTick" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="BottomRight">
+                  <Setter TargetName="BottomTick" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="Both">
+                  <Setter TargetName="TopTick" Property="Visibility" Value="Visible"/>
+                  <Setter TargetName="BottomTick" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                  <Setter TargetName="PART_SelectionRange" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="RenderTransform">
+                    <Setter.Value>
+                      <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                    </Setter.Value>
+                  </Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="Opacity" Value="1"/>
+                  <Setter Property="RenderTransform">
+                    <Setter.Value>
+                      <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                    </Setter.Value>
+                  </Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                  <Setter Property="Opacity" Value=".3"/>
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <!-- FlowDocumentPageViewer -->
+      <Style x:Key="{x:Type FlowDocumentPageViewer}" TargetType="{x:Type FlowDocumentPageViewer}">
+        <Setter Property="MinZoom" Value="80"/>
+        <Setter Property="MaxZoom" Value="200"/>
+        <Setter Property="ZoomIncrement" Value="10"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type FlowDocumentPageViewer}">
+              <DockPanel LastChildFill="True">
+                <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+
+                  <!-- Find, Print, and Annotations -->
+                  <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <ToggleButton Command="Find" ToolTip="Find" Style="{StaticResource FlowViewers_GrowShrinkOpacityToggleButton}" IsEnabled="{Binding Path=IsFindEnabled, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False">
+                      <Path Stroke="{TemplateBinding Foreground}" VerticalAlignment="Center">
+                        <Path.Data>
+                          <GeometryGroup>
+                            <RectangleGeometry RadiusX="1" RadiusY="1" Rect=".5,.5 19,19" />
+                            <EllipseGeometry Center="12,8" RadiusX="5" RadiusY="5" />
+                            <EllipseGeometry Center="12,8" RadiusX="4" RadiusY="4" />
+                            <LineGeometry StartPoint="2.5,16.5" EndPoint="9,10" />
+                            <LineGeometry StartPoint="3,17" EndPoint="9.5,10.5" />
+                            <LineGeometry StartPoint="3.5,17.5" EndPoint="10,11" />
+                          </GeometryGroup>
+                        </Path.Data>
+                      </Path>
+                    </ToggleButton>
+                  </StackPanel>
+
+                  <!-- Page count and Nav buttons -->
+                  <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Previous Page -->
+                    <RepeatButton Style="{StaticResource FlowViewers_GrowShrinkOpacityRepeatButton}" ToolTip="Previous Page" Command="NavigationCommands.PreviousPage" IsEnabled="{Binding Path=CanGoToPreviousPage,RelativeSource={RelativeSource TemplatedParent}}" Focusable="False">
+                      <Viewbox Width="{TemplateBinding FontSize}">
+                        <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}">
+                          <Path.Data>
+                            <StaticResource ResourceKey="FlowViewers_UpArrowIcon"/>
+                          </Path.Data>
+                        </Path>
+                      </Viewbox>
+                    </RepeatButton>
+                    <!-- Page Count -->
+                    <TextBlock VerticalAlignment="Center" FontFamily="{Binding Path=FontFamily, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center">
+                      <Run xml:space="preserve"> </Run>
+                      <TextBlock Text="{Binding Path=MasterPageNumber, RelativeSource={RelativeSource TemplatedParent}}"/>
+                      <Run xml:space="preserve"> of </Run>
+                      <TextBlock Text="{Binding Path=PageCount, RelativeSource={RelativeSource TemplatedParent}}"/>
+                      <Run xml:space="preserve"> </Run>
+                    </TextBlock>
+                    <!-- Next Page -->
+                    <RepeatButton Style="{StaticResource FlowViewers_GrowShrinkOpacityRepeatButton}" ToolTip="Next Page" Command="NavigationCommands.NextPage" IsEnabled="{Binding Path=CanGoToNextPage,RelativeSource={RelativeSource TemplatedParent}}" Focusable="False">
+                      <Viewbox Width="{TemplateBinding FontSize}">
+                        <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}">
+                          <Path.Data>
+                            <StaticResource ResourceKey="FlowViewers_DownArrowIcon"/>
+                          </Path.Data>
+                        </Path>
+                      </Viewbox>
+                    </RepeatButton>
+                  </StackPanel>
+                  <!-- Zoom control -->
+                  <ToggleButton x:Name="ZoomSliderToggleButton" HorizontalAlignment="Left" Style="{StaticResource ImageToggleButtonStyle}" tmv:ImageButton.Source="{StaticResource ZoomIconDrawingImage}"   Height="15" Width="15" VerticalAlignment="center" Margin="10,0,5,5"   />
+                  <DockPanel Name="ZoomControl"  HorizontalAlignment="Left" Visibility="{Binding IsChecked, ElementName=ZoomSliderToggleButton, Converter={StaticResource BooleanToVisibility}}"   Margin="25,3,3,3" >
+                    <Slider
+                        x:Name="ZoomSlider"
+                        TickFrequency="10"
+                        IsSnapToTickEnabled="True"
+                        ToolTip="Zoom"
+                        Margin="5,0,0,0"
+                        Loaded="ZoomSlider_Loaded"
+                        ValueChanged="ZoomSlider_ValueChanged"
+                    >
+                      <Slider.Value>
+                        <Binding Mode="TwoWay" Path="Zoom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                      </Slider.Value>
+                      <Slider.Minimum>
+                        <Binding Mode="Default" UpdateSourceTrigger="Default" NotifyOnSourceUpdated="False" ConverterParameter="{x:Null}" BindsDirectlyToSource="False" IsAsync="False" Path="MinZoom" RelativeSource="{RelativeSource TemplatedParent}" NotifyOnValidationError="False" AsyncState="{x:Null}" Converter="{x:Null}" NotifyOnTargetUpdated="False" ConverterCulture="{x:Null}"/>
+                      </Slider.Minimum>
+                      <Slider.Maximum>
+                        <Binding Mode="Default" UpdateSourceTrigger="Default" NotifyOnSourceUpdated="False" ConverterParameter="{x:Null}" BindsDirectlyToSource="False" IsAsync="False" Path="MaxZoom" RelativeSource="{RelativeSource TemplatedParent}" NotifyOnValidationError="False" AsyncState="{x:Null}" Converter="{x:Null}" NotifyOnTargetUpdated="False" ConverterCulture="{x:Null}"/>
+                      </Slider.Maximum>
+                      <Slider.LargeChange>
+                        <Binding Mode="Default" UpdateSourceTrigger="Default" NotifyOnSourceUpdated="False" ConverterParameter="{x:Null}" BindsDirectlyToSource="False" IsAsync="False" Path="ZoomIncrement" RelativeSource="{RelativeSource TemplatedParent}" NotifyOnValidationError="False" AsyncState="{x:Null}" Converter="{x:Null}" NotifyOnTargetUpdated="False" ConverterCulture="{x:Null}"/>
+                      </Slider.LargeChange>
+                      <Slider.SmallChange>
+                        <Binding Mode="Default" UpdateSourceTrigger="Default" NotifyOnSourceUpdated="False" ConverterParameter="{x:Null}" BindsDirectlyToSource="False" IsAsync="False" Path="ZoomIncrement" RelativeSource="{RelativeSource TemplatedParent}" NotifyOnValidationError="False" AsyncState="{x:Null}" Converter="{x:Null}" NotifyOnTargetUpdated="False" ConverterCulture="{x:Null}"/>
+                      </Slider.SmallChange>
+                    </Slider>
+                  </DockPanel>
+                </Grid>
+                <!-- Page Content -->
+                <Grid>
+                  <Border x:Name="PART_ContentHost" Margin="{Binding Path=Padding, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding Path=BorderThickness, RelativeSource={RelativeSource TemplatedParent}}">
+                  </Border>
+                  <AdornerDecorator ClipToBounds="True">
+                    <DocumentPageView PageNumber="0" DocumentViewerBase.IsMasterPage="True" KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local"/>
+                  </AdornerDecorator>
+                  <Border VerticalAlignment="Bottom" x:Name="PART_FindToolBarHost" Opacity="0.75"/>
+                </Grid>
+              </DockPanel>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style TargetType="{x:Type Menu}">
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                  <GradientStop Color="White" Offset="0" />
+                  <GradientStop Color="Silver" Offset="1" />
+                </GradientStopCollection>
+              </GradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style TargetType="{x:Type ToolBarTray}">
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                  <GradientStop Color="White" Offset="0" />
+                  <GradientStop Color="Silver" Offset="1" />
+                </GradientStopCollection>
+              </GradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style TargetType="{x:Type ToolBar}">
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                  <GradientStop Color="White" Offset="0" />
+                  <GradientStop Color="Silver" Offset="1" />
+                </GradientStopCollection>
+              </GradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+      <!-- Column for Thumbnail View -->
+      <ColumnDefinition Width="125" />
+      <!-- Column for Splitter -->
+      <ColumnDefinition Width="5" />
+      <!-- Column for Pages -->
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <!-- Row for Menu -->
+      <RowDefinition Height="0" />
+      <!-- Row for Menu -->
+      <RowDefinition Height="Auto" />
+      <!-- Row for ToolBar -->
+      <RowDefinition Height="Auto" />
+      <!-- Row for Page View -->
+      <RowDefinition Height="*" />
+      <!-- Row for Controls-->
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- Thumbnail View -->
+    <Menu Grid.Row="1" Grid.ColumnSpan="3">
+      <MenuItem Header="_File">
+        <MenuItem Header="_Open" Command="ApplicationCommands.Open">
+          <MenuItem.Icon>
+            <Image Source="Images\FileOpen.png" />
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="_Save As..." Command="MappingPIGen1:ThumbViewer.SaveAs" x:Name="SaveAsMenu" IsEnabled="false">
+          <MenuItem.Icon>
+            <Image Source="Images\FileSave.png" />
+          </MenuItem.Icon>
+        </MenuItem>
+        <Separator />
+        <MenuItem Header="_Print" Command="ApplicationCommands.Print">
+          <MenuItem.Icon>
+            <Image Source="Images\Print.png" />
+          </MenuItem.Icon>
+        </MenuItem>
+        <Separator />
+        <MenuItem Header="E_xit" Command="MappingPIGen1:ThumbViewer.Exit" />
+      </MenuItem>
+    </Menu>
+
+    <ToolBarTray IsLocked="True" Grid.Row="2" Grid.ColumnSpan="3">
+      <ToolBarTray.Resources>
+        <Style TargetType="{x:Type ToolBar}">
+          <Setter Property="Padding" Value="3,3,0,3" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+          <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+        </Style>
+        <Style TargetType="{x:Type ToggleButton}">
+          <Setter Property="Width" Value="25px" />
+          <Setter Property="Height" Value="25px" />
+          <Setter Property="Cursor" Value="Hand" />
+          <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate TargetType="{x:Type ToggleButton}">
+                <Border x:Name="ButtonBorder" BorderThickness="1" BorderBrush="Transparent">
+                  <ContentPresenter Content="{TemplateBinding Content}" TextBlock.FontSize="13" Margin="4,4,4,4" />
+                </Border>
+                <ControlTemplate.Triggers>
+                  <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="ButtonBorder" Value="SkyBlue" />
+                    <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="SlateBlue" />
+                  </Trigger>
+                  <Trigger Property="IsChecked" Value="true">
+                    <Setter Property="Background" TargetName="ButtonBorder" Value="SkyBlue" />
+                    <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="Blue" />
+                  </Trigger>
+                </ControlTemplate.Triggers>
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
+          <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Opacity" Value="0.35" />
+            </Trigger>
+          </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+          <Setter Property="Margin" Value="3,0,3,0" />
+          <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+          <Setter Property="Cursor" Value="Hand" />
+        </Style>
+      </ToolBarTray.Resources>
+      <ToolBar Band="1">
+        <ToolBar.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+              <GradientStopCollection>
+                <GradientStop Color="White" Offset="0" />
+                <GradientStop Color="Silver" Offset="1" />
+              </GradientStopCollection>
+            </GradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </ToolBar.Background>
+        <Button ToolTip="Open File" Command="ApplicationCommands.Open">
+          <Image Source="Images\FileOpen.png" />
+        </Button>
+        <Button ToolTip="Save File As..." Command="MappingPIGen1:ThumbViewer.SaveAs" x:Name="SaveAsToolbarButton"  IsEnabled="False">
+          <Image Source="Images\FileSave.png" />
+        </Button>
+        <Button ToolTip="Print File (Ctrl+P)" Command="ApplicationCommands.Print">
+          <Image Source="Images\Print.png" />
+        </Button>
+      </ToolBar>
+    </ToolBarTray>
+
+    <TabControl Grid.Row="3" Grid.Column="0" TabStripPlacement="Left" Margin="0" Padding="0" Name="LeftTabControl">
+      <TabControl.Resources>
+        <Style TargetType="{x:Type Button}">
+          <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+          <Setter Property="Cursor" Value="Hand" />
+          <Setter Property="Opacity" Value=".5"/>
+          <Setter Property="Cursor" Value="Hand"/>
+          <Setter Property="Background" Value="Transparent"/>
+          <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+          <Setter Property="Padding" Value="0"/>
+          <Setter Property="Margin" Value="3,1"/>
+          <Setter Property="BorderBrush" Value="{x:Null}"/>
+          <Setter Property="BorderThickness" Value="0"/>
+          <Setter Property="MinWidth" Value="0"/>
+          <Setter Property="MinHeight" Value="0"/>
+          <Setter Property="HorizontalContentAlignment" Value="Center"/>
+          <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+      </TabControl.Resources>
+
+      <TabItem Name="Pages" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0, 10">
+        <TabItem.Header >
+          <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock.LayoutTransform>
+              <RotateTransform Angle="-90" />
+            </TextBlock.LayoutTransform>
+            Pages
+          </TextBlock>
+        </TabItem.Header>
+        <Border BorderBrush="Black" BorderThickness="2">
+          <ListBox Focusable="False" Name="ThumbList" HorizontalAlignment="Left" Width="123"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <WrapPanel/>
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+          </ListBox>
+        </Border>
+      </TabItem>
+      <TabItem Name="Bookmarks" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0, 10">
+        <TabItem.Header>
+          <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock.LayoutTransform>
+              <RotateTransform Angle="-90" />
+            </TextBlock.LayoutTransform>
+            Bookmarks
+          </TextBlock>
+        </TabItem.Header>
+        <Border BorderBrush="Black" BorderThickness="2">
+          <ListBox Focusable="False" Name="BookmarkList" HorizontalAlignment="Left" Width="123"  ScrollViewer.HorizontalScrollBarVisibility="Auto">
+          </ListBox>
+        </Border>
+      </TabItem>
+      <TabItem Name="Comments" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0, 10">
+        <TabItem.Header>
+          <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock.LayoutTransform>
+              <RotateTransform Angle="-90" />
+            </TextBlock.LayoutTransform>
+            Comments
+          </TextBlock>
+        </TabItem.Header>
+        <Border BorderBrush="Black" BorderThickness="2">
+          <ListBox Focusable="False" Name="CommentsList" HorizontalAlignment="Left" Width="123"  ScrollViewer.HorizontalScrollBarVisibility="Auto">
+          </ListBox>
+        </Border>
+      </TabItem>
+    </TabControl>
+
+
+    <!-- Splitter-->
+    <GridSplitter Grid.Row="3" Grid.Column="1" ResizeDirection="Columns" DragCompleted="SplitterEndResize"  BorderBrush="Blue" BorderThickness="1" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+    </GridSplitter>
+
+    <!-- Page View -->
+    <Grid x:Name="DocView" Grid.Row="3" Grid.Column="2">
+      <Border BorderBrush="Black" BorderThickness="1" Padding="5,5,15,5">
+        <FlowDocumentPageViewer x:Name="FDPV" PreviewMouseRightButtonDown="SetStatusOfContextMenu">
+          <FlowDocumentPageViewer.ContextMenu>
+            <ContextMenu>
+              <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+              <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
+              <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
+              <Separator />
+              <MenuItem Name="cm_Bookmark" Header="Add Bookmark..." Command="MappingPIGen1:ThumbViewer.AddBookmark"   />
+              <MenuItem Name="cm_Comment" Header="Add Comment..." Command="MappingPIGen1:ThumbViewer.AddComment" />
+            </ContextMenu>
+          </FlowDocumentPageViewer.ContextMenu>
+        </FlowDocumentPageViewer>
+      </Border>
+    </Grid>
+
+    <Path Name="TrackerRect" HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Red" Visibility="Hidden">
+      <Path.Data>
+        <RectangleGeometry x:Name="RectGeom" />
+      </Path.Data>
+      <!--<Path.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseDown">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <BeginStoryboard.Storyboard>
+                <Storyboard>
+                  <RectAnimation x:Name="RectAnim"
+                      Storyboard.TargetProperty="(Path.Data).(RectangleGeometry.Rect)"
+                      BeginTime="0:0:2"
+                      Duration="0:0:5"/>
+                </Storyboard>
+              </BeginStoryboard.Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </Path.Triggers>-->
+    </Path>
+  </Grid>
+</Window>

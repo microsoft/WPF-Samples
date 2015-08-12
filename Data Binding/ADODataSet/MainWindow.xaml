@@ -1,0 +1,36 @@
+﻿<Window x:Class="ADODataSet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ADODataSet"
+        mc:Ignorable="d"
+        Loaded="OnInit"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <StackPanel.Resources>
+            <local:IntColorConverter x:Key="MyConverter"/>
+
+            <DataTemplate x:Key="BookItemTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Path=Title}" Grid.Column="0"
+            FontWeight="Bold" />
+                    <TextBlock Text="{Binding Path=ISBN}" Grid.Column="1" />
+                    <TextBlock Grid.Column="2" Text="{Binding Path=NumPages}"
+                     Background="{Binding Path=NumPages,
+              Converter={StaticResource MyConverter}}"/>
+                </Grid>
+            </DataTemplate>
+        </StackPanel.Resources>
+
+        <ListBox Name="myListBox" Height="200"
+      ItemsSource="{Binding Path=BookTable}"
+      ItemTemplate  ="{StaticResource BookItemTemplate}"/>
+        <Button Click="OnClick">Add Record</Button>
+    </StackPanel>
+</Window>

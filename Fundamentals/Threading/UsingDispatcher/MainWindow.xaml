@@ -1,0 +1,190 @@
+﻿<Window x:Class="UsingDispatcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UsingDispatcher"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Storyboard x:Key="ShowClockFaceStoryboard">
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockImage"
+        Storyboard.TargetProperty="Opacity"
+        From="0" To="1" Duration="0:0:0.1" />
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockFaceScaleTransform"
+        Storyboard.TargetProperty="ScaleX"
+        From="0" To="1" Duration="0:0:0.5" />
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockFaceScaleTransform"
+        Storyboard.TargetProperty="ScaleY"
+        From="0" To="1" Duration="0:0:0.5" />
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockHandRotateTransform"
+        Storyboard.TargetProperty="Angle"
+        From="0" To="360" Duration="0:0:2"
+        RepeatBehavior="Forever" />
+        </Storyboard>
+
+        <Storyboard x:Key="HideClockFaceStoryboard"
+      Completed="HideClockFaceStoryboard_Completed">
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockImage"
+        Storyboard.TargetProperty="Opacity"
+        From="1" To="0" Duration="0:0:0.25" />
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockFaceScaleTransform"
+        Storyboard.TargetProperty="ScaleX"
+        From="1" To="0" Duration="0:0:0.25" />
+            <DoubleAnimation 
+        Storyboard.TargetName="ClockFaceScaleTransform"
+        Storyboard.TargetProperty="ScaleY"
+        From="1" To="0" Duration="0:0:0.25" />
+        </Storyboard>
+
+        <Storyboard x:Key="ShowWeatherImageStoryboard">
+            <DoubleAnimation 
+        Storyboard.TargetName="weatherIndicatorImage"
+        Storyboard.TargetProperty="Opacity"
+        To="1" Duration="0:0:0.1" />
+            <DoubleAnimation 
+        Storyboard.TargetName="WeatherIndicatorScaleTransform"
+        Storyboard.TargetProperty="ScaleX"
+        From="0" To="1" Duration="0:0:0.5" />
+            <DoubleAnimation 
+        Storyboard.TargetName="WeatherIndicatorScaleTransform"
+        Storyboard.TargetProperty="ScaleY"
+        From="0" To="1" Duration="0:0:0.5" />
+
+        </Storyboard>
+
+        <Storyboard x:Key="HideWeatherImageStoryboard"
+      Completed="HideWeatherImageStoryboard_Completed">
+            <DoubleAnimation 
+        Storyboard.TargetName="weatherIndicatorImage"
+        Storyboard.TargetProperty="Opacity"
+        To="0" Duration="0:0:0.1" />
+        </Storyboard>
+
+        <DrawingImage x:Key="RainingImageSource"
+      Drawing="{StaticResource RainingDrawingResource}" />
+
+        <DrawingImage x:Key="SunnyImageSource"
+      Drawing="{StaticResource SunnyDrawingResource}" />
+
+    </Window.Resources>
+
+    <Grid Name="tomorrowsWeather" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button Name="fetchButton"
+      Content="Fetch Forecast"
+      Click="ForecastButtonHandler"
+      Grid.Row="0"/>
+        <Image 
+      Name="ClockImage" 
+      RenderTransformOrigin="0.5,0.5" Opacity="0" Stretch="Uniform"
+      Grid.Row="1" Margin="10" >
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup>
+                            <DrawingGroup.Children>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <EllipseGeometry
+                      Center="50,50"
+                      RadiusX="45"
+                      RadiusY="45" />
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Offset="0.0" Color="LightGray" />
+                                                <GradientStop Offset="0.5" Color="#CCCCFF" />
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </GeometryDrawing.Brush>
+                                    <GeometryDrawing.Pen>
+                                        <Pen Thickness="5" Brush="Black" />
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <LineGeometry StartPoint="50,50" EndPoint="50,10">
+                                            <LineGeometry.Transform>
+                                                <RotateTransform x:Name="ClockHandRotateTransform"
+                          Angle="0" CenterX="50" CenterY="50" />
+                                            </LineGeometry.Transform>
+                                        </LineGeometry>
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="Black" Thickness="5" 
+                      StartLineCap="Round" EndLineCap="Triangle"  />
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <EllipseGeometry
+                      Center="50,50"
+                      RadiusX="45"
+                      RadiusY="45" />
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <RadialGradientBrush GradientOrigin="0.75,0.25">
+                                            <RadialGradientBrush.GradientStops>
+                                                <GradientStop Offset="0.0" Color="#99FFFFFF" />
+                                                <GradientStop Offset="0.5" Color="Transparent" />
+                                                <GradientStop Offset="0.75" Color="#99FFFFFF" />
+                                                <GradientStop Offset="1.0" Color="#33000000" />
+                                            </RadialGradientBrush.GradientStops>
+                                        </RadialGradientBrush>
+                                    </GeometryDrawing.Brush>
+                                </GeometryDrawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <EllipseGeometry
+                      Center="50,50"
+                      RadiusX="45"
+                      RadiusY="45" />
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <LinearGradientBrush StartPoint="0.75,0.1" EndPoint="0.25, 0.9">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Offset="0.0" Color="#99FFFFFF" />
+                                                <GradientStop Offset="0.5" Color="Transparent" />
+                                                <GradientStop Offset="1.0" Color="#99000000" />
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </GeometryDrawing.Brush>
+                                </GeometryDrawing>
+                            </DrawingGroup.Children>
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="ClockFaceScaleTransform" />
+            </Image.RenderTransform>
+        </Image>
+
+        <Image 
+      Name="weatherIndicatorImage" 
+      Opacity="0"
+      Grid.Row="1" Margin="10" 
+      RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="WeatherIndicatorScaleTransform" />
+            </Image.RenderTransform>
+        </Image>
+
+        <TextBlock Name="weatherText"
+      HorizontalAlignment="Center" 
+      Grid.Row="2" />
+    </Grid>
+</Window>

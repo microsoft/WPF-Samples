@@ -1,0 +1,171 @@
+<!-- To show this window, do this: Window w=new Window1; w.Show(); -->
+<Page  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="SDKSample.ImageBrushExample"
+    Title="Using an Image as an Opacity Mask" >
+  <DockPanel Background="White">
+
+    <!-- Header -->
+    <Border Background="Black" DockPanel.Dock="Top">
+      <TextBlock FontSize="16" Foreground="White" HorizontalAlignment="Stretch">
+        Using an Image as an Opacity Mask
+      </TextBlock>
+    </Border>
+
+    <Grid Background="{StaticResource MyCheckeredBrushResource}"
+      VerticalAlignment="Center" HorizontalAlignment="Center">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+
+      </Grid.RowDefinitions>
+
+      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        Fill="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+      <TextBlock Margin="10" Grid.Column="0" Grid.Row="0">Without Opacity Mask</TextBlock>
+      <TextBlock Margin="10" Grid.Column="1" Grid.Row="0">The Opacity Mask</TextBlock>
+      <TextBlock Margin="10" Grid.Column="2" Grid.Row="0">With Opacity Mask</TextBlock>
+
+
+      <!-- Without Opacity Mask -->
+      <Image
+        Height="150"
+        Width="200"
+          Source="sampleImages/Waterlilies.jpg"
+          HorizontalAlignment="Left"
+          Grid.Column="0" Grid.Row="1"
+          Margin="10" />
+
+      <!-- The Opacity Mask
+           Use the opacity mask brush as a fill to show
+           what it looks like. -->
+      <Rectangle
+        Height="150"
+        Width="200"
+        Stroke="Black"
+        StrokeThickness="1"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="1" Grid.Row="1">
+        <Rectangle.Fill>
+          <ImageBrush ImageSource="sampleImages/tornedges.png"/>
+        </Rectangle.Fill>
+      </Rectangle>
+
+
+      <!-- With the Opacity Mask-->
+      <Image
+        Height="150"
+        Width="200"
+        Source="sampleImages/Waterlilies.jpg"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="2" Grid.Row="1">
+        <Image.OpacityMask>
+          <ImageBrush ImageSource="sampleImages/tornedges.png"/>
+        </Image.OpacityMask>
+      </Image>
+
+      <!-- Without an Opacity Mask -->
+      <Image
+        Height="150"
+        Width="200"
+        Source="sampleImages/Waterlilies.jpg"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="0" Grid.Row="2" />
+
+        <!-- The Opacity Mask
+           Use the opacity mask brush as a fill to show
+           what it looks like. -->
+      <Rectangle
+        Height="150"
+        Width="200"
+        Stroke="Black"
+        StrokeThickness="1"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="1" Grid.Row="2">
+        <Rectangle.Fill>
+          <ImageBrush
+            Viewport="0,0,50,50"
+            ViewportUnits="Absolute"
+            TileMode="Tile"  
+            ImageSource="sampleImages/tornedges.png"/>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- With the Opacity Mask -->
+      <Image
+        Height="150"
+        Width="200"
+        Source="sampleImages/Waterlilies.jpg"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="2" Grid.Row="2">
+
+        <Image.OpacityMask>
+          <ImageBrush
+            Viewport="0,0,50,50"
+            ViewportUnits="Absolute"
+            TileMode="Tile" 
+            ImageSource="sampleImages/tornedges.png"/>
+        </Image.OpacityMask>
+      </Image>
+
+      <!-- Without Opacity Mask -->
+      <Button
+        Height="100"
+        Width="200"
+        FontFamily="MS Gothic"
+        FontSize="16"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="0" Grid.Row="3">
+        A Button
+      </Button>
+
+      <!-- The Opacity Mask
+             Use the opacity mask brush as a fill to show
+             what it looks like. -->
+      <Rectangle
+        Height="100"
+        Width="200"
+        Stroke="Black"
+        StrokeThickness="1"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="1" Grid.Row="3">
+        <Rectangle.Fill>
+          <ImageBrush  ImageSource="sampleImages/tornedges.png"/>
+        </Rectangle.Fill>
+      </Rectangle>
+
+
+      <!-- With the Opacity Mask-->
+      <Button
+        Height="100"
+        Width="200"
+        FontFamily="MS Gothic"
+        FontSize="16"
+        HorizontalAlignment="Left"
+        Margin="10"
+        Grid.Column="2" Grid.Row="3">
+        A Button
+        <Button.OpacityMask>
+          <ImageBrush ImageSource="sampleImages/tornedges.png"/>
+        </Button.OpacityMask>
+      </Button>
+
+    </Grid>
+
+  </DockPanel>
+</Page>

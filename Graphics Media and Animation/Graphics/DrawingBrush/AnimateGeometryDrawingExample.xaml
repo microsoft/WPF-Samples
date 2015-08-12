@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!-- Demonstrates the use of DrawingBrush. -->
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="DrawingBrush.AnimateGeometryDrawingExample" 
+  Title="Using a DrawingBrush">
+
+  <StackPanel>
+    <Border Background="#66000000">
+      <TextBlock Margin="10" HorizontalAlignment="Left" Foreground="White">
+        Animate GeometryDrawing Examples
+      </TextBlock>
+    </Border>  
+    
+    <StackPanel Margin="10">
+      <TextBlock>
+        The contents of GeometryDrawing may be animated.  In the following example, an EllipseGeometry's RadiusX property is animated.
+      </TextBlock>
+      
+      <StackPanel Orientation="Horizontal">
+        <DockPanel Name="myAnimatedDrawing" Height="400" Width="400">
+          <DockPanel.Background>
+            <DrawingBrush  TileMode="FlipXY" Viewport="0,0,100,100" ViewportUnits="Absolute" 
+              Viewbox="0,0,1,1" ViewboxUnits="Absolute">
+              <DrawingBrush.Drawing>  
+                <GeometryDrawing >
+                  <GeometryDrawing.Pen>
+                    <Pen Brush="Orange" Thickness="0.1" />
+                  </GeometryDrawing.Pen>
+                  <GeometryDrawing.Geometry>                     
+                    <EllipseGeometry RadiusX="0.45" RadiusY="0.2" Center="0.5,0.5" />
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </DockPanel.Background>
+        </DockPanel>
+      </StackPanel>
+    </StackPanel>
+  </StackPanel>
+  <Page.Triggers>
+    <EventTrigger RoutedEvent="Page.Loaded">
+      <BeginStoryboard>
+        <Storyboard>
+          <DoubleAnimation 
+            Storyboard.TargetName="myAnimatedDrawing" 
+            Storyboard.TargetProperty="(DockPanel.Background).(DrawingBrush.Drawing).(GeometryDrawing.Geometry).(EllipseGeometry.RadiusX)"
+            From="0.01" To="0.5" Duration="0:0:10" AutoReverse="True" RepeatBehavior="Forever" />         
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </Page.Triggers>
+</Page>

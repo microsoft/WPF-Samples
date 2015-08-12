@@ -1,0 +1,29 @@
+﻿<Window x:Class="TableRows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TableRows"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <FlowDocumentScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top">
+        <FlowDocument>
+            <Paragraph>
+                <Button  Click="AddRow">Add a New TableRow to the Table</Button>
+            </Paragraph>
+
+            <Table CellSpacing="5" Name="table1">
+                <Table.Columns>
+                    <TableColumn/>
+                </Table.Columns>
+                <TableRowGroup Name="trg1">
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph FontSize="14pt">TableRow</Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+            </Table>
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
+</Window>

@@ -1,0 +1,126 @@
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Microsoft.Samples.Graphics.Transforms.TranslateTransformExample"
+  WindowTitle="TranslateTransform Example">
+   <Page.Resources>
+     <Style TargetType="{x:Type TextBlock}">
+       <Setter Property="Margin" Value="0,10,0,0" />
+       <Setter Property="TextWrapping" Value="Wrap" />
+     </Style>
+     <Style TargetType="{x:Type Border}">
+       <Setter Property="BorderBrush" Value="Black" />
+       <Setter Property="BorderThickness" Value="1" />
+       <Setter Property="Background" Value="{StaticResource MyBlueGridBrushResource}" />
+       <Setter Property="HorizontalAlignment" Value="Left" />
+       <Setter Property="VerticalAlignment" Value="Top" />
+     </Style>
+     <Style TargetType="{x:Type Rectangle}" x:Key="MarkerRectangleStyle">
+       <Setter Property="Height" Value="50" />
+       <Setter Property="Width" Value="50" />      
+       <Setter Property="Stroke" Value="#99000000" />  
+       <Setter Property="StrokeDashArray" Value="4,1" />  
+       <Setter Property="StrokeThickness" Value="2" />  
+       <Setter Property="Canvas.Left" Value="100" /> 
+       <Setter Property="Canvas.Top" Value="100" /> 
+     </Style>      
+  </Page.Resources>
+  
+  <StackPanel Orientation="Horizontal">
+    
+    <StackPanel>
+      <TextBlock Margin="0,10,0,0">No translation</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          <Rectangle Height="50" Width="50" Fill="#CCCCCCFF"
+            Canvas.Left="100" Canvas.Top="100" />
+        </Canvas>
+      </Border>
+      
+      <TextBlock>X: 50<LineBreak/>Y: 0</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+        
+          <Rectangle Height="50" Width="50" 
+            Fill="#CCCCCCFF" Stroke="Blue" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100">
+            <Rectangle.RenderTransform>
+              <TranslateTransform X="50" Y="0" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}"  />            
+        </Canvas>
+      </Border>      
+    </StackPanel>
+    
+    <StackPanel Margin="10">
+      <TextBlock>X: 0<LineBreak/>Y: 50</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          <Rectangle Height="50" Width="50" Fill="#CCCCCCFF"
+            Canvas.Left="100" Canvas.Top="100" Stroke="Blue" StrokeThickness="2">
+            <Rectangle.RenderTransform>
+              <TranslateTransform X="0" Y="50" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}"  />            
+        </Canvas>
+      </Border>    
+      
+      <TextBlock>X: 50<LineBreak/>Y: 50</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          <Rectangle Height="50" Width="50" 
+            Fill="#CCCCCCFF" Stroke="Blue" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100">
+            <Rectangle.RenderTransform>
+              <TranslateTransform X="50" Y="50" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}"  />       
+        </Canvas>
+      </Border>        
+    </StackPanel>
+    
+    <Border BorderBrush="LightGray" BorderThickness="2" Background="WhiteSmoke" Margin="10">
+    <StackPanel Margin="10">
+      <TextBlock Width="250">
+        The X and Y properties of this TranslateTransform are each animated from -50 to 50.
+      </TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          <Rectangle 
+            Height="50" Width="50" Fill="{StaticResource MyGreenGridBrushResource}" Stroke="Blue" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100">
+            <Rectangle.RenderTransform>
+              <TranslateTransform x:Name="AnimatedTranslateTransform" X="0" Y="0" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}"  />           
+        </Canvas>
+      </Border>   
+    <StackPanel Orientation="Horizontal"> 
+        <Button Name="startButton" Margin="0,0,2,0">Start</Button>
+        <Button Name="stopButton">Stop</Button>
+        <StackPanel.Triggers>
+          <EventTrigger SourceName="startButton" RoutedEvent="Button.Click">
+            <BeginStoryboard Name="myBeginStoryboard">
+              <Storyboard>
+        <DoubleAnimation Storyboard.TargetName="AnimatedTranslateTransform" 
+        Storyboard.TargetProperty="X" 
+          From="-50" To="50" Duration="0:0:2" />
+        <DoubleAnimation Storyboard.TargetName="AnimatedTranslateTransform" 
+        Storyboard.TargetProperty="Y" 
+        From="-50" To="50" Duration="0:0:2" />         
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+          <EventTrigger SourceName="stopButton" RoutedEvent="Button.Click">
+            <StopStoryboard BeginStoryboardName="myBeginStoryboard" />
+          </EventTrigger>          
+        </StackPanel.Triggers>        
+      </StackPanel>
+    </StackPanel>
+    </Border>
+  </StackPanel>
+</Page>

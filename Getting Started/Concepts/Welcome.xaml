@@ -1,0 +1,10 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Welcome!"
+      x:Class="Welcome.Page1">
+  <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <TextBlock DockPanel.Dock="Top" Style="{StaticResource HeaderStyle}">Welcome to the Windows Presentation Foundation Samples Gallery!</TextBlock>
+    <TextBlock DockPanel.Dock="Top" Style="{StaticResource MainContentStyle}">The Windows Presentation Foundation (WPF) Samples Gallery provides a convenient repository for WPF code samples. Choose any of the listed technology areas from the table of contents on the left to view and render available samples.</TextBlock>
+    <TextBlock DockPanel.Dock="Top" Style="{StaticResource MainContentStyle}">The default code language you would like to display on Sample pages can also be chosen using the menu on the top right of the application.</TextBlock>
+  </StackPanel>
+</Page>

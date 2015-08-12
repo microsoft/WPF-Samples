@@ -1,0 +1,65 @@
+﻿<DockPanel 
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   x:Class="FlowDocumentNewsClient.DockPanel3"
+   LastChildFill="True">
+    <Menu Style="{StaticResource MainContentStyle}" BorderBrush="Black" BorderThickness="1" Background="LightGray" DockPanel.Dock="Top">
+      <Separator/>
+      <MenuItem Margin="0,0,10,0" Header="Adjust Readability">
+               <MenuItem Margin="0,0,15,0" Header="Columns">
+                    <MenuItem Click="ColWidest" Header="Most"/>
+                    <MenuItem Click="ColMore" Header="More"/>
+                    <MenuItem Click="ColAverage" Header="Average"/>
+                    <MenuItem Click="ColFewer" Header="Fewer"/>
+                    <MenuItem Click="ColLeast" Header="Least"/>
+               </MenuItem>
+
+        <Separator/>
+        <MenuItem Margin="0,0,10,0" Header="Text Size">
+                <MenuItem Click="TextLargest" Header="Largest"/>
+                <MenuItem Click="TextLarge" Header="Large"/>
+                <MenuItem Click="TextAverage" Header="Average"/>
+                <MenuItem Click="TextSmall" Header="Small"/>
+                <MenuItem Click="TextSmallest" Header="Smallest"/>
+           </MenuItem>
+           </MenuItem>
+    </Menu>
+<FlowDocumentPageViewer>
+    
+<FlowDocument 
+        Style="{StaticResource MainContentStyle}" 
+        ColumnWidth="250" 
+        Name="fd3" 
+        ColumnGap="12" 
+        ColumnRuleWidth="1" 
+        ColumnRuleBrush="Gray">
+
+    <Paragraph Style="{StaticResource HeaderStyle}">Proin Accumsan Libero Vel Luctus</Paragraph>
+    <Paragraph Style="{StaticResource BylineStyle}">Aenean Malesuada</Paragraph>
+    <Paragraph Style="{StaticResource BylineStyle}">Redmond, WA</Paragraph>
+    
+    
+<Paragraph>Sed luctus nunc eu mauris. Vestibulum luctus. Aenean tincidunt arcu pellentesque orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut condimentum dictum lorem. Nulla vel eros. Aenean malesuada. Duis in neque in dui molestie semper. Cras pulvinar, tortor vel molestie porta, nulla velit mattis nunc, quis consequat ligula mauris vel lacus. Quisque vestibulum. Lum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse quis lorem. Maecenas tellus wisi, semper eget, sagittis at, hendrerit a, ipsum. Morbi odio. Aenean placerat consectetuer elit. </Paragraph>
+<Paragraph />
+    <Paragraph>Sed tristique. In iaculis. Nullam eu lectus ac metus tristique pretium. Etiam commodo tincidunt orci. Morbi viverra nonummy eros. Nullam tempus, tortor eget lobortis porttitor, tortor arcu tempus mi, nec ultricies ligula orci eu ipsum. Nunc ultricies, ante ac feugiat ornare, massa neque feugiat sem, sit amet fermentum felis turpis sed enim. Donec justo lacus, elementum vulputate, rhoncus ut, porta eget, lacus. Mauris nulla quam, fermentum interdum, aliquet a, sagittis id, wisi. In ac est vitae tortor lobortis ultricies. Curabitur pharetra sollicitudin wisi. </Paragraph>
+<Paragraph />
+    <Paragraph>    
+    <Figure Background="White" Padding="5" CanDelayPlacement="False" HorizontalAnchor="PageCenter" VerticalOffset="10">
+        <Paragraph>   
+        <StackPanel Height="200" Width="200" >
+                <Image Source="images\tulip_farm.png" Margin="5"/>
+                <TextBlock TextWrapping="Wrap">Quisque eget libero consectetuer.</TextBlock>
+            </StackPanel>
+            </Paragraph> 
+       </Figure>
+       Sed a mauris et dui varius ornare. Phasellus dui tortor, gravida eu, condimentum quis, malesuada nec, lectus. Morbi a odio non augue scelerisque ullamcorper. Suspendisse eget pede in odio lacinia viverra. Donec condimentum elementum enim. Nam tincidunt ultrices ligula. Integer consectetuer est eget ligula elementum condimentum. Curabitur ut ipsum vel felis luctus congue. Proin accumsan libero vel massa. Duis porttitor, pede nec lobortis ornare, augue nibh placerat elit, ac pharetra turpis libero vel pede. Curabitur consectetuer diam eu magna. Morbi sed velit nec libero rutrum eleifend. Mauris vitae justo. Cras sed massa. Praesent posuere. Vestibulum urna. Etiam tincidunt felis ut orci. Quisque eget libero consectetuer velit scelerisque rhoncus. Donec molestie lectus porttitor lorem. </Paragraph>
+<Paragraph />
+    <Paragraph>Ut dapibus ultricies lorem. Quisque molestie commodo tellus. Vivamus eget libero. Nullam diam massa, eleifend quis, accumsan eget, pulvinar id, nisl. Proin tempus magna ac velit sollicitudin auctor. In magna. Vestibulum pulvinar, diam sit amet blandit mollis, ipsum odio porta neque, eleifend dignissim ligula arcu at mauris. Maecenas auctor cursus dui. In sit amet tellus. Phasellus enim. Sed ipsum metus, aliquet a, pretium in, iaculis tincidunt, turpis. Morbi semper augue a dui. In arcu. </Paragraph>
+<Paragraph />
+    <Paragraph>Sed erat diam, sollicitudin non, cursus et, venenatis vitae, urna. Aliquam at odio. Nulla facilisi. Nam lacus elit, laoreet ac, tempor in, scelerisque eu, dui. Suspendisse aliquam accumsan magna. Praesent non massa. Quisque volutpat metus sed diam. Lum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed dictum, quam quis interdum ornare, ipsum nisl dignissim felis, eu feugiat mauris neque non sapien. Donec enim. Donec viverra quam eu tortor. Nam ac tellus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dignissim risus ut nibh. In eu dolor at odio vehicula eleifend. Sed odio eros, consequat sed, congue at, fringilla tristique, urna. Vestibulum id nisl nec diam malesuada tempus. Aenean venenatis pharetra wisi. </Paragraph>
+
+<Paragraph />
+
+</FlowDocument>
+</FlowDocumentPageViewer>
+    </DockPanel>

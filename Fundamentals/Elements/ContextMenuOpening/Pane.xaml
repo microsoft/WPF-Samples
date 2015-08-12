@@ -1,0 +1,43 @@
+<StackPanel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ContextMenuOpening.Pane"
+    xmlns:my="clr-namespace:ContextMenuOpening"
+    >
+  <StackPanel>
+    <Rectangle Fill="Purple" Width="200" Height="100" ContextMenuOpening="AddItemToCm">
+      <Rectangle.ContextMenu>
+        <ContextMenu>
+          <MenuItem Header="Item1"/>
+          <MenuItem Header="Item2"/>
+          <MenuItem Header="Item3"/>
+        </ContextMenu>
+      </Rectangle.ContextMenu>
+    </Rectangle>
+    <TextBlock>Handler does not mark Handled, but adds Item4 to menu</TextBlock>
+  </StackPanel>
+  <StackPanel>
+    <Rectangle Fill="Red" Width="200" Height="100" ContextMenuOpening="HandlerForCMO"/>
+    <TextBlock>Right-click the rectangle above, and note that the context menu does not get replaced</TextBlock>
+  </StackPanel>
+  <StackPanel>
+    <Rectangle Fill="Yellow" Width="200" Height="100" ContextMenuOpening="HandlerForCMO">
+      <Rectangle.ContextMenu>
+        <ContextMenu>
+          <MenuItem>Initial menu; this will be replaced ...</MenuItem>
+        </ContextMenu>
+      </Rectangle.ContextMenu>
+    </Rectangle>
+    <TextBlock>Right-click the rectangle above, context menu gets replaced</TextBlock>
+  </StackPanel>
+  <StackPanel>
+    <Rectangle Fill="Green" Width="200" Height="100" ContextMenuOpening="HandlerForCMO2" />
+      <TextBlock>Right-click the rectangle above, new context menu deliberately forced open</TextBlock>
+  </StackPanel>
+  <StackPanel>
+    <my:MyButton Width="100" Height="50"/>
+    <TextBlock>Alternative approach for custom classes: override OnContextMenuOpening class handler</TextBlock>
+  </StackPanel>
+</StackPanel>
+    
+

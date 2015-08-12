@@ -1,0 +1,59 @@
+<!-- <Snippet1> -->
+<!-- StoryboardExample.xaml
+     Uses storyboards to animate properties. -->
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="Animate Properties with Storyboards">
+
+  <Border Background="White">
+    <StackPanel Margin="30" HorizontalAlignment="Left" MinWidth="500">
+
+      <TextBlock>Storyboard Animation Example</TextBlock>
+      
+      <!-- The width of this button is animated. -->
+      <Button Name="myWidthAnimatedButton"
+        Height="30" Width="200" HorizontalAlignment="Left">
+        A Button   
+        <Button.Triggers>
+        
+          <!-- Animates the width of the first button 
+               from 200 to 300. -->         
+          <EventTrigger RoutedEvent="Button.Click">
+            <BeginStoryboard>
+              <Storyboard>           
+                <DoubleAnimation Storyboard.TargetName="myWidthAnimatedButton"
+                  Storyboard.TargetProperty="Width"
+                  From="200" To="300" Duration="0:0:3" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Button.Triggers>
+      </Button>
+
+      <!-- The color of the brush used to paint this button is animated. -->
+      <Button Height="30" Width="200" 
+        HorizontalAlignment="Left">Another Button
+        <Button.Background>
+          <SolidColorBrush x:Name="myAnimatedBrush" Color="Blue" />
+        </Button.Background>
+        <Button.Triggers>
+        
+        <!-- Animates the color of the brush used to paint 
+             the second button from red to blue . -->             
+          <EventTrigger RoutedEvent="Button.Click">    
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation 
+                  Storyboard.TargetName="myAnimatedBrush"
+                  Storyboard.TargetProperty="Color"
+                  From="Red" To="Blue" Duration="0:0:7" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Button.Triggers>
+      </Button>
+    </StackPanel>
+  </Border>
+</Page>
+<!-- </Snippet1> -->

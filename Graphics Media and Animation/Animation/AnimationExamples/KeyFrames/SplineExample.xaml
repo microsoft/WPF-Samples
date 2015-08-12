@@ -1,0 +1,274 @@
+<!-- SplineExample.xaml
+     Demonstrates splined interpolation.
+-->
+<Page x:Class="AnimationExamples.SplineExample" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+  <Page.Triggers>
+    <EventTrigger RoutedEvent="Page.Loaded">
+      <BeginStoryboard Name="ExampleBeginStoryboard">
+      
+        <!-- Although the animations is this storyboard are databound, 
+             their clocks won't be automatically regenerated as
+             their databound properties change. -->
+        <Storyboard x:Name="ExampleStoryboard">
+
+          <!-- Animates the spline progress illustration. -->
+          <DoubleAnimationUsingKeyFrames 
+            Storyboard.TargetName="SplineProgressTransform" 
+            Storyboard.TargetProperty="Y" 
+            Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever">
+            <DiscreteDoubleKeyFrame Value="100" KeyTime="0%" />            
+            <SplineDoubleKeyFrame x:Name="mySplineKeyFrame" 
+              Value="0" KeySpline="0.0,0.0 0.0,0.0" KeyTime="100%"/>
+          </DoubleAnimationUsingKeyFrames>
+          
+          <DoubleAnimation 
+            Storyboard.TargetName="TimeProgressTransform" 
+            Storyboard.TargetProperty="X"
+            From="0" To="100" Duration="0:0:5" 
+            AutoReverse="True" RepeatBehavior="Forever" />
+          
+          <!-- Animates the 3-D picture cube using
+               splined interpolation. -->
+          <DoubleAnimationUsingKeyFrames 
+            Storyboard.TargetName="myTranslateTransform3D"
+            Storyboard.TargetProperty="OffsetX"
+            AutoReverse="True" Duration="0:0:5" RepeatBehavior="Forever">
+            <DiscreteDoubleKeyFrame Value="-2.5" KeyTime="0%" />
+            <SplineDoubleKeyFrame x:Name="myVector3DSplineKeyFrame" 
+              Value="2.5" KeySpline="0.0,0.0 0.0,0.0" KeyTime="100%"/>
+          </DoubleAnimationUsingKeyFrames>      
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </Page.Triggers>
+
+
+  <StackPanel Background="White" VerticalAlignment="Stretch" Name="thePanel">
+    <TextBlock FontSize="18pt" Margin="10">Spline KeyFrames</TextBlock>
+    <DockPanel>
+      <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="1"
+        VerticalAlignment="Stretch" Height="500">
+        <StackPanel VerticalAlignment="Stretch">
+          <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <Label 
+              Grid.Column="0" Grid.Row="0" 
+              Grid.ColumnSpan="2">Control Point 1</Label>
+            <Label 
+              Grid.Column="2" Grid.Row="0" 
+              Grid.ColumnSpan="2">Control Point 2</Label>
+
+            <Label Grid.Column="0" Grid.Row="1">X1</Label>
+            <Slider Grid.Column="1" Grid.Row="1" 
+              Style="{StaticResource HorizontalSliderStyle}"  
+              Name="SliderControlPoint1X"  ValueChanged="OnSliderChanged" />
+            <Label Grid.Column="0" Grid.Row="2">Y1</Label>
+            <Slider Grid.Column="1" Grid.Row="2" 
+              Style="{StaticResource HorizontalSliderStyle}"  
+              Name="SliderControlPoint1Y" ValueChanged="OnSliderChanged" />
+            <Label Grid.Column="2" Grid.Row="1">X2</Label>
+            <Slider Grid.Column="3" Grid.Row="1" Value="0" 
+              Style="{StaticResource HorizontalSliderStyle}"  
+              Name="SliderControlPoint2X" ValueChanged="OnSliderChanged" />
+            <Label Grid.Column="2" Grid.Row="2">Y2</Label>
+            <Slider Grid.Column="3" Grid.Row="2"  Value="0" 
+              Style="{StaticResource HorizontalSliderStyle}"  
+              Name="SliderControlPoint2Y" 
+              ValueChanged="OnSliderChanged" />
+
+          </Grid>
+          <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Name="keySplineText" 
+              Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+              FontFamily="Courier New" Margin="0,0,0,10">
+              KeySpline="0.00,0.00 0.00,0.00"
+            </TextBlock>
+            <Border Grid.Column="1" Grid.Row="1"
+              HorizontalAlignment="Left">
+              
+              <!-- Provides an animated illustration of the spline. -->
+              <Image Width="200" Height="200">
+                <Image.Source>
+                  <DrawingImage>
+                    <DrawingImage.Drawing>
+                      <DrawingGroup>
+                        <DrawingGroup.Children>
+                          <GeometryDrawing Brush="{StaticResource MyPartiallyTransparentGridBrushResource}">
+                            <GeometryDrawing.Geometry>
+                              <RectangleGeometry Rect="0,0,101,101" />
+                            </GeometryDrawing.Geometry>
+                          </GeometryDrawing>
+                          <GeometryDrawing>
+                            <GeometryDrawing.Geometry>
+                              <PathGeometry>
+                                <PathGeometry.Figures>
+                                  <PathFigure StartPoint="0,100">
+                                    <PathFigure.Segments>
+                                      <BezierSegment x:Name="SplineIllustrationSegment"
+                                        Point1="0,100" Point2="0,100" Point3="100,0" />
+                                    </PathFigure.Segments>
+                                  </PathFigure>
+                                </PathGeometry.Figures>
+                              </PathGeometry>
+                            </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Pen>
+                              <Pen Thickness="1" Brush="Black" />
+                            </GeometryDrawing.Pen>
+                          </GeometryDrawing>
+                          <GeometryDrawing Brush="Gray">
+                            <GeometryDrawing.Geometry>
+                              <GeometryGroup>
+                                <EllipseGeometry
+                                  Center="0,100"
+                                  RadiusX="2" RadiusY="2" />
+                                <EllipseGeometry
+                                  Center="100,0"
+                                  RadiusX="2" RadiusY="2" />
+                              </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Pen>
+                              <Pen Thickness="1" Brush="Black" />
+                            </GeometryDrawing.Pen>
+                          </GeometryDrawing>
+                          <GeometryDrawing Brush="Red">
+                            <GeometryDrawing.Geometry>
+                              <EllipseGeometry
+                                x:Name="SplineControlPoint1Marker"
+                                Center="0,100"
+                                RadiusX="2" RadiusY="2" />
+                            </GeometryDrawing.Geometry>
+                          </GeometryDrawing>
+                          <GeometryDrawing Brush="Red">
+                            <GeometryDrawing.Geometry>
+                              <EllipseGeometry
+                                x:Name="SplineControlPoint2Marker"
+                                Center="0,100"
+                                RadiusX="2" RadiusY="2" />
+                            </GeometryDrawing.Geometry>
+                          </GeometryDrawing>
+                          <GeometryDrawing Brush="Orange">
+                            <GeometryDrawing.Pen>
+                              <Pen Thickness="1" Brush="Red" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                              <GeometryGroup>
+                                <GeometryGroup>
+                                  <EllipseGeometry
+                                    Center="0,0" RadiusX="2" RadiusY="2" />
+                                  <LineGeometry StartPoint="2,0" EndPoint="102,0" />
+                                    <GeometryGroup.Transform>
+                                    <TranslateTransform Y="100" x:Name="SplineProgressTransform" />
+                                  </GeometryGroup.Transform>
+                                </GeometryGroup>
+                                <LineGeometry StartPoint="0,0" EndPoint="0,100">
+                                  <LineGeometry.Transform>
+                                    <TranslateTransform X="100" x:Name="TimeProgressTransform" />
+                                  </LineGeometry.Transform>
+                                </LineGeometry>
+                              </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                          </GeometryDrawing>
+                        </DrawingGroup.Children>
+                      </DrawingGroup>
+                    </DrawingImage.Drawing>
+                  </DrawingImage>
+                </Image.Source>
+              </Image>
+            </Border>
+            <TextBlock Grid.Column="0" Grid.Row="1">
+              <TextBlock.LayoutTransform>
+                <RotateTransform Angle="-90" />
+              </TextBlock.LayoutTransform>
+              KeyFrame Progress (Output)
+            </TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2">
+              Linear Progress (Input)
+            </TextBlock>
+          </Grid>
+        </StackPanel>
+      </Border>
+
+      <StackPanel>
+        <Border >
+          <Viewbox Stretch="Uniform">
+          
+            <!-- An animated cube. -->
+            <Viewport3D ClipToBounds="True" Width="700" Height="180">
+              <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="myPerspectiveCamera"
+                  FarPlaneDistance="15" LookDirection="0,0,-1" UpDirection="0,1,0" NearPlaneDistance="1" Position="0,0,6" FieldOfView="60" />
+              </Viewport3D.Camera>
+              <ModelVisual3D>
+                <ModelVisual3D.Children>
+                  <StaticResource ResourceKey="PictureCubeModelVisual3DResource" />
+                </ModelVisual3D.Children>
+                <ModelVisual3D.Transform>
+                  <Transform3DGroup >
+                    <Transform3DGroup.Children>
+                      <RotateTransform3D>
+                        <RotateTransform3D.Rotation>
+                          <AxisAngleRotation3D x:Name="myHorizontalRotation" Angle="0" Axis="0 1 0" />
+                        </RotateTransform3D.Rotation>
+                      </RotateTransform3D>
+                      <RotateTransform3D>
+                        <RotateTransform3D.Rotation>
+                          <AxisAngleRotation3D x:Name="myVerticalRotation" Angle="0" Axis="1 0 0" />
+                        </RotateTransform3D.Rotation>
+                      </RotateTransform3D>
+                      <TranslateTransform3D x:Name="myTranslateTransform3D" 
+                        OffsetX="-2.5" OffsetY="0" OffsetZ="0" />
+                    </Transform3DGroup.Children>
+                  </Transform3DGroup>
+                </ModelVisual3D.Transform>
+              </ModelVisual3D>
+              <Viewport3D.Triggers>
+                <EventTrigger RoutedEvent="Viewport3D.Loaded">
+                  <BeginStoryboard>
+                    <Storyboard>
+                    
+                      <!-- Rotates the cube. -->
+                      <DoubleAnimation 
+                        Storyboard.TargetName="myHorizontalRotation"
+                        Storyboard.TargetProperty="Angle"
+                        From="0" To="360" 
+                        Duration="0:0:10" RepeatBehavior="Forever"/>
+                      <DoubleAnimation 
+                        Storyboard.TargetName="myVerticalRotation"
+                        Storyboard.TargetProperty="Angle"
+                        From="0" To="360" 
+                        Duration="0:0:10" RepeatBehavior="Forever"/>  
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger>
+              </Viewport3D.Triggers>
+            </Viewport3D>
+          </Viewbox>
+        </Border>
+      </StackPanel>
+    </DockPanel>
+  </StackPanel>
+
+</Page>
+

@@ -1,0 +1,56 @@
+﻿<Window x:Class="_2DTransforms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_2DTransforms"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <DockPanel Background="White">
+        <TabControl Background="White"  BorderBrush="Orange">
+
+            <TabItem Header="Transform Example">
+                <Frame Background="White" Source="TransformExample.xaml" />
+            </TabItem>
+
+            <TabItem Header="RotateTransform Example">
+                <Frame Background="White" Source="RotateTransformExample.xaml" />
+            </TabItem>
+
+            <TabItem Header="ScaleTransform Example">
+                <TabControl>
+                    <TabItem Header="Basic Examples">
+                        <Frame Background="White" Source="ScaleTransformExample.xaml" />
+                    </TabItem>
+                    <TabItem Header="Animation Example">
+                        <Frame Background="White" Source="AnimatedScaleTransformExample.xaml" />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <TabItem Header="SkewTransform Example">
+                <TabControl>
+                    <TabItem Header="Basic Examples">
+                        <Frame Background="White" Source="SkewTransformExample.xaml" />
+                    </TabItem>
+                    <TabItem Header="Animation Example">
+                        <Frame Background="White" Source="AnimatedSkewTransformExample.xaml" />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <TabItem Header="TranslateTransform Example">
+                <Frame Background="White" Source="TranslateTransformExample.xaml" />
+            </TabItem>
+
+            <TabItem Header="Interactive MatrixTransform Example">
+                <Frame Background="White" Source="InteractiveMatrixTransformExample.xaml" />
+            </TabItem>
+
+            <TabItem Header="TransformCollection Example">
+                <Frame Background="White" Source="TransformCollectionExample.xaml" />
+            </TabItem>
+
+        </TabControl>
+    </DockPanel>
+</Window>

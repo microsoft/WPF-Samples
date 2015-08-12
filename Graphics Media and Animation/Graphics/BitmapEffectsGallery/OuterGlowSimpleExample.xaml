@@ -1,0 +1,62 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+      <TextBlock>
+        This example shows a OuterGlowBitmapEffect applied to a TextBox. An OuterGlowBitmapEffect creates a halo of color around objects or areas of color.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Margin="20" Orientation="Horizontal">
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">No BitMapEffect</TextBlock>
+        <TextBox Width="200" Margin="0,40,0,0" HorizontalAlignment="Center" />
+      </StackPanel>
+
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">With OuterGlowBitMapEffect</TextBlock>
+        <TextBox Width="200" Margin="0,40,0,0" HorizontalAlignment="Center">
+          <TextBox.BitmapEffect>
+
+            <!-- <BitMapEffectGroup> would go here if you wanted to apply more 
+             then one effect to the TextBox. However, in this example only  
+             one effect is being applied so BitMapEffectGroup does not need  
+             to be included. -->
+
+            <!-- The OuterGlow is blue, extends out 30 pixels, has the 
+             maximum noise possible, and is 40% Opaque. -->
+            <OuterGlowBitmapEffect GlowColor="Blue" GlowSize="30" Noise="1"
+             Opacity="0.4" />
+
+          </TextBox.BitmapEffect>
+        </TextBox>
+      </StackPanel>
+    </StackPanel>
+    <!-- Displays functional code for demonstration. -->
+    <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="550">
+
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;TextBox Width="200"&gt;
+          &lt;TextBox.BitmapEffect&gt;
+            <Bold Foreground="Green">
+            &lt;!-- The OuterGlow is blue, extends out 30 pixels, has the 
+             maximum noise possible, and is 40% Opaque. --&gt;</Bold>
+            &lt;OuterGlowBitmapEffect GlowColor="Blue" GlowSize="30" Noise="1"
+                Opacity="0.4" /&gt;
+
+          &lt;/TextBox.BitmapEffect&gt;
+        &lt;/TextBox>
+      ...
+      </TextBlock>
+
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

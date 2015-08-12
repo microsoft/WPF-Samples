@@ -1,0 +1,117 @@
+﻿<Application x:Class="UsingDispatcher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:UsingDispatcher"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DrawingGroup x:Key="RainingDrawingResource">
+            <DrawingGroup.Children>
+                <GeometryDrawing
+          Geometry="M6.76 153.24 A13.5345 13.4115 90 0 1 17.84 128.71 A15.0216 14.8851 90 0 1 32.61 108.53 A19.4786 19.3016
+                 90 0 1 69.53 104.8 A16.5876 16.4369 90 0 1 89.83 121.26 A10.1653 10.073 90 0 1 104.6 133.06 A15.6154
+                 15.4735 90 0 1 124.91 153.24 L6.76 153.24 Z">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="1" Brush="Gray" />
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush>
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0.0" Color="White" />
+                                <GradientStop Offset="1.0" Color="LightGray" />
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing
+          Geometry="M5.95 91.74 A35.3025 34.9817 90 0 1 5.01 103.12 A5.61727 5.56623 90 0 1 3.13 106.13 A3.80121 3.76667
+                       -90 0 0 5.95 111.5 A5.44469 5.39522 -90 0 0 10.5 105.02 A26.575 26.3335 -90 0 0 5.95 91.74 Z M3.18
+                       130.95 A35.3025 34.9817 90 0 1 2.24 142.33 A5.61719 5.56615 90 0 1 0.36 145.34 A3.80124 3.7667 -90
+                       0 0 3.18 150.71 A5.44469 5.39522 -90 0 0 7.72 144.23 A26.5749 26.3334 -90 0 0 3.18 130.95 Z M21.66
+                       110.71 A35.3025 34.9817 90 0 1 20.72 122.1 A5.61727 5.56623 90 0 1 18.84 125.1 A3.80122 3.76668
+                       -90 0 0 21.66 130.47 A5.44471 5.39524 -90 0 0 26.21 123.99 A26.5749 26.3334 -90 0 0 21.66 110.71
+                       Z M41.09 93.32 A35.3024 34.9816 90 0 1 40.15 104.71 A5.61747 5.56642 90 0 1 38.27 107.71 A3.80121
+                       3.76667 -90 0 0 41.09 113.08 A5.44469 5.39522 -90 0 0 45.63 106.6 A26.575 26.3335 -90 0 0 41.09
+                       93.32 Z M52.37 110.71 A35.3025 34.9817 90 0 1 51.43 122.1 A5.61747 5.56642 90 0 1 49.55 125.1 A3.80121
+                       3.76667 -90 0 0 52.37 130.47 A5.44469 5.39522 -90 0 0 56.91 123.99 A26.575 26.3335 -90 0 0 52.37
+                       110.71 Z M67.41 90.48 A35.3024 34.9816 90 0 1 66.47 101.86 A5.61747 5.56642 90 0 1 64.59 104.86
+                       A3.80121 3.76667 -90 0 0 67.41 110.24 A5.44469 5.39522 -90 0 0 71.95 103.76 A26.575 26.3335 -90
+                       0 0 67.41 90.48 Z M82.45 110.71 A35.3025 34.9817 90 0 1 81.51 122.1 A5.61747 5.56642 90 0 1 79.63
+                       125.1 A3.80121 3.76667 -90 0 0 82.45 130.47 A5.44469 5.39522 -90 0 0 86.99 123.99 A26.575 26.3335
+                       -90 0 0 82.45 110.71 Z M67.41 133.48 A35.3025 34.9817 90 0 1 66.47 144.86 A5.61747 5.56642 90 0
+                       1 64.59 147.86 A3.80121 3.76667 -90 0 0 67.41 153.24 A5.44469 5.39522 -90 0 0 71.95 146.76 A26.575
+                       26.3335 -90 0 0 67.41 133.48 Z M41.09 133.48 A35.3025 34.9817 90 0 1 40.15 144.86 A5.61747 5.56642
+                       90 0 1 38.27 147.86 A3.80121 3.76667 -90 0 0 41.09 153.24 A5.44469 5.39522 -90 0 0 45.63 146.76
+                       A26.575 26.3335 -90 0 0 41.09 133.48 Z">
+
+                            <GeometryDrawing.Brush>
+                                <LinearGradientBrush>
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Offset="0.0" Color="Blue" />
+                                        <GradientStop Offset="0.5" Color="MediumBlue" />
+                                        <GradientStop Offset="1.0" Color="Blue" />
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </GeometryDrawing.Brush>
+                        </GeometryDrawing>
+
+                    </DrawingGroup.Children>
+                    <DrawingGroup.Transform>
+                        <TranslateTransform X="17" Y="65" />
+                    </DrawingGroup.Transform>
+
+                </DrawingGroup>
+            </DrawingGroup.Children>
+
+
+        </DrawingGroup>
+
+        <DrawingGroup x:Key="SunnyDrawingResource">
+            <DrawingGroup.Children>
+                <GeometryDrawing
+          Geometry="M8.85 41.07 A53.4063 36.0963 -1.5 0 0 32.81 56.39 A176.023 34.7393 -82.77 0 0 30.96 29.48 A41.3095 36.4713
+                 -162.8 0 0 44.23 50.04 A24.3287 2.62955 -74.97 0 0 53.08 27.24 A23.4226 5.77856 -97.65 0 0 61.92
+                 49.66 A117.859 97.3275 -88.46 0 0 77.77 31.35 L75.19 56.39 A56.1767 42.6929 -171.79 0 0 95.1 45.18
+                 A52.3347 15.5189 -74 0 0 82.2 65.36 A20.4525 3.85006 -5.14 0 0 106.16 67.23 A94.2464 31.8154 -11.62
+                 0 0 86.25 78.81 A32.4058 16.4271 -0.4 0 0 108 89.65 A26.4725 3.83251 -7.16 0 0 82.2 96.75 A70.9645
+                 39.7124 -159.18 0 0 97.31 114.69 A41.289 5.19876 9.99 0 1 75.19 107.59 A352.489 285.063 -52.69 0
+                 0 75.19 132.62 A49.0409 22.2854 -152.61 0 0 59.34 112.44 A23.129 4.93305 -86.68 0 0 53.08 135.24
+                 A25.4231 2.95392 -102.41 0 0 44.23 110.2 A27.7847 9.86429 -26.79 0 0 26.54 128.14 A123.684 43.8677
+                 -98.31 0 0 30.96 105.72 a12.5105 0.527272 -16.92 1 0 -22.116 6.72664 A68.6524 39.3859 -25.17 0 0
+                 22.12 92.54 A33.5368 7.04228 -8.3 0 0 0 90.02 A22.9471 2.22166 -22.95 0 0 20.27 78.81 A47.1813 38.6246
+                 -6 0 0 0 65.36 A54.9062 23.4971 -177.4 0 0 23.96 65.36 A83.7028 35.4682 -142.76 0 0 8.85 41.07 Z">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="1" Brush="Orange" />
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush>
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0.0" Color="Yellow" />
+                                <GradientStop Offset="1.0" Color="Gold" />
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry Center="54,80.5" RadiusX="30" RadiusY="30" />
+                    </GeometryDrawing.Geometry>
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="1" Brush="Orange" />
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Brush>
+                        <RadialGradientBrush GradientOrigin="0.75,0.25">
+                            <RadialGradientBrush.GradientStops>
+                                <GradientStop Offset="0.0" Color="Yellow" />
+                                <GradientStop Offset="0.75" Color="Gold" />
+                                <GradientStop Offset="0.9" Color="Orange" />
+                                <GradientStop Offset="1.0" Color="Gold" />
+                            </RadialGradientBrush.GradientStops>
+                        </RadialGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+            </DrawingGroup.Children>
+        </DrawingGroup>
+    </Application.Resources>
+</Application>

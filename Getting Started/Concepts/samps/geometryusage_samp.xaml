@@ -1,0 +1,1136 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Geometry Usage"
+      x:Class="GeometryUsage.Page1"
+      Loaded="CheckLang">
+  <Page.Resources>
+
+    <DrawingBrush x:Key="MyGridBrushResource" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+      <DrawingBrush.Drawing>
+        <DrawingGroup>
+          <DrawingGroup.Children>
+            <GeometryDrawing Brush="White">
+              <GeometryDrawing.Geometry>
+                <RectangleGeometry Rect="0,0,1,1" />
+              </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#CCCCFF" />
+            <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#CCCCFF" />
+          </DrawingGroup.Children>
+        </DrawingGroup>
+      </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+  </Page.Resources>
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Geometry Usage Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Geometry Usage Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This example demonstrates various types of geometry.</TextBlock>
+            <TextBlock Style="{StaticResource MainContentStyle}">The preview window renders code from the XAML tab. The C#+Markup and VB+markup code is provided for reference purposes.</TextBlock>
+
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+
+          <TextBlock Name="xamlCheck">
+          <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="Microsoft.Samples.Graphics.Geometries.GeometryUsageExample" 
+  >
+  &lt;Page.Resources>
+    &lt;Style TargetType="{x:Type Border}">
+      &lt;Setter Property="Border.HorizontalAlignment" Value="Left" />
+    &lt;/Style>
+  &lt;/Page.Resources>
+  &lt;DockPanel>
+    
+    &lt;StackPanel Orientation="Horizontal" Background="White">
+    
+      &lt;StackPanel Margin="10">
+        &lt;TextBlock>Drawn with a Path Element&lt;/TextBlock>
+        &lt;Border Height="200" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          &lt;Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            &lt;Path.Data>
+              &lt;GeometryGroup>
+                  &lt;RectangleGeometry Rect="50,5 100,10" />
+                  &lt;RectangleGeometry Rect="5,5 95,180" />
+                  &lt;EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                  &lt;RectangleGeometry Rect="50,175 100,10" />
+                  &lt;PathGeometry>
+                    &lt;PathGeometry.Figures>
+                      &lt;PathFigureCollection>
+                        &lt;PathFigure>
+                          &lt;PathFigure.Segments>
+                            &lt;PathSegmentCollection>
+                              &lt;StartSegment Point="50,50"/>
+                              &lt;BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                              &lt;BezierSegment Point1="125,300" Point2="75,100"  Point3="50,50"/>
+                            &lt;/PathSegmentCollection>
+                          &lt;/PathFigure.Segments>
+                        &lt;/PathFigure>
+                      &lt;/PathFigureCollection>
+                    &lt;/PathGeometry.Figures>
+                  &lt;/PathGeometry>               
+              &lt;/GeometryGroup>
+            &lt;/Path.Data>
+          &lt;/Path>
+        &lt;/Border>    
+      &lt;/StackPanel>
+      
+      &lt;StackPanel Margin="10">
+        &lt;TextBlock>Used with a DrawingBrush&lt;/TextBlock>
+        &lt;Rectangle Height="200" Width="200" Stroke="Black" StrokeThickness="1"
+          HorizontalAlignment="Left">
+          &lt;Rectangle.Fill>
+            &lt;DrawingBrush Viewbox="0,0,200,200" ViewboxUnits="Absolute">
+              &lt;DrawingBrush.Drawing>
+                &lt;GeometryDrawing Brush="#CCCCFF">
+                  &lt;GeometryDrawing.Pen>
+                    &lt;Pen Thickness="1" Brush="Black" />
+                  &lt;/GeometryDrawing.Pen>
+                  &lt;GeometryDrawing.Geometry>
+                    &lt;GeometryGroup>
+                      &lt;RectangleGeometry Rect="50,5 100,10" />
+                      &lt;RectangleGeometry Rect="5,5 95,180" />                   
+                      &lt;EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                      &lt;RectangleGeometry Rect="50,175 100,10" />
+                      &lt;PathGeometry>
+                        &lt;PathGeometry.Figures>
+                          &lt;PathFigureCollection>
+                            &lt;PathFigure>
+                              &lt;PathFigure.Segments>
+                                &lt;PathSegmentCollection>
+                                  &lt;StartSegment Point="50,50"/>
+                                  &lt;BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                                  &lt;BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                                &lt;/PathSegmentCollection>
+                              &lt;/PathFigure.Segments>
+                            &lt;/PathFigure>
+                          &lt;/PathFigureCollection>
+                        &lt;/PathGeometry.Figures>
+                      &lt;/PathGeometry>               
+                    &lt;/GeometryGroup>                  
+                  &lt;/GeometryDrawing.Geometry>
+                &lt;/GeometryDrawing>
+              &lt;/DrawingBrush.Drawing>
+            &lt;/DrawingBrush>
+          &lt;/Rectangle.Fill>
+        &lt;/Rectangle>
+
+        
+        &lt;TextBlock>Tiled&lt;/TextBlock>
+        &lt;Rectangle Height="200" Width="200" Stroke="Black" StrokeThickness="1"
+          HorizontalAlignment="Left">
+          &lt;Rectangle.Fill>
+            &lt;DrawingBrush Viewbox="0,0,200,200" ViewboxUnits="Absolute" Viewport="0,0,0.5,0.5" TileMode="FlipXY">
+              &lt;DrawingBrush.Drawing>
+                &lt;GeometryDrawing Brush="#CCCCFF">
+                  &lt;GeometryDrawing.Pen>
+                    &lt;Pen Thickness="1" Brush="Black" />
+                  &lt;/GeometryDrawing.Pen>
+                  &lt;GeometryDrawing.Geometry>
+                    &lt;GeometryGroup>
+                      &lt;RectangleGeometry Rect="50,5 100,10" />
+                      &lt;RectangleGeometry Rect="5,5 95,180" />
+                      &lt;EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                      &lt;RectangleGeometry Rect="50,175 100,10" />
+                      &lt;PathGeometry>
+                        &lt;PathGeometry.Figures>
+                          &lt;PathFigureCollection>
+                            &lt;PathFigure>
+                              &lt;PathFigure.Segments>
+                                &lt;PathSegmentCollection>
+                                  &lt;StartSegment Point="50,50"/>
+                                  &lt;BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                                  &lt;BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                                &lt;/PathSegmentCollection>
+                              &lt;/PathFigure.Segments>
+                            &lt;/PathFigure>
+                          &lt;/PathFigureCollection>
+                        &lt;/PathGeometry.Figures>
+                      &lt;/PathGeometry>               
+                    &lt;/GeometryGroup>                  
+                  &lt;/GeometryDrawing.Geometry>
+                &lt;/GeometryDrawing>
+              &lt;/DrawingBrush.Drawing>
+            &lt;/DrawingBrush>
+          &lt;/Rectangle.Fill>
+        &lt;/Rectangle>        
+      &lt;/StackPanel>   
+      
+      &lt;StackPanel Margin="10">
+        &lt;TextBlock>Used as a Clip&lt;/TextBlock>
+        &lt;Border BorderBrush="Black" BorderThickness="1">
+        &lt;Image Source="sampleImages\Waterlilies.jpg" Width="200" Height="200"
+          HorizontalAlignment="Left">
+          &lt;Image.Clip>
+              &lt;GeometryGroup>
+                  &lt;RectangleGeometry Rect="50,5 100,10" />
+                  &lt;RectangleGeometry Rect="5,5 95,180" />
+                  &lt;EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                  &lt;RectangleGeometry Rect="50,175 100,10" />
+                  &lt;PathGeometry>
+                    &lt;PathGeometry.Figures>
+                      &lt;PathFigureCollection>
+                        &lt;PathFigure>
+                          &lt;PathFigure.Segments>
+                            &lt;PathSegmentCollection>
+                              &lt;StartSegment Point="50,50"/>
+                              &lt;BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                              &lt;BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                            &lt;/PathSegmentCollection>
+                          &lt;/PathFigure.Segments>
+                        &lt;/PathFigure>
+                      &lt;/PathFigureCollection>
+                    &lt;/PathGeometry.Figures>
+                  &lt;/PathGeometry>               
+              &lt;/GeometryGroup>            
+          &lt;/Image.Clip>
+        &lt;/Image>
+        &lt;/Border>
+      
+      &lt;/StackPanel>
+    
+    &lt;/StackPanel>
+  &lt;/DockPanel>
+&lt;/Page>
+            
+            </TextBox>
+          </TextBlock>
+        </ScrollViewer>
+        </TabItem>
+        <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;!--
+  CombiningGeometriesExample.xaml
+  
+  This example shows how to creating composite geometries using the GeometryGroup
+  class and how to combine geometries using the CombinedGeometry class.
+
+-->
+
+&lt;Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="Microsoft.Samples.Graphics.Geometries.CombiningGeometriesExample" 
+  Title="Combining Geometries">
+  &lt;Page.Resources>
+    &lt;Style TargetType="{x:Type Border}">
+    &lt;Setter Property="Border.HorizontalAlignment" Value="Left" />
+    &lt;/Style>
+    &lt;DrawingBrush x:Key="MyGridBrushResource" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+      &lt;DrawingBrush.Drawing>
+        &lt;DrawingGroup>
+          &lt;DrawingGroup.Children>
+            &lt;GeometryDrawing Brush="White">
+              &lt;GeometryDrawing.Geometry>
+                &lt;RectangleGeometry Rect="0,0,1,1" />
+              &lt;/GeometryDrawing.Geometry>
+            &lt;/GeometryDrawing>
+            &lt;GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#CCCCFF" />
+            &lt;GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#CCCCFF" />
+          &lt;/DrawingGroup.Children>
+        &lt;/DrawingGroup>
+      &lt;/DrawingBrush.Drawing>
+    &lt;/DrawingBrush>
+    
+  &lt;/Page.Resources>
+
+&lt;/Page>
+                
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="C#">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Data;
+using System.Windows.Media;
+
+namespace Microsoft.Samples.Graphics.Geometries
+{
+
+
+    public partial class CombiningGeometriesExample : Page
+    {
+
+       
+       public CombiningGeometriesExample()
+       {
+         CreateGui();
+       
+       }
+
+      private void CreateGui()
+      {
+        BrushConverter myBrushConverter = new BrushConverter();
+
+        StackPanel myStackPanel = new StackPanel();
+        myStackPanel.Orientation = Orientation.Vertical;
+        myStackPanel.Background = Brushes.White;
+        myStackPanel.Margin = new Thickness(5);
+
+        this.Child = myStackPanel;
+
+        Border titleBorder = new Border();
+        titleBorder.Background = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+        titleBorder.HorizontalAlignment = HorizontalAlignment.Stretch;
+        TextBlock titleTextBlock = new TextBlock();
+        titleTextBlock.Margin = new Thickness(10);
+        Paragraph titleParagraph = new Paragraph();
+        titleParagraph.Text = "Creating Composite and Combined Geometries";
+
+        ((System.Windows.Serialization.IAddChild)titleTextBlock).AddChild(titleParagraph);
+        titleBorder.Child = titleTextBlock;
+        myStackPanel.Children.Add(titleBorder);
+
+        TextFlow codeExplanationTextFlow = new TextFlow();
+        codeExplanationTextFlow.Margin = new Thickness(0, 0, 0, 5);
+        codeExplanationTextFlow.HorizontalAlignment = HorizontalAlignment.Stretch;
+
+        myStackPanel.Children.Add(codeExplanationTextFlow);
+
+        Paragraph compositGeoParagraph = new Paragraph();
+        compositGeoParagraph.Style = (Style)Application.Current.Resources["MyHeadingParagraphStyle"];
+        
+        compositGeoParagraph.Text = "Composite Geometries";
+        ((System.Windows.Serialization.IAddChild)codeExplanationTextFlow).AddChild(compositGeoParagraph);
+
+        Paragraph compositGeoExplanationParagraph = new Paragraph();
+        compositGeoExplanationParagraph.Text = "You can create composite shapes from multiple geometries using a GeometryGroup. " +
+        "The following example creates a composite shape from a line, an ellipse, and a rectangle. " +
+        "The GeometryGroup in this example has a FillRule of EvenOdd.";
+
+        ((System.Windows.Serialization.IAddChild)codeExplanationTextFlow).AddChild(compositGeoExplanationParagraph);
+
+        Paragraph compositExampleParagraph = new Paragraph();
+        compositExampleParagraph.Style = (Style)Application.Current.Resources["MyCodeParagraphStyle"];
+        
+        compositExampleParagraph.Text = ("evenOddGeometryGroup.FillRule = FillRule.EvenOdd;\n"+
+                     "evenOddGeometryGroup.Children.Add(new LineGeometry(new Point(10, 10), new Point(50, 30)));\n"+
+                     "evenOddGeometryGroup.Children.Add(new EllipseGeometry(new Point(40,70),30,30));\n"+
+                     "evenOddGeometryGroup.Children.Add(new RectangleGeometry(new Rect(30,55,100,30)));");
+
+        ((System.Windows.Serialization.IAddChild)codeExplanationTextFlow).AddChild(compositExampleParagraph);
+
+        Border geoDisplayBorder = new Border();
+        geoDisplayBorder.Height = 150;
+        geoDisplayBorder.Width = 250;
+        geoDisplayBorder.BorderBrush = Brushes.Black;
+        geoDisplayBorder.BorderThickness = new Thickness(1);
+        geoDisplayBorder.Background = (Brush)Application.Current.Resources["MyGridBrushResource"]; 
+
+        myStackPanel.Children.Add(geoDisplayBorder);
+
+        Path geoDisplayPath = new Path();
+        geoDisplayPath.Stroke = Brushes.Black;
+        geoDisplayPath.StrokeThickness = 1;
+        geoDisplayPath.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+
+        geoDisplayBorder.Child =  geoDisplayPath;
+
+        //Creates a composite shape from three geometries.
+        GeometryGroup evenOddGeometryGroup = new GeometryGroup();
+        evenOddGeometryGroup.FillRule = FillRule.EvenOdd;
+
+        evenOddGeometryGroup.Children.Add(new LineGeometry(new Point(10, 10), new Point(50, 30)));
+        evenOddGeometryGroup.Children.Add(new EllipseGeometry(new Point(40,70),30,30));
+        evenOddGeometryGroup.Children.Add(new RectangleGeometry(new Rect(30,55,100,30)));
+
+        geoDisplayPath.Data = evenOddGeometryGroup;
+
+        TextFlow codeExplanation2TextFlow = new TextFlow();
+        codeExplanation2TextFlow.Margin = new Thickness(0, 10, 0, 5);
+        myStackPanel.Children.Add(codeExplanation2TextFlow);
+
+        Paragraph codeExplanation2Paragraph = new Paragraph();
+        codeExplanation2Paragraph.Text = "The following code is identical to the previous example, except that " +
+          "the GeometryGroup's FillRule is set to Nonzero instead of EvenOdd.";
+
+        ((System.Windows.Serialization.IAddChild)codeExplanation2TextFlow).AddChild(codeExplanation2Paragraph);
+        
+        Paragraph compositExampleParagraph2 = new Paragraph();
+        compositExampleParagraph2.Style = (Style)Application.Current.Resources["MyCodeParagraphStyle"];
+
+        compositExampleParagraph2.Text = ("compositShapeGeoGroup.FillRule = FillRule.Nonzero;\n"+
+                      "compositShapeGeoGroup.Children.Add(new LineGeometry(new Point(10,10),new Point(50,30)));\n"+
+                      "compositShapeGeoGroup.Children.Add(new EllipseGeometry(new Point(40,70),30,30));\n"+
+                      "compositShapeGeoGroup.Children.Add(new RectangleGeometry(new Rect(60,55,100,30)));\n");
+
+        ((System.Windows.Serialization.IAddChild)codeExplanation2TextFlow).AddChild(compositExampleParagraph2);
+
+        //This GeometryGroup has a FillRule of NonZero. 
+        Border geoDisplayBorder2 = new Border();
+        geoDisplayBorder2.Height = 150;
+        geoDisplayBorder2.Width = 250;
+        geoDisplayBorder2.BorderBrush = Brushes.Black;
+        geoDisplayBorder2.BorderThickness = new Thickness(1);
+        geoDisplayBorder2.Background = (Brush)Application.Current.Resources["MyGridBrushResource"];
+
+        myStackPanel.Children.Add(geoDisplayBorder2);
+
+        Path geoDisplayPath2 = new Path();
+        geoDisplayPath2.Stroke = Brushes.Black;
+        geoDisplayPath2.StrokeThickness = 1;
+        geoDisplayPath2.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+
+        geoDisplayBorder2.Child = geoDisplayPath2;
+
+
+
+
+
+
+
+        GeometryGroup compositShapeGeoGroup = new GeometryGroup();
+        compositShapeGeoGroup.FillRule = FillRule.Nonzero;
+
+        compositShapeGeoGroup.Children.Add(new LineGeometry(new Point(10,10),new Point(50,30)));
+        compositShapeGeoGroup.Children.Add(new EllipseGeometry(new Point(40,70),30,30));
+        compositShapeGeoGroup.Children.Add(new RectangleGeometry(new Rect(60,55,100,30)));
+
+        geoDisplayPath2.Data = compositShapeGeoGroup;
+
+
+        TextFlow CombiningGeometriesTextFlow = new TextFlow();
+        CombiningGeometriesTextFlow.Margin = new Thickness(0, 0, 0, 5);
+        Grid.SetRow(CombiningGeometriesTextFlow, 0);
+        Grid.SetColumn(CombiningGeometriesTextFlow, 0);
+
+        myStackPanel.Children.Add(CombiningGeometriesTextFlow);
+
+        Paragraph CombiningGeometriesTitleParagraph = new Paragraph();
+        CombiningGeometriesTitleParagraph.Style = (Style)Application.Current.Resources["MyHeadingParagraphStyle"];
+        CombiningGeometriesTitleParagraph.Text = "Combining Geometries";
+
+        ((System.Windows.Serialization.IAddChild)CombiningGeometriesTextFlow).AddChild(CombiningGeometriesTitleParagraph);
+
+        Paragraph CombiningGeometriesExplanationParagraph = new Paragraph();
+        CombiningGeometriesExplanationParagraph.Text = "In addition to creating composite "+
+          "geomtries using the GeometryGroup class, you can use the CombinedGeometry class "+
+          "to combine two geometries.";
+
+        ((System.Windows.Serialization.IAddChild)CombiningGeometriesTextFlow).AddChild(CombiningGeometriesExplanationParagraph);
+
+        Paragraph CombiningGeometriesBeforeParagraph = new Paragraph();
+        CombiningGeometriesBeforeParagraph.Margin = new Thickness(0, 5, 0, 0);
+        CombiningGeometriesBeforeParagraph.Text = "The geometries, before combining:";
+
+        ((System.Windows.Serialization.IAddChild)CombiningGeometriesTextFlow).AddChild(CombiningGeometriesBeforeParagraph);
+
+        Border beforeDisplayBorder = new Border();
+        beforeDisplayBorder.Height = 150;
+        beforeDisplayBorder.Width = 200;
+        beforeDisplayBorder.BorderBrush = Brushes.Black;
+        beforeDisplayBorder.BorderThickness = new Thickness(1);
+        beforeDisplayBorder.Background = (Brush)Application.Current.Resources["MyGridBrushResource"];
+        Grid.SetRow(beforeDisplayBorder, 1);
+        Grid.SetColumn(beforeDisplayBorder, 0);
+
+        myStackPanel.Children.Add(beforeDisplayBorder);
+
+        Path beforeDisplayPath = new Path();
+        beforeDisplayPath.Stroke = Brushes.Black;
+        beforeDisplayPath.StrokeThickness = 1;
+        beforeDisplayPath.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+
+        beforeDisplayBorder.Child = beforeDisplayPath;
+
+        GeometryGroup beforeDisplayGeometryGroup = new GeometryGroup();
+        beforeDisplayGeometryGroup.FillRule = FillRule.Nonzero;
+
+        beforeDisplayPath.Data = beforeDisplayGeometryGroup;
+
+        EllipseGeometry beforeDisplayEllipseGeometry1 = new EllipseGeometry();
+        beforeDisplayEllipseGeometry1.RadiusX = 50;
+        beforeDisplayEllipseGeometry1.RadiusY = 50;
+        beforeDisplayEllipseGeometry1.Center = new Point(75,75);
+
+        beforeDisplayGeometryGroup.Children.Add(beforeDisplayEllipseGeometry1);
+
+        EllipseGeometry beforeDisplayEllipseGeometry2 = new EllipseGeometry();
+        beforeDisplayEllipseGeometry2.RadiusX = 50;
+        beforeDisplayEllipseGeometry2.RadiusY = 50;
+        beforeDisplayEllipseGeometry2.Center = new Point(125,75);
+   
+        beforeDisplayGeometryGroup.Children.Add(beforeDisplayEllipseGeometry2);
+
+        beforeDisplayPath.Data = beforeDisplayGeometryGroup;
+
+
+
+        TextBlock CombiningGeometriesTextBlock = new TextBlock();
+        CombiningGeometriesTextBlock.Margin = new Thickness(0, 10, 0, 5);
+        CombiningGeometriesTextBlock.Text = "The geometries, after combining with the specified mode:";
+
+        myStackPanel.Children.Add(CombiningGeometriesTextBlock);
+
+
+        //Shows the two geometries combined using each of the different
+        //combine modes.
+        
+        Grid myDisplayGrid = new Grid();
+        myStackPanel.Children.Add(myDisplayGrid);
+        myDisplayGrid.HorizontalAlignment = HorizontalAlignment.Left;
+
+        ColumnDefinition myColumnDefinition1 = new ColumnDefinition();
+        myColumnDefinition1.Width = new System.Windows.GridLength(1, GridUnitType.Auto); 
+        
+        myDisplayGrid.ColumnDefinitions.Add(myColumnDefinition1);
+
+        ColumnDefinition myColumnDefinition2 = new ColumnDefinition();
+        myColumnDefinition2.Width = new System.Windows.GridLength(10);
+        myDisplayGrid.ColumnDefinitions.Add(myColumnDefinition2);
+
+        ColumnDefinition myColumnDefinition3 = new ColumnDefinition();
+        myColumnDefinition3.Width = new System.Windows.GridLength(1, GridUnitType.Auto);
+        myDisplayGrid.ColumnDefinitions.Add(myColumnDefinition3);
+
+        RowDefinition myRowDefinition1 = new RowDefinition();
+        myRowDefinition1.Height = new System.Windows.GridLength(1, GridUnitType.Auto);
+        myDisplayGrid.RowDefinitions.Add(myRowDefinition1);
+
+        RowDefinition myRowDefinition2 = new RowDefinition();
+        myRowDefinition2.Height = new System.Windows.GridLength(1, GridUnitType.Auto);
+        myDisplayGrid.RowDefinitions.Add(myRowDefinition2);
+
+        RowDefinition myRowDefinition3 = new RowDefinition();
+        myRowDefinition3.Height = new System.Windows.GridLength(10);
+        myDisplayGrid.RowDefinitions.Add(myRowDefinition3);
+
+        RowDefinition myRowDefinition4 = new RowDefinition();
+        myRowDefinition4.Height = new System.Windows.GridLength(1, GridUnitType.Auto);
+        myDisplayGrid.RowDefinitions.Add(myRowDefinition4);
+
+        RowDefinition myRowDefinition5 = new RowDefinition();
+        myRowDefinition5.Height = new System.Windows.GridLength(1, GridUnitType.Auto);
+        myDisplayGrid.RowDefinitions.Add(myRowDefinition5);
+
+
+
+
+
+        TextBlock excludeTextBlock = new TextBlock();
+        excludeTextBlock.Text = "Exclude";
+        Grid.SetRow(excludeTextBlock, 0);
+        Grid.SetColumn(excludeTextBlock, 0);
+        myDisplayGrid.Children.Add(excludeTextBlock);
+
+
+        Border combineModeBorder = new Border();
+        combineModeBorder.Height = 150;
+        combineModeBorder.Width = 200;
+        combineModeBorder.BorderBrush = Brushes.Black;
+        combineModeBorder.BorderThickness = new Thickness(1);
+        combineModeBorder.Background = (Brush)Application.Current.Resources["MyGridBrushResource"];
+        Grid.SetRow(combineModeBorder, 1);
+        Grid.SetColumn(combineModeBorder, 0);
+        myDisplayGrid.Children.Add(combineModeBorder);
+
+        Path combineModeBorderPath = new Path();
+        combineModeBorderPath.Stroke = Brushes.Black;
+        combineModeBorderPath.StrokeThickness = 1;
+        combineModeBorderPath.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+        combineModeBorder.Child = combineModeBorderPath;
+
+
+        //Combines two geometries using the exclude combine mode.
+        CombinedGeometry myExcludeCombinedGeometry = new CombinedGeometry();
+        myExcludeCombinedGeometry.CombineMode = CombineMode.Exclude;
+        myExcludeCombinedGeometry.Geometry1 = new EllipseGeometry(new Point(75,75),50,50);
+        myExcludeCombinedGeometry.Geometry2 = new EllipseGeometry(new Point(125,75),50,50);
+
+        combineModeBorderPath.Data = myExcludeCombinedGeometry;
+
+
+        TextBlock intersectTextBlock = new TextBlock();
+        
+        intersectTextBlock.Text = "Intersect";
+        Grid.SetRow(intersectTextBlock, 0);
+        Grid.SetColumn(intersectTextBlock, 2);
+
+        myDisplayGrid.Children.Add(intersectTextBlock);
+
+        Border intersectDisplayBorder = new Border();
+        intersectDisplayBorder.Height = 150;
+        intersectDisplayBorder.Width = 200;
+        intersectDisplayBorder.BorderBrush = Brushes.Black;
+        intersectDisplayBorder.BorderThickness = new Thickness(1);
+        intersectDisplayBorder.Background = (Brush)Application.Current.Resources["MyGridBrushResource"];
+        Grid.SetRow(intersectDisplayBorder, 1);
+        Grid.SetColumn(intersectDisplayBorder, 2);
+        myDisplayGrid.Children.Add(intersectDisplayBorder);
+
+        Path intersectDisplayPath = new Path();
+        intersectDisplayPath.Stroke = Brushes.Black;
+        intersectDisplayPath.StrokeThickness = 1;
+        intersectDisplayPath.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+        intersectDisplayBorder.Child =  intersectDisplayPath;
+
+        // Combines two geometries using the intersect combine mode.
+        CombinedGeometry myIntersectCombinedGeometry = new CombinedGeometry();
+        myIntersectCombinedGeometry.CombineMode = CombineMode.Intersect;
+        myIntersectCombinedGeometry.Geometry1 = new EllipseGeometry(new Point(75,75),50,50);
+        myIntersectCombinedGeometry.Geometry2 = new EllipseGeometry(new Point(125,75),50,50);
+
+        intersectDisplayPath.Data = myIntersectCombinedGeometry;
+
+        TextBlock unionTextBlock = new TextBlock();
+         
+        unionTextBlock.Text = "Union";
+        Grid.SetRow(unionTextBlock, 3);
+        Grid.SetColumn(unionTextBlock, 0);
+
+        myDisplayGrid.Children.Add(unionTextBlock);
+
+        Border unionCombineDisplayBorder = new Border();
+        unionCombineDisplayBorder.Height = 150;
+        unionCombineDisplayBorder.Width = 200;
+        unionCombineDisplayBorder.BorderBrush = Brushes.Black;
+        unionCombineDisplayBorder.BorderThickness = new Thickness(1);
+        unionCombineDisplayBorder.Background = (Brush)Application.Current.Resources["MyGridBrushResource"];
+        Grid.SetRow(unionCombineDisplayBorder, 4);
+        Grid.SetColumn(unionCombineDisplayBorder, 0);
+        myDisplayGrid.Children.Add(unionCombineDisplayBorder);
+
+        Path unionCombineDisplayPath = new Path();
+        unionCombineDisplayPath.Stroke = Brushes.Black;
+        unionCombineDisplayPath.StrokeThickness = 1;
+        unionCombineDisplayPath.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+        unionCombineDisplayBorder.Child = unionCombineDisplayPath;
+
+        // Combines two geometries using the union combine mode.
+        CombinedGeometry unionCombineCombinedGeometry = new CombinedGeometry();
+        unionCombineCombinedGeometry.CombineMode = CombineMode.Union;
+        unionCombineCombinedGeometry.Geometry1 =  new EllipseGeometry(new Point(75,75),50,50);
+        unionCombineCombinedGeometry.Geometry2 =  new EllipseGeometry(new Point(125,75),50,50);
+
+        unionCombineDisplayPath.Data = unionCombineCombinedGeometry;
+
+
+        TextBlock xorTextBlock = new TextBlock();
+        xorTextBlock.Text = "Xor";
+        Grid.SetRow(xorTextBlock, 3);
+        Grid.SetColumn(xorTextBlock, 2);
+        myDisplayGrid.Children.Add(xorTextBlock);
+
+        Border xorDisplayBorder = new Border();
+        xorDisplayBorder.Height = 150;
+        xorDisplayBorder.Width = 200;
+        xorDisplayBorder.BorderBrush = Brushes.Black;
+        xorDisplayBorder.BorderThickness = new Thickness(1);
+        xorDisplayBorder.Background = (Brush)Application.Current.Resources["MyGridBrushResource"];
+        Grid.SetRow(xorDisplayBorder, 4);
+        Grid.SetColumn(xorDisplayBorder, 2);
+        myDisplayGrid.Children.Add(xorDisplayBorder);
+
+        Path xorDisplayPath = new Path();
+        xorDisplayPath.Stroke = Brushes.Black;
+        xorDisplayPath.StrokeThickness = 1;
+        xorDisplayPath.Fill = (Brush)myBrushConverter.ConvertFromString("#CCCCFF");
+        xorDisplayBorder.Child = xorDisplayPath;
+        // Combines two geometries using the XOR combine mode.
+        CombinedGeometry xorCombinedGeometry = new CombinedGeometry();
+        xorCombinedGeometry.CombineMode = CombineMode.Xor;
+        xorCombinedGeometry.Geometry1 = new EllipseGeometry(new Point(75,75),50,50);
+        xorCombinedGeometry.Geometry2 = new EllipseGeometry(new Point(125,75),50,50);
+
+        xorDisplayPath.Data = xorCombinedGeometry;
+
+
+
+      }
+    }
+}                
+                
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="Microsoft.Samples.Graphics.Geometries.GeometryUsageExample" 
+  >
+  &lt;Page.Resources>
+    &lt;Style TargetType="{x:Type Border}">
+      &lt;Setter Property="Border.HorizontalAlignment" Value="Left" />
+    &lt;/Style>
+    &lt;DrawingBrush x:Key="MyGridBrushResource" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+      &lt;DrawingBrush.Drawing>
+        &lt;DrawingGroup>
+          &lt;DrawingGroup.Children>
+            &lt;GeometryDrawing Brush="White">
+              &lt;GeometryDrawing.Geometry>
+                &lt;RectangleGeometry Rect="0,0,1,1" />
+              &lt;/GeometryDrawing.Geometry>
+            &lt;/GeometryDrawing>
+            &lt;GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#CCCCFF" />
+            &lt;GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#CCCCFF" />
+          &lt;/DrawingGroup.Children>
+        &lt;/DrawingGroup>
+      &lt;/DrawingBrush.Drawing>
+    &lt;/DrawingBrush>    
+  &lt;/Page.Resources>
+
+&lt;/Page>
+              </TextBox>     
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+		  <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+Imports System
+Imports System.Windows
+Imports System.Windows.Controls
+Imports System.Windows.Documents
+Imports System.Windows.Navigation
+Imports System.Windows.Shapes
+Imports System.Windows.Data
+Imports System.Windows.Media
+Imports System.Windows.Media.Imaging
+
+Namespace Microsoft.Samples.Graphics.Geometries
+
+  Partial Public Class GeometryUsageExample
+    Inherits Page
+
+    Public Sub New()
+      CreateGui()
+
+
+    End Sub
+
+    Private Sub CreateGui()
+
+      Dim myBrushConverter As New BrushConverter()
+
+      Dim myDockPanel As New DockPanel()
+      Me.Child = myDockPanel
+
+      Dim introTextBlock As New TextBlock()
+      System.Windows.Controls.DockPanel.SetDock(introTextBlock, System.Windows.Controls.Dock.Top)
+      myDockPanel.Children.Add(introTextBlock)
+      introTextBlock.Margin = New Thickness(10)
+      introTextBlock.Text = "Geometries are versatile and can be drawn directly " + _
+        "with a Path element, used with a DrawingBrush to paint an area with a geometric " + _
+        "pattern, used to define the clip region of an element, and more. "
+
+      Dim myStackPanel As New StackPanel()
+      myDockPanel.Children.Add(myStackPanel)
+      myStackPanel.Orientation = Orientation.Horizontal
+      myStackPanel.Background = Brushes.White
+
+      Dim pathElementStackPanel As New StackPanel()
+      myStackPanel.Children.Add(pathElementStackPanel)
+      pathElementStackPanel.Margin = New Thickness(10)
+
+      Dim pathElementTextBlock As New TextBlock()
+      pathElementStackPanel.Children.Add(pathElementTextBlock)
+      pathElementTextBlock.Text = "Drawn with a Path Element"
+
+      Dim pathElementBorder As New Border()
+      pathElementStackPanel.Children.Add(pathElementBorder)
+      pathElementBorder.Height = 200
+      pathElementBorder.Width = 200
+      pathElementBorder.BorderBrush = Brushes.Black
+      pathElementBorder.BorderThickness = New Thickness(1)
+      pathElementBorder.Background = CType(Application.Current.Resources("MyGridBrushResource"), Brush)
+
+      Dim pathElementPath As New Path()
+      pathElementBorder.Child = pathElementPath
+      pathElementPath.Stroke = Brushes.Black
+      pathElementPath.StrokeThickness = 1
+      pathElementPath.Fill = CType(myBrushConverter.ConvertFromString("#CCCCFF"), Brush)
+
+      Dim pathElementGeometryGroup As New GeometryGroup()
+      pathElementPath.Data = pathElementGeometryGroup
+
+      Dim pathElementRect1 As New RectangleGeometry(New Rect(50, 5, 100, 10))
+      pathElementGeometryGroup.Children.Add(pathElementRect1)
+      Dim pathElementRect2 As New RectangleGeometry(New Rect(5, 5, 95, 180))
+      pathElementGeometryGroup.Children.Add(pathElementRect2)
+      Dim pathElementEllipse1 As New EllipseGeometry(New Windows.Point(100, 100), 20, 30)
+      pathElementGeometryGroup.Children.Add(pathElementEllipse1)
+      Dim pathElementRect3 As New RectangleGeometry(New Rect(50, 175, 100, 10))
+      pathElementGeometryGroup.Children.Add(pathElementRect3)
+
+      Dim pathElementPathGeometry1 As New PathGeometry()
+      pathElementGeometryGroup.Children.Add(pathElementPathGeometry1)
+
+      Dim pathElementPathFigureCollection As New PathFigureCollection()
+      pathElementPathGeometry1.Figures = pathElementPathFigureCollection
+
+      Dim pathElementPathFigure As New PathFigure()
+      pathElementPathFigureCollection.Add(pathElementPathFigure)
+
+      Dim pathElementPathSegmentCollection As New PathSegmentCollection()
+      pathElementPathFigure.Segments = pathElementPathSegmentCollection
+
+      Dim pathElementStartSegment As New StartSegment(New Windows.Point(50, 50))
+      pathElementPathSegmentCollection.Add(pathElementStartSegment)
+
+      Dim pathElementBezierSegment1 As New BezierSegment(New Windows.Point(75, 300), New Windows.Point(125, 100), New Windows.Point(150, 50), False)
+      pathElementPathSegmentCollection.Add(pathElementBezierSegment1)
+
+      Dim pathElementBezierSegment2 As New BezierSegment(New Windows.Point(75, 100), New Windows.Point(125, 300), New Windows.Point(50, 50), False)
+      pathElementPathSegmentCollection.Add(pathElementBezierSegment2)
+
+      Dim drawingBrushStackPanel As New StackPanel()
+      myStackPanel.Children.Add(drawingBrushStackPanel)
+      drawingBrushStackPanel.Margin = New Thickness(10)
+
+      Dim drawingBrushTextBlock As New TextBlock()
+      drawingBrushStackPanel.Children.Add(drawingBrushTextBlock)
+      drawingBrushTextBlock.Text = "Used with a DrawingBrush"
+
+      Dim drawingBrushRectangle As New Rectangle()
+      drawingBrushStackPanel.Children.Add(drawingBrushRectangle)
+      drawingBrushRectangle.Height = 200
+      drawingBrushRectangle.Width = 200
+      drawingBrushRectangle.Stroke = Brushes.Black
+      drawingBrushRectangle.StrokeThickness = 1
+      drawingBrushRectangle.HorizontalAlignment = HorizontalAlignment.Left
+
+      Dim myDrawingBrush As New DrawingBrush()
+      drawingBrushRectangle.Fill = myDrawingBrush
+
+      myDrawingBrush.Viewbox = New Rect(0, 0, 200, 200)
+      myDrawingBrush.ViewboxUnits = BrushMappingMode.Absolute
+
+      Dim drawingBrushGeometryDrawing As New GeometryDrawing()
+      drawingBrushGeometryDrawing.Brush = CType(myBrushConverter.ConvertFromString("#CCCCFF"), Brush)
+      myDrawingBrush.Drawing = drawingBrushGeometryDrawing
+
+      drawingBrushGeometryDrawing.Pen = New Pen(Brushes.Black, 1)
+
+      Dim drawingBrushGeometryGroup As New GeometryGroup()
+      drawingBrushGeometryDrawing.Geometry = drawingBrushGeometryGroup
+
+      Dim drawingBrushRectangleGeometry1 As New RectangleGeometry(New Rect(50, 5, 100, 10))
+      drawingBrushGeometryGroup.Children.Add(drawingBrushRectangleGeometry1)
+
+      Dim drawingBrushRectangleGeometry2 As New RectangleGeometry(New Rect(5, 5, 95, 180))
+      drawingBrushGeometryGroup.Children.Add(drawingBrushRectangleGeometry2)
+
+      Dim drawingBrushEllipseGeometry As New EllipseGeometry(New Windows.Point(100, 100), 20, 30)
+      drawingBrushGeometryGroup.Children.Add(drawingBrushEllipseGeometry)
+
+      Dim drawingBrushRectangleGeometry3 As New RectangleGeometry(New Rect(50, 175, 100, 10))
+      drawingBrushGeometryGroup.Children.Add(drawingBrushRectangleGeometry3)
+
+      Dim drawingBrushPathGeometry As New PathGeometry()
+      drawingBrushGeometryGroup.Children.Add(drawingBrushPathGeometry)
+
+      Dim drawingBrushPathFigureCollection As New PathFigureCollection()
+      drawingBrushPathGeometry.Figures = drawingBrushPathFigureCollection
+
+      Dim drawingBrushPathFigure As New PathFigure()
+      drawingBrushPathFigureCollection.Add(drawingBrushPathFigure)
+
+      Dim drawingBrushPathSegmentCollection As New PathSegmentCollection()
+      drawingBrushPathFigure.Segments = drawingBrushPathSegmentCollection
+
+      Dim drawingBrushStartSegment As New StartSegment(New Windows.Point(50, 50))
+      drawingBrushPathSegmentCollection.Add(drawingBrushStartSegment)
+
+      Dim drawingBrushBezierSegment1 As New BezierSegment(New Windows.Point(75, 300), New Windows.Point(125, 100), New Windows.Point(150, 50), False)
+      drawingBrushPathSegmentCollection.Add(drawingBrushBezierSegment1)
+
+      Dim drawingBrushBezierSegment2 As New BezierSegment(New Windows.Point(75, 100), New Windows.Point(125, 300), New Windows.Point(50, 50), False)
+      drawingBrushPathSegmentCollection.Add(drawingBrushBezierSegment2)
+
+      Dim tiledTextBlock As New TextBlock()
+      drawingBrushStackPanel.Children.Add(tiledTextBlock)
+      tiledTextBlock.Text = "Tiled"
+
+      Dim tiledRectangle As New Rectangle()
+      drawingBrushStackPanel.Children.Add(tiledRectangle)
+      tiledRectangle.Height = 200
+      tiledRectangle.Width = 200
+      tiledRectangle.Stroke = Brushes.Black
+      tiledRectangle.StrokeThickness = 1
+      tiledRectangle.HorizontalAlignment = HorizontalAlignment.Left
+
+      Dim tiledDrawingBrush As New DrawingBrush()
+      tiledRectangle.Fill = tiledDrawingBrush
+      tiledDrawingBrush.Viewbox = New Rect(0, 0, 200, 200)
+      tiledDrawingBrush.ViewboxUnits = BrushMappingMode.Absolute
+      tiledDrawingBrush.Viewport = New Rect(0, 0, 0.5, 0.5)
+      tiledDrawingBrush.TileMode = TileMode.FlipXY
+
+      Dim tiledGeometryDrawing As New GeometryDrawing()
+      tiledDrawingBrush.Drawing = tiledGeometryDrawing
+      tiledGeometryDrawing.Brush = CType(myBrushConverter.ConvertFromString("#CCCCFF"), Brush)
+      tiledGeometryDrawing.Pen = New Pen(Brushes.Black, 1)
+
+      Dim tiledGeometryGroup As New GeometryGroup()
+      tiledGeometryDrawing.Geometry = tiledGeometryGroup
+      tiledGeometryGroup.Children.Add(New RectangleGeometry(New Rect(50, 5, 100, 10)))
+      tiledGeometryGroup.Children.Add(New RectangleGeometry(New Rect(5, 5, 95, 180)))
+      tiledGeometryGroup.Children.Add(New EllipseGeometry(New Windows.Point(100, 100), 20, 30))
+      tiledGeometryGroup.Children.Add(New RectangleGeometry(New Rect(50, 175, 100, 10)))
+
+      Dim tiledPathGeometry As New PathGeometry()
+      tiledGeometryGroup.Children.Add(tiledPathGeometry)
+
+      Dim tiledPathFigureCollection As New PathFigureCollection()
+      tiledPathGeometry.Figures = tiledPathFigureCollection
+
+      Dim tiledPathFigure As New PathFigure()
+      tiledPathFigureCollection.Add(tiledPathFigure)
+
+      Dim tiledPathSegmentCollection As New PathSegmentCollection()
+      tiledPathFigure.Segments = tiledPathSegmentCollection
+
+      tiledPathSegmentCollection.Add(New StartSegment(New Windows.Point(50, 50)))
+      tiledPathSegmentCollection.Add(New BezierSegment(New Windows.Point(75, 300), New Windows.Point(125, 100), New Windows.Point(150, 50), False))
+      tiledPathSegmentCollection.Add(New BezierSegment(New Windows.Point(75, 100), New Windows.Point(125, 300), New Windows.Point(50, 50), False))
+
+      Dim clipStackPanel As New StackPanel()
+      myStackPanel.Children.Add(clipStackPanel)
+      clipStackPanel.Margin = New Thickness(10)
+
+      Dim clipTextBlock As New TextBlock()
+      clipStackPanel.Children.Add(clipTextBlock)
+      clipTextBlock.Text = "Used as a Clip"
+
+      Dim clipBorder As New Border()
+      clipStackPanel.Children.Add(clipBorder)
+      clipBorder.BorderBrush = Brushes.Black
+      clipBorder.BorderThickness = New Thickness(1)
+
+      Dim clipImage As New Image()
+      clipStackPanel.Children.Add(clipImage)
+      clipImage.Source = New BitmapImage(New Uri("sampleImages\\Waterlilies.jpg", UriKind.Relative))
+      clipImage.Width = 200
+      clipImage.Height = 200
+      clipImage.HorizontalAlignment = HorizontalAlignment.Left
+
+      Dim clipGeometryGroup As New GeometryGroup()
+      clipImage.Clip = clipGeometryGroup
+
+      clipGeometryGroup.Children.Add(New RectangleGeometry(New Rect(50, 5, 100, 10)))
+      clipGeometryGroup.Children.Add(New RectangleGeometry(New Rect(5, 5, 95, 180)))
+      clipGeometryGroup.Children.Add(New EllipseGeometry(New Windows.Point(100, 100), 20, 30))
+      clipGeometryGroup.Children.Add(New RectangleGeometry(New Rect(50, 175, 100, 10)))
+
+      Dim clipPathGeometry As New PathGeometry()
+      clipGeometryGroup.Children.Add(clipPathGeometry)
+
+      Dim clipPathFigureCollection As New PathFigureCollection()
+      clipPathGeometry.Figures = clipPathFigureCollection
+
+      Dim clipPathFigure As New PathFigure()
+      clipPathFigureCollection.Add(clipPathFigure)
+
+      Dim clipPathSegmentCollection As New PathSegmentCollection()
+      clipPathFigure.Segments = clipPathSegmentCollection
+
+      clipPathSegmentCollection.Add(New StartSegment(New Windows.Point(50, 50)))
+      clipPathSegmentCollection.Add(New BezierSegment(New Windows.Point(75, 300), New Windows.Point(125, 100), New Windows.Point(150, 50), False))
+      clipPathSegmentCollection.Add(New BezierSegment(New Windows.Point(75, 100), New Windows.Point(125, 300), New Windows.Point(50, 50), False))
+
+    End Sub
+  End Class
+End Namespace        
+        
+        
+      </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+
+<Canvas>
+  <Canvas.Resources>
+    <Style TargetType="{x:Type Border}">
+      <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+  </Canvas.Resources>
+  <DockPanel>
+
+    
+    <StackPanel Orientation="Horizontal" Background="White">
+    
+      <StackPanel Margin="10">
+        <TextBlock>Drawn with a Path Element</TextBlock>
+        <Border Height="200" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            <Path.Data>
+              <GeometryGroup>
+                  <RectangleGeometry Rect="50,5 100,10" />
+                  <RectangleGeometry Rect="5,5 95,180" />
+                  <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                  <RectangleGeometry Rect="50,175 100,10" />
+                  <PathGeometry>
+                    <PathGeometry.Figures>
+                      <PathFigureCollection>
+                        <PathFigure StartPoint="50,50">
+                          <PathFigure.Segments>
+                            <PathSegmentCollection>
+                              <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                              <BezierSegment Point1="125,300" Point2="75,100"  Point3="50,50"/>
+                            </PathSegmentCollection>
+                          </PathFigure.Segments>
+                        </PathFigure>
+                      </PathFigureCollection>
+                    </PathGeometry.Figures>
+                  </PathGeometry>               
+              </GeometryGroup>
+            </Path.Data>
+          </Path>
+        </Border>    
+      </StackPanel>
+      
+      <StackPanel Margin="10">
+        <TextBlock>Used with a DrawingBrush</TextBlock>
+        <Rectangle Height="200" Width="200" Stroke="Black" StrokeThickness="1"
+          HorizontalAlignment="Left">
+          <Rectangle.Fill>
+            <DrawingBrush Viewbox="0,0,200,200" ViewboxUnits="Absolute">
+              <DrawingBrush.Drawing>
+                <GeometryDrawing Brush="#CCCCFF">
+                  <GeometryDrawing.Pen>
+                    <Pen Thickness="1" Brush="Black" />
+                  </GeometryDrawing.Pen>
+                  <GeometryDrawing.Geometry>
+                    <GeometryGroup>
+                      <RectangleGeometry Rect="50,5 100,10" />
+                      <RectangleGeometry Rect="5,5 95,180" />                   
+                      <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                      <RectangleGeometry Rect="50,175 100,10" />
+                      <PathGeometry>
+                        <PathGeometry.Figures>
+                          <PathFigureCollection>
+                            <PathFigure StartPoint="50,50">
+                              <PathFigure.Segments>
+                                <PathSegmentCollection>
+                                  <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                                  <BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                                </PathSegmentCollection>
+                              </PathFigure.Segments>
+                            </PathFigure>
+                          </PathFigureCollection>
+                        </PathGeometry.Figures>
+                      </PathGeometry>               
+                    </GeometryGroup>                  
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
+        
+        <TextBlock>Tiled</TextBlock>
+        <Rectangle Height="200" Width="200" Stroke="Black" StrokeThickness="1"
+          HorizontalAlignment="Left">
+          <Rectangle.Fill>
+            <DrawingBrush Viewbox="0,0,200,200" ViewboxUnits="Absolute" Viewport="0,0,0.5,0.5" TileMode="FlipXY">
+              <DrawingBrush.Drawing>
+                <GeometryDrawing Brush="#CCCCFF">
+                  <GeometryDrawing.Pen>
+                    <Pen Thickness="1" Brush="Black" />
+                  </GeometryDrawing.Pen>
+                  <GeometryDrawing.Geometry>
+                    <GeometryGroup>
+                      <RectangleGeometry Rect="50,5 100,10" />
+                      <RectangleGeometry Rect="5,5 95,180" />
+                      <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                      <RectangleGeometry Rect="50,175 100,10" />
+                      <PathGeometry>
+                        <PathGeometry.Figures>
+                          <PathFigureCollection>
+                            <PathFigure StartPoint="50,50">
+                              <PathFigure.Segments>
+                                <PathSegmentCollection>
+                                  <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                                  <BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                                </PathSegmentCollection>
+                              </PathFigure.Segments>
+                            </PathFigure>
+                          </PathFigureCollection>
+                        </PathGeometry.Figures>
+                      </PathGeometry>               
+                    </GeometryGroup>                  
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Rectangle.Fill>
+        </Rectangle>        
+      </StackPanel>   
+      
+      <StackPanel Margin="10">
+        <TextBlock>Used as a Clip</TextBlock>
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Image HorizontalAlignment="Left" Stretch="None" Width="200" Height="200"><Image.Source><BitmapImage UriSource="\images\Waterlilies.jpg"/></Image.Source>
+          <Image.Clip>
+              <GeometryGroup>
+                  <RectangleGeometry Rect="50,5 100,10" />
+                  <RectangleGeometry Rect="5,5 95,180" />
+                  <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                  <RectangleGeometry Rect="50,175 100,10" />
+                  <PathGeometry>
+                    <PathGeometry.Figures>
+                      <PathFigureCollection>
+                        <PathFigure StartPoint="50,50">
+                          <PathFigure.Segments>
+                            <PathSegmentCollection>
+                              <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                              <BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                            </PathSegmentCollection>
+                          </PathFigure.Segments>
+                        </PathFigure>
+                      </PathFigureCollection>
+                    </PathGeometry.Figures>
+                  </PathGeometry>               
+              </GeometryGroup>            
+          </Image.Clip>
+        </Image>
+        </Border>
+      
+      </StackPanel>
+    
+    </StackPanel>
+  </DockPanel>
+</Canvas>
+        </TabItem>
+      </TabControl>
+</Page>

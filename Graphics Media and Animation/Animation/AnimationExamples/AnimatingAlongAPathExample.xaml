@@ -1,0 +1,144 @@
+<!-- AnimatingALongAPathExample.xaml
+     Demonstrates how to use a PathGeometry and a
+     DoubleAnimationUsingPath to animate
+     along a path.
+-->
+<Page x:Class="Microsoft.Samples.Animation.AnimatingAlongAPathExample" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  Background="Black">
+  <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+    <Viewbox VerticalAlignment="Center" >
+      <Canvas Width="321" Height="201" Margin="50">
+        <Rectangle Width="321" Height="201" 
+          Fill="{StaticResource MyWireBrushResource}">
+          <Rectangle.OpacityMask>
+            <RadialGradientBrush>
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Offset="0.0" Color="#FF000000" />
+                <GradientStop Offset="1.0" Color="#00000000" />
+              </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+          </Rectangle.OpacityMask>          
+        </Rectangle>
+        
+        <!-- Shows what the animation path looks like. -->
+        <Path Data="M 10,100 C35,0 135,0 160,100 S285,200 310,100"
+          Stroke="White" StrokeThickness="2"
+          Stretch="None" />
+
+        <Viewport3D Name="MyAnimatedObject"
+          ClipToBounds="True" Width="150" Height="150"
+          Canvas.Left="0" Canvas.Top="10">
+          <Viewport3D.Camera>
+            <PerspectiveCamera x:Name="myPerspectiveCamera"
+               LookDirection="0,0,-1" UpDirection="0,1,0" 
+             Position="0,0,2.25" FieldOfView="45" />
+          </Viewport3D.Camera>
+          <Viewport3D.Children>
+          <ModelVisual3D>
+            <ModelVisual3D.Children>
+              <StaticResource ResourceKey="PictureCubeModelVisual3DResource" />
+            </ModelVisual3D.Children>
+            <ModelVisual3D.Transform>
+              <Transform3DGroup >
+                <Transform3DGroup.Children>
+                  <RotateTransform3D>
+                    <RotateTransform3D.Rotation>
+                      <AxisAngleRotation3D x:Name="MyZRotation" Angle="0" Axis="0 0 1" />
+                    </RotateTransform3D.Rotation>
+                  </RotateTransform3D>
+                  <RotateTransform3D>
+                    <RotateTransform3D.Rotation>
+                      <AxisAngleRotation3D x:Name="MyHorizontalRotation" Angle="0" Axis="0 1 0" />
+                    </RotateTransform3D.Rotation>
+                  </RotateTransform3D>
+                  <RotateTransform3D>
+                    <RotateTransform3D.Rotation>
+                      <AxisAngleRotation3D x:Name="MyVerticalRotation" Angle="0" Axis="1 0 0" />
+                    </RotateTransform3D.Rotation>
+                  </RotateTransform3D>
+                </Transform3DGroup.Children>
+              </Transform3DGroup>
+            </ModelVisual3D.Transform>
+          </ModelVisual3D>
+          </Viewport3D.Children>
+          <Viewport3D.RenderTransform>
+            <TransformGroup>
+              <TranslateTransform X="-75"  Y="-75" />
+              <TranslateTransform x:Name="PictureCubeTranslateTransform" X="0" Y="0" />
+            </TransformGroup>
+          </Viewport3D.RenderTransform>       
+          <Viewport3D.Triggers>
+            <EventTrigger RoutedEvent="Viewport3D.Loaded">
+              <BeginStoryboard>
+                <Storyboard>
+                  <!-- Animates the cube horizontally along the path. -->
+                  <DoubleAnimationUsingPath
+                    Storyboard.TargetName="PictureCubeTranslateTransform"
+                    Storyboard.TargetProperty="X"
+                    Source="X" 
+                    Duration="0:0:5" 
+                    RepeatBehavior="Forever" AutoReverse="True">
+                    <DoubleAnimationUsingPath.PathGeometry>
+                      <PathGeometry Figures="M 10,100 C35,0 135,0 160,100 S285,200 310,100" />
+                    </DoubleAnimationUsingPath.PathGeometry>
+                  </DoubleAnimationUsingPath>                    
+                    
+                  <!-- Animates the cube vertically along the path. -->
+                  <DoubleAnimationUsingPath
+                    Storyboard.TargetName="PictureCubeTranslateTransform"
+                    Storyboard.TargetProperty="Y"  
+                    Source="Y" 
+                    Duration="0:0:5" 
+                    RepeatBehavior="Forever" AutoReverse="True">
+                    <DoubleAnimationUsingPath.PathGeometry>
+                      <PathGeometry Figures="M 10,100 C35,0 135,0 160,100 S285,200 310,100" />
+                    </DoubleAnimationUsingPath.PathGeometry>
+                  </DoubleAnimationUsingPath>
+                    
+                  <!-- Rotates the cube in the Z-axis along the path. -->  
+                  <DoubleAnimationUsingPath
+                    Storyboard.TargetName="MyZRotation"
+                    Storyboard.TargetProperty="Angle"
+                    Source="Angle" 
+                    Duration="0:0:5" 
+                    RepeatBehavior="Forever" AutoReverse="True">
+                    <DoubleAnimationUsingPath.PathGeometry>
+                      <PathGeometry Figures="M 10,100 C35,0 135,0 160,100 S285,200 310,100" />
+                    </DoubleAnimationUsingPath.PathGeometry>
+                  </DoubleAnimationUsingPath>                    
+                  
+                  <!-- Rotates the cube in the Y-axis along the path. -->
+                  <DoubleAnimationUsingPath
+                    Storyboard.TargetName="MyVerticalRotation"
+                    Storyboard.TargetProperty="Angle"
+                    Source="Angle" 
+                    Duration="0:0:5"
+                    RepeatBehavior="Forever" AutoReverse="True" >
+                    <DoubleAnimationUsingPath.PathGeometry>
+                      <PathGeometry Figures="M 10,100 C35,0 135,0 160,100 S285,200 310,100" />
+                    </DoubleAnimationUsingPath.PathGeometry>                  </DoubleAnimationUsingPath>                    
+                    
+                  <!-- Rotates the cube in the X-axis along the path. -->  
+                  <DoubleAnimationUsingPath
+                    Storyboard.TargetName="MyHorizontalRotation"
+                    Storyboard.TargetProperty="Angle"
+                    Source="Angle" 
+                    Duration="0:0:5"
+                    RepeatBehavior="Forever" AutoReverse="True" >
+                    <DoubleAnimationUsingPath.PathGeometry>
+                      <PathGeometry Figures="M 10,100 C35,0 135,0 160,100 S285,200 310,100" />
+                    </DoubleAnimationUsingPath.PathGeometry>                  </DoubleAnimationUsingPath>                    
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Viewport3D.Triggers> 
+        </Viewport3D>
+      </Canvas>
+
+    </Viewbox>
+  </DockPanel>
+</Page>
+

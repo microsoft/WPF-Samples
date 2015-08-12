@@ -1,0 +1,42 @@
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.SampleViewer"
+  WindowTitle="Timing Behaviors" >
+  <DockPanel Background="White">
+    
+
+    <TabControl Name="sampleSelector">
+      <TabItem Header="RepeatBehavior Example">
+        <Frame Source="RepeatBehaviorExample.xaml" Background="White" />
+      </TabItem>
+      <TabItem Header="AutoReverse Example">
+        <Frame Source="AutoReverseExample.xaml" Background="White" /> 
+      </TabItem>    
+      <TabItem Header="BeginTime Example">
+        <Frame Source="BeginTimeExample.xaml" Background="White" />
+      </TabItem>
+      <TabItem Header="FillBehavior Example">
+        <Frame Source="FillBehaviorExample.xaml" Background="White" />
+      </TabItem>    
+      <TabItem Header="Speed Example">
+        <Frame Source="SpeedExample.xaml" Background="White" />
+      </TabItem>    
+      <TabItem Header="Acceleration and Deceleration Example">
+        <Frame Source="AccelDecelExample.xaml" Background="White" />
+      </TabItem>
+      <TabItem Header="HandoffBehavior Example">
+        <Frame Source="HandoffVersusComposeExample.xaml" Background="White" />
+      </TabItem>      
+      <TabItem Header="Databinding Example">
+        <Frame Source="DataboundSliderAnimationExample.xaml" Background="White" />
+      </TabItem>  
+      <TabItem Header="IsCumulative Example">
+        <Frame Source="IsCumulativeExample.xaml" Background="White" />
+      </TabItem>  
+      <TabItem Header="IsAdditive Example">
+        <Frame Source="IsAdditiveExample.xaml" Background="White" />
+      </TabItem> 
+    </TabControl> 
+   
+  </DockPanel>
+</Page>

@@ -1,0 +1,109 @@
+﻿<Window x:Class="AnnotationsStyling.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnnotationsStyling"
+        xmlns:annotations="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="OnLoaded" Unloaded="OnUnloaded">
+
+    <Grid>
+
+        <Grid.Resources>
+            <Style x:Key="HighlightColorButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+            </Style>
+            <local:ResourceEntryToComboItemConverter x:Key="ResourceConverter"/>
+            <DataTemplate x:Key="StyleOptionTemplate">
+                <TextBlock Text="{Binding Path=Key}"/>
+            </DataTemplate>
+
+            <SolidColorBrush x:Key="YellowHighlight" Color="#54FFFF00"/>
+            <SolidColorBrush x:Key="GreenHighlight"  Color="#54008000"/>
+            <SolidColorBrush x:Key="RedHighlight"    Color="#54FF0000"/>
+            <SolidColorBrush x:Key="BlueHighlight"   Color="#540000FF"/>
+            <SolidColorBrush x:Key="VioletHighlight" Color="#54EE82EE"/>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ToolBarTray Grid.Row="0">
+            <!-- Annotations Toolbar -->
+            <ToolBar>
+                <GroupBox Header="StickyNote Style">
+                    <ComboBox Name="StyleCombo" Width="Auto"
+                    ItemsSource="{Binding ElementName=Viewer,Path=Resources.MergedDictionaries,Converter={StaticResource ResourceConverter}}"
+                    ItemTemplate="{StaticResource StyleOptionTemplate}"
+                    SelectionChanged="OnStyleSelected"/>
+                </GroupBox>
+
+                <Button Content="Text" Width="30"
+                Command="annotations:AnnotationService.CreateTextStickyNoteCommand" />
+                <Button Content="Ink" Width="30"
+                Command="annotations:AnnotationService.CreateInkStickyNoteCommand" />
+                <Button Content="Delete" Width="50"
+                Command="annotations:AnnotationService.DeleteStickyNotesCommand" />
+                <Button Background="Yellow" Style="{StaticResource HighlightColorButtonStyle}"
+                Command="annotations:AnnotationService.CreateHighlightCommand"
+                CommandParameter="{StaticResource YellowHighlight}" />
+                <Button Background="Green" Style="{StaticResource HighlightColorButtonStyle}"
+                Command="annotations:AnnotationService.CreateHighlightCommand"
+                CommandParameter="{StaticResource GreenHighlight}" />
+                <Button Background="Red" Style="{StaticResource HighlightColorButtonStyle}"
+                Command="annotations:AnnotationService.CreateHighlightCommand"
+                CommandParameter="{StaticResource RedHighlight}" />
+                <Button Background="Blue" Style="{StaticResource HighlightColorButtonStyle}"
+                Command="annotations:AnnotationService.CreateHighlightCommand"
+                CommandParameter="{StaticResource BlueHighlight}" />
+                <Button Background="Violet" Style="{StaticResource HighlightColorButtonStyle}"
+                Command="annotations:AnnotationService.CreateHighlightCommand"
+                CommandParameter="{StaticResource VioletHighlight}" />
+                <Button Content="Clear" Width="50" Command="annotations:AnnotationService.ClearHighlightsCommand" />
+            </ToolBar>
+        </ToolBarTray>
+
+        <FlowDocumentPageViewer Name="Viewer" Grid.Row="1">
+            <FlowDocumentPageViewer.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="DefaultStickyNoteStyle.xaml"/>
+                        <ResourceDictionary Source="StylingUsingProperties.xaml"/>
+                        <ResourceDictionary Source="AdvancedStyling.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </FlowDocumentPageViewer.Resources>
+            <FlowDocument>
+                <Paragraph>
+                    This sample demonstrates how through the use of styles you can change
+          the appearance and behavior of annotation text or ink sticky-notes,
+          or the color of annotation highlights.
+          The text shown on this page is a simple flow document hosted in a
+          FlowDocumentPageViewer control.
+                </Paragraph>
+                <Paragraph>
+                    To add an annotation, select some text and click "Text", "Ink", or
+          one of the highlight colors above.  Select some text and create some
+          annotations now.
+                </Paragraph>
+                <Paragraph>
+                    By choosing different options under the "StickyNote Style"
+          combo box, you change the appearance and behavior of the text and ink
+          StickyNote annotations.
+                </Paragraph>
+                <Paragraph>
+                    The source code provided with this sample
+          demonstrates how the styling operations are performed.
+          The method of annotation styling shown here can also be
+          used with other document types and controls, such as a
+          fixed document or XPS document hosted in a DocumentViewer control.
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentPageViewer>
+
+    </Grid>
+</Window>

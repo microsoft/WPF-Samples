@@ -1,0 +1,119 @@
+<!-- <Snippet1> -->
+<!-- This example shows how to use an ImageBrush to paint shapes and controls. -->
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="ImageBrush.PaintingWithImages" >
+
+  <Grid Background="White" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition  />
+      <ColumnDefinition Width="20" />
+      <ColumnDefinition  />
+      <ColumnDefinition Width="20" />
+      <ColumnDefinition  />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- Sets the shape's Fill property with an ImageBrush. The resulting
+         ellipse's interior is painted with an image. -->
+    <Ellipse Grid.Row="3" Grid.Column="0" Height="150" Width="150"
+     HorizontalAlignment="Left">
+      <Ellipse.Fill>
+        <ImageBrush ImageSource="sampleImages\blueberries.jpg" />
+      </Ellipse.Fill>
+    </Ellipse>
+    <!-- Sets the shape's Stroke property with an ImageBrush. The resulting
+         ellipse's outline is painted with an image. Because the stroke extends
+         past the shape's bounding box, the image brush's Viewport property
+         is made larger so that it completely fills the stroke. -->
+    <Ellipse Grid.Row="6" Grid.Column="0" Height="150" Width="150" StrokeThickness="20"
+     HorizontalAlignment="Left">
+      <Ellipse.Stroke>
+        <ImageBrush ImageSource="sampleImages\blueberries.jpg" Viewport="-10,-10,160,160" ViewportUnits="Absolute" />
+      </Ellipse.Stroke>
+    </Ellipse>
+
+    <!-- Sets the button's Background property with an ImageBrush. The resulting
+         button has an image as its background. -->
+    <Button Grid.Row="3" Grid.Column="2" 
+     Height="75" Width="100" Foreground="White" FontWeight="Bold"
+     HorizontalAlignment="Left">
+      A Button
+      <Button.Background>
+        <ImageBrush ImageSource="sampleImages\blueberries.jpg" />
+      </Button.Background>
+    </Button>
+
+    <!-- Sets the text's Foreground property with an ImageBrush. The
+         resulting text is filled with an iamge. -->
+    <TextBlock Grid.Row="6" Grid.Column="2" FontWeight="Bold" FontSize="48pt" TextWrapping="Wrap"
+     HorizontalAlignment="Left" Text="Some Text">
+      <TextBlock.Foreground>
+        <ImageBrush ImageSource="sampleImages\blueberries.jpg" />
+      </TextBlock.Foreground>
+    </TextBlock>
+
+    <!-- Set the panel's Background property with an ImageBrush. The
+         resulting panel is filled with an image. -->
+    <DockPanel Grid.Row="3" Grid.Column="4" Width="200"
+     HorizontalAlignment="Left">
+      <DockPanel.Background>
+        <ImageBrush ImageSource="sampleImages\blueberries.jpg" />
+      </DockPanel.Background>
+      <TextBlock DockPanel.Dock="Top" Foreground="White" TextWrapping="Wrap" Margin="10">This DockPanel has an image as its background.</TextBlock>
+    </DockPanel>
+
+    <!-- Set's the border's BorderBrush property with an ImageBrush. The
+         resulting border is painted with an image. Because the border stroke
+         extends past the border's bounding box,
+         the image brush's Viewport is made larger so that it
+         completely fills the border. -->
+    <Border Grid.Row="6" Grid.Column="4" BorderThickness="20" Width="200"
+     HorizontalAlignment="Left">
+      <Border.BorderBrush>
+        <ImageBrush ImageSource="sampleImages\blueberries.jpg" Viewport="-0.1,-0.1,1.5,1.5" />
+      </Border.BorderBrush>
+      <DockPanel>
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="10">This DockPanel has a border painted with an ImageBrush.</TextBlock>
+      </DockPanel>
+    </Border>
+
+    <!-- Provides a background for the header text. -->
+    <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" 
+       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+       Stroke="Black" StrokeThickness="6">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#CCCCFF" />
+            <GradientStop Offset="1" Color="#666699" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Describes the sample and labels the different examples. -->
+    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="10">
+      An ImageBrush can be used to paint a variety of objects with an image.
+      The following are some examples.
+    </TextBlock>
+    <StackPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
+      <Image Width="112.5" Height="74.5" Source="sampleImages\blueberries.jpg" />
+    </StackPanel>
+    <TextBlock Grid.Row="2" Grid.Column="0">Filling a Shape</TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="0">Outlining a Shape</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="2">Painting a Button</TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="2">Painting Text</TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="4">Painting a Panel</TextBlock>
+    <TextBlock Grid.Row="5" Grid.Column="4">Painting a Border</TextBlock>
+  </Grid>
+</Page>

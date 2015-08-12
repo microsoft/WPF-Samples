@@ -1,0 +1,57 @@
+﻿<Window x:Class="ExpenseItDemo.ViewChartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpenseItDemo"
+        mc:Ignorable="d"
+        Title="ViewChartWindow" Height="300" Width="300">
+    <Grid Style="{StaticResource WindowContentGrid}">
+
+        <Grid>
+
+            <Grid.ToolTip>
+                <TextBlock>Chart view</TextBlock>
+            </Grid.ToolTip>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Expenses Chart -->
+            <ItemsControl Style="{DynamicResource ExpenseChart}" Grid.Row="0" Grid.ColumnSpan="2" />
+
+            <!-- Total Expenses -->
+            <Rectangle Style="{StaticResource TotalRectangle}" Grid.Row="1" Grid.ColumnSpan="2" />
+            <StackPanel Style="{StaticResource TotalExpensesFlow}" Grid.Row="1" Grid.ColumnSpan="2">
+                <TextBlock Style="{StaticResource TotalExpenses}">
+                    Total Expenses ($):
+                    <TextBlock.ToolTip>
+                        <TextBlock>Total expenses</TextBlock>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+                <TextBlock Style="{StaticResource TotalExpenses}"
+                           Text="{Binding Path=TotalExpenses, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <!-- Close Button -->
+            <Button Style="{StaticResource CommandButton}" Grid.Row="2" Grid.Column="1" Click="closeButton_Click"
+                    IsCancel="True">
+                <Button.ToolTip>
+                    <TextBlock>
+                        Close Expense Report Chart
+                    </TextBlock>
+                </Button.ToolTip>
+                _Close
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>

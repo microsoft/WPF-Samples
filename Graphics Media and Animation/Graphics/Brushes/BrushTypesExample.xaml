@@ -1,0 +1,467 @@
+<!-- BrushTypes.xaml
+     Shows examples of several different brush types. TODO: scrollbar to see the whole example
+     -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  Title="Different Types of Brushes">
+  <Page.Resources>
+    <Style TargetType="{x:Type Rectangle}">
+      <Setter Property="Stroke" Value="Black"/>
+      <Setter Property="StrokeThickness" Value="2"/>
+      <Setter Property="Margin" Value="0,0,5,5"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}">
+      <Setter Property="Stroke" Value="Black"/>
+      <Setter Property="StrokeThickness" Value="2"/>
+      <Setter Property="Margin" Value="0,0,5,5"/>
+    </Style>
+  </Page.Resources>
+
+
+  <Grid Margin="10" Background="White">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+
+    <!-- Sample header. -->
+    <Rectangle Style="{StaticResource HeaderRectangleStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Fill="Black" />
+    <TextBlock Style="{StaticResource MyIntroTextBlockStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+      Width="400" Foreground="White">
+      This example demonstrates the usage of several brushes defined in the System.Windows.Media namespace.
+    </TextBlock>
+
+    <!-- SolidColorBrush Examples -->
+    <TextBlock Grid.Row="2" Grid.Column="0" >SolidColorBrush</TextBlock>
+    <Grid Grid.Row="3" Grid.Column="0"  >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <!-- The following four rectangles are painted using predefined
+              SolidColorBrush objects: Brushes.Red, Brushes.MediumBlue,
+              Brushes.Purple, and Brushes.Gold. -->
+      <Rectangle Fill="Red" Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" />
+      <Rectangle Fill="MediumBlue" Width="50" Height="50" Grid.Row="0" Grid.Column="1" />
+      <Rectangle Fill="Purple" Width="50" Height="50" Grid.Row="1" Grid.Column="1" />
+      <Rectangle Fill="Gold" Width="50" Height="50" Grid.Row="2" Grid.Column="1" />
+    </Grid>
+
+    <!-- LinearGradientBrush Examples -->
+    <TextBlock Grid.Row="2" Grid.Column="2">LinearGradientBrush</TextBlock>
+    <Grid Grid.Row="3" Grid.Column="2" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <!-- The following four rectangles are painted using 
+              LinearGradientBrush objects. -->
+      <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+        <Rectangle.Fill>
+          <LinearGradientBrush>
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+        <Rectangle.Fill>
+          <LinearGradientBrush>
+            <GradientStop Color="Blue" Offset="0.0" />
+            <GradientStop Color="Purple" Offset="1.0" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+        <Rectangle.Fill>
+          <LinearGradientBrush>
+            <GradientStop Color="Purple" Offset="0.0" />
+            <GradientStop Color="BlueViolet" Offset="0.5" />
+            <GradientStop Color="White" Offset="1.0" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+        <Rectangle.Fill>
+          <LinearGradientBrush>
+            <GradientStop Color="Gold" Offset="0.0" />
+            <GradientStop Color="Red" Offset="0.5" />
+            <GradientStop Color="Orange" Offset="1.0" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </Grid>
+
+    <!-- RadialGradientBrush Examples. -->
+    <TextBlock Grid.Row="2" Grid.Column="4">RadialGradientBrush</TextBlock>
+    <Grid Grid.Row="3" Grid.Column="4">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+
+      <!-- The following four shapes are painted with
+              RadialGradientBrush objects. -->
+      <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+        <Rectangle.Fill>
+          <RadialGradientBrush GradientOrigin="0.75,0.25">
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+          </RadialGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Ellipse Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+        <Ellipse.Fill>
+          <RadialGradientBrush GradientOrigin="0.75,0.25">
+            <GradientStop Color="White" Offset="0.0" />
+            <GradientStop Color="MediumBlue" Offset="0.5" />
+            <GradientStop Color="Black" Offset="1.0" />
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+      <Ellipse Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+        <Ellipse.Fill>
+          <RadialGradientBrush GradientOrigin="0.75,0.25">
+            <GradientStop Color="AliceBlue" Offset="0.0" />
+            <GradientStop Color="Purple" Offset="0.5" />
+            <GradientStop Color="#330033" Offset="1.0" />
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+      <Ellipse Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+        <Ellipse.Fill>
+          <RadialGradientBrush GradientOrigin="0.75,0.25">
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+    </Grid>
+
+    <!-- ImageBrush Examples. -->
+    <TextBlock Grid.Row="5" Grid.Column="0" >ImageBrush</TextBlock>
+    <Grid Grid.Row="6" Grid.Column="0" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <!-- Paints a rectangle with an image. 
+              The image expands to fill the rectangle. -->
+      <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+        <Rectangle.Fill>
+          <ImageBrush ImageSource="sampleImages\pinkcherries.jpg"  />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Paints a rectangle with an image. The ImageBrush's
+              Stretch property is set to None, so the image is not resized. -->
+      <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+        <Rectangle.Fill>
+          <ImageBrush Stretch="None" TileMode="Tile"  ImageSource="sampleImages\pinkcherries.jpg"  />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Paints a rectangle with an image. The ImageBrush's 
+              Viewport and TileMode properties are set so that
+              the image is tiled. -->
+      <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+        <Rectangle.Fill>
+          <ImageBrush Viewport="0,0,25,25" ViewportUnits="Absolute" TileMode="Tile"   ImageSource="sampleImages\pinkcherries.jpg" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Paints a rectangle with an image.  The ImageBrush's 
+              Viewport and TileMode properties are set so that
+              the image is tiled. -->
+      <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+        <Rectangle.Fill>
+          <ImageBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile"   ImageSource="sampleImages\pinkcherries.jpg" />
+        </Rectangle.Fill>
+      </Rectangle>
+    </Grid>
+
+    <!-- DrawingBrush Examples -->
+    <TextBlock Grid.Row="5" Grid.Column="2">DrawingBrush</TextBlock>
+    <Grid Grid.Row="6" Grid.Column="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+
+      <!-- Paints a rectangle with a checkered pattern.
+              The tile size and a tile mode using the DrawingBrush's
+             Viewport and TileMode properties. The tile's content is defined
+             by the DrawingBrush's Drawing property. -->
+      <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+        <Rectangle.Fill>
+          <DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+            <DrawingBrush.Drawing>
+              <DrawingGroup>
+                <GeometryDrawing Brush="White">
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0,0,1,1" />
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="Black"
+                  Geometry="M 0,0 L0,0.5 0.5,0.5 0.5,1 1,1 1,0.5 0.5,0.5 0.5,0" />
+              </DrawingGroup>
+            </DrawingBrush.Drawing>
+          </DrawingBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+
+      <!-- Demonstrates the use of an ImageBrush within a DrawingBrush.
+             Two of the drawing's rectangles are painted with an ImageBrush,
+             creating a checkered pattern of images. -->
+      <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+        <Rectangle.Fill>
+          <DrawingBrush Viewport="0,0,1,1" TileMode="Tile">
+            <DrawingBrush.Drawing>
+              <DrawingGroup>
+                <GeometryDrawing Brush="Pink">
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0,0,1,1" />
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                  <GeometryDrawing.Brush>
+                    <ImageBrush ImageSource="sampleImages\cherries.jpg"  />
+                  </GeometryDrawing.Brush>
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0,0,0.5,0.5" />
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                  <GeometryDrawing.Brush>
+                    <ImageBrush ImageSource="sampleImages\cherries.jpg"  />
+                  </GeometryDrawing.Brush>
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0.5,0.5,0.5,0.5" />
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+              </DrawingGroup>
+            </DrawingBrush.Drawing>
+          </DrawingBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Paints a rectangle with a grid pattern. -->
+      <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+        <Rectangle.Fill>
+          <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+              <DrawingGroup>
+                <GeometryDrawing Brush="White">
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0,0,1,1" />
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="Blue"
+                  Geometry="M 0,0 L 0,1 0.1,1 0.1,0.1 1,0.1 1,0 Z" />
+              </DrawingGroup>
+            </DrawingBrush.Drawing>
+          </DrawingBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Demonstrates the use of gradient brushes within a 
+              DrawingBrush. Two overlapping gradients are layered to 
+              create a complex gradient. -->
+      <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+        <Rectangle.Fill>
+          <DrawingBrush Viewport="0,0,1,1" TileMode="Tile">
+            <DrawingBrush.Drawing>
+              <DrawingGroup>
+                <GeometryDrawing>
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0,0,1,1" />
+                  </GeometryDrawing.Geometry>
+                  <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                      <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="Blue" Offset="0.0" />
+                        <GradientStop Color="#9966CC" Offset="0.5" />
+                        <GradientStop Color="MediumBlue" Offset="1.0" />
+                      </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                  </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                  <GeometryDrawing.Geometry>
+                    <RectangleGeometry Rect="0,0,1,1" />
+                  </GeometryDrawing.Geometry>
+                  <GeometryDrawing.Brush>
+                    <RadialGradientBrush GradientOrigin="0.75,0.25">
+                      <RadialGradientBrush.GradientStops>
+                        <GradientStop Color="White" Offset="0.0" />
+                        <GradientStop Color="Transparent" Offset="0.5" />
+                        <GradientStop Color="Transparent" Offset="0.9" />
+                        <GradientStop Color="Black" Offset="1.0" />
+                      </RadialGradientBrush.GradientStops>
+                    </RadialGradientBrush>
+                  </GeometryDrawing.Brush>
+                </GeometryDrawing>
+              </DrawingGroup>
+            </DrawingBrush.Drawing>
+          </DrawingBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </Grid>
+
+
+    <TextBlock Grid.Row="5" Grid.Column="4">VisualBrush</TextBlock>
+    <Grid Grid.Row="6" Grid.Column="4">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <!-- Paints a rectangle with a checkered pattern.
+              The tile size and a tile mode using the DrawingBrush's
+             Viewport and TileMode properties. The tile's content is defined
+             by the DrawingBrush's Drawing property. -->
+      <Rectangle Width="150" Height="150" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+        <Rectangle.Fill>
+          <VisualBrush TileMode="Tile">
+            <VisualBrush.Visual>
+              <StackPanel>
+                <StackPanel.Background>
+                  <DrawingBrush>
+                    <DrawingBrush.Drawing>
+                      <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                          <RadialGradientBrush>
+                            <GradientStop Color="MediumBlue" Offset="0.0" />
+                            <GradientStop Color="White" Offset="1.0" />
+                          </RadialGradientBrush>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                          <GeometryGroup>
+                            <RectangleGeometry Rect="0,0,0.5,0.5" />
+                            <RectangleGeometry Rect="0.5,0.5,0.5,0.5" />
+                          </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                      </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                  </DrawingBrush>
+                </StackPanel.Background>
+                <TextBlock FontSize="10pt" Margin="10">Hello, World!</TextBlock>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+
+      <!-- Demonstrates the use of an ImageBrush within a DrawingBrush.
+             Two of the drawing's rectangles are painted with an ImageBrush,
+             creating a checkered pattern of images. -->
+      <Rectangle Width="50" Height="50" Grid.Row="0" Grid.Column="1">
+        <Rectangle.Fill>
+          <VisualBrush Viewport="0,0,1,0.25" TileMode="Tile" Stretch="Uniform">
+            <VisualBrush.Visual>
+              <StackPanel Background="White">
+                <TextBlock FontSize="10pt" Margin="1">Hello, World!</TextBlock>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Paints a rectangle with a grid pattern. -->
+      <Rectangle Width="50" Height="50" Grid.Row="1" Grid.Column="1">
+        <Rectangle.Fill>
+          <VisualBrush Viewport="0,0,1,0.25" TileMode="Tile" Stretch="Uniform">
+            <VisualBrush.Visual>
+              <StackPanel Background="White">
+                <TextBlock FontSize="10pt" Margin="1">Hello, World!</TextBlock>
+              </StackPanel>
+            </VisualBrush.Visual>
+            <VisualBrush.RelativeTransform>
+              <RotateTransform Angle="-45" CenterX="0.5" CenterY="0.5" />
+            </VisualBrush.RelativeTransform>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- Demonstrates the use of gradient brushes within a 
+              DrawingBrush. Two overlapping gradients are layered to 
+              create a complex gradient. -->
+      <Rectangle Width="50" Height="50" Grid.Row="2" Grid.Column="1">
+        <Rectangle.Fill>
+          <VisualBrush>
+            <VisualBrush.Visual>
+              <StackPanel Background="White">
+                <Button Margin="1">A Button</Button>
+                <Button Margin="1">Another Button</Button>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </Grid>
+
+    <!-- Footer -->
+    <Rectangle Style="{StaticResource FooterRectangleStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6" Fill="Black" />
+  </Grid>
+</Page>

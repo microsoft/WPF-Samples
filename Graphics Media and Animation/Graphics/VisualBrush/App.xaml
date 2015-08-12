@@ -1,0 +1,24 @@
+﻿<Application x:Class="VisualBrush.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:VisualBrush"
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+        <DrawingBrush x:Key="MyGridBackgroundBrushResource"
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="White">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#E6E8F6"
+              Geometry="M 0,0 L 0,1 0.1,1 0.1,0.1 1,0.1 1,0 Z" />
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </Application.Resources>
+</Application>

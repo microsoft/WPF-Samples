@@ -1,0 +1,63 @@
+﻿<Application x:Class="ControlsAndLayout.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ControlsAndLayout"
+             StartupUri="Scene.xaml">
+    <Application.Resources>
+        <Style x:Key="ItemHeaderStyler">
+            <Setter Property="ListBoxItem.Margin" Value="0,2,0,5"/>
+            <Setter Property="ListBoxItem.Padding" Value="2"/>
+            <Setter Property="ListBoxItem.FontFamily" Value="Verdana"/>
+            <Setter Property="ListBoxItem.FontWeight" Value="Bold"/>
+            <Setter Property="ListBoxItem.FontSize" Value="12"/>
+        </Style>
+
+        <Style x:Key="ImageStyler">
+            <Setter Property="TextBlock.Margin" Value="15"/>
+        </Style>
+
+        <Style x:Key="HeaderStyle">
+            <Setter Property="TextBlock.FontFamily" Value="Verdana" />
+            <Setter Property="TextBlock.FontWeight" Value="Bold" />
+            <Setter Property="TextBlock.FontSize" Value="20" />
+            <Setter Property="TextBlock.Margin" Value="10" />
+        </Style>
+
+        <Style x:Key="SubHeaderStyle">
+            <Setter Property="TextBlock.FontFamily" Value="Verdana" />
+            <Setter Property="TextBlock.FontWeight" Value="Bold" />
+            <Setter Property="TextBlock.FontSize" Value="16" />
+            <Setter Property="TextBlock.Foreground" Value="#666699" />
+            <Setter Property="TextBlock.Margin" Value="10" />
+        </Style>
+
+        <Style x:Key="DisStyle">
+            <Setter Property="TextBlock.FontFamily" Value="Verdana" />
+            <Setter Property="TextBlock.FontSize" Value="8" />
+            <Setter Property="TextBlock.Foreground" Value="#999999" />
+            <Setter Property="TextBlock.Margin" Value="5,0,5,0" />
+        </Style>
+
+        <Style x:Key="MainContentStyle">
+            <Setter Property="TextBlock.FontFamily" Value="Verdana" />
+            <Setter Property="TextBlock.FontSize" Value="11" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="TextBlock.Margin" Value="5,10,5,10" />
+        </Style>
+
+        <Style x:Key="TocStyle">
+            <Setter Property="TextBlock.FontFamily" Value="Verdana" />
+            <Setter Property="TextBlock.FontSize" Value="11" />
+            <Setter Property="TextBlock.Margin" Value="0" />
+        </Style>
+
+        <Style x:Key="NoteParagraph">
+            <Setter Property="TextBlock.FontFamily" Value="Verdana" />
+            <Setter Property="TextBlock.FontSize" Value="11" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="TextBlock.Margin" Value="10" />
+            <Setter Property="TextBlock.Background" Value="LightGray" />
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Stretch" />
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,64 @@
+﻿<Window x:Class="FontProperties.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FontProperties"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="525">
+    <StackPanel Background="Honeydew">
+
+        <TextBlock FontSize="24" FontWeight="Bold" Margin="0,0,0,5">Font Properties Sample</TextBlock>
+
+        <TextBlock FontSize="12" Margin="0,0,0,10" TextWrapping="Wrap">
+      Click any of the buttons below to change the font or color used to display the text.
+      You can also change the value of the FontSize by clicking one of the RadioButtons below.
+        </TextBlock>
+
+        <TextBlock FontWeight="Bold" FontSize="14">FontFamly:</TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Click="OnClick1" Background="Silver" Margin="3">Arial</Button>
+            <Button Click="OnClick2" Background="Silver" Margin="3">Courier New</Button>
+            <Button Click="OnClick3" Background="Silver" Margin="3">Tahoma</Button>
+            <Button Click="OnClick4" Background="Silver" Margin="3">Times New Roman</Button>
+            <Button Click="OnClick5" Background="Silver" Margin="3">Verdana</Button>
+        </StackPanel>
+
+        <TextBlock FontWeight="Bold" FontSize="14">Foreground Color:</TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Click="OnClick11" Foreground="White" Background="Black" Margin="3">Black</Button>
+            <Button Click="OnClick12" Background="Blue" Margin="3">Blue</Button>
+            <Button Click="OnClick13" Background="Green" Margin="3">Green</Button>
+            <Button Click="OnClick14" Background="Red" Margin="3">Red</Button>
+            <Button Click="OnClick15" Background="Yellow" Margin="3">Yellow</Button>
+        </StackPanel>
+
+
+        <TextBlock FontWeight="Bold" FontSize="14" VerticalAlignment="Center">FontSize:</TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <RadioButton Click="OnClick6" Margin="3">8 point</RadioButton>
+            <RadioButton Click="OnClick7" Margin="3">10 point</RadioButton>
+            <RadioButton Click="OnClick8" Margin="3">12 point</RadioButton>
+            <RadioButton Click="OnClick9" Margin="3">14 point</RadioButton>
+            <RadioButton Click="OnClick10" Margin="3">16 point</RadioButton>
+        </StackPanel>
+
+        <TextBlock FontSize="12" Name="txt1">The FontFamily is set to Arial.</TextBlock>
+        <TextBlock FontSize="12" Name="txt3">The FontSize is set to 12 point.</TextBlock>
+        <TextBlock FontSize="12" Name="txt4" Margin="0,0,0,15">The Foreground color is set to Black.</TextBlock>
+
+        <FlowDocumentReader>
+            <FlowDocument Name="txt2" FontFamily="Arial" FontSize="12" Foreground="Black">
+                <Paragraph>
+                    Epsum factorial non deposit quid pro quo hic escorol.  Olypian quarrels et gorilla
+          congolium sic ad nauseum. Souvlaki ignitus carborundum e pluribus unum. Defacto
+          lingo est igpay atinlay. Marquee selectus non provisio incongruous feline nolo contendre.
+          Gratuitous octopus niacin, sodium glutimate. Epsum factorial non deposit quid pro quo
+          hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. Souvlaki ignitus
+          carborundum e pluribus unum. Defacto lingo est igpay atinlay. Marquee selectus non
+          provisio incongruous feline nolo contendre. Gratuitous octopus niacin, sodium glutimate.
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </StackPanel>
+</Window>

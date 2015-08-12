@@ -1,0 +1,26 @@
+﻿<Window x:Class="LTRRTL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LTRRTL"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock Margin="10,10,3,3" FontSize="24">Bidirectional Text</TextBlock>
+        <TextBlock Margin="10,10,3,3"  Grid.Row="1" FontSize="14" Grid.ColumnSpan="2">
+    The following examples demonstrate:
+        </TextBlock>
+
+        <TextBlock Background="DarkBlue" Foreground="LightBlue" 
+   FontSize="20" FlowDirection="LeftToRight">
+        This is a left-to-right TextBlock
+        </TextBlock>
+
+        <TextBlock Background="LightBlue" Foreground="DarkBlue"
+   FontSize="20" FlowDirection="RightToLeft">
+        This is a right-to-left TextBlock
+        </TextBlock>
+
+    </StackPanel>
+</Window>

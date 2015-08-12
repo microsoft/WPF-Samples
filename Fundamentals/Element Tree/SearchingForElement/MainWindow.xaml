@@ -1,0 +1,28 @@
+﻿<Window x:Class="SearchingForElement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SearchingForElement"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Width" Value="250"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+        </StackPanel.Resources>
+        <Button Click="Find">Find element with the ID "dog" and change color</Button>
+        <StackPanel Name="stackPanel">
+            <TextBlock Name="cat">Cat</TextBlock>
+            <TextBlock Name="dog">Dog</TextBlock>
+            <TextBlock Name="fish">Fish</TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>

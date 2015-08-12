@@ -1,0 +1,46 @@
+<Leagues xmlns="">
+  <League name="League A">
+    <Division name="Division A">
+      <Team name="Team I"/>
+      <Team name="Team II"/>
+      <Team name="Team III"/>
+      <Team name="Team IV"/>
+      <Team name="Team V"/>
+    </Division>
+    <Division name="Division B">
+      <Team name="Team Blue"/>
+      <Team name="Team Red"/>
+      <Team name="Team Yellow"/>
+      <Team name="Team Green"/>
+      <Team name="Team Orange"/>
+    </Division>
+    <Division name="Division C">
+      <Team name="Team East"/>
+      <Team name="Team West"/>
+      <Team name="Team North"/>
+      <Team name="Team South"/>
+    </Division>
+  </League>
+  <League name="League B">
+    <Division name="Division A">
+      <Team name="Team 1"/>
+      <Team name="Team 2"/>
+      <Team name="Team 3"/>
+      <Team name="Team 4"/>
+      <Team name="Team 5"/>
+    </Division>
+    <Division name="Division B">
+      <Team name="Team Diamond"/>
+      <Team name="Team Heart"/>
+      <Team name="Team Club"/>
+      <Team name="Team Spade"/>
+    </Division>
+    <Division name="Division C">
+      <Team name="Team Alpha"/>
+      <Team name="Team Beta"/>
+      <Team name="Team Gamma"/>
+      <Team name="Team Delta"/>
+      <Team name="Team Epsilon"/>
+    </Division>
+  </League>
+</Leagues>

@@ -1,0 +1,52 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.SampleViewer"
+    Title="Drawing with Shapes">
+
+   <DockPanel>
+              <DockPanel.Background>
+                <ImageBrush ImageSource="sampleImages\rippled_metal_smaller.png" Stretch="None"
+                  TileMode="Tile" Opacity="0.1" />
+        </DockPanel.Background>
+     <TabControl Background="White">
+
+       <TabItem Header="Ellipse">
+         <Frame Background="White" Source="EllipseExample.xaml" />
+       </TabItem>
+       <TabItem Header="FillRule">
+         <Frame Background="White" Source="FillRuleExample.xaml" />
+       </TabItem>
+       <TabItem Header="Line Caps and Line Joins">
+         <Frame Background="White" Source="LineCapsAndJoinsExample.xaml" />
+       </TabItem>
+       <TabItem Header="Line">
+         <Frame Background="White" Source="LineExample.xaml" />
+       </TabItem>
+       <TabItem Header="MiterLimit">
+         <Frame Background="White" Source="MiterLimitExample.xaml" />
+       </TabItem>
+       <TabItem Header="Path">
+         <Frame Background="White" Source="PathExample.xaml" />
+       </TabItem>
+       <TabItem Header="Polygon">
+         <Frame Background="White" Source="PolygonExample.xaml" />
+       </TabItem>
+       <TabItem Header="Polyline">
+         <Frame Background="White" Source="PolylineExample.xaml" />
+       </TabItem>
+       <TabItem Header="Rectangle">
+         <Frame Background="White" Source="RectangleExample.xaml" />
+       </TabItem>
+       <TabItem Header="Shape Types">
+         <Frame Background="White" Source="ShapeTypes.xaml" />
+       </TabItem>
+       <TabItem Header="Stretch">
+         <Frame Background="White" Source="StretchExample.xaml" />
+       </TabItem>
+     </TabControl>
+
+   </DockPanel>
+
+
+</Window>

@@ -1,0 +1,65 @@
+﻿<html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" /><META NAME="save" CONTENT="history" /><title xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Win32 Sample Codec</title><META NAME="Description" CONTENT="&#xD;&#xA;                    This sample demonstrates how to create a custom codec can be built using the unmanaged Microsoft Windows Presentation Foundation Imaging Component API.&#xD;&#xA;                "></META><META NAME="MS.LOCALE" CONTENT="en-us" /><style>
+body
+{font-family:Verdana;font-size:medium;}
+div#mainSection, div#header
+{font-size:70%;width: 100%;}
+div#mainBody
+{font-size:90%;}
+div#mainSection div table
+{font-size: 100%;text-align: left;}
+span#nsrTitle
+{color:#003399;font-size:90%;font-weight:600;}
+div#header
+{background-color:#D4DFFF;}
+.heading
+{font-size:120%;color:#003399;}
+.subHeading
+{font-size:100%;margin-bottom:4;}
+li
+{margin-top:-2;margin-bottom:3;}
+p
+{margin-top:10;margin-bottom:5;}
+div.tableSection p
+{margin-top:1;margin-bottom:4;}	
+div#mainSection table th
+{background-color:#EFEFF7;color:#000066;text-align:left;}
+div#mainSection table td
+{background-color:#F7F7FF;}
+div#mainSection table
+{margin-top:5px;margin-bottom: px;}
+			</style></head><body><div id="header"><table width="100%" id="topTable"></table></div><div id="mainSection"><div id="mainBody"><br /><font color="DarkGray">[This readme is a partial copy of the sample's topic in the SDK documentation.]</font><br /><font color="DarkGray" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"></font><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"></p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><font color="DarkGray">Updated: November 2007</font></p><div class="introduction"><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    This sample demonstrates how to create a custom codec can be built using the unmanaged Microsoft Windows Presentation Foundation Imaging Component API.
+                </p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    This sample creates both an encoder and decoder that can be registered with the WPF Imaging system so that it can be automatically used by WPF applications. In addition, this sample demonstrates how to create pixel format converters.
+                </p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    This sample demonstrates a specific feature of the Windows Presentation Foundation (WPF) and, consequently, does not follow application development best practices. For comprehensive coverage of Windows Presentation Foundation (WPF) and Microsoft .NET Framework application development best practices, refer to the following as appropriate:
+                </p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    Accessibility - <span sdata="link">Accessibility Best Practices</span></p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    Security - <span sdata="link">Windows Presentation Foundation Security</span></p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    Localization - <span sdata="link">WPF Globalization and Localization Overview</span></p></div><h3 class="procedureSubHeading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Building the Sample</h3><div class="subSection"><ol xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>
+                    Install the Windows Software Development Kit (SDK) and open its build environment command window. On the Start menu, point to All Programs, Microsoft Windows SDK, and then click CMD Shell.
+                </p></li><li><p>
+                    Update the header and library paths. Follow the instructions provided in section 6.2 of the Windows SDK readme to update the development environment paths.
+                </p></li><li><p>
+                    Download the sample, usually from the software development kit (SDK) documentation, to your hard disk drive.
+                </p></li><li><p>
+                    Build the sample.
+                </p><ul><li><p>
+                    To build the sample in Microsoft Visual Studio, load the sample solution or project file and then press CTRL+SHIFT+B.
+                </p></li><li><p>
+                    To build the complete sample from the build environment command window, navigate to the solution folder. At the command prompt, type MSBUILD.
+                </p></li><li><p>
+                    To build the individual projects from the build environment command window, navigate to the each project folder. At the command prompt, type MSBUILD.
+                </p></li></ul></li></ol></div><h3 class="procedureSubHeading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Running the Sample</h3><div class="subSection"><ol xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>
+                    Register the codec library. From the command window, execute regsvr32 on the dynamic-link library (DLL) in the Debug or Release folder contained in the AITCodec source folder.
+                </p></li><li><p>
+                    Run the Sample
+                </p><ul><li><p>
+                    This sample has no executable and only demonstrates how to create a custom codec. Once the codec is registered and the library is signed, the codec will be automatically recognized by a WPF application.
+                </p></li></ul></li></ol></div><h1 class="heading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><span onclick="ExpandCollapse(sectionToggle0)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(sectionToggle0, event)" tabindex="0">Remarks</span></h1><div id="sectionSection0" class="section"><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    To use a custom codec, the codec must be registered and be digitally signed.
+                </p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    When you build this sample on Windows Vista, administrative rights are needed to register the dynamic-link library (DLL). The command window may need to be run as administrator by right-clicking the command shortcut and selecting "run as administrator".
+                </p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                    For details on the sample codec block structure see the readme.html included with the sample.
+                </p></div></div></div></body></html>

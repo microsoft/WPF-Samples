@@ -1,0 +1,135 @@
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Microsoft.Samples.Graphics.Transforms.ScaleTransformExample"
+  WindowTitle="ScaleTransform Example" Background="White">
+  <Page.Resources>
+    <Style TargetType="{x:Type TextBlock}">
+      <Setter Property="Margin" Value="0,10,0,0" />
+    </Style>
+    <Style TargetType="{x:Type Border}">
+      <Setter Property="BorderBrush" Value="Black" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="Background" Value="{StaticResource MyBlueGridBrushResource}" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style TargetType="{x:Type Rectangle}" x:Key="MarkerRectangleStyle">
+      <Setter Property="Height" Value="50" />
+      <Setter Property="Width" Value="50" />      
+      <Setter Property="Stroke" Value="#99000000" />  
+      <Setter Property="StrokeDashArray" Value="4,1" />  
+      <Setter Property="StrokeThickness" Value="2" />  
+      <Setter Property="Canvas.Left" Value="100" /> 
+      <Setter Property="Canvas.Top" Value="100" /> 
+    </Style>      
+  </Page.Resources>
+  
+  <StackPanel Orientation="Horizontal">
+  
+    <StackPanel Margin="10">
+      <TextBlock>No scale</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          <Rectangle 
+            Height="50" Width="50" Fill="#CCCCCCFF"
+            Canvas.Left="100" Canvas.Top="100" />
+          </Canvas>
+      </Border>
+      
+      <TextBlock>ScaleX: 2<LineBreak/>ScaleY: 2<LineBreak/>Center: (0,0)</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          
+          <!-- Scales a rectangle by 200% from a center of (0,0).-->
+          <Rectangle Height="50" Width="50" Fill="#CCCCCCFF" 
+            Stroke="Blue" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100">
+            <Rectangle.RenderTransform>
+              <ScaleTransform CenterX="0" CenterY="0" ScaleX="2" ScaleY="2" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          
+          <!-- Marks the size and position of the rectangle
+               before scaling. -->
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}" />            
+        </Canvas>
+      </Border>      
+    </StackPanel>
+
+    <StackPanel Margin="10">
+      <TextBlock>ScaleX: 2<LineBreak/>ScaleY: 2<LineBreak/>Center: (25,25)</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+        
+          <!-- Scales a rectangle by 200% from a center of (25,25).-->
+          <Rectangle Height="50" Width="50" Fill="#CCCCCCFF"
+            Canvas.Left="100" Canvas.Top="100" Stroke="Blue" StrokeThickness="2">
+            <Rectangle.RenderTransform>
+              <ScaleTransform CenterX="25" CenterY="25" ScaleX="2" ScaleY="2" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          
+          <!-- Marks the size and position of the rectangle
+               before scaling. -->
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}" />        
+        </Canvas>
+      </Border>    
+      
+      <TextBlock>ScaleX: 0.5<LineBreak/>ScaleY: 0.5<LineBreak/>Center: (25,25)</TextBlock>
+      <Border>
+        <Canvas Width="250" Height="250">
+          <Rectangle Height="50" Width="50" Fill="#CCCCCCFF" 
+            Stroke="Blue" StrokeThickness="2"
+            Canvas.Left="100" Canvas.Top="100">
+            <Rectangle.RenderTransform>
+              <ScaleTransform CenterX="25" CenterY="25" ScaleX="0.5" ScaleY="0.5" />
+            </Rectangle.RenderTransform>
+          </Rectangle>
+          
+          <!-- Marks the size and position of the rectangle
+               before scaling. -->
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}" />          
+        </Canvas>
+      </Border>        
+    </StackPanel>
+     <StackPanel Margin="10">
+       <TextBlock>ScaleX: 2<LineBreak/>ScaleY: 2<LineBreak/>RenderTransformOrigin: (0.5,0.5)</TextBlock>
+       <Border>
+         <Canvas Width="250" Height="250">
+         
+           <!-- Scales a rectangle by 200% from a center of (0.5,0.5).-->
+           <Rectangle Height="50" Width="50" Fill="#CCCCCCFF"
+             Canvas.Left="100" Canvas.Top="100" Stroke="Blue" StrokeThickness="2"
+             RenderTransformOrigin="0.5,0.5">
+             <Rectangle.RenderTransform>
+               <ScaleTransform ScaleX="2" ScaleY="2" />
+             </Rectangle.RenderTransform>
+           </Rectangle>
+           
+          <!-- Marks the size and position of the rectangle
+               before scaling. -->
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}" />           
+         </Canvas>
+       </Border>    
+       
+       <TextBlock>ScaleX: 0.5<LineBreak/>ScaleY: 0.5<LineBreak/>RenderTransformOrigin: (0.25,0.25)</TextBlock>
+       <Border>
+         <Canvas Width="250" Height="250">
+           <Rectangle Height="50" Width="50" 
+             Fill="#CCCCCCFF" Stroke="Blue" StrokeThickness="2"
+             Canvas.Left="100" Canvas.Top="100"
+             RenderTransformOrigin="0.25,0.25">
+             <Rectangle.RenderTransform>
+               <ScaleTransform ScaleX="2" ScaleY="2" />
+             </Rectangle.RenderTransform>
+           </Rectangle>
+           
+          <!-- Marks the size and position of the rectangle
+               before scaling. -->
+          <Rectangle Style="{StaticResource MarkerRectangleStyle}" />            
+         </Canvas>
+       </Border>        
+    </StackPanel>
+  </StackPanel>
+</Page>

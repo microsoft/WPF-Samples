@@ -1,0 +1,77 @@
+﻿<!-- This example shows how to draw Line elements. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.StretchExample"
+    WindowTitle="Stretch Example" 
+    Background="White">
+    <Grid Margin="20">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition Width="20"/>
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="40" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      
+        <Border Grid.Row="0" Grid.Column="0" >
+          <Border.Background>
+            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#CCCCFF" Offset="0" />
+                <GradientStop Color="AliceBlue" Offset="0.25" />
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Border.Background>
+          <TextBlock Margin="10" HorizontalAlignment="Left" >
+            StretchExample
+          </TextBlock>
+        </Border>
+        <TextBlock Grid.Row="1" Grid.Column="0">Stretch="None"</TextBlock>
+        <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource MyGridBorderStyle}" HorizontalAlignment="Left">
+            <Canvas Height="200" Width="200">
+                <Border Height="100" Width="50" Canvas.Top="50" Canvas.Left="70"   
+                        BorderBrush="Black" BorderThickness="1" >
+                    <Polygon Height="100" Width="50" Points="0,0 10,10 0,10" Fill="Blue" Stretch="None"/>
+                </Border>
+            </Canvas>
+        </Border>
+
+        <TextBlock Grid.Row="1" Grid.Column="2">Stretch="Fill"</TextBlock>
+        <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource MyGridBorderStyle}" HorizontalAlignment="Left">
+                <Canvas Height="200" Width="200">
+                  <Border Height="100" Width="50" Canvas.Top="50" Canvas.Left="70"   
+                          BorderBrush="Black" BorderThickness="1" >
+                    <Polygon Height="100" Width="50" Points="0,0 10,10 0,10" Fill="Blue" Stretch="Fill"/>
+                  </Border>
+              </Canvas>
+          </Border>
+
+
+          <TextBlock Grid.Row="4" Grid.Column="0">Stretch="Uniform"</TextBlock>
+          <Border Grid.Row="5" Grid.Column="0" Style="{StaticResource MyGridBorderStyle}" HorizontalAlignment="Left">
+              <Canvas Height="200" Width="200">
+                 <Border Height="100" Width="50" Canvas.Top="50" Canvas.Left="70"   
+                         BorderBrush="Black" BorderThickness="1" >
+                    <Polygon Height="100" Width="50" Points="0,0 10,10 0,10" Fill="Blue" Stretch="Uniform"/>
+                 </Border>
+                </Canvas>
+        </Border>
+
+
+        <TextBlock Grid.Row="4" Grid.Column="2">Stretch="UniformToFill"</TextBlock>           
+        <Border Grid.Row="5" Grid.Column="2" Style="{StaticResource MyGridBorderStyle}" HorizontalAlignment="Left">
+                <Canvas Height="200" Width="200">
+                  <Border Height="100" Width="50" Canvas.Top="50" Canvas.Left="70"   
+                          BorderBrush="Black" BorderThickness="1" >
+                    <Polygon Height="100" Width="50" Points="0,0 10,10 0,10" Fill="Blue" Stretch="UniformToFill"/>
+                   </Border>
+                </Canvas>
+        </Border>
+    </Grid>
+</Page>

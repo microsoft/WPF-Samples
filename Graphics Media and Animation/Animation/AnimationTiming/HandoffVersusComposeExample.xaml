@@ -1,0 +1,61 @@
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.HandoffVersusComposeExample">
+ <Page.Resources>
+  <Storyboard x:Key="FadeToHalf">
+   <DoubleAnimation To="0.5" Duration="0:0:1.0"
+    Storyboard.TargetProperty="Fill.Opacity" />
+   <DoubleAnimation To="45" Duration="0:0:1.0"
+    Storyboard.TargetProperty="Height" />
+  </Storyboard>  
+  <Storyboard x:Key="FadeToFull">
+   <DoubleAnimation Duration="0:0:1.0"
+    Storyboard.TargetProperty="Fill.Opacity" />
+   <DoubleAnimation Duration="0:0:1.0"
+    Storyboard.TargetProperty="Height" />
+  </Storyboard>  
+  <Style x:Key="Compose" TargetType="{x:Type Rectangle}">
+   <Setter Property="Fill" Value="Red" />
+   <Setter Property="Width" Value="90" />
+   <Setter Property="Height" Value="90" />
+   <Style.Triggers>
+    <EventTrigger RoutedEvent="Mouse.MouseEnter">
+     <EventTrigger.Actions>
+      <BeginStoryboard Storyboard="{StaticResource FadeToHalf}" HandoffBehavior="Compose"/>
+     </EventTrigger.Actions>
+    </EventTrigger>
+    <EventTrigger RoutedEvent="Mouse.MouseLeave">
+     <EventTrigger.Actions>
+      <BeginStoryboard Storyboard="{StaticResource FadeToFull}" HandoffBehavior="Compose"/>
+     </EventTrigger.Actions>
+    </EventTrigger>
+   </Style.Triggers>
+  </Style>
+  <Style x:Key="Handoff" TargetType="{x:Type Rectangle}">
+   <Setter Property="Fill" Value="Blue" />
+   <Setter Property="Width" Value="90" />
+   <Setter Property="Height" Value="90" />
+   <Style.Triggers>
+    <EventTrigger RoutedEvent="Mouse.MouseEnter">
+     <EventTrigger.Actions>
+      <BeginStoryboard Storyboard="{StaticResource FadeToHalf}" HandoffBehavior="SnapshotAndReplace"/>
+     </EventTrigger.Actions>
+    </EventTrigger>
+    <EventTrigger RoutedEvent="Mouse.MouseLeave">
+     <EventTrigger.Actions>
+      <BeginStoryboard Storyboard="{StaticResource FadeToFull}" HandoffBehavior="SnapshotAndReplace"/>
+     </EventTrigger.Actions>
+    </EventTrigger>
+   </Style.Triggers>
+  </Style>
+ </Page.Resources>
+ <Canvas Background="White">
+  <TextBlock Canvas.Top="50" Canvas.Left="100" Foreground="Red">Compose</TextBlock>
+  <TextBlock Canvas.Top="50" Canvas.Left="200" Foreground="Blue">SnapshotAndReplace</TextBlock>
+  <Rectangle Style="{StaticResource Handoff}" Canvas.Top="100" Canvas.Left="100" />
+  <Rectangle Style="{StaticResource Compose}" Canvas.Top="100" Canvas.Left="200" />
+  <Rectangle Style="{StaticResource Compose}" Canvas.Top="200" Canvas.Left="100" />
+  <Rectangle Style="{StaticResource Handoff}" Canvas.Top="200" Canvas.Left="200" />
+ </Canvas>
+</Page>

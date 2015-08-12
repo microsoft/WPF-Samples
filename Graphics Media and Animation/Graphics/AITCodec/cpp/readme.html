@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Windows Imaging Component Extensibility Sample</title>
+</head>
+
+<h1>Windows Imaging Component Codec Extensibilty Sample</h1>
+   <p>
+      This sample demonstrates how to create a custom CODEC using the Windows Imaging Component (WIC) of Vista and the Windows Presentation Foundation (WPF). 
+   </p>
+<h2>About the AIT CODEC</h2>
+   <p>
+      The AIT CODEC was developed to keep it as simple as possible while demonstrating the extensibility of the Windows Imaging Component of Vista and Windows Presentation Foundation. 
+      It was also developed to represent data as if this were a production level CODEC, so concepts such as image blocks are similar to other formats, such as PNG.
+   </p>
+   <p>Within the AIT CODEC, a block takes the form of:</p>
+   <p><code><pre style="background:lightgrey">
+struct AIT_BLOCK
+{
+   // Used to distinguish the type of block (first 3 bytes are ASCII,
+   // last byte must be 0)
+   uint8_t name[4];
+
+   // Specifies which frame in the image this data should be applied to.
+   uint32_t frame_number;
+
+   // Gives the number of bytes in the data section of the block.
+
+   uint32_t size;
+   // Gives the raw data of the block must
+   be interpreted based upon the name of the block<br>
+   uint8_t data[size];
+};
+      </pre></code>
+   </p>
+
+   <p>There are 6 types of blocks that the AIT CODEC support -- AIT, COL, FRA, PAL, PRE, THU</p>
+
+<h3>AIT Block</h3>
+   <p>
+      This block must be the first block in the file and must be specified only once.
+      It may be regarded as the header of AIT files.<br>
+      The data section of this block takes the form:
+   </p>
+   <p><code><pre style="background:lightgrey">
+struct AIT_BLOCK_DATA
+{
+   // number of frames in the images(permitted to be 0)
+   uint32_t num_frames;
+};
+   </pre></code></p>
+   
+<h3>COL Block</h3>
+   <p>
+      This block specifies a color context to be applied either globally to the image (when AIT_BLOCK.frame_number == 0xFFFFFFFF</span>) or to a frame (when AIT_BLOCK.frame_number != 0xFFFFFFFF).
+      The field AIT_BLOCK.size specifies the size in bytes of the ICM profile to be used in this color context.
+      The data section is the value of those bytes.
+   </p>
+
+<h3>FRA Block</h3>
+   <p>
+      This block specifies the bitmap data of a frame. 
+      The AIT_BLOCK.frame_number must be a value in the range [0, N) where N is the number of frames in the image (as specified in the AIT block).<br>
+      The data section of this block takes the form:
+   </p>
+   <p><code><pre style="background:lightgrey">
+struct FRA_BLOCK_DATA
+{
+  BITMAP_SOURCE_DATA bitmap_source;
+};
+   </pre></code></p>
+
+<p><span style='font-family:"Courier New"'>BITMAP_SOURCE_DATA</span> takes the
+form:<o:p></o:p></p>
+
+   <p><code><pre style="background:lightgrey">
+struct BITMAP_SOURCE_DATA
+{
+    // Width dimension of the image
+    uint32_t width;
+
+    // Height dimension of the image
+    uint32_t height;
+
+    // Resolution (pixels/inch) of image in X direction
+    double dpi_x; 
+
+    // Resolution (pixels/inch) of image in Y direction
+    double dpi_y;
+
+    // The number of bytes needed to the number of bytes needed to encode
+    // one scan line of the bitmap
+    uint32_t stride;
+
+    // The GUID of the pixel format of this bitmap valid values include
+    // those recognized in wincodec.h (GUID_WICPixelFormat*)
+    GUID pixel_format;
+
+    // All data values one scanline at a time beginning at the top-most
+    //  scanline and continuing to the bottom-most scanline
+    uint8_t bitmap_data[stride * height];
+};
+   </pre></code></p>
+   <p>
+      (Here, a double is an IEEE 64-bit floating-point number and GUID is 16 bytes used to uniquely identify an object.)<br>
+      A FRA block, therefore, is simply the BITMAP_SOURCE_DATA needed to represent that frame.<br>
+   </p>
+
+<h3>PAL Block</h3></span></span><br>
+This block specifies a palette to be either applied to the image as a whole or
+to an individual frame (using the same logic as outlined in the COL block).<br>
+The data section of this block takes the form:</p>
+
+   <p><code><pre style="background:lightgrey">
+struct PAL_BLOCK_DATA
+{
+   // Number of colors in this palette (must be &gt; 0)
+   uint32_t num_colors;
+
+   // Gives those colors as WICColors (defined in wincodec.h)
+   WICColor colors[num_colors];
+};
+   </pre></code></p>
+
+<h3>PRE Block</h3>
+   <p>
+      This block specifies a preview bitmap that may be applied to the image as a whole (AIT_BLOCK.frame_number must equal 0xFFFFFFFF).
+      Its data section is simply a BITMAP_SOURCE_DATA (similar to a FRA block).
+   </p>
+
+<h3>THU Block</h3>
+<p>
+This block specifies a thumbnail bitmap the may be applied to the entire image or a single frame (as specified in the save rules as COL’s).
+Its data section is simply a BITMAP_SOURCE_DATA (similar to a FRA block).
+</p>
+
+</div>
+
+</body>
+
+</html>

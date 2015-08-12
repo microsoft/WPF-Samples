@@ -1,0 +1,49 @@
+﻿<Window x:Class="CompositeCollections.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompositeCollections"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:GreekGods x:Key="GreekGodsData"/>
+
+        <XmlDataProvider x:Key="GreekHeroesData" XPath="GreekHeroes/Hero">
+            <x:XData>
+                <GreekHeroes xmlns="">
+                    <Hero Name="Jason" />
+                    <Hero Name="Hercules" />
+                    <Hero Name="Bellerophon" />
+                    <Hero Name="Theseus" />
+                    <Hero Name="Odysseus" />
+                    <Hero Name="Perseus" />
+                </GreekHeroes>
+            </x:XData>
+        </XmlDataProvider>
+
+        <DataTemplate DataType="{x:Type local:GreekGod}">
+            <TextBlock Text="{Binding Path=Name}" Foreground="Gold"/>
+        </DataTemplate>
+        <DataTemplate DataType="Hero">
+            <TextBlock Text="{Binding XPath=@Name}" Foreground="Cyan"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <StackPanel>
+        <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+      HorizontalAlignment="Center">Composite Collections Sample</TextBlock>
+        <ListBox Name="myListBox" Height="300" Width="200" Background="White">
+            <ListBox.ItemsSource>
+                <CompositeCollection>
+                    <CollectionContainer
+            Collection="{Binding Source={StaticResource GreekGodsData}}" />
+                    <CollectionContainer
+            Collection="{Binding Source={StaticResource GreekHeroesData}}" />
+                    <ListBoxItem Foreground="Red">Other Listbox Item 1</ListBoxItem>
+                    <ListBoxItem Foreground="Red">Other Listbox Item 2</ListBoxItem>
+                </CompositeCollection>
+            </ListBox.ItemsSource>
+        </ListBox>
+    </StackPanel>
+</Window>

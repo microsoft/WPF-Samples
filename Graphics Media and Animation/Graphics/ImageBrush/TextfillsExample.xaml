@@ -1,0 +1,118 @@
+<!-- This example shows how to use an ImageBrush to fill text. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="ImageBrush.TextFillsExample">
+
+  <Grid Margin="20">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="2" Grid.Column="1"
+      FontSize="70pt" FontWeight="Bold"  FontFamily="Verdana"
+      Margin="10">
+      <TextBlock.Foreground>
+        <ImageBrush
+          ImageSource="sampleImages\purpleblock.jpg" />
+      </TextBlock.Foreground>
+      Text
+    </TextBlock>
+    <TextBlock Grid.Row="2" Grid.Column="2"
+      FontSize="70pt" FontWeight="Bold"  FontFamily="Verdana"
+      Margin="10">
+      <TextBlock.Foreground>
+        <ImageBrush
+          Viewport="0,0,25,25" ViewportUnits="Absolute"
+          TileMode="Tile"
+          ImageSource="sampleImages\purpleblock.jpg" />
+      </TextBlock.Foreground>
+      Text
+    </TextBlock>
+
+
+    <TextBlock Grid.Row="3" Grid.Column="1"
+      FontSize="70pt" FontWeight="Bold"  FontFamily="Verdana"
+      Margin="10">
+      <TextBlock.Foreground>
+        <ImageBrush
+          ImageSource="sampleImages\square.jpg" />
+      </TextBlock.Foreground>
+      Text
+    </TextBlock>
+    <TextBlock Grid.Row="3" Grid.Column="2"
+      FontSize="70pt" FontWeight="Bold"  FontFamily="Verdana"
+      Margin="10">
+      <TextBlock.Foreground>
+        <ImageBrush
+          Viewport="0,0,25,25" ViewportUnits="Absolute"
+          TileMode="Tile"
+          ImageSource="sampleImages\square.jpg" />
+      </TextBlock.Foreground>
+      Text
+    </TextBlock>
+
+
+    <TextBlock Grid.Row="4" Grid.Column="1"
+      FontSize="70pt" FontWeight="Bold"  FontFamily="Verdana"
+      Margin="10">
+      <TextBlock.Foreground>
+        <ImageBrush
+          ImageSource="sampleImages\pinkcherries.jpg" />
+      </TextBlock.Foreground>
+      Text
+    </TextBlock>
+
+    <TextBlock Grid.Row="4" Grid.Column="2"
+      FontSize="70pt" FontWeight="Bold"  FontFamily="Verdana"
+      Margin="10">
+      <TextBlock.Foreground>
+        <ImageBrush
+          Viewport="0,0,25,25"
+          ViewportUnits="Absolute"
+          TileMode="Tile"
+          ImageSource="sampleImages\pinkcherries.jpg" />
+      </TextBlock.Foreground>
+      Text
+    </TextBlock>
+
+    <!-- Describes the sample. -->
+    <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+      Stroke="LimeGreen" StrokeThickness="6">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.0" Color="LimeGreen" />
+            <GradientStop Offset="1.0" Color="Yellow" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  
+      Margin="10" MaxWidth="400"  HorizontalAlignment="Left">
+      An ImageBrush may be used to paint text. The following examples show
+      an image used to fill text with and without tiling.
+    </TextBlock>
+    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" Margin="10">The Image</TextBlock>
+    <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Bold" Margin="10">Applied to Text Without Tiling</TextBlock>
+    <TextBlock Grid.Row="1" Grid.Column="2" FontWeight="Bold" Margin="10">Applied to Text With Tiling</TextBlock>
+
+    <!-- Shows what the images look like on their own. -->
+    <Image Grid.Row="2" Grid.Column="0" Source="sampleImages\purpleblock.jpg" Height="100" Width="100"
+      HorizontalAlignment="Left" Margin="10"/>
+    <Image Grid.Row="3" Grid.Column="0" Source="sampleImages\square.jpg" Height="100" Width="100" 
+      HorizontalAlignment="Left" Margin="10" />
+    <Image Grid.Row="4" Grid.Column="0" Source="sampleImages\pinkcherries.jpg" Height="100" Width="100"
+      HorizontalAlignment="Left" Margin="10" />
+  </Grid>
+</Page>

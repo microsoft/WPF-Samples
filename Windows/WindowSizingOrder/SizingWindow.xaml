@@ -1,0 +1,52 @@
+﻿<Window x:Class="WindowSizingOrder.SizingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowSizingOrder"
+        Name="window"
+        mc:Ignorable="d"
+        Title="SizingWindow" Height="300" Width="300">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>WindowState:</Label>
+            <Label Content="{Binding ElementName=window,Path=WindowState}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>MinWidth:</Label>
+            <Label Content="{Binding ElementName=window,Path=MinWidth}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>MinHeight:</Label>
+            <Label Content="{Binding ElementName=window,Path=MinHeight}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>SizeToContent:</Label>
+            <Label Content="{Binding ElementName=window,Path=SizeToContent}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>MaxWidth:</Label>
+            <Label Content="{Binding ElementName=window,Path=MaxWidth}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>MaxHeight:</Label>
+            <Label Content="{Binding ElementName=window,Path=MaxHeight}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Width:</Label>
+            <Label Content="{Binding ElementName=window,Path=Width}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Height:</Label>
+            <Label Content="{Binding ElementName=window,Path=Height}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Actual Width:</Label>
+            <Label Content="{Binding ElementName=window,Path=ActualWidth}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Actual Height:</Label>
+            <Label Content="{Binding ElementName=window,Path=ActualHeight}"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

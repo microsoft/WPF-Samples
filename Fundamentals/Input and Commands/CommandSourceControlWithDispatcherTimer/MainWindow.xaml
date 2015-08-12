@@ -1,0 +1,125 @@
+﻿<Window x:Class="CommandSourceControlWithDispatcherTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommandSourceControlWithDispatcherTimer"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" Width="1024">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Width" Value="75" />
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="Margin" Value="10" />
+        </Style>
+
+        <!--Converter to convert the Slider value property to an int-->
+        <local:SliderValueConverter x:Key="ValueConverterResource"/>
+    </Window.Resources>
+
+    <!-- Command Binding for the Custom Command -->
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomCommand}"
+                    Executed="CustomCommandExecuted"
+                    CanExecute="CustomCommandCanExecute" />
+    </Window.CommandBindings>
+
+    <!--Start main panel-->
+    <StackPanel>
+
+        <!-- Target and Current Seconds Displays-->
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Border HorizontalAlignment="Right" 
+              BorderBrush="DarkBlue"
+              BorderThickness="1"
+              Margin="10"
+              Width="75">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label>Target</Label>
+                    <Label Content="{Binding ElementName=secondSlider,
+                            Path=Value,
+                            Converter={StaticResource ValueConverterResource}}"
+                 Margin="10,0,10,10" 
+                 FontSize="14" 
+                 FontWeight="DemiBold"/>
+                </StackPanel>
+            </Border>
+            <Border HorizontalAlignment="Right" 
+        BorderBrush="DarkBlue"
+        BorderThickness="1"
+        Margin="10"
+        Width="75">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label>Seconds</Label>
+                    <Label Name="lblSeconds" Margin="10,0,10,10"
+                 FontSize="14" FontWeight="DemiBold"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- The Command Source for the custom command-->
+        <!-- Passes Slider.Value as the CommandParameter-->
+        <Button Command="{x:Static local:MainWindow.CustomCommand}" 
+            Content="Command"
+            CommandParameter="{Binding ElementName=secondSlider,
+                                Path=Value,
+                                Converter={StaticResource ValueConverterResource}}" 
+            Margin="10"/>
+        <!-- Slider used to change the target value-->
+        <Label Margin="10" FontSize="14" HorizontalAlignment="Center">
+            Enable Command When Current Seconds Are Greater Than:
+        </Label>
+        <Border BorderBrush="DarkBlue"
+            BorderThickness="1"
+            Height="75"
+            Width="425">
+            <StackPanel Orientation="Horizontal">
+                <Button Command="Slider.DecreaseSmall"
+                CommandTarget="{Binding ElementName=secondSlider}"
+                Height="25"
+                Width="25"
+                Content="-"/>
+                <Label VerticalAlignment="Center">0</Label>
+                <Slider Name="secondSlider"
+                Minimum="0"
+                Maximum="60"
+                Value="15"
+                TickFrequency="5"
+                Height="50"
+                Width="275" 
+                TickPlacement="BottomRight"
+                LargeChange="5"
+                SmallChange="5" 
+                AutoToolTipPlacement="BottomRight" 
+                AutoToolTipPrecision="0"
+                MouseWheel="OnSliderMouseWheel"
+                MouseUp="OnSliderMouseUp" />
+                <Label VerticalAlignment="Center">60</Label>
+                <Button Command="Slider.IncreaseSmall"
+                CommandTarget="{Binding ElementName=secondSlider}"
+                Height="25"
+                Width="25"
+                Content="+"/>
+            </StackPanel>
+        </Border>
+        <!-- The custom command results -->
+        <Border BorderBrush="Black"
+            BorderThickness="2"
+            Height="80"
+            Width="300"
+            Margin="0,10,0,0">
+            <StackPanel>
+                <Label HorizontalAlignment="Center" FontWeight="DemiBold">
+                    Command Results
+                </Label>
+                <TextBlock Name="txtResults" 
+                   Margin="5,0,5,0" 
+                   TextWrapping="Wrap"
+                   HorizontalAlignment="Left" />
+            </StackPanel>
+        </Border>
+        <!--End main Panel -->
+    </StackPanel>
+    <!--End main Panel -->
+</Window>

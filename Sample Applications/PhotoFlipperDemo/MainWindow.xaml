@@ -1,0 +1,284 @@
+﻿<Window x:Class="PhotoFlipperDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoFlipperDemo"
+        mc:Ignorable="d"
+        Loaded="OnLoaded"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+
+        <DoubleAnimation x:Key="Rotate1" From="0" To="179.9" Duration="0:0:0.5" />
+
+        <Storyboard x:Key="FlipPicTimeline" CurrentStateInvalidated="OnFlipPicTimeline">
+            <ParallelTimeline Storyboard.TargetName="myViewport3D"
+                              Storyboard.TargetProperty="Children[0].Content.Children[1].Transform.Children[1].Rotation.Angle">
+                <StaticResource ResourceKey="Rotate1" />
+            </ParallelTimeline>
+        </Storyboard>
+
+
+        <MeshGeometry3D x:Key="PlaneMeshTop"
+                        Positions="-1 -1 0  1 -1 0  -1 1 0  1 1 0"
+                        Normals="0 0 1  0 0 1  0 0 1  0 0 1"
+                        TextureCoordinates="0 0.5  1 0.5  0 0  1 0"
+                        TriangleIndices="0 1 2  1 3 2" />
+
+        <MeshGeometry3D x:Key="PlaneMeshBottom"
+                        Positions="-1 -1 0  1 -1 0  -1 1 0  1 1 0"
+                        Normals="0 0 1  0 0 1  0 0 1  0 0 1"
+                        TextureCoordinates="0 1  1 1  0 0.5  1 0.5"
+                        TriangleIndices="0 1 2  1 3 2" />
+
+        <MeshGeometry3D x:Key="PlaneMeshBackBottom"
+                        Positions="-1,1,0 , 1,1,0 ,1,-1,0 ,-1,-1,0"
+                        Normals="0,0,-1 0,0,-1 0,0,-1 0,0,-1"
+                        TextureCoordinates="0,1 1,1 1,0.5 0,0.5"
+                        TriangleIndices="0 1 3 1 2 3" />
+
+
+        <DiffuseMaterial x:Key="Pic011">
+            <DiffuseMaterial.Brush>
+                <ImageBrush ImageSource="Images/pic_011.png" ViewportUnits="Absolute" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
+        <DiffuseMaterial x:Key="Pic012">
+            <DiffuseMaterial.Brush>
+                <ImageBrush ImageSource="images/pic_012.png" ViewportUnits="Absolute" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
+        <DiffuseMaterial x:Key="Pic013">
+            <DiffuseMaterial.Brush>
+                <ImageBrush ImageSource="images/pic_013.png" ViewportUnits="Absolute" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
+        <DiffuseMaterial x:Key="Pic014">
+            <DiffuseMaterial.Brush>
+                <ImageBrush ImageSource="images/pic_014.png" ViewportUnits="Absolute" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
+        <DiffuseMaterial x:Key="Pic015">
+            <DiffuseMaterial.Brush>
+                <ImageBrush ImageSource="images/pic_015.png" ViewportUnits="Absolute" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
+        <DiffuseMaterial x:Key="Pic016">
+            <DiffuseMaterial.Brush>
+                <ImageBrush ImageSource="images/pic_016.png" ViewportUnits="Absolute" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
+
+    </Window.Resources>
+
+    <Grid Background="Blue" Canvas.Top="0" Canvas.Left="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <Button Click="OnToggleAutoRun" Height="50" Grid.Column="0" Grid.Row="0">Toggle AutoRun</Button>
+            <Button Click="OnSingleStep" Height="50" Grid.Column="0" Grid.Row="0">Single Step</Button>
+        </StackPanel>
+
+        <Viewport3D Focusable="True" Name="myViewport3D" ClipToBounds="True" Grid.Column="1" Grid.Row="0">
+            <Viewport3D.Camera>
+                <PerspectiveCamera
+                    Position="0,0,3.0"
+                    LookDirection="0,0,-1"
+                    UpDirection="0,1,0"
+                    NearPlaneDistance="0.25"
+                    FarPlaneDistance="20"
+                    FieldOfView="60" />
+            </Viewport3D.Camera>
+            <Viewport3D.Children>
+                <ModelVisual3D>
+
+                    <!-- Trackball uses this transform -->
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <Transform3DGroup.Children>
+                                <Transform3DCollection>
+
+                                    <ScaleTransform3D ScaleX="1" ScaleY="1" ScaleZ="1" />
+                                    <RotateTransform3D>
+                                        <RotateTransform3D.Rotation>
+                                            <AxisAngleRotation3D Axis="0 1 0" Angle="0" />
+                                        </RotateTransform3D.Rotation>
+                                    </RotateTransform3D>
+                                    <TranslateTransform3D OffsetX="0" OffsetY="0" OffsetZ="0" />
+
+                                </Transform3DCollection>
+                            </Transform3DGroup.Children>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+
+                    <ModelVisual3D.Content>
+
+                        <Model3DGroup>
+                            <Model3DGroup.Transform>
+                                <Transform3DGroup>
+                                    <Transform3DGroup.Children>
+                                        <Transform3DCollection>
+
+                                            <ScaleTransform3D ScaleX="1" ScaleY="1" ScaleZ="1" />
+                                            <RotateTransform3D>
+                                                <RotateTransform3D.Rotation>
+                                                    <AxisAngleRotation3D Axis="0 1 0" Angle="30" />
+                                                </RotateTransform3D.Rotation>
+                                            </RotateTransform3D>
+                                            <TranslateTransform3D OffsetX="0" OffsetY="0" OffsetZ="0" />
+
+                                        </Transform3DCollection>
+                                    </Transform3DGroup.Children>
+                                </Transform3DGroup>
+                            </Model3DGroup.Transform>
+
+                            <Model3DGroup.Children>
+
+                                <!-- Group Child 0 -->
+
+                                <Model3DGroup>
+                                    <Model3DGroup.Transform>
+                                        <Transform3DGroup>
+                                            <Transform3DGroup.Children>
+                                                <Transform3DCollection>
+
+                                                    <ScaleTransform3D ScaleX="1" ScaleY="1" ScaleZ="1" />
+                                                    <RotateTransform3D>
+                                                        <RotateTransform3D.Rotation>
+                                                            <AxisAngleRotation3D Axis="0 1 0" Angle="0" />
+                                                        </RotateTransform3D.Rotation>
+                                                    </RotateTransform3D>
+                                                    <TranslateTransform3D OffsetX="0" OffsetY="0" OffsetZ="0" />
+
+                                                </Transform3DCollection>
+                                            </Transform3DGroup.Children>
+                                        </Transform3DGroup>
+                                    </Model3DGroup.Transform>
+
+                                    <Model3DGroup.Children>
+
+                                        <AmbientLight Color="#ffcccccc" />
+                                        <DirectionalLight Color="LightGray" Direction="-1,-1,-1" />
+
+                                        <!-- Child 2 -->
+
+                                        <GeometryModel3D Geometry="{StaticResource PlaneMeshTop}">
+                                            <GeometryModel3D.Transform>
+                                                <Transform3DGroup>
+                                                    <Transform3DGroup.Children>
+                                                        <Transform3DCollection>
+
+                                                            <ScaleTransform3D ScaleX="1" ScaleY="0.5" ScaleZ="1" />
+                                                            <RotateTransform3D CenterX="0" CenterY="-0.5" CenterZ="0">
+                                                                <RotateTransform3D.Rotation>
+                                                                    <AxisAngleRotation3D Axis="1 0 0" Angle="0" />
+                                                                </RotateTransform3D.Rotation>
+                                                            </RotateTransform3D>
+                                                            <TranslateTransform3D OffsetX="0" OffsetY="0.5" OffsetZ="0" />
+
+                                                        </Transform3DCollection>
+                                                    </Transform3DGroup.Children>
+                                                </Transform3DGroup>
+                                            </GeometryModel3D.Transform>
+                                        </GeometryModel3D>
+
+
+                                        <!-- Child 3 -->
+
+                                        <GeometryModel3D Geometry="{StaticResource PlaneMeshBottom}">
+                                            <GeometryModel3D.Transform>
+                                                <Transform3DGroup>
+                                                    <Transform3DGroup.Children>
+                                                        <Transform3DCollection>
+                                                            <ScaleTransform3D ScaleX="1" ScaleY="0.5" ScaleZ="1" />
+                                                            <RotateTransform3D>
+                                                                <RotateTransform3D.Rotation>
+                                                                    <AxisAngleRotation3D Axis="0 1 0" Angle="0" />
+                                                                </RotateTransform3D.Rotation>
+                                                            </RotateTransform3D>
+                                                            <TranslateTransform3D OffsetX="0" OffsetY="-0.5"
+                                                                                  OffsetZ="0" />
+                                                        </Transform3DCollection>
+                                                    </Transform3DGroup.Children>
+                                                </Transform3DGroup>
+                                            </GeometryModel3D.Transform>
+                                        </GeometryModel3D>
+                                    </Model3DGroup.Children>
+                                </Model3DGroup>
+
+                                <!-- Group Child 1 -->
+
+                                <Model3DGroup>
+                                    <Model3DGroup.Transform>
+                                        <Transform3DGroup>
+                                            <Transform3DGroup.Children>
+                                                <Transform3DCollection>
+                                                    <ScaleTransform3D ScaleX="1" ScaleY="0.5" ScaleZ="1" />
+                                                    <RotateTransform3D CenterX="0" CenterY="-0.5" CenterZ="0">
+                                                        <RotateTransform3D.Rotation>
+                                                            <AxisAngleRotation3D Axis="1 0 0" Angle="0" />
+                                                        </RotateTransform3D.Rotation>
+                                                    </RotateTransform3D>
+                                                    <TranslateTransform3D OffsetX="0" OffsetY="0.5" OffsetZ="0" />
+                                                </Transform3DCollection>
+                                            </Transform3DGroup.Children>
+                                        </Transform3DGroup>
+                                    </Model3DGroup.Transform>
+
+                                    <Model3DGroup.Children>
+
+                                        <!-- Child 0 -->
+
+                                        <GeometryModel3D Geometry="{StaticResource PlaneMeshTop}">
+                                            <GeometryModel3D.Transform>
+                                                <Transform3DGroup>
+                                                    <Transform3DGroup.Children>
+                                                        <Transform3DCollection>
+
+                                                            <ScaleTransform3D ScaleX="1" ScaleY="1" ScaleZ="1" />
+                                                            <RotateTransform3D>
+                                                                <RotateTransform3D.Rotation>
+                                                                    <AxisAngleRotation3D Axis="0 1 0" Angle="0" />
+                                                                </RotateTransform3D.Rotation>
+                                                            </RotateTransform3D>
+                                                            <TranslateTransform3D OffsetX="0" OffsetY="0" OffsetZ="0" />
+
+                                                        </Transform3DCollection>
+                                                    </Transform3DGroup.Children>
+                                                </Transform3DGroup>
+                                            </GeometryModel3D.Transform>
+                                        </GeometryModel3D>
+
+                                        <!-- Child 1 -->
+                                        <GeometryModel3D Geometry="{StaticResource PlaneMeshBackBottom}">
+                                            <GeometryModel3D.Transform>
+                                                <Transform3DGroup>
+                                                    <Transform3DGroup.Children>
+                                                        <Transform3DCollection>
+
+                                                            <ScaleTransform3D ScaleX="1" ScaleY="1" ScaleZ="1" />
+                                                            <RotateTransform3D>
+                                                                <RotateTransform3D.Rotation>
+                                                                    <AxisAngleRotation3D Axis="0 1 0" Angle="0" />
+                                                                </RotateTransform3D.Rotation>
+                                                            </RotateTransform3D>
+                                                            <TranslateTransform3D OffsetX="0" OffsetY="0" OffsetZ="0" />
+
+                                                        </Transform3DCollection>
+                                                    </Transform3DGroup.Children>
+                                                </Transform3DGroup>
+                                            </GeometryModel3D.Transform>
+                                        </GeometryModel3D>
+                                    </Model3DGroup.Children>
+                                </Model3DGroup>
+                            </Model3DGroup.Children>
+                        </Model3DGroup>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </Viewport3D.Children>
+        </Viewport3D>
+    </Grid>
+</Window>

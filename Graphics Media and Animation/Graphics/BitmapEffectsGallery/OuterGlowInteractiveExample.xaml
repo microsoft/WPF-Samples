@@ -1,0 +1,73 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="SDKSample.OuterGlowInteractiveExample"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+        <TextBlock>
+          Change the property values of the OuterGlowBitMapEffect.
+        </TextBlock>
+      </Border>
+
+      <StackPanel Margin="20" Orientation="Horizontal">
+
+        <!-- This Grid holds the controls used to interactively change property values of the BitmapEffect. -->
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <!-- Control to interactively change the GlowSize of the OuterGlowBitmapEffect.-->
+          <Label Grid.Row="1" Grid.Column="0">GlowSize</Label>
+          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=GlowSize, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the GlowColor of the OuterGlowBitmapEffect.-->
+          <Label Grid.Row="2" Grid.Column="0">GlowColor</Label>
+          <ComboBox Grid.Row="2" Grid.Column="1" Name="cbColor">
+             <ComboBoxItem>Red</ComboBoxItem>
+             <ComboBoxItem IsSelected="True">Blue</ComboBoxItem>
+             <ComboBoxItem>Green</ComboBoxItem>
+             <ComboBoxItem>Yellow</ComboBoxItem>
+          </ComboBox>
+
+          <!-- Control to interactively change the Noise of the OuterGlowBitmapEffect.-->
+          <Label Grid.Row="3" Grid.Column="0">Noise (0-1)</Label>
+          <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Noise, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the Opacity of the OuterGlowBitmapEffect.-->
+          <Label Grid.Row="4" Grid.Column="0">Opacity (0-1)</Label>
+          <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Opacity, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+
+
+        <TextBox Width="200" Margin="100">
+          <TextBox.BitmapEffect>
+
+            <!-- Apply an OuterGlowBitmapEffect to the TextBox. The properties of this OuterGlowBitmapEffect
+                 are dynamically changed by the controls in this sample. -->
+            <OuterGlowBitmapEffect x:Name="InteractiveEffect" 
+             GlowSize="30">
+              <OuterGlowBitmapEffect.GlowColor>
+                <Binding ElementName="cbColor" Path="SelectedValue.Content" />
+              </OuterGlowBitmapEffect.GlowColor>
+            </OuterGlowBitmapEffect>
+
+          </TextBox.BitmapEffect>
+        </TextBox>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

@@ -1,0 +1,76 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  TextAlignment="Justify" 
+  IsOptimalParagraphEnabled="True"
+  IsHyphenationEnabled="True"
+  IsColumnWidthFlexible="True"
+  Background="AliceBlue"
+  ColumnWidth="300"
+  ColumnGap="20"
+>
+  <Paragraph>
+    <Italic>
+      “One of the most important operations necessary when text materials
+      are prepared for printing or display is the task of dividing long
+      paragraphs into individual lines. When this job has been done well,
+      people will not be aware of the fact that the words they are reading
+      have been broken apart arbitrarily and placed into a somewhat rigid
+      and unnatural rectangular framework; but if the job has been done
+      poorly, readers will be distracted by bad breaks that interrupt
+      their train of thought.”
+    </Italic>
+  </Paragraph>
+  <Paragraph>
+    <Hyperlink NavigateUri="http://www-cs-faculty.stanford.edu/~knuth/">
+      - Donald E. Knuth
+    </Hyperlink>
+  </Paragraph>
+  <Paragraph>
+    <Bold>
+      Principle of Optimal Paragraph
+    </Bold>
+  </Paragraph>
+  <Paragraph>
+    Knuth started his revolutionary work of developing a computer program to
+    produce high quality publication in the late ’70. The program he developed
+    called TEX (pronounced “tek”) is highly regarded as the work that helps
+    shape the field of digital typography and desktop publishing. It is still
+    being widely used and constantly extended by many others up to today. One
+    of the most intriguing inventions in this program is its ability to produce
+    superior quality paragraph layout for printing and reading purpose – arguably
+    comparable to the work manually done by most respectable publishers of the
+    modern times.  This typographically beautiful paragraph layout is driven by
+    a line breaking algorithm known as <Italic>total-fit</Italic> or
+    <Italic>optimum-fit</Italic> algorithm. Some call the kind of paragraph
+    produced by this algorithm <Italic>Optimal Paragraph</Italic>.
+  </Paragraph>
+  <Paragraph>
+    In principle, the task of text formatting consists of two main components:
+    choosing where to end individual lines and how to justify the lines. The first
+    component may involve the task of word division called <Italic>hyphenation</Italic>.
+    Line justification is the task of fitting a line into a desired width. Usually
+    it is done by distributing the extra space into or taking out excess space
+    from inter-word spaces in the line. Line justification is strongly dependent
+    to line breaking. When line breaking is done properly, justification can be
+    done without the need to change the spacing too much and thereby avoiding
+    holes between words that would distress the eyes of the reader.
+  </Paragraph>
+  <Paragraph>
+    Unlike a standard line breaking algorithm which breaks the line without taking
+    into account the line that may come after it, the total-fit algorithm breaks
+    line by looking ahead on what may come later in the paragraph and make a single
+    decision to break all the lines at once.  The main idea of the algorithm is to
+    provide a way to break a paragraph into lines so that the inter-word spacing is
+    balanced between all the lines of the paragraph. This is attained by choosing
+    the sequence of breakpoints with the minimal total cost over all lines. The
+    cost of a line depends on many factors that can affect the visual appearance
+    of the line, such as the measure of inter-word space changing, the division of
+    the last word of the line, etc.
+  </Paragraph>
+
+  <Paragraph>
+    A paragraph is considered optimal when all inter-word spaces over all lines are set as
+    close as possible to the ideal inter-word spaces. Therefore, an optimum paragraph is in
+    fact a paragraph composed in such a way that the total contrast of inter-word spaces set
+    in all lines with the ideal inter-word spaces cannot be reduced anymore.
+  </Paragraph>
+</FlowDocument>

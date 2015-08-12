@@ -1,0 +1,92 @@
+
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="ClipExample"
+  WindowTitle="Clip Examples">
+  <StackPanel Orientation="Horizontal" Background="{StaticResource MyScissorsBrushResource}">
+  
+    <StackPanel Margin="10">
+      <TextBlock>No Clip</TextBlock>
+      <Image Source="sampleImages\Waterlilies.jpg" 
+        Width="200" Height="150" HorizontalAlignment="Left" />
+
+      <TextBlock>Triangular Clip Example</TextBlock> 
+      <Image  
+        Clip="M0,150 L100,0 200,150Z"
+        Source="sampleImages\Waterlilies.jpg" 
+        Width="200" Height="150" HorizontalAlignment="Left" />
+
+
+      <TextBlock>Elliptical Clip Example</TextBlock>
+      <Image 
+        Source="sampleImages\Waterlilies.jpg" 
+        Width="200" Height="150" HorizontalAlignment="Left">
+        <Image.Clip>
+          <EllipseGeometry
+            RadiusX="100"
+            RadiusY="75"
+            Center="100,75"/>
+        </Image.Clip>
+      </Image>
+    </StackPanel>
+      
+
+    <StackPanel Margin="10">
+      <TextBlock>Animated Clip Examples</TextBlock>
+      
+      <Image
+        Source="sampleImages\Waterlilies.jpg" 
+        Width="200" Height="150" HorizontalAlignment="Left">
+        <Image.Clip>
+          <EllipseGeometry x:Name="MyEllipseGeometry1"
+            RadiusX="100"
+            RadiusY="75"
+            Center="100,75"/>
+        </Image.Clip>
+        <Image.Triggers>
+          <EventTrigger RoutedEvent="Image.Loaded">
+            <BeginStoryboard>
+              <Storyboard>
+                <PointAnimation 
+                  Storyboard.TargetName="MyEllipseGeometry1" 
+                  Storyboard.TargetProperty="(EllipseGeometry.Center)"
+                  From="0,0" To="200,150" Duration="0:0:3" RepeatBehavior="Forever" 
+                  AutoReverse="True" />
+                </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Image.Triggers>
+      </Image> 
+      
+      <Image
+        Source="sampleImages\Waterlilies.jpg" 
+        Width="200" Height="150" HorizontalAlignment="Left">
+        <Image.Clip>
+          <EllipseGeometry x:Name="MyEllipseGeometry2"
+            RadiusX="100"
+            RadiusY="75"
+            Center="100,75"/>
+        </Image.Clip>
+        <Image.Triggers>
+          <EventTrigger RoutedEvent="Image.Loaded">
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation 
+                  Storyboard.TargetName="MyEllipseGeometry2" 
+                  Storyboard.TargetProperty="(EllipseGeometry.RadiusX)"
+                  From="0" To="150" Duration="0:0:3" RepeatBehavior="Forever" AutoReverse="True" />
+                <DoubleAnimation 
+                  Storyboard.TargetName="MyEllipseGeometry2" 
+                  Storyboard.TargetProperty="(EllipseGeometry.RadiusY)" 
+                  From="0" To="150" Duration="0:0:3" RepeatBehavior="Forever" AutoReverse="True" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Image.Triggers>        
+      </Image>  
+      
+    </StackPanel>
+  </StackPanel>
+</Page>
+

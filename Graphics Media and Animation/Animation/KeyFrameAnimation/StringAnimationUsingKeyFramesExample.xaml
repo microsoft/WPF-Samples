@@ -1,0 +1,48 @@
+<!-- Demonstrates the StringAnimationUsingKeyFrames class. A StringAnimationUsingKeyFrames is used to
+   animate the TextContent property of a Text element. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="StringAnimationUsingKeyFrames Example">
+
+  <StackPanel HorizontalAlignment="Center">
+
+
+
+
+    <Button Name="myAnimatedButton" Margin="200"
+      FontSize="16pt" FontFamily="Verdana">
+      Some Text
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+              <StringAnimationUsingKeyFrames 
+                Storyboard.TargetName="myAnimatedButton" Storyboard.TargetProperty="Content"
+                Duration="0:0:8" FillBehavior="HoldEnd">
+                <DiscreteStringKeyFrame Value="" KeyTime="0:0:0" />
+                <DiscreteStringKeyFrame Value="A" KeyTime="0:0:1" />
+                <DiscreteStringKeyFrame Value="An" KeyTime="0:0:1.5" />
+                <DiscreteStringKeyFrame Value="Ani" KeyTime="0:0:2" />
+                <DiscreteStringKeyFrame Value="Anim" KeyTime="0:0:2.5" />
+                <DiscreteStringKeyFrame Value="Anima" KeyTime="0:0:3" />
+                <DiscreteStringKeyFrame Value="Animat" KeyTime="0:0:3.5" />
+                <DiscreteStringKeyFrame Value="Animate" KeyTime="0:0:4" />
+                <DiscreteStringKeyFrame Value="Animated" KeyTime="0:0:4.5" />
+                <DiscreteStringKeyFrame Value="Animated " KeyTime="0:0:5" />
+                <DiscreteStringKeyFrame Value="Animated T" KeyTime="0:0:5.5" />
+                <DiscreteStringKeyFrame Value="Animated Te" KeyTime="0:0:6" />
+                <DiscreteStringKeyFrame Value="Animated Tex" KeyTime="0:0:6.5" />
+                <DiscreteStringKeyFrame Value="Animated Text" KeyTime="0:0:7" />
+              </StringAnimationUsingKeyFrames>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+
+
+
+
+
+  </StackPanel>
+</Page>

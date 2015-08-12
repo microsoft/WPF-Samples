@@ -1,0 +1,103 @@
+<!-- This example enables you to control the properties of an ImageBrush. -->
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="ImageBrush.InteractiveExample"
+  Loaded="InteractiveExampleLoaded">
+    
+  <Grid Margin="20" MinWidth="600">
+  
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+
+
+    <Rectangle Style="{StaticResource MyAnimatedRectangleStyle}"
+        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0,0,10" />
+
+    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"  
+      BorderBrush="Black" BorderThickness="6" Margin="0,0,0,10">
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.0" Color="#993399FF" />
+            <GradientStop Offset="1.0" Color="#996600FF" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Border.Background>
+
+      <DockPanel Margin="10">
+
+
+        <RadioButton Name="MyDefaultImageButton"
+          Checked="SetSelectedButton" Margin="5">
+          <Image  Height="50" Width="50" Source="sampleImages\blueberries.jpg" />
+        </RadioButton>
+        <RadioButton Checked="SetSelectedButton" Margin="5">
+          <Image Height="50" Width="50" Source="sampleImages\sunset.jpg" />
+        </RadioButton>
+        <RadioButton Checked="SetSelectedButton" Margin="5">
+          <Image Height="50" Width="50" Source="sampleImages\apple.jpg" />
+        </RadioButton>
+        <RadioButton Checked="SetSelectedButton" Margin="5">
+          <Image Height="50" Width="50" Source="sampleImages\hummingbird.jpg" />
+        </RadioButton>
+
+
+        <TextBlock DockPanel.Dock="Left" Margin="10" TextWrapping="Wrap">
+          The following controls enable you to customize an ImageBrush.
+          Specify the ImageBrush's properties and click <Bold>Apply</Bold>
+          to view the ImageBrush.
+        </TextBlock>
+
+
+      </DockPanel>
+    </Border>
+
+    <Label Grid.Row="1" Grid.Column="0">Stretch:</Label>
+    <ComboBox Grid.Row="1" Grid.Column="1" Name="stretchSelector" />
+    <Label Grid.Row="2" Grid.Column="0">AlignmentX:</Label>
+    <ComboBox Grid.Row="2" Grid.Column="1" Name="horizontalAlignmentSelector" />
+    <Label Grid.Row="3" Grid.Column="0">AlignmentY:</Label>
+    <ComboBox Grid.Row="3" Grid.Column="1" Name="verticalAlignmentSelector" />
+    <Label Grid.Row="4" Grid.Column="0">Tile:</Label>
+    <ComboBox Grid.Row="4" Grid.Column="1" Name="tileSelector" />
+    <Label Grid.Row="1" Grid.Column="2">Viewport:</Label>
+    <TextBox Grid.Row="1" Grid.Column="3" Name="viewportEntry" />
+    <Label Grid.Row="2" Grid.Column="2">ViewportUnits:</Label>
+    <ComboBox Grid.Row="2" Grid.Column="3" Name="viewportUnitsSelector" />
+    <Label Grid.Row="3" Grid.Column="2">Viewbox:</Label>
+    <TextBox Grid.Row="3" Grid.Column="3" Name="viewboxEntry" />
+    <Label Grid.Row="4" Grid.Column="2">ViewboxUnits:</Label>
+    <StackPanel Grid.Row="4" Grid.Column="3" VerticalAlignment="Center"
+      HorizontalAlignment="Left">
+      <ComboBox Grid.Row="4" Grid.Column="3" Name="viewboxUnitsSelector" />
+    </StackPanel>
+
+    <Button
+      Grid.Row="5" Grid.Column="0" Click="UpdateBrush" >Apply</Button>
+
+    <Rectangle Name="displayRectangle"
+      Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4"    
+      MinHeight="200" MinWidth="200" Stroke="Blue"
+      Margin="0,10,0,10">
+      <Rectangle.Fill>
+        <ImageBrush x:Name="myImageBrush" 
+          ImageSource="sampleImages\blueberries.jpg" />
+      </Rectangle.Fill>
+    </Rectangle>
+
+  </Grid>
+</Page>
