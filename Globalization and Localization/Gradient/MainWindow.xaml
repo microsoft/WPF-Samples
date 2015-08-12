@@ -1,0 +1,32 @@
+﻿<Window x:Class="Gradient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gradient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <ToolBar FlowDirection="RightToLeft" Height="50" DockPanel.Dock="Top">
+            <ToolBar.Background>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="DarkRed" Offset="0" />
+                        <GradientStop Color="DarkBlue" Offset="0.3" />
+                        <GradientStop Color="LightBlue" Offset="0.6" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </ToolBar.Background>
+
+            <Button FontSize="12" Foreground="White">Button1</Button>
+            <Rectangle Width="20"/>
+            <Button FontSize="12" Foreground="White">Button2</Button>
+            <Rectangle Width="20"/>
+            <Button FontSize="12" Foreground="White">Button3</Button>
+            <Rectangle Width="20"/>
+            <Button FontSize="12" Foreground="White">Button4</Button>
+            <Rectangle Width="20"/>
+        </ToolBar>
+    </DockPanel>
+</Window>

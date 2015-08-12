@@ -1,0 +1,115 @@
+<Examples xmlns="">
+  <Example
+    Title="Introduction"
+    ExampleClass="BrushesIntroduction.BrushTypesExample"
+    Uri="BrushTypesExample.xaml">
+    <Description>Shows simple examples of each of the brush types.</Description>
+  </Example>
+
+
+  <Example Title="SolidColorBrush">
+
+    <Children>
+
+      <Example Title="Syntax"
+        Uri="SolidColorBrushSyntax.xaml">
+        <Description>Uses different methods to specify the same color.</Description>
+      </Example>
+
+      <Example Title="SolidColorBrush Animation"
+        Uri="AnimatingSolidColorBrushExample.xaml">
+        <Description>Animates a SolidColorBrush.</Description>
+      </Example>
+    </Children>
+  </Example>
+
+
+  <Example Title="Predefined Brushes"
+    ExampleClass="BrushesIntroduction.PredefinedBrushes"
+    Uri="PredefinedBrushes.xaml">
+    <Description>Lists the predefined colors.</Description>
+  </Example>
+
+
+  <Example Title="Brush Property Examples">
+    <Children>
+      <Example Title="Opacity"
+        ExampleClass="BrushesIntroduction.BrushOpacityExample"
+        Uri="BrushOpacityExample.xaml">
+        <Description>Demonstrates the Brush.Opacity property.</Description>
+      </Example>
+
+      <Example Title="Transform"
+        ExampleClass="BrushesIntroduction.BrushTransformExample"
+        Uri="BrushTransformExample.xaml">
+        <Description>Shows the differences between the Brush.Transform and Brush.RelativeTransform properties.</Description>
+      </Example>
+    </Children>
+  </Example>
+
+
+  <Example Title="Gradient Examples">
+    <Children>
+
+      <Example Title="Gradient Brushes"
+        ExampleClass="BrushesIntroduction.GradientBrushesExample"
+        Uri="GradientBrushesExample.xaml">
+        <Description>Shows linear and radial gradient examples.</Description>
+      </Example>
+
+      <Example Title="LinearGradientBrush Examples">
+        <Description>Examples of the LinearGradientBrush class.</Description>
+        <Children>
+          <Example Title="LinearGradientBrush Animation"
+             ExampleClass="BrushesIntroduction.LinearGradientBrushAnimationExample"
+             Uri="LinearGradientBrushAnimationExample.xaml">
+            <Description>Animates a LinearGradientBrush.</Description>
+          </Example>
+          <Example Title="Interactive Example"
+             ExampleClass="BrushesIntroduction.InteractiveLinearGradientBrushExample"
+             Uri="InteractiveLinearGradientBrushExample.xaml">
+            <Description>Enables you to interactively control a LinearGradientBrush.</Description>
+          </Example>
+        </Children>
+      </Example>
+
+      <Example Title="RadialGradientBrush Examples">
+        <Children>
+          <Example Title="RadialGradientBrush"
+             ExampleClass="BrushesIntroduction.RadialGradientBrushExample"
+             Uri="RadialGradientBrushExample.xaml">
+            <Description>Shows several radial gradients.</Description>
+          </Example>
+          <Example Title="RadialGradientBrush Animation"
+            ExampleClass="BrushesIntroduction.RadialGradientBrushAnimationExample"
+            Uri="RadialGradientBrushAnimationExample.xaml">
+            <Description>Shows animated radial gradients.</Description>
+          </Example>
+        </Children>
+      </Example>
+      <Example Title="GradientSpread"
+         ExampleClass="BrushesIntroduction.GradientSpreadExample"
+         Uri="GradientSpreadExample.xaml">
+        <Description>Shows the different GradientSpread settings.</Description>
+      </Example>
+    </Children>
+  </Example>
+
+
+  <Example Title="Pen Examples">
+    <Children>
+      <Example Title="Dashes"
+        ExampleClass="BrushesIntroduction.DashExample"
+        Uri="DashExample.xaml">
+        <Description>Shows how to create a dash pattern.</Description>
+      </Example>
+    </Children>
+  </Example>
+
+
+
+
+
+
+
+</Examples>

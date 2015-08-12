@@ -1,0 +1,368 @@
+﻿<Window x:Class="ClipboardViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClipboardViewer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="WindowLoaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5" Name="dividerColumn" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Border>
+            <StackPanel>
+                <Button
+          Content="Clear Clipboard"
+          Click="ClearClipboard"
+          Margin="2"/>
+
+                <Separator/>
+
+                <Label>Current Clipboard Format:</Label>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbAudio"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="2"
+            Padding="0,0,0,0"
+          />
+                    <Label>Audio</Label>
+                </StackPanel>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbFileDropList"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="2"
+            Padding="0,0,0,0"
+          />
+                    <Label>FileDropList</Label>
+                </StackPanel>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbImage"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="2"
+            Padding="0,0,0,0"
+          />
+                    <Label>Image</Label>
+                </StackPanel>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbText"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="2"
+            Padding="0,0,0,0"
+          />
+                    <Label>Text</Label>
+                </StackPanel>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbRtf"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="2"
+            Padding="0,0,0,0"
+          />
+                    <Label>RTF</Label>
+                </StackPanel>
+
+                <StackPanel
+          Orientation="Horizontal"
+        >
+                    <CheckBox
+            Name="cbXaml"
+            IsEnabled="False"
+            IsChecked="False"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="2"
+            Padding="0,0,0,0"
+          />
+                    <Label>Xaml</Label>
+                </StackPanel>
+
+                <Button
+          Content="Refresh"
+          Click="RefreshClipboardDataFormatStatus"
+          Margin="2"
+        />
+
+                <Separator/>
+
+                <Button
+          Content="Dump All Clipboard Contents"
+          Click="DumpAllClipboardContents"
+          Margin="2"
+        />
+
+                <Separator/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+            Grid.Column="0"
+            BorderBrush="Black"
+            BorderThickness="1"
+            Margin="2"
+          >
+                        <StackPanel>
+                            <Label>Copy(Set) Format:</Label>
+
+                            <StackPanel
+                Orientation="Horizontal"
+              >
+                                <CheckBox
+                  Name="cbCopyRtfDataFormat"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Margin="2"
+                  Padding="0,0,0,0"
+                />
+                                <Label>Rich Text Format</Label>
+                            </StackPanel>
+
+                            <StackPanel
+                Orientation="Horizontal"
+              >
+                                <CheckBox
+                  Name="cbCopyTextDataFormat"
+                  IsChecked="True"            
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Margin="2"
+                  Padding="0,0,0,0"
+                />
+                                <Label>Text</Label>
+                            </StackPanel>
+
+                            <StackPanel
+                Orientation="Horizontal"
+              >
+                                <CheckBox
+                  Name="cbCopyXamlDataFormat"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Margin="2"
+                  Padding="0,0,0,0"
+                />
+                                <Label>Xaml</Label>
+                            </StackPanel>
+
+                            <StackPanel
+                Orientation="Horizontal"
+              >
+                                <CheckBox
+                  Name="cbCustomSampleDataFormat"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Margin="2"
+                  Padding="0,0,0,0"
+                />
+                                <Label>CustomSample</Label>
+                            </StackPanel>
+
+                            <Button
+                Content="Copy To Clipboard"
+                Click="CopyToClipboard"
+                Margin="2"
+              />
+
+                            <Separator/>
+
+                            <StackPanel>
+                                <Label >Copy Data From:</Label>
+                                <RadioButton 
+                    Name="rbCopyDataFromRichTextBox" 
+                    Margin="2" 
+                    GroupName="CopyDataFrom" 
+                    IsChecked="True"
+                >RichTextBox</RadioButton>
+                                <RadioButton 
+                    Name="rbCopyDataFromFile" 
+                    Margin="2" 
+                    GroupName="CopyDataFrom"
+                >File</RadioButton>
+
+                            </StackPanel>
+
+                            <Separator/>
+
+                            <StackPanel
+                Orientation="Horizontal"
+              >
+                                <CheckBox
+                  Name="cbFlushOnCopy"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Margin="2"
+                  Padding="0,0,0,0"
+                />
+                                <Label>Flush On Copy</Label>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
+
+                    <Border 
+            Grid.Column="1"
+            BorderBrush="Black"
+            BorderThickness="1"
+            Margin="2"
+          >
+                        <StackPanel>
+                            <Label>Paste(Get) Format:</Label>
+                            <ListBox
+                Name="lbPasteDataFormat" 
+                Height="90"
+                Margin="2"
+              />
+
+                            <Button
+                Content="Paste From Clipboard"
+                Click="PasteFromClipboard"
+                Margin="2"
+              />
+
+                            <Separator/>
+
+                            <StackPanel>
+                                <Label >Paste Data To:</Label>
+                                <RadioButton 
+                    Name="rbPasteDataToRichTextBox"
+                    Margin="2" 
+                    GroupName="PasteDataTo" 
+                    IsChecked="True"
+                >RichTextBox</RadioButton>
+                                <RadioButton 
+                    Name="rbPasteDataToFile"
+                    Margin="2" 
+                    GroupName="PasteDataTo"
+                >File</RadioButton>
+                            </StackPanel>
+
+                            <Separator/>
+
+                            <StackPanel
+                Orientation="Horizontal"
+              >
+                                <CheckBox
+                  Name="cbAutoConvertibleData"
+                  IsChecked="True" 
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Margin="2"
+                  Padding="0,0,0,0"
+                />
+                                <Label>AutoConvert</Label>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+            </StackPanel>
+
+        </Border>
+
+
+        <GridSplitter
+        Name="splitter"
+        Grid.Column="1"
+        ResizeDirection="Columns"
+        ResizeBehavior="PreviousAndNext"
+        HorizontalAlignment="Stretch" 
+      />
+
+
+        <Border 
+        Grid.Column="2"
+        BorderBrush="Black"
+        BorderThickness="1"
+      >
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0">Clipboard Status Information:</Label>
+
+                <TextBox
+            Name="clipboardInfo" 
+            IsReadOnly="True"
+            AcceptsReturn="True"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            Grid.Row="1"  
+          />
+
+                <Border 
+            Grid.Row="2" 
+            BorderBrush="Black"
+            BorderThickness="1"
+          >
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="5">Copy/Paste Clipboard Data From/To RichTextBox:</TextBlock>
+                            <Button
+                Content="Clear RichTextBox"
+                Click="ClearRichTextBox"
+                Margin="2"
+              />
+                        </StackPanel>
+
+                        <RichTextBox
+            Name="richTextBox" 
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            Height="100"
+            Margin="3"
+            BorderThickness="2"
+          />
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

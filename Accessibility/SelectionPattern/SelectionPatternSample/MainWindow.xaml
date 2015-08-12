@@ -1,0 +1,40 @@
+﻿<Window x:Class="SelectionPatternSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SelectionPatternSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Client_OnLoad">
+    <Border Background="LightBlue" BorderBrush="Black" Padding="15" BorderThickness="2">
+        <StackPanel Name="stackFrame" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button Margin="10,0,10,0" 
+                Name="buttonStartTarget" 
+                Height="25" 
+                Click="buttonStartTarget_Click" 
+                IsTabStop="True" 
+                KeyboardNavigation.AcceptsReturn="True"  
+                KeyboardNavigation.IsTabStop="True"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top">Start Target App</Button>
+            <TextBlock Margin="10,0,10,0" Name="textControls" HorizontalAlignment="Center">
+          <TextBlock Margin="5,0,5,0" Name="textControlsCounter" />
+          Controls supporting SelectionPattern were found.
+        </TextBlock>
+            <TextBlock Margin="10,0,10,0" 
+                   Name="textFeedback" 
+                   HorizontalAlignment="Center" 
+                   FontWeight="Bold" />
+            <StackPanel Name="Echo"  HorizontalAlignment="Center" Visibility="Hidden" Margin="5,5,5,5">
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Margin="5,5,5,5">
+              Echo user input in:
+              <RadioButton GroupName="Echo" Name="echoTarget"  Click="ChangeEchoDirection">Target</RadioButton>
+              <RadioButton GroupName="Echo" Name="echoClient"  Click="ChangeEchoDirection" IsChecked="True">Client</RadioButton>
+                    </TextBlock>
+                </Border>
+            </StackPanel>
+            <WrapPanel Name="stackControls" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        </StackPanel>
+    </Border>
+</Window>

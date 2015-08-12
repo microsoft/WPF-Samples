@@ -1,0 +1,11 @@
+﻿<!-- <snippet20> -->
+<UserControl x:Uid="UserControl_1" x:Class="LocalizingWpfInWf.SimpleControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+
+  <Canvas x:Uid="Canvas_1">
+    <Button x:Uid="Button_1" Content="Hello"/>
+  </Canvas>
+</UserControl>
+

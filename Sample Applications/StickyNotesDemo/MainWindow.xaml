@@ -1,0 +1,29 @@
+﻿<Window x:Class="StickyNotesDemo.MainWindow"
+        xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
+        xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+        Loaded="WindowLoaded"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        Name="AppWindow"
+        Height="60"
+        Width="60"
+        MaxHeight="60"
+        MaxWidth="60"
+        Background="Yellow"
+        Topmost="True">
+    <Window.Resources>
+    </Window.Resources>
+    <Window.ContextMenu>
+        <ContextMenu Background="Wheat">
+            <WrapPanel>
+                <CheckBox Padding="0" Margin="0" IsChecked="True" VerticalAlignment="Center" BorderThickness="0"
+                          Name="cb" Click="cb_Click" />
+                <Label Padding="0" Margin="0" MouseLeftButtonUp="l_MouseLeftButtonUp">AlwaysOnTop</Label>
+            </WrapPanel>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <StackPanel Background="Yellow">
+        <Label Content="New " Name="TextLabel" />
+    </StackPanel>
+</Window>

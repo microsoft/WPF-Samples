@@ -1,0 +1,23 @@
+﻿<Window x:Class="FlowDirection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlowDirection"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" FlowDirection="RightToLeft">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" >
+          This is a right-to-left TextBlock
+        </TextBlock>
+
+        <TextBlock Grid.Column="1" FlowDirection="LeftToRight">
+          This is a left-to-right TextBlock
+        </TextBlock>
+    </Grid>
+</Window>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="Image.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Image"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel FlowDirection="RightToLeft">
+        <Image Source="ms_logo.jpg" 
+         Width="147" Height="50"/>
+        <Separator Height="10"/>
+        <Image Source="ms_logo.jpg" 
+         Width="147" Height="50" FlowDirection="LeftToRight" />
+        <Separator Height="10"/>
+        <Image Source="ms_logo.jpg" 
+         Width="147" Height="50" FlowDirection="RightToLeft"/>
+    </StackPanel>
+</Window>

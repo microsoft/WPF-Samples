@@ -1,0 +1,86 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="680" Margin="0,10,0,0">
+      <TextBlock>
+        This example demonstrates how to apply a BitmapEffect to a portion of an Image using the BitmapEffectInput property.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Margin="0,20,20,0" Orientation="Horizontal">
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">No BitMapEffect</TextBlock>
+        <Image Width="300" Source="/images/WaterLilies.jpg" Margin="5" />
+        </StackPanel>
+
+      <StackPanel Margin="0,20,20,20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">Apply an Effect to an Area</TextBlock>
+        <Image Width="300" Source="/images/WaterLilies.jpg" Margin="10" DockPanel.Dock="Left">
+          <Image.BitmapEffect>
+
+            <!-- Effect to Apply to the Image -->
+            <EmbossBitmapEffect Relief="0.8" LightAngle="320" />
+          </Image.BitmapEffect>
+          <Image.BitmapEffectInput>
+
+            <!-- BitmapEffectInput is used to apply the bitmap effect to a specified
+                 region of the visual. When this property is not used, the effect
+                 is applied to the entire visual.
+          
+               AreaToApplyEffect is a rectangular area in which to apply the effect.
+               - When AreaToApplyEffectUnits is "Absolute", the rectangle is read as
+                 pixel coordinates within the visual.
+               - When AreaToApplyEffectUnits is "RelativeToBoundingBox",
+                 the rectangle values are relative to the entire bounding box.
+                 Values range between 0 and 1, where (0,0) is the top-left corner
+                 and (1,1) is the bottom-right corner. -->
+
+            <BitmapEffectInput AreaToApplyEffect=".25,.25,.50,.50" AreaToApplyEffectUnits="RelativeToBoundingBox"/>
+          </Image.BitmapEffectInput>
+        </Image>
+      </StackPanel>
+    </StackPanel>
+    <!-- Displays functional code for demonstration. -->
+    <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="680">
+
+      <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;Image Width="300" Source="/images/WaterLilies.jpg" Margin="10" DockPanel.Dock="Left"&gt;
+          &lt;Image.BitmapEffect&gt;
+            <Bold Foreground="Green">
+            &lt;!-- Effect to Apply to the Image --&gt;</Bold>
+            &lt;EmbossBitmapEffect Relief="0.8" LightAngle="320" /&gt;
+          &lt;/Image.BitmapEffect&gt;
+          &lt;Image.BitmapEffectInput&gt;
+            <Bold Foreground="Green">
+            &lt;!-- BitmapEffectInput is used to apply the bitmap effect to a specified
+                 region of the visual. When this property is not used, the effect
+                 is applied to the entire visual.
+          
+               AreaToApplyEffect is a rectangular area in which to apply the effect.
+               - When AreaToApplyEffectUnits is "Absolute", the rectangle is read as
+                 pixel coordinates within the visual.
+               - When AreaToApplyEffectUnits is "RelativeToBoundingBox",
+                 the rectangle values are relative to the entire bounding box.
+                 Values range between 0 and 1, where (0,0) is the top-left corner
+                 and (1,1) is the bottom-right corner. When AreaToApplyEffectUnits is
+                 set to "Absolute", rectangle values are defined absolutely within the
+                 bounding box. --&gt;</Bold>
+
+            &lt;BitmapEffectInput AreaToApplyEffect=".25,.25,.50,.50" 
+            AreaToApplyEffectUnits="RelativeToBoundingBox"/&gt;
+           <Bold Foreground="Green">&lt;!-- The equivalent of above using absolute positioning is: 
+           &lt;BitmapEffectInput AreaToApplyEffect="60,50,180,135" AreaToApplyEffectUnits="Absolute"/&gt; </Bold>
+          &lt;/Image.BitmapEffectInput&gt;
+        &lt;/Image>
+      ...
+      </TextBlock>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

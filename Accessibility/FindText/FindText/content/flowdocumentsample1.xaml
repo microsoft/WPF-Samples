@@ -1,0 +1,7 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    ColumnWidth="400" FontSize="14" FontFamily="Georgia"
+    >
+    <Paragraph>
+        A simple FlowDocument.
+    </Paragraph>
+</FlowDocument>

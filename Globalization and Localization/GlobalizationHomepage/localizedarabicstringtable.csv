@@ -1,0 +1,240 @@
+﻿MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_1:System.Windows.Controls.Border.BorderThickness,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_2:System.Windows.Controls.Border.BorderThickness,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_3:System.Windows.Controls.Border.Background,None,False,True,,\#F1F1F1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_3:System.Windows.Controls.Border.BorderThickness,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_4:System.Windows.Controls.Border.Background,None,False,True,,\#FFF1F1F1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_4:System.Windows.Controls.Border.BorderBrush,None,False,True,,\#FFA9A9A9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_4:System.Windows.Controls.Border.BorderThickness,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_4:System.Windows.UIElement.SnapsToDevicePixels,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_5:System.Windows.Controls.Border.BorderBrush,None,False,True,,\#FFA9A9A9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_5:System.Windows.Controls.Border.BorderThickness,None,False,True,,"1,0,1,1"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_5:System.Windows.UIElement.SnapsToDevicePixels,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_6:System.Windows.Controls.Border.BorderBrush,None,False,True,,\#FFA9A9A9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_6:System.Windows.Controls.Border.BorderThickness,None,False,True,,"0,1,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_7:System.Windows.Controls.Border.Background,None,False,True,,\#FFF1F1F1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_7:System.Windows.Controls.Border.BorderBrush,None,False,True,,\#FFA9A9A9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_7:System.Windows.Controls.Border.BorderThickness,None,False,True,,"0,1,1,1"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_7:System.Windows.Controls.Border.Padding,None,False,True,,"5,5,5,5"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Border_7:System.Windows.UIElement.SnapsToDevicePixels,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_1:System.Windows.Controls.Button.$Content,Button,True,True,,Microsoft United States
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_1:System.Windows.Controls.Control.Foreground,None,False,True,,\#FFFFFFFF
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_10:System.Windows.Controls.Button.$Content,Button,True,True,,أدوات التطوير
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_10:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_11:System.Windows.Controls.Button.$Content,Button,True,True,,حلول للأعمال
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_11:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_12:System.Windows.Controls.Button.$Content,Button,True,True,,Windows Mobile
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_12:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_13:System.Windows.Controls.Button.$Content,Button,True,True,,تسالي
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_13:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_14:System.Windows.Controls.Button.$Content,Button,True,True,,أجهزة
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_14:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_15:System.Windows.Controls.Button.$Content,Button,True,True,,خدمات MSN Arabia
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_15:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_16:System.Windows.Controls.Button.$Content,Button,True,True,,التطوير والدعم للغة العربية
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_16:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_17:System.Windows.Controls.Button.$Content,Button,True,True,,أحداث
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_17:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_18:System.Windows.Controls.Button.$Content,Button,True,True,,أمان
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_18:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_19:System.Windows.Controls.Button.$Content,Button,True,True,,دعم
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_19:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_2:System.Windows.Controls.Button.$Content,Button,True,True,,Microsoft في كل أنحاء العالم
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_2:System.Windows.Controls.Control.Foreground,None,False,True,,\#FFFFFFFF
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_20:System.Windows.Controls.Button.$Content,Button,True,True,,تحميل
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_20:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_21:System.Windows.Controls.Button.$Content,Button,True,True,,Windows Update
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_21:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_22:System.Windows.Controls.Button.$Content,Button,True,True,,مجتمعات
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_22:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_23:System.Windows.Controls.Button.$Content,Button,True,True,,أدوات تعليمية
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_23:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_24:System.Windows.Controls.Button.$Content,Button,True,True,,الترخيص
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_24:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_25:System.Windows.Controls.Button.$Content,Button,True,True,,وظائف
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_25:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_26:System.Windows.Controls.Button.$Content,Button,True,True,,ابحث عن شركاء مايكروسوفت
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_26:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_3:System.Windows.Controls.Button.$Content,Button,True,True,,الشرق الأوسط الرئيسية Microsoft صفحة
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_3:System.Windows.Controls.Control.Foreground,None,False,True,,\#FFFFFFFF
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_4:System.Windows.Controls.Button.$Content,Button,True,True,,بحث
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_4:System.Windows.Controls.Grid.Column,None,False,True,,3
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_4:System.Windows.Controls.Grid.Row,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_5:System.Windows.Controls.Button.$Content,Button,True,True,,اختر منطقتك
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_6:System.Windows.Controls.Button.$Content,Button,True,True,,English
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_6:System.Windows.Controls.Button.Language,Button,True,True,,en-US
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_7:System.Windows.Controls.Button.$Content,Button,True,True,,Windows
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_7:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_8:System.Windows.Controls.Button.$Content,Button,True,True,,Office
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_8:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_9:System.Windows.Controls.Button.$Content,Button,True,True,,Windows Server System
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Button_9:System.Windows.FrameworkElement.Margin,None,False,True,,"10,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,ContentPresenter_1:System.Windows.Controls.ContentPresenter.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,ContentPresenter_2:System.Windows.Controls.ContentPresenter.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,ContentPresenter_3:System.Windows.Controls.ContentPresenter.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,ControlTemplate_1:System.Windows.Controls.ControlTemplate.$Content,None,False,True,,#Border_1;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,ControlTemplate_2:System.Windows.Controls.ControlTemplate.$Content,None,False,True,,#Border_2;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,ControlTemplate_3:System.Windows.Controls.ControlTemplate.$Content,None,False,True,,#Border_3;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,DockPanel_1:System.Windows.Controls.DockPanel.LastChildFill,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,DockPanel_1:System.Windows.FrameworkElement.Height,None,False,True,,600
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,DockPanel_1:System.Windows.FrameworkElement.Width,None,False,True,,800
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,DockPanel_2:System.Windows.Controls.DockPanel.LastChildFill,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,DockPanel_3:System.Windows.Controls.DockPanel.LastChildFill,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_1:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_1:System.Windows.Media.GradientStop.Color,None,False,True,,\#4B92D9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_1:System.Windows.Media.GradientStop.Offset,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_2:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_2:System.Windows.Media.GradientStop.Color,None,False,True,,White
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_2:System.Windows.Media.GradientStop.Offset,None,False,True,,.3
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_3:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_3:System.Windows.Media.GradientStop.Color,None,False,True,,\#0B6CCD
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_3:System.Windows.Media.GradientStop.Offset,None,False,True,,.7
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_4:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_4:System.Windows.Media.GradientStop.Color,None,False,True,,\#0B6CCD
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_4:System.Windows.Media.GradientStop.Offset,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_5:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_5:System.Windows.Media.GradientStop.Color,None,False,True,,\#0B6CCD
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_5:System.Windows.Media.GradientStop.Offset,None,False,True,,0.3
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_6:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_6:System.Windows.Media.GradientStop.Color,None,False,True,,\#ABCCED
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_6:System.Windows.Media.GradientStop.Offset,None,False,True,,.5
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_7:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_7:System.Windows.Media.GradientStop.Color,None,False,True,,White
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_7:System.Windows.Media.GradientStop.Offset,None,False,True,,.7
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_8:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_8:System.Windows.Media.GradientStop.Color,None,False,True,,White
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_8:System.Windows.Media.GradientStop.Offset,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_9:System.Windows.Media.GradientStop.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_9:System.Windows.Media.GradientStop.Color,None,False,True,,\#D9E7F7
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,GradientStop_9:System.Windows.Media.GradientStop.Offset,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_1:System.Windows.Controls.DockPanel.Dock,None,True,False,,Left
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_1:System.Windows.Controls.Image.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_1:System.Windows.Controls.Image.Source,None,False,True,,microsoft_logo.png
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_1:System.Windows.Controls.Image.Stretch,None,True,False,,None
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_1:System.Windows.FrameworkElement.HorizontalAlignment,None,False,True,,Left
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_2:System.Windows.Controls.Image.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_2:System.Windows.Controls.Image.Source,None,False,True,,vista.jpg
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Image_2:System.Windows.Controls.Image.Stretch,None,True,False,,None
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_1:System.Windows.Media.LinearGradientBrush.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_1:System.Windows.Media.LinearGradientBrush.EndPoint,None,True,False,,"1,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_1:System.Windows.Media.LinearGradientBrush.StartPoint,None,True,False,,"0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_2:System.Windows.Media.LinearGradientBrush.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_2:System.Windows.Media.LinearGradientBrush.EndPoint,None,True,False,,"1,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_2:System.Windows.Media.LinearGradientBrush.StartPoint,None,True,False,,"0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_3:System.Windows.Media.LinearGradientBrush.$Content,None,False,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_3:System.Windows.Media.LinearGradientBrush.EndPoint,None,True,False,,"0,1"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,LinearGradientBrush_3:System.Windows.Media.LinearGradientBrush.StartPoint,None,True,False,,"0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:window1.baml,NavigationWindow_1:MicrosoftSaudiArabiaHomepage.Window1.$Content,None,True,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:window1.baml,NavigationWindow_1:System.Windows.FrameworkElement.FlowDirection,None,False,True,This FlowDirection controls the FlowDirection of the navigation bar and window title bar,RightToLeft
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:window1.baml,NavigationWindow_1:System.Windows.Navigation.NavigationWindow.Source,None,True,False,,Homepage.xaml
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:window1.baml,NavigationWindow_1:System.Windows.Window.SizeToContent,None,False,True,,WidthAndHeight
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Page_1:MicrosoftSaudiArabiaHomepage.Homepage.$Content,None,True,True,,#DockPanel_1;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Page_1:System.Windows.FrameworkElement.FlowDirection,None,False,True,This FlowDirection controls the actual content of the homepage,RightToLeft
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Page_1:System.Windows.Controls.Page.Language,None,True,True,,ar-SA
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_1:System.Windows.Controls.Grid.Column,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_1:System.Windows.Controls.Grid.Row,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_1:System.Windows.Controls.Primitives.ToggleButton.IsChecked,None,False,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_1:System.Windows.Controls.RadioButton.$Content,RadioButton,True,True,,Microsoft.com
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_1:System.Windows.FrameworkElement.Margin,None,False,True,,"0,0,5,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_2:System.Windows.Controls.Grid.Column,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_2:System.Windows.Controls.Grid.Row,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,RadioButton_2:System.Windows.Controls.RadioButton.$Content,RadioButton,True,True,,msn البحث في الموقع
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_1:System.Windows.Setter.Property,None,True,False,,Cursor
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_1:System.Windows.Setter.Value,None,True,True,,Hand
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_10:System.Windows.Setter.Property,None,True,False,,Template
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_11:System.Windows.Setter.Property,None,True,False,,BorderBrush
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_11:System.Windows.Setter.Value,None,True,True,,DarkGray
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_12:System.Windows.Setter.Property,None,True,False,,Background
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_12:System.Windows.Setter.Value,None,True,True,,LightGray
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_2:System.Windows.Setter.Property,None,True,False,,Template
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_3:System.Windows.Setter.Property,None,True,False,,BorderBrush
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_3:System.Windows.Setter.Value,None,True,True,,White
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_4:System.Windows.Setter.Property,None,True,False,,Background
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_4:System.Windows.Setter.Value,None,True,True,,\#4B92D9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_5:System.Windows.Setter.Property,None,True,False,,Cursor
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_5:System.Windows.Setter.Value,None,True,True,,Hand
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_6:System.Windows.Setter.Property,None,True,False,,Template
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_7:System.Windows.Setter.Property,None,True,False,,BorderBrush
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_7:System.Windows.Setter.Value,None,True,True,,LightGray
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_8:System.Windows.Setter.Property,None,True,False,,Background
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_8:System.Windows.Setter.Value,None,True,True,,\#F1F1F1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_9:System.Windows.Setter.Property,None,True,False,,Cursor
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Setter_9:System.Windows.Setter.Value,None,True,True,,Hand
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_1:System.Windows.Controls.StackPanel.Orientation,None,False,True,,Horizontal
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_2:System.Windows.Controls.StackPanel.Orientation,None,False,True,,Horizontal
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_3:System.Windows.Controls.StackPanel.Orientation,None,False,True,,Vertical
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_4:System.Windows.Controls.StackPanel.Orientation,None,False,True,,Vertical
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_5:System.Windows.Controls.StackPanel.Orientation,None,False,True,,Vertical
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_6:System.Windows.Controls.Grid.Column,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_6:System.Windows.Controls.Grid.Row,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_7:System.Windows.Controls.Grid.Column,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_7:System.Windows.Controls.Grid.Row,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_8:System.Windows.Controls.Grid.Column,None,False,True,,2
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,StackPanel_8:System.Windows.Controls.Grid.Row,None,False,True,,1
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_1:System.Windows.Controls.DockPanel.Dock,None,True,False,,Right
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_1:System.Windows.Controls.TextBlock.$Content,None,True,True,This character is used as a decorative rule.,|
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_1:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FFFFFFFF
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_1:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,5,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_10:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_2"">Windows Mobile</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_10:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_11:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_3"">قصاصة فنية</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_11:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_12:System.Windows.Controls.TextBlock.$Content,None,True,True,,حلول للأعمال
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_12:System.Windows.Controls.TextBlock.FontSize,None,True,True,,10pt
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_12:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FF6495ED
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_13:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_4"">ادارة العلاقات مع العملاء</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_13:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_14:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_5"">التحليلات والتقارير</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_14:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_15:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_6"">الإدارة المالية</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_15:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_16:System.Windows.Controls.TextBlock.$Content,None,True,True,,أمان
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_16:System.Windows.Controls.TextBlock.FontSize,None,True,True,,10pt
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_16:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FF6495ED
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_17:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_7"">كل ما يجب معرفته عن Zotob</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_17:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_18:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_8"">حماية الكمبيوتر الشخصي</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_18:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_19:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_9"">Windows XP Service Pack 2</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_19:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_2:System.Windows.Controls.DockPanel.Dock,None,True,False,,Right
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_2:System.Windows.Controls.TextBlock.$Content,None,True,True,This character is used as a decorative rule.,|
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_2:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FFFFFFFF
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_2:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,5,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_20:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_10"">الصفحة الرئيسية للأمان</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_20:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_3:System.Windows.Controls.DockPanel.Dock,None,True,False,,Left
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_3:System.Windows.Controls.TextBlock.$Content,None,True,True,,السعودية
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_3:System.Windows.Controls.TextBlock.FontFamily,Font,True,True,,Global Composite Font
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_3:System.Windows.Controls.TextBlock.FontSize,None,True,True,,10pt
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_3:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FFFFFFFF
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_3:System.Windows.FrameworkElement.MinWidth,None,False,True,,300
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_4:System.Windows.Controls.DockPanel.Dock,None,True,False,,Right
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_4:System.Windows.Controls.TextBlock.$Content,None,True,True,This character is used as a decorative rule.,|
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_4:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FFA9A9A9
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_4:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,5,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_5:System.Windows.Controls.TextBlock.$Content,None,True,True,,عائلات المنتجات
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_5:System.Windows.Controls.TextBlock.FontWeight,None,True,True,,Bold
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_6:System.Windows.Controls.TextBlock.$Content,None,True,True,,الموارد
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_6:System.Windows.Controls.TextBlock.FontWeight,None,True,True,,Bold
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_7:System.Windows.Controls.Grid.Column,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_7:System.Windows.Controls.Grid.Row,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_7:System.Windows.Controls.TextBlock.$Content,None,True,True,,وجهات شائعة
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_7:System.Windows.Controls.TextBlock.FontSize,None,True,True,,10pt
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_8:System.Windows.Controls.TextBlock.$Content,None,True,True,,للمستخدمين فى المنزل
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_8:System.Windows.Controls.TextBlock.FontSize,None,True,True,,10pt
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_8:System.Windows.Controls.TextBlock.Foreground,None,False,True,,\#FF6495ED
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_9:System.Windows.Controls.TextBlock.$Content,None,True,True,,"<a Uid=""Hyperlink_1"">Windows Vista</a>"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBlock_9:System.Windows.FrameworkElement.Margin,None,False,True,,"5,0,0,0"
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBox_1:System.Windows.Controls.Grid.Column,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBox_1:System.Windows.Controls.Grid.ColumnSpan,None,False,True,,2
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBox_1:System.Windows.Controls.Grid.Row,None,False,True,,0
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,TextBox_1:System.Windows.Controls.TextBox.$Content,None,True,True,,
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_1:System.Windows.Trigger.$Content,None,False,True,,#Setter_3;#Setter_4;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_1:System.Windows.Trigger.Property,None,True,False,,IsMouseOver
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_1:System.Windows.Trigger.Value,None,True,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_2:System.Windows.Trigger.$Content,None,False,True,,#Setter_7;#Setter_8;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_2:System.Windows.Trigger.Property,None,True,False,,IsMouseOver
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_2:System.Windows.Trigger.Value,None,True,True,,True
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_3:System.Windows.Trigger.$Content,None,False,True,,#Setter_11;#Setter_12;
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_3:System.Windows.Trigger.Property,None,True,False,,IsMouseOver
+MicrosoftSaudiArabiaHomepage.g.en-US.resources:homepage.baml,Trigger_3:System.Windows.Trigger.Value,None,True,True,,True

@@ -1,0 +1,85 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="600" Margin="0,10,0,0">
+      <TextBlock>
+        This example shows a BevelBitmapEffect applied to a Button. A BevelBitmapEffect creates a bevel 
+        which raises the surface of the object according to a specified curve.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Margin="40,20,20,20" Orientation="Horizontal">
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">No BitMapEffect</TextBlock>
+        <Button Width="200" Height="80" Margin="0,40,0,0" >Normal Button</Button>
+        </StackPanel>
+
+      <StackPanel Margin="20">
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">With BevelBitMapEffect</TextBlock>
+        <Button Width="200" Height="80" Margin="0,40,0,0">
+          Bevelled Button
+          <Button.BitmapEffect>
+
+            <!-- The BevelBitMapEffect has several important properties that
+             determine characteristics of the bevel effect: 
+             - BevelWidth: Specifies how wide the bevel is (size of the bevel). In this 
+               example, the bevel is fairly wide at 15 (default is 5).
+             - EdgeProfile: Specifies the curve of the bevel. The default is "Linear".
+             - LightAngle: Specifies in what direction the "virtual light" is coming from
+               that create the shadows of the bevel. It is an angle between 0 and 360 with 0  
+               starting on the right hand side and moving counter-clockwise around the object. 
+               The shadows of the bevel are on the opposite side of where the light is cast. 
+               The value of 320 in this example casts the light on the lower right hand side 
+               of the bevel and shadow on the upper left.
+             - Relief: Specifies the height of the relief of the bevel. Range is between 0 and 1
+               with 1 having the most relief (darkest shadows). The default is 0.3.
+             - Smoothness: Specifies how smooth the shadows are. The range is between 0 and 1 
+               with 1 being the softest. Default is 0.5. -->
+            <BevelBitmapEffect x:Name="InteractiveEffect" BevelWidth="15" EdgeProfile="CurvedIn"
+             LightAngle="320" Relief="0.4" Smoothness="0.4" />
+
+
+          </Button.BitmapEffect>
+        </Button>
+      </StackPanel>
+    </StackPanel>
+    <!-- Displays functional code for demonstration. -->
+    <Border Background="#EEEEEE" BorderBrush="Black" HorizontalAlignment="Left" BorderThickness="1" Width="600">
+
+        <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+      ...
+        &lt;Button Width="200" Height="80"&gt;Bevelled Button
+          &lt;Button.BitmapEffect&gt;
+            <Bold Foreground="Green">
+            &lt;!-- The BevelBitMapEffect has several important properties that
+             determine characteristics of the bevel effect: 
+             - BevelWidth: Specifies how wide the bevel is (size of the bevel). In this 
+               example, the bevel is fairly wide at 15 (default is 5).
+             - EdgeProfile: Specifies the curve of the bevel. The default is "Linear".
+             - LightAngle: Specifies in what direction the "virtual light" is coming from
+               that create the shadows of the bevel. It is an angle between 0 and 360 with 0  
+               starting on the right hand side and moving counter-clockwise around the object. 
+               The shadows of the bevel are on the opposite side of where the light is cast. 
+               The value of 320 in this example casts the light on the lower right hand side 
+               of the bevel and shadow on the upper left.
+             - Relief: Specifies the height of the relief of the bevel. Range is between 0 and 1
+               with 1 having the most relief (darkest shadows). The default is 0.3.
+             - Smoothness: Specifies how smooth the shadows are. The range is between 0 and 1 
+               with 1 being the softest. Default is 0.5. --&gt;</Bold>
+            &lt;BevelBitmapEffect x:Name="InteractiveEffect" BevelWidth="15" 
+               EdgeProfile="CurvedIn" LightAngle="320" Relief="0.4" Smoothness="0.4" /&gt;
+          &lt;/Button.BitmapEffect&gt;
+        &lt;/Button&gt;
+      ...
+      </TextBlock>
+
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

@@ -1,0 +1,289 @@
+<Page  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="SDKSample.GradientBrushExample"
+    Title="GradientBrush Example">
+    
+  <DockPanel Background="White">
+    <Border Background="Black" DockPanel.Dock="Top">
+      <TextBlock FontSize="16" Foreground="White" HorizontalAlignment="Stretch" Margin="10">
+        Use a Gradient as an Opacity Mask
+      </TextBlock>
+    </Border>
+  
+    <Grid Background="{StaticResource MyCheckeredBrushResource}"
+      HorizontalAlignment="Center" VerticalAlignment="Center">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+    
+      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="White"
+        Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" />
+      <TextBlock Margin="10" Grid.Column="0" Grid.Row="0">Without Opacity Mask</TextBlock>
+      <TextBlock Margin="10" Grid.Column="1" Grid.Row="0">The Opacity Mask</TextBlock>
+      <TextBlock Margin="10" Grid.Column="2" Grid.Row="0">With Opacity Mask</TextBlock>
+      
+      <!-- Use an opacity mask on a panel containing multiple elements. -->
+      <!-- Before applying the opacity mask. -->
+      <Border BorderBrush="Black" 
+          BorderThickness="6" 
+          Width="312" Height="412" 
+          Margin="10"
+          HorizontalAlignment="Left"
+          Grid.Column="0" Grid.Row="1">
+        <Canvas 
+            Width="300" Height="400">
+            
+          <Canvas.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+               <LinearGradientBrush.GradientStops>
+                  <GradientStop Offset="0" Color="LightGray"/>
+                  <GradientStop Offset="1" Color="DarkGray"/>
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Canvas.Background>
+            <Ellipse 
+                Height="100" 
+                Width="100"
+                Canvas.Left="150"
+                Canvas.Top="300"
+                Fill="MediumBlue"
+                Stroke="Purple"
+                StrokeThickness="10"/>
+            <Image
+                Width="100" Height="100" 
+                Canvas.Left="150"
+                Canvas.Top="10"
+                Source="sampleImages\Waterlilies.jpg" />
+
+            <TextBlock FontSize="12pt"  Canvas.Top="5" Width="200" Canvas.Left="10">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+              sed diam nonummy nibh euismod tincidunt
+              ut laoreet dolore magna aliquam erat volutpat.
+              Ut wisi enim ad minim veniam, quis nostrud exerci
+              tation ullamcorper suscipit lobortis nisl ut aliquip ex
+            </TextBlock>
+          </Canvas>
+        </Border>
+
+        <!-- Shows what the opacity mask looks like. -->
+        <Rectangle
+          Width="150"
+          Height="200"
+          Stroke="Black" StrokeThickness="3"
+          Margin="10" 
+          HorizontalAlignment="Left"
+          Grid.Column="1" Grid.Row="1">
+          <Rectangle.Fill>
+            <RadialGradientBrush>
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="Black"/>
+                <GradientStop Offset="1" Color="Transparent"/>
+              </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
+
+
+        <Border BorderBrush="Black" BorderThickness="6" Width="312" Height="412"
+          Margin="10"
+          HorizontalAlignment="Left"
+          Grid.Column="2" Grid.Row="1">
+
+          <!-- With the opacity mask: -->
+          <Canvas 
+            Width="300" Height="400">
+            <Canvas.Background>
+              <LinearGradientBrush>
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Color="LightGray" />
+                  <GradientStop Color="DarkGray" />
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Canvas.Background>
+            <Canvas.OpacityMask>
+              <RadialGradientBrush>
+                <RadialGradientBrush.GradientStops>
+                  <GradientStop Offset="0" Color="#FF000000"/>
+                  <GradientStop Offset="1" Color="#00000000"/>
+              </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+            </Canvas.OpacityMask>
+            <Ellipse 
+              Height="100" 
+              Width="100"
+              Canvas.Left="150"
+              Canvas.Top="300"
+              Fill="MediumBlue"
+              Stroke="Purple"
+              StrokeThickness="10"/>
+            <Image
+              Width="100" Height="100" 
+              Canvas.Left="150"
+              Canvas.Top="10"
+              Source="sampleImages\Waterlilies.jpg" />
+
+              <TextBlock FontSize="12pt"  Canvas.Top="5" Width="200" Canvas.Left="10">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+              sed diam nonummy nibh euismod tincidunt
+              ut laoreet dolore magna aliquam erat volutpat.
+              Ut wisi enim ad minim veniam, quis nostrud exerci
+              tation ullamcorper suscipit lobortis nisl ut aliquip ex
+            </TextBlock>
+          </Canvas>
+        </Border>
+    
+      <!-- Use an opacity mask to simulate complex gradients: -->
+      <!-- Before applying the opacity mask. -->
+      <Canvas Margin="10" 
+        HorizontalAlignment="Left"
+        Grid.Column="0" Grid.Row="2">
+        <Rectangle
+          Width="100"
+          Height="30"
+          RadiusX="10"
+          RadiusY="10">
+          <Rectangle.Fill>
+            <RadialGradientBrush>
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="MediumBlue" />
+                <GradientStop Offset="1" Color="Purple" />
+              </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle
+          Canvas.Top="0"
+          Canvas.Left="0"
+          Width="100"
+          Height="30"
+          RadiusX="10"
+          RadiusY="10">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="DarkGray" />
+                <GradientStop Offset="1" Color="WhiteSmoke" />
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </Canvas>
+
+    <!--Use the same brush as the opacity mask to fill the rectangle.-->
+    <Rectangle
+      Width="100"
+      Height="30"
+      RadiusX="10"
+      RadiusY="10"
+      Margin="10"
+      HorizontalAlignment="Left"
+      Grid.Column="1" Grid.Row="2">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="Black" />
+            <GradientStop Offset="1" Color="Transparent" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!--With the opacity mask:-->
+    <Canvas Width="100" Height="30" HorizontalAlignment="Left" Margin="10" Grid.Column="2" Grid.Row="2">
+      <Rectangle
+        Width="100"
+        Height="30"
+        RadiusX="10"
+        RadiusY="10">
+        <Rectangle.Fill>
+          <RadialGradientBrush>
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Offset="0" Color="MediumBlue" />
+              <GradientStop Offset="1" Color="BlueViolet" />
+                </RadialGradientBrush.GradientStops>
+              </RadialGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+      
+        <Rectangle
+          Width="100"
+          Height="30"
+          RadiusX="10"
+          RadiusY="10">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Color="DarkGray" />
+                <GradientStop Color="WhiteSmoke" />
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+          <Rectangle.OpacityMask>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="Black" />
+                <GradientStop Offset="1" Color="Transparent" />
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Rectangle.OpacityMask>
+        </Rectangle>
+          
+      </Canvas>
+    
+       <!--Use an opacity mask on an image. 
+           Before applying the opacity mask.--> 
+      <Image
+        Width="200" Height="150" 
+        Source="sampleImages\Waterlilies.jpg"
+        Margin="10"
+        HorizontalAlignment="Left"
+        Grid.Column="0" Grid.Row="3" />
+
+        <!--Uses the same brush as the opacity mask to fill the rectangle.--> 
+        <Rectangle
+          Width="200" Height="150"
+          Stroke="Black"
+          StrokeThickness="1"
+          HorizontalAlignment="Left"
+          Margin="10" Grid.Column="1" Grid.Row="3">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0.1,0.1" EndPoint="0.75,0.75">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="Black"/>
+                <GradientStop Offset="1" Color="Transparent"/>
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+    
+      <!--With the opacity mask:--> 
+      <Image
+        Width="200" Height="150"
+        Source="sampleImages\Waterlilies.jpg"
+        Margin="10"
+        HorizontalAlignment="Left"
+        Grid.Column="2" Grid.Row="3">
+        <Image.OpacityMask>
+          <LinearGradientBrush StartPoint="0.1,0.1" EndPoint="0.75,0.75">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Offset="0" Color="Black"/>
+              <GradientStop Offset="1" Color="Transparent"/>
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Image.OpacityMask>
+      </Image>
+    
+    </Grid>
+  </DockPanel>
+</Page>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="MasterDetailXml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterDetailXml"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <XmlDataProvider x:Key="MyList" Source="Data\Leagues.xml"
+                       XPath="Leagues/League"/>
+        <DataTemplate x:Key="DataTemplateX">
+            <TextBlock Text="{Binding XPath=@name}" />
+        </DataTemplate>
+        <Style TargetType="StackPanel">
+            <Setter Property="DockPanel.Dock" Value="Left"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Height" Value="100"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel DataContext="{Binding Source={StaticResource MyList}}">
+        <StackPanel>
+            <Label>My Soccer Leagues</Label>
+            <ListBox ItemsSource="{Binding}"
+                 ItemTemplate="{StaticResource DataTemplateX}"
+                 IsSynchronizedWithCurrentItem="true"/>
+        </StackPanel>
+
+        <StackPanel>
+            <Label Content="{Binding XPath=@name}"/>
+            <ListBox Name="divisionsListBox"
+                 ItemsSource="{Binding XPath=Division}"
+                 ItemTemplate="{StaticResource DataTemplateX}"
+                 IsSynchronizedWithCurrentItem="true"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Content="{Binding XPath=@name}"/>
+            <ListBox DataContext="{Binding ElementName=divisionsListBox,
+                                       Path=SelectedItem}"
+                 ItemsSource="{Binding XPath=Team}"
+                 ItemTemplate="{StaticResource DataTemplateX}"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

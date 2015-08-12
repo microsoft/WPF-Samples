@@ -1,0 +1,128 @@
+﻿<Window x:Class="DataBindingDemo.AddProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBindingDemo"
+        mc:Ignorable="d"
+        Title="AddProductWindow" Height="300" Width="300">
+    <Window.Resources>
+        <local:SpecialFeaturesConverter x:Key="SpecialFeaturesConverter" />
+        <ControlTemplate x:Key="ValidationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                <AdornedElementPlaceholder />
+            </DockPanel>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Border Padding="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border BorderThickness="0,0,0,2" BorderBrush="Black" Padding="5" Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="106" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                               Style="{StaticResource TitleStyle}"
+                               Margin="5">
+                        Item for sale:
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                               Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">
+                        Item Description:
+                    </TextBlock>
+                    <TextBox Name="DescriptionEntryForm" Grid.Row="1" Grid.Column="1"
+                             Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price:</TextBlock>
+
+                    <TextBox Name="StartPriceEntryForm" Grid.Row="2" Grid.Column="1"
+                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5">
+                        <TextBox.Text>
+                            <Binding Path="StartPrice" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <ExceptionValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Date:</TextBlock>
+
+                    <TextBox Name="StartDateEntryForm" Grid.Row="3" Grid.Column="1"
+                             Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5">
+                        <TextBox.Text>
+                            <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged"
+                                     Converter="{StaticResource DateConverter}">
+                                <Binding.ValidationRules>
+                                    <local:FutureDateRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Category:</TextBlock>
+                    <ComboBox Name="CategoryEntryForm" Grid.Row="4" Grid.Column="1"
+                              SelectedValue="{Binding Path=Category}"
+                              Style="{StaticResource ComboBoxStyle}"
+                              ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
+                        <local:ProductCategory>Books</local:ProductCategory>
+                        <local:ProductCategory>Computers</local:ProductCategory>
+                        <local:ProductCategory>DvDs</local:ProductCategory>
+                        <local:ProductCategory>Electronics</local:ProductCategory>
+                        <local:ProductCategory>Home</local:ProductCategory>
+                        <local:ProductCategory>Sports</local:ProductCategory>
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Special Features:</TextBlock>
+                    <ComboBox Name="SpecialFeaturesEntryForm" Grid.Row="5" Grid.Column="1"
+                              SelectedValue="{Binding Path=SpecialFeatures}"
+                              Style="{StaticResource ComboBoxStyle}"
+                              ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
+                        <local:SpecialFeatures>None</local:SpecialFeatures>
+                        <local:SpecialFeatures>Color</local:SpecialFeatures>
+                        <local:SpecialFeatures>Highlight</local:SpecialFeatures>
+                        <ComboBox.IsEnabled>
+                            <MultiBinding Converter="{StaticResource SpecialFeaturesConverter}">
+                                <Binding Path="CurrentUser.Rating"
+                                         Source="{x:Static Application.Current}" />
+                                <Binding Path="CurrentUser.MemberSince"
+                                         Source="{x:Static Application.Current}" />
+                            </MultiBinding>
+                        </ComboBox.IsEnabled>
+                    </ComboBox>
+
+                    <Button Name="Submit" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Content="Submit"
+                            Margin="5" Click="SubmitProduct" />
+                </Grid>
+            </Border>
+            <ContentControl Name="ShortPreview" Grid.Row="1"
+                            Content="{Binding}"
+                            HorizontalAlignment="Left" />
+            <ContentControl Name="LongPreview" Grid.Row="2"
+                            Content="{Binding}"
+                            ContentTemplate="{StaticResource DetailsProductListingTemplate}"
+                            HorizontalAlignment="Left" />
+        </Grid>
+    </Border>
+</Window>

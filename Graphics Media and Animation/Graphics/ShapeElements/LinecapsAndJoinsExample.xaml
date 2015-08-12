@@ -1,0 +1,117 @@
+﻿<!-- This example shows how to use the StrokeMiterLimit
+   property of Shape elements. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.LineCapsAndJoinsExample"
+    WindowTitle="Line Joins and Caps">
+<StackPanel>    
+<Border>
+  <Border.Background>
+    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+      <LinearGradientBrush.GradientStops>
+        <GradientStop Color="#CCCCFF" Offset="0" />
+        <GradientStop Color="AliceBlue" Offset="0.25" />
+      </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+  </Border.Background>
+  <TextBlock Margin="10" HorizontalAlignment="Left"> 
+    Line Caps and Joins
+  </TextBlock>
+</Border>  
+
+
+
+<Grid HorizontalAlignment="Left" Margin="20">
+  <Grid.ColumnDefinitions>
+    <ColumnDefinition Width="Auto"/>
+    <ColumnDefinition Width="Auto"/>
+    <ColumnDefinition Width="50"/>
+    <ColumnDefinition Width="Auto"/>
+    <ColumnDefinition Width="Auto"/>
+  </Grid.ColumnDefinitions>
+  <Grid.RowDefinitions>
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+    <RowDefinition />
+  </Grid.RowDefinitions>
+
+
+  <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+    <Bold>Line Joins</Bold>
+  </TextBlock>
+  <TextBlock Grid.Column="0" Grid.Row="1">Miter</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeLineJoin="Miter"
+    Grid.Row="1" Grid.Column="1"/>
+
+  <TextBlock Grid.Column="0" Grid.Row="2">Bevel</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeLineJoin="Bevel"
+    Grid.Row="2" Grid.Column="1"/>
+
+  <TextBlock Grid.Column="0" Grid.Row="3">Round</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeLineJoin="Round"
+    Grid.Row="3" Grid.Column="1"/>
+
+  <TextBlock Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2">
+    <Bold>Line Caps</Bold>
+  </TextBlock>
+  <TextBlock Grid.Column="3" Grid.Row="1">Flat</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeStartLineCap="Flat"
+    StrokeEndLineCap="Flat"
+    Grid.Row="1" Grid.Column="4"/>
+
+  <TextBlock Grid.Column="3" Grid.Row="2">Square</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeStartLineCap="Square"
+    StrokeEndLineCap="Square"    
+    Grid.Row="2" Grid.Column="4"/>
+
+  <TextBlock Grid.Column="3" Grid.Row="3">Round</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeStartLineCap="Round"
+    StrokeEndLineCap="Round"  
+    Grid.Row="3" Grid.Column="4"/>
+
+  <TextBlock Grid.Column="3" Grid.Row="4">Triangle</TextBlock>
+  <Polyline
+    Points="50,50 75,30 100,100 130,40"
+    Stroke="Red"
+    StrokeThickness="20"
+    StrokeStartLineCap="Triangle"
+    StrokeEndLineCap="Triangle"     
+    Grid.Row="4" Grid.Column="4"/>
+  
+
+</Grid>
+</StackPanel>
+</Page>

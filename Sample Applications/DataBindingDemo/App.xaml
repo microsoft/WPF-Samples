@@ -1,0 +1,202 @@
+﻿<Application x:Class="DataBindingDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DataBindingDemo"
+             Startup="AppStartup"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <local:DateConverter x:Key="DateConverter" />
+
+        <Style x:Key="TitleStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="DodgerBlue" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+
+        <Style x:Key="SmallTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="DimGray" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+
+        <Style x:Key="TextStyleTextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#333333" />
+        </Style>
+
+        <Style x:Key="TextStyleTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#333333" />
+            <Setter Property="MaxLength" Value="40" />
+            <Setter Property="Width" Value="392" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self},
+                              Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ComboBoxItemStyle" TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="#333333" />
+        </Style>
+
+        <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#333333" />
+        </Style>
+
+        <DataTemplate DataType="{x:Type local:AuctionItem}">
+            <Border BorderThickness="1" BorderBrush="Gray"
+                    Padding="7" Name="border" Margin="3" Width="500">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="86" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Polygon Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
+                             Fill="Yellow" Stroke="Black" StrokeThickness="1"
+                             StrokeLineJoin="Round" Width="20" Height="20"
+                             Stretch="Fill"
+                             Points="9,2 11,7 17,7 12,10 14,15 9,12 4,15 6,10 1,7 7,7"
+                             Visibility="Hidden" Name="star" />
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"
+                               Name="descriptionTitle"
+                               Style="{StaticResource SmallTitleStyle}">
+                        Description:
+                    </TextBlock>
+                    <TextBlock Name="DescriptionDTDataType" Grid.Row="0" Grid.Column="2"
+                               Text="{Binding Path=Description}"
+                               Style="{StaticResource TextStyleTextBlock}" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,8,0"
+                               Name="currentPriceTitle"
+                               Style="{StaticResource SmallTitleStyle}">
+                        Current Price:
+                    </TextBlock>
+                    <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+                        <TextBlock Text="$" Style="{StaticResource TextStyleTextBlock}" />
+                        <TextBlock Name="CurrentPriceDTDataType"
+                                   Text="{Binding Path=CurrentPrice}"
+                                   Style="{StaticResource TextStyleTextBlock}" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=SpecialFeatures}">
+                    <DataTrigger.Value>
+                        <local:SpecialFeatures>Color</local:SpecialFeatures>
+                    </DataTrigger.Value>
+                    <DataTrigger.Setters>
+                        <Setter Property="BorderBrush" Value="DodgerBlue" TargetName="border" />
+                        <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
+                        <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
+                        <Setter Property="BorderThickness" Value="3" TargetName="border" />
+                        <Setter Property="Padding" Value="5" TargetName="border" />
+                    </DataTrigger.Setters>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=SpecialFeatures}">
+                    <DataTrigger.Value>
+                        <local:SpecialFeatures>Highlight</local:SpecialFeatures>
+                    </DataTrigger.Value>
+                    <Setter Property="BorderBrush" Value="Orange" TargetName="border" />
+                    <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
+                    <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
+                    <Setter Property="Visibility" Value="Visible" TargetName="star" />
+                    <Setter Property="BorderThickness" Value="3" TargetName="border" />
+                    <Setter Property="Padding" Value="5" TargetName="border" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DetailsProductListingTemplate">
+            <Grid Margin="5,5,5,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,8,0"
+                           Name="descriptionTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Description:
+                </TextBlock>
+                <TextBlock Name="DescriptionDTKey" Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Path=Description}"
+                           Style="{StaticResource TextStyleTextBlock}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,8,0"
+                           Name="startPriceTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Start Price:
+                </TextBlock>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="$" Style="{StaticResource TextStyleTextBlock}" />
+                    <TextBlock Name="StartPriceDTKey"
+                               Text="{Binding Path=StartPrice}"
+                               Style="{StaticResource TextStyleTextBlock}" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,8,0"
+                           Name="startDateTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Start Date:
+                </TextBlock>
+                <TextBlock Name="StartDateDTKey" Grid.Row="2" Grid.Column="1"
+                           Text="{Binding Path=StartDate, Converter={StaticResource DateConverter}}"
+                           Style="{StaticResource TextStyleTextBlock}" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,8,0"
+                           Name="categoryTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Category:
+                </TextBlock>
+                <TextBlock Name="CategoryDTKey" Grid.Row="3" Grid.Column="1"
+                           Text="{Binding Path=Category}"
+                           Style="{StaticResource TextStyleTextBlock}" />
+
+                <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,8,0"
+                           Name="ownerNameTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Owner's Name:
+                </TextBlock>
+                <TextBlock Name="OwnersNameDTKey" Grid.Row="4" Grid.Column="1"
+                           Text="{Binding Path=Owner.Name}"
+                           Style="{StaticResource TextStyleTextBlock}" />
+
+                <TextBlock Grid.Row="5" Grid.Column="0" Margin="0,0,8,0"
+                           Name="ownerRatingTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Owner's Rating:
+                </TextBlock>
+                <TextBlock Name="OwnersRatingDTKey" Grid.Row="5" Grid.Column="1"
+                           Text="{Binding Path=Owner.Rating}"
+                           Style="{StaticResource TextStyleTextBlock}" />
+
+                <TextBlock Grid.Row="6" Grid.Column="0" Margin="0,0,8,0"
+                           Name="ownerMemberSinceTitle"
+                           Style="{StaticResource SmallTitleStyle}">
+                    Member Since:
+                </TextBlock>
+                <TextBlock Name="MemberSinceDTKey" Grid.Row="6" Grid.Column="1"
+                           Text="{Binding Path=Owner.MemberSince, Converter={StaticResource DateConverter}}"
+                           Style="{StaticResource TextStyleTextBlock}" />
+            </Grid>
+        </DataTemplate>
+    </Application.Resources>
+</Application>

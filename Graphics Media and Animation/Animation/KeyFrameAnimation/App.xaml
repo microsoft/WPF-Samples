@@ -1,0 +1,72 @@
+﻿<Application x:Class="KeyFrameAnimation.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:KeyFrameAnimation"
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+
+        <DrawingBrush x:Key="MyGridBrushResource" Opacity="0.25"
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Geometry="M0,0 L1,0 1,1 0,1z" Brush="White" />
+                        <GeometryDrawing Brush="#9999FF">
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup>
+                                    <RectangleGeometry Rect="0,0,1,0.1" />
+                                    <RectangleGeometry Rect="0,0.1,0.1,0.9" />
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+
+        <Style TargetType="{x:Type Canvas}">
+            <Setter Property="Background" Value="{StaticResource MyGridBrushResource}"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Canvas.Top" Value="10"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="MyMarkerRectangleStyle">
+            <Setter Property="Rectangle.Height" Value="230"/>
+            <Setter Property="Rectangle.Width" Value="50"/>
+            <Setter Property="Rectangle.Fill">
+                <Setter.Value>
+                    <SolidColorBrush Color="Gray" Opacity="0.25" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="{x:Type Frame}">
+            <Setter Property ="Background" Value="White"/>
+        </Style>
+
+        <DrawingImage x:Key="MyDrawingImageResource">
+            <DrawingImage.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="{StaticResource MyGridBrushResource}">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,600,300" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+
+    </Application.Resources>
+</Application>

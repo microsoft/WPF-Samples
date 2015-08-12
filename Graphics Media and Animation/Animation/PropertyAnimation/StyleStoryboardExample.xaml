@@ -1,0 +1,81 @@
+<!-- <SnippetGraphicsMMStyleStoryboardExample> -->
+<!-- StyleStoryboardsExample.xaml
+     This example shows how to create storyboards in a style. -->
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="Animate within a Style">
+  <Page.Resources>
+  
+  <!-- Defines a Button style. -->
+    <Style TargetType="{x:Type Button}" x:Key="MyButtonStyle">
+      <Setter Property="Background">
+        <Setter.Value>
+          <SolidColorBrush Color="Orange" />
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+      
+        <!-- Animates the button's opacity on mouse over. -->
+        <EventTrigger RoutedEvent="Button.MouseEnter">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation
+                  Storyboard.TargetProperty="(Button.Opacity)"
+                  From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
+                  RepeatBehavior="Forever" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>  
+        
+        <!-- Returns the button's opacity to 1 when the mouse leaves. -->
+        <EventTrigger RoutedEvent="Button.MouseLeave">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation
+                  Storyboard.TargetProperty="(Button.Opacity)"
+                  To="1" Duration="0:0:0.1" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>   
+        
+        <!-- Changes the button's color when clicked. 
+             Notice that the animation can't target the
+             SolidColorBrush used to paint the button's background
+             directly. The brush must be accessed through the button's
+             Background property. -->
+        <EventTrigger RoutedEvent="Button.Click">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="Orange" To="White" Duration="0:0:0.1" AutoReverse="True" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>  
+      </Style.Triggers>
+    </Style>
+  </Page.Resources>
+  
+
+
+  <Border Background="White">
+    <StackPanel Margin="30" HorizontalAlignment="Left" MinWidth="500">
+
+      
+      <Button 
+        Style="{StaticResource MyButtonStyle}"
+        Content="Click Me" />
+    
+    </StackPanel>
+  </Border>
+</Page>
+
+
+

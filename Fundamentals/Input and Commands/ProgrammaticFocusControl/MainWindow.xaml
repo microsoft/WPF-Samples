@@ -1,0 +1,106 @@
+﻿<Window x:Class="ProgrammaticFocusControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgrammaticFocusControl"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Margin" Value="3" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="LemonChiffon" />
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="AliceBlue" />
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+
+    <!-- Grid definitions. -->
+    <Grid Background="Ivory" Focusable="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- RadioButtons to choose the direction that focus will be changed.-->
+        <StackPanel Margin="5" Grid.Column="0">
+            <Border HorizontalAlignment="Center">
+                <StackPanel Margin="5" 
+                    RadioButton.Checked="OnFocusSelected"
+                    Focusable="False">
+                    <Label HorizontalAlignment="Center"
+                 FontSize="14">
+                        Focus Traverse Direction
+                    </Label>
+                    <RadioButton Content="Down"  Focusable="False" />
+                    <RadioButton Content="First" Focusable="False" />
+                    <RadioButton Content="Last" Focusable="False"/>
+                    <RadioButton Content="Left" Focusable="False"/>
+                    <RadioButton Content="Next" Focusable="False"/>
+                    <RadioButton Content="Previous" Focusable="False"/>
+                    <RadioButton Content="Right" IsChecked="True" Focusable="False"/>
+                    <RadioButton Content="Up" Focusable="False"/>
+                </StackPanel>
+            </Border>
+            <Border HorizontalAlignment="Center">
+                <StackPanel>
+                    <Button Height="50" Width="100" 
+                  PreviewMouseDown="OnPredictFocus" 
+                  PreviewMouseUp="OnPredictFocusMouseUp" 
+                  HorizontalAlignment="Center" 
+                  Focusable="False">Predict Focus
+                    </Button>
+                    <Button Height="50" Width="100" 
+                  Click="OnMoveFocus"
+                  HorizontalAlignment="Center"
+                  Focusable="False">
+                        Move Focus
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- The Buttons to move focus between. -->
+        <StackPanel Grid.Column="1">
+            <Label HorizontalAlignment="Center" FontSize="14">
+                Move Focus Between These Elements
+            </Label>
+            <Border Height="300" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Name="firstButton"
+                    Content="1" />
+                        <Button Content="2"/>
+                        <Button Content="3"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <Button Content="4"/>
+                        <Button Content="5"/>
+                        <Button Content="6"/>
+                        <Button Content="7"/>
+                        <Button Content="8"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Content="9"/>
+                        <Button Content="10"/>
+                        <Button Content="11"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

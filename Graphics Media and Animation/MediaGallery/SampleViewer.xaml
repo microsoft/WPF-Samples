@@ -1,0 +1,26 @@
+<!-- Displays the different animation examples. -->
+<Window  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="MediaGallery.SampleViewer"
+    Title="Media Gallery">
+
+    
+    <DockPanel>
+    <TabControl Background="White">
+      <TabItem Header="MediaTimeline Sample">  
+        <Frame Source="MediaTimelineExample.xaml" />
+      </TabItem> 
+      <TabItem Header="MediaElement Sample">  
+        <Frame Source="MediaElementExample.xaml" />
+      </TabItem> 
+      <TabItem Header="Media Plus Animations Sample">  
+        <Frame Source="MediaTimelinePlusAnimationExample.xaml" />
+      </TabItem>
+      <TabItem Header="Sound from User Event Sample">  
+        <Frame Source="SoundFromUserEventExample.xaml" />
+      </TabItem>  
+    </TabControl>
+   
+    </DockPanel>
+</Window>

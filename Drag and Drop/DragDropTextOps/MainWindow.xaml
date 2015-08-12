@@ -1,0 +1,85 @@
+﻿<Window x:Class="DragDropTextOps.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragDropTextOps"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black" Background="LightGray">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock TextWrapping="Wrap" Width="300" >
+            Select some text in the area below-left, and click the button to create a data object that contains the selected text. 
+            Info about the data objectwill be displayed below-right.
+                </TextBlock>
+                <Button
+            Width="200" Height="30" Click="TextSelectionToDataObject"
+            Content="Create data object from selection..."
+            />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox
+          Name="sourceTextBox" 
+          xml:space="preserve"
+          Grid.Column="0" 
+          IsEnabled="True" 
+          Focusable="True" 
+          IsReadOnly="True" 
+          TextWrapping="NoWrap" 
+          BorderThickness="1" 
+          BorderBrush="Black"
+          Background="AliceBlue" 
+      ><![CDATA[
+The fair breeze blew, the white foam flew,
+The furrow followed free;
+We were the first that ever burst
+Into that silent sea.
+
+Down dropt the breeze, the sails dropt down,
+'Twas sad as sad could be;
+And we did speak only to break
+The silence of the sea!
+
+All in a hot and copper sky,
+The bloody Sun, at noon,
+Right up above the mast did stand,
+No bigger than the Moon.
+
+Day after day, day after day,
+We stuck, nor breath nor motion;
+As idle as a painted ship
+Upon a painted ocean.
+
+Water, water, every where,
+And all the boards did shrink;
+Water, water, every where,
+Nor any drop to drink.
+      ]]></TextBox>
+
+            <TextBox
+          Name="dataObjectInfoTextBox"
+          Grid.Column="1" 
+          IsEnabled="True"
+          Focusable="True"
+          IsReadOnly="True"
+          TextWrapping="Wrap"
+          BorderThickness="1"
+          BorderBrush="Black"
+          Background="BlanchedAlmond"
+        />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="MultiThreadingWebBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiThreadingWebBrowser"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="OnLoaded">
+    <StackPanel Name="Stack" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="New Window"
+              Click="NewWindowHandler" />
+            <TextBox Name="newLocation"
+               Width="500" />
+            <Button Content="GO!"
+              Click="Browse" />
+        </StackPanel>
+
+        <Frame Name="placeHolder"
+            Width="800"
+            Height="550" />
+    </StackPanel>
+</Window>

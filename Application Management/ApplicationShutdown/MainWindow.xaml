@@ -1,0 +1,22 @@
+﻿<Window x:Class="ApplicationShutdown.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationShutdown"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="MainWindow_Loaded">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Label HorizontalAlignment="Left">Shutdown Mode:</Label>
+            <ComboBox HorizontalAlignment="Left" Name="shutdownModeListBox" />
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Label HorizontalAlignment="Left">Application Exit Code (for explicit shutdown):</Label>
+            <TextBox HorizontalAlignment="Left" Name="appExitCodeTextBox">0</TextBox>
+        </StackPanel>
+        <Button DockPanel.Dock="Top" Click="newWindowButton_Click">New Window</Button>
+        <Button DockPanel.Dock="Top" Click="explicitShutdownButton_Click">Shutdown Explicitly (Passing Exit Code)</Button>
+        <Canvas />
+    </DockPanel>
+</Window>

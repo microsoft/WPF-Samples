@@ -1,0 +1,130 @@
+﻿<DockPanel 
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   x:Class="FlowDocumentNewsClient.DockPanel1"
+   LastChildFill="True">
+    <Menu Style="{StaticResource MainContentStyle}" BorderBrush="Black" BorderThickness="1" Background="LightGray" DockPanel.Dock="Top">
+      <Separator/>
+      <MenuItem Margin="0,0,10,0" Header="Adjust Readability">
+      <MenuItem Margin="0,0,15,0" Header="Columns">
+        <MenuItem Click="ColWidest" Header="Most"/>
+        <MenuItem Click="ColMore" Header="More"/>
+        <MenuItem Click="ColAverage" Header="Average"/>
+        <MenuItem Click="ColFewer" Header="Fewer"/>
+        <MenuItem Click="ColLeast" Header="Least"/>
+      </MenuItem>
+
+      <Separator/>
+           <MenuItem Margin="0,0,10,0" Header="Text Size">
+                <MenuItem Click="TextLargest" Header="Largest"/>
+                <MenuItem Click="TextLarge" Header="Large"/>
+                <MenuItem Click="TextAverage" Header="Average"/>
+                <MenuItem Click="TextSmall" Header="Small"/>
+                <MenuItem Click="TextSmallest" Header="Smallest"/>
+           </MenuItem>
+           </MenuItem>
+    </Menu>
+
+<FlowDocumentPageViewer>
+    
+<FlowDocument 
+        Style="{StaticResource MainContentStyle}" 
+        Name="fd1" 
+        ColumnWidth="250" 
+        ColumnGap="12" 
+        ColumnRuleWidth="1" 
+        ColumnRuleBrush="Gray">
+
+    <Paragraph Style="{StaticResource HeaderStyle}">Suspendisse Lectus Massa</Paragraph>
+    <Paragraph Style="{StaticResource BylineStyle}">Donec Tempus</Paragraph>
+    <Paragraph Style="{StaticResource BylineStyle}">Redmond, WA</Paragraph>
+    
+    
+<Paragraph>        
+    <Floater Background="White" Padding="5" HorizontalAlignment="Left">
+        <Paragraph>
+        <Canvas Height="128" Width="128" >
+          <Path 
+            StrokeThickness="2" StrokeMiterLimit="1" 
+            Data="M7.3,5.572c-4.317,9.112-6.8,19.787-6.8,31.202    c0,31.668,19.11,57.653,43.451,60.291c1.355,0.032,2.717,0.052,4.087,0.052c1.369,0,2.731-0.02,4.087-0.052    c24.342-2.638,43.451-28.622,43.451-60.291c0-11.415-2.484-22.09-6.799-31.202C76.514,2.328,62.68,0.499,48.038,0.499    C33.396,0.499,19.563,2.328,7.3,5.572z">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Offset="0.0" Color="Silver"/>
+                  <GradientStop Offset="1.0" Color="White"/>
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Path.Fill>
+            <Path.Stroke>
+              <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Offset="0.0" Color="White"/>
+                  <GradientStop Offset="1.0" Color="Silver"/>
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Path.Stroke>
+          </Path>
+          <Path 
+            StrokeThickness="0.5" 
+            Data="M12.445,39.798c0,1.367,0.05,2.717,0.143,4.053h33.584V12.654    C35.9,12.8,26.195,14.147,17.537,16.438C14.305,23.26,12.445,31.252,12.445,39.798z M49.815,84.962    c0.429-0.006,0.855-0.014,1.282-0.021C67.57,83.153,80.84,67.09,83.242,46.511H49.815V84.962z M78.541,16.438    c-8.686-2.297-18.422-3.645-28.726-3.784v31.198h33.673c0.092-1.336,0.143-2.687,0.143-4.053    C83.631,31.252,81.77,23.26,78.541,16.438z M44.979,84.94c0.396,0.008,0.795,0.014,1.193,0.021V46.511H12.835    C15.234,67.09,28.507,83.153,44.979,84.94z">
+            <Path.Fill>
+              <RadialGradientBrush>
+                <RadialGradientBrush.GradientStops>
+                  <GradientStop Offset="0.0" Color="DodgerBlue"/>
+                  <GradientStop Offset="1.0" Color="RoyalBlue"/>
+                </RadialGradientBrush.GradientStops>
+              </RadialGradientBrush>
+            </Path.Fill>
+            <Path.Stroke>
+              <SolidColorBrush Color="Transparent"/>
+            </Path.Stroke>
+          </Path>
+          <Path 
+            StrokeMiterLimit="1" 
+            Data="M19.329,17.492C16.263,22.868,14.5,29.165,14.5,35.899    c0,18.683,13.573,34.012,30.862,35.568c0.962,0.019,1.929,0.031,2.901,0.031c0.973,0,1.94-0.012,2.902-0.031    c17.29-1.556,30.862-16.885,30.862-35.568c0-6.735-1.764-13.032-4.829-18.407c-8.71-1.914-18.536-2.993-28.936-2.993    C37.864,14.499,28.039,15.578,19.329,17.492z">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Offset="0.0" Color="White"/>
+                  <GradientStop Offset="1.0" Color="Transparent"/>
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+            </Canvas>
+            </Paragraph>
+    </Floater>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent id mauris. Sed dapibus dui quis lectus. Donec id sem. Integer sit amet diam ac nibh consequat vestibulum. Sed eget augue malesuada quam adipiscing mattis. Cras bibendum, nunc in aliquet sagittis, dui sem volutpat nulla, eu laoreet mi orci eu velit. Phasellus venenatis enim tempus elit. Ut tristique, leo sed consequat consequat, lorem ipsum pretium odio, sit amet ultricies dui nulla ac wisi. Praesent wisi erat, placerat eu, posuere tincidunt, laoreet ac, nibh. Etiam ut augue. Maecenas eget lectus vel metus vehicula consectetuer. Aliquam erat volutpat. In faucibus. Donec ac arcu. Curabitur purus risus, hendrerit lacinia, lacinia eget, placerat quis, turpis. Nulla aliquam ligula at libero. Morbi sed turpis sit amet magna bibendum iaculis. </Paragraph>
+<Paragraph />
+    <Paragraph>Duis fermentum. Nullam dui orci, scelerisque porttitor, volutpat a, porttitor a, enim. Sed lobortis. Maecenas scelerisque ullamcorper libero. Aliquam porta leo imperdiet pede. In semper, elit vel elementum auctor, lectus purus rhoncus arcu, lacinia sollicitudin justo odio et nunc. Phasellus sagittis fringilla risus. Curabitur iaculis sagittis orci. Ut malesuada libero nec nulla molestie vestibulum. Suspendisse lectus massa, ullamcorper at, tincidunt eget, bibendum vel, risus. Curabitur imperdiet. Suspendisse accumsan, arcu vel ornare interdum, magna tellus porta mauris, in porta mi lacus sodales felis. Pellentesque dapibus, leo non sollicitudin consequat, lectus orci fringilla felis, non interdum leo libero sed augue. Sed magna. Maecenas ante ipsum, congue ut, sodales a, pulvinar ut, dui. Suspendisse mauris massa, sollicitudin et, hendrerit eget, placerat id, orci. Donec molestie magna. </Paragraph>
+<Paragraph />
+    <Paragraph>Sed mauris. Nulla facilisi. Fusce tristique posuere ipsum. Nulla facilisi. Aliquam viverra risus vitae ante. Sed rhoncus mi in wisi. Nullam nibh dui, molestie vitae, imperdiet non, ornare at, elit. Aenean nec justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis sodales. </Paragraph>
+<Paragraph />
+    <Paragraph>Etiam viverra neque non sem. Nullam lacinia sem. Duis sapien diam, dapibus sed, dictum quis, interdum ac, erat. Suspendisse urna. Proin non mauris. Proin sed odio. Phasellus sagittis orci quis orci. Aliquam erat volutpat. Mauris commodo ultrices elit. Sed id orci. In ultrices urna volutpat wisi. </Paragraph>
+<Paragraph />
+    <Paragraph>Vivamus quis nunc. Proin porta tincidunt nunc. Pellentesque condimentum commodo wisi. Fusce gravida, ligula a placerat placerat, leo erat euismod lectus, et lacinia justo libero non pede. Vivamus ac velit vel magna nonummy pretium. Duis dapibus vulputate orci. Vestibulum elementum mauris eu erat. Quisque consequat. Integer odio nibh, venenatis vitae, interdum quis, lobortis id, sem. Praesent mi. Maecenas id sapien in leo tempor aliquet. Curabitur ultricies vestibulum purus. Fusce cursus augue in diam. Cras magna nunc, interdum eget, lacinia sit amet, lacinia at, quam. Sed ac est in risus mattis venenatis. </Paragraph>
+<Paragraph />
+    <Paragraph>Nunc in elit non metus viverra sollicitudin. Duis metus. Donec pulvinar nonummy erat. In vel justo at urna rutrum ultrices. Cras consectetuer orci non lorem. Vestibulum bibendum aliquet augue. Proin venenatis ultricies risus. Aliquam erat volutpat. Donec tempus ligula a risus. Nam porttitor. Aliquam mattis erat aliquet mi. Sed commodo, ante adipiscing porttitor sollicitudin, sapien wisi ullamcorper ante, nec ultricies orci tellus id justo. </Paragraph>
+<Paragraph />
+    <Paragraph>Etiam feugiat massa nec nibh. Curabitur fermentum mattis eros. Pellentesque pede felis, rhoncus accumsan, luctus ut, facilisis vitae, tortor. Suspendisse potenti. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Nullam fermentum felis non turpis. Pellentesque malesuada est id ligula. Fusce neque risus, malesuada nec, malesuada tristique, rutrum eget, lorem. Sed pulvinar accumsan quam. Nam a risus eget metus dignissim varius. Phasellus ut velit sed neque consectetuer convallis. Maecenas dignissim velit sit amet justo. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</Paragraph> 
+<Paragraph />
+    <Paragraph>Nam lorem. Ut ut risus nec nibh dictum posuere. Phasellus eleifend, diam vitae dapibus pulvinar, erat ligula auctor dui, eget congue justo lorem hendrerit tellus. Nullam sodales massa. Duis vestibulum feugiat risus. Pellentesque eu turpis ut velit lobortis dictum. In metus augue, euismod nec, luctus eu, egestas sed, sem. Suspendisse potenti. Fusce non est non sapien posuere faucibus. Nullam id tellus id wisi gravida euismod. Cras massa arcu, facilisis sit amet, accumsan vel, dignissim eu, risus. Maecenas quis neque. Aenean condimentum. Cras ut lectus. Sed ultrices. Cras elementum rutrum turpis. Ut luctus sem. Maecenas vestibulum elit eget urna. Pellentesque vitae nibh sed eros vestibulum tincidunt. </Paragraph>
+<Paragraph />
+    <Paragraph>Nam rhoncus mi. Nunc eu dui non mauris interdum tincidunt. Sed magna felis, accumsan a, fermentum quis, varius sed, ipsum. Nullam leo. Donec eros. Maecenas interdum, lectus eget aliquet tincidunt, tellus dolor ultrices tellus, nec hendrerit nunc lectus eget eros. Duis feugiat velit in eros. Curabitur tincidunt aliquet neque. Nulla ac est quis urna luctus elementum. Aliquam erat volutpat. In tincidunt nunc vehicula risus. Praesent dictum arcu sit amet wisi. Praesent ac odio. Donec vestibulum, sem vel facilisis consectetuer, justo arcu tempor sem, vel ultrices turpis leo quis augue. </Paragraph>
+<Paragraph />
+    <Paragraph>Proin elit sem, ornare non, ullamcorper vel, sollicitudin a, lacus. Mauris tincidunt cursus est. Nulla sit amet nibh. Sed elementum feugiat augue. Nam non tortor non leo porta bibendum. Morbi eu pede. In eu erat et est feugiat fermentum. Praesent accumsan. Nulla convallis, lorem nec aliquet dapibus, libero felis sagittis augue, ut adipiscing nisl eros in quam. Fusce eleifend. Sed justo nibh, placerat a, malesuada nec, condimentum ac, magna. </Paragraph>
+<Paragraph />
+    <Paragraph>Praesent fringilla feugiat magna. Suspendisse et lorem eu risus convallis placerat. Suspendisse potenti. Donec malesuada lorem id mi. Nunc ut purus ac nisl tempus accumsan. Ut pellentesque, sapien nec egestas fermentum, justo mauris sollicitudin mi, sed placerat elit est a lectus. Quisque in odio. Fusce tincidunt, justo sed eleifend posuere, mauris purus iaculis orci, et ullamcorper leo lorem in libero. Cras ullamcorper felis vitae eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla a lectus in justo malesuada volutpat. Sed faucibus. Cras ac quam at odio egestas eleifend. Curabitur quis nunc. Sed malesuada magna sit amet lorem. Nulla sed urna. </Paragraph>
+<Paragraph />
+    <Paragraph>Sed eu nibh. Fusce vitae mi. Sed dapibus venenatis ipsum. Sed in purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Donec vel augue. Phasellus pulvinar, eros eget nonummy molestie, purus urna dictum dui, ac pretium urna magna quis pede. Ut lacus diam, pretium at, commodo ut, sodales vel, leo. Nulla vitae ipsum. Vestibulum at risus vitae libero cursus mattis. Nam nec neque et leo imperdiet rutrum. Duis consequat suscipit mi. Morbi pulvinar magna quis risus gravida varius. </Paragraph>
+<Paragraph />
+    <Paragraph>Etiam ipsum orci, gravida nec, feugiat ut, malesuada quis, mauris. Etiam porttitor. Ut venenatis, velit a accumsan interdum, odio metus mollis mauris, non pharetra augue arcu eu felis. Ut eget felis. Mauris leo nulla, sodales et, pharetra quis, fermentum nec, diam. Maecenas eget metus. Donec ultricies risus non dui. Ut ipsum mauris, pellentesque ut, tristique eget, fringilla id, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis erat. Curabitur non magna. Nullam wisi lectus, rutrum sit amet, fermentum et, venenatis hendrerit, magna. Suspendisse convallis urna elementum elit. Mauris nulla. Donec vel urna. Donec iaculis vestibulum odio. Vivamus in neque ut ipsum lacinia euismod. Nullam in orci non dui pellentesque accumsan. Mauris convallis enim et eros. </Paragraph>
+<Paragraph />
+    <Paragraph>Praesent eleifend dignissim eros. Proin feugiat lobortis mi. Nunc congue. Fusce venenatis. Maecenas tincidunt, ipsum in fringilla hendrerit, dolor metus eleifend neque, vel tincidunt mi nunc a purus. Curabitur porta dapibus odio. Proin commodo. Vestibulum odio mi, varius sit amet, adipiscing id, semper non, elit. Integer hendrerit placerat sem. Duis adipiscing urna ac wisi. Cras sapien. Sed faucibus consequat pede. Proin id nibh. In sed pede. In tristique tempor erat. </Paragraph>
+<Paragraph />
+    <Paragraph>Suspendisse vestibulum augue eu justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce suscipit pede ut erat. Sed rutrum. Pellentesque eget mi. In enim. Praesent nec eros. Aenean convallis sem condimentum justo. Integer quam. Ut ultrices, purus sit amet pretium bibendum, risus est facilisis purus, quis suscipit leo ipsum fringilla ligula. Lum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. </Paragraph>
+
+
+</FlowDocument>
+</FlowDocumentPageViewer>
+    </DockPanel>

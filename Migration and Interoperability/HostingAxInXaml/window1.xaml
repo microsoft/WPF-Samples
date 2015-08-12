@@ -1,0 +1,19 @@
+﻿<!-- <snippet1> -->
+<Window x:Class="HostingAxInWpfWithXaml.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" 
+    xmlns:ax="clr-namespace:AxWMPLib;assembly=AxInterop.WMPLib" 
+    Title="HostingAxInWpfWithXaml"
+	  Loaded="WindowLoaded"
+    >
+
+  <Grid Name="grid1">
+
+    <WindowsFormsHost Name="wfh">
+      <ax:AxWindowsMediaPlayer x:Name="axWmp"/>
+    </WindowsFormsHost>
+
+  </Grid>
+
+</Window>

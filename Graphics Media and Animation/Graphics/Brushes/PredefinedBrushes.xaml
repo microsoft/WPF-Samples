@@ -1,0 +1,509 @@
+<!-- PredefinedBrushes.xaml 
+     Shows the predefined brushes defined by the System.Brushes class. 
+-->
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  Title="Predefined Brushes">
+   <Grid Margin="10">
+      <Grid.Resources>
+         <Style TargetType="{x:Type TextBlock}">
+    <Setter Property="FontSize" Value="8pt"/>
+    <Setter Property="FontFamily" Value="Verdana"/>
+    <Setter Property="Margin" Value="5,5,0,0"/>
+         </Style>
+         <Style TargetType="{x:Type Rectangle}">
+    <Setter Property="Stroke" Value="Black"/>
+    <Setter Property="StrokeThickness" Value="1"/>
+    <Setter Property="Margin" Value="20,5,0,0"/>
+         </Style>
+      </Grid.Resources>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>        
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions> 
+
+      
+
+
+      
+      <TextBlock Grid.Row="0" Grid.Column="0" 
+        Grid.ColumnSpan="12" FontSize="14" FontWeight="Bold">Predefined Brushes</TextBlock>
+      <Rectangle Grid.Row="2" Grid.Column="0" Width="30" Height="14" Fill="AliceBlue" />
+      <TextBlock Grid.Row="2" Grid.Column="1">AliceBlue</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="2">#FFF0F8FF</TextBlock>
+      <Rectangle Grid.Row="3" Grid.Column="0" Width="30" Height="14" Fill="AntiqueWhite" />
+      <TextBlock Grid.Row="3" Grid.Column="1">AntiqueWhite</TextBlock>
+      <TextBlock Grid.Row="3" Grid.Column="2">#FFFAEBD7</TextBlock>
+      <Rectangle Grid.Row="4" Grid.Column="0" Width="30" Height="14" Fill="Aqua" />
+      <TextBlock Grid.Row="4" Grid.Column="1">Aqua</TextBlock>
+      <TextBlock Grid.Row="4" Grid.Column="2">#FF00FFFF</TextBlock>
+      <Rectangle Grid.Row="5" Grid.Column="0" Width="30" Height="14" Fill="Aquamarine" />
+      <TextBlock Grid.Row="5" Grid.Column="1">Aquamarine</TextBlock>
+      <TextBlock Grid.Row="5" Grid.Column="2">#FF7FFFD4</TextBlock>
+      <Rectangle Grid.Row="6" Grid.Column="0" Width="30" Height="14" Fill="Azure" />
+      <TextBlock Grid.Row="6" Grid.Column="1">Azure</TextBlock>
+      <TextBlock Grid.Row="6" Grid.Column="2">#FFF0FFFF</TextBlock>
+      <Rectangle Grid.Row="7" Grid.Column="0" Width="30" Height="14" Fill="Beige" />
+      <TextBlock Grid.Row="7" Grid.Column="1">Beige</TextBlock>
+      <TextBlock Grid.Row="7" Grid.Column="2">#FFF5F5DC</TextBlock>
+      <Rectangle Grid.Row="8" Grid.Column="0" Width="30" Height="14" Fill="Bisque" />
+      <TextBlock Grid.Row="8" Grid.Column="1">Bisque</TextBlock>
+      <TextBlock Grid.Row="8" Grid.Column="2">#FFFFE4C4</TextBlock>
+      <Rectangle Grid.Row="9" Grid.Column="0" Width="30" Height="14" Fill="Black" />
+      <TextBlock Grid.Row="9" Grid.Column="1">Black</TextBlock>
+      <TextBlock Grid.Row="9" Grid.Column="2">#FF000000</TextBlock>
+      <Rectangle Grid.Row="10" Grid.Column="0" Width="30" Height="14" Fill="BlanchedAlmond" />
+      <TextBlock Grid.Row="10" Grid.Column="1">BlanchedAlmond</TextBlock>
+      <TextBlock Grid.Row="10" Grid.Column="2">#FFFFEBCD</TextBlock>
+      <Rectangle Grid.Row="11" Grid.Column="0" Width="30" Height="14" Fill="Blue" />
+      <TextBlock Grid.Row="11" Grid.Column="1">Blue</TextBlock>
+      <TextBlock Grid.Row="11" Grid.Column="2">#FF0000FF</TextBlock>
+      <Rectangle Grid.Row="12" Grid.Column="0" Width="30" Height="14" Fill="BlueViolet" />
+      <TextBlock Grid.Row="12" Grid.Column="1">BlueViolet</TextBlock>
+      <TextBlock Grid.Row="12" Grid.Column="2">#FF8A2BE2</TextBlock>
+      <Rectangle Grid.Row="13" Grid.Column="0" Width="30" Height="14" Fill="Brown" />
+      <TextBlock Grid.Row="13" Grid.Column="1">Brown</TextBlock>
+      <TextBlock Grid.Row="13" Grid.Column="2">#FFA52A2A</TextBlock>
+      <Rectangle Grid.Row="14" Grid.Column="0" Width="30" Height="14" Fill="BurlyWood" />
+      <TextBlock Grid.Row="14" Grid.Column="1">BurlyWood</TextBlock>
+      <TextBlock Grid.Row="14" Grid.Column="2">#FFDEB887</TextBlock>
+      <Rectangle Grid.Row="15" Grid.Column="0" Width="30" Height="14" Fill="CadetBlue" />
+      <TextBlock Grid.Row="15" Grid.Column="1">CadetBlue</TextBlock>
+      <TextBlock Grid.Row="15" Grid.Column="2">#FF5F9EA0</TextBlock>
+      <Rectangle Grid.Row="16" Grid.Column="0" Width="30" Height="14" Fill="Chartreuse" />
+      <TextBlock Grid.Row="16" Grid.Column="1">Chartreuse</TextBlock>
+      <TextBlock Grid.Row="16" Grid.Column="2">#FF7FFF00</TextBlock>
+      <Rectangle Grid.Row="17" Grid.Column="0" Width="30" Height="14" Fill="Chocolate" />
+      <TextBlock Grid.Row="17" Grid.Column="1">Chocolate</TextBlock>
+      <TextBlock Grid.Row="17" Grid.Column="2">#FFD2691E</TextBlock>
+      <Rectangle Grid.Row="18" Grid.Column="0" Width="30" Height="14" Fill="Coral" />
+      <TextBlock Grid.Row="18" Grid.Column="1">Coral</TextBlock>
+      <TextBlock Grid.Row="18" Grid.Column="2">#FFFF7F50</TextBlock>
+      <Rectangle Grid.Row="19" Grid.Column="0" Width="30" Height="14" Fill="CornflowerBlue" />
+      <TextBlock Grid.Row="19" Grid.Column="1">CornflowerBlue</TextBlock>
+      <TextBlock Grid.Row="19" Grid.Column="2">#FF6495ED</TextBlock>
+      <Rectangle Grid.Row="20" Grid.Column="0" Width="30" Height="14" Fill="Cornsilk" />
+      <TextBlock Grid.Row="20" Grid.Column="1">Cornsilk</TextBlock>
+      <TextBlock Grid.Row="20" Grid.Column="2">#FFFFF8DC</TextBlock>
+      <Rectangle Grid.Row="21" Grid.Column="0" Width="30" Height="14" Fill="Crimson" />
+      <TextBlock Grid.Row="21" Grid.Column="1">Crimson</TextBlock>
+      <TextBlock Grid.Row="21" Grid.Column="2">#FFDC143C</TextBlock>
+      <Rectangle Grid.Row="22" Grid.Column="0" Width="30" Height="14" Fill="Cyan" />
+      <TextBlock Grid.Row="22" Grid.Column="1">Cyan</TextBlock>
+      <TextBlock Grid.Row="22" Grid.Column="2">#FF00FFFF</TextBlock>
+      <Rectangle Grid.Row="23" Grid.Column="0" Width="30" Height="14" Fill="DarkBlue" />
+      <TextBlock Grid.Row="23" Grid.Column="1">DarkBlue</TextBlock>
+      <TextBlock Grid.Row="23" Grid.Column="2">#FF00008B</TextBlock>
+      <Rectangle Grid.Row="24" Grid.Column="0" Width="30" Height="14" Fill="DarkCyan" />
+      <TextBlock Grid.Row="24" Grid.Column="1">DarkCyan</TextBlock>
+      <TextBlock Grid.Row="24" Grid.Column="2">#FF008B8B</TextBlock>
+      <Rectangle Grid.Row="25" Grid.Column="0" Width="30" Height="14" Fill="DarkGoldenrod" />
+      <TextBlock Grid.Row="25" Grid.Column="1">DarkGoldenrod</TextBlock>
+      <TextBlock Grid.Row="25" Grid.Column="2">#FFB8860B</TextBlock>
+      <Rectangle Grid.Row="26" Grid.Column="0" Width="30" Height="14" Fill="DarkGray" />
+      <TextBlock Grid.Row="26" Grid.Column="1">DarkGray</TextBlock>
+      <TextBlock Grid.Row="26" Grid.Column="2">#FFA9A9A9</TextBlock>
+      <Rectangle Grid.Row="27" Grid.Column="0" Width="30" Height="14" Fill="DarkGreen" />
+      <TextBlock Grid.Row="27" Grid.Column="1">DarkGreen</TextBlock>
+      <TextBlock Grid.Row="27" Grid.Column="2">#FF006400</TextBlock>
+      <Rectangle Grid.Row="28" Grid.Column="0" Width="30" Height="14" Fill="DarkKhaki" />
+      <TextBlock Grid.Row="28" Grid.Column="1">DarkKhaki</TextBlock>
+      <TextBlock Grid.Row="28" Grid.Column="2">#FFBDB76B</TextBlock>
+      <Rectangle Grid.Row="29" Grid.Column="0" Width="30" Height="14" Fill="DarkMagenta" />
+      <TextBlock Grid.Row="29" Grid.Column="1">DarkMagenta</TextBlock>
+      <TextBlock Grid.Row="29" Grid.Column="2">#FF8B008B</TextBlock>
+      <Rectangle Grid.Row="30" Grid.Column="0" Width="30" Height="14" Fill="DarkOliveGreen" />
+      <TextBlock Grid.Row="30" Grid.Column="1">DarkOliveGreen</TextBlock>
+      <TextBlock Grid.Row="30" Grid.Column="2">#FF556B2F</TextBlock>
+      <Rectangle Grid.Row="31" Grid.Column="0" Width="30" Height="14" Fill="DarkOrange" />
+      <TextBlock Grid.Row="31" Grid.Column="1">DarkOrange</TextBlock>
+      <TextBlock Grid.Row="31" Grid.Column="2">#FFFF8C00</TextBlock>
+      <Rectangle Grid.Row="32" Grid.Column="0" Width="30" Height="14" Fill="DarkOrchid" />
+      <TextBlock Grid.Row="32" Grid.Column="1">DarkOrchid</TextBlock>
+      <TextBlock Grid.Row="32" Grid.Column="2">#FF9932CC</TextBlock>
+      <Rectangle Grid.Row="33" Grid.Column="0" Width="30" Height="14" Fill="DarkRed" />
+      <TextBlock Grid.Row="33" Grid.Column="1">DarkRed</TextBlock>
+      <TextBlock Grid.Row="33" Grid.Column="2">#FF8B0000</TextBlock>
+      <Rectangle Grid.Row="34" Grid.Column="0" Width="30" Height="14" Fill="DarkSalmon" />
+      <TextBlock Grid.Row="34" Grid.Column="1">DarkSalmon</TextBlock>
+      <TextBlock Grid.Row="34" Grid.Column="2">#FFE9967A</TextBlock>
+      <Rectangle Grid.Row="35" Grid.Column="0" Width="30" Height="14" Fill="DarkSeaGreen" />
+      <TextBlock Grid.Row="35" Grid.Column="1">DarkSeaGreen</TextBlock>
+      <TextBlock Grid.Row="35" Grid.Column="2">#FF8FBC8F</TextBlock>
+      <Rectangle Grid.Row="36" Grid.Column="0" Width="30" Height="14" Fill="DarkSlateBlue" />
+      <TextBlock Grid.Row="36" Grid.Column="1">DarkSlateBlue</TextBlock>
+      <TextBlock Grid.Row="36" Grid.Column="2">#FF483D8B</TextBlock>
+      <Rectangle Grid.Row="37" Grid.Column="0" Width="30" Height="14" Fill="DarkSlateGray" />
+      <TextBlock Grid.Row="37" Grid.Column="1">DarkSlateGray</TextBlock>
+      <TextBlock Grid.Row="37" Grid.Column="2">#FF2F4F4F</TextBlock>
+      <Rectangle Grid.Row="2" Grid.Column="3" Width="30" Height="14" Fill="DarkTurquoise" />
+      <TextBlock Grid.Row="2" Grid.Column="4">DarkTurquoise</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="5">#FF00CED1</TextBlock>
+      <Rectangle Grid.Row="3" Grid.Column="3" Width="30" Height="14" Fill="DarkViolet" />
+      <TextBlock Grid.Row="3" Grid.Column="4">DarkViolet</TextBlock>
+      <TextBlock Grid.Row="3" Grid.Column="5">#FF9400D3</TextBlock>
+      <Rectangle Grid.Row="4" Grid.Column="3" Width="30" Height="14" Fill="DeepPink" />
+      <TextBlock Grid.Row="4" Grid.Column="4">DeepPink</TextBlock>
+      <TextBlock Grid.Row="4" Grid.Column="5">#FFFF1493</TextBlock>
+      <Rectangle Grid.Row="5" Grid.Column="3" Width="30" Height="14" Fill="DeepSkyBlue" />
+      <TextBlock Grid.Row="5" Grid.Column="4">DeepSkyBlue</TextBlock>
+      <TextBlock Grid.Row="5" Grid.Column="5">#FF00BFFF</TextBlock>
+      <Rectangle Grid.Row="6" Grid.Column="3" Width="30" Height="14" Fill="DimGray" />
+      <TextBlock Grid.Row="6" Grid.Column="4">DimGray</TextBlock>
+      <TextBlock Grid.Row="6" Grid.Column="5">#FF696969</TextBlock>
+      <Rectangle Grid.Row="7" Grid.Column="3" Width="30" Height="14" Fill="DodgerBlue" />
+      <TextBlock Grid.Row="7" Grid.Column="4">DodgerBlue</TextBlock>
+      <TextBlock Grid.Row="7" Grid.Column="5">#FF1E90FF</TextBlock>
+      <Rectangle Grid.Row="8" Grid.Column="3" Width="30" Height="14" Fill="Firebrick" />
+      <TextBlock Grid.Row="8" Grid.Column="4">Firebrick</TextBlock>
+      <TextBlock Grid.Row="8" Grid.Column="5">#FFB22222</TextBlock>
+      <Rectangle Grid.Row="9" Grid.Column="3" Width="30" Height="14" Fill="FloralWhite" />
+      <TextBlock Grid.Row="9" Grid.Column="4">FloralWhite</TextBlock>
+      <TextBlock Grid.Row="9" Grid.Column="5">#FFFFFAF0</TextBlock>
+      <Rectangle Grid.Row="10" Grid.Column="3" Width="30" Height="14" Fill="ForestGreen" />
+      <TextBlock Grid.Row="10" Grid.Column="4">ForestGreen</TextBlock>
+      <TextBlock Grid.Row="10" Grid.Column="5">#FF228B22</TextBlock>
+      <Rectangle Grid.Row="11" Grid.Column="3" Width="30" Height="14" Fill="Fuchsia" />
+      <TextBlock Grid.Row="11" Grid.Column="4">Fuchsia</TextBlock>
+      <TextBlock Grid.Row="11" Grid.Column="5">#FFFF00FF</TextBlock>
+      <Rectangle Grid.Row="12" Grid.Column="3" Width="30" Height="14" Fill="Gainsboro" />
+      <TextBlock Grid.Row="12" Grid.Column="4">Gainsboro</TextBlock>
+      <TextBlock Grid.Row="12" Grid.Column="5">#FFDCDCDC</TextBlock>
+      <Rectangle Grid.Row="13" Grid.Column="3" Width="30" Height="14" Fill="GhostWhite" />
+      <TextBlock Grid.Row="13" Grid.Column="4">GhostWhite</TextBlock>
+      <TextBlock Grid.Row="13" Grid.Column="5">#FFF8F8FF</TextBlock>
+      <Rectangle Grid.Row="14" Grid.Column="3" Width="30" Height="14" Fill="Gold" />
+      <TextBlock Grid.Row="14" Grid.Column="4">Gold</TextBlock>
+      <TextBlock Grid.Row="14" Grid.Column="5">#FFFFD700</TextBlock>
+      <Rectangle Grid.Row="15" Grid.Column="3" Width="30" Height="14" Fill="Goldenrod" />
+      <TextBlock Grid.Row="15" Grid.Column="4">Goldenrod</TextBlock>
+      <TextBlock Grid.Row="15" Grid.Column="5">#FFDAA520</TextBlock>
+      <Rectangle Grid.Row="16" Grid.Column="3" Width="30" Height="14" Fill="Gray" />
+      <TextBlock Grid.Row="16" Grid.Column="4">Gray</TextBlock>
+      <TextBlock Grid.Row="16" Grid.Column="5">#FF808080</TextBlock>
+      <Rectangle Grid.Row="17" Grid.Column="3" Width="30" Height="14" Fill="Green" />
+      <TextBlock Grid.Row="17" Grid.Column="4">Green</TextBlock>
+      <TextBlock Grid.Row="17" Grid.Column="5">#FF008000</TextBlock>
+      <Rectangle Grid.Row="18" Grid.Column="3" Width="30" Height="14" Fill="GreenYellow" />
+      <TextBlock Grid.Row="18" Grid.Column="4">GreenYellow</TextBlock>
+      <TextBlock Grid.Row="18" Grid.Column="5">#FFADFF2F</TextBlock>
+      <Rectangle Grid.Row="19" Grid.Column="3" Width="30" Height="14" Fill="Honeydew" />
+      <TextBlock Grid.Row="19" Grid.Column="4">Honeydew</TextBlock>
+      <TextBlock Grid.Row="19" Grid.Column="5">#FFF0FFF0</TextBlock>
+      <Rectangle Grid.Row="20" Grid.Column="3" Width="30" Height="14" Fill="HotPink" />
+      <TextBlock Grid.Row="20" Grid.Column="4">HotPink</TextBlock>
+      <TextBlock Grid.Row="20" Grid.Column="5">#FFFF69B4</TextBlock>
+      <Rectangle Grid.Row="21" Grid.Column="3" Width="30" Height="14" Fill="IndianRed" />
+      <TextBlock Grid.Row="21" Grid.Column="4">IndianRed</TextBlock>
+      <TextBlock Grid.Row="21" Grid.Column="5">#FFCD5C5C</TextBlock>
+      <Rectangle Grid.Row="22" Grid.Column="3" Width="30" Height="14" Fill="Indigo" />
+      <TextBlock Grid.Row="22" Grid.Column="4">Indigo</TextBlock>
+      <TextBlock Grid.Row="22" Grid.Column="5">#FF4B0082</TextBlock>
+      <Rectangle Grid.Row="23" Grid.Column="3" Width="30" Height="14" Fill="Ivory" />
+      <TextBlock Grid.Row="23" Grid.Column="4">Ivory</TextBlock>
+      <TextBlock Grid.Row="23" Grid.Column="5">#FFFFFFF0</TextBlock>
+      <Rectangle Grid.Row="24" Grid.Column="3" Width="30" Height="14" Fill="Khaki" />
+      <TextBlock Grid.Row="24" Grid.Column="4">Khaki</TextBlock>
+      <TextBlock Grid.Row="24" Grid.Column="5">#FFF0E68C</TextBlock>
+      <Rectangle Grid.Row="25" Grid.Column="3" Width="30" Height="14" Fill="Lavender" />
+      <TextBlock Grid.Row="25" Grid.Column="4">Lavender</TextBlock>
+      <TextBlock Grid.Row="25" Grid.Column="5">#FFE6E6FA</TextBlock>
+      <Rectangle Grid.Row="26" Grid.Column="3" Width="30" Height="14" Fill="LavenderBlush" />
+      <TextBlock Grid.Row="26" Grid.Column="4">LavenderBlush</TextBlock>
+      <TextBlock Grid.Row="26" Grid.Column="5">#FFFFF0F5</TextBlock>
+      <Rectangle Grid.Row="27" Grid.Column="3" Width="30" Height="14" Fill="LawnGreen" />
+      <TextBlock Grid.Row="27" Grid.Column="4">LawnGreen</TextBlock>
+      <TextBlock Grid.Row="27" Grid.Column="5">#FF7CFC00</TextBlock>
+      <Rectangle Grid.Row="28" Grid.Column="3" Width="30" Height="14" Fill="LemonChiffon" />
+      <TextBlock Grid.Row="28" Grid.Column="4">LemonChiffon</TextBlock>
+      <TextBlock Grid.Row="28" Grid.Column="5">#FFFFFACD</TextBlock>
+      <Rectangle Grid.Row="29" Grid.Column="3" Width="30" Height="14" Fill="LightBlue" />
+      <TextBlock Grid.Row="29" Grid.Column="4">LightBlue</TextBlock>
+      <TextBlock Grid.Row="29" Grid.Column="5">#FFADD8E6</TextBlock>
+      <Rectangle Grid.Row="30" Grid.Column="3" Width="30" Height="14" Fill="LightCoral" />
+      <TextBlock Grid.Row="30" Grid.Column="4">LightCoral</TextBlock>
+      <TextBlock Grid.Row="30" Grid.Column="5">#FFF08080</TextBlock>
+      <Rectangle Grid.Row="31" Grid.Column="3" Width="30" Height="14" Fill="LightCyan" />
+      <TextBlock Grid.Row="31" Grid.Column="4">LightCyan</TextBlock>
+      <TextBlock Grid.Row="31" Grid.Column="5">#FFE0FFFF</TextBlock>
+      <Rectangle Grid.Row="32" Grid.Column="3" Width="30" Height="14" Fill="LightGoldenrodYellow" />
+      <TextBlock Grid.Row="32" Grid.Column="4">LightGoldenrodYellow</TextBlock>
+      <TextBlock Grid.Row="32" Grid.Column="5">#FFFAFAD2</TextBlock>
+      <Rectangle Grid.Row="33" Grid.Column="3" Width="30" Height="14" Fill="LightGray" />
+      <TextBlock Grid.Row="33" Grid.Column="4">LightGray</TextBlock>
+      <TextBlock Grid.Row="33" Grid.Column="5">#FFD3D3D3</TextBlock>      
+      <Rectangle Grid.Row="34" Grid.Column="3" Width="30" Height="14" Fill="LightGreen" />
+      <TextBlock Grid.Row="34" Grid.Column="4">LightGreen</TextBlock>
+      <TextBlock Grid.Row="34" Grid.Column="5">#FF90EE90</TextBlock>
+      <Rectangle Grid.Row="35" Grid.Column="3" Width="30" Height="14" Fill="LightPink" />
+      <TextBlock Grid.Row="35" Grid.Column="4">LightPink</TextBlock>
+      <TextBlock Grid.Row="35" Grid.Column="5">#FFFFB6C1</TextBlock>
+      <Rectangle Grid.Row="36" Grid.Column="3" Width="30" Height="14" Fill="LightSalmon" />
+      <TextBlock Grid.Row="36" Grid.Column="4">LightSalmon</TextBlock>
+      <TextBlock Grid.Row="36" Grid.Column="5">#FFFFA07A</TextBlock>
+      <Rectangle Grid.Row="2" Grid.Column="6" Width="30" Height="14" Fill="LightSeaGreen" />
+      <TextBlock Grid.Row="2" Grid.Column="7">LightSeaGreen</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="8">#FF20B2AA</TextBlock>
+      <Rectangle Grid.Row="3" Grid.Column="6" Width="30" Height="14" Fill="LightSkyBlue" />
+      <TextBlock Grid.Row="3" Grid.Column="7">LightSkyBlue</TextBlock>
+      <TextBlock Grid.Row="3" Grid.Column="8">#FF87CEFA</TextBlock>
+      <Rectangle Grid.Row="4" Grid.Column="6" Width="30" Height="14" Fill="LightSlateGray" />
+      <TextBlock Grid.Row="4" Grid.Column="7">LightSlateGray</TextBlock>
+      <TextBlock Grid.Row="4" Grid.Column="8">#FF778899</TextBlock>
+      <Rectangle Grid.Row="5" Grid.Column="6" Width="30" Height="14" Fill="LightSteelBlue" />
+      <TextBlock Grid.Row="5" Grid.Column="7">LightSteelBlue</TextBlock>
+      <TextBlock Grid.Row="5" Grid.Column="8">#FFB0C4DE</TextBlock>
+      <Rectangle Grid.Row="6" Grid.Column="6" Width="30" Height="14" Fill="LightYellow" />
+      <TextBlock Grid.Row="6" Grid.Column="7">LightYellow</TextBlock>
+      <TextBlock Grid.Row="6" Grid.Column="8">#FFFFFFE0</TextBlock>
+      <Rectangle Grid.Row="7" Grid.Column="6" Width="30" Height="14" Fill="Lime" />
+      <TextBlock Grid.Row="7" Grid.Column="7">Lime</TextBlock>
+      <TextBlock Grid.Row="7" Grid.Column="8">#FF00FF00</TextBlock>
+      <Rectangle Grid.Row="8" Grid.Column="6" Width="30" Height="14" Fill="LimeGreen" />
+      <TextBlock Grid.Row="8" Grid.Column="7">LimeGreen</TextBlock>
+      <TextBlock Grid.Row="8" Grid.Column="8">#FF32CD32</TextBlock>
+      <Rectangle Grid.Row="9" Grid.Column="6" Width="30" Height="14" Fill="Linen" />
+      <TextBlock Grid.Row="9" Grid.Column="7">Linen</TextBlock>
+      <TextBlock Grid.Row="9" Grid.Column="8">#FFFAF0E6</TextBlock>
+      <Rectangle Grid.Row="10" Grid.Column="6" Width="30" Height="14" Fill="Magenta" />
+      <TextBlock Grid.Row="10" Grid.Column="7">Magenta</TextBlock>
+      <TextBlock Grid.Row="10" Grid.Column="8">#FFFF00FF</TextBlock>
+      <Rectangle Grid.Row="11" Grid.Column="6" Width="30" Height="14" Fill="Maroon" />
+      <TextBlock Grid.Row="11" Grid.Column="7">Maroon</TextBlock>
+      <TextBlock Grid.Row="11" Grid.Column="8">#FF800000</TextBlock>      
+      <Rectangle Grid.Row="12" Grid.Column="6" Width="30" Height="14" Fill="MediumAquamarine" />
+      <TextBlock Grid.Row="12" Grid.Column="7">MediumAquamarine</TextBlock>
+      <TextBlock Grid.Row="12" Grid.Column="8">#FF66CDAA</TextBlock>
+      <Rectangle Grid.Row="13" Grid.Column="6" Width="30" Height="14" Fill="MediumBlue" />
+      <TextBlock Grid.Row="13" Grid.Column="7">MediumBlue</TextBlock>
+      <TextBlock Grid.Row="13" Grid.Column="8">#FF0000CD</TextBlock>
+      <Rectangle Grid.Row="14" Grid.Column="6" Width="30" Height="14" Fill="MediumOrchid" />
+      <TextBlock Grid.Row="14" Grid.Column="7">MediumOrchid</TextBlock>
+      <TextBlock Grid.Row="14" Grid.Column="8">#FFBA55D3</TextBlock>
+      <Rectangle Grid.Row="15" Grid.Column="6" Width="30" Height="14" Fill="MediumPurple" />
+      <TextBlock Grid.Row="15" Grid.Column="7">MediumPurple</TextBlock>
+      <TextBlock Grid.Row="15" Grid.Column="8">#FF9370DB</TextBlock>
+      <Rectangle Grid.Row="16" Grid.Column="6" Width="30" Height="14" Fill="MediumSeaGreen" />
+      <TextBlock Grid.Row="16" Grid.Column="7">MediumSeaGreen</TextBlock>
+      <TextBlock Grid.Row="16" Grid.Column="8">#FF3CB371</TextBlock>
+      <Rectangle Grid.Row="17" Grid.Column="6" Width="30" Height="14" Fill="MediumSlateBlue" />
+      <TextBlock Grid.Row="17" Grid.Column="7">MediumSlateBlue</TextBlock>
+      <TextBlock Grid.Row="17" Grid.Column="8">#FF7B68EE</TextBlock>
+      <Rectangle Grid.Row="18" Grid.Column="6" Width="30" Height="14" Fill="MediumSpringGreen" />
+      <TextBlock Grid.Row="18" Grid.Column="7">MediumSpringGreen</TextBlock>
+      <TextBlock Grid.Row="18" Grid.Column="8">#FF00FA9A</TextBlock>
+      <Rectangle Grid.Row="19" Grid.Column="6" Width="30" Height="14" Fill="MediumTurquoise" />
+      <TextBlock Grid.Row="19" Grid.Column="7">MediumTurquoise</TextBlock>
+      <TextBlock Grid.Row="19" Grid.Column="8">#FF48D1CC</TextBlock>
+      <Rectangle Grid.Row="20" Grid.Column="6" Width="30" Height="14" Fill="MediumVioletRed" />
+      <TextBlock Grid.Row="20" Grid.Column="7">MediumVioletRed</TextBlock>
+      <TextBlock Grid.Row="20" Grid.Column="8">#FFC71585</TextBlock>
+      <Rectangle Grid.Row="21" Grid.Column="6" Width="30" Height="14" Fill="MidnightBlue" />
+      <TextBlock Grid.Row="21" Grid.Column="7">MidnightBlue</TextBlock>
+      <TextBlock Grid.Row="21" Grid.Column="8">#FF191970</TextBlock>
+      <Rectangle Grid.Row="22" Grid.Column="6" Width="30" Height="14" Fill="MintCream" />
+      <TextBlock Grid.Row="22" Grid.Column="7">MintCream</TextBlock>
+      <TextBlock Grid.Row="22" Grid.Column="8">#FFF5FFFA</TextBlock>
+      <Rectangle Grid.Row="23" Grid.Column="6" Width="30" Height="14" Fill="MistyRose" />
+      <TextBlock Grid.Row="23" Grid.Column="7">MistyRose</TextBlock>
+      <TextBlock Grid.Row="23" Grid.Column="8">#FFFFE4E1</TextBlock>
+      <Rectangle Grid.Row="24" Grid.Column="6" Width="30" Height="14" Fill="Moccasin" />
+      <TextBlock Grid.Row="24" Grid.Column="7">Moccasin</TextBlock>
+      <TextBlock Grid.Row="24" Grid.Column="8">#FFFFE4B5</TextBlock>
+      <Rectangle Grid.Row="25" Grid.Column="6" Width="30" Height="14" Fill="NavajoWhite" />
+      <TextBlock Grid.Row="25" Grid.Column="7">NavajoWhite</TextBlock>
+      <TextBlock Grid.Row="25" Grid.Column="8">#FFFFDEAD</TextBlock>
+      <Rectangle Grid.Row="26" Grid.Column="6" Width="30" Height="14" Fill="Navy" />
+      <TextBlock Grid.Row="26" Grid.Column="7">Navy</TextBlock>
+      <TextBlock Grid.Row="26" Grid.Column="8">#FF000080</TextBlock>
+      <Rectangle Grid.Row="27" Grid.Column="6" Width="30" Height="14" Fill="OldLace" />
+      <TextBlock Grid.Row="27" Grid.Column="7">OldLace</TextBlock>
+      <TextBlock Grid.Row="27" Grid.Column="8">#FFFDF5E6</TextBlock>
+      <Rectangle Grid.Row="28" Grid.Column="6" Width="30" Height="14" Fill="Olive" />
+      <TextBlock Grid.Row="28" Grid.Column="7">Olive</TextBlock>
+      <TextBlock Grid.Row="28" Grid.Column="8">#FF808000</TextBlock>
+      <Rectangle Grid.Row="29" Grid.Column="6" Width="30" Height="14" Fill="OliveDrab" />
+      <TextBlock Grid.Row="29" Grid.Column="7">OliveDrab</TextBlock>
+      <TextBlock Grid.Row="29" Grid.Column="8">#FF6B8E23</TextBlock>
+      <Rectangle Grid.Row="30" Grid.Column="6" Width="30" Height="14" Fill="Orange" />
+      <TextBlock Grid.Row="30" Grid.Column="7">Orange</TextBlock>
+      <TextBlock Grid.Row="30" Grid.Column="8">#FFFFA500</TextBlock>
+      <Rectangle Grid.Row="31" Grid.Column="6" Width="30" Height="14" Fill="OrangeRed" />
+      <TextBlock Grid.Row="31" Grid.Column="7">OrangeRed</TextBlock>
+      <TextBlock Grid.Row="31" Grid.Column="8">#FFFF4500</TextBlock>
+      <Rectangle Grid.Row="32" Grid.Column="6" Width="30" Height="14" Fill="Orchid" />
+      <TextBlock Grid.Row="32" Grid.Column="7">Orchid</TextBlock>
+      <TextBlock Grid.Row="32" Grid.Column="8">#FFDA70D6</TextBlock>
+      <Rectangle Grid.Row="33" Grid.Column="6" Width="30" Height="14" Fill="PaleGoldenrod" />
+      <TextBlock Grid.Row="33" Grid.Column="7">PaleGoldenrod</TextBlock>
+      <TextBlock Grid.Row="33" Grid.Column="8">#FFEEE8AA</TextBlock>
+      <Rectangle Grid.Row="34" Grid.Column="6" Width="30" Height="14" Fill="PaleGreen" />
+      <TextBlock Grid.Row="34" Grid.Column="7">PaleGreen</TextBlock>
+      <TextBlock Grid.Row="34" Grid.Column="8">#FF98FB98</TextBlock>
+      <Rectangle Grid.Row="35" Grid.Column="6" Width="30" Height="14" Fill="PaleTurquoise" />
+      <TextBlock Grid.Row="35" Grid.Column="7">PaleTurquoise</TextBlock>
+      <TextBlock Grid.Row="35" Grid.Column="8">#FFAFEEEE</TextBlock>
+      <Rectangle Grid.Row="36" Grid.Column="6" Width="30" Height="14" Fill="PaleVioletRed" />
+      <TextBlock Grid.Row="36" Grid.Column="7">PaleVioletRed</TextBlock>
+      <TextBlock Grid.Row="36" Grid.Column="8">#FFDB7093</TextBlock>
+      <Rectangle Grid.Row="2" Grid.Column="9" Width="30" Height="14" Fill="PapayaWhip" />
+      <TextBlock Grid.Row="2" Grid.Column="10">PapayaWhip</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="11">#FFFFEFD5</TextBlock>
+      <Rectangle Grid.Row="3" Grid.Column="9" Width="30" Height="14" Fill="PeachPuff" />
+      <TextBlock Grid.Row="3" Grid.Column="10">PeachPuff</TextBlock>
+      <TextBlock Grid.Row="3" Grid.Column="11">#FFFFDAB9</TextBlock>
+      <Rectangle Grid.Row="4" Grid.Column="9" Width="30" Height="14" Fill="Peru" />
+      <TextBlock Grid.Row="4" Grid.Column="10">Peru</TextBlock>
+      <TextBlock Grid.Row="4" Grid.Column="11">#FFCD853F</TextBlock>
+      <Rectangle Grid.Row="5" Grid.Column="9" Width="30" Height="14" Fill="Pink" />
+      <TextBlock Grid.Row="5" Grid.Column="10">Pink</TextBlock>
+      <TextBlock Grid.Row="5" Grid.Column="11">#FFFFC0CB</TextBlock>
+      <Rectangle Grid.Row="6" Grid.Column="9" Width="30" Height="14" Fill="Plum" />
+      <TextBlock Grid.Row="6" Grid.Column="10">Plum</TextBlock>
+      <TextBlock Grid.Row="6" Grid.Column="11">#FFDDA0DD</TextBlock>
+      <Rectangle Grid.Row="7" Grid.Column="9" Width="30" Height="14" Fill="PowderBlue" />
+      <TextBlock Grid.Row="7" Grid.Column="10">PowderBlue</TextBlock>
+      <TextBlock Grid.Row="7" Grid.Column="11">#FFB0E0E6</TextBlock>
+      <Rectangle Grid.Row="8" Grid.Column="9" Width="30" Height="14" Fill="Purple" />
+      <TextBlock Grid.Row="8" Grid.Column="10">Purple</TextBlock>
+      <TextBlock Grid.Row="8" Grid.Column="11">#FF800080</TextBlock>
+      <Rectangle Grid.Row="9" Grid.Column="9" Width="30" Height="14" Fill="Red" />
+      <TextBlock Grid.Row="9" Grid.Column="10">Red</TextBlock>
+      <TextBlock Grid.Row="9" Grid.Column="11">#FFFF0000</TextBlock>
+      <Rectangle Grid.Row="10" Grid.Column="9" Width="30" Height="14" Fill="RosyBrown" />
+      <TextBlock Grid.Row="10" Grid.Column="10">RosyBrown</TextBlock>
+      <TextBlock Grid.Row="10" Grid.Column="11">#FFBC8F8F</TextBlock>
+      <Rectangle Grid.Row="11" Grid.Column="9" Width="30" Height="14" Fill="RoyalBlue" />
+      <TextBlock Grid.Row="11" Grid.Column="10">RoyalBlue</TextBlock>
+      <TextBlock Grid.Row="11" Grid.Column="11">#FF4169E1</TextBlock>
+      <Rectangle Grid.Row="12" Grid.Column="9" Width="30" Height="14" Fill="SaddleBrown" />
+      <TextBlock Grid.Row="12" Grid.Column="10">SaddleBrown</TextBlock>
+      <TextBlock Grid.Row="12" Grid.Column="11">#FF8B4513</TextBlock>
+      <Rectangle Grid.Row="13" Grid.Column="9" Width="30" Height="14" Fill="Salmon" />
+      <TextBlock Grid.Row="13" Grid.Column="10">Salmon</TextBlock>
+      <TextBlock Grid.Row="13" Grid.Column="11">#FFFA8072</TextBlock>
+      <Rectangle Grid.Row="14" Grid.Column="9" Width="30" Height="14" Fill="SandyBrown" />
+      <TextBlock Grid.Row="14" Grid.Column="10">SandyBrown</TextBlock>
+      <TextBlock Grid.Row="14" Grid.Column="11">#FFF4A460</TextBlock>
+      <Rectangle Grid.Row="15" Grid.Column="9" Width="30" Height="14" Fill="SeaGreen" />
+      <TextBlock Grid.Row="15" Grid.Column="10">SeaGreen</TextBlock>
+      <TextBlock Grid.Row="15" Grid.Column="11">#FF2E8B57</TextBlock>
+      <Rectangle Grid.Row="16" Grid.Column="9" Width="30" Height="14" Fill="SeaShell" />
+      <TextBlock Grid.Row="16" Grid.Column="10">SeaShell</TextBlock>
+      <TextBlock Grid.Row="16" Grid.Column="11">#FFFFF5EE</TextBlock>
+      <Rectangle Grid.Row="17" Grid.Column="9" Width="30" Height="14" Fill="Sienna" />
+      <TextBlock Grid.Row="17" Grid.Column="10">Sienna</TextBlock>
+      <TextBlock Grid.Row="17" Grid.Column="11">#FFA0522D</TextBlock>
+      <Rectangle Grid.Row="18" Grid.Column="9" Width="30" Height="14" Fill="Silver" />
+      <TextBlock Grid.Row="18" Grid.Column="10">Silver</TextBlock>
+      <TextBlock Grid.Row="18" Grid.Column="11">#FFC0C0C0</TextBlock>
+      <Rectangle Grid.Row="19" Grid.Column="9" Width="30" Height="14" Fill="SkyBlue" />
+      <TextBlock Grid.Row="19" Grid.Column="10">SkyBlue</TextBlock>
+      <TextBlock Grid.Row="19" Grid.Column="11">#FF87CEEB</TextBlock>
+      <Rectangle Grid.Row="20" Grid.Column="9" Width="30" Height="14" Fill="SlateBlue" />
+      <TextBlock Grid.Row="20" Grid.Column="10">SlateBlue</TextBlock>
+      <TextBlock Grid.Row="20" Grid.Column="11">#FF6A5ACD</TextBlock>
+      <Rectangle Grid.Row="21" Grid.Column="9" Width="30" Height="14" Fill="SlateGray" />
+      <TextBlock Grid.Row="21" Grid.Column="10">SlateGray</TextBlock>
+      <TextBlock Grid.Row="21" Grid.Column="11">#FF708090</TextBlock>
+      <Rectangle Grid.Row="22" Grid.Column="9" Width="30" Height="14" Fill="Snow" />
+      <TextBlock Grid.Row="22" Grid.Column="10">Snow</TextBlock>
+      <TextBlock Grid.Row="22" Grid.Column="11">#FFFFFAFA</TextBlock>
+      <Rectangle Grid.Row="23" Grid.Column="9" Width="30" Height="14" Fill="SpringGreen" />
+      <TextBlock Grid.Row="23" Grid.Column="10">SpringGreen</TextBlock>
+      <TextBlock Grid.Row="23" Grid.Column="11">#FF00FF7F</TextBlock>
+      <Rectangle Grid.Row="24" Grid.Column="9" Width="30" Height="14" Fill="SteelBlue" />
+      <TextBlock Grid.Row="24" Grid.Column="10">SteelBlue</TextBlock>
+      <TextBlock Grid.Row="24" Grid.Column="11">#FF4682B4</TextBlock>
+      <Rectangle Grid.Row="25" Grid.Column="9" Width="30" Height="14" Fill="Tan" />
+      <TextBlock Grid.Row="25" Grid.Column="10">Tan</TextBlock>
+      <TextBlock Grid.Row="25" Grid.Column="11">#FFD2B48C</TextBlock>
+      <Rectangle Grid.Row="26" Grid.Column="9" Width="30" Height="14" Fill="Teal" />
+      <TextBlock Grid.Row="26" Grid.Column="10">Teal</TextBlock>
+      <TextBlock Grid.Row="26" Grid.Column="11">#FF008080</TextBlock>
+      <Rectangle Grid.Row="27" Grid.Column="9" Width="30" Height="14" Fill="Thistle" />
+      <TextBlock Grid.Row="27" Grid.Column="10">Thistle</TextBlock>
+      <TextBlock Grid.Row="27" Grid.Column="11">#FFD8BFD8</TextBlock>
+      <Rectangle Grid.Row="28" Grid.Column="9" Width="30" Height="14" Fill="Tomato" />
+      <TextBlock Grid.Row="28" Grid.Column="10">Tomato</TextBlock>
+      <TextBlock Grid.Row="28" Grid.Column="11">#FFFF6347</TextBlock>
+      <Rectangle Grid.Row="29" Grid.Column="9" Width="30" Height="14" Fill="Transparent" />
+      <TextBlock Grid.Row="29" Grid.Column="10">Transparent</TextBlock>
+      <TextBlock Grid.Row="29" Grid.Column="11">#00FFFFFF</TextBlock>
+      <Rectangle Grid.Row="30" Grid.Column="9" Width="30" Height="14" Fill="Turquoise" />
+      <TextBlock Grid.Row="30" Grid.Column="10">Turquoise</TextBlock>
+      <TextBlock Grid.Row="30" Grid.Column="11">#FF40E0D0</TextBlock>
+      <Rectangle Grid.Row="31" Grid.Column="9" Width="30" Height="14" Fill="Violet" />
+      <TextBlock Grid.Row="31" Grid.Column="10">Violet</TextBlock>
+      <TextBlock Grid.Row="31" Grid.Column="11">#FFEE82EE</TextBlock>
+      <Rectangle Grid.Row="32" Grid.Column="9" Width="30" Height="14" Fill="Wheat" />
+      <TextBlock Grid.Row="32" Grid.Column="10">Wheat</TextBlock>
+      <TextBlock Grid.Row="32" Grid.Column="11">#FFF5DEB3</TextBlock>
+      <Rectangle Grid.Row="33" Grid.Column="9" Width="30" Height="14" Fill="White" />
+      <TextBlock Grid.Row="33" Grid.Column="10">White</TextBlock>
+      <TextBlock Grid.Row="33" Grid.Column="11">#FFFFFFFF</TextBlock>
+      <Rectangle Grid.Row="34" Grid.Column="9" Width="30" Height="14" Fill="WhiteSmoke" />
+      <TextBlock Grid.Row="34" Grid.Column="10">WhiteSmoke</TextBlock>
+      <TextBlock Grid.Row="34" Grid.Column="11">#FFF5F5F5</TextBlock>
+      <Rectangle Grid.Row="35" Grid.Column="9" Width="30" Height="14" Fill="Yellow" />
+      <TextBlock Grid.Row="35" Grid.Column="10">Yellow</TextBlock>
+      <TextBlock Grid.Row="35" Grid.Column="11">#FFFFFF00</TextBlock>
+      <Rectangle Grid.Row="36" Grid.Column="9" Width="30" Height="14" Fill="YellowGreen" />
+      <TextBlock Grid.Row="36" Grid.Column="10">YellowGreen</TextBlock>
+      <TextBlock Grid.Row="36" Grid.Column="11">#FF9ACD32</TextBlock>
+   </Grid>
+</Page>

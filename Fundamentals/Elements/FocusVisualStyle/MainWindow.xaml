@@ -1,0 +1,28 @@
+﻿<Window x:Class="FocusVisualStyle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FocusVisualStyle"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style x:Key="MyFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="-2" StrokeThickness="1" Stroke="Red" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel Background="Ivory" Orientation="Horizontal">
+        <Canvas Width="10"/>
+        <Button Width="100" Height="30" FocusVisualStyle="{DynamicResource MyFocusVisual}">
+            Focus Here</Button>
+        <Canvas Width="100"/>
+        <Button Width="100" Height="30" FocusVisualStyle="{DynamicResource MyFocusVisual}">
+            Focus Here</Button>
+    </StackPanel>
+</Window>

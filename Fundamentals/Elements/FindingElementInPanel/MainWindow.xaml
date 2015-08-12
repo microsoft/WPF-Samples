@@ -1,0 +1,20 @@
+﻿<Window x:Class="FindingElementInPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FindingElementInPanel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel Name="ParentElement">
+
+        <TextBlock DockPanel.Dock="Top" Name="TxtDisplay" />
+
+        <Button DockPanel.Dock="Top" Click="FindIndex">What is the Index Number
+            of the Element Just Added?</Button>
+        <DockPanel Name="MainDisplayPanel">
+            <TextBlock DockPanel.Dock="Top">Text 1</TextBlock>
+            <TextBlock DockPanel.Dock="Top">Text 2</TextBlock>
+        </DockPanel>
+    </DockPanel>
+</Window>

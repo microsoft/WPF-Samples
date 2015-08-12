@@ -1,0 +1,64 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="ScrollViewer Sample"
+      x:Class="Scrollviewer_Samp.Page1"
+      Loaded="CheckLang">
+<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+    <TabControl MinHeight="500" MinWidth="400" MaxHeight="600" MaxWidth="800">
+        <TabItem Style="{StaticResource TabStyle}" Header="ScrollViewer Element" IsSelected="true">
+            <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">ScrollViewer Element Sample</TextBlock>
+    
+            <TextBlock Style="{StaticResource MainContentStyle}">ScrollViewer represents a scrollable area that can contain other visible elements. The ScrollViewer element encapsulates a content element and possibly up to two ScrollBar controls.</TextBlock>
+
+            </StackPanel>
+        </TabItem>
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            <TextBlock Name="xamlCheck">
+            <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;ScrollViewer>
+    &lt;StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+        &lt;TextBlock TextWrapping="Wrap" Margin="0,0,0,20">Scrolling is
+        enabled when it is necessary.&lt;/TextBlock>
+        &lt;Rectangle Fill="Red" Width="400" Height="800">&lt;/Rectangle>
+    &lt;/StackPanel>
+&lt;/ScrollViewer>
+            </TextBox>
+            </TextBlock>    
+                </ScrollViewer>
+        </TabItem>
+         <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="C#" />
+            </TabControl>  
+        </TabItem>
+        
+         <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+            </TabControl>
+         </TabItem> 
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+        <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+        <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+        <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+<ScrollViewer>          
+    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,20">Scrolling is
+        enabled when it is necessary.</TextBlock>
+        <Rectangle Fill="Red" Width="400" Height="800" />
+    </StackPanel>
+</ScrollViewer>  
+        </TabItem>
+    </TabControl>
+</StackPanel>
+
+    
+</Page>

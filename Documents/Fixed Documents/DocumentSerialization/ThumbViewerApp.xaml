@@ -1,0 +1,375 @@
+﻿<!-- If you change the root element of this file, be sure to change the class that is subclassed in ThumbViewerApp.xaml.cs -->
+<Application
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="DocumentSerialization.ThumbViewerApp"
+    StartupUri="ThumbViewer.xaml"
+    Startup="ApplicationStartup"
+    xmlns:tmv="clr-namespace:DocumentSerialization" >
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <!-- Color Resources-->
+
+      <SolidColorBrush x:Key="ArticleDefaultBackgroundBrush" Color="#FFFFFFFF" />
+
+      <Color x:Key="ApplicationTransparentColor" R="255" G="255" B="255" A="0" />
+      <Color x:Key="ApplicationBackgroundColor" R="255" G="255" B="255" A="255" />
+      <Color x:Key="ApplicationBorderColor" R="215" G="215" B="215" A="255" />
+      <Color x:Key="ApplicationDarkColor" R="0" G="0" B="0" A="255" />
+      <Color x:Key="ApplicationIconColor" R="00" G="00" B="00" A="255" />
+
+      <SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{StaticResource ApplicationBackgroundColor}" />
+      <SolidColorBrush x:Key="ApplicationBorderBrush" Color="{StaticResource ApplicationBorderColor}" />
+      <SolidColorBrush x:Key="ApplicationDarkBrush" Color="{StaticResource ApplicationDarkColor}" />
+      <SolidColorBrush x:Key="ApplicationIconBrush" Color="{StaticResource ApplicationIconColor}" />
+      <SolidColorBrush x:Key="ApplicationLinkBrush" Color="#485E75" />
+
+      <DrawingImage x:Key="ZoomIconDrawingImage">
+        <DrawingImage.Drawing>
+          <DrawingGroup>
+            <DrawingGroup.Children>
+              <DrawingCollection>
+                <DrawingGroup>
+                  <DrawingGroup.Children>
+                    <DrawingCollection>
+                      <GeometryDrawing Brush="{StaticResource ApplicationBackgroundBrush}">
+                        <GeometryDrawing.Pen>
+                          <Pen Brush="{StaticResource ApplicationIconBrush}" Thickness="3" StartLineCap="Round" EndLineCap="Round" DashCap="Flat" LineJoin="Miter" MiterLimit="10">
+                            <Pen.DashStyle>
+                              <DashStyle Offset="0"/>
+                            </Pen.DashStyle>
+                          </Pen>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                          <PathGeometry>
+                            <PathGeometry.Transform>
+                              <MatrixTransform Matrix="0.842695830527753,0,0,0.842695840360379,0.285452205690647,-5.25690291665592"/>
+                            </PathGeometry.Transform>
+                            <PathGeometry.Figures>
+                              <PathFigureCollection>
+                                <PathFigure StartPoint="1.44126472859071,17.5538652841192">
+                                  <LineSegment Point="10.9769310791136,8.01819893359633"/>
+                                </PathFigure>
+                              </PathFigureCollection>
+                            </PathGeometry.Figures>
+                          </PathGeometry>
+                        </GeometryDrawing.Geometry>
+                      </GeometryDrawing>
+                    </DrawingCollection>
+                  </DrawingGroup.Children>
+                  <DrawingGroup.Transform>
+                    <MatrixTransform Matrix="1,0,0,1,0.167951402257387,7.33361313526947"/>
+                  </DrawingGroup.Transform>
+                </DrawingGroup>
+                <DrawingGroup>
+                  <DrawingGroup.Children>
+                    <DrawingCollection>
+                      <GeometryDrawing Brush="{StaticResource ApplicationBackgroundBrush}">
+                        <GeometryDrawing.Pen>
+                          <Pen Brush="{StaticResource ApplicationIconBrush}" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" DashCap="Flat" LineJoin="Miter" MiterLimit="10">
+                            <Pen.DashStyle>
+                              <DashStyle Offset="0"/>
+                            </Pen.DashStyle>
+                          </Pen>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                          <EllipseGeometry RadiusX="6.9754420839275" RadiusY="7.269344771903" Center="7.7254420839275,8.019344771903"/>
+                        </GeometryDrawing.Geometry>
+                      </GeometryDrawing>
+                    </DrawingCollection>
+                  </DrawingGroup.Children>
+                  <DrawingGroup.Transform>
+                    <MatrixTransform Matrix="1,0,0,1,2.69007430470256,0.102369674150367"/>
+                  </DrawingGroup.Transform>
+                </DrawingGroup>
+                <DrawingGroup>
+                  <DrawingGroup.Children>
+                    <DrawingCollection>
+                      <GeometryDrawing Brush="{StaticResource ApplicationBackgroundBrush}">
+                        <GeometryDrawing.Pen>
+                          <Pen Brush="{StaticResource ApplicationIconBrush}" Thickness="2" StartLineCap="Round" EndLineCap="Round" DashCap="Flat" LineJoin="Miter" MiterLimit="10">
+                            <Pen.DashStyle>
+                              <DashStyle Offset="0"/>
+                            </Pen.DashStyle>
+                          </Pen>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                          <PathGeometry>
+                            <PathGeometry.Transform>
+                              <MatrixTransform Matrix="1,0,0,1.03378817702179,-9.60622978210449,-4.92164581740493"/>
+                            </PathGeometry.Transform>
+                            <PathGeometry.Figures>
+                              <PathFigureCollection>
+                                <PathFigure StartPoint="10.6062301821943,5.72810340850174">
+                                  <LineSegment Point="10.6062301821943,11.5320006063432"/>
+                                </PathFigure>
+                              </PathFigureCollection>
+                            </PathGeometry.Figures>
+                          </PathGeometry>
+                        </GeometryDrawing.Geometry>
+                      </GeometryDrawing>
+                    </DrawingCollection>
+                  </DrawingGroup.Children>
+                  <DrawingGroup.Transform>
+                    <MatrixTransform Matrix="1,0,0,1,9.41551638863007,4.12171444605337"/>
+                  </DrawingGroup.Transform>
+                </DrawingGroup>
+                <DrawingGroup>
+                  <DrawingGroup.Children>
+                    <DrawingCollection>
+                      <GeometryDrawing Brush="{StaticResource ApplicationBackgroundBrush}">
+                        <GeometryDrawing.Pen>
+                          <Pen Brush="{StaticResource ApplicationIconBrush}" Thickness="2" StartLineCap="Round" EndLineCap="Round" DashCap="Flat" LineJoin="Miter" MiterLimit="10">
+                            <Pen.DashStyle>
+                              <DashStyle Offset="0"/>
+                            </Pen.DashStyle>
+                          </Pen>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                          <PathGeometry>
+                            <PathGeometry.Transform>
+                              <MatrixTransform Matrix="1,0,0,1.03378817702179,-9.60622978210449,-4.92164581740493"/>
+                            </PathGeometry.Transform>
+                            <PathGeometry.Figures>
+                              <PathFigureCollection>
+                                <PathFigure StartPoint="10.6062301821943,5.72810340850174">
+                                  <LineSegment Point="10.6062301821943,11.5320006063432"/>
+                                </PathFigure>
+                              </PathFigureCollection>
+                            </PathGeometry.Figures>
+                          </PathGeometry>
+                        </GeometryDrawing.Geometry>
+                      </GeometryDrawing>
+                    </DrawingCollection>
+                  </DrawingGroup.Children>
+                  <DrawingGroup.Transform>
+                    <MatrixTransform Matrix="6.12303176911189E-17,-1,1,6.12303176911189E-17,6.41551638863006,9.12171444605339"/>
+                  </DrawingGroup.Transform>
+                </DrawingGroup>
+              </DrawingCollection>
+            </DrawingGroup.Children>
+          </DrawingGroup>
+        </DrawingImage.Drawing>
+      </DrawingImage>
+
+      <!-- This style lets us create a toggle button that is drawn from an image resource -->
+      <Style x:Key="ImageToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type ToggleButton}">
+              <Grid x:Name="ButtonGrid">
+                <Rectangle Margin="-3" x:Name="BackgroundRectangle" Fill="transparent" RadiusX="5" RadiusY="5" />
+                <Image x:Name="Icon" Source="{TemplateBinding tmv:ImageButton.Source}" />
+              </Grid>
+              <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+
+                  <Setter TargetName="ButtonGrid" Property="Opacity" Value="1" />
+
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                  <Setter TargetName="ButtonGrid" Property="Opacity" Value="1" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                  <Setter TargetName="ButtonGrid" Property="Opacity" Value="0.5" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="true">
+                  <Setter TargetName="ButtonGrid" Property="Opacity" Value="0.15" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
+      <!-- Style the Navigation Window to remove the default navigation chrome -->
+      <Style x:Key="{x:Type NavigationWindow}" TargetType="{x:Type NavigationWindow}">
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.MessageFontFamilyKey}}" />
+        <Setter Property="FontSize"   Value="{DynamicResource {x:Static SystemFonts.MessageFontSizeKey}}" />
+        <Setter Property="FontStyle"  Value="{DynamicResource {x:Static SystemFonts.MessageFontStyleKey}}" />
+        <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.MessageFontWeightKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type NavigationWindow}">
+              <Border Name="NavigationBarRoot"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}"
+                      BorderThickness="{TemplateBinding BorderThickness}">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+
+                  <AdornerDecorator Grid.Row="0" Grid.Column="0">
+                    <ContentPresenter ClipToBounds="true" Content="{TemplateBinding Window.Content}" />
+                  </AdornerDecorator>
+                  <ResizeGrip x:Name="WindowResizeGrip" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="right" VerticalAlignment="bottom" Height="23" Width="14" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Background="Transparent" Visibility="Collapsed" IsTabStop="false" />
+                </Grid>
+              </Border>
+              <ControlTemplate.Triggers>
+                <MultiTrigger>
+                  <MultiTrigger.Conditions>
+                    <Condition Property="Window.ResizeMode" Value="CanResizeWithGrip" />
+                    <Condition Property="Window.WindowState" Value="Normal" />
+                  </MultiTrigger.Conditions>
+                  <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible" />
+                </MultiTrigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
+      <Style x:Key="Slider_RepeatButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />  <!--<Setter Property="DefaultStyleKey" Value="{x:Null}" />-->
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RepeatButton}">
+              <Border Background="Transparent" />
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
+      <Style x:Key="{x:Type Slider}" TargetType="{x:Type Slider}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />  <!--<Setter Property="DefaultStyleKey" Value="{x:Null}" />-->
+        <Setter Property="Background" Value="{StaticResource ApplicationBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ApplicationIconBrush}" />
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="MinWidth" Value="11" />
+        <Setter Property="MinHeight" Value="24" />
+        <Setter Property="Width" Value="104" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Slider}">
+              <Grid ClipToBounds="false">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" MinHeight="{TemplateBinding Slider.MinHeight}" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TickBar x:Name="TopTick" Grid.Row="0" Placement="Top" Fill="{TemplateBinding Foreground}" Height="4" Visibility="Collapsed" />
+                <Border Height="4" Grid.Row="1" CornerRadius="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}"/>
+                <Canvas Grid.Row="1" VerticalAlignment="Center" Height="4">
+                  <Rectangle x:Name="PART_SelectionRange" Canvas.Top="1" Fill="{TemplateBinding Foreground}" Height="2.0" Visibility="Hidden" />
+                </Canvas>
+                <Track Grid.Row="1" Name="PART_Track">
+                  <Track.DecreaseRepeatButton>
+                    <Style BasedOn="{StaticResource Slider_RepeatButton}" TargetType="{x:Type RepeatButton}" >
+                      <Setter Property="Command" Value="Slider.DecreaseLarge"/>
+                    </Style>
+                  </Track.DecreaseRepeatButton>
+                  <Track.Thumb>
+                    <Thumb Style="{DynamicResource Slider_Thumb}"/>
+                  </Track.Thumb>
+                  <Track.IncreaseRepeatButton>
+                    <Style BasedOn="{StaticResource Slider_RepeatButton}" TargetType="{x:Type RepeatButton}" >
+                      <Setter Property="Command" Value="Slider.IncreaseLarge"/>
+                    </Style>
+                  </Track.IncreaseRepeatButton>
+                </Track>
+                <TickBar x:Name="BottomTick" Grid.Row="2" Fill="{TemplateBinding Foreground}" Placement="Bottom" Height="4" Visibility="Collapsed"  />
+              </Grid>
+              <ControlTemplate.Triggers>
+                <Trigger Property="TickPlacement" Value="TopLeft">
+                  <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="BottomRight">
+                  <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="Both">
+                  <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
+                  <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                  <Setter TargetName="PART_SelectionRange" Property="Visibility" Value="Visible" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+
+      </Style>
+
+      <Style x:Key="Slider_Thumb" TargetType="{x:Type Thumb}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />  <!--<Setter Property="DefaultStyleKey" Value="{x:Null}" />-->
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Thumb}">
+              <Grid>
+                <Path StrokeThickness="0.75" Stroke="{StaticResource ApplicationIconBrush}" StrokeMiterLimit="1" Width="12" Height="18.0654487609863" x:Name="Path1" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeLineJoin="Round" StrokeEndLineCap="Round" StrokeDashCap="Round">
+                  <Path.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                      <LinearGradientBrush.GradientStops>
+                        <GradientStopCollection>
+                          <GradientStop Color="{StaticResource ApplicationBorderColor}" Offset="0.52385211687537314"/>
+                          <GradientStop Color="{StaticResource ApplicationBackgroundColor}" Offset="0.86493738819320221"/>
+                          <GradientStop Color="{StaticResource ApplicationBackgroundColor}" Offset="0.20244484197972484"/>
+                        </GradientStopCollection>
+                      </LinearGradientBrush.GradientStops>
+                      <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                          <TranslateTransform X="-0.5" Y="-0.5"/>
+                          <ScaleTransform ScaleX="1" ScaleY="1"/>
+                          <SkewTransform AngleX="0" AngleY="0"/>
+                          <RotateTransform Angle="107.70002842912015"/>
+                          <TranslateTransform X="0.5" Y="0.5"/>
+                          <TranslateTransform X="-1.1102230246251565E-16" Y="-1.1102230246251565E-16"/>
+                        </TransformGroup>
+                      </LinearGradientBrush.RelativeTransform>
+                    </LinearGradientBrush>
+                  </Path.Fill>
+                  <Path.Data>
+                    <PathGeometry FillRule="Nonzero">
+                      <PathFigure StartPoint="1.5,0.5" IsClosed="True">
+                        <LineSegment Point="10.5,0.5"/>
+                        <LineSegment Point="11.5,1.4375"/>
+                        <LineSegment Point="11.5,13.5"/>
+                        <LineSegment Point="6.916016,17.5"/>
+                        <LineSegment Point="5.083008,17.5625"/>
+                        <LineSegment Point="0.5,13.5625"/>
+                        <LineSegment Point="0.5,1.5625"/>
+                        <LineSegment Point="1.5,0.5"/>
+                      </PathFigure>
+                    </PathGeometry>
+                  </Path.Data>
+                </Path>
+              </Grid>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsDragging" Value="true">
+            <Setter Property="Background" Value="#E0E0E0" />
+          </Trigger>
+          <Trigger Property="IsEnabled" Value="false">
+            <Setter Property="Background" Value="#E4E4E4" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+
+      <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+      <tmv:VisibilityToBoolConverter x:Key="VisibilityToBool" />
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

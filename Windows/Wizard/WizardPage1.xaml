@@ -1,0 +1,36 @@
+﻿<PageFunction
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Wizard" 
+    x:Class="Wizard.WizardPage1"
+    x:TypeArguments="local:WizardResult"
+    KeepAlive="True"
+    FocusManager.FocusedElement="{Binding ElementName=dataItem1TextBox}" 
+    WindowTitle="Wizard Page 1"
+    >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="1" Grid.Row="1">Data Item 1:</Label>
+        <TextBox Name="dataItem1TextBox" Grid.Column="2" Grid.Row="1" Padding="5,0,0,0" Text="{Binding Path=DataItem1}" />
+
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Name="backButton" IsEnabled="False" Width="50" xml:space="preserve">&lt; _Back</Button>
+            <Button Name="nextButton" Click="nextButton_Click" Width="50" Margin="10,0,0,0" xml:space="preserve" IsDefault="True">_Next &gt;</Button>
+            <Button Name="cancelButton" Click="cancelButton_Click" Width="50" Margin="10,0,0,0" IsCancel="True">_Cancel</Button>
+            <Button Name="finishButton" IsEnabled="False" Width="50" Margin="10,0,0,0">_Finish</Button>
+        </StackPanel>
+
+    </Grid>
+</PageFunction>

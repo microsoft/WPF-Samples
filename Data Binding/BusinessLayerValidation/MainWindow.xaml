@@ -1,0 +1,46 @@
+﻿<Window x:Class="BusinessLayerValidation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BusinessLayerValidation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:Person x:Key="Data"/>
+
+        <!--The tool tip for the TextBox to display the validation error message.-->
+        <Style x:Key="TextBoxInError" TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Margin="20">
+        <TextBlock>Enter your age:</TextBlock>
+        <TextBox Style="{StaticResource TextBoxInError}">
+            <TextBox.Text>
+                <!--By setting ValidatesOnExceptions to True, it checks for exceptions
+                that are thrown during the update of the source property.
+                An alternative syntax is to add <ExceptionValidationRule/> within
+                the <Binding.ValidationRules> section.-->
+                <Binding Path="Age" Source="{StaticResource Data}"
+                         ValidatesOnExceptions="True"
+                         UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <!--DataErrorValidationRule checks for validation 
+                            errors raised by the IDataErrorInfo object.-->
+                        <!--Alternatively, you can set ValidationOnDataErrors="True" on the Binding.-->
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock>Mouse-over to see the validation error message.</TextBlock>
+    </StackPanel>
+</Window>

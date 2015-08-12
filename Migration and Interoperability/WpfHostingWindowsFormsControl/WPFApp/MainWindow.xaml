@@ -1,0 +1,124 @@
+﻿<Window x:Class="WPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        xmlns:mcl="clr-namespace:MyControls;assembly=FormsControlLibrary"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style x:Key="InlineText" TargetType="{x:Type Inline}">
+                <Setter Property="FontWeight" Value="Normal"/>
+            </Style>
+            <Style x:Key="TitleText" TargetType="{x:Type TextBlock}">
+                <Setter Property="DockPanel.Dock" Value="Top"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="10,5,10,0"/>
+            </Style>
+        </DockPanel.Resources>
+
+        <StackPanel Orientation="Vertical"
+                 DockPanel.Dock="Left"
+                 Background="Bisque"
+                 Width="250">
+
+            <TextBlock  Margin="10,10,10,10"
+                   FontWeight="Bold"
+                   FontSize="12">Control Properties</TextBlock>
+            <TextBlock Style="{StaticResource TitleText}">Background Color</TextBlock>
+            <StackPanel Margin="10,10,10,10">
+                <RadioButton Name="rdbtnOriginalBackColor"
+                     IsChecked="True"
+                     Click="BackColorChanged">Original</RadioButton>
+                <RadioButton Name="rdbtnBackGreen"
+                     Click="BackColorChanged">LightGreen</RadioButton>
+                <RadioButton Name="rdbtnBackSalmon"
+                     Click="BackColorChanged">LightSalmon</RadioButton>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource TitleText}">Foreground Color</TextBlock>
+            <StackPanel Margin="10,10,10,10">
+                <RadioButton Name="rdbtnOriginalForeColor"
+                     IsChecked="True"
+                     Click="ForeColorChanged">Original</RadioButton>
+                <RadioButton Name="rdbtnForeRed"
+                     Click="ForeColorChanged">Red</RadioButton>
+                <RadioButton Name="rdbtnForeYellow"
+                     Click="ForeColorChanged">Yellow</RadioButton>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource TitleText}">Font Family</TextBlock>
+            <StackPanel Margin="10,10,10,10">
+                <RadioButton Name="rdbtnOriginalFamily"
+                      IsChecked="True"
+                     Click="FontChanged">Original</RadioButton>
+                <RadioButton Name="rdbtnTimes"
+                     Click="FontChanged">Times New Roman</RadioButton>
+                <RadioButton Name="rdbtnWingdings"
+                     Click="FontChanged">Wingdings</RadioButton>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource TitleText}">Font Size</TextBlock>
+            <StackPanel Margin="10,10,10,10">
+                <RadioButton Name="rdbtnOriginalSize"
+                     IsChecked="True"
+                     Click="FontSizeChanged">Original</RadioButton>
+                <RadioButton Name="rdbtnTen"
+                     Click="FontSizeChanged">10</RadioButton>
+                <RadioButton Name="rdbtnTwelve"
+                     Click="FontSizeChanged">12</RadioButton>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource TitleText}">Font Style</TextBlock>
+            <StackPanel Margin="10,10,10,10">
+                <RadioButton Name="rdbtnNormalStyle"
+                      IsChecked="True"
+                      Click="StyleChanged">Original</RadioButton>
+                <RadioButton Name="rdbtnItalic"
+                      Click="StyleChanged">Italic</RadioButton>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource TitleText}">Font Weight</TextBlock>
+            <StackPanel Margin="10,10,10,10">
+                <RadioButton Name="rdbtnOriginalWeight"
+                      IsChecked="True"
+                    Click="WeightChanged">
+                    Original
+                </RadioButton>
+                <RadioButton Name="rdbtnBold"
+                    Click="WeightChanged">Bold</RadioButton>
+            </StackPanel>
+        </StackPanel>
+
+        <WindowsFormsHost Name="wfh"
+                      DockPanel.Dock="Top"
+                      Height="300">
+            <mcl:MyControl Name="mc"/>
+        </WindowsFormsHost>
+
+        <StackPanel Orientation="Vertical"
+                 Height="Auto"
+                 Background="LightBlue">
+            <TextBlock Margin="10,10,10,10"
+             FontWeight="Bold"
+             FontSize="12">Data From Control</TextBlock>
+            <TextBlock Style="{StaticResource TitleText}">
+         Name: <Span Name="txtName" Style="{StaticResource InlineText}"/>
+            </TextBlock>
+            <TextBlock Style="{StaticResource TitleText}">
+         Street Address: <Span Name="txtAddress" Style="{StaticResource InlineText}"/>
+            </TextBlock>
+            <TextBlock Style="{StaticResource TitleText}">
+         City: <Span Name="txtCity" Style="{StaticResource InlineText}"/>
+            </TextBlock>
+            <TextBlock Style="{StaticResource TitleText}">
+         State: <Span Name="txtState" Style="{StaticResource InlineText}"/>
+            </TextBlock>
+            <TextBlock Style="{StaticResource TitleText}">
+         Zip: <Span Name="txtZip" Style="{StaticResource InlineText}"/>
+            </TextBlock>
+        </StackPanel>
+    </DockPanel>
+</Window>

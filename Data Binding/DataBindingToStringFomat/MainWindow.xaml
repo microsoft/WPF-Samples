@@ -1,0 +1,56 @@
+﻿<Window x:Class="DataBindingToStringFomat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBindingToStringFomat"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <StackPanel>
+        <StackPanel.Resources>
+
+            <local:ItemsForSale x:Key="MyData"/>
+        </StackPanel.Resources>
+
+        <TextBlock Margin="5,10,0,0" FontSize="20">Formatting a string on a Binding</TextBlock>
+        <TextBlock Margin="5" FontSize="14" TextWrapping="Wrap">
+            This ListView contains a list of items for sale. 
+            The second column of the ListView displays a string that 
+            includes the price of the object. The price is formatted as a currency.
+        </TextBlock>
+
+        <ListView ItemsSource="{StaticResource MyData}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Price, StringFormat=Now {0:c}!}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <TextBlock FontSize="20" Margin="5,10,0,0">Formatting a string on a MultiBinding</TextBlock>
+        <TextBlock Margin="5" FontSize="14" TextWrapping="Wrap">
+            This ListBox contains a list of items for sale.  
+            The ListBox displays a string for each item, 
+            which includes the Description and the Price, 
+            by setting the StringFormat property on a MultiBinding.
+        </TextBlock>
+
+        <ListBox ItemsSource="{StaticResource MyData}">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding  StringFormat="{}{0} -- Now only {1:C}!">
+                                <Binding Path="Description"/>
+                                <Binding Path="Price"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Window>

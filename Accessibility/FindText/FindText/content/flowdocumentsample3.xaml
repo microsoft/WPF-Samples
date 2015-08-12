@@ -1,0 +1,192 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <Paragraph>
+    Planetary 
+    <Image Width="25" Height="25"   Margin="5" Name="Planet_Image">
+      <Image.Source>
+        <BitmapImage UriSource="Content\SolarSystem.bmp" />
+      </Image.Source>
+    </Image>
+    Information Table
+  </Paragraph>
+
+  
+  <Table CellSpacing="5">
+
+    <Table.Columns>
+      <TableColumn/>
+      <TableColumn/>
+      <TableColumn/>
+      <TableColumn/>
+    </Table.Columns>
+
+    <TableRowGroup>
+
+      <!-- Title row for the table. -->
+      <TableRow Background="SkyBlue">
+        <TableCell ColumnSpan="4" TextAlignment="Center">
+          <Paragraph FontSize="24pt" FontWeight="Bold">
+            <Run FontFamily="Century Gothic, Courier New">Planetar</Run><Run FontFamily="Verdana, Arial">y In</Run><Run FontFamily="Impact">formation</Run>
+          </Paragraph>
+        </TableCell>
+      </TableRow>
+
+      <!-- Header row for the table. -->
+      <TableRow Background="LightGoldenrodYellow">
+        <TableCell>
+          <Paragraph FontSize="14pt" FontWeight="Bold">Planet</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph FontSize="14pt" FontWeight="Bold">Mean Distance from Sun</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph FontSize="14pt" FontWeight="Bold">Mean Diameter</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph FontSize="14pt" FontWeight="Bold">Approximate Mass</Paragraph>
+        </TableCell>
+      </TableRow>
+
+      <!-- Sub-title row for the inner planets. -->
+      <TableRow>
+        <TableCell ColumnSpan="4">
+          <Paragraph FontSize="14pt" FontWeight="Bold">The Inner Planets</Paragraph>
+        </TableCell>
+      </TableRow>
+
+      <!-- Four data rows for the inner planets. -->
+      <TableRow>
+        <TableCell>
+          <Paragraph>Mercury</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>57,910,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>4,880 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>3.30e23 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+        <TableCell>
+          <Paragraph>Venus</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>108,200,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>12,103.6 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>4.869e24 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>
+          <Paragraph>Earth</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>149,600,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>12,756.3 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>5.972e24 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+        <TableCell>
+          <Paragraph>Mars</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>227,940,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>6,794 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>6.4219e23 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+
+      <!-- Sub-title row for the outter planets. -->
+      <TableRow>
+        <TableCell ColumnSpan="4">
+          <Paragraph FontSize="14pt" FontWeight="Bold">The Major Outer Planets</Paragraph>
+        </TableCell>
+      </TableRow>
+
+      <!-- Four data rows for the major outter planets. -->
+      <TableRow>
+        <TableCell>
+          <Paragraph>Jupiter</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>778,330,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>142,984 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>1.900e27 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+        <TableCell>
+          <Paragraph>Saturn</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>1,429,400,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>120,536 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>5.68e26 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>
+          <Paragraph>Uranus</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>2,870,990,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>51,118 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>8.683e25 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+        <TableCell>
+          <Paragraph>Neptune</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>4,504,000,000 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>49,532 km</Paragraph>
+        </TableCell>
+        <TableCell>
+          <Paragraph>1.0247e26 kg</Paragraph>
+        </TableCell>
+      </TableRow>
+
+      <!-- Footer row for the table. -->
+      <TableRow>
+        <TableCell ColumnSpan="4">
+          <Paragraph FontSize="10pt" FontStyle="Italic">
+            Information from the
+            <Hyperlink NavigateUri="http://encarta.msn.com/encnet/refpages/artcenter.aspx">Encarta</Hyperlink>
+            web site.
+          </Paragraph>
+        </TableCell>
+      </TableRow>
+
+    </TableRowGroup>
+  </Table>
+</FlowDocument>

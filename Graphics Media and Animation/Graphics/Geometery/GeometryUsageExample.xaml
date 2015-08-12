@@ -1,0 +1,169 @@
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="Geometery.GeometryUsageExample" 
+  WindowTitle="Geometries"
+  >
+  <Page.Resources>
+    <Style TargetType="{x:Type Border}">
+      <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+  </Page.Resources>
+  
+  <DockPanel>
+  
+    <TextBlock DockPanel.Dock="Top" Margin="10">
+
+      Geometries are versatile and can be drawn directly with a Path Shape,
+      used with a DrawingBrush to paint an area with a geometric pattern,
+      used to define the clip region of an element, and more. 
+
+    </TextBlock>
+    
+    
+    <StackPanel Orientation="Horizontal" Background="White">
+    
+      <StackPanel Margin="10">
+        <TextBlock>Drawn with a Path Shape</TextBlock>
+        <Border Height="200" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            <Path.Data>
+              <GeometryGroup>
+                  <RectangleGeometry Rect="50,5 100,10" />
+                  <RectangleGeometry Rect="5,5 95,180" />
+                  <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                  <RectangleGeometry Rect="50,175 100,10" />
+                  <PathGeometry>
+                    <PathGeometry.Figures>
+                      <PathFigureCollection>
+                        <PathFigure IsClosed="true" StartPoint="50,50">
+                          <PathFigure.Segments>
+                            <PathSegmentCollection>
+                              <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                              <BezierSegment Point1="125,300" Point2="75,100"  Point3="50,50"/>
+                            </PathSegmentCollection>
+                          </PathFigure.Segments>
+                        </PathFigure>
+                      </PathFigureCollection>
+                    </PathGeometry.Figures>
+                  </PathGeometry>               
+              </GeometryGroup>
+            </Path.Data>
+          </Path>
+        </Border>    
+      </StackPanel>
+      
+      <StackPanel Margin="10">
+        <TextBlock>Used with a DrawingBrush</TextBlock>
+        <Rectangle Height="200" Width="200" Stroke="Black" StrokeThickness="1"
+          HorizontalAlignment="Left">
+          <Rectangle.Fill>
+            <DrawingBrush Viewbox="0,0,200,200" ViewboxUnits="Absolute">
+              <DrawingBrush.Drawing>
+                <GeometryDrawing Brush="#CCCCFF">
+                  <GeometryDrawing.Pen>
+                    <Pen Thickness="1" Brush="Black" />
+                  </GeometryDrawing.Pen>
+                  <GeometryDrawing.Geometry>
+                    <GeometryGroup>
+                      <RectangleGeometry Rect="50,5 100,10" />
+                      <RectangleGeometry Rect="5,5 95,180" />                   
+                      <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                      <RectangleGeometry Rect="50,175 100,10" />
+                      <PathGeometry>
+                        <PathGeometry.Figures>
+                          <PathFigureCollection>
+                            <PathFigure IsClosed="true" StartPoint="50,50">
+                              <PathFigure.Segments>
+                                <PathSegmentCollection>
+                                  <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                                  <BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                                </PathSegmentCollection>
+                              </PathFigure.Segments>
+                            </PathFigure>
+                          </PathFigureCollection>
+                        </PathGeometry.Figures>
+                      </PathGeometry>               
+                    </GeometryGroup>                  
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
+        
+        <TextBlock>Tiled</TextBlock>
+        <Rectangle Height="200" Width="200" Stroke="Black" StrokeThickness="1"
+          HorizontalAlignment="Left">
+          <Rectangle.Fill>
+            <DrawingBrush Viewbox="0,0,200,200" ViewboxUnits="Absolute" Viewport="0,0,0.5,0.5" TileMode="FlipXY">
+              <DrawingBrush.Drawing>
+                <GeometryDrawing Brush="#CCCCFF">
+                  <GeometryDrawing.Pen>
+                    <Pen Thickness="1" Brush="Black" />
+                  </GeometryDrawing.Pen>
+                  <GeometryDrawing.Geometry>
+                    <GeometryGroup>
+                      <RectangleGeometry Rect="50,5 100,10" />
+                      <RectangleGeometry Rect="5,5 95,180" />
+                      <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                      <RectangleGeometry Rect="50,175 100,10" />
+                      <PathGeometry>
+                        <PathGeometry.Figures>
+                          <PathFigureCollection>
+                            <PathFigure IsClosed="true" StartPoint="50,50">
+                              <PathFigure.Segments>
+                                <PathSegmentCollection>
+                                  <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                                  <BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                                </PathSegmentCollection>
+                              </PathFigure.Segments>
+                            </PathFigure>
+                          </PathFigureCollection>
+                        </PathGeometry.Figures>
+                      </PathGeometry>               
+                    </GeometryGroup>                  
+                  </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Rectangle.Fill>
+        </Rectangle>        
+      </StackPanel>   
+      
+      <StackPanel Margin="10">
+        <TextBlock>Used as a Clip</TextBlock>
+        <Border BorderBrush="Black" BorderThickness="1">
+        <Image Source="sampleImages\Waterlilies.jpg" Width="200" Height="200"
+          HorizontalAlignment="Left">
+          <Image.Clip>
+              <GeometryGroup>
+                  <RectangleGeometry Rect="50,5 100,10" />
+                  <RectangleGeometry Rect="5,5 95,180" />
+                  <EllipseGeometry Center="100, 100" RadiusX="20" RadiusY="30"/>
+                  <RectangleGeometry Rect="50,175 100,10" />
+                  <PathGeometry>
+                    <PathGeometry.Figures>
+                      <PathFigureCollection>
+                        <PathFigure IsClosed="true" StartPoint="50,50">
+                          <PathFigure.Segments>
+                            <PathSegmentCollection>
+                              <BezierSegment Point1="75,300" Point2="125,100" Point3="150,50"/>
+                              <BezierSegment Point1="125,300" Point2="75,100" Point3="50,50"/>
+                            </PathSegmentCollection>
+                          </PathFigure.Segments>
+                        </PathFigure>
+                      </PathFigureCollection>
+                    </PathGeometry.Figures>
+                  </PathGeometry>               
+              </GeometryGroup>            
+          </Image.Clip>
+        </Image>
+        </Border>
+      
+      </StackPanel>
+    
+    </StackPanel>
+  </DockPanel>
+</Page>

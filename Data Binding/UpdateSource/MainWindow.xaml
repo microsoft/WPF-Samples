@@ -1,0 +1,50 @@
+﻿<Window x:Class="UpdateSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UpdateSource"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Name="RootElem">
+        <StackPanel.Resources>
+            <local:UserProfile x:Key="MyDataSource"/>
+        </StackPanel.Resources>
+        <StackPanel.DataContext>
+            <Binding Source="{StaticResource MyDataSource}"/>
+        </StackPanel.DataContext>
+        <TextBlock>Fill in the bid form and click Preview to verify your bid information.</TextBlock>
+        <TextBlock>Item Name:</TextBlock>
+        <TextBox Name="itemNameTextBox"
+               Text="{Binding Path=ItemName, UpdateSourceTrigger=Explicit}" />
+        <TextBlock>Bid Price:</TextBlock>
+        <TextBox Name="bidPriceTextBox"
+        Text="{Binding Path=BidPrice, UpdateSourceTrigger=Explicit}" />
+        <Button Width="100" Height="25" Margin="5,5,0,0"
+              Click="Preview">Preview</Button>
+
+        <StackPanel Opacity="0" Name="userdata" Background="Cornsilk">
+            <TextBlock>Verify the following information is correct and click Submit.</TextBlock>
+            <TextBlock>Item Name:</TextBlock>
+            <TextBlock Text="{Binding Path=ItemName}" />
+            <TextBlock>Bid Price:</TextBlock>
+            <TextBlock Text="{Binding Path=BidPrice}" />
+            <Button Width="100" Height="25" Margin="5,5,0,0"
+              Click="Submit" Name="Finish" Opacity="0">Submit</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,335 @@
+﻿<Page x:Class="GlobalizationHomepage.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GlobalizationHomepage"
+      mc:Ignorable="d" 
+      Title="HomePage"  FlowDirection="LeftToRight" 
+      Localization.Comments="FlowDirection(This FlowDirection controls the actual content of the homepage)"
+      xml:lang="en-US">
+
+    <DockPanel x:Uid="DockPanel_1" Width="800" Height="600" LastChildFill="True">
+        <DockPanel.Resources>
+            <Style x:Uid="Style_1" x:Key="TopbarButtonStyle" TargetType="{x:Type ButtonBase}">
+                <Setter x:Uid="Setter_1" Property="Cursor" Value="Hand" />
+                <Setter x:Uid="Setter_2" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type ButtonBase}">
+                            <Border x:Uid="Border_1" x:Name="Border" BorderThickness="1">
+                                <ContentPresenter x:Uid="ContentPresenter_1" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                                    <Setter x:Uid="Setter_3" TargetName="Border" Property="BorderBrush" Value="White"/>
+                                    <Setter x:Uid="Setter_4" TargetName="Border" Property="Background" Value="#4B92D9"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Uid="Style_2" x:Key="SidebarButtonStyle" TargetType="{x:Type ButtonBase}">
+                <Setter x:Uid="Setter_5" Property="Cursor" Value="Hand" />
+                <Setter x:Uid="Setter_6" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_2" TargetType="{x:Type ButtonBase}">
+                            <Border x:Uid="Border_2" x:Name="Border" BorderThickness="1">
+                                <ContentPresenter x:Uid="ContentPresenter_2" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_2" Property="IsMouseOver" Value="True">
+                                    <Setter x:Uid="Setter_7" TargetName="Border" Property="BorderBrush" Value="LightGray"/>
+                                    <Setter x:Uid="Setter_8" TargetName="Border" Property="Background" Value="#F1F1F1"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Uid="Style_3" x:Key="GraybarButtonStyle" TargetType="{x:Type ButtonBase}">
+                <Setter x:Uid="Setter_9" Property="Cursor" Value="Hand" />
+                <Setter x:Uid="Setter_10" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_3" TargetType="{x:Type ButtonBase}">
+                            <Border x:Uid="Border_3" x:Name="Border" BorderThickness="1" Background="#F1F1F1">
+                                <ContentPresenter x:Uid="ContentPresenter_3" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_3" Property="IsMouseOver" Value="True">
+                                    <Setter x:Uid="Setter_11" TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
+                                    <Setter x:Uid="Setter_12" TargetName="Border" Property="Background" Value="LightGray"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </DockPanel.Resources>
+        <!-- Top link bar-->
+        <DockPanel 
+      x:Uid="DockPanel_2" DockPanel.Dock="Top" 
+      LastChildFill="True">
+            <DockPanel.Background>
+                <LinearGradientBrush x:Uid="LinearGradientBrush_1" StartPoint="0,0" EndPoint="1,0">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop x:Uid="GradientStop_1" Color="#4B92D9" Offset="0" />
+                        <GradientStop x:Uid="GradientStop_2" Color="White" Offset=".3" />
+                        <GradientStop x:Uid="GradientStop_3" Color="#0B6CCD" Offset=".7" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+            <StackPanel 
+        x:Uid="StackPanel_1" DockPanel.Dock="Right" 
+        Orientation="Horizontal">
+                <Button
+          x:Uid="Button_1" Style="{StaticResource TopbarButtonStyle}" 
+          Foreground="White">
+                    Microsoft United States
+                </Button>
+                <TextBlock 
+          x:Uid="TextBlock_1" 
+          DockPanel.Dock="Right" 
+          Foreground="White" 
+          Margin="5,0,5,0"
+          Localization.Comments="$Content(This character is used as a decorative rule.)">
+          |
+                </TextBlock>
+                <Button 
+          x:Uid="Button_2" Style="{StaticResource TopbarButtonStyle}"
+          Foreground="White">
+                    Microsoft Worldwide
+                </Button>
+                <TextBlock 
+          x:Uid="TextBlock_2" 
+          DockPanel.Dock="Right" 
+          Foreground="White" 
+          Margin="5,0,5,0"
+          Localization.Comments="$Content(This character is used as a decorative rule.)">
+          |
+                </TextBlock>
+                <Button 
+          x:Uid="Button_3" Style="{StaticResource TopbarButtonStyle}"
+          Foreground="White">
+                    Home
+                </Button>
+            </StackPanel>
+            <TextBlock 
+        x:Uid="TextBlock_3" DockPanel.Dock="Left"         
+        MinWidth="300" 
+        Foreground="White"
+        FontFamily="Global Composite Font"
+        FontSize="10pt">
+        Saudia Arabia
+            </TextBlock>
+
+        </DockPanel>
+        <!-- /Top link bar-->
+
+        <!-- Logo and search bar-->
+        <DockPanel
+      x:Uid="DockPanel_3" DockPanel.Dock="Top"
+      LastChildFill="True">
+            <DockPanel.Background>
+                <LinearGradientBrush x:Uid="LinearGradientBrush_2" StartPoint="0,0" EndPoint="1,0">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop x:Uid="GradientStop_4" Color="#0B6CCD" Offset="0" />
+                        <GradientStop x:Uid="GradientStop_5" Color="#0B6CCD" Offset="0.3" />
+                        <GradientStop x:Uid="GradientStop_6" Color="#ABCCED" Offset=".5" />
+                        <GradientStop x:Uid="GradientStop_7" Color="White" Offset=".7" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+            <Grid x:Uid="Grid_1" DockPanel.Dock="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_1" Width="Auto"/>
+                    <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto"/>
+                    <ColumnDefinition x:Uid="ColumnDefinition_3" Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_1" />
+                    <RowDefinition x:Uid="RowDefinition_2" />
+                </Grid.RowDefinitions>
+                <TextBox 
+          x:Uid="TextBox_1" Grid.Row="0" 
+          Grid.Column="0"
+          Grid.ColumnSpan="2"/>
+                <Button
+          x:Uid="Button_4" Grid.Row="0"
+          Grid.Column="3">
+                    Search
+                </Button>
+                <RadioButton 
+          x:Uid="RadioButton_1" Grid.Row="1"
+          Grid.Column="0"
+          IsChecked="True"
+          Margin="0,0,5,0">
+                    Microsoft.com
+                </RadioButton>
+                <RadioButton
+          x:Uid="RadioButton_2" Grid.Row="1"
+          Grid.Column="1">
+                    msn Web Search
+                </RadioButton>
+            </Grid>
+            <Image x:Uid="Image_1" DockPanel.Dock="Left" HorizontalAlignment="Left" Source="microsoft_logo.png" Stretch="None"/>
+
+        </DockPanel>
+        <!-- /Logo and search bar-->
+
+        <!-- Select your location bar -->
+        <Border 
+      x:Uid="Border_4" DockPanel.Dock="Top"
+      BorderBrush="DarkGray"
+      BorderThickness="1" 
+      SnapsToDevicePixels="True" 
+      Background="#F1F1F1">
+            <StackPanel x:Uid="StackPanel_2" Orientation="Horizontal">
+                <Button x:Uid="Button_5" Style="{StaticResource GraybarButtonStyle}">Select your Location</Button>
+                <TextBlock 
+          x:Uid="TextBlock_4" 
+          DockPanel.Dock="Right" 
+          Foreground="DarkGray" 
+          Margin="5,0,5,0"
+          Localization.Comments="$Content(This character is used as a decorative rule.)">
+          |
+                </TextBlock>
+                <Button x:Uid="Button_6" Style="{StaticResource GraybarButtonStyle}" xml:lang="ar-sa">عربي</Button>
+            </StackPanel>
+        </Border>
+        <!-- /Select your location bar -->
+
+        <!-- Sidebar -->
+        <Border 
+      x:Uid="Border_5" BorderBrush="DarkGray" 
+      BorderThickness="1,0,1,1"
+      SnapsToDevicePixels="True">
+            <Border.Background>
+                <LinearGradientBrush x:Uid="LinearGradientBrush_3" StartPoint="0,0" EndPoint="0,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop x:Uid="GradientStop_8" Color="White" Offset="0" />
+                        <GradientStop x:Uid="GradientStop_9" Color="#D9E7F7" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel x:Uid="StackPanel_3" Orientation="Vertical">
+                <StackPanel x:Uid="StackPanel_4" Orientation="Vertical">
+                    <TextBlock x:Uid="TextBlock_5" FontWeight="Bold">Product Families</TextBlock>
+                    <Button x:Uid="Button_7" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Windows</Button>
+                    <Button x:Uid="Button_8" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Office</Button>
+                    <Button x:Uid="Button_9" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Windows Server System</Button>
+                    <Button x:Uid="Button_10" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Developer Tools</Button>
+                    <Button x:Uid="Button_11" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Business Solutions</Button>
+                    <Button x:Uid="Button_12" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Windows Mobile</Button>
+                    <Button x:Uid="Button_13" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Games</Button>
+                    <Button x:Uid="Button_14" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Hardware</Button>
+                    <Button x:Uid="Button_15" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">MSN Arabia Services</Button>
+                    <Button x:Uid="Button_16" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Arabic Development &amp; Support</Button>
+                </StackPanel>
+                <Border 
+          x:Uid="Border_6" BorderBrush="DarkGray" 
+          BorderThickness="0,1,0,0">
+                    <StackPanel x:Uid="StackPanel_5" Orientation="Vertical">
+                        <TextBlock x:Uid="TextBlock_6" FontWeight="Bold">Resources</TextBlock>
+                        <Button x:Uid="Button_17" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Events</Button>
+                        <Button x:Uid="Button_18" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Security</Button>
+                        <Button x:Uid="Button_19" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Support</Button>
+                        <Button x:Uid="Button_20" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Downloads</Button>
+                        <Button x:Uid="Button_21" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Windows Update</Button>
+                        <Button x:Uid="Button_22" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Communities</Button>
+                        <Button x:Uid="Button_23" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Learning Tools</Button>
+                        <Button x:Uid="Button_24" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Licensing</Button>
+                        <Button x:Uid="Button_25" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Careers</Button>
+                        <Button x:Uid="Button_26" Style="{StaticResource SidebarButtonStyle}" Margin="10,0,0,0">Find a Partner</Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+        <!-- /Sidebar -->
+        <!-- Bottom panel -->
+        <Border 
+      x:Uid="Border_7" DockPanel.Dock="Bottom"
+      Padding="5,5,5,5"
+      SnapsToDevicePixels="True" 
+      BorderBrush="DarkGray" 
+      BorderThickness="0,1,1,1"
+      Background="#F1F1F1">
+            <Grid x:Uid="Grid_2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_4" />
+                    <ColumnDefinition x:Uid="ColumnDefinition_5" />
+                    <ColumnDefinition x:Uid="ColumnDefinition_6" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_3" />
+                    <RowDefinition x:Uid="RowDefinition_4" />
+                </Grid.RowDefinitions>
+                <TextBlock 
+          x:Uid="TextBlock_7" Grid.Row="0" 
+          Grid.Column="0" 
+          FontSize="10pt">
+          Popular Destinations
+                </TextBlock>
+                <StackPanel
+          x:Uid="StackPanel_6" Grid.Row="1"
+          Grid.Column="0">
+                    <TextBlock 
+            x:Uid="TextBlock_8" FontSize="10pt"
+            Foreground="CornflowerBlue">
+            for your home
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_9" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_1">Windows Vista</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_10" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_2">Windows Mobile</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_11" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_3">Clip Art</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel
+          x:Uid="StackPanel_7" Grid.Row="1"
+          Grid.Column="1">
+                    <TextBlock 
+            x:Uid="TextBlock_12" FontSize="10pt"
+            Foreground="CornflowerBlue">
+            Business Solutions
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_13" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_4">CRM</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_14" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_5">Analytics &amp; Reporting</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_15" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_6">Financial management</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel
+          x:Uid="StackPanel_8" Grid.Row="1"
+          Grid.Column="2">
+                    <TextBlock 
+            x:Uid="TextBlock_16" FontSize="10pt"
+            Foreground="CornflowerBlue">
+            Security
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_17" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_7">What You Should Know About Zotob</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_18" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_8">Protect Your PC</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_19" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_9">Windows XP Service Pack 2</Hyperlink>
+                    </TextBlock>
+                    <TextBlock x:Uid="TextBlock_20" Margin="5,0,0,0">
+            <Hyperlink x:Uid="Hyperlink_10">Security Home</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!-- /Bottom panel -->
+        <Image x:Uid="Image_2" Source="vista.jpg" Stretch="None"/>
+    </DockPanel>
+</Page>

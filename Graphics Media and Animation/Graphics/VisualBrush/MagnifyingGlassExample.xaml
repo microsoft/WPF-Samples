@@ -1,0 +1,80 @@
+<!-- This example shows how to use a VisualBrush to magnify a portion of the screen.
+     MagnifyingGlassExample.xaml.cs contains the code that updates the magnifying glass
+     when the mouse is moved. -->
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="VisualBrush.MagnifyingGlassExample"
+  Background="White">
+  <Page.Resources>
+    <Style TargetType="{x:Type Paragraph}">
+      <Setter Property="Margin" Value="10" />
+    </Style>
+  </Page.Resources>
+
+  <Grid>  
+    <ScrollViewer>
+      <StackPanel Name="magnifiedPanel" 
+        VerticalAlignment="Stretch"
+        MouseMove="UpdateMagnifyingGlass" 
+        Background="{StaticResource MyGridBackgroundBrushResource}">
+        
+        <!-- This content provides something to magnify. -->
+        <FlowDocumentScrollViewer>
+        <FlowDocument>
+<Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras sit amet arcu ullamcorper sem volutpat facilisis. Donec posuere. Cras lectus dolor, euismod sit amet, aliquet ut, scelerisque in, tortor. Donec vulputate. Nunc mauris sem, blandit ut, imperdiet eu, eleifend a, tortor. Donec sed purus ut pede luctus commodo. Duis et quam vitae quam rhoncus sollicitudin. Nam rhoncus ullamcorper sapien. Aenean blandit, erat a ultricies imperdiet, mauris risus fermentum wisi, ac aliquet orci libero non felis. Fusce felis. Maecenas cursus. </Paragraph>
+<Paragraph><Button>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</Button></Paragraph>
+
+<Paragraph>Nunc semper cursus est. Aenean ultrices venenatis odio. Nam condimentum leo ut libero. Cras nibh tellus, euismod non, blandit et, porta vel, justo. Praesent consequat porta est. Fusce nonummy congue augue. Sed tristique quam elementum augue. Donec lobortis molestie sapien. Vivamus dictum. Duis congue consectetuer leo. In pharetra pharetra tellus. Proin suscipit feugiat lacus. Nunc lobortis sollicitudin tortor. Nulla sem magna, egestas vel, accumsan posuere, rhoncus non, wisi. Suspendisse viverra enim non dui. Sed a lectus. Nam rhoncus bibendum ipsum. Aliquam lectus.</Paragraph> 
+
+<Paragraph>Praesent suscipit ornare velit. Vestibulum tortor. Fusce eleifend, nisl ultricies iaculis vehicula, justo dolor tincidunt quam, in bibendum wisi libero nonummy massa. Nullam elit eros, blandit ac, porta et, iaculis eget, nisl. In varius. Nam a sapien. Praesent vel elit. Pellentesque quam. Mauris et nisl molestie arcu lobortis viverra. Vestibulum lorem justo, viverra a, condimentum at, adipiscing non, justo. Donec iaculis tellus nec dui aliquam suscipit. Pellentesque ante. Integer pretium, metus non convallis dapibus, arcu diam iaculis neque, et luctus justo odio vel nunc. Quisque fringilla. Integer ac tortor vitae felis aliquam bibendum. Suspendisse iaculis, magna et pellentesque fringilla, sapien est sagittis magna, id dignissim erat purus vitae pede. Maecenas fringilla libero sed odio. Aliquam erat volutpat.</Paragraph> 
+<Paragraph><Border BorderBrush="Black" BorderThickness="1"><Image Source="sampleImages\bananas.jpg" Stretch="None" /></Border></Paragraph>
+
+<Paragraph>Praesent vitae leo. Donec et elit vitae orci suscipit ornare. Proin tincidunt enim eget nisl. Nam arcu. Donec vitae odio sit amet enim semper accumsan. Nullam molestie interdum diam. Sed elit metus, interdum ac, condimentum at, pellentesque nec, metus. Aenean nec augue. Vestibulum lorem eros, tempus et, rutrum et, gravida sed, nunc. Suspendisse lacus velit, rhoncus non, euismod sit amet, viverra at, quam. Curabitur ut turpis a lacus laoreet condimentum. Nunc egestas nunc sit amet risus. Aliquam erat volutpat. In id velit. Sed augue. Vestibulum pretium gravida lacus. Ut neque erat, convallis non, feugiat eu, venenatis sit amet, tellus. Nullam ac felis a ipsum volutpat vestibulum.</Paragraph> 
+
+<Paragraph>Duis condimentum sem id dui. Nam ullamcorper orci ut lorem. Aenean et diam in erat adipiscing auctor. Integer congue orci ac diam. Morbi tempor elit nec elit. Maecenas porttitor. Aenean accumsan. Aliquam erat volutpat. Quisque metus. Maecenas neque. Aliquam erat volutpat. Cras massa. Duis in lorem sed justo pulvinar egestas.</Paragraph> 
+        </FlowDocument>
+        </FlowDocumentScrollViewer>
+      </StackPanel>
+    </ScrollViewer>
+    
+    <!-- This canvas contains the magnifying glass. -->
+    <Canvas Name="magnifyingGlassCanvas">
+      
+      <!-- The magnifying glass. -->
+      <Ellipse Name="magnifyingGlassEllipse" Width="100" Height="100" Stroke="Black">
+        <Ellipse.Fill>
+          <DrawingBrush>
+            <DrawingBrush.Drawing>
+              <DrawingGroup>
+                <DrawingGroup.Children>
+                
+                  <!-- This GeometryDrawing provides an opaque background for the 
+                       magnified view. -->
+                  <GeometryDrawing Brush="White">
+                    <GeometryDrawing.Geometry>
+                      <RectangleGeometry Rect="0,0,1,1" />
+                    </GeometryDrawing.Geometry>
+                  </GeometryDrawing>
+                  
+                  <!-- The magnified view. -->
+                  <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                    
+                      <!-- This VisualBrush magnifies its content. -->
+                      <VisualBrush x:Name="myVisualBrush" ViewboxUnits="Absolute"
+                        Visual="{Binding ElementName=magnifiedPanel}"/>
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                      <RectangleGeometry Rect="0,0,1,1" />
+                    </GeometryDrawing.Geometry>
+                  </GeometryDrawing>
+                </DrawingGroup.Children>
+              </DrawingGroup>
+            </DrawingBrush.Drawing>
+          </DrawingBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+    </Canvas>
+  </Grid>
+</Page>

@@ -1,0 +1,101 @@
+<!-- Displays the different animation examples. -->
+<Window  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="keyframes_markup.SampleViewer"
+    xmlns:examples="clr-namespace:SDKSample"
+    Title="Media Gallery">
+
+    
+    <DockPanel>
+    <TabControl Background="White">
+
+      <TabItem Header="OuterGlow Sample">
+        <TabControl>
+          <TabItem Header="Basic Example">
+            <Frame Background="White" Source="OuterGlowSimpleExample.xaml" />
+          </TabItem>
+          <TabItem Header="Animation Example">
+            <Frame Background="White" Source="OuterGlowAnimationExample.xaml" />
+          </TabItem>
+          <TabItem Header="Interactive Example">
+            <Frame Background="White" Source="OuterGlowInteractiveExample.xaml" />
+          </TabItem>
+        </TabControl>
+      </TabItem>
+      
+      <TabItem Header="DropShadow Sample">
+        <TabControl>
+          <TabItem Header="Basic Example">
+            <Frame Background="White" Source="DropShadowSimpleExample.xaml" />
+          </TabItem>
+          <TabItem Header="Animation Example">
+            <Frame Background="White" Source="DropShadowAnimationExample.xaml" />
+          </TabItem>
+          <TabItem Header="Interactive Example">
+            <Frame Background="White" Source="DropShadowInteractiveExample.xaml" />
+          </TabItem>
+        </TabControl>
+      </TabItem>
+
+      <TabItem Header="Blur Sample">
+        <TabControl>
+          <TabItem Header="Basic Example">
+            <Frame Background="White" Source="BlurSimpleExample.xaml" />
+          </TabItem>
+          <TabItem Header="Animation Example">
+            <Frame Background="White" Source="BlurAnimationExample.xaml" />
+          </TabItem>
+          <TabItem Header="Interactive Example">
+            <Frame Background="White" Source="BlurInteractiveExample.xaml" />
+          </TabItem>
+        </TabControl>
+      </TabItem>
+
+      <TabItem Header="Bevel Sample">
+        <TabControl>
+          <TabItem Header="Basic Example">
+            <Frame Background="White" Source="BevelSimpleExample.xaml" />
+          </TabItem>
+          <TabItem Header="Animation Example">
+            <Frame Background="White" Source="BevelAnimationExample.xaml" />
+          </TabItem>
+          <TabItem Header="Interactive Example">
+            <Frame Background="White" Source="BevelInteractiveExample.xaml" />
+          </TabItem>
+        </TabControl>
+      </TabItem>
+
+      <TabItem Header="Emboss Sample">
+        <TabControl>
+          <TabItem Header="Basic Example">
+            <Frame Background="White" Source="EmbossSimpleExample.xaml" />
+          </TabItem>
+          <TabItem Header="Animation Example">
+            <Frame Background="White" Source="EmbossAnimationExample.xaml" />
+          </TabItem>
+          <TabItem Header="Interactive Example">
+            <Frame Background="White" Source="EmbossInteractiveExample.xaml" />
+          </TabItem>
+        </TabControl>
+      </TabItem>
+
+      <TabItem Header="Multiple Effects Sample">
+        <TabControl>
+          <TabItem Header="Basic Example">
+            <Frame Background="White" Source="MultipleEffectExample.xaml" />
+          </TabItem>
+          <TabItem Header="Animation Example">
+            <Frame Background="White" Source="MultipleEffectAnimationExample.xaml" />
+          </TabItem>
+        </TabControl>
+      </TabItem>
+
+      <TabItem Header="Apply Effect to Area">
+        <Frame Background="White" Source="BitmapEffectInputExample.xaml" />
+      </TabItem>
+
+    </TabControl>
+   
+    </DockPanel>
+</Window>

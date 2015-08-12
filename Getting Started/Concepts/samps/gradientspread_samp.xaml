@@ -1,0 +1,1422 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Gradient Spread"
+      x:Class="GradientSpread.Page1"
+      Loaded="CheckLang">
+  <Page.Resources>
+    <Style x:Key="IntroTextStyle">
+      <Setter Property="TextBlock.FontFamily" Value="Verdana"/>
+      <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+      <Setter Property="TextBlock.Foreground" Value="Black"/>
+      <Setter Property="TextBlock.Margin" Value="10"/>
+      <Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+      <Setter Property="TextBlock.MaxWidth" Value="600" />
+    </Style>
+    <Style x:Key="HeaderRectangleStyle">
+      <Setter Property="Rectangle.RadiusX" Value="0"/>
+      <Setter Property="Rectangle.RadiusY" Value="0"/>
+      <Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Rectangle.VerticalAlignment" Value="Stretch"/>
+      <Setter Property="Rectangle.Margin" Value="0"/>
+      <Setter Property="Rectangle.StrokeThickness" Value="0" />
+    </Style>
+    <Style x:Key="FooterRectangleStyle">
+      <Setter Property="Rectangle.RadiusX" Value="0"/>
+      <Setter Property="Rectangle.RadiusY" Value="0"/>
+      <Setter Property="Rectangle.Height" Value="20"/>
+      <Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Rectangle.VerticalAlignment" Value="Bottom" />
+      <Setter Property="Rectangle.Margin" Value="0" />
+    </Style>
+    <LinearGradientBrush x:Key="BlueHorizontalGradientBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+      <LinearGradientBrush.GradientStops>
+        <GradientStop Color="#993333CC" Offset="0.0" />
+        <GradientStop Color="#996666CC" Offset="0.5" />
+      </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+  </Page.Resources>
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Gradient Spread Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Gradient Spread Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This example shows the different gradient spread methods applied to linear and radial gradient brushes.</TextBlock>
+            <TextBlock Style="{StaticResource MainContentStyle}">The preview window renders code from the XAML tab. The C#+Markup and VB+markup code is provided for reference purposes.</TextBlock>
+
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            
+
+          <TextBlock Name="xamlCheck">
+          <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+
+&lt;!-- GradientSpreadExample.xaml 
+     This example shows the different gradient spread methods applied to 
+     linear and radial gradient brushes. -->
+&lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="BrushesIntroduction.GradientSpreadExample" Title="Gradient Spread Methods">
+   &lt;Page.Resources>
+     &lt;Style x:Key="axisMarkerStyle">
+	     &lt;Setter Property="Line.StrokeThickness" Value="4"/>
+	     &lt;Setter Property="Line.Stroke" Value="#FF3300"/>
+	     &lt;Setter Property="Line.StrokeStartLineCap" Value="Flat"/>
+	     &lt;Setter Property="Line.StrokeEndLineCap" Value="Flat"/>
+     &lt;/Style>
+     &lt;Style x:Key="introTextStyle">
+       &lt;Setter Property="TextBlock.FontFamily" Value="Verdana"/>
+       &lt;Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+       &lt;Setter Property="TextBlock.Foreground" Value="Black"/>
+       &lt;Setter Property="TextBlock.Margin" Value="10"/>
+       &lt;Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+       &lt;Setter Property="TextBlock.MaxWidth" Value="600" />
+     &lt;/Style>
+     &lt;Style x:Key="headerRectangleStyle">
+       &lt;Setter Property="Rectangle.RadiusX" Value="0"/>
+       &lt;Setter Property="Rectangle.RadiusY" Value="0"/>
+       &lt;Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.VerticalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.Margin" Value="0"/>
+       &lt;Setter Property="Rectangle.StrokeThickness" Value="0" />
+       &lt;/Style>
+     &lt;Style x:Key="footerRectangleStyle">
+       &lt;Setter Property="Rectangle.RadiusX" Value="0"/>
+       &lt;Setter Property="Rectangle.RadiusY" Value="0"/>
+       &lt;Setter Property="Rectangle.Height" Value="20"/>
+       &lt;Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.VerticalAlignment" Value="Bottom" />
+       &lt;Setter Property="Rectangle.Margin" Value="0" />
+     &lt;/Style>
+     
+     
+    &lt;LinearGradientBrush x:Key="blueHorizontalGradientBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+      &lt;LinearGradientBrush.GradientStops>
+        &lt;GradientStop Color="#993333CC" Offset="0.0" />
+        &lt;GradientStop Color="#996666CC" Offset="0.5" />
+      &lt;/LinearGradientBrush.GradientStops>
+    &lt;/LinearGradientBrush>
+
+   &lt;/Page.Resources>
+   &lt;Grid Margin="10" Background="White">
+      &lt;ColumnDefinition />
+      &lt;ColumnDefinition Width="10" />
+      &lt;ColumnDefinition />
+      &lt;ColumnDefinition Width="10" />
+      &lt;ColumnDefinition />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="20" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="20" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="20" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="20" />
+      &lt;RowDefinition Height="Auto" />
+      &lt;RowDefinition Height="*" />
+      &lt;RowDefinition Height="Auto" />
+      
+      &lt;!-- Page and table header -->
+      &lt;Rectangle Style="{StaticResource headerRectangleStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Fill="{StaticResource blueHorizontalGradientBrush}" />
+      &lt;TextBlock Style="{StaticResource introTextStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+         A GradientBrush's SpreadMethod specifies how areas outside of the gradient
+         axis are painted. The following are examples of the different SpreadMethod settings.
+      &lt;/TextBlock>
+      &lt;Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Fill="DarkGray" StrokeThickness="0" />
+      &lt;TextBlock Grid.Row="2" Grid.Column="2" >Linear gradient&lt;/TextBlock>
+      &lt;TextBlock Grid.Row="2" Grid.Column="4" >Radial gradient&lt;/TextBlock>
+      &lt;TextBlock Grid.Row="2" Grid.Column="0" >Spread method&lt;/TextBlock>
+      &lt;TextBlock Grid.Row="4" Grid.Column="0">Pad&lt;/TextBlock>
+      &lt;TextBlock Grid.Row="6" Grid.Column="0">Reflect&lt;/TextBlock>
+      &lt;TextBlock Grid.Row="8" Grid.Column="0">Repeat&lt;/TextBlock>
+      
+      
+      &lt;!-- The following three examples show the different gradient spread methods
+           applied to linear gradient brushes. -->
+      &lt;Canvas Grid.Row="4" Grid.Column="2" Width="150" Height="75" Margin="0,0,0,10">
+         &lt;Rectangle Width="150" Height="75" Stroke="Black">
+            &lt;Rectangle.Fill>
+            
+               &lt;!-- Pad -->
+               &lt;LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0.7,0.5" SpreadMethod="Pad">
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0" />
+                     &lt;GradientStop Color="#333333" Offset="1" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Highlights the gradient axis. -->
+         &lt;Line X1="45" Y1="40" X2="105" Y2="40" Style="{StaticResource axisMarkerStyle}" />
+      &lt;/Canvas>
+      &lt;Canvas Grid.Row="6" Grid.Column="2" Width="150" Height="75" Margin="0,0,0,10">
+         &lt;Rectangle Width="150" Height="75" Stroke="Black">
+            &lt;Rectangle.Fill>
+            
+               &lt;!-- Reflect -->
+               &lt;LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0.7,0.5" SpreadMethod="Reflect">
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0" />
+                     &lt;GradientStop Color="#333333" Offset="1" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Highlights the gradient axis. -->
+         &lt;Line X1="45" Y1="40" X2="105" Y2="40" Style="{StaticResource axisMarkerStyle}" />
+      &lt;/Canvas>
+      &lt;Canvas Grid.Row="8" Grid.Column="2" Width="150" Height="75" Margin="0,0,0,10">
+         &lt;Rectangle Width="150" Height="75" Stroke="Black">
+            &lt;Rectangle.Fill>
+            
+               &lt;!-- Repeat -->
+               &lt;LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0.7,0.5" SpreadMethod="Repeat">
+                  &lt;LinearGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0" />
+                     &lt;GradientStop Color="#333333" Offset="1" />
+                  &lt;/LinearGradientBrush.GradientStops>
+               &lt;/LinearGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Highlights the gradient axis. -->
+         &lt;Line X1="45" Y1="40" X2="105" Y2="40" Style="{StaticResource axisMarkerStyle}" />
+      &lt;/Canvas>
+      
+      &lt;!-- The following three examples show the different gradient spread methods
+           applied to radial gradient brushes. -->
+      &lt;Canvas Grid.Row="4" Grid.Column="4" Width="150" Height="75" Margin="0,0,0,10">
+         &lt;Rectangle Width="150" Height="75" Stroke="Black">
+            &lt;Rectangle.Fill>
+            
+               &lt;!-- Pad -->
+               &lt;RadialGradientBrush Center="0.5,0.5" RadiusX="0.3" RadiusY="0.3" SpreadMethod="Pad">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0" />
+                     &lt;GradientStop Color="#333333" Offset="1" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Highlights the gradient axis. -->
+         &lt;Line X1="75" Y1="15" X2="75" Y2="60" Style="{StaticResource axisMarkerStyle}" StrokeThickness="2" />
+         &lt;Line X1="30" Y1="37.5" X2="120" Y2="37.5" Style="{StaticResource axisMarkerStyle}" StrokeThickness="2" />
+      &lt;/Canvas>
+      &lt;Canvas Grid.Row="6" Grid.Column="4" Width="150" Height="75" Margin="0,0,0,10">
+         &lt;Rectangle Width="150" Height="75" Stroke="Black">
+            &lt;Rectangle.Fill>
+            
+               &lt;!-- Reflect -->
+               &lt;RadialGradientBrush Center="0.5,0.5" RadiusX="0.3" RadiusY="0.3" SpreadMethod="Reflect">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0" />
+                     &lt;GradientStop Color="#333333" Offset="1" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Highlights the gradient axis. -->
+         &lt;Line X1="75" Y1="15" X2="75" Y2="60" Style="{StaticResource axisMarkerStyle}" StrokeThickness="2" />
+         &lt;Line X1="30" Y1="37.5" X2="120" Y2="37.5" Style="{StaticResource axisMarkerStyle}" StrokeThickness="2" />
+      &lt;/Canvas>
+      &lt;Canvas Grid.Row="8" Grid.Column="4" Width="150" Height="75" Margin="0,0,0,10">
+         &lt;Rectangle Width="150" Height="75" Stroke="Black">
+            &lt;Rectangle.Fill>
+            
+               &lt;!-- Repeat -->
+               &lt;RadialGradientBrush Center="0.5,0.5" RadiusX="0.3" RadiusY="0.3" SpreadMethod="Repeat">
+                  &lt;RadialGradientBrush.GradientStops>
+                     &lt;GradientStop Color="White" Offset="0" />
+                     &lt;GradientStop Color="#333333" Offset="1" />
+                  &lt;/RadialGradientBrush.GradientStops>
+               &lt;/RadialGradientBrush>
+            &lt;/Rectangle.Fill>
+         &lt;/Rectangle>
+         
+         &lt;!-- Highlights the gradient axis. -->
+         &lt;Line X1="75" Y1="15" X2="75" Y2="60" Style="{StaticResource axisMarkerStyle}" StrokeThickness="2" />
+         &lt;Line X1="30" Y1="37.5" X2="120" Y2="37.5" Style="{StaticResource axisMarkerStyle}" StrokeThickness="2" />
+      &lt;/Canvas>
+      &lt;Rectangle Style="{StaticResource footerRectangleStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="5" Fill="{StaticResource blueHorizontalGradientBrush}" />
+   &lt;/Grid>
+&lt;/Page>
+</TextBox>
+          </TextBlock>
+        </ScrollViewer>
+        </TabItem>
+        <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;!-- GradientSpreadExample.xaml 
+     This example shows the different gradient spread methods applied to 
+     linear and radial gradient brushes. -->
+&lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="BrushesIntroduction.GradientSpreadExample" Title="Gradient Spread Methods">
+   &lt;Page.Resources>
+    &lt;Style x:Key="axisMarkerStyle">
+	    &lt;Setter Property="Line.StrokeThickness" Value="4"/>
+	    &lt;Setter Property="Line.Stroke" Value="#FF3300"/>
+	    &lt;Setter Property="Line.StrokeStartLineCap" Value="Flat"/>
+	    &lt;Setter Property="Line.StrokeEndLineCap" Value="Flat"/>
+    &lt;/Style>
+     &lt;Style x:Key="introTextStyle">
+       &lt;Setter Property="TextBlock.FontFamily" Value="Verdana"/>
+       &lt;Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+       &lt;Setter Property="TextBlock.Foreground" Value="Black"/>
+       &lt;Setter Property="TextBlock.Margin" Value="10"/>
+       &lt;Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+       &lt;Setter Property="TextBlock.MaxWidth" Value="600" />
+     &lt;/Style>
+     &lt;Style x:Key="headerRectangleStyle">
+       &lt;Setter Property="Rectangle.RadiusX" Value="0"/>
+       &lt;Setter Property="Rectangle.RadiusY" Value="0"/>
+       &lt;Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.VerticalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.Margin" Value="0"/>
+       &lt;Setter Property="Rectangle.StrokeThickness" Value="0" />
+       &lt;/Style>
+     &lt;Style x:Key="footerRectangleStyle">
+       &lt;Setter Property="Rectangle.RadiusX" Value="0"/>
+       &lt;Setter Property="Rectangle.RadiusY" Value="0"/>
+       &lt;Setter Property="Rectangle.Height" Value="20"/>
+       &lt;Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.VerticalAlignment" Value="Bottom" />
+       &lt;Setter Property="Rectangle.Margin" Value="0" />
+     &lt;/Style>
+     
+     
+    &lt;LinearGradientBrush x:Key="blueHorizontalGradientBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+      &lt;LinearGradientBrush.GradientStops>
+        &lt;GradientStop Color="#993333CC" Offset="0.0" />
+        &lt;GradientStop Color="#996666CC" Offset="0.5" />
+      &lt;/LinearGradientBrush.GradientStops>
+    &lt;/LinearGradientBrush>
+   &lt;/Page.Resources>
+
+&lt;/Page>
+
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="C#">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Input;
+using System.Windows.Media;
+
+namespace BrushesIntroduction
+{
+	/// &lt;summary>
+	/// Interaction logic for GradientBrushesExample.xaml
+	/// &lt;/summary>
+
+	public partial class GradientSpreadExample : Page
+	{
+		
+		
+		public GradientSpreadExample()
+		{
+      InitializeComponent();
+      CreateGui();
+      		
+		}
+
+    private void CreateGui()
+    {
+
+      Grid myGrid = new Grid();
+      this.Child = myGrid;
+      myGrid.Margin = new Thickness(10);
+      myGrid.Background = Brushes.White;
+
+      ColumnDefinition col1 = new ColumnDefinition();
+      myGrid.ColumnDefinitions.Add(col1);
+
+      ColumnDefinition col2 = new ColumnDefinition();
+      col2.Width = new GridLength(10);
+      myGrid.ColumnDefinitions.Add(col2);
+
+      ColumnDefinition col3 = new ColumnDefinition();
+      myGrid.ColumnDefinitions.Add(col3);
+
+      ColumnDefinition col4 = new ColumnDefinition();
+      col4.Width = new GridLength(10);
+      myGrid.ColumnDefinitions.Add(col4);
+
+      ColumnDefinition col5 = new ColumnDefinition();
+      myGrid.ColumnDefinitions.Add(col5);
+
+      RowDefinition row1 = new RowDefinition();
+      row1.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row1);
+
+      RowDefinition row2 = new RowDefinition();
+      row2.Height = new GridLength(20);
+      myGrid.RowDefinitions.Add(row2);
+
+      RowDefinition row3 = new RowDefinition();
+      row3.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row3);
+
+      RowDefinition row4 = new RowDefinition();
+      row4.Height = new GridLength(20);
+      myGrid.RowDefinitions.Add(row4);
+
+      RowDefinition row5 = new RowDefinition();
+      row5.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row5);
+
+      RowDefinition row6 = new RowDefinition();
+      row6.Height = new GridLength(20);
+      myGrid.RowDefinitions.Add(row6);
+
+      RowDefinition row7 = new RowDefinition();
+      row7.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row7);
+
+      RowDefinition row8 = new RowDefinition();
+      row8.Height = new GridLength(20);
+      myGrid.RowDefinitions.Add(row8);
+
+      RowDefinition row9 = new RowDefinition();
+      row9.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row9);
+
+      RowDefinition row10 = new RowDefinition();
+      row10.Height = new GridLength(0, GridUnitType.Star); 
+      myGrid.RowDefinitions.Add(row10);
+
+      RowDefinition row11 = new RowDefinition();
+      row11.Height = new GridLength(0, GridUnitType.Auto);
+      myGrid.RowDefinitions.Add(row11);
+
+      //Page and table header
+      Rectangle headerRectangle = new Rectangle();
+      Grid.SetRow(headerRectangle, 0);
+      Grid.SetColumn(headerRectangle, 0);
+      Grid.SetColumnSpan(headerRectangle, 5);
+      myGrid.Children.Add(headerRectangle);
+      headerRectangle.Style = (Style)Application.Current.Resources["headerRectangleStyle"];
+      headerRectangle.Fill = (Brush)Application.Current.Resources["blueHorizontalGradientBrush"];
+
+      TextBlock headerTextBlock = new TextBlock();
+      Grid.SetRow(headerTextBlock, 0);
+      Grid.SetColumn(headerTextBlock, 0);
+      Grid.SetColumnSpan(headerTextBlock, 5);
+      myGrid.Children.Add(headerTextBlock);
+      headerTextBlock.Text = "A GradientBrush's SpreadMethod specifies how " +
+        "areas outside of the gradient axis are painted. The following are examples " +
+        "of the different SpreadMethod settings.";
+      headerTextBlock.Style = (Style)Application.Current.Resources["introTextStyle"];
+
+      Rectangle labelRectangle = new Rectangle();
+      Grid.SetRow(labelRectangle, 2);
+      Grid.SetColumn(labelRectangle, 0);
+      Grid.SetColumnSpan(labelRectangle, 5);
+      myGrid.Children.Add(labelRectangle);
+      labelRectangle.Fill = Brushes.DarkGray;
+      labelRectangle.StrokeThickness = 0;
+
+      TextBlock linGraTextBlock = new TextBlock();
+      Grid.SetRow(linGraTextBlock, 2);
+      Grid.SetColumn(linGraTextBlock, 2);
+      myGrid.Children.Add(linGraTextBlock);
+      linGraTextBlock.Text = "Linear gradient";
+
+      TextBlock radGraTextBlock = new TextBlock();
+      Grid.SetRow(radGraTextBlock, 2);
+      Grid.SetColumn(radGraTextBlock, 4);
+      myGrid.Children.Add(radGraTextBlock);
+      radGraTextBlock.Text = "Radial gradient";
+
+      TextBlock spreadTextBlock = new TextBlock();
+      Grid.SetRow(spreadTextBlock, 2);
+      Grid.SetColumn(spreadTextBlock, 0);
+      myGrid.Children.Add(spreadTextBlock);
+      spreadTextBlock.Text = "Spread method";
+
+      TextBlock padTextBlock = new TextBlock();
+      Grid.SetRow(padTextBlock, 4);
+      Grid.SetColumn(padTextBlock, 0);
+      myGrid.Children.Add(padTextBlock);
+      padTextBlock.Text = "Pad";
+
+      TextBlock reflectTextBlock = new TextBlock();
+      Grid.SetRow(reflectTextBlock, 6);
+      Grid.SetColumn(reflectTextBlock, 0);
+      myGrid.Children.Add(reflectTextBlock);
+      reflectTextBlock.Text = "Reflect";
+
+      TextBlock repeatTextBlock = new TextBlock();
+      Grid.SetRow(repeatTextBlock, 8);
+      Grid.SetColumn(repeatTextBlock, 0);
+      myGrid.Children.Add(repeatTextBlock);
+      repeatTextBlock.Text = "Repeat";
+
+      //The following three examples show the different gradient spread methods
+      //applied to linear gradient brushes.
+      Canvas padCanvas = new Canvas();
+      Grid.SetRow(padCanvas, 4);
+      Grid.SetColumn(padCanvas, 2);
+      myGrid.Children.Add(padCanvas);
+      padCanvas.Width = 150;
+      padCanvas.Height = 75;
+      padCanvas.Margin = new Thickness(0, 0, 0, 10);
+
+      Rectangle padRectangle = new Rectangle();
+      padCanvas.Children.Add(padRectangle);
+      padRectangle.Width = 150;
+      padRectangle.Height = 75;
+      padRectangle.Stroke = Brushes.Black;
+
+      //Pad
+      LinearGradientBrush padLinearGradientBrush = new LinearGradientBrush();
+      padRectangle.Fill = padLinearGradientBrush;
+      padLinearGradientBrush.StartPoint = new Point(0.3, 0.5);
+      padLinearGradientBrush.EndPoint = new Point(0.7, 0.5);
+      padLinearGradientBrush.SpreadMethod = GradientSpreadMethod.Pad;
+
+      GradientStopCollection padGradientStopCollection = new GradientStopCollection();
+      padLinearGradientBrush.GradientStops = padGradientStopCollection;
+
+      padGradientStopCollection.Add(new GradientStop(Colors.White, 0));
+      padGradientStopCollection.Add(new GradientStop(Color.FromRgb(51,51,51) , 1));
+
+      //Highlights the gradient axis. 
+      Line padLine = new Line();
+      padCanvas.Children.Add(padLine);
+      padLine.X1 = 45;
+      padLine.Y1 = 40;
+      padLine.X2 = 105;
+      padLine.Y2 = 40;
+      padLine.Style = (Style)this.Resources["axisMarkerStyle"];
+
+
+      Canvas reflectCanvas = new Canvas();
+      Grid.SetRow(reflectCanvas, 6);
+      Grid.SetColumn(reflectCanvas, 2);
+      myGrid.Children.Add(reflectCanvas);
+      reflectCanvas.Width = 150;
+      reflectCanvas.Height = 75;
+      reflectCanvas.Margin = new Thickness(0, 0, 0, 10);
+
+      Rectangle reflectRectangle = new Rectangle();
+      reflectCanvas.Children.Add(reflectRectangle);
+      reflectRectangle.Width = 150;
+      reflectRectangle.Height = 75;
+      reflectRectangle.Stroke = Brushes.Black;
+
+      //Reflect
+      LinearGradientBrush reflectLinearGradientBrush = new LinearGradientBrush();
+      reflectRectangle.Fill = reflectLinearGradientBrush;
+      reflectLinearGradientBrush.StartPoint = new Point(0.3, 0.5);
+      reflectLinearGradientBrush.EndPoint = new Point(0.7, 0.5);
+      reflectLinearGradientBrush.SpreadMethod = GradientSpreadMethod.Reflect;
+
+      GradientStopCollection reflectGradientStopCollection = new GradientStopCollection();
+      reflectLinearGradientBrush.GradientStops = reflectGradientStopCollection;
+
+      reflectGradientStopCollection.Add(new GradientStop(Colors.White, 0));
+      reflectGradientStopCollection.Add(new GradientStop(Color.FromRgb(51, 51, 51), 1));
+
+      //Highlights the gradient axis. 
+      Line reflectLine = new Line();
+      reflectCanvas.Children.Add(reflectLine);
+      reflectLine.X1 = 45;
+      reflectLine.Y1 = 40;
+      reflectLine.X2 = 105;
+      reflectLine.Y2 = 40;
+      reflectLine.Style = (Style)this.Resources["axisMarkerStyle"];
+
+
+
+      Canvas repeatCanvas = new Canvas();
+      Grid.SetRow(repeatCanvas, 8);
+      Grid.SetColumn(repeatCanvas, 2);
+      myGrid.Children.Add(repeatCanvas);
+      repeatCanvas.Width = 150;
+      repeatCanvas.Height = 75;
+      repeatCanvas.Margin = new Thickness(0, 0, 0, 10);
+
+      Rectangle repeatRectangle = new Rectangle();
+      repeatCanvas.Children.Add(repeatRectangle);
+      repeatRectangle.Width = 150;
+      repeatRectangle.Height = 75;
+      repeatRectangle.Stroke = Brushes.Black;
+
+      //Repeat
+      LinearGradientBrush repeatLinearGradientBrush = new LinearGradientBrush();
+      repeatRectangle.Fill = repeatLinearGradientBrush;
+      repeatLinearGradientBrush.StartPoint = new Point(0.3, 0.5);
+      repeatLinearGradientBrush.EndPoint = new Point(0.7, 0.5);
+      repeatLinearGradientBrush.SpreadMethod = GradientSpreadMethod.Repeat;
+
+      GradientStopCollection repeatGradientStopCollection = new GradientStopCollection();
+      repeatLinearGradientBrush.GradientStops = repeatGradientStopCollection;
+
+      repeatGradientStopCollection.Add(new GradientStop(Colors.White, 0));
+      repeatGradientStopCollection.Add(new GradientStop(Color.FromRgb(51, 51, 51), 1));
+
+      //Highlights the gradient axis. 
+      Line repeatLine = new Line();
+      repeatCanvas.Children.Add(repeatLine);
+      repeatLine.X1 = 45;
+      repeatLine.Y1 = 40;
+      repeatLine.X2 = 105;
+      repeatLine.Y2 = 40;
+      repeatLine.Style = (Style)this.Resources["axisMarkerStyle"];
+
+      //The following three examples show the different gradient spread methods
+      //applied to radial gradient brushes.
+      Canvas padRadCanvas = new Canvas();
+      Grid.SetRow(padRadCanvas, 4);
+      Grid.SetColumn(padRadCanvas, 4);
+      myGrid.Children.Add(padRadCanvas);
+      padRadCanvas.Width = 150;
+      padRadCanvas.Height = 75;
+      padRadCanvas.Margin = new Thickness(0, 0, 0, 10);
+
+      Rectangle padRadRectangle = new Rectangle();
+      padRadCanvas.Children.Add(padRadRectangle);
+      padRadRectangle.Width = 150;
+      padRadRectangle.Height = 75;
+      padRadRectangle.Stroke = Brushes.Black;
+
+      //Pad
+      RadialGradientBrush padRadialGradientBrush = new RadialGradientBrush();
+      padRadRectangle.Fill = padRadialGradientBrush;
+      padRadialGradientBrush.Center = new Point(0.5,0.5);
+      padRadialGradientBrush.RadiusX = 0.3;
+      padRadialGradientBrush.RadiusY = 0.3;
+      padRadialGradientBrush.SpreadMethod = GradientSpreadMethod.Pad;
+
+      GradientStopCollection padRadGradientStopCollection = new GradientStopCollection();
+      padRadialGradientBrush.GradientStops = padRadGradientStopCollection;
+
+      padRadGradientStopCollection.Add(new GradientStop(Colors.White, 0));
+      padRadGradientStopCollection.Add(new GradientStop(Color.FromRgb(51, 51, 51), 1));
+
+      //Highlights the gradient axis.
+      Line padRadLine1 = new Line();
+      padRadCanvas.Children.Add(padRadLine1);
+      padRadLine1.X1 = 75;
+      padRadLine1.Y1 = 15;
+      padRadLine1.X2 = 75;
+      padRadLine1.Y2 = 60;
+      padRadLine1.Style = (Style)this.Resources["axisMarkerStyle"];
+      padRadLine1.StrokeThickness = 2;
+
+      Line padRadLine2 = new Line();
+      padRadCanvas.Children.Add(padRadLine2);
+      padRadLine2.X1 = 30;
+      padRadLine2.Y1 = 37.5;
+      padRadLine2.X2 = 120;
+      padRadLine2.Y2 = 37.5;
+      padRadLine2.Style = (Style)this.Resources["axisMarkerStyle"];
+      padRadLine2.StrokeThickness = 2;
+
+
+
+      Canvas reflectRadCanvas = new Canvas();
+      Grid.SetRow(reflectRadCanvas, 6);
+      Grid.SetColumn(reflectRadCanvas, 4);
+      myGrid.Children.Add(reflectRadCanvas);
+      reflectRadCanvas.Width = 150;
+      reflectRadCanvas.Height = 75;
+      reflectRadCanvas.Margin = new Thickness(0, 0, 0, 10);
+
+      Rectangle reflectRadRectangle = new Rectangle();
+      reflectRadCanvas.Children.Add(reflectRadRectangle);
+      reflectRadRectangle.Width = 150;
+      reflectRadRectangle.Height = 75;
+      reflectRadRectangle.Stroke = Brushes.Black;
+
+      //Reflect
+      RadialGradientBrush reflectRadialGradientBrush = new RadialGradientBrush();
+      reflectRadRectangle.Fill = reflectRadialGradientBrush;
+      reflectRadialGradientBrush.Center = new Point(0.5, 0.5);
+      reflectRadialGradientBrush.RadiusX = 0.3;
+      reflectRadialGradientBrush.RadiusY = 0.3;
+      reflectRadialGradientBrush.SpreadMethod = GradientSpreadMethod.Reflect;
+
+      GradientStopCollection reflectRadGradientStopCollection = new GradientStopCollection();
+      reflectRadialGradientBrush.GradientStops = reflectRadGradientStopCollection;
+
+      reflectRadGradientStopCollection.Add(new GradientStop(Colors.White, 0));
+      reflectRadGradientStopCollection.Add(new GradientStop(Color.FromRgb(51, 51, 51), 1));
+
+      //Highlights the gradient axis.
+      Line reflectLine1 = new Line();
+      reflectRadCanvas.Children.Add(reflectLine1);
+      reflectLine1.X1 = 75;
+      reflectLine1.Y1 = 15;
+      reflectLine1.X2 = 75;
+      reflectLine1.Y2 = 60;
+      reflectLine1.Style = (Style)this.Resources["axisMarkerStyle"];
+      reflectLine1.StrokeThickness = 2;
+
+      Line reflectRadLine2 = new Line();
+      reflectRadCanvas.Children.Add(reflectRadLine2);
+      reflectRadLine2.X1 = 30;
+      reflectRadLine2.Y1 = 37.5;
+      reflectRadLine2.X2 = 120;
+      reflectRadLine2.Y2 = 37.5;
+      reflectRadLine2.Style = (Style)this.Resources["axisMarkerStyle"];
+      reflectRadLine2.StrokeThickness = 2;
+
+
+
+      Canvas repeatRadCanvas = new Canvas();
+      Grid.SetRow(repeatRadCanvas, 8);
+      Grid.SetColumn(repeatRadCanvas, 4);
+      myGrid.Children.Add(repeatRadCanvas);
+      repeatRadCanvas.Width = 150;
+      repeatRadCanvas.Height = 75;
+      repeatRadCanvas.Margin = new Thickness(0, 0, 0, 10);
+
+      Rectangle repeatRadRectangle = new Rectangle();
+      repeatRadCanvas.Children.Add(repeatRadRectangle);
+      repeatRadRectangle.Width = 150;
+      repeatRadRectangle.Height = 75;
+      repeatRadRectangle.Stroke = Brushes.Black;
+
+      //Repeat
+      RadialGradientBrush repeatRadialGradientBrush = new RadialGradientBrush();
+      repeatRadRectangle.Fill = repeatRadialGradientBrush;
+      repeatRadialGradientBrush.Center = new Point(0.5, 0.5);
+      repeatRadialGradientBrush.RadiusX = 0.3;
+      repeatRadialGradientBrush.RadiusY = 0.3;
+      repeatRadialGradientBrush.SpreadMethod = GradientSpreadMethod.Repeat;
+
+      GradientStopCollection repeatRadGradientStopCollection = new GradientStopCollection();
+      repeatRadialGradientBrush.GradientStops = repeatRadGradientStopCollection;
+
+      repeatRadGradientStopCollection.Add(new GradientStop(Colors.White, 0));
+      repeatRadGradientStopCollection.Add(new GradientStop(Color.FromRgb(51, 51, 51), 1));
+
+      //Highlights the gradient axis.
+      Line repeatLine1 = new Line();
+      repeatRadCanvas.Children.Add(repeatLine1);
+      repeatLine1.X1 = 75;
+      repeatLine1.Y1 = 15;
+      repeatLine1.X2 = 75;
+      repeatLine1.Y2 = 60;
+      repeatLine1.Style = (Style)this.Resources["axisMarkerStyle"];
+      repeatLine1.StrokeThickness = 2;
+
+      Line repeatRadLine2 = new Line();
+      repeatRadCanvas.Children.Add(repeatRadLine2);
+      repeatRadLine2.X1 = 30;
+      repeatRadLine2.Y1 = 37.5;
+      repeatRadLine2.X2 = 120;
+      repeatRadLine2.Y2 = 37.5;
+      repeatRadLine2.Style = (Style)this.Resources["axisMarkerStyle"];
+      repeatRadLine2.StrokeThickness = 2;
+
+      Rectangle footerRectangle = new Rectangle();
+      Grid.SetRow(footerRectangle, 10);
+      Grid.SetColumn(footerRectangle, 0);
+      Grid.SetColumnSpan(footerRectangle, 5);
+      myGrid.Children.Add(footerRectangle);
+      footerRectangle.Style = (Style)Application.Current.Resources["footerRectangleStyle"];
+      footerRectangle.Fill = (Brush)Application.Current.Resources["blueHorizontalGradientBrush"];
+    }
+		
+		
+	}
+}
+                 
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;!-- GradientSpreadExample.xaml 
+     This example shows the different gradient spread methods applied to 
+     linear and radial gradient brushes. -->
+&lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="BrushesIntroduction.GradientSpreadExample" Title="Gradient Spread Methods">
+   &lt;Page.Resources>
+     &lt;Style x:Key="axisMarkerStyle">
+	     &lt;Setter Property="Line.StrokeThickness" Value="4"/>
+	     &lt;Setter Property="Line.Stroke" Value="#FF3300"/>
+	     &lt;Setter Property="Line.StrokeStartLineCap" Value="Flat"/>
+	     &lt;Setter Property="Line.StrokeEndLineCap" Value="Flat"/>
+     &lt;/Style>
+     &lt;Style x:Key="introTextStyle">
+       &lt;Setter Property="TextBlock.FontFamily" Value="Verdana"/>
+       &lt;Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+       &lt;Setter Property="TextBlock.Foreground" Value="Black"/>
+       &lt;Setter Property="TextBlock.Margin" Value="10"/>
+       &lt;Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+       &lt;Setter Property="TextBlock.MaxWidth" Value="600" />
+     &lt;/Style>
+     &lt;Style x:Key="headerRectangleStyle">
+       &lt;Setter Property="Rectangle.RadiusX" Value="0"/>
+       &lt;Setter Property="Rectangle.RadiusY" Value="0"/>
+       &lt;Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.VerticalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.Margin" Value="0"/>
+       &lt;Setter Property="Rectangle.StrokeThickness" Value="0" />
+       &lt;/Style>
+     &lt;Style x:Key="footerRectangleStyle">
+       &lt;Setter Property="Rectangle.RadiusX" Value="0"/>
+       &lt;Setter Property="Rectangle.RadiusY" Value="0"/>
+       &lt;Setter Property="Rectangle.Height" Value="20"/>
+       &lt;Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+       &lt;Setter Property="Rectangle.VerticalAlignment" Value="Bottom" />
+       &lt;Setter Property="Rectangle.Margin" Value="0" />
+     &lt;/Style>
+     
+     
+    &lt;LinearGradientBrush x:Key="blueHorizontalGradientBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+      &lt;LinearGradientBrush.GradientStops>
+        &lt;GradientStop Color="#993333CC" Offset="0.0" />
+        &lt;GradientStop Color="#996666CC" Offset="0.5" />
+      &lt;/LinearGradientBrush.GradientStops>
+    &lt;/LinearGradientBrush>
+   &lt;/Page.Resources>
+
+   &lt;/Page.Resources>
+
+&lt;/Page>
+                
+              </TextBox>   
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                
+		  <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+Imports System
+Imports System.Windows
+Imports System.Windows.Controls
+Imports System.Windows.Documents
+Imports System.Windows.Navigation
+Imports System.Windows.Shapes
+Imports System.Windows.Input
+Imports System.Windows.Media
+
+Namespace BrushesIntroduction
+
+  ' &lt;summary>
+  ' Interaction logic for GradientBrushesExample.xaml
+  ' &lt;/summary>
+
+  Partial Public Class GradientSpreadExample
+    Inherits Page
+    Public Sub New()
+      InitializeComponent()
+      CreateGui()
+
+    End Sub
+    Private Sub CreateGui()
+      Dim myGrid As New Grid()
+      Me.Child = myGrid
+      myGrid.Margin = New Thickness(10)
+      myGrid.Background = Brushes.White
+
+      Dim col1 As New ColumnDefinition()
+      myGrid.ColumnDefinitions.Add(col1)
+
+      Dim col2 As New ColumnDefinition()
+      col2.Width = New GridLength(10)
+      myGrid.ColumnDefinitions.Add(col2)
+
+      Dim col3 As New ColumnDefinition()
+      myGrid.ColumnDefinitions.Add(col3)
+
+      Dim col4 As New ColumnDefinition()
+      col4.Width = New GridLength(10)
+      myGrid.ColumnDefinitions.Add(col4)
+
+      Dim col5 As New ColumnDefinition()
+      myGrid.ColumnDefinitions.Add(col5)
+
+      Dim row1 As New RowDefinition()
+      row1.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row1)
+
+      Dim row2 As New RowDefinition()
+      row2.Height = New GridLength(20)
+      myGrid.RowDefinitions.Add(row2)
+
+      Dim row3 As New RowDefinition()
+      row3.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row3)
+
+      Dim row4 As New RowDefinition()
+      row4.Height = New GridLength(20)
+      myGrid.RowDefinitions.Add(row4)
+
+      Dim row5 As New RowDefinition()
+      row5.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row5)
+
+      Dim row6 As New RowDefinition()
+      row6.Height = New GridLength(20)
+      myGrid.RowDefinitions.Add(row6)
+
+      Dim row7 As New RowDefinition()
+      row7.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row7)
+
+      Dim row8 As New RowDefinition()
+      row8.Height = New GridLength(20)
+      myGrid.RowDefinitions.Add(row8)
+
+      Dim row9 As New RowDefinition()
+      row9.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row9)
+
+      Dim row10 As New RowDefinition()
+      row10.Height = New GridLength(0, GridUnitType.Star)
+      myGrid.RowDefinitions.Add(row10)
+
+      Dim row11 As New RowDefinition()
+      row11.Height = New GridLength(0, GridUnitType.Auto)
+      myGrid.RowDefinitions.Add(row11)
+
+      'Page and table header
+      Dim headerRectangle As New Rectangle()
+      Grid.SetRow(headerRectangle, 0)
+      Grid.SetColumn(headerRectangle, 0)
+      Grid.SetColumnSpan(headerRectangle, 5)
+      myGrid.Children.Add(headerRectangle)
+      headerRectangle.Style = CType(Application.Current.Resources("headerRectangleStyle"), Style)
+      headerRectangle.Fill = CType(Application.Current.Resources("blueHorizontalGradientBrush"), Brush)
+
+      Dim headerTextBlock As New TextBlock()
+      Grid.SetRow(headerTextBlock, 0)
+      Grid.SetColumn(headerTextBlock, 0)
+      Grid.SetColumnSpan(headerTextBlock, 5)
+      myGrid.Children.Add(headerTextBlock)
+      headerTextBlock.Text = "A GradientBrush's SpreadMethod specifies how " + _
+        "areas outside of the gradient axis are painted. The following are examples " + _
+        "of the different SpreadMethod settings."
+      headerTextBlock.Style = CType(Application.Current.Resources("introTextStyle"), Style)
+
+      Dim labelRectangle As New Rectangle()
+      Grid.SetRow(labelRectangle, 2)
+      Grid.SetColumn(labelRectangle, 0)
+      Grid.SetColumnSpan(labelRectangle, 5)
+      myGrid.Children.Add(labelRectangle)
+      labelRectangle.Fill = Brushes.DarkGray
+      labelRectangle.StrokeThickness = 0
+
+      Dim linGraTextBlock As New TextBlock()
+      Grid.SetRow(linGraTextBlock, 2)
+      Grid.SetColumn(linGraTextBlock, 2)
+      myGrid.Children.Add(linGraTextBlock)
+      linGraTextBlock.Text = "Linear gradient"
+
+      Dim radGraTextBlock As New TextBlock()
+      Grid.SetRow(radGraTextBlock, 2)
+      Grid.SetColumn(radGraTextBlock, 4)
+      myGrid.Children.Add(radGraTextBlock)
+      radGraTextBlock.Text = "Radial gradient"
+
+      Dim spreadTextBlock As New TextBlock()
+      Grid.SetRow(spreadTextBlock, 2)
+      Grid.SetColumn(spreadTextBlock, 0)
+      myGrid.Children.Add(spreadTextBlock)
+      spreadTextBlock.Text = "Spread method"
+
+      Dim padTextBlock As New TextBlock()
+      Grid.SetRow(padTextBlock, 4)
+      Grid.SetColumn(padTextBlock, 0)
+      myGrid.Children.Add(padTextBlock)
+      padTextBlock.Text = "Pad"
+
+      Dim reflectTextBlock As New TextBlock()
+      Grid.SetRow(reflectTextBlock, 6)
+      Grid.SetColumn(reflectTextBlock, 0)
+      myGrid.Children.Add(reflectTextBlock)
+      reflectTextBlock.Text = "Reflect"
+
+      Dim repeatTextBlock As New TextBlock()
+      Grid.SetRow(repeatTextBlock, 8)
+      Grid.SetColumn(repeatTextBlock, 0)
+      myGrid.Children.Add(repeatTextBlock)
+      repeatTextBlock.Text = "Repeat"
+
+      'The following three examples show the different gradient spread methods
+      'applied to linear gradient brushes.
+      Dim padCanvas As New Canvas()
+      Grid.SetRow(padCanvas, 4)
+      Grid.SetColumn(padCanvas, 2)
+      myGrid.Children.Add(padCanvas)
+      padCanvas.Width = 150
+      padCanvas.Height = 75
+      padCanvas.Margin = New Thickness(0, 0, 0, 10)
+
+      Dim padRectangle As New Rectangle()
+      padCanvas.Children.Add(padRectangle)
+      padRectangle.Width = 150
+      padRectangle.Height = 75
+      padRectangle.Stroke = Brushes.Black
+
+      'Pad
+      Dim padLinearGradientBrush As New LinearGradientBrush()
+      padRectangle.Fill = padLinearGradientBrush
+      padLinearGradientBrush.StartPoint = New Windows.Point(0.3, 0.5)
+      padLinearGradientBrush.EndPoint = New Windows.Point(0.7, 0.5)
+      padLinearGradientBrush.SpreadMethod = GradientSpreadMethod.Pad
+
+      Dim padGradientStopCollection As New GradientStopCollection()
+      padLinearGradientBrush.GradientStops = padGradientStopCollection
+
+      padGradientStopCollection.Add(New GradientStop(Colors.White, 0))
+      padGradientStopCollection.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#333333"), Color), 1))
+
+      'Highlights the gradient axis. 
+      Dim padLine As New Line()
+      padCanvas.Children.Add(padLine)
+      padLine.X1 = 45
+      padLine.Y1 = 40
+      padLine.X2 = 105
+      padLine.Y2 = 40
+      padLine.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+
+
+      Dim reflectCanvas As New Canvas()
+      Grid.SetRow(reflectCanvas, 6)
+      Grid.SetColumn(reflectCanvas, 2)
+      myGrid.Children.Add(reflectCanvas)
+      reflectCanvas.Width = 150
+      reflectCanvas.Height = 75
+      reflectCanvas.Margin = New Thickness(0, 0, 0, 10)
+
+      Dim reflectRectangle As New Rectangle()
+      reflectCanvas.Children.Add(reflectRectangle)
+      reflectRectangle.Width = 150
+      reflectRectangle.Height = 75
+      reflectRectangle.Stroke = Brushes.Black
+
+      'Reflect
+      Dim reflectLinearGradientBrush As New LinearGradientBrush()
+      reflectRectangle.Fill = reflectLinearGradientBrush
+      reflectLinearGradientBrush.StartPoint = New Windows.Point(0.3, 0.5)
+      reflectLinearGradientBrush.EndPoint = New Windows.Point(0.7, 0.5)
+      reflectLinearGradientBrush.SpreadMethod = GradientSpreadMethod.Reflect
+
+      Dim reflectGradientStopCollection As New GradientStopCollection()
+      reflectLinearGradientBrush.GradientStops = reflectGradientStopCollection
+
+      reflectGradientStopCollection.Add(New GradientStop(Colors.White, 0))
+      reflectGradientStopCollection.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#333333"), Color), 1))
+
+      'Highlights the gradient axis. 
+      Dim reflectLine As New Line()
+      reflectCanvas.Children.Add(reflectLine)
+      reflectLine.X1 = 45
+      reflectLine.Y1 = 40
+      reflectLine.X2 = 105
+      reflectLine.Y2 = 40
+      reflectLine.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+
+
+
+      Dim repeatCanvas As New Canvas()
+      Grid.SetRow(repeatCanvas, 8)
+      Grid.SetColumn(repeatCanvas, 2)
+      myGrid.Children.Add(repeatCanvas)
+      repeatCanvas.Width = 150
+      repeatCanvas.Height = 75
+      repeatCanvas.Margin = New Thickness(0, 0, 0, 10)
+
+      Dim repeatRectangle As New Rectangle()
+      repeatCanvas.Children.Add(repeatRectangle)
+      repeatRectangle.Width = 150
+      repeatRectangle.Height = 75
+      repeatRectangle.Stroke = Brushes.Black
+
+      'Repeat
+      Dim repeatLinearGradientBrush As New LinearGradientBrush()
+      repeatRectangle.Fill = repeatLinearGradientBrush
+      repeatLinearGradientBrush.StartPoint = New Windows.Point(0.3, 0.5)
+      repeatLinearGradientBrush.EndPoint = New Windows.Point(0.7, 0.5)
+      repeatLinearGradientBrush.SpreadMethod = GradientSpreadMethod.Repeat
+
+      Dim repeatGradientStopCollection As New GradientStopCollection()
+      repeatLinearGradientBrush.GradientStops = repeatGradientStopCollection
+
+      repeatGradientStopCollection.Add(New GradientStop(Colors.White, 0))
+      repeatGradientStopCollection.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#333333"), Color), 1))
+
+      'Highlights the gradient axis. 
+      Dim repeatLine As New Line()
+      repeatCanvas.Children.Add(repeatLine)
+      repeatLine.X1 = 45
+      repeatLine.Y1 = 40
+      repeatLine.X2 = 105
+      repeatLine.Y2 = 40
+      repeatLine.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+
+      'The following three examples show the different gradient spread methods
+      'applied to radial gradient brushes.
+      Dim padRadCanvas As New Canvas()
+      Grid.SetRow(padRadCanvas, 4)
+      Grid.SetColumn(padRadCanvas, 4)
+      myGrid.Children.Add(padRadCanvas)
+      padRadCanvas.Width = 150
+      padRadCanvas.Height = 75
+      padRadCanvas.Margin = New Thickness(0, 0, 0, 10)
+
+      Dim padRadRectangle As New Rectangle()
+      padRadCanvas.Children.Add(padRadRectangle)
+      padRadRectangle.Width = 150
+      padRadRectangle.Height = 75
+      padRadRectangle.Stroke = Brushes.Black
+
+      'Pad
+      Dim padRadialGradientBrush As New RadialGradientBrush()
+      padRadRectangle.Fill = padRadialGradientBrush
+      padRadialGradientBrush.Center = New Windows.Point(0.5, 0.5)
+      padRadialGradientBrush.RadiusX = 0.3
+      padRadialGradientBrush.RadiusY = 0.3
+      padRadialGradientBrush.SpreadMethod = GradientSpreadMethod.Pad
+
+      Dim padRadGradientStopCollection As New GradientStopCollection()
+      padRadialGradientBrush.GradientStops = padRadGradientStopCollection
+
+      padRadGradientStopCollection.Add(New GradientStop(Colors.White, 0))
+      padRadGradientStopCollection.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#333333"), Color), 1))
+
+      'Highlights the gradient axis.
+      Dim padRadLine1 As New Line()
+      padRadCanvas.Children.Add(padRadLine1)
+      padRadLine1.X1 = 75
+      padRadLine1.Y1 = 15
+      padRadLine1.X2 = 75
+      padRadLine1.Y2 = 60
+      padRadLine1.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+      padRadLine1.StrokeThickness = 2
+
+      Dim padRadLine2 As New Line()
+      padRadCanvas.Children.Add(padRadLine2)
+      padRadLine2.X1 = 30
+      padRadLine2.Y1 = 37.5
+      padRadLine2.X2 = 120
+      padRadLine2.Y2 = 37.5
+      padRadLine2.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+      padRadLine2.StrokeThickness = 2
+
+
+
+      Dim reflectRadCanvas As New Canvas()
+      Grid.SetRow(reflectRadCanvas, 6)
+      Grid.SetColumn(reflectRadCanvas, 4)
+      myGrid.Children.Add(reflectRadCanvas)
+      reflectRadCanvas.Width = 150
+      reflectRadCanvas.Height = 75
+      reflectRadCanvas.Margin = New Thickness(0, 0, 0, 10)
+
+      Dim reflectRadRectangle As New Rectangle()
+      reflectRadCanvas.Children.Add(reflectRadRectangle)
+      reflectRadRectangle.Width = 150
+      reflectRadRectangle.Height = 75
+      reflectRadRectangle.Stroke = Brushes.Black
+
+      'Reflect
+      Dim reflectRadialGradientBrush As New RadialGradientBrush()
+      reflectRadRectangle.Fill = reflectRadialGradientBrush
+      reflectRadialGradientBrush.Center = New Windows.Point(0.5, 0.5)
+      reflectRadialGradientBrush.RadiusX = 0.3
+      reflectRadialGradientBrush.RadiusY = 0.3
+      reflectRadialGradientBrush.SpreadMethod = GradientSpreadMethod.Reflect
+
+      Dim reflectRadGradientStopCollection As New GradientStopCollection()
+      reflectRadialGradientBrush.GradientStops = reflectRadGradientStopCollection
+
+      reflectRadGradientStopCollection.Add(New GradientStop(Colors.White, 0))
+      reflectRadGradientStopCollection.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#333333"), Color), 1))
+
+      'Highlights the gradient axis.
+      Dim reflectLine1 As New Line()
+      reflectCanvas.Children.Add(reflectLine1)
+      reflectLine1.X1 = 75
+      reflectLine1.Y1 = 15
+      reflectLine1.X2 = 75
+      reflectLine1.Y2 = 60
+      reflectLine1.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+      reflectLine1.StrokeThickness = 2
+
+      Dim reflectRadLine2 As New Line()
+      reflectRadCanvas.Children.Add(reflectRadLine2)
+      reflectRadLine2.X1 = 30
+      reflectRadLine2.Y1 = 37.5
+      reflectRadLine2.X2 = 120
+      reflectRadLine2.Y2 = 37.5
+      reflectRadLine2.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+      reflectRadLine2.StrokeThickness = 2
+
+
+
+      Dim repeatRadCanvas As New Canvas()
+      Grid.SetRow(repeatRadCanvas, 8)
+      Grid.SetColumn(repeatRadCanvas, 4)
+      myGrid.Children.Add(repeatRadCanvas)
+      repeatRadCanvas.Width = 150
+      repeatRadCanvas.Height = 75
+      repeatRadCanvas.Margin = New Thickness(0, 0, 0, 10)
+
+      Dim repeatRadRectangle As New Rectangle()
+      repeatRadCanvas.Children.Add(repeatRadRectangle)
+      repeatRadRectangle.Width = 150
+      repeatRadRectangle.Height = 75
+      repeatRadRectangle.Stroke = Brushes.Black
+
+      'Repeat
+      Dim repeatRadialGradientBrush As New RadialGradientBrush()
+      repeatRadRectangle.Fill = repeatRadialGradientBrush
+      repeatRadialGradientBrush.Center = New Windows.Point(0.5, 0.5)
+      repeatRadialGradientBrush.RadiusX = 0.3
+      repeatRadialGradientBrush.RadiusY = 0.3
+      repeatRadialGradientBrush.SpreadMethod = GradientSpreadMethod.Repeat
+
+      Dim repeatRadGradientStopCollection As New GradientStopCollection()
+      repeatRadialGradientBrush.GradientStops = repeatRadGradientStopCollection
+
+      repeatRadGradientStopCollection.Add(New GradientStop(Colors.White, 0))
+      repeatRadGradientStopCollection.Add(New GradientStop(CType(ColorConverter.ConvertFromString("#333333"), Color), 1))
+
+      'Highlights the gradient axis.
+      Dim repeatLine1 As New Line()
+      repeatCanvas.Children.Add(repeatLine1)
+      repeatLine1.X1 = 75
+      repeatLine1.Y1 = 15
+      repeatLine1.X2 = 75
+      repeatLine1.Y2 = 60
+      repeatLine1.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+      repeatLine1.StrokeThickness = 2
+
+      Dim repeatRadLine2 As New Line()
+      repeatRadCanvas.Children.Add(repeatRadLine2)
+      repeatRadLine2.X1 = 30
+      repeatRadLine2.Y1 = 37.5
+      repeatRadLine2.X2 = 120
+      repeatRadLine2.Y2 = 37.5
+      repeatRadLine2.Style = CType(Me.Resources("axisMarkerStyle"), Style)
+      repeatRadLine2.StrokeThickness = 2
+
+      Dim footerRectangle As New Rectangle()
+      Grid.SetRow(footerRectangle, 10)
+      Grid.SetColumn(footerRectangle, 0)
+      Grid.SetColumnSpan(footerRectangle, 5)
+      myGrid.Children.Add(footerRectangle)
+      footerRectangle.Style = CType(Application.Current.Resources("footerRectangleStyle"), Style)
+      footerRectangle.Fill = CType(Application.Current.Resources("blueHorizontalGradientBrush"), Brush)
+
+    End Sub
+
+  End Class
+
+End Namespace
+        
+        
+        
+      </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+
+          <!-- GradientSpreadExample.xaml 
+     This example shows the different gradient spread methods applied to 
+     linear and radial gradient brushes. -->
+<Canvas>
+   <Canvas.Resources>
+      <Style x:Key="AxisMarkerStyle">
+	  <Setter Property="Line.StrokeThickness" Value="4"/>
+	  <Setter Property="Line.Stroke" Value="#FF3300"/>
+	  <Setter Property="Line.StrokeStartLineCap" Value="Flat"/>
+	  <Setter Property="Line.StrokeEndLineCap" Value="Flat"/>
+        
+
+        
+      </Style>
+   </Canvas.Resources>
+   <Grid Margin="10" Background="White">
+     <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition />
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition />
+     </Grid.ColumnDefinitions>
+     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+     </Grid.RowDefinitions>
+
+      
+      <!-- Page and table header -->
+      <Rectangle Style="{StaticResource HeaderRectangleStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Fill="{StaticResource BlueHorizontalGradientBrush}" />
+      <TextBlock Style="{StaticResource IntroTextStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+         A GradientBrush's SpreadMethod specifies how areas outside of the gradient
+         axis are painted. The following are examples of the different SpreadMethod settings.
+      </TextBlock>
+      <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Fill="DarkGray" StrokeThickness="0" />
+      <TextBlock Grid.Row="2" Grid.Column="2" >Linear gradient</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="4" >Radial gradient</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="0" >Spread method</TextBlock>
+      <TextBlock Grid.Row="4" Grid.Column="0">Pad</TextBlock>
+      <TextBlock Grid.Row="6" Grid.Column="0">Reflect</TextBlock>
+      <TextBlock Grid.Row="8" Grid.Column="0">Repeat</TextBlock>
+      
+      
+      <!-- The following three examples show the different gradient spread methods
+           applied to linear gradient brushes. -->
+      <Canvas Grid.Row="4" Grid.Column="2" Width="150" Height="75" Margin="0,0,0,10">
+         <Rectangle Width="150" Height="75" Stroke="Black">
+            <Rectangle.Fill>
+            
+               <!-- Pad -->
+               <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0.7,0.5" SpreadMethod="Pad">
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0" />
+                     <GradientStop Color="#333333" Offset="1" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Highlights the gradient axis. -->
+         <Line X1="45" Y1="40" X2="105" Y2="40" Style="{StaticResource AxisMarkerStyle}" />
+      </Canvas>
+      <Canvas Grid.Row="6" Grid.Column="2" Width="150" Height="75" Margin="0,0,0,10">
+         <Rectangle Width="150" Height="75" Stroke="Black">
+            <Rectangle.Fill>
+            
+               <!-- Reflect -->
+               <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0.7,0.5" SpreadMethod="Reflect">
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0" />
+                     <GradientStop Color="#333333" Offset="1" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Highlights the gradient axis. -->
+         <Line X1="45" Y1="40" X2="105" Y2="40" Style="{StaticResource AxisMarkerStyle}" />
+      </Canvas>
+      <Canvas Grid.Row="8" Grid.Column="2" Width="150" Height="75" Margin="0,0,0,10">
+         <Rectangle Width="150" Height="75" Stroke="Black">
+            <Rectangle.Fill>
+            
+               <!-- Repeat -->
+               <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0.7,0.5" SpreadMethod="Repeat">
+                  <LinearGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0" />
+                     <GradientStop Color="#333333" Offset="1" />
+                  </LinearGradientBrush.GradientStops>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Highlights the gradient axis. -->
+         <Line X1="45" Y1="40" X2="105" Y2="40" Style="{StaticResource AxisMarkerStyle}" />
+      </Canvas>
+      
+      <!-- The following three examples show the different gradient spread methods
+           applied to radial gradient brushes. -->
+      <Canvas Grid.Row="4" Grid.Column="4" Width="150" Height="75" Margin="0,0,0,10">
+         <Rectangle Width="150" Height="75" Stroke="Black">
+            <Rectangle.Fill>
+            
+               <!-- Pad -->
+               <RadialGradientBrush Center="0.5,0.5" RadiusX="0.3" RadiusY="0.3" SpreadMethod="Pad">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0" />
+                     <GradientStop Color="#333333" Offset="1" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Highlights the gradient axis. -->
+         <Line X1="75" Y1="15" X2="75" Y2="60" Style="{StaticResource AxisMarkerStyle}" StrokeThickness="2" />
+         <Line X1="30" Y1="37.5" X2="120" Y2="37.5" Style="{StaticResource AxisMarkerStyle}" StrokeThickness="2" />
+      </Canvas>
+      <Canvas Grid.Row="6" Grid.Column="4" Width="150" Height="75" Margin="0,0,0,10">
+         <Rectangle Width="150" Height="75" Stroke="Black">
+            <Rectangle.Fill>
+            
+               <!-- Reflect -->
+               <RadialGradientBrush Center="0.5,0.5" RadiusX="0.3" RadiusY="0.3" SpreadMethod="Reflect">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0" />
+                     <GradientStop Color="#333333" Offset="1" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Highlights the gradient axis. -->
+         <Line X1="75" Y1="15" X2="75" Y2="60" Style="{StaticResource AxisMarkerStyle}" StrokeThickness="2" />
+         <Line X1="30" Y1="37.5" X2="120" Y2="37.5" Style="{StaticResource AxisMarkerStyle}" StrokeThickness="2" />
+      </Canvas>
+      <Canvas Grid.Row="8" Grid.Column="4" Width="150" Height="75" Margin="0,0,0,10">
+         <Rectangle Width="150" Height="75" Stroke="Black">
+            <Rectangle.Fill>
+            
+               <!-- Repeat -->
+               <RadialGradientBrush Center="0.5,0.5" RadiusX="0.3" RadiusY="0.3" SpreadMethod="Repeat">
+                  <RadialGradientBrush.GradientStops>
+                     <GradientStop Color="White" Offset="0" />
+                     <GradientStop Color="#333333" Offset="1" />
+                  </RadialGradientBrush.GradientStops>
+               </RadialGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         
+         <!-- Highlights the gradient axis. -->
+         <Line X1="75" Y1="15" X2="75" Y2="60" Style="{StaticResource AxisMarkerStyle}" StrokeThickness="2" />
+         <Line X1="30" Y1="37.5" X2="120" Y2="37.5" Style="{StaticResource AxisMarkerStyle}" StrokeThickness="2" />
+      </Canvas>
+      <Rectangle Style="{StaticResource FooterRectangleStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="5" Fill="{StaticResource BlueHorizontalGradientBrush}" />
+   </Grid>
+</Canvas>
+        </TabItem>
+      </TabControl>
+
+
+</Page>

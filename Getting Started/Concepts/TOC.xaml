@@ -1,0 +1,221 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CustomTOC"
+        x:Class="CustomTOC.Page1">
+    <Page.Resources>
+
+        <Style x:Key="ListItemStyler">
+            <Setter Property="ListBoxItem.Margin" Value="20,7,0,0"/>
+            <Setter Property="ListBoxItem.Padding" Value="2"/>
+            <Setter Property="ListBoxItem.FontFamily" Value="Verdana"/>
+            <Setter Property="ListBoxItem.FontWeight" Value="Normal"/>
+            <Setter Property="ListBoxItem.FontSize" Value="10"/>
+        </Style>
+
+
+        <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border Background="White">
+                            <ItemsPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+
+    </Page.Resources>
+
+
+    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <StackPanel>
+        <Expander Margin="0,0,0,10"  HorizontalAlignment="stretch" Background="sc#1.000000, 0.769689, 0.831936, 1.000000" FocusVisualStyle="{x:Null}">
+            <Expander.Header>
+                <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Animation</TextBlock>
+            </Expander.Header>
+            <ListBox >
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\animateheight_samp.xaml" TargetName="frame2">Animate Height Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\animatesize_samp.xaml" TargetName="frame2">Animate Size Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\animatepath_samp.xaml" TargetName="frame2">Animate Path Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\animatepropertystoryboards_samp.xaml" TargetName="frame2">Animate Property Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\animaterotate_samp.xaml" TargetName="frame2">Animate Rotation Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\doublekeyframe_samp.xaml" TargetName="frame2">Double Keyframe Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\interpolationmethods_samp.xaml" TargetName="frame2">Interpolation Methods Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\keyframestring_samp.xaml" TargetName="frame2">Keyframe String Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\opacityanimation_samp.xaml" TargetName="frame2">Opacity Animation Sample</Hyperlink>
+                </ListBoxItem>
+            </ListBox>
+        </Expander>
+        <Expander Margin="0,0,0,10"  HorizontalAlignment="stretch" Background="sc#1.000000, 0.769689, 0.831936, 1.000000" FocusVisualStyle="{x:Null}">
+            <Expander.Header>
+                <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Controls</TextBlock>
+            </Expander.Header>
+            <ListBox>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\button_samp.xaml" TargetName="frame2">Button Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\listboxstyle_samp.xaml" TargetName="frame2">List Box Styles Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\btncolor_samp.xaml" TargetName="frame2">Button Color Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\checkboxelement_samp.xaml" TargetName="frame2">Check Box Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\contextmenu_samp.xaml" TargetName="frame2">Context Menu Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\controlprops_samp.xaml" TargetName="frame2">Control Properties Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\expander_samp.xaml" TargetName="frame2">Expander Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\menus_samp.xaml" TargetName="frame2">Menu Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\slider_samp.xaml" TargetName="frame2">Slider Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\tabcontrol_samp.xaml" TargetName="frame2">Tab Control Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\thumb_samp.xaml" TargetName="frame2">Thumb Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\tooltip_samp.xaml" TargetName="frame2">Tool Tip Sample</Hyperlink>
+                </ListBoxItem>
+            </ListBox>
+        </Expander>
+
+        <Expander Margin="0,0,0,10"  HorizontalAlignment="stretch" Background="sc#1.000000, 0.769689, 0.831936, 1.000000" FocusVisualStyle="{x:Null}">
+            <Expander.Header>
+                <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Databinding</TextBlock>
+            </Expander.Header>
+            <ListBox >
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\datatrigger_samp.xaml" TargetName="frame2">Data Trigger Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\binddptodp_samp.xaml" TargetName="frame2">Bind Dependency Properties Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\bindnontextproperty_samp.xaml" TargetName="frame2">Bind Non Text Property Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\compositecollections_samp.xaml" TargetName="frame2">Composite Collection Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\multibinding_samp.xaml" TargetName="frame2">MultiBinding Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\prioritybinding_samp.xaml" TargetName="frame2">Priority Binding Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\propertychangenotification_samp.xaml" TargetName="frame2">Property Change Notification Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\xmldatasource_samp.xaml" TargetName="frame2">XML Data Source Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\xmlnsbind_samp.xaml" TargetName="frame2">XML Namespace Bind Sample</Hyperlink>
+                </ListBoxItem>
+            </ListBox>
+        </Expander>
+
+        <Expander Margin="0,0,0,10"  HorizontalAlignment="stretch" Background="sc#1.000000, 0.769689, 0.831936, 1.000000" FocusVisualStyle="{x:Null}">
+            <Expander.Header>
+                <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Graphics</TextBlock>
+            </Expander.Header>
+            <ListBox >
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\brushtypes_samp.xaml" TargetName="frame2">Brush Types Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\gradientspread_samp.xaml" TargetName="frame2">Gradient Spread Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\geometryusage_samp.xaml" TargetName="frame2">Geometry Usage Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\linejoinsandcaps_samp.xaml" TargetName="frame2">Line Joins and Caps Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\miterlimit_samp.xaml" TargetName="frame2">Miter Limit Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\stretch_samp.xaml" TargetName="frame2">Stretch Sample</Hyperlink>
+                </ListBoxItem>
+            </ListBox>
+        </Expander>
+
+        <Expander Margin="0,0,0,10"  HorizontalAlignment="stretch" Background="sc#1.000000, 0.769689, 0.831936, 1.000000" FocusVisualStyle="{x:Null}">
+            <Expander.Header>
+                <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Layout</TextBlock>
+            </Expander.Header>
+            <ListBox >
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\actualwidth_samp.xaml" TargetName="frame2">ActualWidth Property Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\border_samp.xaml" TargetName="frame2">Border Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\canvas_samp.xaml" TargetName="frame2">Canvas Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\dockpanel_samp.xaml" TargetName="frame2">DockPanel Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\grid_samp.xaml" TargetName="frame2">Grid Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\scrollviewer_samp.xaml" TargetName="frame2">ScrollViewer Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\documentviewer_samp.xaml" TargetName="frame2">FlowDocumentPageViewer Sample</Hyperlink>
+                </ListBoxItem>                
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\stackpanel_samp.xaml" TargetName="frame2">StackPanel Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\table_samp.xaml" TargetName="frame2">Table Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\textblock_samp.xaml" TargetName="frame2">TextBlock Sample</Hyperlink>
+                </ListBoxItem>
+                <ListBoxItem Style="{StaticResource ListItemStyler}">
+                    <Hyperlink NavigateUri="samps\viewbox_samp.xaml" TargetName="frame2">ViewBox Sample</Hyperlink>
+                </ListBoxItem>
+            </ListBox>
+        </Expander>
+
+    </StackPanel>
+   
+        </ScrollViewer>
+ 
+
+</Page>

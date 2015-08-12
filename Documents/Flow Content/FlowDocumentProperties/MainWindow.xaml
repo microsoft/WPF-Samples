@@ -1,0 +1,789 @@
+﻿<Window x:Class="FlowDocumentProperties.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlowDocumentProperties"
+        mc:Ignorable="d"
+        Title="MainWindow" Loaded="WindowLoaded" Height="350" Width="525">
+
+    <DockPanel VerticalAlignment="Top" MinWidth="800" MinHeight="600" HorizontalAlignment="Left" Margin="10" LastChildFill="True" Background="AliceBlue">
+
+        <TextBlock FontSize="20" FontFamily="Palatino Linotype" FontWeight="Bold" DockPanel.Dock="Top">FlowDocument Properties Sample</TextBlock>
+        <TextBlock TextWrapping="Wrap" FontFamily="Palatino Linotype" DockPanel.Dock="Top" Margin="10">Use the button controls to the left and right to adjust or read the various property values of the FlowDocument element below.</TextBlock>
+
+        <StackPanel Orientation="Vertical" Margin="10,0,10,0" DockPanel.Dock="Left">
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakebgVisible">Set Background</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakecgVisible">Set ColumnGap</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakecrbVisible">Set ColumnRuleBrush</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakecrwVisible">Set ColumnRuleWidth</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakecwVisible">Set ColumnWidth</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakeceVisible">Set ContentEnd</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakecsVisible">Set ContentStart</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakefdVisible">Set FlowDirection</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakeffVisible">Set FontFamily</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakefsVisible">Set FontSize</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakefstVisible">Set FontStretch</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakefstyleVisible">Set FontStyle</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakefwVisible">Set FontWeight</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakefgVisible">Set Foreground</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakebpeVisible">Set IsBackgroundPaginationEnabled</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakecwfVisible">Set IsColumnWidthFlexible</Button>
+        </StackPanel>
+
+        <StackPanel Margin="10,0,10,0" Orientation="Vertical" DockPanel.Dock="Right">
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakepcfVisible">Get IsPageCountFinal</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakelhVisible">Set Lineheight</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakemaxphVisible">Set MaxPageHeight</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakemaxpwVisible">Set MaxPageWidth</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakeminphVisible">Set MinPageHeight</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakeminpwVisible">Set MinPageWidth</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakepcountVisible">Get PageCount</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakephVisible">Set PageHeight</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakepwVisible">Set PageWidth</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakeppVisible">Set PagePadding</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MakepsVisible">Set PageSize</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MaketaVisible">Set TextAlignment</Button>
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MaketeVisible">Set TextEffects</Button>
+            <!--
+        <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="makettVisible">Set TextTrimming</Button>
+        <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="maketwVisible">Set TextWrap</Button>
+        -->
+            <Button Background="Blue" Foreground="White" FontFamily="Palatino Linotype" Margin="10,0,0,5" Click="MaketpVisible">Set Typography</Button>
+        </StackPanel>
+
+        <Grid Margin="10" DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0"  Name="sp1" MaxWidth="250" Orientation="Horizontal">
+                <!-- Use this control grouping to change Background Property Values -->
+                <Grid Name="backgroundProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">Background Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the Background Color:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="SetBackgroundRed" Margin="5,0,5,0">Red</RadioButton>
+                        <RadioButton Click="SetBackgroundBlue" Margin="5,0,5,0">Blue</RadioButton>
+                        <RadioButton Click="SetBackgroundGreen" Margin="5,0,5,0">Green</RadioButton>
+                        <RadioButton Click="SetBackgroundPurple" Margin="5,0,5,0">Purple</RadioButton>
+                        <RadioButton Click="SetBackgroundWhite" Margin="5,0,5,0">White</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the ColumnGap Property Values -->
+                <Grid Name="columngapProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">ColumnGap Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the ColumnGap Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Cg5" Margin="5,0,5,0">5</RadioButton>
+                        <RadioButton Click="Cg10" Margin="5,0,5,0">10</RadioButton>
+                        <RadioButton Click="Cg15" Margin="5,0,5,0">15</RadioButton>
+                        <RadioButton Click="Cg20" Margin="5,0,5,0">20</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change ColumnRuleBrush Property Values -->
+                <Grid Name="columnrulebrushProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">ColumnRuleBrush Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the ColumnRuleBrush Color:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="SetcolruleGray" Margin="5,0,5,0">Gray</RadioButton>
+                        <RadioButton Click="SetcolruleBlack" Margin="5,0,5,0">Black</RadioButton>
+                        <RadioButton Click="SetcolruleRed" Margin="5,0,5,0">Red</RadioButton>
+                        <RadioButton Click="SetcolruleBlue" Margin="5,0,5,0">Blue</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the ColumnRuleWidth Property Values -->
+                <Grid Name="columnrulewidthProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">ColumnRuleWidth Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the ColumnRuleWidth Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Crw1" Margin="5,0,5,0">1</RadioButton>
+                        <RadioButton Click="Crw3" Margin="5,0,5,0">3</RadioButton>
+                        <RadioButton Click="Crw5" Margin="5,0,5,0">5</RadioButton>
+                        <RadioButton Click="Crw10" Margin="5,0,5,0">10</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the ColumnWidth Property Values -->
+                <Grid Name="columnwidthProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">ColumnWidth Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the ColumnWidth Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Cw100" Margin="5,0,5,0">100</RadioButton>
+                        <RadioButton Click="Cw150" Margin="5,0,5,0">150</RadioButton>
+                        <RadioButton Click="Cw200" Margin="5,0,5,0">200</RadioButton>
+                        <RadioButton Click="Cw250" Margin="5,0,5,0">250</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change ContentEnd Property Values -->
+                <Grid Name="contentendProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">ContentEnd Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Set the value of the ContentEnd Property:</TextBlock>
+                    <Button Grid.Column="0" Grid.Row="2"  Click="GetCeValue">Add text at the ContentEnd position.</Button>
+                </Grid>
+
+                <!-- Use this control grouping to change ContentStart Property Values -->
+                <Grid Name="contentstartProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">ContentStart Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Set the value of the ContentStart Property:</TextBlock>
+                    <Button Grid.Column="0" Grid.Row="2"  Click="GetCsValue">Add text at the ContentStart position.</Button>
+                </Grid>
+
+                <!-- Use this control grouping to change the FlowDirection Property Values -->
+                <Grid Name="flowdirectionProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">FlowDirection Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the FlowDirection Property:</TextBlock>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
+                        <RadioButton Click="Fdirection1" Margin="5,0,5,0">LeftToRight</RadioButton>
+                        <RadioButton Click="Fdirection2" Margin="5,0,5,0">RightToLeft</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the FontFamily Property Values -->
+                <Grid Name="fontfamilyProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">FontFamily Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the FontFamily Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="FfTimes" Margin="5,0,5,0">Times</RadioButton>
+                        <RadioButton Click="FfVerdana" Margin="5,0,5,0">Verdana</RadioButton>
+                        <RadioButton Click="FfPalatino" Margin="5,0,5,0">Palatino</RadioButton>
+                        <RadioButton Click="FfCourier" Margin="5,0,5,0">Courier</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the FontSize Property Values -->
+                <Grid Name="fontsizeProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">FontSize Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the FontSize Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Fs10" Margin="5,0,5,0">10</RadioButton>
+                        <RadioButton Click="Fs15" Margin="5,0,5,0">15</RadioButton>
+                        <RadioButton Click="Fs20" Margin="5,0,5,0">20</RadioButton>
+                        <RadioButton Click="Fs25" Margin="5,0,5,0">25</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the FontStretch Property Values -->
+                <Grid Name="fontstretchProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">FontStretch Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the FontStretch Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="FstNormal" Margin="5,0,5,0">Normal</RadioButton>
+                        <RadioButton Click="FstCondensed" Margin="5,0,5,0">Condensed</RadioButton>
+                        <RadioButton Click="FstExpanded" Margin="5,0,5,0">Expanded</RadioButton>
+                        <RadioButton Click="FstMedium" Margin="5,0,5,0">Medium</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the FontStyle Property Values -->
+                <Grid Name="fontstyleProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">FontStyle Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the FontStyle Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="FstyleNormal" Margin="5,0,5,0">Normal</RadioButton>
+                        <RadioButton Click="FstyleItalic" Margin="5,0,5,0">Condensed</RadioButton>
+                        <RadioButton Click="FstyleOblique" Margin="5,0,5,0">Expanded</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the FontWeight Property Values -->
+                <Grid Name="fontweightProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">FontWeight Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the FontWeight Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="FwNormal" Margin="5,0,5,0">Normal</RadioButton>
+                        <RadioButton Click="FwLight" Margin="5,0,5,0">Light</RadioButton>
+                        <RadioButton Click="FwMedium" Margin="5,0,5,0">Medium</RadioButton>
+                        <RadioButton Click="FwBold" Margin="5,0,5,0">Bold</RadioButton>
+                        <RadioButton Click="FwUltraBold" Margin="5,0,5,0">UltraBold</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the Foreground Property Value -->
+                <Grid Name="foregroundProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">Foreground Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the Foreground Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="ForegroundWhite" Margin="5,0,5,0">White</RadioButton>
+                        <RadioButton Click="ForegroundBlack" Margin="5,0,5,0">Black</RadioButton>
+                        <RadioButton Click="ForegroundBlue" Margin="5,0,5,0">Blue</RadioButton>
+                        <RadioButton Click="ForegroundRed" Margin="5,0,5,0">Red</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the IsBackgroundPaginationEnabled Property Values -->
+                <Grid Name="isbackgroundpaginationenabledProp" Visibility="Hidden" Width="250">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Row="0" FontSize="14" TextWrapping="Wrap" FontWeight="Bold">IsBackgroundPaginationEnabled Property</TextBlock>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Row="1" Margin="5,0,5,0" TextWrapping="Wrap">Adjust the IsBackgroundPaginationEnabled Property:</TextBlock>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
+                        <RadioButton Click="BpeTrue" Margin="5,0,5,0">True</RadioButton>
+                        <RadioButton Click="BpeFalse" Margin="5,0,5,0">False</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the IsColumnWidthFlexible Property Values -->
+                <Grid Name="iscolumnwidthflexibleProp" Visibility="Hidden" Width="250">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Row="0" FontSize="14" TextWrapping="Wrap" FontWeight="Bold">IsColumnWidthFlexible Property</TextBlock>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Row="1" Margin="5,0,5,0" TextWrapping="Wrap">Adjust the IsColumnWidthFlexible Property:</TextBlock>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
+                        <RadioButton Click="CwfTrue" Margin="5,0,5,0">True</RadioButton>
+                        <RadioButton Click="CwfFalse" Margin="5,0,5,0">False</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1"  Name="sp2" MaxWidth="250" Orientation="Horizontal">
+
+                <!-- Use this control grouping to get the IsPageCountFinal Property Values -->
+                <Grid Name="ispagecountfinalProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">IsPageCountFinal Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Get the value of the IsPageCountFinal Property:</TextBlock>
+                    <Button Grid.Column="0" Grid.Row="2"  Click="GetpcfValue">Get Property Value</Button>
+                </Grid>
+
+                <!-- Use this control grouping to change the LineHeight Property Value -->
+                <Grid Name="lineheightProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">LineHeight Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the LineHeight Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Lineheight10" Margin="5,0,5,0">10</RadioButton>
+                        <RadioButton Click="Lineheight20" Margin="5,0,5,0">20</RadioButton>
+                        <RadioButton Click="Lineheight30" Margin="5,0,5,0">30</RadioButton>
+                        <RadioButton Click="Lineheight40" Margin="5,0,5,0">40</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the MaxPageHeight Property Value -->
+                <Grid Name="maxpageheightProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">MaxPageHeight Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the MaxPageHeight Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Maxpageheight500" Margin="5,0,5,0">500</RadioButton>
+                        <RadioButton Click="Maxpageheight600" Margin="5,0,5,0">600</RadioButton>
+                        <RadioButton Click="Maxpageheight700" Margin="5,0,5,0">700</RadioButton>
+                        <RadioButton Click="Maxpageheight800" Margin="5,0,5,0">800</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the MaxPageWidth Property Value -->
+                <Grid Name="maxpagewidthProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">MaxPageWidthProperty</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the MaxPageWidth Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Maxpagewidth300" Margin="5,0,5,0">300</RadioButton>
+                        <RadioButton Click="Maxpagewidth400" Margin="5,0,5,0">400</RadioButton>
+                        <RadioButton Click="Maxpagewidth500" Margin="5,0,5,0">500</RadioButton>
+                        <RadioButton Click="Maxpagewidth600" Margin="5,0,5,0">600</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the MinPageHeight Property Value -->
+                <Grid Name="minpageheightProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">MinPageHeight Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the MinPageHeight Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Minpageheight200" Margin="5,0,5,0">200</RadioButton>
+                        <RadioButton Click="Minpageheight300" Margin="5,0,5,0">300</RadioButton>
+                        <RadioButton Click="Minpageheight400" Margin="5,0,5,0">400</RadioButton>
+                        <RadioButton Click="Minpageheight500" Margin="5,0,5,0">500</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the MinPageWidth Property Value -->
+                <Grid Name="minpagewidthProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">MinPageWidth Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the MinPageWidth Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Minpagewidth200" Margin="5,0,5,0">200</RadioButton>
+                        <RadioButton Click="Minpagewidth300" Margin="5,0,5,0">300</RadioButton>
+                        <RadioButton Click="Minpagewidth400" Margin="5,0,5,0">400</RadioButton>
+                        <RadioButton Click="Minpagewidth500" Margin="5,0,5,0">500</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to get the PageCount Property Values -->
+                <Grid Name="pagecountProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">PageCount Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Get the value of the PageCount Property:</TextBlock>
+                    <Button Grid.Column="0" Grid.Row="2"  Click="GetpcValue">Get Property Value</Button>
+                </Grid>
+
+                <!-- Use this control grouping to change the PageHeight Property Value -->
+                <Grid Name="pageheightProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">PageHeight Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the PageHeight Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Pageheight200" Margin="5,0,5,0">200</RadioButton>
+                        <RadioButton Click="Pageheight400" Margin="5,0,5,0">400</RadioButton>
+                        <RadioButton Click="Pageheight600" Margin="5,0,5,0">600</RadioButton>
+                        <RadioButton Click="Pageheight800" Margin="5,0,5,0">800</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the PagePadding Property Value -->
+                <Grid Name="pagepaddingProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">PagePadding Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the PagePadding Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Pagepadding5" Margin="5,0,5,0">5</RadioButton>
+                        <RadioButton Click="Pagepadding10" Margin="5,0,5,0">10</RadioButton>
+                        <RadioButton Click="Pagepadding15" Margin="5,0,5,0">15</RadioButton>
+                        <RadioButton Click="Pagepadding20" Margin="5,0,5,0">20</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the PageSizeProperty Value -->
+                <Grid Name="pagesizeProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">PageSize Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the PageSize Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Pagesize200" Margin="5,0,5,0">200</RadioButton>
+                        <RadioButton Click="Pagesize400" Margin="5,0,5,0">400</RadioButton>
+                        <RadioButton Click="Pagesize600" Margin="5,0,5,0">600</RadioButton>
+                        <RadioButton Click="Pagesize800" Margin="5,0,5,0">800</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Use this control grouping to change the PageWidth Property Value -->
+                <Grid Name="pagewidthProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">PageWidth Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the PageWidth Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Pagewidth200" Margin="5,0,5,0">200</RadioButton>
+                        <RadioButton Click="Pagewidth400" Margin="5,0,5,0">400</RadioButton>
+                        <RadioButton Click="Pagewidth600" Margin="5,0,5,0">600</RadioButton>
+                    </StackPanel>
+                </Grid>
+                <!-- Use this control grouping to change the TextAlignment Property Value -->
+                <Grid Name="textalignmentProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">TextAlignment Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the TextAlignment Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="TalignLeft" Margin="5,0,5,0">Left</RadioButton>
+                        <RadioButton Click="TalignRight" Margin="5,0,5,0">Right</RadioButton>
+                        <RadioButton Click="TalignJustify" Margin="5,0,5,0">Justify</RadioButton>
+                        <RadioButton Click="TalignCenter" Margin="5,0,5,0">Center</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <!--
+         Use this control grouping to change the TextTrimming Property Value 
+         <Grid Name="texttrimmingProp" MaxWidth="250" Visibility="Hidden">
+           <Grid.ColumnDefinitions>
+             <ColumnDefinition/>
+             <ColumnDefinition/>
+           </Grid.ColumnDefinitions>
+           <Grid.RowDefinitions>
+             <RowDefinition/>
+             <RowDefinition/>
+           </Grid.RowDefinitions>
+
+           <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">TextTrimming Property</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0" TextWrapping="Wrap">Adjust the TextTrimming Property:</TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <RadioButton Click="trimNone" Margin="5,0,5,0">None</RadioButton>
+            <RadioButton Click="trimCharacter" Margin="5,0,5,0">CharacterEllipsis</RadioButton>
+            <RadioButton Click="trimWord" Margin="5,0,5,0">WordEllipsis</RadioButton>
+        </StackPanel>
+        </Grid>
+        -->
+
+                <!-- Use this control grouping to change the TextEffect Property Value -->
+                <Grid Name="texteffectsProp" MaxWidth="250" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">TextEffect Property</TextBlock>
+                    <TextBlock Grid.Column="0"  Grid.Row="1" Margin="5,0,5,0" TextWrapping="Wrap">Apply TextEffects:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="TeTranslate" Margin="5,0,5,0">TranslateTransform</RadioButton>
+                        <RadioButton Click="TeScale" Margin="5,0,5,0">ScaleTransform</RadioButton>
+                        <RadioButton Click="TeRotate" Margin="5,0,5,0">RotateTransform</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+
+                <!-- Use this control grouping to change the TextWrap Property Value 
+         <Grid Name="textwrapProp" Visibility="Hidden">
+           <Grid.ColumnDefinitions>
+             <ColumnDefinition/>
+             <ColumnDefinition/>
+           </Grid.ColumnDefinitions>
+           <Grid.RowDefinitions>
+             <RowDefinition/>
+             <RowDefinition/>
+           </Grid.RowDefinitions>
+
+           <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">TextWrap Property</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the TextWrap Property:</TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <RadioButton Click="wrapWrap" Margin="5,0,5,0">Wrap</RadioButton>
+            <RadioButton Click="wrapNoWrap" Margin="5,0,5,0">NoWrap</RadioButton>
+            <RadioButton Click="wrapWrapWithOverflow" Margin="5,0,5,0">WrapWithOverflow</RadioButton>
+        </StackPanel>
+        </Grid>
+        -->
+                <!-- Use this control grouping to change the Typography Property Value -->
+                <Grid Name="typographyProp" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0"  FontSize="14" FontWeight="Bold">TextWrap Property</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Adjust the TextWrap Property:</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <RadioButton Click="Typo1" Margin="5,0,5,0">Capitals</RadioButton>
+                        <RadioButton Click="Typo2" Margin="5,0,5,0">Variants</RadioButton>
+                        <RadioButton Click="Typo3" Margin="5,0,5,0">Historical</RadioButton>
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+
+            <TextBlock TextWrapping="Wrap" Margin="10" Name="tb2" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2"/>
+        </Grid>
+        <Border MinHeight="400" MinWidth="600" BorderBrush="Black" BorderThickness="2" Padding="5" Background="White">
+            <FlowDocumentPageViewer>
+                <FlowDocument FontFamily="Palatino Linotype" Background="White" Name="fd1">
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                    <Paragraph />
+                    <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
+    Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 
+    enim. Sed a purus id nisl imperdiet blandit. Cum sociis natoque penatibus et magnis dis parturient
+    montes, nascetur ridiculus mus. Sed at quam.</Paragraph>
+                </FlowDocument>
+            </FlowDocumentPageViewer>
+        </Border>
+
+    </DockPanel>
+</Window>

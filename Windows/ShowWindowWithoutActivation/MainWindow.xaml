@@ -1,0 +1,25 @@
+﻿<Window x:Class="ShowWindowWithoutActivation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShowWindowWithoutActivation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="showWindowActivateButton" Grid.Row="0" Click="ShowWindowActivateButton_Click">Show Window with Activation</Button>
+        <Button x:Name="showWindowNoActivateButton" Grid.Row="1" Click="ShowWindowNoActivateButton_Click">Show Window without Activation</Button>
+
+        <Button x:Name="showDialogBoxActivateButton" Grid.Row="2" Click="ShowDialogBoxActivateButton_Click">Show Dialog Box with Activation</Button>
+        <Button x:Name="showDialogBoxNoActivateButton" Grid.Row="3" Click="ShowDialogBoxNoActivateButton_Click">Show Dialog Box without Activation</Button>
+
+    </Grid>
+
+</Window>

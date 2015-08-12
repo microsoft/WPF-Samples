@@ -1,0 +1,137 @@
+<!-- SkewTextAnimationExample.xaml
+     Applies an animated skew transform to 
+     individual characters.
+-->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationExamples.SkewTextAnimationExample" 
+  WindowTitle="Text Animation Example">
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+      <LinearGradientBrush.GradientStops>
+        <GradientStop Offset="0.0" Color="Black" />
+        <GradientStop Offset="1.0" Color="#666666" />
+      </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>  
+  </Page.Background>
+
+  <StackPanel Margin="40">
+    <Border Name="TextBorder" HorizontalAlignment="Left"
+      VerticalAlignment="Center" Background="{StaticResource MyWireBrushResource}">
+
+      <!-- The text to animate. -->
+      <TextBlock 
+        Name="RealText"  
+        FontFamily="Segoe UI"
+        FontSize="60 px"    
+        Margin="40"
+        Foreground="White">
+        Windows Vista
+        <TextBlock.TextEffects>
+          <TextEffect PositionCount="1" x:Name="MyTextEffect">
+            <TextEffect.Transform>
+              <SkewTransform x:Name="TextEffectSkewTransform" CenterX="180"
+                CenterY="30"/>
+            </TextEffect.Transform>
+          </TextEffect>
+        </TextBlock.TextEffects>
+
+        <TextBlock.Triggers>
+          <EventTrigger RoutedEvent="TextBlock.Loaded">
+            <BeginStoryboard>
+              <Storyboard>
+
+                <!-- Animates the AngleX property of the TextEffect's
+                     SkewTransform. -->
+                <DoubleAnimation
+                  From="0"
+                  To="15"
+                  Duration="00:00:0.25"
+                  RepeatBehavior="Forever"
+                  AutoReverse="True"
+                  Storyboard.TargetName="TextEffectSkewTransform"
+                  Storyboard.TargetProperty="AngleX" />
+                  
+                <!-- Animates the AngleY property of the TextEffect's
+                     SkewTransform. -->  
+                <DoubleAnimation
+                  From="0"
+                  To="43"
+                  Duration="00:00:0.5"
+                  RepeatBehavior="Forever"
+                  AutoReverse="True"
+                  Storyboard.TargetName="TextEffectSkewTransform"
+                  Storyboard.TargetProperty="AngleY" />
+                  
+                <!-- Animates the center of the TextEffect's
+                     SkewTransform. -->  
+                <DoubleAnimation
+                  From="30"
+                  To="400"
+                  Duration="00:00:13"
+                  RepeatBehavior="Forever"
+                  AutoReverse="True"
+                  Storyboard.TargetName="TextEffectSkewTransform"
+                  Storyboard.TargetProperty="CenterX" />
+                
+                <!-- Animates the TextEffect's position from
+                     0 to 12. -->
+                <Int32AnimationUsingKeyFrames
+                  Storyboard.TargetName="MyTextEffect"
+                  Storyboard.TargetProperty="PositionStart"
+                  Duration="0:0:13"
+                  AutoReverse="True"
+                  RepeatBehavior="Forever">
+                  <Int32AnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteInt32KeyFrame Value="0" KeyTime="0:0:0" />
+                    <DiscreteInt32KeyFrame Value="1" KeyTime="0:0:1" />
+                    <DiscreteInt32KeyFrame Value="2" KeyTime="0:0:2" />
+                    <DiscreteInt32KeyFrame Value="3" KeyTime="0:0:3" />
+                    <DiscreteInt32KeyFrame Value="4" KeyTime="0:0:4" />
+                    <DiscreteInt32KeyFrame Value="5" KeyTime="0:0:5" />
+                    <DiscreteInt32KeyFrame Value="6" KeyTime="0:0:6" />
+                    <DiscreteInt32KeyFrame Value="7" KeyTime="0:0:7" />
+                    <DiscreteInt32KeyFrame Value="8" KeyTime="0:0:8" />
+                    <DiscreteInt32KeyFrame Value="9" KeyTime="0:0:9" />
+                    <DiscreteInt32KeyFrame Value="10" KeyTime="0:0:10" />
+                    <DiscreteInt32KeyFrame Value="11" KeyTime="0:0:11" />
+                    <DiscreteInt32KeyFrame Value="12" KeyTime="0:0:12" />
+                  </Int32AnimationUsingKeyFrames.KeyFrames>
+                </Int32AnimationUsingKeyFrames>                  
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </TextBlock.Triggers>
+      </TextBlock>
+    </Border>
+
+    <!-- Uses a VisualBrush to create a reflection of the animated text. -->
+    <Rectangle Name="ReflectedText" 
+      Height="{Binding ElementName=TextBorder, Path=ActualHeight}"
+      Width="{Binding ElementName=TextBorder, Path=ActualWidth}"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Top">
+      <Rectangle.OpacityMask>
+                      <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <LinearGradientBrush.GradientStops>
+                          <GradientStop Offset="0.0" Color="#66000000" />
+                          <GradientStop Offset="1.0" Color="#00000000" />
+                        </LinearGradientBrush.GradientStops>
+                      </LinearGradientBrush>        
+      </Rectangle.OpacityMask>
+      <Rectangle.Fill>
+        <VisualBrush 
+          Visual="{Binding ElementName=TextBorder}">
+          <VisualBrush.RelativeTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="-1" />
+              <TranslateTransform Y="1" />
+            </TransformGroup>
+          </VisualBrush.RelativeTransform>
+        </VisualBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+  </StackPanel>
+
+</Page>

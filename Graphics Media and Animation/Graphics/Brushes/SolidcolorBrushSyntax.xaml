@@ -1,0 +1,138 @@
+<!-- SolidColorBrush.xaml
+     There are many different ways to paint an area
+     with a solid color.
+     The following example demonstrates the different methods of
+     painting an area with a solid color. Each rectangle is filled
+     with the color blue, each specified in a different format. -->
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  Title="SolidColorBrush Syntax">
+  <Page.Resources>
+    <Style TargetType="{x:Type Rectangle}">
+      
+      <!-- Gives all the rectangles in this panel a white stroke. -->
+      <Setter Property="Stroke" Value="White"/>
+      <Setter Property="StrokeThickness" Value="1"/>
+    </Style>
+  </Page.Resources>
+
+  <DockPanel Margin="10" Background="White">
+
+    <!-- Header -->
+    <Border Background="#FFCCCCFF" DockPanel.Dock="Top">
+      <TextBlock Style="{StaticResource MyIntroTextBlockStyle}" Width="400">
+        There are a variety of syntax options for describing a SolidColorBrush. You may use
+        hexadecimal syntax, specify a predefined brush by name, or use property tag notation and specify ARGB or ScRGB values.
+        The following example shows some of the different ways to paint an area with a SolidColorBrush.
+        Each rectangle is painted with a blue SolidColorBrush; each SolidColorBrush
+        is described using a different format.
+      </TextBlock>
+    </Border>
+
+    <!-- Footer -->
+    <Rectangle Style="{StaticResource FooterRectangleStyle}" 
+      Fill="#FFCCCCFF"
+      DockPanel.Dock="Bottom"/>   
+    
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,20,0,20">
+
+      <!--
+        Attribute Syntax Examples
+       -->
+      <!-- Uses a predefined SolidColorBrush, defined by the
+            System.Windows.Media.Brushes class. -->
+      <Rectangle Width="50" Height="50" Fill="Blue" />
+
+      <!-- The SolidColorBrush is described using
+            3-digit hexadecimal notation, which describes the
+             amount of red, green, and blue in the color. The resulting
+             rectangle is blue. -->
+      <Rectangle Width="50" Height="50" Fill="#00F" />
+
+      <!-- The SolidColorBrush is described using 6-digit hexadecimal notation.
+            The first pair of digits describes the amount of red in the color,
+            the next pair describes the amount of green,
+            and the final two digits describes the amount of blue.
+            The resulting rectangle is painted blue. -->
+      <Rectangle Width="50" Height="50" Fill="#0000FF" />
+
+      <!-- The SolidColorBrush is described using 8-digit hexadecimal notation.
+            The first two digits describe the
+            opacity of the color. The remaining digits specify the
+            amount of red, green, and blue in the color.
+            The resulting rectangle is painted blue. -->
+      <Rectangle Width="50" Height="50" Fill="#FF0000FF" />
+
+      <!--
+           Object Element Syntax Examples
+       -->
+
+      <!-- The SolidColorBrush's Color property is specified
+            using one of the predefined colors defined by the
+            System.Windows.Media.Colors class. -->
+      <Rectangle Width="50" Height="50">
+        <Rectangle.Fill>
+          <SolidColorBrush Color="Blue" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- The SolidColorBrush's color is specified using
+            3-digit hexadecimal notation. The resulting
+            rectangle is painted blue. -->
+      <Rectangle Width="50" Height="50">
+        <Rectangle.Fill>
+          <SolidColorBrush Color="#00F" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- The SolidColorBrush's color is specified using
+            6-digit hexadecimal notation. The resulting rectangle
+            is painted blue. -->
+      <Rectangle Width="50" Height="50">
+        <Rectangle.Fill>
+          <SolidColorBrush Color="#0000FF" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- The SolidColorBrush's color is specified using
+            8-digit hexadecimal notation. The resulting
+            rectangle is painted blue. -->
+      <Rectangle Width="50" Height="50">
+        <Rectangle.Fill>
+          <SolidColorBrush Color="#FF0000FF" />
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <!-- The color properties of the SolidColorBrushes that
+            paint the next two rectangles are set by explicitly
+            using Color structures. -->
+      <Rectangle Width="50" Height="50">
+        <Rectangle.Fill>
+          <SolidColorBrush>
+            <SolidColorBrush.Color>
+
+              <!-- Describes the brush's color using
+                    ScRGB values. Each value has a range
+                    of 0-1.  -->
+              <Color ScA="1.0" ScR="0.0" ScG="0.0" ScB="1.0" />
+            </SolidColorBrush.Color>
+          </SolidColorBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Rectangle Width="50" Height="50">
+        <Rectangle.Fill>
+          <SolidColorBrush>
+            <SolidColorBrush.Color>
+
+              <!-- Describes the brush's color
+                    using ARGB values. Each value
+                    has a range of 0-255. -->
+              <Color A="255" R="0" G="0" B="255" />
+            </SolidColorBrush.Color>
+          </SolidColorBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </StackPanel>
+  </DockPanel>
+</Page>

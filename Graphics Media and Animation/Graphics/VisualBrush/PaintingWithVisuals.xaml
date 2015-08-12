@@ -1,0 +1,141 @@
+<!-- This example shows how to use a VisualBrush to paint shapes and controls.
+     The code behind file, PaintingWithImages.xaml.cs, contains a default
+     constructor that initializes the markup defined here. -->
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="VisualBrush.PaintingWithVisuals">
+
+  <StackPanel>
+
+    <StackPanel.Background>
+      <VisualBrush Opacity="0.1" Viewport="0,0,250,30" ViewportUnits="Absolute" TileMode="Tile" Stretch="None">
+        <VisualBrush.Visual>
+          <Border Width="250" Background="Transparent">
+            <TextBlock Margin="5" FontFamily="Palatino Linotype" FontSize="20px" >
+              Painting with VisualBrush
+              <TextBlock.Foreground>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0.0" Color="Black" />
+                    <GradientStop Offset="1.0" Color="Blue" />
+                  </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+              </TextBlock.Foreground>
+            </TextBlock>
+          </Border>
+        </VisualBrush.Visual>
+        <VisualBrush.RelativeTransform>
+          <RotateTransform Angle="0" CenterX="0.5" CenterY="0.5" />
+        </VisualBrush.RelativeTransform>
+      </VisualBrush>
+    </StackPanel.Background>
+
+    <TextBlock Name="test" />
+      <Border Margin="0,10,0,30"
+      BorderBrush="Black" BorderThickness="1" >
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.0" Color="#CCCCFF" />
+            <GradientStop Offset="1.0" Color="Transparent" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Border.Background>
+
+      <TextBlock Margin="10">
+        <Bold>Painting with a VisualBrush</Bold><LineBreak/><LineBreak/>
+        A VisualBrush can be used to paint areas with text, shapes, controls, and more.
+      </TextBlock>
+    </Border>
+
+    <StackPanel Orientation="Horizontal" Margin="10" Background="White" HorizontalAlignment="Left">
+      <Rectangle Width="150" Height="150" Stroke="Black" Margin="0,0,5,0">
+        <Rectangle.Fill>
+          <VisualBrush Viewport="0,0,95,35" ViewportUnits="Absolute" TileMode="Tile">
+            <VisualBrush.Visual>
+              <StackPanel Background="Transparent">
+                <TextBlock FontSize="10pt" Margin="10">Hello, World!</TextBlock>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Rectangle Width="150" Height="150" Stroke="Black" Margin="5,0,5,0">
+        <Rectangle.Fill>
+          <VisualBrush>
+            <VisualBrush.Visual>
+              <StackPanel Background="Transparent">
+                <TextBlock FontSize="10pt" Margin="10">Hello, World!</TextBlock>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Rectangle Width="150" Height="150" Stroke="Black" Margin="5,0,0,0">
+        <Rectangle.Fill>
+          <VisualBrush Viewport="0,0,95,35" ViewportUnits="Absolute" TileMode="Tile">
+            <VisualBrush.Visual>
+              <StackPanel Background="Transparent">
+                <TextBlock FontSize="10pt" Margin="10">Hello, World!</TextBlock>
+              </StackPanel>
+            </VisualBrush.Visual>
+            <VisualBrush.RelativeTransform>
+              <RotateTransform Angle="45" CenterX="0.5" CenterY="0.5" />
+            </VisualBrush.RelativeTransform>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </StackPanel>
+
+
+    <StackPanel Orientation="Horizontal" Margin="10" Background="White" HorizontalAlignment="Left">
+      <Rectangle Width="150" Height="150" Stroke="Black" Margin="0,0,5,0">
+        <Rectangle.Fill>
+          <VisualBrush Viewport="0,0,50,50" ViewportUnits="Absolute" TileMode="Tile">
+            <VisualBrush.Visual>
+              <StackPanel Background="Transparent">
+                <Rectangle Width="25" Height="25" Fill="Red" Margin="2" />
+                <TextBlock FontSize="10pt" Margin="2">Hello, World!</TextBlock>
+                <Button Margin="2">A Button</Button>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Rectangle Width="150" Height="150" Stroke="Black" Margin="5,0,5,0">
+        <Rectangle.Fill>
+          <VisualBrush>
+            <VisualBrush.Visual>
+              <StackPanel Background="Transparent">
+                <Rectangle Width="25" Height="25" Fill="Red" Margin="2" />
+                <TextBlock FontSize="10pt" Margin="2">Hello, World!</TextBlock>
+                <Button Margin="2">A Button</Button>
+              </StackPanel>
+            </VisualBrush.Visual>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+
+      <Rectangle Width="150" Height="150" Stroke="Black" Margin="5,0,0,0">
+        <Rectangle.Fill>
+          <VisualBrush Viewport="0,0,50,50" ViewportUnits="Absolute" TileMode="Tile">
+            <VisualBrush.Visual>
+              <StackPanel Background="Transparent">
+                <Rectangle Width="25" Height="25" Fill="Red" Margin="2" />
+                <TextBlock FontSize="10pt" Margin="2">Hello, World!</TextBlock>
+                <Button Margin="2">A Button</Button>
+              </StackPanel>
+            </VisualBrush.Visual>
+            <VisualBrush.RelativeTransform>
+              <RotateTransform Angle="45" CenterX="0.5" CenterY="0.5" />
+            </VisualBrush.RelativeTransform>
+          </VisualBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+    </StackPanel>
+  </StackPanel>
+</Page>

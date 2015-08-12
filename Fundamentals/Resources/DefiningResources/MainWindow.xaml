@@ -1,0 +1,42 @@
+﻿<Window x:Class="DefiningResources.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DefiningResources"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MyBrush" Color="Gold"/>
+        <Style TargetType="Border" x:Key="PageBackground">
+            <Setter Property="Background" Value="Blue"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TitleText">
+            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="DockPanel.Dock" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#4E87D4"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="Margin" Value="0,40,10,10"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="Label">
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="Foreground" Value="{StaticResource MyBrush}"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,3,10,0"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <Border Style="{StaticResource PageBackground}">
+            <DockPanel>
+                <TextBlock Style="{StaticResource TitleText}">Title</TextBlock>
+                <TextBlock Style="{StaticResource Label}">Label</TextBlock>
+                <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Left" FontSize="36" Foreground="{StaticResource MyBrush}" Text="Text" Margin="20" />
+                <Button DockPanel.Dock="Top" HorizontalAlignment="Left" Height="30" Background="{StaticResource MyBrush}" Margin="40">Button</Button>
+                <Ellipse DockPanel.Dock="Top" HorizontalAlignment="Left" Width="100" Height="100" Fill="{StaticResource MyBrush}" Margin="40" />
+            </DockPanel>
+        </Border>
+    </StackPanel>
+</Window>

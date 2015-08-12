@@ -1,0 +1,30 @@
+﻿<Window x:Class="WindowHiding.ChildWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowHiding"
+        mc:Ignorable="d"
+        Title="ChildWindow" Height="300" Width="300" 
+        Closing="Window_Closing"
+        IsVisibleChanged="Window_IsVisibleChanged">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0">First Shown:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" x:Name="firstShownTextBlock" />
+
+        <TextBlock Grid.Column="0" Grid.Row="1">Shown This Time:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" x:Name="shownThisTimeTextBlock" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,176 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Priority Binding"
+      x:Class="myPriorityBinding.Page1"
+      Loaded="CheckLang">
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Priority Binding Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Priority Binding Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This sample shows how to implement multiple bindings that go into effect based on their place in a priority order.</TextBlock>
+
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML" />
+    <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+                
+&lt;Window Background="Cornsilk"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:c="clr-namespace:myPriorityBinding"
+  x:Class="myPriorityBinding.Window1"
+  Width = "300"
+  Height = "200"
+	>
+	
+  &lt;Window.Resources>
+    &lt;c:AsyncDataProvider SlowestDP="Slowest Value" SlowerDP="Slower Value" FastDP="Fast Value" x:Key="AsyncDS" />
+  &lt;/Window.Resources>
+  	
+  &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+    DataContext="{Binding Source={StaticResource AsyncDS}}">
+    &lt;TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+      HorizontalAlignment="Center">Priority Binding&lt;/TextBlock>
+    &lt;TextBlock Background="Honeydew" Width="100" HorizontalAlignment="Center">
+      &lt;TextBlock.Text>
+        &lt;PriorityBinding>
+          &lt;Binding Path="ForceFailOnHighestPriority"/>
+          &lt;Binding Path="SlowestDP" IsAsync="True"/>
+          &lt;Binding Path="SlowerDP" IsAsync="True"/>
+          &lt;Binding Path="FastDP" />
+        &lt;/PriorityBinding>
+      &lt;/TextBlock.Text>
+    &lt;/TextBlock>	
+  &lt;/StackPanel>
+    	
+&lt;/Window>
+                
+                
+                
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+            <TabItem Style="{StaticResource TabStyle2}" Header="C#">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+              <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+
+using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Data;
+using System.Threading;
+
+namespace myPriorityBinding
+{
+  public partial class Window1 : Window
+  {
+    public Window1()
+    {
+      InitializeComponent();
+    }
+  }
+
+  public class AsyncDataProvider
+  {
+  	private string _fastDP;
+  	private string _slowerDP;
+  	private string _slowestDP;
+
+  	public AsyncDataProvider()
+  	{
+  	}
+
+  	public string FastDP
+  	{
+      get { return _fastDP; }
+      set { _fastDP = value; }
+  	}
+
+  	public string SlowerDP
+  	{
+      get
+      {
+        // This simulates a lengthy time before the
+        // data being bound to is actualy available.
+        Thread.Sleep(3000);
+        return _slowerDP;
+      }
+      set { _slowerDP = value; }
+  	}
+
+  	public string SlowestDP
+  	{
+      get
+      {
+        // This simulates a lengthy time before the
+        // data being bound to is actualy available.
+        Thread.Sleep(5000);
+        return _slowestDP;
+      }
+      set { _slowestDP = value; }
+  	}
+  }
+}
+                
+                
+              </TextBox>
+                    </ScrollViewer>
+            </TabItem>
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+              <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+          </TabControl>
+        </TabItem>
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+
+<Canvas Background="Cornsilk"
+  xmlns:c="clr-namespace:myPriorityBinding"
+  Width = "300"
+  Height = "200"
+	>
+	
+  <Canvas.Resources>
+    <c:AsyncDataProvider SlowestDp="Slowest Value" SlowerDp="Slower Value" FastDp="Fast Value" x:Key="AsyncDs" />
+  </Canvas.Resources>
+  	
+  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+    DataContext="{Binding Source={StaticResource AsyncDs}}">
+    <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+      HorizontalAlignment="Center">Priority Binding</TextBlock>
+    <TextBlock Background="Honeydew" Width="100" HorizontalAlignment="Center">
+      <TextBlock.Text>
+        <PriorityBinding>
+          <Binding Path="ForceFailOnHighestPriority"/>
+          <Binding Path="SlowestDp" IsAsync="True"/>
+          <Binding Path="SlowerDp" IsAsync="True"/>
+          <Binding Path="FastDp" />
+        </PriorityBinding>
+      </TextBlock.Text>
+    </TextBlock>	
+  </StackPanel>
+    	
+</Canvas>
+        </TabItem>
+      </TabControl>
+</Page>

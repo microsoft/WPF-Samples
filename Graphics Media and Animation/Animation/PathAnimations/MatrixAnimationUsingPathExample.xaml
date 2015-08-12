@@ -1,0 +1,151 @@
+<!-- MatrixAnimationUsingPath.XAML
+     This example shows how to use PathGeometry and MatrixAnimationUsingPath to animate along a path. -->
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  WindowTitle="MatrixAnimationUsingPath Example"
+  Background="{StaticResource MyGridBrushResource}">
+
+
+  <DockPanel Margin="20">
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2"
+        Margin="0,0,0,20" Padding="20" DockPanel.Dock="Top" >
+        <TextBlock Width="750">
+          This example animates an object (button) across the screen along a path. To do this, the Matrix value of the RenderTransform property is animated 
+          along a PathGeometry. MatrixAnimationUsingPath is used to animate the matrix value.
+        </TextBlock>
+      </Border>
+
+    <StackPanel DockPanel.Dock="Left">
+    <Canvas HorizontalAlignment="Left" Width="340" Height="240" >
+      
+      <!-- This Path is only to show the path that the animated object will follow. -->
+      <Path VerticalAlignment="Top" Margin="15,15,15,15" 
+        Data="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100"
+        Stroke="Black" StrokeThickness="2"
+        Stretch="None" />
+      
+      <!-- The Button that is animated across the screen. -->
+        <Path Fill="Blue" Margin="0,0,15,15">
+          <Path.Data>
+            <RectangleGeometry  x:Name="MyAnimatedRectGeometry" Rect="0,0 30 30" />
+          </Path.Data>
+          <Path.RenderTransform>
+            <MatrixTransform x:Name="myMatrixTransform">
+              <MatrixTransform.Matrix >
+                <Matrix OffsetX="10" OffsetY="100"/>
+              </MatrixTransform.Matrix>
+            </MatrixTransform>
+          </Path.RenderTransform>
+        </Path>      
+    </Canvas>
+      
+    <!-- Create a button to restart the animation. -->
+    <Button Width="300" HorizontalAlignment="Left" >
+      Start Animation
+
+      <!-- Trigger and StoryBoard to initiate the animation when the button is clicked. -->
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <!-- Animates the button along the path. -->
+              <MatrixAnimationUsingPath
+                Storyboard.TargetName="myMatrixTransform"
+                Storyboard.TargetProperty="Matrix"
+                Duration="0:0:5" 
+                RepeatBehavior="Forever" AutoReverse="True" >
+                <MatrixAnimationUsingPath.PathGeometry>
+                  <PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" />
+                </MatrixAnimationUsingPath.PathGeometry>
+              </MatrixAnimationUsingPath>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+
+    <!-- This button starts an animation that follows the tangent
+    of the path because DoesRotateWithTangent is set to "True".-->
+    <Button Width="300" HorizontalAlignment="Left" >
+      Start Animation with DoesRotateWithTangent="True"
+
+      <!-- Trigger and StoryBoard to initiate the animation when the button is clicked. -->
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <!-- Animates the button along the path following the tangent of the path. -->
+              <MatrixAnimationUsingPath
+                Storyboard.TargetName="myMatrixTransform"
+                Storyboard.TargetProperty="Matrix"
+                DoesRotateWithTangent="True" 
+                Duration="0:0:5" 
+                RepeatBehavior="Forever" AutoReverse="True" >
+                <MatrixAnimationUsingPath.PathGeometry>
+                  <PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" />
+                </MatrixAnimationUsingPath.PathGeometry>
+              </MatrixAnimationUsingPath>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>  
+      
+    </StackPanel>
+ 
+    
+      <!-- Displays functional code for demonstration. -->
+        <Border Background="#EEEEEE" BorderBrush="Black" BorderThickness="1">
+          <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+          <TextBlock Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+          ...
+          &lt;!-- The Button that is animated across the screen. --&gt;
+          &lt;Button Margin="-30,0,0,0" MinWidth="100"&gt;Click
+            &lt;Button.RenderTransform&gt;
+              &lt;MatrixTransform x:Name="myMatrixTransform"&gt;
+                &lt;MatrixTransform.Matrix &gt;
+                  &lt;Matrix OffsetX="10" OffsetY="100"/&gt;
+                &lt;/MatrixTransform.Matrix&gt;
+              &lt;/MatrixTransform&gt;
+            &lt;/Button.RenderTransform&gt;
+          &lt;/Button&gt;         
+          ...
+            <Span Foreground="Green">&lt;!-- Animation with DoesRotateWithTangent set to false (default is false) --&gt;</Span>
+            &lt;Storyboard>
+               <Bold>&lt;MatrixAnimationUsingPath
+                  Storyboard.TargetName="myMatrixTransform"
+                  Storyboard.TargetProperty="Matrix"
+                  Duration="0:0:5"
+                  RepeatBehavior="Forever" AutoReverse="True" &gt;
+                  &lt;MatrixAnimationUsingPath.PathGeometry&gt;
+                    &lt;PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" /&gt;
+                  &lt;/MatrixAnimationUsingPath.PathGeometry&gt;
+               &lt;/MatrixAnimationUsingPath&gt;   
+               </Bold>
+            &lt;/Storyboard&gt;
+            ...
+            <Span Foreground="Green">&lt;!-- Animation with DoesRotateWithTangent --&gt;</Span>
+            &lt;Storyboard>
+               <Bold>&lt;MatrixAnimationUsingPath
+                  Storyboard.TargetName="myMatrixTransform"
+                  Storyboard.TargetProperty="Matrix"
+                  <Span Foreground="Red">DoesRotateWithTangent="True"</Span>
+                  Duration="0:0:5" 
+                   RepeatBehavior="Forever" AutoReverse="True" &gt;
+                  &lt;MatrixAnimationUsingPath.PathGeometry&gt;
+                    &lt;PathGeometry Figures="M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100" /&gt;
+                  &lt;/MatrixAnimationUsingPath.PathGeometry&gt;
+               &lt;/MatrixAnimationUsingPath&gt;   
+               </Bold>
+            &lt;/Storyboard&gt;
+          ...
+          </TextBlock>
+          </ScrollViewer>
+        </Border>
+    <!-- End of Display Canvas -->
+
+</DockPanel>
+</Page>

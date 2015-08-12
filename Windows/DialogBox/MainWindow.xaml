@@ -1,0 +1,43 @@
+﻿<Window x:Class="DialogBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DialogBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Closing="mainWindow_Closing"
+    >
+    <DockPanel>
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Click="fileOpen_Click" />
+                <MenuItem Header="_Save" Click="fileSave_Click" />
+                <MenuItem Header="_Print" Click="filePrint_Click" />
+                <Separator />
+                <MenuItem Header="_Exit" Click="fileExit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <!--Main Window-->
+                <MenuItem Name="editFindMenuItem" Header="_Find" InputGestureText="Ctrl+F" Click="editFindMenuItem_Click" />
+            </MenuItem>
+            <MenuItem Header="F_ormat">
+                <MenuItem Name="formatFontMenuItem" Header="_Font..." Click="formatFontMenuItem_Click" />
+                <!--Main Window-->
+                <MenuItem Name="formatMarginsMenuItem" Header="_Margins..." Click="formatMarginsMenuItem_Click" />
+            </MenuItem>
+        </Menu>
+
+        <TextBox
+      Name="documentTextBox"
+      TextChanged="documentTextBox_TextChanged" 
+      ScrollViewer.CanContentScroll="True" 
+      ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+      ScrollViewer.VerticalScrollBarVisibility="Visible" 
+      AcceptsReturn="True" 
+      AcceptsTab="True" 
+      BorderThickness="0" >
+            The quick brown fox jumped over the lazy old brown dog.
+        </TextBox>
+    </DockPanel>
+</Window>

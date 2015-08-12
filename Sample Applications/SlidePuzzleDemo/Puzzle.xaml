@@ -1,0 +1,65 @@
+﻿<Window x:Class="SlidePuzzleDemo.Puzzle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SlidePuzzleDemo"
+        mc:Ignorable="d"
+        Title="Puzzle" Width="900" Height="600">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="Black" />
+                <GradientStop Offset="1" Color="White" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Image x:Key="MasterImage" Source="flower.jpg" />
+        <Image x:Key="TableImage" Source="table-bowl.jpg" />
+        <MediaElement Height="480" Width="640" x:Key="MasterVideo" Source="Intro.wmv" />
+    </Window.Resources>
+
+    <DockPanel x:Name="PuzzleHostingPanel">
+
+        <StackPanel Orientation="Horizontal" x:Name="ControlPanel" DockPanel.Dock="Bottom">
+            <StackPanel.LayoutTransform>
+                <ScaleTransform ScaleX="1.33" ScaleY="1.33" />
+            </StackPanel.LayoutTransform>
+
+            <Button Click="OnMixUp">Mix Up</Button>
+            <Button Click="OnResetPuzzle">Reset</Button>
+            <StackPanel Orientation="Vertical">
+                <CheckBox x:Name="ChkShowNumbers" Click="OnShowHideNumbers" IsChecked="False">Show Numbers</CheckBox>
+                <CheckBox x:Name="ChkShowAnimations" Click="OnChkAnimation" IsChecked="False">Animate Interactions</CheckBox>
+            </StackPanel>
+            <Label x:Name="StatusLabel" Foreground="Red" Content="" />
+
+            <StackPanel Orientation="Vertical">
+                <Label>Dimensions:</Label>
+                <ComboBox SelectedIndex="3" SelectionChanged="PuzzleDimensionsChanged" Width="100">
+                    <ComboBoxItem Tag="1">1x1</ComboBoxItem>
+                    <ComboBoxItem Tag="2">2x2</ComboBoxItem>
+                    <ComboBoxItem Tag="3">3x3</ComboBoxItem>
+                    <ComboBoxItem Tag="4">4x4</ComboBoxItem>
+                    <ComboBoxItem Tag="5">5x5</ComboBoxItem>
+                    <ComboBoxItem Tag="6">6x6</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <Label>Source:</Label>
+                <ComboBox SelectedIndex="0" SelectionChanged="PuzzleSourceChanged">
+                    <ComboBoxItem Tag="Untemplated">Untemplated Buttons</ComboBoxItem>
+                    <ComboBoxItem Tag="StaticBitmap">Static Bitmap</ComboBoxItem>
+                    <ComboBoxItem Tag="StaticVectorContent">Static Vector Content</ComboBoxItem>
+                    <ComboBoxItem Tag="VideoContent">Video</ComboBoxItem>
+                    <ComboBoxItem Tag="AnimateVectorContent">Animated Vector Content</ComboBoxItem>
+                    <ComboBoxItem Tag="Document">Document</ComboBoxItem>
+                    <ComboBoxItem Tag="FormsContent">Forms-based Content</ComboBoxItem>
+                    <ComboBoxItem Tag="SpinningCube">Spinning Cube</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Application x:Class="GeometryDesignerDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GeometryDesignerDemo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <VisualBrush x:Key="DrawingPaneLogoBrushResource"
+                     TileMode="Tile" Viewport="0,0,0.3,0.1">
+            <VisualBrush.Visual>
+                <Border Background="Transparent">
+                    <TextBlock FontFamily="Comic Sans MS" FontSize="14pt" Foreground="LightGray"
+                               Margin="5">
+                        Designer Pane
+                        <TextBlock.BitmapEffect>
+                            <BlurBitmapEffect />
+                        </TextBlock.BitmapEffect>
+                    </TextBlock>
+                </Border>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Application.Resources>
+</Application>

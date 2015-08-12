@@ -1,0 +1,167 @@
+<!-- This example shows the different effects of setting
+     To, By, and From properties on animations.  -->
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="To, From, and By Animation Values">
+
+
+  <Grid Margin="20">
+
+    <!-- Defines the rows and columns of the Grid.-->
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition Width="20" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Border BorderBrush="#FF000000" BorderThickness="3" Grid.Row="0" Grid.Column="2"  Grid.RowSpan="10">
+      <Border BorderBrush="#66000000" BorderThickness="1" Background="{StaticResource MyGridBrushResource}" />
+    </Border>
+
+    <!-- Highlight the animations' starting and ending values. -->
+    <Rectangle Fill="{StaticResource ArrowBackgroundBrush}" Grid.Row="0" Grid.Column="2" 
+       Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Margin="50,10,0,10" />
+    <Rectangle Fill="{StaticResource ArrowBackgroundBrush}" Grid.Row="2" Grid.Column="2" 
+       Width="200" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Margin="100,10,0,10" />
+    <Rectangle Fill="{StaticResource ArrowBackgroundBrush}" Grid.Row="4" Grid.Column="2" 
+       Width="300" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Margin="100,10,0,10" />
+    <Rectangle Fill="{StaticResource ArrowBackgroundBrush}" Grid.Row="6" Grid.Column="2" 
+       Width="300" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Margin="50,10,0,10" />
+    <Rectangle Fill="{StaticResource ArrowBackgroundBrush}" Grid.Row="8" Grid.Column="2"
+       Width="50" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Margin="50,10,0,10" />
+
+
+    <!-- Demonstrates the From and To properties used together. -->
+    <Rectangle Name="fromToAnimatedRectangle" Grid.Row="0" Grid.Column="2"
+       Height="10" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Fill="#99FF9900"  />
+
+    <!-- Demonstrates the use of the To property. -->
+    <Rectangle Name="toAnimatedRectangle" Grid.Row="2" Grid.Column="2"
+       Height="10" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Fill="#99FF9900"  />
+
+
+    <!-- Demonstrates the use of the By property. -->
+    <Rectangle Name="byAnimatedRectangle"  Grid.Row="4" Grid.Column="2"
+       Height="10" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Fill="#99FF9900" />
+
+
+    <!-- Demonstrates the use of the From and By properties. -->
+    <Rectangle Name="fromByAnimatedRectangle" Grid.Row="6" Grid.Column="2"
+       Height="10" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Fill="#99FF9900"  />
+
+
+    <!-- Demonstrates the use of the From property. -->
+    <Rectangle Name="fromAnimatedRectangle" Grid.Row="8" Grid.Column="2"
+       Height="10" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"
+       Fill="#99FF9900"  />
+
+    <Button Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
+      Background="LimeGreen" Style="{StaticResource CustomButtonStyle}">
+      Start Animations
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard FillBehavior="Stop">
+
+              <!-- Demonstrates the From and To properties used together.
+                   Animates the rectangle's Width property from 50 to 300 over 10 seconds. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="fromToAnimatedRectangle" 
+                Storyboard.TargetProperty="Width"
+                From="50" To="300" Duration="0:0:10" />
+
+              <!-- Demonstrates the To property used by itself.
+                   Animates the Rectangle's Width property from its base value
+                   (100) to 300 over 10 seconds. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="toAnimatedRectangle" 
+                Storyboard.TargetProperty="Width"
+                To="300" Duration="0:0:10" />
+
+              <!-- Demonstrates the By property used by itself.
+                   Increments the Rectangle's Width property by 300 over 10 seconds.
+                   As a result, the Width property is animated from its base value
+                   (100) to 400 (100 + 300) over 10 seconds. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="byAnimatedRectangle" 
+                Storyboard.TargetProperty="Width" 
+                By="300" Duration="0:0:10" />
+
+              <!-- Demonstrates the From and By properties used by together.
+                   Increments the Rectangle's Width property by 300 over 10 seconds.
+                   As a result, the Width property is animated from 50
+                   to 350 (50 + 300) over 10 seconds. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="fromByAnimatedRectangle" 
+                Storyboard.TargetProperty="Width" 
+                From="50" By="300" Duration="0:0:10"  />
+
+              <!-- Demonstrates the From property used by itself.
+                   Animates the rectangle's Width property from 50 to its base value (100)
+                   over 10 seconds. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="fromAnimatedRectangle" 
+                Storyboard.TargetProperty="Width"
+                From="50" Duration="0:0:10"  />
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+
+
+    <!-- Label the examples. -->
+    <TextBlock Grid.Row="0" Grid.Column="0">
+      <Bold>"From/To" Animation</Bold><LineBreak />
+      Animates the rectangle's Width property from 50 to 300 over 10 seconds.
+    </TextBlock>
+
+    <TextBlock Grid.Row="2" Grid.Column="0">
+      <Bold>"To" Animation</Bold><LineBreak />
+      Animates the rectangle's Width property from its base value of
+      100 to 300 over 10 seconds.
+    </TextBlock>
+
+    <TextBlock Grid.Row="4" Grid.Column="0">
+      <Bold>"By" Animation</Bold><LineBreak />
+      Animates the rectangle's Width property by offsetting its base value by
+      300 over 10 seconds. As a result, the width animates from 100 to 400.
+    </TextBlock>
+
+    <TextBlock Grid.Row="6" Grid.Column="0">
+      <Bold>"From/By" Animation</Bold><LineBreak />
+      Animates the rectangle's Width property by offsetting the animation's start value
+      of 50 by 300 over 10 seconds.
+      As a result, the width animates from 50 to 350.
+    </TextBlock>
+
+    <TextBlock Grid.Row="8" Grid.Column="0">
+      <Bold>"From" Animation</Bold><LineBreak />
+      Animates the rectangle's Width property from 50 to its base value of 100 over 10 seconds.
+    </TextBlock>
+
+  </Grid>
+</Page>

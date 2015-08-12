@@ -1,0 +1,180 @@
+﻿<Application x:Class="ImageBrush.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ImageBrush"
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+            <LinearGradientBrush x:Key="GrayBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="DarkGray" Offset="0" />
+                    <GradientStop Color="#CCCCFF" Offset="0.5" />
+                    <GradientStop Color="DarkGray" Offset="1" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="MyButtonBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="#330066" Offset="0" />
+                    <GradientStop Color="Transparent" Offset="0.5" />
+                    <GradientStop Color="#330066" Offset="1" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="MyHeaderBackground" StartPoint="0,0.5" EndPoint="1,0.5" Opacity="0.5">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Color="GoldenRod" Offset="0" />
+                        <GradientStop Color="Gold" Offset="0.25" />
+                        <GradientStop Color="Yellow" Offset="0.75" />
+                        <GradientStop Color="White" Offset="1" />
+                    </GradientStopCollection>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="WhiteSmoke" Offset="0.2" />
+                    <GradientStop Color="Transparent" Offset="0.4" />
+                    <GradientStop Color="WhiteSmoke" Offset="0.5" />
+                    <GradientStop Color="Transparent" Offset="0.75" />
+                    <GradientStop Color="WhiteSmoke" Offset="0.9" />
+                    <GradientStop Color="Transparent" Offset="1" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+
+
+            <Style TargetType="{x:Type RadioButton}">
+                <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="true">
+                                <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" 
+                  RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="Transparent" />
+                                <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" Stroke="Transparent" StrokeThickness="20" 
+                  Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20" />
+                                <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0" 
+                Fill="{StaticResource MyGlassBrushResource}"
+                RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.Stroke>
+                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Offset="0.0" Color="LightBlue" />
+                                                <GradientStop Offset="1.0" Color="Gray" />
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Stroke>
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <RotateTransform />
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                    <Rectangle.BitmapEffect>
+                                        <BevelBitmapEffect />
+                                    </Rectangle.BitmapEffect>
+                                </Rectangle>
+                                <DockPanel Name="myContentPresenterDockPanel">
+                                    <ContentPresenter x:Name="myContentPresenter" Margin="20" 
+                  Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
+
+                                </DockPanel>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver" Value="true" />
+                                        <Condition Property="IsChecked" Value="false" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property ="Rectangle.Stroke" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="outerRectangle" />
+                                    <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                                    <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
+                                        <Setter.Value>
+                                            <BlurBitmapEffect Radius="1" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </MultiTrigger>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter Property="Rectangle.Stroke" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="outerRectangle" />
+                                    <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                                </Trigger>
+                                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                        Storyboard.TargetName="glassCube"
+                        Storyboard.TargetProperty="(Rectangle.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                        By="-0.1" Duration="0:0:0.5" />
+                                                <DoubleAnimation
+                        Storyboard.TargetName="glassCube"
+                        Storyboard.TargetProperty="(Rectangle.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                        By="-0.1" Duration="0:0:0.5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                    <EventTrigger.Actions>
+                                        <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="RadioButton.Checked">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                        Storyboard.TargetName="glassCube"
+                        Storyboard.TargetProperty="(Rectangle.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"
+                        By="360" Duration="0:0:0.5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FontFamily" Value="Verdana"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+
+            <Style x:Key="MyAnimatedRectangleStyle">
+                <Setter Property="Rectangle.Fill">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="sampleImages\purpleblock.jpg" TileMode="FlipXY" Opacity="0.25">
+                            <ImageBrush.Transform>
+                                <RotateTransform Angle="0" />
+                            </ImageBrush.Transform>
+                        </ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard SpeedRatio="1.25">
+                                    <RectAnimation Storyboard.TargetProperty="(Rectangle.Fill).(ImageBrush.Viewport)"
+                  To="0,0,0.5,0.5" Duration="0:0:20" RepeatBehavior="Forever" AutoReverse="True" />
+                                    <DoubleAnimation 
+                  Storyboard.TargetProperty="(Rectangle.Fill).(ImageBrush.Transform).(RotateTransform.Angle)" 
+                  To="360" Duration="0:1:00" RepeatBehavior="Forever" AccelerationRatio="0.5" DecelerationRatio="0.5" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </Application.Resources>
+</Application>

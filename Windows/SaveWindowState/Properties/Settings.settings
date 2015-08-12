@@ -1,0 +1,29 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SaveWindowState.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WindowPlacement" Type="SaveWindowState.WindowPlacement" Scope="User">
+      <Value Profile="(Default)">
+                    &lt;WindowPlacement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                        &lt;length&gt;0&lt;/length&gt;
+                        &lt;flags&gt;0&lt;/flags&gt;
+                        &lt;showCmd&gt;0&lt;/showCmd&gt;
+                        &lt;minPosition&gt;
+                            &lt;X&gt;0&lt;/X&gt;
+                            &lt;Y&gt;0&lt;/Y&gt;
+                        &lt;/minPosition&gt;
+                        &lt;maxPosition&gt;
+                            &lt;X&gt;0&lt;/X&gt;
+                            &lt;Y&gt;0&lt;/Y&gt;
+                        &lt;/maxPosition&gt;
+                        &lt;normalPosition&gt;
+                            &lt;Left&gt;0&lt;/Left&gt;
+                            &lt;Top&gt;0&lt;/Top&gt;
+                            &lt;Right&gt;0&lt;/Right&gt;
+                            &lt;Bottom&gt;0&lt;/Bottom&gt;
+                        &lt;/normalPosition&gt;
+                    &lt;/WindowPlacement&gt;
+                </Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

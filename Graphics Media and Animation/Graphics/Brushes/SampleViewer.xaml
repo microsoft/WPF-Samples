@@ -1,0 +1,111 @@
+<!--
+  SampleViewer.xaml
+  Provides a UI for navigating through the different brush examples. 
+-->
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Brushes.SampleViewer"
+  xmlns:examples="clr-namespace:Brushes"
+  WindowTitle="Brush Examples"
+  Background="White">
+
+  <Page.Resources>
+    <DoubleAnimation From="0" To="1" Duration="0:0:0.1" x:Key="MyFadeInAnimationResource" />
+    <HierarchicalDataTemplate x:Key="ExamplesDataTemplate"
+     ItemsSource="{Binding XPath=Children/Example}">
+      <TextBlock 
+        Text="{Binding XPath=@Title}" 
+        ToolTip="{Binding XPath=Description}" />
+    </HierarchicalDataTemplate>
+  </Page.Resources>
+
+  <DockPanel Name="mainPanel">
+
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File" >
+        <MenuItem Command="{x:Static examples:SampleViewer.ExitCommand}">
+          <MenuItem.CommandBindings>
+            <CommandBinding 
+              Command="{x:Static examples:SampleViewer.ExitCommand}" 
+              Executed="ExecuteExitCommand" />
+          </MenuItem.CommandBindings>
+          <MenuItem.InputBindings>
+            <KeyBinding 
+              Command="{x:Static examples:SampleViewer.ExitCommand}"
+              Key="F4" Modifiers="Alt" />
+          </MenuItem.InputBindings>
+        </MenuItem>
+      </MenuItem>
+    </Menu>
+
+    <Rectangle 
+      DockPanel.Dock="Top"
+      Height="1"
+      Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+
+      <Rectangle 
+      DockPanel.Dock="Top"
+      Height="1"
+      Fill="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+
+      <Border DockPanel.Dock="Left" BorderBrush="LightGray" BorderThickness="0,0,2,0"
+      Background="{StaticResource GlassBrushResource}">
+      <Expander ExpandDirection="Left">
+        <Expander.Header>
+          <TextBlock Foreground="#99000000"
+            FontFamily="Verdana" FontWeight="Bold" FontSize="24pt" 
+            Text="Contents">
+            <TextBlock.LayoutTransform>
+              <RotateTransform Angle="90" />
+            </TextBlock.LayoutTransform>
+          </TextBlock>
+        </Expander.Header>
+
+
+        <Border  Background="{StaticResource MySteelBrushResource}">
+          <Border Background="{StaticResource MyCloudyGlassBrushResource}">
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical" 
+              HorizontalAlignment="Left" Margin="10">
+
+              <!-- Lists the different brush samples. The list is
+                   defined in the sampleResources\TOC.xml file. -->
+              <TreeView Name="myPageList"
+                KeyboardNavigation.DirectionalNavigation="Cycle" 
+                BorderBrush="Transparent"
+                Background="Transparent"
+                ItemTemplate="{DynamicResource ExamplesDataTemplate}"
+                ItemContainerStyle="{StaticResource TreeViewItemHeaderStyle}"
+                SelectedValuePath="Example">
+                <TreeView.ItemsSource>
+                  <Binding Source="{StaticResource ExampleData}" XPath="*"/>
+                </TreeView.ItemsSource>
+                <TreeView.Triggers>
+                  <EventTrigger RoutedEvent="TreeView.SelectedItemChanged">
+                    <BeginStoryboard>
+                      <Storyboard>
+                        <DoubleAnimation 
+                          Storyboard.TargetName="myFrame"
+                          Storyboard.TargetProperty="Opacity" 
+                          From="1" To="0" Duration="0:0:0.1" 
+                          CurrentStateInvalidated="TransitionAnimationStateChanged"/>
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger>
+                </TreeView.Triggers>
+              </TreeView>
+            </StackPanel>
+          </Border>
+        </Border>
+      </Expander>
+    </Border>
+    <ScrollViewer VerticalAlignment="Stretch">
+      <Frame Name="myFrame" 
+        NavigationUIVisibility="Hidden"
+        Navigated="MyFrameNavigated" Source="BrushTypesExample.xaml"
+        VerticalAlignment="Stretch" />
+    </ScrollViewer>
+  </DockPanel>
+</Page>
+
+

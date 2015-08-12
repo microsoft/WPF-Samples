@@ -1,0 +1,44 @@
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="RectAnimationUsingKeyFrames Example">
+
+  <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+    <Path Stroke="Black" StrokeThickness="1" Fill="LemonChiffon">
+      <Path.Data>
+        <RectangleGeometry x:Name="myRectangleGeometry" Rect="0,200,100,100" />
+      </Path.Data>
+      <Path.Triggers>
+        <EventTrigger RoutedEvent="Path.Loaded">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <!-- Animate the Rect property of the RectangleGeometry which causes the
+              rectangle to animate its position as well as its width and height. -->
+              <RectAnimationUsingKeyFrames
+                Storyboard.TargetName="myRectangleGeometry"
+                Storyboard.TargetProperty ="Rect"
+                Duration="0:0:6" FillBehavior="HoldEnd" RepeatBehavior="Forever">
+
+                <!-- Animate position, width, and height in first 2 seconds. LinearRectKeyFrame creates
+                a smooth, linear animation between values. -->
+                <LinearRectKeyFrame Value="600,50,200,50" KeyTime="0:0:2" />
+
+                <!-- In the next half second, change height to 10. DiscreteColorKeyFrame creates a 
+                sudden "jump" between values. -->
+                <DiscreteRectKeyFrame Value="600,50,200,10" KeyTime="0:0:2.5" />
+
+                <!-- In the final 2 seconds of the animation, go back to the starting position, width, and height.  
+                Spline key frames like SplineRectKeyFrame creates a variable transition between values depending 
+                on the KeySpline property. In this example, the animation starts off slow but toward the end of 
+                the time segment, it speeds up exponentially.-->
+                <SplineRectKeyFrame Value="0,200,100,100" KeyTime="0:0:4.5" KeySpline="0.6,0.0 0.9,0.00"  />
+              </RectAnimationUsingKeyFrames>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Path.Triggers>
+    </Path>
+
+  </StackPanel>
+</Page>

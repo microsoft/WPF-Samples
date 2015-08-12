@@ -1,0 +1,202 @@
+<!-- 
+     CombiningGeometriesExample.xaml 
+     This example shows how to creating composite geometries using the GeometryGroup
+     class and how to combine geometries using the CombinedGeometry class.
+-->
+
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="Geometery.CombiningGeometriesExample" 
+  Title="Combining Geometries">
+  <Page.Resources>
+    <Style TargetType="{x:Type Border}">
+      <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+  </Page.Resources>
+
+  <StackPanel Orientation="Vertical" Background="White" Margin="5">
+    
+    <Border Background="#CCCCFF" HorizontalAlignment="Stretch">
+      <TextBlock Margin="10">Creating Composite and Combined Geometries</TextBlock>
+    </Border>
+    
+    <TextBlock Margin="0,10,0,0" HorizontalAlignment="Stretch">
+      <Span Style="{StaticResource MyHeadingSpanStyle}">Composite Geometries</Span><LineBreak/>You can create composite shapes from multiple geometries using a GeometryGroup.
+        The following example creates a composite shape from a line, an ellipse, and a rectangle. 
+        The GeometryGroup in this example has a FillRule of EvenOdd.
+    </TextBlock>
+    <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="0,10,0,0" xml:space="preserve"><![CDATA[
+<GeometryGroup FillRule="EvenOdd">
+  <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+  <EllipseGeometry Center="40,70" 
+    RadiusX="30" RadiusY="30" />
+  <RectangleGeometry Rect="30,55 100 30" />
+</GeometryGroup>]]>
+    </TextBlock>
+    
+    <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+
+      <!-- Displays the geometry. --> 
+      <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+        <Path.Data>
+        
+          <!-- Creates a composite shape from three geometries. -->
+          <GeometryGroup FillRule="EvenOdd">
+            <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+            <EllipseGeometry Center="40,70" RadiusX="30" RadiusY="30" />              
+            <RectangleGeometry Rect="30,55 100 30" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Border>   
+        
+    <TextBlock Margin="0,10,0,0">
+      The following code is identical to the previous example, except that
+        the GeometryGroup's FillRule is set to Nonzero instead of EvenOdd.
+    </TextBlock>
+    <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="0,0,0,5" xml:space="preserve"><![CDATA[
+<GeometryGroup FillRule="Nonzero">
+  <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+  <EllipseGeometry Center="40,70" 
+    RadiusX="30" RadiusY="30" />
+  <RectangleGeometry Rect="30,55 100 30" />
+</GeometryGroup>]]>       
+    </TextBlock>
+    <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+      
+      <!-- Displays the geometry. -->
+      <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+        <Path.Data>
+          
+          <!-- Creates a composite shape from three geometries.
+               This GeometryGroup has a FillRule of NonZero. -->
+          <GeometryGroup FillRule="Nonzero">
+            <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+            <EllipseGeometry Center="40,70" RadiusX="30" RadiusY="30" />              
+            <RectangleGeometry Rect="30,55 100 30" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Border>           
+      
+    <TextBlock>
+      <Span Style="{StaticResource MyHeadingSpanStyle}">Combining Geometries</Span><LineBreak/>In addition to creating composite geomtries using the GeometryGroup class, you can
+        use the CombinedGeometry class to combine two geometries.
+        
+      The geometries, before combining:
+    </TextBlock>
+        <Border Height="150" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+
+            <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+        <Path.Data>
+          <GeometryGroup FillRule="NonZero">
+            <EllipseGeometry RadiusX="50" RadiusY="50" Center="75,75" />
+            <EllipseGeometry RadiusX="50" RadiusY="50" Center="125,75" />
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+      
+    </Border> 
+        
+    <TextBlock Margin="0,10,0,5">The geometries, after combining with the specified mode:</TextBlock>
+    
+    <!-- Shows the two geometries combined using each of the different
+         combine modes. -->
+    <Grid HorizontalAlignment="Left">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="10" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Column="0" Grid.Row="0">Exclude</TextBlock>
+      <Border Height="150" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}"
+        Grid.Column="0" Grid.Row="1">
+        
+        <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+          <Path.Data>
+            
+            <!-- Combines two geometries using the exclude combine mode. -->
+            <CombinedGeometry GeometryCombineMode="Exclude">
+              <CombinedGeometry.Geometry1>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="75,75" />
+              </CombinedGeometry.Geometry1>
+              <CombinedGeometry.Geometry2>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="125,75" />
+              </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+          </Path.Data>
+        </Path>
+      </Border>       
+        
+      <TextBlock Grid.Column="2" Grid.Row="0">Intersect</TextBlock>
+      <Border Height="150" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}"
+        Grid.Column="2" Grid.Row="1">
+        
+        <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+          <Path.Data>
+            
+            <!-- Combines two geometries using the intersect combine mode. -->
+            <CombinedGeometry GeometryCombineMode="Intersect">
+              <CombinedGeometry.Geometry1>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="75,75" />
+              </CombinedGeometry.Geometry1>
+              <CombinedGeometry.Geometry2>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="125,75" />
+              </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+          </Path.Data>
+        </Path>
+      </Border>   
+        
+      <TextBlock Grid.Column="0" Grid.Row="3">Union</TextBlock>
+      <Border Height="150" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}"
+        Grid.Column="0" Grid.Row="4">
+        
+        <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+          <Path.Data>
+            
+            <!-- Combines two geometries using the union combine mode. -->
+            <CombinedGeometry GeometryCombineMode="Union">
+              <CombinedGeometry.Geometry1>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="75,75" />
+              </CombinedGeometry.Geometry1>
+              <CombinedGeometry.Geometry2>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="125,75" />
+              </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+          </Path.Data>
+        </Path>
+        
+      </Border>   
+        
+      <TextBlock Grid.Column="2" Grid.Row="3">Xor</TextBlock>
+      <Border Height="150" Width="200" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}"
+        Grid.Column="2" Grid.Row="4">
+        
+        <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+          <Path.Data>
+            
+            <!-- Combines two geometries using the XOR combine mode. -->
+            <CombinedGeometry GeometryCombineMode="Xor">
+              <CombinedGeometry.Geometry1>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="75,75" />
+              </CombinedGeometry.Geometry1>
+              <CombinedGeometry.Geometry2>
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="125,75" />
+              </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+          </Path.Data>
+        </Path>
+      </Border>   
+    </Grid>
+  </StackPanel>
+</Page>

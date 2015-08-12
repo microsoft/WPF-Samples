@@ -1,0 +1,8 @@
+<Page x:Class="PerFrameAnimation.FollowExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+  <Canvas x:Name="containerCanvas" Background="transparent">
+    <Rectangle x:Name="followRectangle" Canvas.Left="0" Canvas.Top="0" Fill="red" Width="50" Height="50" />
+  </Canvas>
+</Page>

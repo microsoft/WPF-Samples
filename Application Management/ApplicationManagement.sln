@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23103.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivationAndDeactivation", "ActivationAndDeactivation\ActivationAndDeactivation.csproj", "{A84540D5-366E-4B3E-80E4-4A5769A637D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCookies", "ApplicationCookies\ApplicationCookies.csproj", "{E5135C9A-CA0F-4887-9D99-4AF763AB1795}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationShutdown", "ApplicationShutdown\ApplicationShutdown.csproj", "{545AD4E3-5805-4C93-A39D-A6674036FBCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeOnlyWindowsApplication", "CodeOnlyWindowsApplication\CodeOnlyWindowsApplication.csproj", "{BCC1BA20-3117-4716-AA80-529131126FD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandlingSecondaryUIThread", "ExceptionHandlingSecondaryUIThread\ExceptionHandlingSecondaryUIThread.csproj", "{382DE3A3-B718-4586-8818-F74D9ACCB96F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandlingSecondaryWorkerThread", "ExceptionHandlingSecondaryWorkerThread\ExceptionHandlingSecondaryWorkerThread.csproj", "{D16CA908-C604-447A-BF52-71B9FE159884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessingCommandLineArguments", "ProcessingCommandLineArguments\ProcessingCommandLineArguments.csproj", "{74AA414A-B3E4-4B9A-A457-B4CCB8B5161E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomApplicationClass", "CustomApplicationClass\CustomApplicationClass.csproj", "{DF1BF5B2-38D8-47B4-9565-2122B982E3A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstanceDetection", "SingleInstanceDetection\SingleInstanceDetection.csproj", "{C7389A9B-5758-4BB9-9C81-9A3AEBC168F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedApplication", "SkinnedApplication\SkinnedApplication.csproj", "{3825CEC7-BA04-4B37-81A1-5166CBF4C3FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnhandledExceptionHandling", "UnhandledExceptionHandling\UnhandledExceptionHandling.csproj", "{749E1732-D60E-446A-8B00-C53AF4C9AA73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A84540D5-366E-4B3E-80E4-4A5769A637D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A84540D5-366E-4B3E-80E4-4A5769A637D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A84540D5-366E-4B3E-80E4-4A5769A637D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A84540D5-366E-4B3E-80E4-4A5769A637D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5135C9A-CA0F-4887-9D99-4AF763AB1795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5135C9A-CA0F-4887-9D99-4AF763AB1795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5135C9A-CA0F-4887-9D99-4AF763AB1795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5135C9A-CA0F-4887-9D99-4AF763AB1795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545AD4E3-5805-4C93-A39D-A6674036FBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545AD4E3-5805-4C93-A39D-A6674036FBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545AD4E3-5805-4C93-A39D-A6674036FBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545AD4E3-5805-4C93-A39D-A6674036FBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC1BA20-3117-4716-AA80-529131126FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC1BA20-3117-4716-AA80-529131126FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC1BA20-3117-4716-AA80-529131126FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC1BA20-3117-4716-AA80-529131126FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382DE3A3-B718-4586-8818-F74D9ACCB96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382DE3A3-B718-4586-8818-F74D9ACCB96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382DE3A3-B718-4586-8818-F74D9ACCB96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382DE3A3-B718-4586-8818-F74D9ACCB96F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16CA908-C604-447A-BF52-71B9FE159884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16CA908-C604-447A-BF52-71B9FE159884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16CA908-C604-447A-BF52-71B9FE159884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16CA908-C604-447A-BF52-71B9FE159884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74AA414A-B3E4-4B9A-A457-B4CCB8B5161E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74AA414A-B3E4-4B9A-A457-B4CCB8B5161E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74AA414A-B3E4-4B9A-A457-B4CCB8B5161E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74AA414A-B3E4-4B9A-A457-B4CCB8B5161E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1BF5B2-38D8-47B4-9565-2122B982E3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1BF5B2-38D8-47B4-9565-2122B982E3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1BF5B2-38D8-47B4-9565-2122B982E3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1BF5B2-38D8-47B4-9565-2122B982E3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7389A9B-5758-4BB9-9C81-9A3AEBC168F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7389A9B-5758-4BB9-9C81-9A3AEBC168F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7389A9B-5758-4BB9-9C81-9A3AEBC168F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7389A9B-5758-4BB9-9C81-9A3AEBC168F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3825CEC7-BA04-4B37-81A1-5166CBF4C3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3825CEC7-BA04-4B37-81A1-5166CBF4C3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3825CEC7-BA04-4B37-81A1-5166CBF4C3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3825CEC7-BA04-4B37-81A1-5166CBF4C3FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749E1732-D60E-446A-8B00-C53AF4C9AA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749E1732-D60E-446A-8B00-C53AF4C9AA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749E1732-D60E-446A-8B00-C53AF4C9AA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749E1732-D60E-446A-8B00-C53AF4C9AA73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

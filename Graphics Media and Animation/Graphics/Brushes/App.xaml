@@ -1,0 +1,508 @@
+﻿<Application x:Class="Brushes.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Brushes"
+               xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+
+        <XmlDataProvider x:Key="ExampleData" 
+      XPath="Examples" 
+      Source="sampleResources\TOC.xml" />
+
+        <ImageBrush x:Key="MySteelBrushResource"
+      ImageSource="sampleImages\steel.png" TileMode="Tile" 
+      Viewport="0,0,500,300" ViewportUnits="Absolute"
+      presentationOptions:Freeze="True" />
+
+        <ImageBrush x:Key="MyCloudyGlassBrushResource"
+      ImageSource="sampleImages\clouds.png" 
+      Viewport="0,0,300,300" ViewportUnits="Absolute"
+      TileMode="FlipXY" 
+      presentationOptions:Freeze="True" />
+
+        <LinearGradientBrush x:Key="BlueHorizontalGradientBrush" StartPoint="0,0.5" EndPoint="1,0.5"
+      presentationOptions:Freeze="True">
+            <GradientStop Color="#993333CC" Offset="0.0" />
+            <GradientStop Color="#996666CC" Offset="0.5" />
+        </LinearGradientBrush>
+
+        <DrawingBrush x:Key="CheckeredBackground" 
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile"
+      presentationOptions:Freeze="True">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="White">
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#E2E2E2"
+            Geometry="M 0,0 L0,0.5 0.5,0.5 0.5,1 1,1 1,0.5 0.5,0.5 0.5,0" />
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <GradientStopCollection x:Key="GlassGradientStops"
+      presentationOptions:Freeze="True">
+            <GradientStop Color="WhiteSmoke" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="WhiteSmoke" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="WhiteSmoke" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1" />
+        </GradientStopCollection>
+
+        <LinearGradientBrush x:Key="GlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75" 
+      GradientStops="{StaticResource GlassGradientStops}" 
+      presentationOptions:Freeze="True" />
+
+
+        <!-- Clip Art -->
+        <DrawingImage x:Key="PaperDrawingImage"
+      presentationOptions:Freeze="True">
+            <DrawingImage.Drawing>
+                <DrawingGroup>
+
+                    <GeometryDrawing Brush='#FFF8F8F8' Geometry='F1 M 8.09389,5.42725L 463.301,5.8075L 462.767,6.94836C 410.079,10.7196 356.868,8.03284 303.914,8.04138C 206.197,8.05701 108.479,8.073 10.7622,8.08923L 11.2958,425.252C 27.5178,425.382 52.4569,416.879 59.8917,427.154L 8.09389,427.534L 7.56023,427.154L 8.09389,5.42725 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 71.3319,156.397L 74.267,156.017C 81.7383,169.235 78.3611,184.426 78.1779,198.676C 77.7948,228.474 77.4116,258.272 77.0285,288.07C 76.8529,301.727 71.6647,315.826 76.5017,329.042C 81.4907,342.674 84.5707,356.788 84.9568,370.873C 85.2355,381.041 92.0316,390.618 96.9973,400.154C 101.335,408.483 115.131,415.314 113.391,424.111C 110.891,436.742 77.7553,427.416 59.8583,427.154C 63.6344,419.081 53.1148,410.817 49.0518,402.816C 41.0422,387.042 39.9171,369.763 39.0458,353L 38.5122,352.619C 40.0876,286.758 68.7068,222.241 71.3319,156.397 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 59.3247,426.013L 59.8583,427.154L 59.3247,427.534L 58.2574,426.773L 57.7237,426.393L 59.3247,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 59.3247,426.013L 61.993,426.94L 59.3247,427.534L 58.791,427.154L 59.3247,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 488.383,5.90259L 488.916,6.56799L 487.849,7.32861C 575.453,72.8959 588.888,174.878 613.925,263.635C 598.151,267.093 598.492,242.758 592.905,231.692C 580.759,207.63 573.088,182.454 559.881,158.679C 532.968,110.228 513.75,48.8697 449.96,23.3953C 433.652,16.8831 413.292,28.7743 395.393,32.6169C 358.229,40.5958 319.159,48.389 288.262,65.1306C 294.983,74.9545 318.82,67.3643 334.157,67.4717C 370.418,67.7254 406.667,71.9619 441.955,77.9174C 452.054,79.6218 465.814,78.1228 471.839,84.1443C 476.891,89.1924 478.365,95.6667 480.711,101.637C 483.223,108.027 482.158,115.369 487.015,121.031C 489.851,124.337 497.976,121.726 503.325,121.031C 504.882,126.578 486.979,128.796 488.549,134.341C 491.483,144.698 486.718,156.221 492.652,165.904C 496.803,172.677 513.458,165.158 523.604,163.622C 526.102,172.522 499.755,171.784 492.118,179.047C 487.25,183.677 490.788,190.582 489.817,196.326C 488.796,202.367 481.615,212.159 489.45,214.579C 507.53,220.165 528.453,209.978 548.152,209.588L 548.686,211.157C 527.82,217.794 501.039,217.829 485.181,229.552C 471.11,239.955 475.101,258.811 480.378,272.761C 480.574,273.281 481.235,273.81 481.979,273.902C 483.06,274.036 484.426,273.923 485.181,273.356C 486.207,272.584 486.192,271.355 486.698,270.355C 489.552,264.712 491.842,254.039 500.123,255.114C 508.498,256.202 506.447,266.928 512.931,270.86C 517.028,267.94 515.862,261.11 521.469,260.07C 527.387,258.972 534.468,264.349 539.613,261.995C 549.718,257.372 560.046,249.244 571.899,250.61C 578.337,251.352 588.709,253.677 588.209,258.311C 587.813,261.984 577.869,258.41 572.7,258.358C 563.604,258.267 557.406,265.444 549.219,268.269C 534.617,273.31 518.336,278.948 502.258,277.396C 495.842,276.777 493.066,284.119 487.315,286.237C 468.414,293.201 447.688,316.491 461.7,327.901C 485.202,319.509 508.518,310.633 533.21,304.206C 560.812,297.02 588.157,285.14 617.527,285.857C 624.967,286.039 625.629,294.766 629.301,299.381C 633.775,305.005 643.368,308.962 644.743,315.352C 647.134,326.456 613.652,319.169 598.315,321.769C 559.325,328.379 518.221,329.829 480.911,340.26C 470.844,343.075 453.897,344.55 453.161,352.239L 450.493,351.859C 445.632,303.663 453.871,255.247 454.783,206.931C 455.221,183.698 457.675,159.614 448.192,137.383C 439.76,117.618 441.602,91.4326 418.24,79.2007C 403.791,71.6351 382.506,76.6257 364.575,76.5627C 337.501,76.4675 309.49,74.2296 283.459,79.5335C 238.366,88.7215 188.962,87.1514 145.777,100.187C 129.692,105.043 112.092,106.82 95.0795,109.647C 87.7049,110.872 78.4432,115.773 72.666,112.285C 63.0219,106.461 67.9511,94.5016 63.5939,86.0457L 63.0603,85.6655C 66.4957,75.4474 92.0755,81.1583 106.82,81.0546C 132.453,80.8745 157.629,76.1197 183.132,74.281C 198.076,73.2036 213.768,74.5311 227.959,71.0248C 248.181,66.0286 264.98,55.7117 283.459,48.0181C 321.726,32.087 365.113,22.6686 408.157,15.1481C 434.467,10.551 461.582,3.08899 488.383,5.90259 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 116.959,425.846L 117.493,427.154L 96.6805,427.534L 96.1468,427.154L 116.959,425.846 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 116.959,426.013L 118.56,426.393L 118.027,427.534L 115.892,427.534L 115.358,427.154L 116.959,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFF8F8F8' Geometry='F1 M 144.176,426.393L 143.642,427.534L 116.959,427.534L 116.426,427.154C 122.971,422.489 134.921,426.258 144.176,426.393 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 236.498,137.336L 237.032,138.904C 212.151,146.045 185.075,148.419 159.118,153.236C 148.836,155.144 135.146,162.131 127.632,156.777L 127.099,156.397C 127.288,151.58 123.466,145.723 127.666,141.946C 135.22,135.154 151.913,140.39 164.073,140.215C 188.247,139.866 212.322,137.629 236.498,137.336 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 238.099,300.141C 236.936,304.285 227.358,303.86 221.615,304.913C 208.27,307.361 194.907,309.758 181.531,312.12C 164.109,315.196 141.392,328.579 128.7,319.535L 128.166,319.155C 128.344,314.211 125.923,308.856 128.7,304.324C 133.318,296.788 151.67,302.439 163.209,302.352C 188.192,302.162 213.512,296.978 238.099,300.141 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 239.166,259.071C 235.954,270.515 208.168,266.756 192.205,269.363C 171.087,272.811 145.945,288.571 128.7,279.226L 128.166,278.846C 128.344,273.902 125.923,268.547 128.7,264.015C 132.881,257.192 149.472,262.123 159.919,262.03C 186.369,261.795 212.72,258.679 239.166,259.071 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 237.565,218.738L 238.099,220.283C 212.106,226.025 185.523,230.316 159.118,235.006C 149.176,236.771 135.667,243.509 128.7,238.156L 128.166,237.776C 128.344,233.086 125.985,227.98 128.7,223.706C 133.007,216.923 149.472,221.814 159.919,221.721C 185.836,221.49 211.646,218.903 237.565,218.738 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 238.099,178.453C 237.067,182.13 228.664,181.929 223.557,182.832C 211.084,185.038 198.65,187.353 186.201,189.626C 173.274,191.987 160.331,194.303 147.378,196.587C 141.307,197.658 133.156,200.973 128.7,197.847L 128.166,197.467C 128.344,192.523 125.923,187.168 128.7,182.636C 133.318,175.1 151.67,180.751 163.209,180.663C 188.192,180.474 213.512,175.289 238.099,178.453 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 143.642,426.013L 145.243,426.393L 144.709,427.534L 143.642,427.534L 143.108,427.154L 143.642,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 159.652,426.013L 160.185,427.154L 144.709,427.534L 143.642,426.773L 143.108,426.393L 159.652,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 155.382,426.773L 155.916,427.154L 148.979,427.534L 148.445,427.154L 155.382,426.773 Z '/>
+
+                    <GeometryDrawing Brush='#FFF8F8F8' Geometry='F1 M 451.561,426.393L 451.027,427.534L 155.382,427.534L 154.849,427.154C 188.989,421.698 224.812,425.85 259.801,425.933C 323.721,426.087 387.641,426.24 451.561,426.393 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 167.123,426.013L 167.656,426.393L 159.652,426.773L 159.118,426.393L 167.123,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 471.106,427.154C 465.296,427.315 459.245,427.629 453.695,426.393L 454.762,425.632C 393.024,415.184 327.619,410.681 264.782,416.981C 236.286,419.838 207.444,425.357 178.863,422.97L 178.33,422.59C 180.353,415.38 198.052,418.223 207.681,415.579C 233.116,408.593 260.532,406.039 287.062,401.574C 323.252,395.483 361.516,397.397 397.661,391.17C 416.689,387.892 438.227,384.708 456.363,389.958C 473.114,394.807 459.838,417.078 471.106,427.154 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 275.988,356.042C 277.145,355.218 278.301,354.394 279.457,353.57C 280.613,352.746 281.922,352.018 282.926,351.098C 287.585,346.827 291.151,337.587 298.402,339.191C 306.705,341.027 303.684,351.052 304.939,357.183C 310.331,357.851 312.143,349.617 317.613,349.743C 322.098,349.847 323.921,354.849 328.286,355.59C 333.853,356.536 339.508,353.819 344.83,352.318C 346.075,351.967 347.281,351.534 348.565,351.265C 350.136,350.935 351.777,350.805 353.368,350.528C 364.09,348.661 388.671,353.257 383.553,360.225C 379.949,365.132 367.979,358.063 360.306,358.941C 341.553,361.089 323.638,369.901 304.806,368.139C 299.247,367.619 296.468,361.991 290.931,361.366C 273.886,359.441 251.952,379.857 240.767,370.492L 240.233,370.112C 240.884,366.21 246.579,363.667 249.239,360.225C 255.562,352.043 256.807,338.33 269.584,336.244C 274.32,335.47 280.549,340.051 280.024,343.493C 279.373,347.759 271.703,353.026 275.988,356.042 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 396.594,294.271L 397.128,296.338C 371.098,299.741 344.27,300.229 318.681,305.037C 307.993,307.045 289.089,314.078 285.594,306.606L 285.06,306.226C 285.249,301.409 281.427,295.552 285.627,291.775C 292.195,285.87 306.786,291.059 317.346,291.437C 343.762,292.381 370.178,293.326 396.594,294.271 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 395.527,253.938L 396.06,256.029C 368.532,259.649 340.736,262.147 313.053,265.106C 303.999,266.074 288.489,271.725 285.594,265.536L 285.06,265.156C 285.249,260.593 281.552,254.988 285.627,251.466C 292.298,245.701 306.608,250.745 317.08,251.121C 343.229,252.06 369.378,252.999 395.527,253.938 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 395.527,213.462C 396.554,216.345 388.272,216.746 384.142,217.178C 370.458,218.607 356.766,219.996 343.095,221.487C 328.286,223.104 313.477,224.72 298.669,226.336C 294.33,226.81 286.982,228.194 285.594,225.227L 285.06,224.847C 285.249,220.03 281.427,214.173 285.627,210.396C 292.47,204.243 307.675,210.008 318.681,210.372C 344.309,211.222 369.874,213.157 395.527,213.462 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 394.46,172.511L 394.993,174.65C 370.251,178.604 344.42,178.443 319.748,182.612C 308.648,184.488 289.201,191.869 285.594,184.157L 285.06,183.777C 285.249,179.213 281.552,173.609 285.627,170.087C 292.241,164.371 306.429,169.358 316.813,169.73C 342.695,170.657 368.577,171.584 394.46,172.511 Z '/>
+
+                    <GeometryDrawing Brush='#FF000000' Geometry='F1 M 394.46,132.083L 394.993,134.341C 369.5,137.674 343.78,140.056 318.147,142.79C 307.383,143.938 293.535,149.913 285.594,144.608L 285.06,144.228C 285.238,139.284 282.817,133.929 285.594,129.397C 289.108,123.663 303.159,128.339 311.921,128.752C 339.418,130.047 366.907,131.715 394.46,132.083 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 448.892,426.013L 449.426,426.393L 446.758,426.773L 446.224,426.393L 448.892,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 463.301,427.154C 458.499,427.302 453.164,428.319 448.892,426.749L 448.359,426.393C 453.343,426.184 458.352,426.681 463.301,427.154 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 451.027,426.773L 451.561,427.154L 451.027,427.534L 450.493,427.154L 451.027,426.773 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 459.565,6.18774L 460.099,6.56799L 457.431,6.94836L 456.897,6.56799L 459.565,6.18774 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 492.118,5.8075L 491.585,6.94836C 480.965,6.18811 470.228,7.28064 459.565,6.94836L 459.032,6.56799C 469.634,4.38867 481.091,5.52686 492.118,5.8075 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 464.902,5.42725L 465.436,5.8075L 462.767,6.18774L 462.234,5.8075L 464.902,5.42725 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 470.238,426.013L 473.974,426.393L 473.44,427.534L 470.238,427.534L 469.705,427.154L 470.238,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFF8F8F8' Geometry='F1 M 473.44,426.013L 645.811,425.632L 646.344,320.296L 647.945,320.676L 647.412,427.534L 473.44,427.534L 472.907,427.154L 473.44,426.013 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 492.652,5.42725L 493.186,6.56799L 491.585,6.94836L 490.517,6.18774L 489.984,5.8075L 492.652,5.42725 Z '/>
+
+                    <GeometryDrawing Brush='#FFF8F8F8' Geometry='F1 M 647.412,5.42725L 647.945,314.592L 646.344,314.972L 645.277,6.94836C 610.436,6.94836 575.595,6.94836 540.754,6.94836C 524.361,6.94836 506.248,11.4122 491.585,6.18774L 491.051,5.8075L 647.412,5.42725 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 646.344,319.535L 647.945,319.916L 647.412,321.056L 646.344,321.056L 645.811,320.676L 646.344,319.535 Z '/>
+
+                    <GeometryDrawing Brush='#FFD0D0D0' Geometry='F1 M 646.344,313.451C 648.622,315.074 647.626,318.005 647.412,320.296L 646.344,320.296L 645.811,319.916L 646.344,313.451 Z '/>
+
+                    <GeometryDrawing Brush='#FFF0F0F0' Geometry='F1 M 646.344,313.451L 647.945,314.592L 647.412,314.972L 646.344,314.211L 645.811,313.831L 646.344,313.451 Z '/>
+
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+        <!-- End Clip Art -->
+
+
+        <!-- Styles -->
+        <Style x:Key="MyIntroTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="FontSize" Value="10pt" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="12pt"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="MaxWidth" Value="400"/>
+        </Style>
+
+        <Style x:Key="HeaderRectangleStyle">
+            <Setter Property="Rectangle.RadiusX" Value="0"/>
+            <Setter Property="Rectangle.RadiusY" Value="0"/>
+            <Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Rectangle.VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Rectangle.Margin" Value="0"/>
+            <Setter Property="Rectangle.StrokeThickness" Value="0" />
+        </Style>
+
+        <Style x:Key="FooterRectangleStyle">
+            <Setter Property="Rectangle.RadiusX" Value="0"/>
+            <Setter Property="Rectangle.RadiusY" Value="0"/>
+            <Setter Property="Rectangle.Height" Value="20"/>
+            <Setter Property="Rectangle.HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Rectangle.VerticalAlignment" Value="Bottom" />
+            <Setter Property="Rectangle.Margin" Value="0" />
+        </Style>
+
+        <Style x:Key="CheckeredRectangleStyle">
+            <Setter Property="Rectangle.Fill" Value="{StaticResource CheckeredBackground}"/>
+            <Setter Property="Rectangle.Stroke" Value="Black"/>
+            <Setter Property="Rectangle.StrokeThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="8pt"/>
+        </Style>
+
+        <Style TargetType="{x:Type Canvas}">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="MinWidth" Value="120" />
+        </Style>
+
+        <Style x:Key="MarkerEllipseStyle" 
+      TargetType="{x:Type Ellipse}">
+            <Setter Property="Stroke" Value="Black" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.5" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                    <BeginStoryboard Name="MouseEnterAnimations">
+                        <Storyboard>
+                            <ColorAnimation 
+                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" 
+                From="Black" To="White" Duration="0:0:1"
+                AutoReverse="True" RepeatBehavior="Forever" />
+                            <ColorAnimation 
+                Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" 
+                From="White" To="Black" Duration="0:0:1"
+                AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                    <RemoveStoryboard BeginStoryboardName="MouseEnterAnimations" />
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- TreeView Styles -->
+        <Style x:Key="TreeViewItemRadioButtonStyle" 
+      TargetType="{x:Type TreeViewItem}" >
+            <Setter Property="Margin" Value="2, 2, 2, 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                        <RadioButton 
+              Focusable="False" 
+              IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
+                            <ContentPresenter 
+                Name="PART_Header"
+                ContentSource="Header" />
+                        </RadioButton>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ExpandCollapseToggleStyle"
+              TargetType="{x:Type ToggleButton}">
+            <Setter Property="Focusable"
+              Value="False"/>
+            <Setter Property="MinWidth"
+              Value="19"/>
+            <Setter Property="MinHeight"
+              Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border MinWidth="19"
+                    MinHeight="13"
+                    Background="{StaticResource GlassBrushResource}">
+                            <Border MinWidth="9"
+                      MinHeight="9"
+                      BorderThickness="1"
+                      BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                      Background="Transparent"
+                      SnapsToDevicePixels="true">
+                                <Path x:Name="ExpandPath"
+                  Stretch="Uniform"
+                      Margin="1,1,1,1"
+                      Fill="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"
+                      Data="M 0 2 L 0 3 L 2 3 L 2 5 L 3 5 L 3 3 L 5 3 L 5 2 L 3 2 L 3 0 L 2 0 L 2 2 Z"/>
+                                <Border.BitmapEffect>
+                                    <DropShadowBitmapEffect />
+                                </Border.BitmapEffect>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked"
+                       Value="True">
+                                <Setter Property="Data"
+                        TargetName="ExpandPath"
+                        Value="M 0 2 L 0 3 L 5 3 L 5 2 Z"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TreeViewItemFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border>
+                            <Rectangle Margin="0,0,0,0"
+                StrokeThickness="5"
+                Stroke="{x:Static SystemColors.HighlightBrush}"
+                StrokeDashArray="1 2"
+                Opacity="1" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TreeViewItemHeaderStyle" TargetType="{x:Type TreeViewItem}" >
+            <Setter Property="Margin" Value="2, 2, 2, 0" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Offset="0.0" Color="#22cc99ff" />
+                        <GradientStop Offset="1.0" Color="#37cc99ff" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Rectangle x:Name="outerRectangle" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                Fill="{TemplateBinding Background}" RadiusX="10" RadiusY="10" 
+                StrokeThickness="5" Grid.ColumnSpan="2" Opacity="1" />
+
+                            <Rectangle x:Name="glassCube" 
+                Grid.ColumnSpan="2" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch"
+                StrokeThickness="1" RadiusX="10" RadiusY="10" Opacity="0">
+                                <Rectangle.Fill>
+                                    <ImageBrush x:Name="glassCubeBrush"
+                    ImageSource="sampleImages\clouds.png" 
+                    Viewport="0,0,300,300" ViewportUnits="Absolute"
+                    TileMode="FlipXY" />
+                                </Rectangle.Fill>
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0.0" EndPoint="0.5,1.0">
+                                        <GradientStop Color="Transparent" Offset="0" />
+                                        <GradientStop Color="Gray" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+
+                                <Rectangle.BitmapEffect>
+                                    <BitmapEffectGroup>
+                                        <OuterGlowBitmapEffect x:Name="glowBitmapEffect" GlowColor="Gray" />
+                                        <BevelBitmapEffect BevelWidth="1" />
+                                    </BitmapEffectGroup>
+                                </Rectangle.BitmapEffect>
+                            </Rectangle>
+
+                            <ToggleButton 
+                Name="ExpanderIcon"
+                Grid.Row="0" Grid.Column="0"
+                Style="{StaticResource ExpandCollapseToggleStyle}"
+                IsChecked="{Binding Path=IsExpanded,RelativeSource={RelativeSource TemplatedParent}}"
+                ClickMode="Press" />
+
+                            <Image 
+                Name="ItemIcon"
+                Grid.Row="0" Grid.Column="0"
+                Source="{StaticResource PaperDrawingImage}"
+                Visibility="Hidden"
+                Margin="2" />
+
+                            <ContentPresenter 
+                Name="PART_Header" Grid.Column="1" Margin="10,5,10,5" 
+                TextBlock.Foreground="Black"
+                ContentSource="Header" />
+
+                            <ToggleButton 
+                Name="Expander"   
+               Grid.Column="0" Grid.ColumnSpan="2"
+               Visibility="Visible"
+               IsChecked="{Binding Path=IsExpanded,RelativeSource={RelativeSource TemplatedParent}}"
+               ClickMode="Press">
+                                <ToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Rectangle Fill="Transparent" />
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+
+                            </ToggleButton>
+
+                            <ItemsPresenter x:Name="ItemsHost"
+                 Grid.Row="1"
+                 Grid.Column="1" />
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="true" />
+                                    <Condition Property="IsSelected" Value="False" />
+                                </MultiTrigger.Conditions>
+
+                                <MultiTrigger.EnterActions>
+                                    <RemoveStoryboard BeginStoryboardName="UncheckedBeginStoryboard" />
+                                    <BeginStoryboard Name="MouseOverBeginStoryboard">
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="glassCube"
+                        Storyboard.TargetProperty="Opacity"
+                        To="0.75"
+                        Duration="0:0:0.1" />
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="glassCubeBrush"
+                        Storyboard.TargetProperty="Opacity"
+                        From="0.75" To="0.5" AutoReverse="True"
+                        RepeatBehavior="Forever"
+                        Duration="0:0:0.75" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <RemoveStoryboard BeginStoryboardName="MouseOverBeginStoryboard" />
+
+                                </MultiTrigger.ExitActions>
+                            </MultiTrigger>
+
+                            <EventTrigger RoutedEvent="TreeViewItem.Selected">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                      Storyboard.TargetName="glassCube"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0.75" 
+                      Duration="0:0:0.1" />
+                                        <DoubleAnimation 
+                      Storyboard.TargetName="glassCube"
+                      Storyboard.TargetProperty="StrokeThickness"
+                      To="2"
+                      Duration="0:0:0.1" />
+                                        <ColorAnimation 
+                      Storyboard.TargetName="glowBitmapEffect"
+                      Storyboard.TargetProperty="GlowColor"
+                      To="{x:Static SystemColors.HighlightColor}"
+                      Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="TreeViewItem.Unselected">
+                                <BeginStoryboard Name="UncheckedBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                      Storyboard.TargetName="glassCube"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.1" />
+                                        <DoubleAnimation 
+                      Storyboard.TargetName="glassCube"
+                      Storyboard.TargetProperty="StrokeThickness"
+                      To="1"
+                      Duration="0:0:0.1" />
+                                        <ColorAnimation 
+                      Storyboard.TargetName="glowBitmapEffect"
+                      Storyboard.TargetProperty="GlowColor"
+                      To="{x:Static SystemColors.ControlColor}"
+                      Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Rectangle.Stroke" 
+                    Value="{x:Static SystemColors.HighlightBrush}" 
+                    TargetName="outerRectangle" />
+                                <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                            </Trigger>
+
+                            <Trigger Property="IsExpanded" Value="false">
+                                <Setter TargetName="ItemsHost"
+                        Property="Visibility"
+                        Value="Collapsed"/>
+
+                            </Trigger>
+                            <Trigger Property="HasItems"
+                       Value="False">
+                                <Setter TargetName="Expander"
+                        Property="Visibility"
+                        Value="Hidden"/>
+                                <Setter TargetName="ExpanderIcon"
+                        Property="Visibility"
+                        Value="Hidden"/>
+                                <Setter TargetName="ItemIcon"
+                        Property="Visibility"
+                        Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

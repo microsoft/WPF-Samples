@@ -1,0 +1,328 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Table Sample"
+      x:Class="Table_Samp.Page1"
+      Loaded="CheckLang">
+
+    <TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Table Element" IsSelected="true">
+            <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Table Element Sample</TextBlock>
+    
+            <TextBlock Style="{StaticResource MainContentStyle}">Table defines a typographic table element comprised of a TableHeader, TableBody, and TableFooter. Table content can be spread across multiple TableColumns or paginated across multiple pages.</TextBlock>
+
+            </StackPanel>
+        </TabItem>
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            <TextBlock Name="xamlCheck">
+            <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+&lt;TextFlow>          
+&lt;Table CellSpacing="5">
+	&lt;Table.Columns>
+	&lt;TableColumn />
+	&lt;TableColumn />
+	&lt;TableColumn />
+	&lt;TableColumn />
+   &lt;/Table.Columns>
+   &lt;TableHeader>
+      &lt;TableRow>
+         &lt;TableCell ColumnSpan="4">&lt;TextBlock FontSize="24pt" FontWeight="Bold">Planetary Information&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow>
+         &lt;TableCell>&lt;TextBlock>Planet&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>Distance from Sun&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>Diameter&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>Mass&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+   &lt;/TableHeader>
+
+   &lt;TableBody>
+      &lt;TableRow>
+         &lt;TableCell ColumnSpan="4">&lt;TextBlock FontSize="14pt" FontWeight="Bold">The Inner Planets&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow>
+         &lt;TableCell>&lt;TextBlock>Mercury&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>57,910,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>4,880 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>3.30e23 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow Background="lightgray">
+         &lt;TableCell>&lt;TextBlock>Venus&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>108,200,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>12,103.6 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>4.869e24 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow>
+         &lt;TableCell>&lt;TextBlock>Earth&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>149,600,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>12,756.3 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>5.972e24 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow Background="lightgray">
+         &lt;TableCell>&lt;TextBlock>Mars&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>227,940,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>6,794 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>6.4219e23 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow>
+         &lt;TableCell ColumnSpan="4">&lt;TextBlock FontSize="14pt" FontWeight="Bold">The Outer Planets&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow>
+         &lt;TableCell>&lt;TextBlock>Jupiter&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>778,330,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>142,984 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>1.900e27 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow Background="lightgray">
+         &lt;TableCell>&lt;TextBlock>Saturn&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>1,429,400,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>120,536 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>5.68e26 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow>
+         &lt;TableCell>&lt;TextBlock>Uranus&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>2,870,990,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>51,118 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>8.683e25 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+      &lt;TableRow Background="lightgray">
+         &lt;TableCell>&lt;TextBlock>Neptune&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>4,504,000,000 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>49,532 km&lt;/TextBlock>&lt;/TableCell>
+         &lt;TableCell>&lt;TextBlock>1.0247e26 kg&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+   &lt;/TableBody>
+
+   &lt;TableFooter>
+      &lt;TableRow>
+         &lt;TableCell ColumnSpan="4">&lt;TextBlock FontSize="10pt" FontStyle="Italic">Information from the &lt;Hyperlink 
+NavigateUri="http://encarta.msn.com/encnet/refpages/artcenter.aspx">Encarta&lt;/Hyperlink> web site.&lt;/TextBlock>&lt;/TableCell>
+      &lt;/TableRow>
+   &lt;/TableFooter>
+&lt;/Table>
+&lt;/TextFlow>
+        </TextBox>
+            </TextBlock>   
+                </ScrollViewer>
+        </TabItem>
+         <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="C#" />
+            </TabControl>  
+        </TabItem>
+        
+         <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+            <TabControl TabStripPlacement="Right">
+                <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+                <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+            </TabControl>
+         </TabItem> 
+    
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+        <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+        <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+        <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+          <FlowDocumentPageViewer>
+<FlowDocument>       
+<Table CellSpacing="5">
+  <Table.Columns>
+    <TableColumn />
+    <TableColumn />
+    <TableColumn />
+    <TableColumn />
+  </Table.Columns>
+    <TableRowGroup>
+      <TableRow>
+         <TableCell ColumnSpan="4"><Paragraph FontSize="24pt" FontWeight="Bold">Planetary Information</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow>
+         <TableCell>
+             <Paragraph FontSize="14pt" FontWeight="Bold">Planet</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph FontSize="14pt" FontWeight="Bold">Distance from Sun</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph FontSize="14pt" FontWeight="Bold">Diameter</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph FontSize="14pt" FontWeight="Bold">Mass</Paragraph>
+         </TableCell>
+      </TableRow>
+
+
+      <TableRow>
+         <TableCell ColumnSpan="4">
+             <Paragraph FontSize="14pt" FontWeight="Bold">The Inner Planets</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow>
+         <TableCell>
+             <Paragraph>
+                 Mercury</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 57,910,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 4,880 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 3.30e23 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+         <TableCell>
+             <Paragraph>
+                 Venus</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 108,200,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 12,103.6 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 4.869e24 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow>
+         <TableCell>
+             <Paragraph>
+                 Earth</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 149,600,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 12,756.3 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 5.972e24 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+         <TableCell>
+             <Paragraph>
+                 Mars</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 227,940,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 6,794 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 6.4219e23 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow>
+         <TableCell ColumnSpan="4">
+             <Paragraph FontSize="14pt" FontWeight="Bold">The Outer Planets</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow>
+         <TableCell>
+             <Paragraph>
+                 Jupiter</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 778,330,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 142,984 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 1.900e27 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+         <TableCell>
+             <Paragraph>
+                 Saturn</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 1,429,400,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 120,536 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 5.68e26 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow>
+         <TableCell>
+             <Paragraph>
+                 Uranus</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 2,870,990,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 51,118 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 8.683e25 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+      <TableRow Background="lightgray">
+         <TableCell>
+             <Paragraph>
+                 Neptune</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 4,504,000,000 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 49,532 km</Paragraph>
+         </TableCell>
+         <TableCell>
+             <Paragraph>
+                 1.0247e26 kg</Paragraph>
+         </TableCell>
+      </TableRow>
+
+      <TableRow>
+         <TableCell ColumnSpan="4">
+             <Paragraph FontSize="10pt" FontStyle="Italic">Information from the <Hyperlink 
+NavigateUri="http://encarta.msn.com/encnet/refpages/artcenter.aspx">Encarta</Hyperlink> web site.</Paragraph>
+         </TableCell>
+      </TableRow>
+   </TableRowGroup>
+</Table>
+
+</FlowDocument>
+</FlowDocumentPageViewer>
+        </TabItem>
+    </TabControl>
+</Page>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Images/Image_1.png" Id="RDC67DF8AE8C8D048" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Images/Image_2.png" Id="R270804FE5551FE47" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Images/Image_3.png" Id="R37CA29BDE04EEF44" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Images/Image_4.png" Id="REA576CD87B742846" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Images/Image_5.png" Id="R80CF6DBF74A32045" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/3b85141b-0969-4d9e-b9c8-e705bb7e6543.ODTTF"
+                Id="R8098101D3BB5B24A" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/3f87ce81-fb61-4ea7-8d62-aed569d1b895.ODTTF"
+                Id="R8D83C24281770841" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/64326a24-1829-4393-8602-67e5b520db43.ODTTF"
+                Id="R17245E7E245EA446" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/33c063c8-1259-4322-acc8-8fc1964cc064.ODTTF"
+                Id="RB3A5253B7F55A94A" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/required-resource"
+                Target="../Resources/Fonts/9aa4ea89-755c-4331-be84-0cd43ff87195.ODTTF"
+                Id="R18CB07A4C058DF42" />
+  <Relationship Type="http://schemas.microsoft.com/xps/2005/06/storyfragments"
+                Target="../Documents/0/Structure/Fragments/2.frag"
+                Id="R933300a7cdf846ec" />
+</Relationships>

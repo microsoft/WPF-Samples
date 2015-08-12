@@ -1,0 +1,566 @@
+﻿<Window x:Class="GraphingCalculatorDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphingCalculatorDemo"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Width="450"
+        MinWidth="450"
+        Height="640"
+        MinHeight="640" Loaded="OnLoaded" SizeChanged="WindowSizeChanged">
+    <Grid Name="calculator">
+        <Grid.Resources>
+            <RadialGradientBrush x:Key="Brush" GradientOrigin="0,0" Center="0.5,0.5" RadiusX="1.2" RadiusY="1.2">
+                <RadialGradientBrush.GradientStops>
+                    <GradientStop Color="white" Offset="0" />
+                    <GradientStop Color="gray" Offset="1" />
+                </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="5,5,5,5" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="BorderBrush" Value="black" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Background" Value="LinearGradient 0,0 0.03,.9 #ffcccccc #ffeeeeee" />
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="FontFamily" Value="Courier New" />
+
+            </Style>
+        </Grid.Resources>
+       
+        
+
+
+        <Rectangle StrokeThickness="2" Stroke="Black" Fill="{StaticResource Brush}" RadiusX="10" RadiusY="10" />
+        <TextBlock Margin="0,1.5,15,0" HorizontalAlignment="Right">
+            <Bold>MS-82</Bold>
+        </TextBlock>
+
+        <Grid Background="#00000000" Margin="10,10,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="325" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+
+            <Border Grid.ColumnSpan="3" Margin="5,5,5,5" BorderBrush="Black" BorderThickness="1.5">
+                <Grid Name="screen" Background="#ffeeeeee" ClipToBounds="True" MouseLeftButtonDown="OnCanvasClickStart"
+                      MouseLeftButtonUp="OnCanvasClickFinish" MouseMove="OnCanvasMouseMove"
+                      MouseRightButtonDown="OnCanvasRightClick">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                   
+                    <!-- The following couple of items are placed in the same spot, but only one is visible at a time -->
+
+                    <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="1" Name="screenText" IsReadOnly="True"
+                             VerticalScrollBarVisibility="Visible" />
+                    <Grid Grid.Row="1">
+                        <!-- The purpose of the parent grid is to stretch the canvas -->
+                        <Canvas Name="screenCanvas" Visibility="Collapsed" ClipToBounds="True" />
+                    </Grid>
+                    <Rectangle Name="selection" Grid.Row="1" Visibility="Collapsed" Stroke="Black" Fill="#00000000"
+                               StrokeDashOffset="5" StrokeThickness=".99" HorizontalAlignment="Left"
+                               VerticalAlignment="Top" StrokeDashArray="3 3" />
+                    <Grid Name="function" Grid.Row="1" Visibility="Collapsed">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLines" Value="1" />
+                                <Setter Property="Margin" Value="5,0,5,0" />
+                                <Setter Property="FontFamily" Value="Courier New" />
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,5" />
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,0" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <!-- grab the leftover space -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Name="yLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Column="1" Name="y" MaxLines="1" TabIndex="0" />
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Button Click="Graph" Grid.Column="1" Content="Graph it!" TabIndex="2" />
+                        </Grid>
+                    </Grid>
+                    <Grid Name="functions2D" Grid.Row="1" Visibility="Collapsed">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLines" Value="1" />
+                                <Setter Property="Margin" Value="5,0,5,0" />
+                                <Setter Property="FontFamily" Value="Courier New" />
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,5" />
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,0" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <!-- grab the leftover space -->
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Name="xtLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Column="1" Name="xt" MaxLines="1" TabIndex="0" />
+                        <TextBlock Grid.Row="1" Name="ytLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="1" Grid.Column="1" Name="yt" MaxLines="1"
+                                 TabIndex="1" />
+                        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="SpiralClicked" Grid.Column="1" Content="Spiral" TabIndex="2" />
+                            <Button Click="EllipseClicked" Grid.Column="2" Content="Ellipse" TabIndex="2" />
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="Graph" Grid.Column="1" Content="Graph it!" TabIndex="2" />
+                        </Grid>
+                    </Grid>
+                    <Grid Name="functions3D" Grid.Row="1" Visibility="Collapsed">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLines" Value="1" />
+                                <Setter Property="Margin" Value="5,0,5,0" />
+                                <Setter Property="FontFamily" Value="Courier New" />
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,5" />
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,0" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <!-- grab the leftover space -->
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Name="fxLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Column="1" Name="fx" MaxLines="1" TabIndex="0" />
+                        <TextBlock Grid.Row="1" Name="fyLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="1" Grid.Column="1" Name="fy" MaxLines="1"
+                                 TabIndex="1" />
+                        <TextBlock Grid.Row="2" Name="fzLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="2" Grid.Column="1" Name="fz" MaxLines="1"
+                                 TabIndex="2" />
+                        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="SphereClicked" Grid.Column="1" Content="Sphere" TabIndex="3" />
+                            <Button Click="ConeClicked" Grid.Column="2" Content="Cone" TabIndex="3" />
+                            <Button Click="TorusClicked" Grid.Column="3" Content="Torus" TabIndex="3" />
+                        </Grid>
+                        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="Graph" Grid.Column="1" Content="Solid Mesh" TabIndex="3" />
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="options" Grid.Row="1" Visibility="Collapsed">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLines" Value="1" />
+                                <Setter Property="Margin" Value="5,0,5,0" />
+                                <Setter Property="FontFamily" Value="Courier New" />
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,5" />
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,0" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Name="xMinLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="0" Grid.Column="1" Name="xMin" MaxLines="1" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Name="xMaxLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="1" Grid.Column="1" Name="xMax" MaxLines="1" />
+                        <TextBlock Grid.Row="2" Grid.Column="0" Name="yMinLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="2" Grid.Column="1" Name="yMin" MaxLines="1" />
+                        <TextBlock Grid.Row="3" Grid.Column="0" Name="yMaxLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="3" Grid.Column="1" Name="yMax" MaxLines="1" />
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="SaveOptions" Content="Save" />
+                            <Button Click="ResetOptions" Grid.Column="1" Content="Reset" />
+                        </Grid>
+                    </Grid>
+                    <Grid Name="options2D" Grid.Row="1" Visibility="Collapsed">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLines" Value="1" />
+                                <Setter Property="Margin" Value="5,0,5,0" />
+                                <Setter Property="FontFamily" Value="Courier New" />
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,5" />
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,0" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Name="xMin2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="0" Grid.Column="1" Name="xMin2D" MaxLines="1" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Name="xMax2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="1" Grid.Column="1" Name="xMax2D" MaxLines="1" />
+                        <TextBlock Grid.Row="2" Grid.Column="0" Name="yMin2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="2" Grid.Column="1" Name="yMin2D" MaxLines="1" />
+                        <TextBlock Grid.Row="3" Grid.Column="0" Name="yMax2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="3" Grid.Column="1" Name="yMax2D" MaxLines="1" />
+                        <TextBlock Grid.Row="4" Grid.Column="0" Name="tMin2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="4" Grid.Column="1" Name="tMin2D" MaxLines="1" />
+                        <TextBlock Grid.Row="5" Grid.Column="0" Name="tMax2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="5" Grid.Column="1" Name="tMax2D" MaxLines="1" />
+                        <TextBlock Grid.Row="6" Grid.Column="0" Name="tStep2DLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="6" Grid.Column="1" Name="tStep2D" MaxLines="1" />
+                        <Grid Grid.Row="7">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="SaveOptions2D" Content="Save" />
+                            <Button Click="ResetOptions2D" Grid.Column="1" Content="Reset" />
+                        </Grid>
+                    </Grid>
+                    <Grid Name="options3D" Grid.Row="1" Visibility="Collapsed">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="MaxLines" Value="1" />
+                                <Setter Property="Margin" Value="5,0,5,0" />
+                                <Setter Property="FontFamily" Value="Courier New" />
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,5" />
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Margin" Value="5,5,5,0" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Name="uMinLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="0" Grid.Column="1" Name="uMin" MaxLines="1" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Name="uMaxLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="1" Grid.Column="1" Name="uMax" MaxLines="1" />
+                        <TextBlock Grid.Row="2" Grid.Column="0" Name="uGridLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="2" Grid.Column="1" Name="uGrid" MaxLines="1" />
+                        <TextBlock Grid.Row="3" Grid.Column="0" Name="vMinLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="3" Grid.Column="1" Name="vMin" MaxLines="1" />
+                        <TextBlock Grid.Row="4" Grid.Column="0" Name="vMaxLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="4" Grid.Column="1" Name="vMax" MaxLines="1" />
+                        <TextBlock Grid.Row="5" Grid.Column="0" Name="vGridLabel" />
+                        <TextBox GotFocus="OnTextBoxGotFocus" Grid.Row="5" Grid.Column="1" Name="vGrid" MaxLines="1" />
+                        <Grid Grid.Row="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Click="SaveOptions3D" Content="Save" />
+                            <Button Click="ResetOptions3D" Grid.Column="1" Content="Reset" />
+                        </Grid>
+                    </Grid>
+
+
+                    <Menu Grid.Row="0" Name="menu">
+                        <MenuItem Header="Graph">
+                            <MenuItem Name="graphNone" Click="ShowFunctionNone" />
+                            <MenuItem Name="graph" Click="ShowFunction" />
+                            <MenuItem Name="graph2D" Click="ShowFunction2D" />
+                            <MenuItem Name="graph3D" Click="ShowFunction3D" />
+                        </MenuItem>
+                        <MenuItem Header="Graph Options">
+                            <MenuItem Name="graphOptions" Click="ShowOptions" />
+                            <MenuItem Name="graphOptions2D" Click="ShowOptions2D" />
+                            <MenuItem Name="graphOptions3D" Click="ShowOptions3D" />
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+            </Border>
+
+            <TextBox
+                GotFocus="OnTextBoxGotFocus"
+                Name="immediate"
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                TextBlock.TextAlignment="Right"
+                Margin="5,0,5,0"
+                MaxLines="1"
+                Background="#ffeeeeee" />
+
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="5,5,0,0" />
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0.03,0.9">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Offset="0.0" Color="#FF808080" />
+                                        <GradientStop Offset="1.0" Color="#FFA0A0A0" />
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Height" Value="25" />
+                        <Setter Property="Width" Value="38" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="Foreground" Value="#ffe0e0e0" />
+                    </Style>
+                </Grid.Resources>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Content="sin" Click="AppendSin" />
+                <Button Grid.Row="0" Grid.Column="1" Content="cos" Click="AppendCos" />
+                <Button Grid.Row="0" Grid.Column="2" Content="tan" Click="AppendTan" />
+                <Button Grid.Row="0" Grid.Column="3"
+                        Click="AppendPow2">
+                    <Button.ToolTip>
+                        square a number (CTL-2)
+                    </Button.ToolTip>
+                    <Button.Content>
+                        <TextBlock>x<Span Typography.Variants="Superscript">2</Span></TextBlock>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Row="0" Grid.Column="4" Click="AppendPow">
+                    <Button.ToolTip>
+                        raise a number to the yth power (^)
+                    </Button.ToolTip>
+                    <TextBlock>
+                        x<Span Typography.Variants="Superscript">y</Span>
+                    </TextBlock>
+                </Button>
+                <Button Grid.Row="0" Grid.Column="5" FontFamily="Times New Roman" Content="?" Click="AppendPi" />
+                <Button Grid.Row="0" Grid.Column="6" Content="e" Click="AppendE" />
+
+                <Button Grid.Row="1" Grid.Column="0" Content="x" Click="AppendX" />
+                <Button Grid.Row="1" Grid.Column="1" Content="t" Click="AppendT" />
+                <Button Grid.Row="1" Grid.Column="2" Content="u" Click="AppendU" />
+                <Button Grid.Row="1" Grid.Column="3" Content="v" Click="AppendV" />
+                <Button Grid.Row="1" Grid.Column="4" Content="d/dx" Click="Differentiate" />
+            </Grid>
+
+            <Grid Grid.Row="4" Grid.Column="1">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Width" Value="50" />
+                        <Setter Property="Height" Value="30" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="OFF" Background="red" BorderBrush="DarkRed"
+                        Foreground="lightgray" Click="Off" />
+                <Button Grid.Row="0" Grid.Column="1" Content="C" Click="Clear" />
+                <Button Grid.Row="0" Grid.Column="2" Content="M+" Click="MemoryAppend" />
+                <Button Grid.Row="0" Grid.Column="3" Content="MR" Click="MemoryRecall" />
+                <Button Grid.Row="0" Grid.Column="4" Content="MC" Click="MemoryClear" />
+
+                <Button Grid.Row="1" Grid.Column="0" Content="7" Click="Append7" />
+                <Button Grid.Row="1" Grid.Column="1" Content="8" Click="Append8" />
+                <Button Grid.Row="1" Grid.Column="2" Content="9" Click="Append9" />
+                <Button Grid.Row="1" Grid.Column="3" Content="(" Click="AppendLParen" />
+                <Button Grid.Row="1" Grid.Column="4" Content=")" Click="AppendRParen" />
+
+                <Button Grid.Row="2" Grid.Column="0" Content="4" Click="Append4" />
+                <Button Grid.Row="2" Grid.Column="1" Content="5" Click="Append5" />
+                <Button Grid.Row="2" Grid.Column="2" Content="6" Click="Append6" />
+                <Button Grid.Row="2" Grid.Column="3" Content="*" Click="AppendMult" />
+                <Button Grid.Row="2" Grid.Column="4" Content="/" Click="AppendDiv" />
+
+                <Button Grid.Row="3" Grid.Column="0" Content="1" Click="Append1" />
+                <Button Grid.Row="3" Grid.Column="1" Content="2" Click="Append2" />
+                <Button Grid.Row="3" Grid.Column="2" Content="3" Click="Append3" />
+                <Button Grid.Row="3" Grid.Column="3" Content="+" Click="AppendAdd" />
+                <Button Grid.Row="3" Grid.Column="4" Content="-" Click="AppendMinus" />
+
+                <Button Grid.Row="4" Grid.Column="0" Content="0" Click="Append0" />
+                <Button Grid.Row="4" Grid.Column="1" Content="." Click="AppendDecimal" />
+                <Button Grid.Row="4" Grid.Column="2" Content="+/-" Click="AppendNegate" />
+                <Button Grid.Row="4" Grid.Column="3" Content="=" Click="ComputeAnswer" />
+                <Button Grid.Row="4" Grid.Column="4" Content="ANS" Click="AppendAns" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

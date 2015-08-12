@@ -1,0 +1,29 @@
+﻿<Window x:Class="DropShadow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ink="clr-namespace:System.Windows.Ink;assembly=PresentationCore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Background="Beige">
+        <Canvas RenderTransform="1,0,0,1,3,3">
+            <Canvas.Background>
+                <VisualBrush
+                    Visual="{Binding ElementName=inkCanvas1}"
+                    Opacity="0.50" />
+            </Canvas.Background>
+        </Canvas>
+
+        <InkCanvas Name="inkCanvas1" Background="Transparent">
+            <InkCanvas.DefaultDrawingAttributes>
+                <ink:DrawingAttributes Color="Black" Width="5" Height="5" />
+            </InkCanvas.DefaultDrawingAttributes>
+
+            <InkCanvas.Strokes>
+                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
+            </InkCanvas.Strokes>
+        </InkCanvas>
+
+    </Grid>
+</Window>

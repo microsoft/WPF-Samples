@@ -1,0 +1,45 @@
+<!-- Displays the different animation examples. -->
+<Window  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="KeyFrameAnimation.SampleViewer"
+    Title="KeyFrames Example (Markup)">
+
+    
+    <DockPanel>
+    <TabControl Background="White">
+      
+      <TabItem Header="Key Frame Animations">  
+        <Frame Source="KeyFramesIntroduction.xaml" />
+      </TabItem>      
+      <TabItem Header="InterpolationMethods Sample">  
+        <Frame Source="InterpolationMethodsExample.xaml" />
+      </TabItem>
+      <TabItem Header="DoubleAnimationUsingKeyFrames Sample">
+        <Frame Source="DoubleAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="ThicknessAnimationUsingKeyFrames Sample">
+        <Frame Source="ThicknessAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="PointAnimationUsingKeyFrames Sample">
+        <Frame Source="PointAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="ColorAnimationUsingKeyFrames Sample">
+        <Frame Source="ColorAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="BooleanAnimationUsingKeyFrames Sample">
+        <Frame Source="BooleanAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="StringAnimationUsingKeyFrames Sample">
+        <Frame Source="StringAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="RectAnimationUsingKeyFrames Sample">
+        <Frame Source="RectAnimationUsingKeyFramesExample.xaml" />
+      </TabItem>
+      <TabItem Header="KeyTimes Sample">
+        <Frame Source="KeyTimesExample.xaml" />
+      </TabItem>
+    </TabControl>
+   
+    </DockPanel>
+</Window>

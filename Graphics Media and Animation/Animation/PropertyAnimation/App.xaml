@@ -1,0 +1,40 @@
+﻿<Application x:Class="PropertyAnimation.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PropertyAnimation"
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+        <Style TargetType="{x:Type Canvas}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile"
+              AlignmentX="Left" AlignmentY="Top">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <DrawingGroup.Children>
+                                    <GeometryDrawing Brush="#99FFFFFF">
+                                        <GeometryDrawing.Geometry>
+                                            <RectangleGeometry Rect="0,0,1,1" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#99CCCCFF" />
+                                    <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#99CCCCFF" />
+                                </DrawingGroup.Children>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Application.Resources>
+</Application>

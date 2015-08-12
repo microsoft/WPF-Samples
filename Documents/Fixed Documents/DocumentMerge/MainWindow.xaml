@@ -1,0 +1,178 @@
+﻿<Window x:Class="DocumentMerge.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DocumentMerge"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="525" Drop="Window_OnDrop" AllowDrop="False" >
+
+    <Grid Name="MyGrid">
+        <Grid.Resources>
+            <Style x:Key="MyListBoxStyle" TargetType="{x:Type ListBox}">
+                <Setter Property="SelectionMode" Value="Extended"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBox}">
+                            <Border Background="{TemplateBinding Panel.Background}"
+                      BorderBrush="{TemplateBinding Border.BorderBrush}"
+                      BorderThickness="{TemplateBinding Border.BorderThickness}">
+                                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                    <VirtualizingStackPanel x:Name="StackPanel1" IsItemsHost="True"
+                                          Orientation="Horizontal"/>
+                                </ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="DestListBoxItem" TargetType="{x:Type ListBoxItem}">
+                <EventSetter Event="Drop" Handler="DestItem_Drop" HandledEventsToo="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
+                      Opacity="50" Width="80" Height="100" Margin="2" >
+                                <Rectangle Fill="{Binding Path=PageBrush, Mode=OneWay}" Width="80" Height="100"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="BorderBrush" Value="Blue" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="3" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="100" TargetName="myBorder"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="false">
+                                    <Setter Property="BorderBrush" Value="Gray" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="1" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="50" TargetName="myBorder"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SourceListBoxItem" TargetType="{x:Type ListBoxItem}">
+                <EventSetter Event="PreviewMouseLeftButtonDown"
+                     Handler ="rect_PreviewMouseLeftButtonDown"
+                     HandledEventsToo="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
+                      Opacity="50" Width="80" Height="100" Margin="2">
+                                <Rectangle Fill="{Binding Path=PageBrush, Mode=OneWay}" Width="80" Height="100"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="BorderBrush" Value="Blue" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="3" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="100" TargetName="myBorder"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="false">
+                                    <Setter Property="BorderBrush" Value="Gray" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="1" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="50" TargetName="myBorder"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="DestPageListBoxItem" TargetType="{x:Type ListBoxItem}">
+                <EventSetter Event="Drop" Handler="DestPageItem_Drop" HandledEventsToo="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
+                      Opacity="50" Width="80" Height="100" Margin="2" >
+                                <Rectangle Fill="{Binding Path=PageBrush, Mode=OneWay}" Width="80" Height="100"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="BorderBrush" Value="Blue" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="3" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="100" TargetName="myBorder"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="false">
+                                    <Setter Property="BorderBrush" Value="Gray" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="1" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="50" TargetName="myBorder"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SourcePageListBoxItem" TargetType="{x:Type ListBoxItem}">
+                <EventSetter Event="PreviewMouseLeftButtonDown"
+                     Handler ="page_PreviewMouseLeftButtonDown" HandledEventsToo="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
+                      Opacity="50" Width="80" Height="100" Margin="2" >
+                                <Rectangle Fill="{Binding Path=PageBrush, Mode=OneWay}" Width="80" Height="100"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="BorderBrush" Value="Blue" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="3" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="100" TargetName="myBorder"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="false">
+                                    <Setter Property="BorderBrush" Value="Gray" TargetName="myBorder"/>
+                                    <Setter Property="BorderThickness" Value="1" TargetName="myBorder"/>
+                                    <Setter Property="Opacity" Value="50" TargetName="myBorder"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ListBox AllowDrop="True" Drop="DestDocList_OnDrop" Margin="5,5,5,5"
+             Name="dest" SelectionChanged="DestSelected" Grid.Row="1"
+             ItemContainerStyle="{DynamicResource DestListBoxItem}"
+             Style="{DynamicResource MyListBoxStyle}"
+             PreviewKeyUp="DestList_PreviewKeyUp"/>
+
+        <ListBox AllowDrop="True"  Drop="DestPageList_OnDrop" Margin="5,5,5,5"
+             ItemContainerStyle="{DynamicResource DestPageListBoxItem}"
+             Name="destPage" Grid.Row="2"
+             Style="{DynamicResource MyListBoxStyle}"
+             PreviewKeyUp="DestPageList_PreviewKeyUp"/>
+
+        <ListBox ItemContainerStyle="{DynamicResource SourcePageListBoxItem}"
+             Margin="5,5,5,5" Name="sourcePage" Grid.Row="3"
+             Style="{DynamicResource MyListBoxStyle}"/>
+
+        <ListBox Name="source" SelectionChanged="SourceSelected"
+             Margin="5,5,5,5" Grid.Row="4"
+             ItemContainerStyle="{DynamicResource SourceListBoxItem}"
+             Style="{DynamicResource MyListBoxStyle}"/>
+
+        <Menu HorizontalAlignment="Left" Background="White">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..." Click="OpenCommandHandler"/>
+                <MenuItem Name="menuFileSave" IsEnabled="False"
+                  Header="_Save As..." Click="SaveCommandHandler"/>
+                <MenuItem Header="_Exit" Click="CloseCommandHandler"/>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>

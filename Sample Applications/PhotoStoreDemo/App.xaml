@@ -1,0 +1,11 @@
+﻿<Application x:Class="PhotoStoreDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PhotoStoreDemo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ObjectDataProvider x:Name="PhotosODP" x:Key="Photos" ObjectType="{x:Type local:PhotoList}" />
+        <ObjectDataProvider x:Name="ShoppingCartODP" x:Key="ShoppingCart" ObjectType="{x:Type local:PrintList}" />
+        <ObjectDataProvider x:Name="PrintTypesODP" x:Key="PrintTypes" ObjectType="{x:Type local:PrintTypeList}" />
+    </Application.Resources>
+</Application>

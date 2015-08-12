@@ -1,0 +1,105 @@
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Geometery.ShapeGeometriesExample"
+    Title="Shape Geometries"
+  >
+  <Page.Resources>
+    <Style TargetType="{x:Type Border}">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+  </Page.Resources>
+  
+  
+    <StackPanel Orientation="Horizontal" Background="White">
+    
+    
+      <StackPanel Margin="10">
+        <TextBlock>LineGeometry</TextBlock>
+        <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1">
+            <Path.Data>
+              <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+            </Path.Data>
+          </Path>
+        </Border>    
+      
+        <TextBlock>EllipseGeometry</TextBlock>
+        <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            <Path.Data>
+              <EllipseGeometry Center="40,70" RadiusX="30" RadiusY="30" />
+            </Path.Data>
+          </Path>
+        </Border> 
+        
+        <TextBlock>RectangleGeometry</TextBlock>
+        <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            <Path.Data>
+              <RectangleGeometry Rect="30,55 100 30" />
+            </Path.Data>
+          </Path>
+        </Border>         
+      </StackPanel>
+      
+      <StackPanel Margin="10">
+        
+        <TextBlock MaxWidth="400" Margin="0,10,0,0">
+          <Span>You can create composite shapes from multiple geometries using a GeometryGroup.
+          The following example creates a composite shape from a line, an ellipse, and a rectangle. 
+          The GeometryGroup has a FillRule of EvenOdd.
+          </Span>
+        </TextBlock>
+        
+        
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="0,0,0,10" xml:space="preserve">
+<![CDATA[<GeometryGroup FillRule="EvenOdd">
+  <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+  <EllipseGeometry Center="40,70" 
+    RadiusX="30" RadiusY="30" />
+  <RectangleGeometry Rect="30,55 100 30" />
+</GeometryGroup>]]>       
+        </TextBlock>
+        <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            <Path.Data>
+              <GeometryGroup FillRule="EvenOdd">
+                <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+                <EllipseGeometry Center="40,70" RadiusX="30" RadiusY="30" />              
+                <RectangleGeometry Rect="30,55 100 30" />
+              </GeometryGroup>
+            </Path.Data>
+          </Path>
+        </Border>   
+        
+        <TextBlock MaxWidth="400" Margin="0,10,0,0">
+          <Span>The following example is identical to the previous example, except that
+          the GeometryGroup's FillRule is set to Nonzero instead of EvenOdd.</Span>
+        </TextBlock>
+         
+        <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="0,0,0,10" xml:space="preserve">
+<![CDATA[<GeometryGroup FillRule="Nonzero">
+  <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+  <EllipseGeometry Center="40,70" 
+    RadiusX="30" RadiusY="30" />
+  <RectangleGeometry Rect="30,55 100 30" />
+</GeometryGroup>]]>       
+        </TextBlock>
+        <Border Height="150" Width="250" BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyGridBrushResource}">
+          <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+            <Path.Data>
+              <GeometryGroup FillRule="Nonzero">
+                <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+                <EllipseGeometry Center="40,70" RadiusX="30" RadiusY="30" />              
+                <RectangleGeometry Rect="30,55 100 30" />
+              </GeometryGroup>
+            </Path.Data>
+          </Path>
+        </Border>           
+      
+      
+      </StackPanel>
+    
+    </StackPanel>
+</Page>

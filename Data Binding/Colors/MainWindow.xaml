@@ -1,0 +1,182 @@
+﻿<Window x:Class="Colors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Colors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!-- ************************   RESOURCES   ************************************ -->
+    <Window.Resources>
+        <local:ColorItemList x:Key="ColorList"/>
+
+        <local:ByteToDoubleConverter x:Key="ByteToDouble"/>
+        <local:DoubleToStringConverter x:Key="DoubleToString"/>
+        <local:SourceToBoolConverter x:Key="SourceToBool"/>
+        <local:LuminanceToBrushConverter x:Key="LuminanceToBrush"/>
+
+        <DataTemplate x:Key="ColorItemTemplate">
+            <Border Width="170" Height="30"
+        Background="{Binding Path=Brush}">
+                <TextBlock
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Foreground="{Binding Path=Luminance, Converter={StaticResource LuminanceToBrush}}"
+          Text="{Binding Path=Name}"/>
+            </Border>
+        </DataTemplate>
+
+        <!-- override default theme that uses Width=100% -->
+        <Style x:Key="ListItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Margin" Value="3,0,0,0"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style TargetType="{x:Type Slider}">
+            <Setter Property="Width" Value="100"/>
+        </Style>
+
+    </Window.Resources>
+
+    <!-- ************************   PAGE LAYOUT   ************************************ -->
+
+    <DockPanel DataContext="{Binding Source={StaticResource ColorList}}">
+
+        <!-- Control panel -->
+        <DockPanel DockPanel.Dock="Top" Background="Aqua">
+
+            <!-- Identification / general -->
+            <DockPanel Width="Auto">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Name:</Label>
+                    <TextBox Width="110" Height="20" Text="{Binding Path=Name}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Hex value:</Label>
+                    <TextBlock Text="{Binding Path=Brush.Color}"
+            HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Source:</Label>
+                    <TextBlock Text="{Binding Path=Source}"
+          HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label Width="85">Luminance:</Label>
+                    <Slider Minimum="0.0" Maximum="1.0" IsEnabled="False" Width="50"
+            Value="{Binding Path=Luminance}"/>
+                    <Label Width="35"
+            Content="{Binding Path=Luminance, Converter={StaticResource DoubleToString}}"
+            HorizontalAlignment="Left"/>
+                </StackPanel>
+            </DockPanel>
+
+            <!-- RGB properties -->
+            <DockPanel Width="Auto" DockPanel.Dock="Left">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Alpha:</Label>
+                    <Slider Name="slider" Minimum="0" Maximum="255" Width="50"
+            Value="{Binding Path=Alpha, Converter={StaticResource ByteToDouble}}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Width="35" Content="{Binding Path=Alpha}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Red:</Label>
+                    <Slider Minimum="0" Maximum="255" Width="50"
+            Value="{Binding Path=Red, Converter={StaticResource ByteToDouble}}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Width="35"  Content="{Binding Path=Red}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Green:</Label>
+                    <Slider Minimum="0" Maximum="255" Width="50"
+            Value="{Binding Path=Green, Converter={StaticResource ByteToDouble}}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Width="35" Content="{Binding Path=Green}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Blue:</Label>
+                    <Slider Minimum="0" Maximum="255" Width="50"
+            Value="{Binding Path=Blue, Converter={StaticResource ByteToDouble}}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Width="35" Content="{Binding Path=Blue}"/>
+                </StackPanel>
+            </DockPanel>
+
+            <!-- HSV properties -->
+            <DockPanel Width="Auto" DockPanel.Dock="Left">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Hue:</Label>
+                    <Slider Minimum="0.0" Maximum="360.0" Width="50"
+            Value="{Binding Path=Hue}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Content="{Binding Path=Hue, Converter={StaticResource DoubleToString}}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Saturation:</Label>
+                    <Slider Minimum="0.0" Maximum="1.0" Width="50"
+            Value="{Binding Path=Saturation}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Width="35" Content="{Binding Path=Saturation, Converter={StaticResource DoubleToString}}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Label>Value:</Label>
+                    <Slider Name="slider2" Minimum="0.0" Maximum="1.0" Width="50"
+            Value="{Binding Path=Value}"
+            IsEnabled="{Binding Path=Source, Converter={StaticResource SourceToBool}}"/>
+                    <Label Width="35" Content="{Binding Path=Value, Converter={StaticResource DoubleToString}}"/>
+                </StackPanel>
+            </DockPanel>
+            <Button DockPanel.Dock="Top" Width="75" Height="25" Click="OnNewColorClicked">New Color</Button>
+        </DockPanel>
+
+        <!-- Color List Display -->
+        <DockPanel Background="FloralWhite">
+            <!-- Sorting -->
+            <StackPanel Orientation="Vertical" Margin="50" DockPanel.Dock="Left">
+                <Label HorizontalAlignment="Left" FontSize="14">Sort by:</Label>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Name</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Luminance</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Red</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Green</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Blue</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Hue</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Saturation</RadioButton>
+                <RadioButton GroupName="SortBy" Checked="OnSortByChanged">Value</RadioButton>
+            </StackPanel>
+
+            <!-- Color list -->
+            <ListBox Name="colorListBox" Height="455" Width="200" DockPanel.Dock="Left"
+        ItemsSource="{Binding}"
+        ItemTemplate = "{StaticResource ColorItemTemplate}"
+        ItemContainerStyle="{StaticResource ListItemStyle}"
+        IsSynchronizedWithCurrentItem="True"/>
+
+            <DockPanel DockPanel.Dock="Left">
+                <!-- Color Tile -->
+                <Border
+          Width="100" Height="100" Background="{Binding Path=Brush}">
+                    <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Foreground="{Binding Path=Luminance, Converter={StaticResource LuminanceToBrush}}"
+            Text="{Binding Path=Name}"/>
+                </Border>
+            </DockPanel>
+
+        </DockPanel>
+
+    </DockPanel>
+</Window>

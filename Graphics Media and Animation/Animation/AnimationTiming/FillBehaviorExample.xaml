@@ -1,0 +1,43 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="AnimationTiming.FillBehaviorExample" 
+  WindowTitle="FillBehavior Example">
+  <StackPanel Margin="20" Background="{StaticResource MyGridBrushResource}">
+
+    <Border Background="#99FFFFFF">
+      <TextBlock Margin="20">
+              This example shows how the FillBehavior property determines how an animation behaves
+              after it reaches the end of its duration.
+      </TextBlock>
+    </Border>
+      
+    <TextBlock>FillBehavior="Deactivate"</TextBlock>
+    <Rectangle Name="deactiveAnimationRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+      
+    <TextBlock Margin="0,20,0,0">FillBehavior="HoldEnd" </TextBlock>
+    <Rectangle Name="holdEndAnimationRectangle" Width="20" Height="20" Fill="#AA3333FF" HorizontalAlignment="Left" />
+    
+    <!-- Create a button to restart the animations. -->
+    <Button Margin="0,30,0,0" HorizontalAlignment="Left">Restart Animations
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+
+              <!-- The animated rectangle's width reverts back to its non-animated value
+                   after the animation ends. -->
+              <DoubleAnimation 
+                Storyboard.TargetName="deactiveAnimationRectangle" 
+                Storyboard.TargetProperty="(Rectangle.Width)" 
+                From="100" To="400" Duration="0:0:2" FillBehavior="Stop" />
+
+              <DoubleAnimation Storyboard.TargetName="holdEndAnimationRectangle" 
+                Storyboard.TargetProperty="(Rectangle.Width)"  
+                From="100" To="400" Duration="0:0:2" FillBehavior="HoldEnd" />     
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>     
+    </Button>
+  </StackPanel>
+</Page>

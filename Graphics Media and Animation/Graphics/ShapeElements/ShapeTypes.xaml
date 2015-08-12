@@ -1,0 +1,208 @@
+﻿<!-- This example shows how to use an ImageBrush to fill text. -->
+<Page     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.ShapeTypes">
+    <Page.Resources>
+      <Style TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{StaticResource MyGridBrushResource}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+      </Style>
+      <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="0,10,0,0" />
+      </Style>
+    </Page.Resources>
+<ScrollViewer HorizontalAlignment="Stretch">
+<Grid>
+  <Grid.ColumnDefinitions>
+    <ColumnDefinition />
+    <ColumnDefinition />
+  </Grid.ColumnDefinitions>
+  <Grid.RowDefinitions>
+    <RowDefinition Height="Auto"/>
+    <RowDefinition Height="Auto" />
+    <RowDefinition Height="Auto" />
+    <RowDefinition Height="Auto" />
+    <RowDefinition Height="Auto" />
+    <RowDefinition Height="Auto" />
+    <RowDefinition Height="Auto" />
+  </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" Grid.Column="0">Ellipses</TextBlock>
+
+    <!-- Draws several Ellipse elements within a Canvas. -->
+      <Border Grid.Row="1" Grid.Column="0">
+      <Canvas Height="200" Width="250"  HorizontalAlignment="Left">
+
+        <Ellipse
+          Width="100"
+          Height="50"
+          Fill="#CCCCFF"
+          Canvas.Left="10"
+          Canvas.Top="25" />
+
+        <Ellipse
+          Width="100"
+          Height="50"
+          Fill="#CCCCFF"
+          Stroke="Black"
+          StrokeThickness="4"
+          Canvas.Left="10"
+          Canvas.Top="100"/>
+
+        <Ellipse
+          Width="50"
+          Height="50"
+          Fill="#CCCCFF"
+          Canvas.Left="135"
+          Canvas.Top="25"/>
+
+        <Ellipse
+        Width="50"
+        Height="50"
+          Stroke="Black"
+          StrokeThickness="4"
+          Canvas.Left="135"
+        Canvas.Top="100" />
+
+      </Canvas>
+      </Border>
+
+
+  <TextBlock Grid.Row="0" Grid.Column="1">Rectangles</TextBlock>
+
+  <!-- Draws several Rectangle elements within a Canvas. -->
+  <Border Grid.Row="1" Grid.Column="1">
+    <Canvas Height="200" Width="250"  HorizontalAlignment="Left">
+
+      <Rectangle
+        Width="100"
+        Height="50"
+        Fill="#CCCCFF"
+        Canvas.Left="10"
+        Canvas.Top="25" />
+
+      <Rectangle
+        Width="100"
+        Height="50"
+        Fill="#CCCCFF"
+        Stroke="Black"
+        StrokeThickness="4"
+        Canvas.Left="10"
+        Canvas.Top="100"/>
+
+      <Rectangle
+        Width="100"
+        Height="50"
+        RadiusX="20"
+        RadiusY="20"
+        Fill="#CCCCFF"
+        Canvas.Left="135"
+        Canvas.Top="25"/>
+
+      <Rectangle
+      Width="100"
+      Height="50"
+      RadiusX="20"
+      RadiusY="20"
+        Stroke="Black"
+        StrokeThickness="4"
+        Canvas.Left="135"
+      Canvas.Top="100" />
+
+    </Canvas>
+  </Border>
+    <TextBlock Grid.Row="2" Grid.Column="0">Polygons</TextBlock>
+
+    <!-- Draws several Polygon elements within a Canvas. -->
+  <Border Grid.Row="3" Grid.Column="0">
+  <Canvas Height="300" Width="270"  HorizontalAlignment="Left">
+
+        <Polygon
+          Points="10,110 60,10 110,110"
+          Fill="#CCCCFF" />
+
+        <Polygon
+        Points="10,110 60,10 110,110"
+          Fill="#CCCCFF"
+          Stroke="Black"
+          StrokeThickness="4"
+          Canvas.Top="150" />
+
+        <Polygon
+        Points="10,110 110,110 110,10"
+          Fill="#CCCCFF"
+          Canvas.Left="150" />
+
+        <Polygon
+        Points="10,110 110,110 110,10"
+        Stroke="Black"
+        StrokeThickness="4"
+          Canvas.Left="150"
+          Canvas.Top="150" />
+
+
+    </Canvas>
+  </Border>
+
+
+    <TextBlock Grid.Row="2" Grid.Column="1">Polylines</TextBlock>
+
+      <!-- Draws several Polyline elements within a Canvas. -->
+  <Border Grid.Row="3" Grid.Column="1">  
+    <Canvas Height="150" Width="300"  HorizontalAlignment="Left" 
+      VerticalAlignment="Top">
+
+          <Polyline
+          Points="10,110 60,10 110,110"
+            Stroke="Black"
+            StrokeThickness="4" />
+
+          <Polyline
+          Points="10,110 110,110 110,10"
+          Stroke="Black"
+          StrokeThickness="4"
+            Canvas.Left="150" />
+    </Canvas>
+  </Border>
+
+    <TextBlock Grid.Row="4" Grid.Column="0">Lines</TextBlock>
+
+  <Border Grid.Row="5" Grid.Column="0">
+      <!-- Draws several Line elements within a Canvas. -->
+      <Canvas Height="100"  Width="250"  HorizontalAlignment="Left">
+
+            <Line
+            X1="10" Y1="10"
+            X2="50" Y2="50"
+            Stroke="Black"
+            StrokeThickness="4" />
+
+          <Line
+            X1="10" Y1="10"
+            X2="50" Y2="50"
+            Stroke="Black"
+            StrokeThickness="4"
+            Canvas.Left="100" />
+
+    </Canvas>
+  </Border>
+
+    <TextBlock Grid.Row="4" Grid.Column="1">Path</TextBlock>
+
+    <!-- Draws a Path element within a Canvas. -->
+  <Border Grid.Row="5" Grid.Column="1">  
+    <Canvas Height="150" Width="310"  HorizontalAlignment="Left">
+      <Path
+        Data="M10,100 C 100,0 200,200 300,100 z"
+        Fill="#CCCCFF"
+        Stroke="Black"
+        StrokeThickness="4" />
+
+      </Canvas>
+   </Border>
+
+</Grid>
+    </ScrollViewer>
+</Page>

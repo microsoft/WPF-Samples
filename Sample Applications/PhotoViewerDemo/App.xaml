@@ -1,0 +1,9 @@
+﻿<Application x:Class="PhotoViewerDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PhotoViewerDemo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ObjectDataProvider x:Key="Photos" ObjectType="{x:Type local:PhotoCollection}" />
+    </Application.Resources>
+</Application>

@@ -1,0 +1,62 @@
+<!-- This example animates an object (ellipse) along a triangular path. Three key frames are used to move along each of the three lines of the triangle.
+     The first key frame is a LinearPointKeyFrame which moves the ellipse steadily from its starting position. The second key frame is a DiscretePointKeyFrame
+     which moves the ellipse suddently (jumps) to the next position. The last key frame is a SplinePointKeyFrame which moves the ellipse back to the starting 
+     position. This spline key frame causes the ellipse to move slowly at first and then speed up. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  WindowTitle="PointAnimationUsingPath Example">
+    <Canvas>
+      <Path Fill="Blue" Margin="15,15,15,15">
+        <Path.Data>
+
+          <!-- Describes an ellipse. -->
+          <EllipseGeometry x:Name="MyAnimatedEllipseGeometry"
+            Center="200,100" RadiusX="15" RadiusY="15" />
+        </Path.Data>
+        <Path.Triggers>
+          <EventTrigger RoutedEvent="Path.Loaded">
+            <BeginStoryboard Name="MyBeginStoryboard">
+              <Storyboard>
+
+                <!-- Animating the Center property uses 3 KeyFrames, which animate
+                the ellipse allong a triangular path. -->
+                <PointAnimationUsingKeyFrames
+                Storyboard.TargetProperty="Center"
+                Storyboard.TargetName="MyAnimatedEllipseGeometry"
+                Duration="0:0:5" FillBehavior="HoldEnd" RepeatBehavior="Forever">
+                  <PointAnimationUsingKeyFrames.KeyFrames>
+
+                    <!-- Over the first half second, Using a LinearPointKeyFrame, the ellipse 
+                    moves steadily from its starting position along the first line of the 
+                    trianglar path.  -->
+                    <LinearPointKeyFrame KeyTime="0:0:0.5">
+                      <LinearPointKeyFrame.Value>
+                        <Point X="100" Y="300" />
+                      </LinearPointKeyFrame.Value>
+                    </LinearPointKeyFrame>
+
+                    <!-- Using a DiscretePointKeyFrame, the ellipse suddenly changes position
+                    after the first second of the animation. -->
+                    <DiscretePointKeyFrame KeyTime="0:0:1">
+                      <DiscretePointKeyFrame.Value>
+                        <Point X="400" Y="300" />
+                      </DiscretePointKeyFrame.Value>
+                    </DiscretePointKeyFrame>
+
+                    <!-- Using a SplinePointKeyFrame, the ellipse moves back to its starting
+                    position. It moves slowly at first and then speeds up. This key frame 
+                    takes 2 seconds to complete. -->
+                    <SplinePointKeyFrame KeySpline="0.6,0.0 0.9,0.00" KeyTime="0:0:3">
+                      <SplinePointKeyFrame.Value>
+                        <Point X="200" Y="100" />
+                      </SplinePointKeyFrame.Value>
+                    </SplinePointKeyFrame>
+                  </PointAnimationUsingKeyFrames.KeyFrames>
+                </PointAnimationUsingKeyFrames>
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger>
+        </Path.Triggers>
+      </Path>
+    </Canvas>
+</Page>

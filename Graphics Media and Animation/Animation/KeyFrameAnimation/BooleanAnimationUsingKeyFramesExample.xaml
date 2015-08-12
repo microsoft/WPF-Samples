@@ -1,0 +1,36 @@
+<!-- Demonstrates a BooleanAnimationUsingKeyFrames. The animation is used to
+     animate the IsEnabled property of a button. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="KeyFrameBoolean Animation Example">
+
+
+  <StackPanel Orientation="Vertical" Margin="20">
+  
+    <TextBlock>
+        Click the button to animate the its IsEnabled property with a 
+        BooleanAnimationUsingKeyFrames animation.
+    </TextBlock>
+  
+    <Button Name="myAnimatedButton" Margin="200">Click Me
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+              <BooleanAnimationUsingKeyFrames 
+                Storyboard.TargetName="myAnimatedButton" Storyboard.TargetProperty="(Button.IsEnabled)"
+                Duration="0:0:4" FillBehavior="HoldEnd">
+                <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0" />
+                <DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:1" />
+                <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:2" />
+                <DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:3" />
+                <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:3.5" />
+                <DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:4" />
+              </BooleanAnimationUsingKeyFrames>            
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+  </StackPanel>
+</Page>

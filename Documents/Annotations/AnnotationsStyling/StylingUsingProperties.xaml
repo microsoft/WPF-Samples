@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Change the background of a StickyNote.-->
+  <Style x:Key="OverrideBackground" TargetType="{x:Type StickyNoteControl}">
+    <Setter Property="Background" Value="Yellow"/>
+  </Style>
+
+  <!-- Change the behavior of a StickyNote. -->
+  <Style x:Key="OverrideSimpleBehavior" TargetType="{x:Type StickyNoteControl}">
+
+    <!-- Set a default transform on the note. -->
+    <Setter Property="RenderTransform">
+      <Setter.Value>
+        <ScaleTransform ScaleX=".5" ScaleY=".5"/>
+      </Setter.Value>
+    </Setter>
+
+    <!-- Add a trigger that changes the default transform when clicked in. -->
+    <Style.Triggers>
+      <Trigger Property="StickyNoteControl.IsActive" Value="True">
+        <Setter Property="RenderTransform">
+          <Setter.Value>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+    </Style.Triggers>
+
+  </Style>
+
+</ResourceDictionary>

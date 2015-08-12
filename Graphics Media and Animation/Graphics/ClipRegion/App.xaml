@@ -1,0 +1,13 @@
+<!-- If you change the root element of this file, be sure to change the class that is subclassed in Application.xaml.cs -->
+<Application 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="app"
+    StartupUri="ClipExample.xaml">
+    <Application.Resources>
+    
+      <ImageBrush x:Key="MyScissorsBrushResource" ImageSource="sampleImages\scissors.jpg"
+        Opacity="0.10"  TileMode="Tile" Viewport="0,0,200,256" ViewportUnits="Absolute" />
+    </Application.Resources>
+
+</Application>

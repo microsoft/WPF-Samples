@@ -1,0 +1,87 @@
+﻿<Window x:Class="DataBindingDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBindingDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Style.Triggers>
+                <Trigger Property="Selector.IsSelected" Value="True">
+                    <Setter Property="Background" Value="Moccasin" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="GroupingHeaderTemplate">
+            <TextBlock Text="{Binding Path=Name}"
+                       Foreground="Navy" FontWeight="Bold" FontSize="12" />
+        </DataTemplate>
+
+        <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="#333333" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <CollectionViewSource
+            Source="{Binding Source={x:Static Application.Current}, Path=AuctionItems}"
+            x:Key="ListingDataView" />
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
+                   Style="{StaticResource TitleStyle}" Margin="8,20,8,8">
+            List of items for sale:
+        </TextBlock>
+        <CheckBox Name="Grouping" Grid.Row="1" Grid.Column="0"
+                  Checked="AddGrouping" Unchecked="RemoveGrouping"
+                  Margin="8" Style="{StaticResource CheckBoxStyle}">
+            Group by category
+        </CheckBox>
+        <CheckBox Name="Filtering" Grid.Row="1" Grid.Column="1"
+                  Checked="AddFiltering" Unchecked="RemoveFiltering"
+                  Margin="8" Style="{StaticResource CheckBoxStyle}">
+            Show only bargains
+        </CheckBox>
+        <CheckBox Name="Sorting" Grid.Row="1" Grid.Column="3"
+                  Checked="AddSorting" Unchecked="RemoveSorting"
+                  Margin="8" Style="{StaticResource CheckBoxStyle}">
+            Sort by category and date
+        </CheckBox>
+
+
+        <ListBox Name="Master" Grid.Row="2" Grid.ColumnSpan="3" Margin="8"
+                 ItemsSource="{Binding Source={StaticResource ListingDataView}}">
+            <ListBox.GroupStyle>
+                <GroupStyle
+                    HeaderTemplate="{StaticResource GroupingHeaderTemplate}" />
+            </ListBox.GroupStyle>
+        </ListBox>
+
+
+        <ContentControl Name="Detail" Grid.Row="3" Grid.ColumnSpan="3"
+                        Content="{Binding Source={StaticResource ListingDataView}}"
+                        ContentTemplate="{StaticResource DetailsProductListingTemplate}"
+                        Margin="9,0,0,0" />
+        <Button Name="OpenAddProduct" Grid.Row="4" Grid.Column="1" Content="Add Product" HorizontalAlignment="Center"
+                Margin="8"
+                Click="OpenAddProductWindow" />
+    </Grid>
+</Window>

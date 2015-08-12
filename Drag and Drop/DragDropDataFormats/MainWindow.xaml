@@ -1,0 +1,52 @@
+﻿<Window x:Class="DragDropDataFormats.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragDropDataFormats"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel 
+        Grid.Column="0" Grid.Row="0" 
+        Orientation="Horizontal"
+      >
+            <Button
+          Name="btClear" Click="ClickClear" Content="Clear Format Info"
+          ToolTip="Click to clear the contents of the drop window." 
+          Margin="5" VerticalAlignment="Center"
+        />
+            <CheckBox
+          Name="cbAutoConvert" 
+          ToolTip="Check this checkbox to include non-native data formats that data in the dropped object can be auto-converted to.  Clear this checkbox to only show native data-formats." 
+          Content="Include Auto-convertable Data Formats" 
+          IsChecked="True" Margin="5" VerticalAlignment="Center"
+        />
+        </StackPanel>
+
+        <TextBlock
+        Name="lblEventSelectionTitle"
+        Grid.Column="0" Grid.Row="1"
+        Background="#CC0088FF" FontWeight="Bold" TextWrapping="Wrap"  
+      >
+        Drop text or other content from another application (i.e. highlighted content from an HTML or Word file)
+        into the TextBox below to display data formats present in the dropped content.
+        </TextBlock>
+        <TextBox
+        Name="tbDropTarget"
+        Grid.Column="0" Grid.Row="2" 
+        ToolTip="Drop text or other content from another application (i.e. highlighted content from an HTML or Word file) 
+        into the TextBox below to display data formats present in the dropped content." 
+        AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Focusable="False"
+        AllowDrop="True" TextWrapping="Wrap"
+        PreviewDrop="EhPreviewDrop"
+        DragEnter="EhDragEnter"
+      />
+    </Grid>
+</Window>

@@ -1,0 +1,101 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowTitle="Windows Presentation Foundation Samples Gallery"
+        x:Class="Guide.Page1"
+        Background="sc#1.000000, 0.769689, 0.831936, 1.000000" 
+        Loaded="SetXaml">
+    <Grid>
+        <Grid.Resources>
+        <XmlDataProvider x:Key="XamlDefault" XPath="InitialSyntax">
+          <x:XData>
+            <InitialSyntax xmlns="" >
+              <Syntax>
+                <![CDATA[
+<Border Background="LightSkyBlue" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Padding="10" BorderBrush="Black" BorderThickness="4" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <TextBlock FontSize="12">Welcome to XAMLPad! Input XAML in the TextBox to change the rendered output.</TextBlock>
+    </StackPanel>
+</Border>]]>
+              </Syntax>
+            </InitialSyntax>
+          </x:XData>
+        </XmlDataProvider>
+        </Grid.Resources>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="30" />
+      </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Margin="5"   Style="{StaticResource MainContentStyle}">© Microsoft Corporation 2005. All rights reserved.</TextBlock>
+        <TabControl Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0" Background="sc#1.000000, 0.769689, 0.831936, 1.000000">
+            <TabItem Header="XAMLPad" Margin="10,0,0,0">
+                <TabItem.Content>
+                    <Grid Margin="20,20,20,0">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"  x:Name="PreviewRow" />
+                        <RowDefinition Height="0.5*"  x:Name="CodeRow" />
+                        <RowDefinition Height="40"  x:Name="ButtonRow" />
+                      </Grid.RowDefinitions>
+                        <Rectangle Fill="white" RadiusX="14" RadiusY="14" Margin="0,0,0,8" StrokeDashArray="2"/>
+                        <Grid Name="cc" Grid.Row="0" Margin="0,0,0,8" ClipToBounds="True" />
+                        <Rectangle Height="16" VerticalAlignment="bottom" >
+                            <Shape.Fill>
+                                <RadialGradientBrush>
+                                    <GradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="sc#0.300000, 0.000000, 0.000000, 0.000000" Offset="0.019230769230769232" />
+                                            <GradientStop Color="#FFFFFFFF" Offset="1" />
+                                        </GradientStopCollection>
+                                    </GradientBrush.GradientStops>
+                                    <Brush.RelativeTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <TransformCollection>
+                                                    <TranslateTransform X="-0.0052816901408450721" Y="0.5185185185185186" />
+                                                </TransformCollection>
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Brush.RelativeTransform>
+                                </RadialGradientBrush>
+                            </Shape.Fill>
+                        </Rectangle>
+                        <TextBox Name="TextBox1" TextChanged="HandleTextChanged"   Margin="0,20,0,0"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  FontFamily="Consolas" FontSize="12pt" BorderBrush="transparent" Grid.Row="1" AcceptsTab="True" AcceptsReturn="True" DataContext="{Binding Source={StaticResource XamlDefault}, XPath=/InitialSyntax}" Text="{Binding XPath=Syntax}" />
+                        <TextBlock Name="ErrorText" Margin="100,5,60,0" TextTrimming="WordEllipsis" Foreground="red" FontSize="10pt" FontWeight="bold" />
+                    </Grid>                
+                </TabItem.Content>
+            </TabItem>           
+            <TabItem Name="TabItem1" Header="Samples" IsSelected="True">
+                <TabItem.Content>
+                    <Grid Background="sc#1.000000, 0.769689, 0.831936, 1.000000">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                        <Rectangle Fill="white" RadiusX="14" RadiusY="14" Margin="10" Grid.ColumnSpan="2"  Stroke="sc#1.000000, 0.250141, 0.333404, 0.884413" StrokeDashArray="2"/>
+                        <Grid Margin="20" >
+                            <Rectangle Margin="7" Fill="sc#1.000000, 0.769689,  0.831936, 1.000000" RadiusX="10" RadiusY="10" Stroke="sc#1.000000, 0.250141, 0.333404, 0.884413" StrokeDashArray="2" />
+                                <Frame Name="frame1" Source="TOC.xaml" Margin="15" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackPanel Margin="20">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="right">
+                                    <ComboBox IsEditable="False"  Margin="10" Name="myCombo" SelectionChanged="SelectLang">
+                                        <ComboBoxItem Name="cbItem5">Show All (no filtering)</ComboBoxItem>
+                                        <ComboBoxItem Name="cbItem1">XAML</ComboBoxItem>
+                                        <ComboBoxItem Name="cbItem6">XAML + C#</ComboBoxItem>
+                                        <ComboBoxItem Name="cbItem7">XAML + Visual Basic.NET</ComboBoxItem>
+                                        <ComboBoxItem Name="cbItem2">C#</ComboBoxItem>
+                                        <ComboBoxItem Name="cbItem3">Visual Basic.NET</ComboBoxItem>
+                                        <ComboBoxItem Name="cbItem4">Managed C++</ComboBoxItem>
+                                    </ComboBox>
+                                   
+                                    <TextBlock Name="tb1" Visibility="collapsed"  Style="{StaticResource MainContentStyle}" Width="10"/>
+                                </StackPanel>
+                                <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="frame2" Source="welcome.xaml" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

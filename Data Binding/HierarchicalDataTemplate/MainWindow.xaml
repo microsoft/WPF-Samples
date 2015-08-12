@@ -1,0 +1,38 @@
+﻿<Window x:Class="HierarchicalDataTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HierarchicalDataTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <DockPanel.Resources>
+            <local:ListLeagueList x:Key="MyList"/>
+
+            <HierarchicalDataTemplate DataType    = "{x:Type local:League}"
+                                ItemsSource = "{Binding Path=Divisions}">
+                <TextBlock Text="{Binding Path=Name}"/>
+            </HierarchicalDataTemplate>
+
+            <HierarchicalDataTemplate DataType    = "{x:Type local:Division}"
+                                ItemsSource = "{Binding Path=Teams}">
+                <TextBlock Text="{Binding Path=Name}"/>
+            </HierarchicalDataTemplate>
+
+            <DataTemplate DataType="{x:Type local:Team}">
+                <TextBlock Text="{Binding Path=Name}"/>
+            </DataTemplate>
+        </DockPanel.Resources>
+
+        <Menu Name="menu1" DockPanel.Dock="Top" Margin="10,10,10,10">
+            <MenuItem Header="My Soccer Leagues"
+                  ItemsSource="{Binding Source={StaticResource MyList}}" />
+        </Menu>
+
+        <TreeView>
+            <TreeViewItem ItemsSource="{Binding Source={StaticResource MyList}}" Header="My Soccer Leagues" />
+        </TreeView>
+
+    </DockPanel>
+</Window>

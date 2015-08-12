@@ -1,0 +1,65 @@
+﻿<Window x:Class="CollectionViewSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CollectionViewSource"
+        xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:Places x:Key="Places"/>
+        <CollectionViewSource Source="{StaticResource Places}" x:Key="Cvs">
+            <CollectionViewSource.SortDescriptions>
+                <componentModel:SortDescription PropertyName="CityName"/>
+            </CollectionViewSource.SortDescriptions>
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="State"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+
+
+        <XmlDataProvider x:Key="MyTasks" XPath="Tasks/Task">
+            <x:XData>
+                <Tasks xmlns="">
+                    <Task Name="Groceries" Priority="2" Type="Home">
+                        <Description>Pick up Groceries and Detergent</Description>
+                    </Task>
+                    <Task Name="Laundry" Priority="2" Type="Home">
+                        <Description>Do Laundry</Description>
+                    </Task>
+                    <Task Name="Email" Priority="1" Type="Work">
+                        <Description>Email Clients</Description>
+                    </Task>
+                    <Task Name="Clean" Priority="3" Type="Work">
+                        <Description>Clean my office</Description>
+                    </Task>
+                    <Task Name="Dinner" Priority="1" Type="Home">
+                        <Description>Get ready for family reunion</Description>
+                    </Task>
+                    <Task Name="Proposals" Priority="2" Type="Work">
+                        <Description>Review new budget proposals</Description>
+                    </Task>
+                </Tasks>
+            </x:XData>
+        </XmlDataProvider>
+        <CollectionViewSource x:Key="MySortedTasks"
+                              Source="{StaticResource MyTasks}">
+            <CollectionViewSource.SortDescriptions>
+                <componentModel:SortDescription PropertyName="@Priority" />
+            </CollectionViewSource.SortDescriptions>
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="@Priority" />
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+    </Window.Resources>
+    <DockPanel>
+        <ListBox ItemsSource="{Binding Source={StaticResource Cvs}}"
+             DisplayMemberPath="CityName" Name="lb">
+            <ListBox.GroupStyle>
+                <x:Static Member="GroupStyle.Default"/>
+            </ListBox.GroupStyle>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Source={StaticResource MySortedTasks}}" />
+    </DockPanel>
+</Window>

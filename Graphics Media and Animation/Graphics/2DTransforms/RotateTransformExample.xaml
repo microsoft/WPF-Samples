@@ -1,0 +1,271 @@
+<!-- <Snippet11> -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Microsoft.Samples.Graphics.Transforms.RotateTransformExample"
+  WindowTitle="RotateTransform Example">
+
+  <StackPanel Orientation="Horizontal">
+    
+    <StackPanel Margin="10">
+      <TextBlock Margin="0,10,0,0">No rotation</TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+        
+          <Polyline 
+            Points="25,25 0,50 25,75 50,50 25,25 25,0" 
+            Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50" /> 
+        </Canvas>
+      </Border>
+      
+      <TextBlock Margin="0,10,0,0">Center: 25,50<LineBreak/>Angle:45</TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+        
+          <!-- Rotates the Polyline 45 degrees about the point (25,50). -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" 
+            Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50">
+            <Polyline.RenderTransform>
+              <RotateTransform CenterX="25" CenterY="50" Angle="45" />
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Shows the original position of the polyline. -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Opacity="0.25" Canvas.Left="75" Canvas.Top="50" />           
+        </Canvas>
+      </Border>
+      
+      <TextBlock Margin="0,10,0,0">Center: 0,0<LineBreak/>Angle: 45</TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+          
+          <!-- Rotates the Polyline 45 degrees about the point (0,0). -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" 
+            Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50">
+            <Polyline.RenderTransform>
+              <RotateTransform CenterX="0" CenterY="0" Angle="45" />
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Shows the original position of the polyline. -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Opacity="0.25" Canvas.Left="75" Canvas.Top="50" />            
+        </Canvas>
+      </Border>         
+    </StackPanel>
+    
+    <!-- 
+        //
+        // RenderTransform Origin Examples
+        //      
+     -->
+    <StackPanel Margin="10">
+      <TextBlock Margin="0,10,0,0">RenderTransformOrigin: (0.5,0.5)<LineBreak/>Angle: 45</TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+          
+          <!-- Rotates the Polyline 45 degrees about its center. -->
+          <Polyline 
+            Points="25,25 0,50 25,75 50,50 25,25 25,0" 
+            Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50"
+            RenderTransformOrigin="0.5,0.5">
+            <Polyline.RenderTransform>
+              <RotateTransform Angle="45" />
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Shows the original position of the polyline. -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Opacity="0.25" Canvas.Left="75" Canvas.Top="50" />            
+        </Canvas>
+      </Border>     
+      <TextBlock Margin="0,10,0,0">RenderTransformOrigin: (0.25,0.25)<LineBreak/>Angle: 45</TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+          
+          <!-- Rotates the Polyline 45 degrees about the 
+            relative origin (0.25,0.25). -->
+          <Polyline 
+            Points="25,25 0,50 25,75 50,50 25,25 25,0" 
+            Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50"
+            RenderTransformOrigin="0.25,0.25">
+            <Polyline.RenderTransform>
+              <RotateTransform Angle="45" />
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Shows the original position of the polyline. -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Opacity="0.25" Canvas.Left="75" Canvas.Top="50" />            
+        </Canvas>
+      </Border>       
+    </StackPanel>
+ 
+    <!-- 
+        //
+        // Animation Examples
+        //      
+     -->    
+    <StackPanel Margin="10">
+      <TextBlock Width="200" Margin="0,10,0,0"
+        HorizontalAlignment="Left">
+        The angle of the RotateTransform used in this example is animated from 0 to 360.
+        Its center is (25,50).
+      </TextBlock>
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+          <Polyline
+            Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50">
+            <Polyline.RenderTransform>
+              <RotateTransform x:Name="AnimatedRotateTransform1" CenterX="25" CenterY="50" Angle="0" />
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Marks the position of the rotate transform's center. -->
+          <Ellipse Fill="Black" Width="10" Height="10"
+            Canvas.Left="95" Canvas.Top="95" />
+        </Canvas>
+      </Border> 
+
+      <TextBlock Width="200" Margin="0,10,0,0"
+        HorizontalAlignment="Left">Both the angle and the center of this RotateTransform are animated.
+       The angle is animated from 0 to 360 and the center is animated from (0,0) to (25,50).</TextBlock>      
+      <Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left">
+        <Canvas Height="200" Width="200">
+          <Polyline
+            Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50">
+            <Polyline.RenderTransform>
+              <RotateTransform x:Name="AnimatedRotateTransform2" CenterX="0" CenterY="0" Angle="0" />
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Marks the position of the rotate transform's center. -->
+          <Path  Fill="Black" Canvas.Left="75" Canvas.Top="50">
+            <Path.Data>
+              <EllipseGeometry x:Name="animatedCenterMarker" 
+                Center="0,0" RadiusX="5" RadiusY="5" />
+            </Path.Data>
+          </Path>
+                
+        </Canvas>
+      </Border>
+      
+      <StackPanel Orientation="Horizontal">
+        <Button Margin="0,0,2,0" Name="startButton">Start</Button> 
+        <Button Name="stopButton">Stop</Button>
+        <StackPanel.Triggers>
+          <EventTrigger RoutedEvent="Button.Click" SourceName="startButton">
+            <BeginStoryboard Name="myBeginStoryboard">
+              <Storyboard>
+                <ParallelTimeline  RepeatBehavior="Forever">
+                  <DoubleAnimation 
+                    Storyboard.TargetName="AnimatedRotateTransform1" 
+                    Storyboard.TargetProperty="(RotateTransform.Angle)" 
+                    RepeatBehavior="Forever" 
+                    From="0" To="360" Duration="0:0:5" />
+                  
+                  <ParallelTimeline RepeatBehavior="Forever">
+
+                    <DoubleAnimation 
+                      Storyboard.TargetName="AnimatedRotateTransform2" 
+                      Storyboard.TargetProperty="Angle"
+                      From="0" To="360" Duration="0:0:2.5" RepeatBehavior="4x" />
+                    <DoubleAnimation 
+                      Storyboard.TargetName="AnimatedRotateTransform2" 
+                      Storyboard.TargetProperty="CenterX"
+                      From="0" To="25" Duration="0:0:5" AutoReverse="True" />
+                    <DoubleAnimation 
+                      Storyboard.TargetName="AnimatedRotateTransform2" 
+                      Storyboard.TargetProperty="CenterY"
+                      From="0" To="50" Duration="0:0:5" AutoReverse="True" />
+                    <PointAnimation 
+                      Storyboard.TargetName="animatedCenterMarker" 
+                      Storyboard.TargetProperty="Center"
+                      From="0,0" To="25,50" Duration="0:0:5" AutoReverse="True" />
+         
+                  </ParallelTimeline>
+                </ParallelTimeline>
+              </Storyboard>
+            </BeginStoryboard>            
+          </EventTrigger>
+          
+          <EventTrigger RoutedEvent="Button.Click" SourceName="stopButton">
+            <StopStoryboard BeginStoryboardName="myBeginStoryboard" />
+          </EventTrigger>
+          
+        </StackPanel.Triggers>
+      </StackPanel>      
+    </StackPanel>   
+    
+    <Border BorderBrush="LightGray" BorderThickness="1"
+      Margin="10" Background="WhiteSmoke">
+    <Grid Margin="10" VerticalAlignment="Top">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.ColumnSpan="2" Margin="0,0,0,10">Interactive Example</TextBlock>
+      <TextBlock Grid.Column="0" Grid.Row="1">Center:</TextBlock>
+      <TextBox Name="centerTextBox" Grid.Column="1" Grid.Row="1">0,0</TextBox>
+      <TextBlock Grid.Column="0" Grid.Row="1">CenterX:</TextBlock>
+      <TextBox Name="centerXTextBox" Grid.Column="1" Grid.Row="1" Text="0" />
+        <TextBlock Grid.Column="0" Grid.Row="2">CenterY:</TextBlock>
+      <TextBox Name="centerYTextBox" Grid.Column="1" Grid.Row="2" Text="0" />
+        <TextBlock Grid.Column="0" Grid.Row="3">Angle:</TextBlock>
+      <TextBox Name="angleTextBox" Grid.Column="1" Grid.Row="3">0</TextBox>
+
+      <Border 
+        Margin="0,10,0,0"
+        BorderBrush="Black" 
+        BorderThickness="1" 
+        Background="{StaticResource MyBlueGridBrushResource}"
+        HorizontalAlignment="Left"
+        Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
+        <Canvas Height="200" Width="200">
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Canvas.Left="75" Canvas.Top="50">
+            <Polyline.RenderTransform>
+              <RotateTransform x:Name="interactiveRotateTransform" 
+                CenterX="{Binding Path=Text, ElementName=centerXTextBox}" 
+                CenterY="{Binding Path=Text, ElementName=centerYTextBox}" 
+                Angle="{Binding Path=Text, ElementName=angleTextBox}"/>
+            </Polyline.RenderTransform>
+          </Polyline>
+          
+          <!-- Shows the original position of the polyline. -->
+          <Polyline Points="25,25 0,50 25,75 50,50 25,25 25,0" Stroke="Blue" StrokeThickness="10"
+            Opacity="0.25" Canvas.Left="75" Canvas.Top="50" />           
+        </Canvas>
+      </Border>      
+      
+    
+    </Grid>
+    </Border>
+    
+  
+  
+  </StackPanel>
+</Page>
+<!-- </Snippet11> -->

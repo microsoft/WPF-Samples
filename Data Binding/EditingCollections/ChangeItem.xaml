@@ -1,0 +1,50 @@
+﻿<Window x:Class="EditingCollections.ChangeItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EditingCollections"
+        mc:Ignorable="d"
+        Title="ChangeItem" Height="300" Width="300">
+    <StackPanel Margin="10" Width="250">
+        <StackPanel.Resources>
+            <Style TargetType="HeaderedContentControl">
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="HeaderedContentControl">
+                            <DockPanel LastChildFill="False">
+                                <ContentPresenter ContentSource="Header" DockPanel.Dock="Left" 
+                                  Focusable="False" VerticalAlignment="Center"/>
+                                <ContentPresenter ContentSource="Content" Margin="5,0,0,0" 
+                                  DockPanel.Dock="Right" VerticalAlignment="Center"/>
+                            </DockPanel>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Margin" Value="10,15,15,15"/>
+
+            </Style>
+        </StackPanel.Resources>
+
+        <HeaderedContentControl Header="Description">
+            <TextBox Width="150" Text="{Binding Path=Description, Mode=TwoWay}"/>
+        </HeaderedContentControl>
+        <HeaderedContentControl Header="Price">
+            <TextBox Width="150" Text="{Binding Path=Price, Mode=TwoWay}"/>
+        </HeaderedContentControl>
+        <HeaderedContentControl Header="Date Offer Ends">
+            <TextBox Width="150" Text="{Binding Path=OfferExpires, StringFormat=d, Mode=TwoWay}"/>
+        </HeaderedContentControl>
+        <StackPanel Orientation="Horizontal">
+            <Button IsDefault="True" Click="Submit_Click">_Submit</Button>
+            <Button IsCancel="True">_Cancel</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

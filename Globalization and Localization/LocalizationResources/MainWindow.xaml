@@ -1,0 +1,14 @@
+﻿<Window x:Class="LocalizationResources.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LocalizationResources"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel Name="root">
+        <Image Source="data\picture1.jpg" Width="600" Height="300" VerticalAlignment="Top"/>
+        <TextBlock Name="Text1">This is a sample applcation.</TextBlock>
+        <Button Width="100" Height="50" Click="OnClick">Click Me</Button>
+    </StackPanel>
+</Window>

@@ -1,0 +1,107 @@
+<!-- <SnippetGraphicsMMDataTriggerStoryboardWholePage> -->
+<Page 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="DataTriggerStoryboardExample">
+
+  <Page.Resources>
+    <XmlDataProvider x:Key="InventoryData" XPath="Inventory/Books">
+      <x:XData>
+        <Inventory xmlns="">
+          <Books>
+            <Book ISBN="0-7356-0562-9" Stock="in" Number="9">
+              <Title>XML in Action</Title>
+              <Summary>XML Web Technology</Summary>
+            </Book>
+            <Book ISBN="0-7356-1370-2" Stock="in" Number="8">
+              <Title>Programming Microsoft Windows With C#</Title>
+              <Summary>C# Programming using the .NET Framework</Summary>
+            </Book>
+            <Book ISBN="0-7356-1288-9" Stock="out" Number="7">
+              <Title>Inside C#</Title>
+              <Summary>C# Language Programming</Summary>
+            </Book>
+            <Book ISBN="0-7356-1377-X" Stock="in" Number="5">
+              <Title>Introducing Microsoft .NET</Title>
+              <Summary>Overview of .NET Technology</Summary>
+            </Book>
+            <Book ISBN="0-7356-1448-2" Stock="out" Number="4">
+              <Title>Microsoft C# Language Specifications</Title>
+              <Summary>The C# language definition</Summary>
+            </Book>
+          </Books>
+          <CDs>
+            <CD Stock="in" Number="3">
+              <Title>Classical Collection</Title>
+              <Summary>Classical Music</Summary>
+            </CD>
+            <CD Stock="out" Number="9">
+              <Title>Jazz Collection</Title>
+              <Summary>Jazz Music</Summary>
+            </CD>
+          </CDs>
+        </Inventory>
+      </x:XData>
+    </XmlDataProvider>
+
+    <Style x:Key="AnimatedListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+
+      <Setter Property="Margin" Value="0,2,0,2" />
+      <Setter Property="Padding" Value="0,2,0,2" />
+
+      <Style.Triggers>
+        <DataTrigger 
+         Binding="{Binding XPath=@Stock}" 
+         Value="out">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation
+                 Storyboard.TargetProperty="Opacity"
+                 From="0.25" To="0.5" Duration="0:0:1" 
+                 RepeatBehavior="Forever"
+                 AutoReverse="True"/>
+              </Storyboard>
+            </BeginStoryboard>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard> 
+              <Storyboard FillBehavior="Stop">
+                <DoubleAnimation
+                  Storyboard.TargetProperty="Opacity"
+                  To="1" Duration="0:0:1" />
+              </Storyboard>
+            </BeginStoryboard>  
+          </DataTrigger.ExitActions>
+          
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </Page.Resources>
+
+  <StackPanel>
+    <ListBox HorizontalAlignment="Center"
+      ItemContainerStyle="{StaticResource AnimatedListBoxItemStyle}"
+      Padding="2">
+      <ListBox.ItemsSource>
+        <Binding Source="{StaticResource InventoryData}"
+                 XPath="*"/>
+      </ListBox.ItemsSource>
+
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <TextBlock FontSize="12" Margin="0,0,10,0">
+            <TextBlock.Text>
+              <Binding XPath="Title"/>
+            </TextBlock.Text>
+          </TextBlock>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </StackPanel>
+</Page>
+
+
+
+
+

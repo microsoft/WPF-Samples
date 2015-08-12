@@ -1,0 +1,114 @@
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Microsoft.Samples.Graphics.Transforms.TransformExample"
+  WindowTitle="Transform Example">
+  <Page.Resources>
+    <Style TargetType="{x:Type TextBlock}">
+      <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+  </Page.Resources>
+
+  <StackPanel>
+  
+    <Border Margin="0,10,0,10">
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.0" Color="#CCCCFF" />
+            <GradientStop Offset="1.0" Color="White" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Border.Background>
+    
+    <TextBlock Margin="10" MaxWidth="700">
+      There are a variety of Transforms in the System.Windows.Media namespace
+      that you can use to warp, shrink, move, enlarge, and rotate elements. This
+      sample shows how to use each of the different transform classes.
+    </TextBlock>
+    </Border>
+    
+    
+    <Canvas Width="700" Height="400" HorizontalAlignment="Center">
+      <TextBlock Canvas.Top="100" Canvas.Left="50"
+        TextAlignment="Center" FontSize="16pt" Foreground="#CCCCFF"
+        RenderTransformOrigin="0.5,0.5">
+        <TextBlock.RenderTransform>
+          <RotateTransform x:Name="MyAnimatedRotateTransform" Angle="0" />
+        </TextBlock.RenderTransform>
+        RotateTransform
+      </TextBlock>
+    
+      <TextBlock Canvas.Top="100" Canvas.Left="300" Name="scaledText"
+        TextAlignment="Center" FontSize="16pt" Foreground="Gray"
+        RenderTransformOrigin="0.5,0.5">
+        <TextBlock.RenderTransform>
+          <ScaleTransform x:Name="MyAnimatedScaleTransform" ScaleX="1" ScaleY="1" />
+        </TextBlock.RenderTransform>
+        ScaleTransform
+      </TextBlock>    
+    
+      <TextBlock Canvas.Top="250" Canvas.Left="150" 
+        TextAlignment="Center" FontSize="16pt" Foreground="Orange"
+        RenderTransformOrigin="0.5,0.5">
+        <TextBlock.RenderTransform>
+          <SkewTransform x:Name="MyAnimatedSkewTransform" AngleX="0" AngleY="0" />
+        </TextBlock.RenderTransform>
+        SkewTransform
+      </TextBlock>      
+    
+      <TextBlock Canvas.Top="30" Canvas.Left="300" Name="translatedText"
+        FontSize="16pt">
+        <TextBlock.RenderTransform>
+          <TranslateTransform x:Name="MyAnimatedTranslateTransform" X="0" Y="0" />
+        </TextBlock.RenderTransform>
+        TranslateTransform
+      </TextBlock>      
+    
+    </Canvas>
+  </StackPanel>
+  
+
+  <Page.Triggers>
+    <EventTrigger RoutedEvent="Page.Loaded">
+      <BeginStoryboard>
+        <Storyboard>
+          <DoubleAnimation 
+            Storyboard.TargetName="MyAnimatedRotateTransform" 
+            Storyboard.TargetProperty="Angle" 
+            From="0" To="360" Duration="0:0:5" RepeatBehavior="Forever" />
+          <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation 
+              Storyboard.TargetName="MyAnimatedScaleTransform" 
+              Storyboard.TargetProperty="ScaleX"
+              From="0" To="3" Duration="0:0:7" />
+            <DoubleAnimation 
+              Storyboard.TargetName="MyAnimatedScaleTransform" 
+              Storyboard.TargetProperty="ScaleY"          
+              From="0" To="3" Duration="0:0:7" />     
+          </ParallelTimeline>
+          <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation 
+              Storyboard.TargetName="MyAnimatedSkewTransform" 
+              Storyboard.TargetProperty="AngleX"
+              From="-45" To="70" Duration="0:0:10" />
+            <DoubleAnimation 
+              Storyboard.TargetName="MyAnimatedSkewTransform" 
+              Storyboard.TargetProperty="AngleY"          
+              From="-45" To="70" Duration="0:0:10" />       
+          </ParallelTimeline>     
+          <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation 
+              Storyboard.TargetName="MyAnimatedTranslateTransform" 
+              Storyboard.TargetProperty="X"          
+              From="0" To="100" Duration="0:0:5" />
+            <DoubleAnimation 
+              Storyboard.TargetName="MyAnimatedTranslateTransform" 
+              Storyboard.TargetProperty="Y"          
+              From="0" To="200" Duration="0:0:5" />   
+          </ParallelTimeline>       
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </Page.Triggers>
+</Page>

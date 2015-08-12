@@ -1,0 +1,651 @@
+﻿<Application x:Class="AnimationExamples.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AnimationExamples"
+             StartupUri="SampleViewer.xaml">
+    <Application.Resources>
+        <!-- Brushes -->
+        <DrawingBrush x:Key="MyGridBrushResource" 
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#66CCCCFF" />
+                        <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#66CCCCFF" />
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <DrawingBrush x:Key="MyPartiallyTransparentGridBrushResource" 
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="#99FFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#66CCCCFF" />
+                        <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#66CCCCFF" />
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <DrawingBrush x:Key="MyWireBrushResource" 
+      Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#66CCCCFF" />
+                        <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#66CCCCFF" />
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <ImageBrush x:Key="SteelBrushResource"
+      ImageSource="sample_images\steel.png" Stretch="None" TileMode="Tile" 
+      Viewport="0,0,500,300" ViewportUnits="Absolute" />
+
+        <ImageBrush x:Key="CloudyGlassBrushResource"
+      ImageSource="sample_images\clouds.png" Stretch="None" TileMode="FlipXY" />
+
+        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+            <GradientStop Color="White" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="White" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="White" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1.0" />
+        </GradientStopCollection>
+
+        <LinearGradientBrush x:Key="MyGlassBrushResource" 
+      StartPoint="0,0" EndPoint="1,1" Opacity="1" 
+      GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+
+
+        <!-- Other Resources -->
+
+
+
+        <PathGeometry x:Key="LeftArrowGeometry" Figures="M10,25 L30,40 20,25 30,10Z" />
+        <PathGeometry x:Key="RightArrowGeometry" Figures="M10,25 L30,40 20,25 30,10Z" >
+            <PathGeometry.Transform>
+                <RotateTransform CenterX="20" CenterY="30" Angle="180" />
+            </PathGeometry.Transform>
+        </PathGeometry>
+        <PathGeometry x:Key="UpArrowGeometry" Figures="M10,25 L30,40 20,25 30,10Z" >
+            <PathGeometry.Transform>
+                <RotateTransform CenterX="20" CenterY="30" Angle="90" />
+            </PathGeometry.Transform>
+        </PathGeometry>
+        <PathGeometry x:Key="DownArrowGeometry" Figures="M10,25 L30,40 20,25 30,10Z" >
+            <PathGeometry.Transform>
+                <RotateTransform CenterX="20" CenterY="30" Angle="270" />
+            </PathGeometry.Transform>
+        </PathGeometry>
+
+
+
+        <!-- Styles & Templates -->
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+
+        <Style x:Key="HorizontalSliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property = "TickFrequency" Value =".01"/>
+            <Setter Property = "MinWidth" Value ="100"/>
+            <Setter Property = "Minimum" Value ="0"/>
+            <Setter Property = "Maximum" Value ="1"/>
+            <Setter Property = "HorizontalAlignment" Value ="Left"/>
+            <Setter Property = "Orientation" Value ="Horizontal"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="CodeTextBlockStyle">
+            <Setter Property="FontFamily" Value="Courier New" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="MaxWidth" Value="500" />
+        </Style>
+
+        <Style x:Key="MyIntroTextBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="#CCCCFF" />
+                            <GradientStop Offset="0.0" Color="White" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Margin" Value="0,0,0,40" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+
+        <Style x:Key="MyIntroTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="MaxWidth" Value="500" />
+            <Setter Property="Margin" Value="20" />
+        </Style>
+
+
+
+        <Style TargetType="{x:Type Viewport3D}">
+            <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+
+
+
+        <Style TargetType="{x:Type Button}" x:Key="GelButtonStyle">
+
+
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="Background" Value="#330033FF" />
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <StackPanel Background="Transparent">
+                            <Grid x:Name="mainPanel" RenderTransformOrigin="0.5,0.5">
+                                <Grid x:Name="decorativeGrid" Background="Transparent" 
+                  VerticalAlignment="Stretch"
+                  RenderTransformOrigin="0.5,0.5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="5" />
+                                    </Grid.RowDefinitions>
+
+                                    <Rectangle x:Name="backgroundRectangle"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                   RadiusX="5" RadiusY="5"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                   Fill="White" />
+
+                                    <Rectangle x:Name="userBackgroundRectangle"
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                    RadiusX="5" RadiusY="5"
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch"
+                    Fill="{TemplateBinding Background}" />
+
+                                    <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"
+                    RadiusX="5" RadiusY="5"
+                    Width="5" HorizontalAlignment="Left">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                <LinearGradientBrush.GradientStops>
+                                                    <GradientStop Offset="0.0" Color="Gray" />
+                                                    <GradientStop Offset="1.0" Color="Transparent" />
+                                                </LinearGradientBrush.GradientStops>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+
+                                    <Rectangle Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
+                    RadiusX="5" RadiusY="5"
+                    Width="5" HorizontalAlignment="Right">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                <LinearGradientBrush.GradientStops>
+                                                    <GradientStop Offset="0.0" Color="Transparent" />
+                                                    <GradientStop Offset="1.0" Color="Gray" />
+                                                </LinearGradientBrush.GradientStops>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+
+                                    <Rectangle x:Name="glassRectangle"
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                    RadiusX="5" RadiusY="5"
+                    Stroke="Gray" StrokeThickness="1"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                        <Rectangle.OpacityMask>
+                                            <RadialGradientBrush>
+                                                <RadialGradientBrush.GradientStops>
+                                                    <GradientStop Offset="0.0" Color="Transparent" />
+                                                    <GradientStop Offset="1.0" Color="Black" />
+                                                </RadialGradientBrush.GradientStops>
+                                            </RadialGradientBrush>
+                                        </Rectangle.OpacityMask>
+
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" Opacity="0.5">
+                                                <LinearGradientBrush.GradientStops>
+                                                    <GradientStop Offset="0.0" Color="White" />
+                                                    <GradientStop Offset="0.45" Color="Transparent" />
+                                                    <GradientStop Offset="0.51" Color="#99000000" />
+                                                    <GradientStop Offset="0.9" Color="#99FFFFFF" />
+                                                    <GradientStop Offset="1" Color="#FFFFFFFF" />
+                                                </LinearGradientBrush.GradientStops>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+
+                                    <Rectangle Height="10" Margin="3" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" 
+                    VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                    RadiusX="5" RadiusY="5">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <LinearGradientBrush.GradientStops>
+                                                    <GradientStop Offset="0.0" Color="#99FFFFFF" />
+                                                    <GradientStop Offset="1.0" Color="Transparent" />
+                                                </LinearGradientBrush.GradientStops>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+
+                                    </Rectangle>
+
+
+
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <RotateTransform />
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                </Grid>
+                                <ContentPresenter x:Name="myContentPresenter" 
+                  VerticalAlignment="Center" HorizontalAlignment="Center" 
+          Margin="10" Content="{TemplateBinding Content}" />
+
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <RotateTransform />
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                            </Grid>
+                        </StackPanel>
+
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Name="mouseEnterBeginStoryboard" HandoffBehavior="Compose">
+                                        <Storyboard FillBehavior="Stop">
+                                            <DoubleAnimation Storyboard.TargetName="userBackgroundRectangle" Storyboard.TargetProperty="(Rectangle.Fill).(Brush.Opacity)"
+                        To="0" Duration="0:0:0.1" FillBehavior="HoldEnd" />
+                                            <DoubleAnimation Storyboard.TargetName="userBackgroundRectangle" 
+                        Storyboard.TargetProperty="(Rectangle.Fill).(Brush.Opacity)"
+                        BeginTime="0:0:0.1" To="0.5" Duration="0:0:1" AutoReverse="True" 
+                        RepeatBehavior="Forever" />
+                                            <DoubleAnimation Storyboard.TargetName="decorativeGrid" 
+                        Storyboard.TargetProperty="(Grid.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                         By="-0.05" Duration="0:0:0.5" AutoReverse="True" 
+                        RepeatBehavior="Forever" />
+                                            <DoubleAnimation Storyboard.TargetName="decorativeGrid" 
+                        Storyboard.TargetProperty="(Grid.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                          By="-0.05" Duration="0:0:0.5" AutoReverse="True" 
+                        RepeatBehavior="Forever" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation 
+                        Storyboard.TargetName="backgroundRectangle" 
+                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                        To="Lime" Duration="0:0:0.05" AutoReverse="True"  RepeatBehavior="3x" />
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="mainPanel" 
+                        Storyboard.TargetProperty="(Grid.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"
+                         From="0" To="360" Duration="0:0:0.5" />
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="mainPanel" 
+                        Storyboard.TargetProperty="(Grid.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                         From="1" To="0.25" Duration="0:0:0.25" AutoReverse="True"  />
+                                            <DoubleAnimation 
+                        Storyboard.TargetName="mainPanel" 
+                        Storyboard.TargetProperty="(Grid.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                         From="1" To="0.25" Duration="0:0:0.25" AutoReverse="True"  />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type RadioButton}" x:Key="GlassRadioButtonStyle">
+
+            <Setter Property="Margin" Value="1" />
+            <Setter Property="Background">
+                <Setter.Value>
+
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="#CCCCFF" />
+                            <GradientStop Offset="1.0" Color="DarkGray" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" 
+              ClipToBounds="true">
+
+
+                            <Rectangle x:Name="outerRectangle" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Stroke="{TemplateBinding Background}" 
+                StrokeThickness="1" Fill="Transparent" />
+
+                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch"
+                StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0" 
+                Fill="{StaticResource MyGlassBrushResource}"
+                RenderTransformOrigin="0.5,0.5"
+                >
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Offset="0.0" Color="LightBlue" />
+                                            <GradientStop Offset="1.0" Color="Gray" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="cubeScaleTransform" />
+                                        <RotateTransform x:Name="cubeRotateTransform" />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+
+                            <DockPanel Margin="10">
+
+                                <Viewbox Stretch="Uniform">
+                                    <ContentPresenter x:Name="myContentPresenter"  
+                    Content="{TemplateBinding  Content}" 
+                    TextBlock.Foreground="Black" />
+                                </Viewbox>
+
+                            </DockPanel>
+                            <Rectangle Fill="Transparent" />
+                        </Grid>
+
+
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="true" />
+                                    <Condition Property="IsChecked" Value="false" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property ="Rectangle.Stroke" Value="Black" TargetName="outerRectangle" />
+                                <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                            </MultiTrigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Rectangle.Stroke" Value="Black" TargetName="outerRectangle" />
+                                <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                            </Trigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                        <Storyboard>
+                                            <DoubleAnimation
+                        Storyboard.TargetName="cubeScaleTransform"
+                        Storyboard.TargetProperty="ScaleX"
+                        By="-0.1" Duration="0:0:0.5" />
+                                            <DoubleAnimation
+                        Storyboard.TargetName="cubeScaleTransform"
+                        Storyboard.TargetProperty="ScaleY"
+                        By="-0.1" Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="RadioButton.Checked">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                        Storyboard.TargetName="cubeRotateTransform"
+                        Storyboard.TargetProperty="Angle"
+                        By="360" Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+        <!-- 3D Models -->
+        <MeshGeometry3D x:Key="CubeSide01"
+      TriangleIndices="0,1,2 3,4,5 "
+      Normals="-1,0,0 -1,0,0 -1,0,0 -1,0,0 -1,0,0 -1,0,0 "
+      TextureCoordinates="0,1 0,0 1,0 1,0 1,1 0,1 "
+      Positions="-0.5,0.5,-0.5 -0.5,-0.5,-0.5 -0.5,-0.5,0.5 -0.5,-0.5,0.5 -0.5,0.5,0.5 -0.5,0.5,-0.5 " />
+
+        <MeshGeometry3D x:Key="CubeSide02"
+      TriangleIndices="0,1,2 3,4,5 "
+      Normals="0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 "
+      TextureCoordinates="0,0 1,0 1,1 1,1 0,1 0,0 "
+      Positions="-0.5,-0.5,0.5 0.5,-0.5,0.5 0.5,0.5,0.5 0.5,0.5,0.5 -0.5,0.5,0.5 -0.5,-0.5,0.5 " />
+
+        <MeshGeometry3D x:Key="CubeSide03"
+      TriangleIndices="0,1,2 3,4,5 "
+      Normals="0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 "
+      TextureCoordinates="1,0 1,1 0,1 0,1 0,0 1,0 "
+      Positions="0.5,-0.5,-0.5 0.5,0.5,-0.5 0.5,0.5,0.5 0.5,0.5,0.5 0.5,-0.5,0.5 0.5,-0.5,-0.5 " />
+
+        <MeshGeometry3D x:Key="CubeSide04"
+      TriangleIndices="0,1,2 3,4,5 "
+      Normals="1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 "
+      TextureCoordinates="1,0 1,1 0,1 0,1 0,0 1,0 "
+      Positions="-0.5,-0.5,-0.5 -0.5,0.5,-0.5 0.5,0.5,-0.5 0.5,0.5,-0.5 0.5,-0.5,-0.5 -0.5,-0.5,-0.5 " />
+
+        <MeshGeometry3D x:Key="CubeSide05"
+      TriangleIndices="0,1,2 3,4,5 6,7,8 9,10,11 "
+      Normals="0,-1,0 0,-1,0 0,-1,0 0,-1,0 0,-1,0 0,-1,0 0,1,0 0,1,0 0,1,0 0,1,0 0,1,0 0,1,0 "
+      TextureCoordinates="0,0 1,0 1,1 1,1 0,1 0,0 1,1 0,1 0,0 0,0 1,0 1,1 "
+      Positions="-0.5,-0.5,-0.5 -0.5,0.5,0.5 -0.5,-0.5,0.5   0.5,-0.5,0.5 -0.5,-0.5,-0.5 -0.5,0.5,-0.5   
+                          0.5,0.5,-0.5 -0.5,0.5,-0.5 -0.5,0.5,0.5  -0.5,0.5,0.5 0.5,0.5,0.5 0.5,0.5,-0.5 " />
+
+        <MeshGeometry3D x:Key="CubeSide06"
+      TriangleIndices="0,1,2 3,4,5 6,7,8 9,10,11 "
+      Normals="-1,0,0 -1,0,0 -1,0,0 -1,0,0 -1,0,0 -1,0,0 "
+      TextureCoordinates="1,0 1,1 0,1 0,1 0,0 1,0 "
+      Positions="-0.5,-0.5,0.5 -0.5,-0.5,-0.5 0.5,-0.5,-0.5   0.5,-0.5,-0.5 0.5,-0.5,0.5 -0.5,-0.5,0.5" />
+
+        <!-- 3D Materials -->
+        <MaterialGroup x:Key="LeavesMaterial1">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="sample_images\leaves_closeup.png" TileMode="None" ViewportUnits="Absolute" Viewport="0 0 1 1" AlignmentX="Left" AlignmentY="Top" Opacity="1.000000" />
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+
+        <MaterialGroup x:Key="RocksMaterial">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="sample_images\rocks.png" TileMode="None" ViewportUnits="Absolute" Viewport="0 0 1 1" AlignmentX="Left" AlignmentY="Top" Opacity="1.000000" />
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+
+        <MaterialGroup x:Key="BranchesMaterial">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="sample_images\branches.png" TileMode="None" ViewportUnits="Absolute" Viewport="0 0 1 1" AlignmentX="Left" AlignmentY="Top" Opacity="1.000000" />
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+        <MaterialGroup x:Key="BerriesMaterial">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="sample_images\berries.jpg" TileMode="None" ViewportUnits="Absolute" Viewport="0 0 1 1" AlignmentX="Left" AlignmentY="Top" Opacity="1.000000" />
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+        <MaterialGroup x:Key="FlowersMaterial">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="sample_images\Waterlilies.png" ViewportUnits="Absolute" 
+            Viewport="0 0 1 1" AlignmentX="Left" AlignmentY="Top" Opacity="1.000000" />
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+        <MaterialGroup x:Key="SunsetMaterial">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="sample_images\Sunset.jpg" ViewportUnits="Absolute" 
+            Viewport="0 0 1 1" AlignmentX="Left" AlignmentY="Top" Opacity="1.000000" />
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+        <MaterialGroup x:Key="SolidColorMaterial">
+            <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                    <SolidColorBrush Color="Orange" Opacity="1.000000"/>
+                </DiffuseMaterial.Brush>
+            </DiffuseMaterial>
+            <SpecularMaterial SpecularPower="85.3333">
+                <SpecularMaterial.Brush>
+                    <SolidColorBrush Color="#FFFFFF" Opacity="1.000000"/>
+                </SpecularMaterial.Brush>
+            </SpecularMaterial>
+        </MaterialGroup>
+
+
+        <!-- Model3DVisuals -->
+        <ModelVisual3D x:Key="PictureCubeModelVisual3DResource" x:Shared="False">
+            <ModelVisual3D.Children>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <AmbientLight Color="#333333" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="#FFFFFF" Direction="-0.612372,-0.5,-0.612372" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="#FFFFFF" Direction="0.612372,-0.5,-0.612372" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D Geometry="{StaticResource CubeSide01}" Material="{StaticResource BranchesMaterial}"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D Geometry="{StaticResource CubeSide02}" Material="{StaticResource FlowersMaterial}"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D Geometry="{StaticResource CubeSide03}" Material="{StaticResource BerriesMaterial}"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D Geometry="{StaticResource CubeSide04}" Material="{StaticResource LeavesMaterial1}"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D Geometry="{StaticResource CubeSide05}" Material="{StaticResource RocksMaterial}"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <GeometryModel3D Geometry="{StaticResource CubeSide06}" Material="{StaticResource SunsetMaterial}"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </ModelVisual3D.Children>
+        </ModelVisual3D>
+    </Application.Resources>
+</Application>

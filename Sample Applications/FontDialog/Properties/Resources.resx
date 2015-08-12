@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllPetiteCaps" xml:space="preserve">
+    <value>All petite caps</value>
+  </data>
+  <data name="AllSmallCaps" xml:space="preserve">
+    <value>All small caps</value>
+  </data>
+  <data name="AnnotationAlternates" xml:space="preserve">
+    <value>Annotation alternates</value>
+  </data>
+  <data name="Capitals" xml:space="preserve">
+    <value>Capitals</value>
+  </data>
+  <data name="CapitalSpacing" xml:space="preserve">
+    <value>Capital spacing</value>
+  </data>
+  <data name="CaseSensitiveForms" xml:space="preserve">
+    <value>Case sensitive forms</value>
+  </data>
+  <data name="ContextualAlternates" xml:space="preserve">
+    <value>Contextual alternates</value>
+  </data>
+  <data name="ContextualLigatures" xml:space="preserve">
+    <value>Ligatures, contextual</value>
+  </data>
+  <data name="ContextualSwashes" xml:space="preserve">
+    <value>Swashes, contextual</value>
+  </data>
+  <data name="Digits" xml:space="preserve">
+    <value>1, 2, 3, 4, 5, 6, 7, 8 ,9, 0</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="DiscretionaryLigatures" xml:space="preserve">
+    <value>Ligatures, discretionary</value>
+  </data>
+  <data name="EastAsianExpertForms" xml:space="preserve">
+    <value>East Asian expert forms</value>
+  </data>
+  <data name="EastAsianLanguage" xml:space="preserve">
+    <value>East Asian language</value>
+  </data>
+  <data name="EastAsianWidths" xml:space="preserve">
+    <value>East Asian widths</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Fraction" xml:space="preserve">
+    <value>Fraction</value>
+  </data>
+  <data name="Full" xml:space="preserve">
+    <value>Full</value>
+  </data>
+  <data name="Half" xml:space="preserve">
+    <value>Half</value>
+  </data>
+  <data name="HistoricalForms" xml:space="preserve">
+    <value>Historical forms</value>
+  </data>
+  <data name="HistoricalLigatures" xml:space="preserve">
+    <value>Ligatures, historical</value>
+  </data>
+  <data name="HojoKanji" xml:space="preserve">
+    <value>Hojo Kanji</value>
+  </data>
+  <data name="Inferior" xml:space="preserve">
+    <value>Inferior</value>
+  </data>
+  <data name="Jis04" xml:space="preserve">
+    <value>JIS-04</value>
+  </data>
+  <data name="Jis78" xml:space="preserve">
+    <value>JIS-78</value>
+  </data>
+  <data name="Jis83" xml:space="preserve">
+    <value>JIS-83</value>
+  </data>
+  <data name="Jis90" xml:space="preserve">
+    <value>JIS-90</value>
+  </data>
+  <data name="Kerning" xml:space="preserve">
+    <value>Kerning</value>
+  </data>
+  <data name="Lining" xml:space="preserve">
+    <value>Lining</value>
+  </data>
+  <data name="MathematicalGreek" xml:space="preserve">
+    <value>Mathematical Greek</value>
+  </data>
+  <data name="NlcKanji" xml:space="preserve">
+    <value>NLC Kanji</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="NumeralAlignment" xml:space="preserve">
+    <value>Numeral alignment</value>
+  </data>
+  <data name="NumeralStyle" xml:space="preserve">
+    <value>Numeral style</value>
+  </data>
+  <data name="OldStyle" xml:space="preserve">
+    <value>Old style</value>
+  </data>
+  <data name="OneHalf" xml:space="preserve">
+    <value>1/2</value>
+  </data>
+  <data name="Ordinal" xml:space="preserve">
+    <value>Ordinal</value>
+  </data>
+  <data name="PetiteCaps" xml:space="preserve">
+    <value>Petite caps</value>
+  </data>
+  <data name="Proportional" xml:space="preserve">
+    <value>Proportional</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>Quarter</value>
+  </data>
+  <data name="Ruby" xml:space="preserve">
+    <value>Ruby</value>
+  </data>
+  <data name="Simplified" xml:space="preserve">
+    <value>Simplified</value>
+  </data>
+  <data name="simulated" xml:space="preserve">
+    <value>{0} (simulated)</value>
+  </data>
+  <data name="Slashed" xml:space="preserve">
+    <value>Slashed</value>
+  </data>
+  <data name="SlashedZero" xml:space="preserve">
+    <value>Slashed zero</value>
+  </data>
+  <data name="SmallCaps" xml:space="preserve">
+    <value>Small caps</value>
+  </data>
+  <data name="Stacked" xml:space="preserve">
+    <value>Stacked</value>
+  </data>
+  <data name="StandardLigatures" xml:space="preserve">
+    <value>Ligatures, standard</value>
+  </data>
+  <data name="StandardSwashes" xml:space="preserve">
+    <value>Swashes, standard</value>
+  </data>
+  <data name="StylisticAlternates" xml:space="preserve">
+    <value>Stylistic alternates</value>
+  </data>
+  <data name="StylisticSet1" xml:space="preserve">
+    <value>Stylistic set  1</value>
+  </data>
+  <data name="StylisticSet10" xml:space="preserve">
+    <value>Stylistic set 10</value>
+  </data>
+  <data name="StylisticSet11" xml:space="preserve">
+    <value>Stylistic set 11</value>
+  </data>
+  <data name="StylisticSet12" xml:space="preserve">
+    <value>Stylistic set 12</value>
+  </data>
+  <data name="StylisticSet13" xml:space="preserve">
+    <value>Stylistic set 13</value>
+  </data>
+  <data name="StylisticSet14" xml:space="preserve">
+    <value>Stylistic set 14</value>
+  </data>
+  <data name="StylisticSet15" xml:space="preserve">
+    <value>Stylistic set 15</value>
+  </data>
+  <data name="StylisticSet16" xml:space="preserve">
+    <value>Stylistic set 16</value>
+  </data>
+  <data name="StylisticSet17" xml:space="preserve">
+    <value>Stylistic set 17</value>
+  </data>
+  <data name="StylisticSet18" xml:space="preserve">
+    <value>Stylistic set 18</value>
+  </data>
+  <data name="StylisticSet19" xml:space="preserve">
+    <value>Stylistic set 19</value>
+  </data>
+  <data name="StylisticSet2" xml:space="preserve">
+    <value>Stylistic set  2</value>
+  </data>
+  <data name="StylisticSet20" xml:space="preserve">
+    <value>Stylistic set 20</value>
+  </data>
+  <data name="StylisticSet3" xml:space="preserve">
+    <value>Stylistic set  3</value>
+  </data>
+  <data name="StylisticSet4" xml:space="preserve">
+    <value>Stylistic set  4</value>
+  </data>
+  <data name="StylisticSet5" xml:space="preserve">
+    <value>Stylistic set  5</value>
+  </data>
+  <data name="StylisticSet6" xml:space="preserve">
+    <value>Stylistic set  6</value>
+  </data>
+  <data name="StylisticSet7" xml:space="preserve">
+    <value>Stylistic set  7</value>
+  </data>
+  <data name="StylisticSet8" xml:space="preserve">
+    <value>Stylistic set  8</value>
+  </data>
+  <data name="StylisticSet9" xml:space="preserve">
+    <value>Stylistic set  9</value>
+  </data>
+  <data name="Subscript" xml:space="preserve">
+    <value>Subscript</value>
+  </data>
+  <data name="Superscript" xml:space="preserve">
+    <value>Superscript</value>
+  </data>
+  <data name="Tabular" xml:space="preserve">
+    <value>Tabular</value>
+  </data>
+  <data name="Third" xml:space="preserve">
+    <value>Third</value>
+  </data>
+  <data name="Titling" xml:space="preserve">
+    <value>Titling</value>
+  </data>
+  <data name="Traditional" xml:space="preserve">
+    <value>Traditional</value>
+  </data>
+  <data name="TraditionalNames" xml:space="preserve">
+    <value>Traditional names</value>
+  </data>
+  <data name="Unicase" xml:space="preserve">
+    <value>Unicase</value>
+  </data>
+  <data name="Variants" xml:space="preserve">
+    <value>Variants</value>
+  </data>
+  <data name="_0" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="_1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="_2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="_3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="_4" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="_5" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="_6" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="_7" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="_8" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="_9" xml:space="preserve">
+    <value>9</value>
+  </data>
+</root>

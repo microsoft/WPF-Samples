@@ -1,0 +1,364 @@
+<!--
+  InteractiveLinearGradientBrushExample.xaml
+  Enables the user to interactively configure a LinearGradientBrush.
+ -->
+
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="Brushes.InteractiveLinearGradientBrushExample"
+  xmlns:local="clr-namespace:Brushes"
+  WindowTitle="Interactive LinearGradientBrush Example"
+  Loaded="OnPageLoaded">
+  <Page.Resources>
+
+    <Style x:Key="EntryLabelStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Margin" Value="0,0,5,0" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <local:EnumPossibleValuesToStringArrayConverter x:Key="EnumStringConverterResource"/>
+    <local:PointToStringConverter x:Key="PointToStringConverterResource"/>
+    <local:DoubleToStringConverter x:Key="DoubleToStringConverterResource"/>
+
+  </Page.Resources>
+  <DockPanel Margin="10">
+
+    <!-- Header -->
+    <Border Background="{StaticResource BlueHorizontalGradientBrush}" DockPanel.Dock="Top">
+      <TextBlock Style="{StaticResource MyIntroTextBlockStyle}" >
+        <Bold>Interactive LinearGradientBrush Example</Bold><LineBreak />
+        This example enables you to preview the effects of
+        setting LinearGradientBrush properties.
+      </TextBlock>
+    </Border>
+
+    <!-- Footer -->
+    <Rectangle 
+      DockPanel.Dock="Bottom"
+      Style="{StaticResource FooterRectangleStyle}"
+      Fill="{StaticResource BlueHorizontalGradientBrush}" />
+
+    <Border DockPanel.Dock="Top" Margin="0,10,0,0">
+
+      <StackPanel>
+        <TextBlock Margin="0,20,0,0" Text="Brush Settings" />
+        <Border Background="LightGray" Padding="10">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="10" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- StartPoint -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="0" Grid.Row="0" 
+              Text="StartPoint:" />
+            <TextBox 
+              Name="StartPointTextBox"
+              Grid.Column="1" Grid.Row="0"
+              Text="0.0000,0.0000"
+              KeyUp="OnStartPointTextBoxKeyUp" />
+
+            <!-- EndPoint -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="3" Grid.Row="0" 
+              Text="EndPoint:" />
+            <TextBox 
+              Name="EndPointTextBox"
+              Grid.Column="4" Grid.Row="0"
+              Text="1.0000, 1.0000"
+              KeyUp="OnEndPointTextBoxKeyUp"/>
+
+            <!-- MappingMode -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="0" Grid.Row="2" 
+              Text="MappingMode:" />
+
+            <ComboBox 
+              Name="MappingModeComboBox"
+              Grid.Column="1" Grid.Row="2"
+              SelectedIndex="1"
+              SelectedItem="{Binding ElementName='InteractiveLinearGradientBrush', Path='MappingMode'}"
+              ItemsSource="{Binding ElementName='InteractiveLinearGradientBrush', Path='MappingMode', Converter={StaticResource EnumStringConverterResource}}"
+              Padding="5"
+            />
+
+            <!-- SpreadMode -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="3" Grid.Row="2" 
+              Text="SpreadMode:" />
+
+            <ComboBox 
+              Grid.Column="4" Grid.Row="2"
+              SelectedItem="{Binding ElementName='InteractiveLinearGradientBrush', Path='SpreadMethod'}"
+              SelectedIndex="0"
+              ItemsSource="{Binding ElementName='InteractiveLinearGradientBrush', Path='SpreadMethod', Converter={StaticResource EnumStringConverterResource}}"
+              Padding="5"
+            />
+
+            <!-- ColorInterpolationMode -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="0" Grid.Row="4" 
+              Text="ColorInterpolationMode:" />
+
+            <ComboBox 
+              Grid.Column="1" Grid.Row="4"
+              SelectedIndex="1"
+              SelectedItem="{Binding ElementName='InteractiveLinearGradientBrush', Path='ColorInterpolationMode'}"
+              ItemsSource="{Binding ElementName='InteractiveLinearGradientBrush', Path='ColorInterpolationMode', Converter={StaticResource EnumStringConverterResource}}"
+              Padding="5"
+            />
+
+            <!-- Opacity -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="0" Grid.Row="6" 
+              Text="Opacity:" />
+
+            <Slider 
+              Grid.Column="1" Grid.Row="6"
+              Grid.ColumnSpan="4"
+              Minimum="0" Maximum="1" 
+              Value="{Binding ElementName='InteractiveLinearGradientBrush', Path='Opacity'}" />
+          </Grid>
+        </Border>
+
+        <!-- Interactive Gradient Stop Controls -->
+        <TextBlock Margin="0,20,0,0" Text="Gradient Stops" />
+        <Border Background="LightGray" Padding="10">
+          <Grid Margin="20,0,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Gradient Stop 1 -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="0" Grid.Row="0" 
+              FontWeight="Bold"
+              Margin="0,0,20,0"
+              Text="Stop 1" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="1" Grid.Row="0" 
+              Text="Color:" />
+
+            <TextBox
+              Grid.Column="2" Grid.Row="0" 
+              Text="{Binding ElementName='GradientStop1', Path='Color'}" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="4" Grid.Row="0" 
+              Text="Offset:" />
+
+            <Slider
+              Grid.Column="5" Grid.Row="0" 
+              Minimum="0" Maximum="1" 
+              Width="100" 
+              Value="{Binding ElementName='GradientStop1', Path='Offset'}" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="6" Grid.Row="0" 
+              FontFamily="Courier"
+              Margin="20,0,0,0"
+              Text="{Binding ElementName='GradientStop1', Path='Offset',
+                Converter='{StaticResource DoubleToStringConverterResource}'}" />
+
+            <!-- Gradient Stop 2 -->
+            <TextBlock 
+               Style="{StaticResource EntryLabelStyle}"
+               Grid.Column="0" Grid.Row="2" 
+               FontWeight="Bold"
+               Margin="0,0,20,0"
+               Text="Stop 2" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="1" Grid.Row="2" 
+              Text="Color:" />
+
+            <TextBox
+              Grid.Column="2" Grid.Row="2" 
+              Text="{Binding ElementName='GradientStop2', Path='Color'}" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="4" Grid.Row="2" 
+              Text="Offset:" />
+
+            <Slider
+              Grid.Column="5" Grid.Row="2" 
+              Minimum="0" Maximum="1" 
+              Width="100" 
+              Value="{Binding ElementName='GradientStop2', Path='Offset'}" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="6" Grid.Row="2" 
+              FontFamily="Courier"
+              Margin="20,0,0,0"
+              Text="{Binding ElementName='GradientStop2', Path='Offset',
+                  Converter='{StaticResource DoubleToStringConverterResource}'}" />
+
+            <!-- Gradient Stop 3 -->
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="0" Grid.Row="4" 
+              FontWeight="Bold"
+              Margin="0,0,20,0"
+              Text="Stop 3" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="1" Grid.Row="4" 
+              Text="Color:" />
+
+            <TextBox
+              Grid.Column="2" Grid.Row="4" 
+              Text="{Binding ElementName='GradientStop3', Path='Color'}" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="4" Grid.Row="4" 
+              Text="Offset:" />
+
+            <Slider
+              Grid.Column="5" Grid.Row="4" 
+              Minimum="0" Maximum="1" 
+              Width="100" 
+              Value="{Binding ElementName='GradientStop3', Path='Offset'}" />
+
+            <TextBlock 
+              Style="{StaticResource EntryLabelStyle}"
+              Grid.Column="6" Grid.Row="4" 
+              FontFamily="Courier"
+              Margin="20,0,0,0"
+              Text="{Binding ElementName='GradientStop3', 
+              Path='Offset',
+              Converter='{StaticResource DoubleToStringConverterResource}'}" />
+          </Grid>
+        </Border>
+      </StackPanel>
+    </Border>
+
+    <!-- Displays markup that describes the brush. -->
+    <Expander Header="Markup" DockPanel.Dock="Top" Margin="0,10,0,0"
+      BorderBrush="Black" BorderThickness="1" >
+      <Border Background="LightGray" 
+        BorderBrush="Gray" BorderThickness="1" 
+        Padding="5">
+        <TextBlock Name="markupOutputTextBlock" FontFamily="Courier" />
+      </Border>
+    </Expander>
+
+    
+    <Border Name="GradientDisplayElement" 
+      SizeChanged="GradientDisplaySizeChanged"
+      MouseLeftButtonDown="GradientDisplayMouseLeftButtonDown"
+      MouseLeftButtonUp="GradientDisplayMouseLeftButtonUp"
+      MouseMove="GradientDisplayMouseMove"
+      Margin="20"
+      Height="200" Width="400">
+      <Border.Background>
+        <LinearGradientBrush 
+          x:Name="InteractiveLinearGradientBrush"
+          Changed="OnInteractiveLinearGradientBrushChanged">
+          <GradientStop x:Name="GradientStop1" Offset="0" Color="Blue" />
+          <GradientStop x:Name="GradientStop2" Offset="0.5" Color="Purple" />
+          <GradientStop x:Name="GradientStop3" Offset="1" Color="Red" />
+        </LinearGradientBrush>
+      </Border.Background>
+
+      <Canvas  
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+        <Line
+          Stroke="Black" StrokeThickness="3"
+          StrokeDashArray="2,1"
+          X1="{Binding ElementName=StartPointMarkerTranslateTransform, Path=X}"
+          Y1="{Binding ElementName=StartPointMarkerTranslateTransform, Path=Y}"
+          X2="{Binding ElementName=EndPointMarkerTranslateTransform, Path=X}"
+          Y2="{Binding ElementName=EndPointMarkerTranslateTransform, Path=Y}" />
+
+          <!-- Marks the brush's StartPoint. -->
+        <Ellipse
+          Name="StartPointMarker"
+          Style="{StaticResource MarkerEllipseStyle}"
+          Canvas.Left="-10" Canvas.Top="-10">
+          <Ellipse.RenderTransform>
+            <TranslateTransform 
+              x:Name="StartPointMarkerTranslateTransform"
+              X="0" Y="0" />
+          </Ellipse.RenderTransform>
+        </Ellipse>
+
+        <!-- Marks the brush's EndPointPoint. -->
+        <Ellipse
+          Name="EndPointMarker"
+          Style="{StaticResource MarkerEllipseStyle}"
+          Canvas.Left="-10" Canvas.Top="-10">
+          <Ellipse.RenderTransform>
+            <TranslateTransform 
+              x:Name="EndPointMarkerTranslateTransform"
+              X="0" Y="0" />
+          </Ellipse.RenderTransform>
+        </Ellipse>
+
+        <!-- Labels the StartPoint marker. -->
+        <Label Content="StartPoint">
+          <Label.RenderTransform>
+            <TranslateTransform
+              X="{Binding ElementName=StartPointMarkerTranslateTransform, Path=X}"
+              Y="{Binding ElementName=StartPointMarkerTranslateTransform, Path=Y}" />
+          </Label.RenderTransform>
+        </Label>
+
+        <!-- Labels the EndPoint marker. -->
+        <Label Content="EndPoint">
+          <Label.RenderTransform>
+            <TranslateTransform
+              X="{Binding ElementName=EndPointMarkerTranslateTransform, Path=X}"
+              Y="{Binding ElementName=EndPointMarkerTranslateTransform, Path=Y}" />
+          </Label.RenderTransform>
+        </Label>
+      </Canvas>
+    </Border>
+  </DockPanel>
+</Page>
+

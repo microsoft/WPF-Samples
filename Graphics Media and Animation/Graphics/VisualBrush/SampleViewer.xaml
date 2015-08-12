@@ -1,0 +1,24 @@
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="VisualBrush.SampleViewer"
+    Title="VisualBrush Sample">
+
+  <DockPanel Background="White">
+  
+    <TabControl Name="sampleSelector" Background="White" BorderBrush="Orange">
+
+      <TabItem Header="Painting with Visuals" >
+        <Frame Source="PaintingWithVisuals.xaml" Background="White" />            
+      </TabItem>
+      <TabItem Header="Magnifying Glass Example" >
+        <Frame Source="MagnifyingGlassExample.xaml" Background="White" />            
+      </TabItem>     
+      <TabItem Header="Reflection Example" >
+        <Frame Source="ReflectionExample.xaml" Background="White" />            
+      </TabItem>       
+    </TabControl> 
+  </DockPanel>
+
+
+</Window>

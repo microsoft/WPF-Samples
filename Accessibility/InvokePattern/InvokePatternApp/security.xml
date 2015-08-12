@@ -1,0 +1,7 @@
+<Security>
+  <ApplicationRequestMinimum>
+    <PermissionSet class="System.Security.PermissionSet" ID="FullTrust"
+      version="1" Unrestricted="true" />
+    <DefaultAssemblyRequest PermissionSetReference="FullTrust" />
+  </ApplicationRequestMinimum>
+</Security>

@@ -1,0 +1,76 @@
+﻿<Window x:Class="XmlDataSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XmlDataSource"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <StackPanel.Resources>
+        <XmlDataProvider x:Key="InventoryData" XPath="Inventory/Books">
+            <x:XData>
+                <Inventory xmlns="">
+                    <Books>
+                        <Book ISBN="0-7356-0562-9" Stock="in" Number="9">
+                            <Title>XML in Action</Title>
+                            <Summary>XML Web Technology</Summary>
+                        </Book>
+                        <Book ISBN="0-7356-1370-2" Stock="in" Number="8">
+                            <Title>Programming Microsoft Windows With C#</Title>
+                            <Summary>C# Programming using the .NET Framework</Summary>
+                        </Book>
+                        <Book ISBN="0-7356-1288-9" Stock="out" Number="7">
+                            <Title>Inside C#</Title>
+                            <Summary>C# Language Programming</Summary>
+                        </Book>
+                        <Book ISBN="0-7356-1377-X" Stock="in" Number="5">
+                            <Title>Introducing Microsoft .NET</Title>
+                            <Summary>Overview of .NET Technology</Summary>
+                        </Book>
+                        <Book ISBN="0-7356-1448-2" Stock="out" Number="4">
+                            <Title>Microsoft C# Language Specifications</Title>
+                            <Summary>The C# language definition</Summary>
+                        </Book>
+                    </Books>
+                    <CDs>
+                        <CD Stock="in" Number="3">
+                            <Title>Classical Collection</Title>
+                            <Summary>Classical Music</Summary>
+                        </CD>
+                        <CD Stock="out" Number="9">
+                            <Title>Jazz Collection</Title>
+                            <Summary>Jazz Music</Summary>
+                        </CD>
+                    </CDs>
+                </Inventory>
+            </x:XData>
+        </XmlDataProvider>
+    </StackPanel.Resources>
+
+    <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+    HorizontalAlignment="Center">XML Data Source Sample</TextBlock>
+    <ListBox
+    Width="400" Height="300" Background="Honeydew">
+        <ListBox.ItemsSource>
+            <Binding Source="{StaticResource InventoryData}"
+               XPath="*[@Stock='out'] | *[@Number>=8 or @Number=3]"/>
+        </ListBox.ItemsSource>
+
+        <!--Alternatively, you can do the following. -->
+        <!--<ListBox Width="400" Height="300" Background="Honeydew"
+      ItemsSource="{Binding Source={StaticResource InventoryData},
+      XPath=*[@Stock\=\'out\'] | *[@Number>\=8 or @Number\=3]}">-->
+
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock FontSize="12" Foreground="Red">
+                    <TextBlock.Text>
+                        <Binding XPath="Title"/>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+    </StackPanel>
+</Window>

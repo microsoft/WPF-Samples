@@ -1,0 +1,72 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="SDKSample.BevelInteractiveExample"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+        <TextBlock>
+          Change the property values of the BevelBitMapEffect.
+        </TextBlock>
+      </Border>
+
+      <StackPanel Margin="20" Orientation="Horizontal">
+
+        <!-- This Grid holds the controls used to interactively change property values of the BitmapEffect. -->
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <!-- Control to interactively change the BevelWidth of the BevelBitmapEffect.-->
+          <Label Grid.Row="1" Grid.Column="0">BevelWidth</Label>
+          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=BevelWidth, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the EdgeProfile of the BevelBitmapEffect.-->
+          <Label Grid.Row="2" Grid.Column="0">EdgeProfile </Label>
+          <ComboBox Grid.Row="2" Grid.Column="1" Name="myComboBox" SelectionChanged="ChangeSelection" >
+             <ComboBoxItem>BulgedUp</ComboBoxItem>
+             <ComboBoxItem>CurvedIn</ComboBoxItem>
+            <ComboBoxItem>CurvedOut</ComboBoxItem>
+            <ComboBoxItem>Linear</ComboBoxItem>
+          </ComboBox>
+
+          <!-- Control to interactively change the LightAngle of the BevelBitmapEffect.-->
+          <Label Grid.Row="3" Grid.Column="0">LightAngle (0-360)</Label>
+          <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=LightAngle, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the LightAngle of the BevelBitmapEffect.-->
+          <Label Grid.Row="4" Grid.Column="0">Relief (0-1)</Label>
+          <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Relief, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the LightAngle of the BevelBitmapEffect.-->
+          <Label Grid.Row="5" Grid.Column="0">Smoothness (0-1)</Label>
+          <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Smoothness, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <Button Width="200" Height="80" Margin="100,20,0,0" >
+          Bevelled Button
+          <Button.BitmapEffect>
+
+            <!-- Apply a BevelBitmapEffect to the Button. The properties of this BevelBitmapEffect
+                 are dynamically changed by the controls in this sample. -->
+            <BevelBitmapEffect x:Name="InteractiveEffect" BevelWidth="15"/>
+
+
+          </Button.BitmapEffect>
+        </Button>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

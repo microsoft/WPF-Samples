@@ -1,0 +1,89 @@
+<!-- <SnippetGraphicsMMControlTemplateStoryboardExample> -->
+<!-- ControlStoryboardExample.xaml
+     Uses storyboards to animate properties with a ControlTemplate. -->
+<Page
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  WindowTitle="Animate Properties with Storyboards">
+
+  <Page.Resources>
+    <ControlTemplate x:Key="MyControlTemplate" 
+      TargetType="{x:Type ContentControl}">
+      <Border 
+        Margin="{TemplateBinding Padding}"
+        BorderBrush="{TemplateBinding BorderBrush}"
+        BorderThickness="{TemplateBinding BorderThickness}"
+        Background="{TemplateBinding Background}">
+        <Border Name="innerBorder" Padding="10">
+          <Border.Background>
+            <SolidColorBrush x:Name="innerBorderBackgroundBrush"
+              Color="White" />
+          </Border.Background>
+          <Grid Name="contentPanel">
+            <Grid.Background>
+              <SolidColorBrush x:Name="contentPanelBrush" Color="White" />
+            </Grid.Background>
+            <ContentPresenter 
+              Margin="10" 
+              Content="{TemplateBinding  Content}" 
+              TextBlock.Foreground="{TemplateBinding Foreground}" />
+          </Grid>
+        </Border>
+      </Border>
+      <ControlTemplate.Triggers>
+
+        <!-- Event Trigger Example -->
+        <EventTrigger RoutedEvent="Border.MouseEnter" SourceName="innerBorder">
+          <BeginStoryboard>
+            <Storyboard>
+              <ColorAnimation
+                Storyboard.TargetName="innerBorderBackgroundBrush"
+                Storyboard.TargetProperty="Color"
+                From="White" To="#CCCCFF"
+                Duration="0:0:3" AutoReverse="True" />
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+
+        <!-- Property Trigger Example -->
+        <Trigger Property="IsMouseOver" Value="True" SourceName="contentPanel">
+          <Trigger.EnterActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation 
+                  Storyboard.TargetName="contentPanelBrush" 
+                  Storyboard.TargetProperty="Color"
+                  To="Purple" Duration="0:0:1" />
+              </Storyboard>
+            </BeginStoryboard>
+          </Trigger.EnterActions>
+          <Trigger.ExitActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation 
+                  Storyboard.TargetName="contentPanelBrush" 
+                  Storyboard.TargetProperty="Color"
+                  To="White" Duration="0:0:1" />
+              </Storyboard>
+            </BeginStoryboard>
+          </Trigger.ExitActions>
+        </Trigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+  </Page.Resources>
+
+  <Border Background="White">
+    <StackPanel Margin="30" HorizontalAlignment="Left" MinWidth="500">
+
+      <ContentControl Template="{StaticResource MyControlTemplate}"
+        Content="Hello, World" />
+
+    </StackPanel>
+  </Border>
+</Page>
+
+
+
+
+

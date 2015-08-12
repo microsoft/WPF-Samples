@@ -1,0 +1,11 @@
+<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Background="LightBlue">
+    <TextBlock Margin="10,10,10,10">Start Page</TextBlock>	
+    <TextBlock  HorizontalAlignment="Left"
+                Margin="10,10,10,10">
+      <Hyperlink  NavigateUri="Page2.xaml">Go To Page 2</Hyperlink>
+    </TextBlock>
+  </StackPanel>
+</Page>  

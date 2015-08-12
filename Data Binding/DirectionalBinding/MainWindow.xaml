@@ -1,0 +1,74 @@
+﻿<Window x:Class="DirectionalBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DirectionalBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Name="Page1">
+        <Grid.Resources>
+            <local:NetIncome x:Key="IncomeDataSource"/>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Padding" Value="8"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="0,6,0,0"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.DataContext>
+            <Binding Source="{StaticResource IncomeDataSource}"/>
+        </Grid.DataContext>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="400" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <!-- OneTime binding example -->
+        <Label Grid.Row="0" Grid.Column="0">Total Income:</Label>
+        <TextBlock Name="IncomeText" Grid.Row="0" Grid.Column="1"
+    Text="{Binding Path=TotalIncome, Mode=OneTime}"/>
+        <TextBlock Grid.Row="0" Grid.Column="2">OneTime Binding</TextBlock>
+
+        <!-- OneWay binding example -->
+        <Label Grid.Row="1" Grid.Column="0">Rent</Label>
+        <TextBlock Grid.Row="1" Grid.Column="1" Name="RentText"
+    Text="{Binding Path=Rent, Mode=OneWay, NotifyOnTargetUpdated=True}"
+    TargetUpdated="OnTargetUpdated"/>
+        <TextBlock Grid.Row="1"
+             Grid.Column="2">OneWay Binding, with TargetUpdated event handling</TextBlock>
+
+        <!-- TwoWay binding example (default for TextBox), with UpdateSourceTrigger=PropertyChanged-->
+        <Label Grid.Row="2" Grid.Column="0">Food</Label>
+        <TextBox Name="FoodText" Grid.Row="2" Grid.Column="1"
+           Text="{Binding Path=Food, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Grid.Row="2" Grid.Column="2">
+    TwoWay Binding (TextBox default), Update on PropertyChanged</TextBlock>
+
+        <!-- TwoWay binding example (default for TextBox), with
+    UpdateSourceTrigger=LostFocus (default for TextBox) -->
+        <Label Grid.Row="3" Grid.Column="0">Miscellaneous</Label>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="MiscText" Text="{Binding Path=Misc}"/>
+        <TextBlock Grid.Row="3" Grid.Column="2">
+    TwoWay Binding (TextBox default), Update on LostFocus (TextBox default)</TextBlock>
+
+        <!-- OneWay binding example (which is default for Text) -->
+        <Label Grid.Row="4" Grid.Column="0">Savings</Label>
+        <TextBlock Grid.Row="4" Grid.Column="1" Name="SavingsText" Text="{Binding Path=Savings}"/>
+        <TextBlock Grid.Row="4" Grid.Column="2">OneWay Binding</TextBlock>
+
+        <Button Grid.Row="5" Grid.Column="0" Click="OnRentRaise">Raise the Rent!</Button>
+        <TextBlock Name="infoText" Grid.Row="5" Grid.Column="1"
+             Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

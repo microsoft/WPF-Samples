@@ -1,0 +1,138 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      x:Class="ControlsAndLayout.Scene"
+      WindowTitle="XAMLPad Express">
+    <Grid>
+        <Grid.Resources>
+
+            <XmlDataProvider x:Key="SamplesList"  XPath="/Samples" Source="samples.xml" />
+
+
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FontFamily" Value="Calibri" />
+                <Setter Property="FontSize" Value="10pt" />
+            </Style>
+            <DataTemplate x:Key="SamplesListItemTemplate">
+                <StackPanel>
+                    <TextBlock Text="{Binding XPath=@Title}" />
+                </StackPanel>
+            </DataTemplate>
+            <Style x:Key="SamplesListBox" TargetType="{x:Type ListBox}">
+                <Setter Property="ItemTemplate" Value="{DynamicResource SamplesListItemTemplate}" />
+                <Setter Property="ItemContainerStyle" Value="{DynamicResource SamplesListBoxItem}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Width" Value="186" />
+            </Style>
+            <Style x:Key="SamplesListBoxItem" TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Margin" Value="1" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Grid>
+                                <Rectangle x:Name="ListBG" Fill="{TemplateBinding Background}" RadiusX="5" RadiusY="5" Stroke="transparent" />
+                                <Rectangle x:Name="GelShine" Margin="2,2,2,0" VerticalAlignment="top" RadiusX="3" RadiusY="3" Opacity="0" Fill="#ccffffff" Stroke="transparent" Height="15px" />
+                                <ContentPresenter x:Name="ContentSite" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="15,5,5,5" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true" />
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter Property="Background" Value="sc#1.000000, 0.769689, 0.831936, 1.000000" />
+                                    <Setter Property="FontWeight" Value="bold" />
+                                    <Setter Property="Foreground" Value="black" />
+                                    <Setter TargetName="ListBG" Property="Rectangle.Stroke" Value="sc#1.000000, 0.250141, 0.333404, 0.884413" />
+                                    <Setter TargetName="GelShine" Property="Rectangle.Opacity" Value="1" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="sc#1.000000, 0.769689, 0.831936, 1.000000" />
+                                    <Setter Property="Foreground" Value="black" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid  Background="sc#1.000000, 0.769689, 0.831936, 1.000000" Name="DocumentRoot" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.RowSpan="2"  Margin="20,5,20,5" TextAlignment="left"  Foreground="sc#1.000000, 0.250141, 0.333404, 0.884413" FontStyle="Italic" FontSize="30pt" FontFamily="Calibri" FontWeight="bold">XAMLPad Express</TextBlock>
+            <Grid Grid.Row="1">
+                <Rectangle Fill="white" RadiusX="14" RadiusY="14" Margin="10" Stroke="sc#1.000000, 0.250141, 0.333404, 0.884413" StrokeDashArray="2"/>
+                <DockPanel LastChildFill="True"   Margin="20">
+                    <Grid  Width="200px">
+                        <Rectangle Fill="sc#1.000000, 0.769689, 0.831936, 1.000000" RadiusX="10" RadiusY="10" Stroke="sc#1.000000, 0.250141, 0.333404, 0.884413" StrokeDashArray="2" />
+                        <DockPanel Margin="7" LastChildFill="False">
+                            <TextBlock Margin="0,0,0,10"   Text="Sample Library" Foreground="sc#1.000000, 0.250141, 0.333404, 0.884413" TextAlignment="center"   FontWeight="Bold" FontSize="14pt"   DockPanel.Dock="top"  />
+                            <Expander  Margin="0,0,0,10" DockPanel.Dock="top" Background="white" FocusVisualStyle="{x:Null}">
+                                <Expander.Header>
+                                    <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" >Layout</TextBlock>
+                                </Expander.Header>
+                                <ListBox Name="LayoutListBox" DataContext="{Binding Source={StaticResource SamplesList}, XPath=/Samples/Category[1]/Sample}"    ItemsSource="{Binding}" SelectionChanged="HandleSelectionChanged"  Style="{DynamicResource SamplesListBox}"  IsSynchronizedWithCurrentItem="True"  />
+                            </Expander>
+                            <Expander  Margin="0,0,0,10" DockPanel.Dock="top" Background="white" FocusVisualStyle="{x:Null}">
+                                <Expander.Header>
+                                    <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold"  TextTrimming="WordEllipsis">Controls</TextBlock>
+                                </Expander.Header>
+                                <ListBox MaxHeight="300"  DataContext="{Binding Source={StaticResource SamplesList}, XPath=/Samples/Category[2]/Sample}" ItemsSource="{Binding}" SelectionChanged="HandleSelectionChanged" Style="{DynamicResource SamplesListBox}"  IsSynchronizedWithCurrentItem="True" SelectedValue="X" />
+                            </Expander>
+                        </DockPanel>
+                    </Grid>
+                    <DockPanel Name="Details" LastChildFill="True">
+                        <DockPanel.DataContext>
+                            <Binding Source="{StaticResource SamplesList}" XPath="/Samples/Category[1]/Sample"/>
+                        </DockPanel.DataContext>
+                        <StackPanel Margin="20,10,0,0" DockPanel.Dock="top" Orientation="Horizontal" >
+                            <TextBlock  Text="{Binding XPath=@Title}" FontWeight="Bold" FontSize="16pt"    />
+                        </StackPanel>
+                        <TextBlock Margin="20,10,20,0" FontSize="11pt"  Text="{Binding XPath=@Description}" DockPanel.Dock="top" TextWrapping="Wrap" />
+                        <Grid Margin="20,20,20,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"  x:Name="PreviewRow" />
+                                <RowDefinition Height="0.5*"  x:Name="CodeRow" />
+                                <RowDefinition Height="40"  x:Name="ButtonRow" />
+                            </Grid.RowDefinitions>
+                            <Rectangle Fill="white" RadiusX="14" RadiusY="14" Margin="0,0,0,8"    StrokeDashArray="2"/>
+                            <Grid Name="cc" Grid.Row="0" Margin="0,0,0,8" ClipToBounds="True" />
+                            <Rectangle Height="16" VerticalAlignment="bottom" >
+                                <Shape.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="sc#0.300000, 0.000000, 0.000000, 0.000000" Offset="0.019230769230769232" />
+                                                <GradientStop Color="#FFFFFFFF" Offset="1" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                        <Brush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TransformGroup.Children>
+                                                    <TransformCollection>
+                                                        <TranslateTransform X="-0.0052816901408450721" Y="0.5185185185185186" />
+                                                    </TransformCollection>
+                                                </TransformGroup.Children>
+                                            </TransformGroup>
+                                        </Brush.RelativeTransform>
+                                    </RadialGradientBrush>
+                                </Shape.Fill>
+                            </Rectangle>
+                            <GridSplitter Margin="10,0,10,0" Opacity="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Height="5" Background="White" Cursor="SizeNS"/>
+                            <TextBox Name="TextBox1" TextChanged="HandleTextChanged"   Margin="0,20,0,0"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  FontFamily="Consolas" FontSize="12pt" BorderBrush="transparent"     Grid.Row="1" AcceptsTab="True" AcceptsReturn="True" Text="{Binding XPath=Syntax}" />
+                            <StackPanel Grid.Row="2"  Orientation="Horizontal" Margin="0,5,0,0">
+
+                                <RadioButton  HorizontalAlignment="left" Margin="5"   Click="ShowPreview"   Content="Preview" VerticalAlignment="top"/>
+                                <RadioButton  HorizontalAlignment="left" Margin="5"   Click="ShowCode"  Content="XAML" VerticalAlignment="top"/>
+                                <RadioButton  HorizontalAlignment="left" Margin="5"   Click="ShowSplit"   Content="Split" VerticalAlignment="top" IsChecked="True"/>
+
+                                <TextBlock Name="ErrorText" Margin="100,5,60,0" TextTrimming="WordEllipsis" Foreground="red" FontSize="10pt" FontWeight="bold" />
+                            </StackPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

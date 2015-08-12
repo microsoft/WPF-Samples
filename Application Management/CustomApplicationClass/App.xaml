@@ -1,0 +1,5 @@
+﻿<library:CustomApplication x:Class="CustomApplicationClass.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:library="clr-namespace:CustomApplicationClient;assembly=CustomApplicationClient"
+             StartupUri="MainWindow.xaml"/>

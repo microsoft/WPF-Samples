@@ -1,0 +1,83 @@
+﻿<Window x:Class="GlobalizationRunDialog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GlobalizationRunDialog"
+        mc:Ignorable="d" Title="Run" 
+        xml:lang="en-US" 
+        ResizeMode="NoResize" 
+        SizeToContent="WidthAndHeight">
+    <Grid 
+    x:Uid="Grid_1" 
+    Background="#E1E0E5" 
+    Grid.IsSharedSizeScope="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_1" />
+            <ColumnDefinition x:Uid="ColumnDefinition_2" />
+            <ColumnDefinition x:Uid="ColumnDefinition_3" SharedSizeGroup="Buttons" />
+            <ColumnDefinition x:Uid="ColumnDefinition_4" SharedSizeGroup="Buttons" />
+            <ColumnDefinition x:Uid="ColumnDefinition_5" SharedSizeGroup="Buttons" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" />
+            <RowDefinition x:Uid="RowDefinition_2" />
+            <RowDefinition x:Uid="RowDefinition_3" />
+        </Grid.RowDefinitions>
+
+        <Image 
+      x:Uid="Image_1" Grid.Row="0" 
+      Grid.Column="0" 
+      Stretch="None" 
+      HorizontalAlignment="Left" 
+      Margin="10,0,0,0" 
+      Source="RunIcon.JPG"/>
+        <TextBlock 
+      x:Uid="TextBlock_1" Grid.Row="0" 
+      Grid.Column="1" 
+      Grid.ColumnSpan="4" 
+      HorizontalAlignment="Left" 
+      VerticalAlignment="Center" 
+      TextWrapping="Wrap" 
+      Width="3.0 in" 
+      Margin="10,10,10,10">
+      Type the name of a program, folder, document, or Internet resource, and Windows will open it for you.
+        </TextBlock>
+        <TextBlock 
+      x:Uid="TextBlock_2" Grid.Row="1" 
+      Grid.Column="0" 
+      Margin="10,0,0,0"
+      VerticalAlignment="Center">
+      Open:
+        </TextBlock>
+        <ComboBox 
+      x:Uid="ComboBox_1" Grid.Row="1" 
+      Grid.Column="1" 
+      Grid.ColumnSpan="4"  
+      HorizontalAlignment="Left" 
+      Width="3.0 in" 
+      Margin="10,10,10,10"/>
+        <Button 
+      x:Uid="Button_1" Grid.Row="2" 
+      Grid.Column="2" 
+      Margin="3,10,3,15" 
+      Padding="3,0,3,0">
+            OK
+        </Button>
+        <Button 
+      x:Uid="Button_2" Grid.Row="2" 
+      Grid.Column="3" 
+      Margin="3,10,3,15" 
+      Padding="3,0,3,0">
+            Cancel
+        </Button>
+        <Button 
+      x:Uid="Button_3" Grid.Row="2" 
+      Grid.Column="4" 
+      Margin="3,10,3,15" 
+      Padding="3,0,3,0">
+            Browse...
+        </Button>
+    </Grid>
+</Window>

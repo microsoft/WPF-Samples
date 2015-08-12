@@ -1,0 +1,49 @@
+﻿<!-- This example shows how to draw a Rectangle element. -->
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.RectangleExample"
+    WindowTitle="Rectangle Example">
+<StackPanel>
+  <Border>
+    <Border.Background>
+      <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Color="#CCCCFF" Offset="0" />
+          <GradientStop Color="AliceBlue" Offset="0.25" />
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+    </Border.Background>
+  <TextBlock Margin="10" HorizontalAlignment="Left"> 
+    Rectangle Examples
+  </TextBlock>
+</Border>    
+
+<StackPanel Margin="10">    
+<Border Style="{StaticResource MyGridBorderStyle}">
+
+  <Canvas Width="120" Height="200" >
+
+  <!-- Draws a 100 by 50 rectangle with a solid blue fill. -->
+  <Rectangle
+    Width="100"
+    Height="50"
+    Fill="Blue"
+    Canvas.Left="10"
+    Canvas.Top="25" />
+
+  <!-- Draws a 100 by 50 rectangle with a solid blue fill,
+       a black outline, and rounded corners. -->
+  <Rectangle
+    Width="100"
+    Height="50"
+    Fill="Blue"
+    Stroke="Black" StrokeThickness="4"
+    RadiusX="20" RadiusY="20"
+    Canvas.Left="10"
+    Canvas.Top="100"/>
+
+</Canvas>
+</Border>
+</StackPanel>
+</StackPanel>
+</Page>

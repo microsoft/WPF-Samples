@@ -1,0 +1,136 @@
+<!--<SnippetAllClockXAML>-->
+<Page x:Class="WPFClock.Clock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientStop Color="#fcfcfe" Offset="0" />
+              <GradientStop Color="#f6f4f0" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Name="PodClock" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.Resources>
+                <Storyboard x:Key="Sb">
+                    <DoubleAnimation From="0" To="360" Duration="12:00:00" RepeatBehavior="Forever"
+                        Storyboard.TargetName="HourHand"
+                        Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)" 
+                        />
+                    <DoubleAnimation From="0" To="360" Duration="01:00:00" RepeatBehavior="Forever"
+                        Storyboard.TargetName="MinuteHand"  
+                        Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
+                        />
+                    <DoubleAnimation From="0" To="360" Duration="0:1:00" RepeatBehavior="Forever"
+                        Storyboard.TargetName="SecondHand"  
+                        Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
+                        />
+                </Storyboard>
+            </Grid.Resources>
+
+          <Ellipse Width="108" Height="108" StrokeThickness="3">
+            <Ellipse.Stroke>
+              <LinearGradientBrush>
+                <GradientStop Color="LightBlue" Offset="0" />
+                <GradientStop Color="DarkBlue" Offset="1" />
+              </LinearGradientBrush>
+            </Ellipse.Stroke>
+          </Ellipse>
+          <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center" Width="104" Height="104" Fill="LightBlue" StrokeThickness="3">
+            <Ellipse.Stroke>
+              <LinearGradientBrush>
+                <GradientStop Color="DarkBlue" Offset="0" />
+                <GradientStop Color="LightBlue" Offset="1" />
+              </LinearGradientBrush>
+            </Ellipse.Stroke>          
+          </Ellipse>
+            <Border BorderThickness="1" BorderBrush="Black" Background="White" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Name="MonthDay" Text="{Binding}"/>
+            </Border>
+            <Canvas Width="102" Height="102">
+                <Ellipse Width="8" Height="8" Fill="Black" Canvas.Top="46" Canvas.Left="46" />
+                <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="0" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="30" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="60" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="90" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="120" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="150" />
+                      </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                      <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="180" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="210" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="240" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="270" />
+                      </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                      <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="300" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="2" CenterY="46" Angle="330" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+
+
+                <Rectangle x:Name="HourHand" Canvas.Top="21" Canvas.Left="48" 
+                            Fill="Black" Width="4" Height="30">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform x:Name="HourHand2" CenterX="2" CenterY="30" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle x:Name="MinuteHand" Canvas.Top="6" Canvas.Left="49" 
+                        Fill="Black" Width="2" Height="45">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="1" CenterY="45" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle x:Name="SecondHand" Canvas.Top="4" Canvas.Left="49" 
+                        Fill="Red" Width="1" Height="47">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform CenterX="0.5" CenterY="47" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Page>

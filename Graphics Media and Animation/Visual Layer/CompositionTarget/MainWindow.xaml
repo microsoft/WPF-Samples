@@ -1,0 +1,49 @@
+﻿<Window x:Class="CompositionTarget.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompositionTarget"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Foreground" Value="Maroon" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Background="FloralWhite">
+        <TextBlock TextWrapping="Wrap" Margin="20" FontSize="12">
+            Move the mouse over the canvas object below. The MouseMoveEvent handler updates
+      a coordinate value, which is used by the CompositionTarget.Rendering handler
+      to determine the background color of the canvas.
+      The numbers below show the elapsed time in seconds, the number of rendered frames,
+      and the average frame rate.
+        </TextBlock>
+
+        <Grid  Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="160"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Elapsed time (h:m:s):" Grid.Column="0" Grid.Row="0"/>
+            <Label Content="Frame count:" Grid.Column="0" Grid.Row="1"/>
+            <Label Content="Average fps:" Grid.Column="0" Grid.Row="2" />
+
+            <Label Name="myStopwatchLabel"  Grid.Column="1" Grid.Row="0"/>
+            <Label Name="myFrameCounterLabel"  Grid.Column="1" Grid.Row="1"/>
+            <Label Name="myFrameRateLabel" Grid.Column="1" Grid.Row="2" />
+        </Grid>
+
+        <Canvas Name="myCanvas" MouseMove="MouseMoveHandler" Height="512" Width="768" />
+    </StackPanel>
+</Window>

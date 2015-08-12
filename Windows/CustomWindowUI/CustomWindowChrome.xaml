@@ -1,0 +1,104 @@
+﻿<Window 
+    x:Class="CustomWindowUI.CustomWindowChrome"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="CustomChromeWindowSample"
+	WindowStyle="None" 
+    Width="348" Height="321"
+    MinWidth="100" MinHeight="100"
+	AllowsTransparency="True" 
+	Background="Transparent"
+    MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Border BorderBrush="DarkBlue" BorderThickness="10" CornerRadius="20" Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--Close button-->
+            <Button Name="closeButton" Grid.Column="1" TabIndex="0" Grid.Row="0" Click="CloseButtonRectangle_Click" Width="50" Height="50" Margin="10">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Canvas>
+                            <Canvas.Triggers>
+                                <!-- Make semi-opaque when mouse is over close button -->
+                                <EventTrigger RoutedEvent="Canvas.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="0.6" Duration="0:0:0.05" Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" AccelerationRatio="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <!-- Make fully-opaque when mouse moves away from close button -->
+                                <EventTrigger RoutedEvent="Canvas.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" AccelerationRatio="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <!-- Make fully-opaque when mouse is down and over close button -->
+                                <EventTrigger RoutedEvent="Canvas.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" AccelerationRatio="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Canvas.Triggers>
+
+                            <Rectangle Name="border" Width="50" Height="50" Stroke="Black" StrokeThickness="4" RadiusX="3" RadiusY="3" Fill="Red" />
+                            <Line X1="10" Y1="10" X2="40" Y2="40" Stroke="White" StrokeThickness="5" StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                            <Line X1="40" Y1="10" X2="10" Y2="40" Stroke="White" StrokeThickness="5" StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+
+                        </Canvas>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Resize thumb -->
+            <Thumb Name="resizeThumb" Grid.Column="1" Grid.Row="2" Width="50" Height="50" Cursor="SizeAll" Margin="10" ToolTip="Drag to resize" DragDelta="ResizeThumb_DragDelta">
+                <Thumb.Template>
+                    <ControlTemplate>
+                        <Canvas>
+                            <Canvas.Triggers>
+                                <!-- Make semi-opaque when mouse is over resizing thumb -->
+                                <EventTrigger RoutedEvent="Canvas.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="0.6" Duration="0:0:0.05" Storyboard.TargetName="resizeEllipse" Storyboard.TargetProperty="Opacity" AccelerationRatio="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <!-- Make fully-opaque when mouse moves away from resizing thumb -->
+                                <EventTrigger RoutedEvent="Canvas.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="resizeEllipse" Storyboard.TargetProperty="Opacity" AccelerationRatio="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <!-- Make fully-opaque when mouse is down and over resizing thumb -->
+                                <EventTrigger RoutedEvent="Canvas.MouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="resizeEllipse" Storyboard.TargetProperty="Opacity" AccelerationRatio="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Canvas.Triggers>
+                            <Ellipse Name="resizeEllipse" Width="50" Height="50" Fill="Red" Stroke="Black" StrokeThickness="5" />
+                        </Canvas>
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
+        </Grid>
+    </Border>
+</Window>

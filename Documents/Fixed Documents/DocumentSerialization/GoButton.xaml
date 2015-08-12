@@ -1,0 +1,56 @@
+<StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            Orientation="Horizontal" >
+  <StackPanel.Resources>
+    <Style TargetType="{x:Type Menu}">
+      <Setter Property="Background">
+        <Setter.Value>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+              <GradientStopCollection>
+                <GradientStop Color="White" Offset="0" />
+                <GradientStop Color="Silver" Offset="1" />
+              </GradientStopCollection>
+            </GradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </StackPanel.Resources>
+  <Canvas Height="28" VerticalAlignment="Center" Margin="1">
+    <Path StrokeThickness="1" x:Name="MarkPath" >
+      <Path.Fill>
+        <LinearGradientBrush>
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Color="Yellow" />
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Path.Fill>
+      <Path.Stroke>
+        <SolidColorBrush Color="Black" />
+      </Path.Stroke>
+      <Path.Data>
+        <PathGeometry>
+          <PathFigure IsClosed="True">
+            <LineSegment Point="0, 24" />
+            <LineSegment Point="78, 24"  />
+            <LineSegment Point="78, 7"  />
+            <LineSegment Point="85, 0"  />
+          </PathFigure>
+        </PathGeometry>
+      </Path.Data>
+    </Path>
+    <Button Name="GoToMark">
+      <Button.ToolTip>
+        <ToolTip>Go To this Marker</ToolTip>
+      </Button.ToolTip>
+      <TextBlock Name="TB" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Width="40"/>
+      <Button.ContextMenu>
+        <ContextMenu>
+          <MenuItem x:Name="GoToMenu"  Header="Go To..."></MenuItem>
+          <MenuItem x:Name="DeleteMark" Header="Delete"></MenuItem>
+        </ContextMenu>
+      </Button.ContextMenu>
+    </Button>
+  </Canvas>
+</StackPanel>

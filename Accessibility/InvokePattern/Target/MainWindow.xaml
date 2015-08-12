@@ -1,0 +1,137 @@
+﻿<Window x:Class="Target.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Target"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <XmlDataProvider x:Key="MyEmployeeData" XPath="/EmployeeData">
+            <x:XData>
+                <EmployeeData xmlns="">
+                    <EmployeeInfo>
+                        <EmployeeInfoData>Employee1</EmployeeInfoData>
+                        <Item Type="FirstName">Jesper</Item>
+                        <Item Type="LastName">Aaberg</Item>
+                        <Item Type="EmployeeNumber">12345</Item>
+                    </EmployeeInfo>
+                    <EmployeeInfo>
+                        <EmployeeInfoData>Employee2</EmployeeInfoData>
+                        <Item Type="FirstName">Dominik</Item>
+                        <Item Type="LastName">Paiha</Item>
+                        <Item Type="EmployeeNumber">98765</Item>
+                    </EmployeeInfo>
+                </EmployeeData>
+            </x:XData>
+        </XmlDataProvider>
+
+        <HierarchicalDataTemplate DataType="EmployeeInfo" 
+      ItemsSource ="{Binding XPath=Item}">
+            <TextBlock Text="{Binding XPath=EmployeeInfoData}" />
+        </HierarchicalDataTemplate>
+
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock>
+        TreeView control with TreeViewItem content explicitly 
+        defined as Header strings</TextBlock>
+        <TreeView>
+            <TreeViewItem Header="Employee1">
+                <TreeViewItem Header="Jesper"/>
+                <TreeViewItem Header="Aaberg"/>
+                <TreeViewItem Header="12345"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Employee2">
+                <TreeViewItem Header="Dominik"/>
+                <TreeViewItem Header="Paiha"/>
+                <TreeViewItem Header="98765"/>
+            </TreeViewItem>
+        </TreeView>
+
+        <TextBlock>
+        TreeView control with leaf nodes specified as
+        Items that are Buttons
+        </TextBlock>
+        <TreeView>
+            <TreeViewItem Header ="Employee1">
+                <TreeViewItem.Items>
+                    <Button Click="OnClick">Jesper</Button>
+                    <Button Click="OnClick">Aaberg</Button>
+                    <Button Click="OnClick">12345</Button>
+                </TreeViewItem.Items>
+            </TreeViewItem>
+            <TreeViewItem Header="Employee2">
+                <TreeViewItem.Items>
+                    <Button Click="OnClick">Dominik</Button>
+                    <Button Click="OnClick">Paiha</Button>
+                    <Button Click="OnClick">98765</Button>
+                </TreeViewItem.Items>
+            </TreeViewItem>
+        </TreeView>
+        <TextBlock>
+          TreeView control with root nodes
+          defined as Buttons and and leaf nodes
+          that are Header strings
+        </TextBlock>
+        <TreeView>
+            <TreeViewItem>
+                <TreeViewItem.Header>
+                    <Button Click="OnClick">Employee1</Button>
+                </TreeViewItem.Header>
+                <TreeViewItem Header="Jesper"/>
+                <TreeViewItem Header="Aaberg"/>
+                <TreeViewItem Header="12345"/>
+            </TreeViewItem>
+            <TreeViewItem>
+                <TreeViewItem.Header>
+                    <Button Click="OnClick">Employee2</Button>
+                </TreeViewItem.Header>
+                <TreeViewItem Header="Dominik"/>
+                <TreeViewItem Header="Paiha"/>
+                <TreeViewItem Header="98765"/>
+            </TreeViewItem>
+        </TreeView>
+        <TextBlock>
+        TreeView control created
+        by databinding with an XMLDataProvider and using a 
+        HierarchicalDataTemplate
+        </TextBlock>
+        <TreeView ItemsSource="{Binding Source={StaticResource MyEmployeeData}, 
+        XPath=EmployeeInfo}"/>
+        <TextBlock>
+       TreeView control whose Items contain DockPanel controls
+       with embedded Image and TextBlock content
+        </TextBlock>
+        <TreeView>
+            <TreeViewItem Header="Animals">
+                <TreeViewItem.Items>
+                    <DockPanel>
+                        <Image Source="data\fish.png"/>
+                        <TextBlock Margin="5" Foreground="Brown"
+                       FontSize="12">Fish</TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <Image Source="data\dog.png"/>
+                        <TextBlock Margin="5" Foreground="Brown"
+                       FontSize="12">Dog</TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <Image Source="data\cat.png"/>
+                        <TextBlock Margin="5" Foreground="Brown"
+                       FontSize="12">Cat</TextBlock>
+                    </DockPanel>
+                </TreeViewItem.Items>
+            </TreeViewItem>
+        </TreeView>
+    </StackPanel>
+</Window>

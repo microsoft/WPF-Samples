@@ -1,0 +1,66 @@
+﻿<Window x:Class="ThicknessConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThicknessConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <DockPanel Width="400" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <TextBlock DockPanel.Dock="Top" FontFamily="Verdana" FontSize="18" FontWeight="Bold" Margin="5">
+      ThicknessConverter Sample</TextBlock>
+        <Border Name="border1" Height="300" Width="300" BorderThickness="2" BorderBrush="Black" DockPanel.Dock="Top">
+            <Grid Height="30" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Name="bThickness"/>
+                <TextBlock Grid.Row="1" Name="bColor"/>
+            </Grid>
+        </Border>
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock TextWrapping="Wrap" Grid.Row="0" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="0,15,0,15">
+        Use the ListBoxes below to manipulate the properties of the Border element above.</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" TextWrapping="Wrap">Change the BorderThickness Property:</TextBlock>
+            <ListBox VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Width="50" Height="50" Margin="5,0,0,0" SelectionChanged="ChangeThickness">
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>10</ListBoxItem>
+                <ListBoxItem>15</ListBoxItem>
+                <ListBoxItem>20</ListBoxItem>
+                <ListBoxItem>25</ListBoxItem>
+                <ListBoxItem>30</ListBoxItem>
+                <ListBoxItem>35</ListBoxItem>
+                <ListBoxItem>40</ListBoxItem>
+                <ListBoxItem>45</ListBoxItem>
+                <ListBoxItem>50</ListBoxItem>
+            </ListBox>
+            <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap">Set the BorderBrush Property:</TextBlock>
+            <ListBox VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" Width="60" Height="50" Margin="5,0,0,0" SelectionChanged="ChangeColor">
+                <ListBoxItem>Red</ListBoxItem>
+                <ListBoxItem>Green</ListBoxItem>
+                <ListBoxItem>Blue</ListBoxItem>
+                <ListBoxItem>Yellow</ListBoxItem>
+                <ListBoxItem>Orange</ListBoxItem>
+                <ListBoxItem>Purple</ListBoxItem>
+                <ListBoxItem>Silver</ListBoxItem>
+                <ListBoxItem>Pink</ListBoxItem>
+                <ListBoxItem>Maroon</ListBoxItem>
+                <ListBoxItem>Brown</ListBoxItem>
+                <ListBoxItem>Black</ListBoxItem>
+            </ListBox>
+        </Grid>
+    </DockPanel>
+</Window>

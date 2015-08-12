@@ -1,0 +1,71 @@
+﻿<Window x:Class="ValidateItemsInItemsControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValidateItemsInItemsControl"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <StackPanel.Resources>
+
+            <ObjectDataProvider MethodName="GetValues"
+                          ObjectType="{x:Type sys:Enum}"
+                          x:Key="RegionValues">
+
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="local:Region" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <local:Representantives x:Key="SaleReps"/>
+
+            <DataTemplate x:Key="ItemTemplate" >
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Customer Name" Margin="5"/>
+                    <TextBox Width="100" Margin="5" Text="{Binding Name}"/>
+                    <TextBlock Text="Region" Margin="5"/>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource RegionValues}}" 
+                    SelectedItem="{Binding Location}"  Width="100" Margin="5"/>
+                    <TextBlock Text="Service Representative" Margin="5"/>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource SaleReps}}"
+                    SelectedItem="{Binding ServiceRepresentative}"  Width="200" Margin="5"/>
+                    <Button Content="Save Customer" Click="saveCustomer_Click"/>
+
+                </StackPanel>
+            </DataTemplate>
+        </StackPanel.Resources>
+
+        <TextBlock FontSize="14" TextWrapping="Wrap" Margin="5">
+      This sample demonstrates how to validate an object in an ItemsControl.
+      The ValidationRule assigned to ItemsControl.ItemBindingGroup checks 
+      multiple properties in the item. 
+      This sample checks that a customer is assigned to a sales representative that serves their area.
+        </TextBlock>
+
+        <ItemsControl Margin="5"  Name="customerList"  ItemTemplate="{StaticResource ItemTemplate}"
+                  ItemsSource="{Binding}">
+            <ItemsControl.ItemBindingGroup>
+                <BindingGroup>
+                    <BindingGroup.ValidationRules>
+                        <local:AreasMatch/>
+                    </BindingGroup.ValidationRules>
+                </BindingGroup>
+            </ItemsControl.ItemBindingGroup>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="{x:Type ContentPresenter}">
+                    <Setter Property="Validation.ValidationAdornerSite"
+                                                Value="{Binding ElementName=validationErrorReport}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+
+        <Label Name="validationErrorReport" 
+             Content="{Binding RelativeSource={RelativeSource Self}, 
+           Path=(Validation.ValidationAdornerSiteFor).(Validation.Errors)[0].ErrorContent}"
+           Margin="5" Foreground="Red" HorizontalAlignment="Center"/>
+
+        <Button Content="Add Customer" Click="AddCustomer_Click" HorizontalAlignment="Center"/>
+    </StackPanel>
+</Window>

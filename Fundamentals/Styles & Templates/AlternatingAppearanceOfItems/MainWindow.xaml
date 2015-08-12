@@ -1,0 +1,143 @@
+﻿<Window x:Class="AlternatingAppearanceOfItems.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlternatingAppearanceOfItems"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <ScrollViewer>
+        <StackPanel>
+
+            <TextBlock Margin="5,10,0,0" FontSize="20">
+                Alternating the Styles of GroupItems
+            </TextBlock>
+            <TextBlock Margin="5" FontSize="14" TextWrapping="Wrap">
+                The following ListBox groups Place objects by State, 
+                defines two alternating background colors for the GroupItem 
+                headings, and defines three alternating background colors for its items.
+            </TextBlock>
+            <Grid Margin="5">
+                <Grid.Resources>
+                    <local:Places x:Key="Places"/>
+
+                    <!--Group the items by State.-->
+                    <CollectionViewSource Source="{StaticResource Places}" x:Key="GroupedData">
+                        <CollectionViewSource.GroupDescriptions>
+                            <PropertyGroupDescription PropertyName="State"/>
+                        </CollectionViewSource.GroupDescriptions>
+                    </CollectionViewSource>
+
+                    <!--Returns a Brush for the header of a GroupItem.-->
+                    <AlternationConverter x:Key="GroupHeaderBackgroundConverter">
+                        <SolidColorBrush>LightBlue</SolidColorBrush>
+                        <SolidColorBrush>LightSteelBlue</SolidColorBrush>
+                    </AlternationConverter>
+
+                    <!--Returns a Brush for a ListBoxItem.-->
+                    <AlternationConverter x:Key="BackgroundConverter">
+                        <SolidColorBrush>Silver</SolidColorBrush>
+                        <SolidColorBrush>LightGray</SolidColorBrush>
+                        <SolidColorBrush>GhostWhite</SolidColorBrush>
+                    </AlternationConverter>
+                </Grid.Resources>
+
+                <ListBox ItemsSource="{Binding Source={StaticResource GroupedData}}"
+                     DisplayMemberPath="CityName" AlternationCount="3" Name="lb">
+
+                    <ListBox.GroupStyle>
+                        <!--Set alternating backgrounds on the header of each group.-->
+                        <GroupStyle AlternationCount="2">
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontWeight="Bold" 
+                                               Text="{Binding Path=Name}" 
+                                               Background="{Binding 
+                                                   RelativeSource={RelativeSource FindAncestor, 
+                                                   AncestorType={x:Type GroupItem}},
+                                                   Path=(ItemsControl.AlternationIndex),
+                                                   Converter={StaticResource 
+                                                              GroupHeaderBackgroundConverter}}"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListBox.GroupStyle>
+                    <ListBox.ItemContainerStyle>
+                        <!--Set alternating backgrounds on the items in the ListBox.-->
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background" 
+                                        Value="{Binding RelativeSource={RelativeSource Self},
+                                           Path=(ItemsControl.AlternationIndex),
+                                           Converter={StaticResource BackgroundConverter}}"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+
+            <TextBlock Margin="5,10,0,0" FontSize="20">
+                    Using Alternating Styles for Each Level in a TreeView
+            </TextBlock>
+            <TextBlock Margin="5" FontSize="14" TextWrapping="Wrap">
+                    The following TreeView alternates the FontStyle of items in 
+                    the second level and the Background of items in the third level.
+            </TextBlock>
+            <Grid Margin="5">
+                <Grid.Resources>
+                    <local:ListLeagueList x:Key="MyTreeViewData"/>
+
+                    <!--Returns alternating brushes.-->
+                    <AlternationConverter x:Key="TeamsBackgroundConverter">
+                        <SolidColorBrush>LimeGreen</SolidColorBrush>
+                        <SolidColorBrush>SpringGreen</SolidColorBrush>
+                        <SolidColorBrush>Chartreuse</SolidColorBrush>
+                    </AlternationConverter>
+
+                    <!--The DataTemplate used by TreeViewItems in the third level
+                        of the TreeView.-->
+                    <DataTemplate x:Key="Level3Data">
+                        <TextBlock Text="{Binding Path=Name}"
+                                   Background="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                     AncestorType={x:Type TreeViewItem}},
+                                     Path=(ItemsControl.AlternationIndex),
+                                     Converter={StaticResource TeamsBackgroundConverter}}"/>
+                    </DataTemplate>
+
+                    <!--Returns altnernating FontStyles.-->
+                    <AlternationConverter x:Key="LeagueFontStyleConverter">
+                        <FontStyle >Italic</FontStyle>
+                        <FontStyle >Normal</FontStyle>
+                    </AlternationConverter>
+
+                    <!--The HierarchicalDataTemplate used by TreeViewItems
+                        in the second level of the TreeView.-->
+                    <HierarchicalDataTemplate x:Key="Level2Data"
+                                              ItemsSource="{Binding Path=Teams}"
+                                              ItemTemplate="{StaticResource Level3Data}"
+                                              AlternationCount="3">
+                        <TextBlock Text="{Binding Path=Name}"
+                                   FontStyle="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                       AncestorType={x:Type TreeViewItem}},
+                                       Path=(ItemsControl.AlternationIndex),
+                                       Converter={StaticResource LeagueFontStyleConverter}}"/>
+                    </HierarchicalDataTemplate>
+
+                    <!--The HierarchicalDataTemplate used by TreeViewItems
+                        in the first level of the TreeView.-->
+                    <HierarchicalDataTemplate x:Key="Level1Data"
+                        ItemsSource="{Binding Path=Divisions}"
+                        ItemTemplate="{StaticResource Level2Data}"
+                        AlternationCount="2">
+                        <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+                    </HierarchicalDataTemplate>
+
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="IsExpanded" Value="True"/>
+                    </Style>
+
+                </Grid.Resources>
+                <TreeView ItemsSource="{Binding Source={StaticResource MyTreeViewData}}"
+                          ItemTemplate="{StaticResource Level1Data}"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,269 @@
+<!-- This example demonstrates the use of DrawingBrush as an opacity mask.
+     In each opacity masking example, the object is show without the opacity 
+     mask applied, the opacity mask is shown by itself, and then the object
+     is shown with the opacity mask applied. -->
+
+<Page  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="SDKSample.DrawingBrushExample"
+    Title="Using a DrawingBrush as an Opacity Mask">
+
+  <Grid  Margin="10" Background="{StaticResource MyCheckeredBrushResource}">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="10" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="10" />
+    </Grid.RowDefinitions>
+
+    <!-- The following rectangles provide backgrounds for the sample's text. -->
+    <Rectangle Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="0"
+      Fill="{StaticResource BlackToTransparentGradient}" />
+    <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" 
+     Fill="#99FFFFFF" />
+
+    <!-- Description text. -->
+    <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5">
+      <TextBlock 
+     FontSize="16"
+     Foreground="White">Using a DrawingBrush as an Opacity Mask</TextBlock>
+    </Border>
+    <StackPanel Grid.Row="2" Grid.Column="1" Background="White">
+      <TextBlock>Without Opacity Mask</TextBlock>
+    </StackPanel>
+    <StackPanel Grid.Row="2" Grid.Column="3" Background="White">
+      <TextBlock>The Opacity Mask</TextBlock>
+    </StackPanel>
+    <StackPanel Grid.Row="2" Grid.Column="5" Background="White">
+      <TextBlock>With Opacity Mask</TextBlock>
+    </StackPanel>
+
+
+    <!-- First opacity mask example. In this example, a Drawingbrush is
+             used as an opacity mask. -->
+
+    <!-- Without Opacity Mask -->
+    <Image Grid.Row="4" Grid.Column="1"
+     Height="150"
+     Width="200"
+     Source="sampleImages/Waterlilies.jpg" />
+
+    <!-- The Opacity Mask 
+           The DrawingBrush is used as a fill in this example
+             to show what it looks like.  -->
+    <Rectangle Grid.Row="4" Grid.Column="3"
+        Height="150"
+        Width="200"
+        Stroke="Black"
+        StrokeThickness="1">
+      <Rectangle.Fill>
+        <DrawingBrush>
+          <DrawingBrush.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Brush>
+                <RadialGradientBrush>
+                  <RadialGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="Black"/>
+                    <GradientStop Offset="1" Color="Transparent"/>
+                  </RadialGradientBrush.GradientStops>
+                </RadialGradientBrush>
+              </GeometryDrawing.Brush>
+              <GeometryDrawing.Geometry>
+                <RectangleGeometry Rect="0.05,0.05 0.9,0.9" />
+              </GeometryDrawing.Geometry>
+              <GeometryDrawing.Pen>
+                <Pen Thickness="0.1" Brush="Black" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- With the Opacity Mask-->
+    <Image 
+          Grid.Row="4" Grid.Column="5"
+          Height="150"
+          Width="200"
+          Source="sampleImages/Waterlilies.jpg">
+      <Image.OpacityMask>
+        <DrawingBrush>
+          <DrawingBrush.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Brush>
+                <RadialGradientBrush>
+                  <RadialGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="Black" />
+                    <GradientStop Offset="1" Color="Transparent" />
+                  </RadialGradientBrush.GradientStops>
+                </RadialGradientBrush>
+              </GeometryDrawing.Brush>
+              <GeometryDrawing.Geometry>
+                <RectangleGeometry Rect="0.05,0.05 0.9,0.9" />
+              </GeometryDrawing.Geometry>
+              <GeometryDrawing.Pen>
+                <Pen Thickness="0.1" Brush="Black" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Image.OpacityMask>
+    </Image>
+
+    <!-- Without an Opacity Mask -->
+    <Image Grid.Row="6" Grid.Column="1"
+          Height="150"
+          Width="200"
+          Source="sampleImages/Waterlilies.jpg" />
+
+    <!-- Second opacity mask example. This example applies an opacity mask
+           to an image. -->
+
+    <!-- The Opacity Mask
+           The DrawingBrush is used as a fill in this example
+           to show what it looks like.  -->
+    <Rectangle Grid.Row="6" Grid.Column="3"
+     Height="150"
+     Width="200"
+     Stroke="Black"
+     StrokeThickness="1">
+
+      <Rectangle.Fill>
+        <DrawingBrush>
+          <DrawingBrush.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Geometry>
+                <GeometryGroup>
+                  <EllipseGeometry Center="0.5,0.5" RadiusX="0.45" RadiusY="0.2" />
+                  <EllipseGeometry Center="0.5,0.5" RadiusX="0.2" RadiusY="0.45" />
+                </GeometryGroup>
+              </GeometryDrawing.Geometry>
+              <GeometryDrawing.Pen>
+                <Pen Thickness="0.1" Brush="Black" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- With the Opacity Mask -->
+    <Image 
+       Grid.Row="6" Grid.Column="5"
+      Height="150" Width="200"
+      Source="sampleImages/Waterlilies.jpg">
+      <Image.OpacityMask>
+        <DrawingBrush>
+          <DrawingBrush.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Geometry>
+                <GeometryGroup>
+                  <EllipseGeometry Center="0.5,0.5" RadiusX="0.45" RadiusY="0.2" />
+                  <EllipseGeometry Center="0.5,0.5" RadiusX="0.2" RadiusY="0.45" />
+                </GeometryGroup>
+              </GeometryDrawing.Geometry>
+              <GeometryDrawing.Pen>
+                <Pen Thickness="0.1" Brush="Black" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Image.OpacityMask>
+    </Image>
+
+
+    <!-- Third opacity mask example. In this example, a tiled DrawingBrush is
+             is used as an opacity mask. -->
+
+    <!-- Without Opacity Mask -->
+    <Button Grid.Row="8" Grid.Column="1"
+     Height="100"
+     Width="200"
+     FontFamily="MS Gothic"
+     FontSize="16">
+      A Button
+    </Button>
+
+
+    <!-- The Opacity Mask-->
+    <!-- The DrawingBrush is used as a fill in this example
+             to show what it looks like.  -->
+    <Rectangle Grid.Row="8" Grid.Column="3"
+    Height="100"
+    Width="200"
+    Stroke="Black"
+    StrokeThickness="1">
+      <Rectangle.Fill>
+        <DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+          <DrawingBrush.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Brush>
+                <RadialGradientBrush>
+                  <RadialGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="Black" />
+                    <GradientStop Offset="1" Color="Transparent" />
+                  </RadialGradientBrush.GradientStops>
+                </RadialGradientBrush>
+              </GeometryDrawing.Brush>
+              <GeometryDrawing.Geometry>
+                <RectangleGeometry Rect="0.05,0.05 0.9,0.9" />
+              </GeometryDrawing.Geometry>
+              <GeometryDrawing.Pen>
+                <Pen Thickness="0.1" Brush="Black" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- With the Opacity Mask-->
+    <Button
+       Grid.Row="8" Grid.Column="5"
+      Height="100"
+      Width="200"
+      FontFamily="MS Gothic"
+      FontSize="16">
+      A Button
+      <Button.OpacityMask>
+        <DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+          <DrawingBrush.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Brush>
+                <RadialGradientBrush>
+                  <RadialGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="Black" />
+                    <GradientStop Offset="1" Color="Transparent" />
+                  </RadialGradientBrush.GradientStops>
+                </RadialGradientBrush>
+              </GeometryDrawing.Brush>
+              <GeometryDrawing.Geometry>
+                <RectangleGeometry Rect="0.05,0.05 0.9,0.9" />
+              </GeometryDrawing.Geometry>
+              <GeometryDrawing.Pen>
+                <Pen Thickness="0.1" Brush="Black" />
+              </GeometryDrawing.Pen>
+            </GeometryDrawing>
+          </DrawingBrush.Drawing>
+        </DrawingBrush>
+      </Button.OpacityMask>
+    </Button>
+  </Grid>
+</Page>

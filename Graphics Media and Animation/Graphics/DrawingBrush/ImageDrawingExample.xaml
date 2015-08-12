@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!-- Demonstrates the use of DrawingBrush. -->
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="DrawingBrush.ImageBrushExample"
+  Title="Using a DrawingBrush">
+  <StackPanel>   
+  
+    <Border Background="#66000000">
+      <TextBlock Margin="10" HorizontalAlignment="Left" Foreground="White">
+        ImageDrawing Example
+      </TextBlock>
+    </Border>  
+
+    <StackPanel Margin="10">
+      <TextBlock>
+        An ImageDrawing enables a DrawingBrush to contain images.  This example shows how 
+        to use an ImageDrawing with a DrawingBrush to paint the background of a button, to
+        fill the area of an ellipse, and to fill the area of a CombinedGeometry.
+      </TextBlock>
+      
+      <StackPanel Margin="10" Orientation="Horizontal">
+        <Button Height="100" Width="100" Margin="15,0,0,0">Click Me
+          <Button.Background>
+            <DrawingBrush>
+              <DrawingBrush.Drawing>
+                <DrawingGroup>
+                  <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Pink">
+                      <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,100,100" />
+                      </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <ImageDrawing ImageSource="sampleImages\cherries.jpg"
+                      Rect="50,50,50,50" />
+                    <ImageDrawing ImageSource="sampleImages\cherries.jpg"
+                      Rect="0,0,50,50" />                      
+                  </DrawingGroup.Children>
+                </DrawingGroup>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Button.Background>
+        </Button>
+    
+        <Ellipse Margin="15,0,0,0" Width="200" Height="200" Stroke="Red" StrokeThickness="1">
+          <Ellipse.Fill>
+            <DrawingBrush Viewport="0,0,150,50" ViewportUnits="Absolute" TileMode="Tile">
+              <DrawingBrush.Drawing>
+                <DrawingGroup>
+                  <DrawingGroup.Children>                
+                    <ImageDrawing ImageSource="sampleImages\Apple.JPG" Rect="0,0,100,50" />
+                    <ImageDrawing ImageSource="sampleImages\cherries.JPG" Rect="100,0,50,50" />
+                  </DrawingGroup.Children>
+                </DrawingGroup>                
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Ellipse.Fill>
+        </Ellipse>
+    
+        <Path Stretch="Uniform" Margin="15,0,0,0">
+          <Path.Data>
+            <CombinedGeometry GeometryCombineMode="Union">
+              <CombinedGeometry.Geometry1>
+                <RectangleGeometry Rect="50,70 100 100" />
+              </CombinedGeometry.Geometry1>
+              <CombinedGeometry.Geometry2>
+                <EllipseGeometry Center="100,70" RadiusX="35" RadiusY="40"/>
+              </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+          </Path.Data>
+          <Path.Fill>
+            <DrawingBrush>
+              <DrawingBrush.Drawing>
+                <ImageDrawing ImageSource="sampleImages\waterlilies.JPG">
+                  <ImageDrawing.Rect>
+                    <Rect X="100" Y="100" Width="50" Height="50" />
+                  </ImageDrawing.Rect>
+                </ImageDrawing>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Path.Fill>
+        </Path>
+      </StackPanel>
+    </StackPanel>
+  </StackPanel>
+</Page>

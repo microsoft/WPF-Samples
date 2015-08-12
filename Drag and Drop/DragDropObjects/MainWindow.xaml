@@ -1,0 +1,19 @@
+﻿<Window x:Class="DragDropObjects.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragDropObjects"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="OnPageLoad">
+    <StackPanel Name="myStackPanel">
+        <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" Padding="20">
+            <TextBlock Width="750" TextWrapping="Wrap" FontSize="12">
+        This sample shows how to drag and drop objects on the screen.
+        To visually indicate that the object is being dragged, a simple adorner
+        is applied to an object as you drag it. Drag and drop the box and 
+        TextBox below.
+            </TextBlock>
+        </Border>
+    </StackPanel>
+</Window>

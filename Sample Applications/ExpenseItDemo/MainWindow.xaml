@@ -1,0 +1,232 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ExpenseItDemo"
+    xmlns:localValidation="clr-namespace:ExpenseItDemo.Validation"
+    x:Class="ExpenseItDemo.MainWindow"
+    DataContext="{StaticResource ExpenseData}"
+    Title="ExpenseIt Standalone"
+    MinWidth="480" MinHeight="260"
+    SizeToContent="WidthAndHeight"
+    Icon="Watermark.png"
+    WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+
+        <Style x:Key="EmployeeList" TargetType="{x:Type ListBox}">
+            <Setter Property="Margin" Value="0,5,5,0" />
+            <Setter Property="MinHeight" Value="50" />
+        </Style>
+
+        <Style x:Key="CostCenterList" TargetType="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="0,5,5,0" />
+        </Style>
+
+        <Style x:Key="HorizontalRadio" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Margin" Value="0,5,5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <RadioButton Focusable="false"
+                                     Content="{TemplateBinding ContentPresenter.Content}"
+                                     VerticalAlignment="Center"
+                                     IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HorizontalRadioList" TargetType="{x:Type ListBox}">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <StackPanel KeyboardNavigation.TabNavigation="Once" IsItemsHost="True" Orientation="Horizontal"
+                                    Height="25" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InputText" TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="Foreground" Value="#0066CC" />
+            <Setter Property="FontSize" Value="10pt" />
+            <Setter Property="Margin" Value="0,5,5,0" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+                <Trigger Property="Validation.HasError" Value="false">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="EmployeeItemTemplate">
+            <TextBlock Text="{Binding XPath=@Name}" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="CostCenterTemplate">
+            <TextBlock Text="{Binding XPath=@Name}" />
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <!-- Watermark -->
+        <Image Style="{StaticResource WatermarkImage}" />
+
+        <DockPanel>
+
+            <!-- Menu Bar-->
+            <Menu DockPanel.Dock="Top">
+
+                <!-- File Menu-->
+                <MenuItem Header="_File">
+                    <MenuItem Command="local:MainWindow.CreateExpenseReportCommand" />
+                    <Separator />
+                    <MenuItem Command="local:MainWindow.ExitCommand" />
+                </MenuItem>
+
+                <!-- Help Menu-->
+                <MenuItem Header="_Help">
+                    <MenuItem Command="local:MainWindow.AboutCommand" />
+                </MenuItem>
+
+            </Menu>
+
+            <!-- Data Entry -->
+            <Grid Style="{StaticResource WindowContentGrid}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Email Address -->
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=emailTextBox}" Grid.Column="0"
+                       Grid.Row="0">
+                    _Email:
+                </Label>
+                <TextBox Name="emailTextBox" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="Alias" UpdateSourceTrigger="PropertyChanged">
+                            <!-- SECURITY: Email alias must be valid email address eg xxx@xxx.com -->
+                            <Binding.ValidationRules>
+                                <localValidation:EmailValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <TextBox.ToolTip>Enter email.</TextBox.ToolTip>
+                </TextBox>
+
+                <!-- Employee Number -->
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=employeeNumberTextBox}"
+                       Grid.Column="0" Grid.Row="1">
+                    Employee _Number:
+                </Label>
+                <TextBox Name="employeeNumberTextBox" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="EmployeeNumber" UpdateSourceTrigger="PropertyChanged">
+                            <!-- SECURITY: EmployeeNumber must be an int and 5 digits long -->
+                            <Binding.ValidationRules>
+                                <localValidation:NumberValidationRule IsFixedLength="True" Length="5" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <TextBox.ToolTip>Enter employee number.</TextBox.ToolTip>
+                </TextBox>
+
+                <!-- Cost Center -->
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=costCenterTextBox}" Grid.Column="0"
+                       Grid.Row="2">
+                    _Cost Center:
+                </Label>
+                <ComboBox Name="costCenterTextBox"
+                          Style="{StaticResource CostCenterList}"
+                          Grid.Column="1" Grid.Row="2"
+                          ItemTemplate="{StaticResource CostCenterTemplate}"
+                          ItemsSource="{Binding Source={StaticResource CostCenters}}"
+                          SelectedValue="{Binding Path=CostCenter}"
+                          SelectedValuePath="@Number">
+                    <ComboBox.ToolTip>
+                        <TextBlock>Choose cost center.</TextBlock>
+                    </ComboBox.ToolTip>
+                    <ComboBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+
+                <!-- Employee Type List -->
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=employeeTypeRadioButtons}"
+                       Grid.Column="0" Grid.Row="3">
+                    E_mployees:
+                </Label>
+                <ListBox Name="employeeTypeRadioButtons" Style="{StaticResource HorizontalRadioList}" Grid.Column="1"
+                         Grid.Row="3">
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                        FTE
+                        <ListBoxItem.ToolTip>
+                            <TextBlock>FTE employee type</TextBlock>
+                        </ListBoxItem.ToolTip>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                        CSG
+                        <ListBoxItem.ToolTip>
+                            <TextBlock>CSG employee type</TextBlock>
+                        </ListBoxItem.ToolTip>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                        Vendor
+                        <ListBoxItem.ToolTip>
+                            <TextBlock>Vendor employee type</TextBlock>
+                        </ListBoxItem.ToolTip>
+                    </ListBoxItem>
+                </ListBox>
+
+                <!-- Employee List -->
+                <ListBox Style="{StaticResource EmployeeList}"
+                         Grid.Column="1" Grid.Row="4"
+                         ItemTemplate="{StaticResource EmployeeItemTemplate}"
+                         ItemsSource="{Binding Source={StaticResource Employees}}">
+                    <ListBox.ToolTip>
+                        <TextBlock>Choose employee name.</TextBlock>
+                    </ListBox.ToolTip>
+                    <ListBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+
+                <!-- Create Expense Report -->
+                <Button Name="createExpenseReportButton" Style="{StaticResource CommandButton}" Grid.Column="1"
+                        Grid.Row="5" Command="local:MainWindow.CreateExpenseReportCommand">
+                    Create Expense _Report
+                    <Button.ToolTip>
+                        <TextBlock>Create Expense Report.</TextBlock>
+                    </Button.ToolTip>
+                </Button>
+
+            </Grid>
+
+        </DockPanel>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,84 @@
+﻿<!-- This example shows how to draw Polygon elements. -->
+<Page     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.PolygonExample">
+<StackPanel>
+
+  <Border>
+    <Border.Background>
+      <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Color="#CCCCFF" Offset="0" />
+          <GradientStop Color="AliceBlue" Offset="0.25" />
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+    </Border.Background>
+    <TextBlock Margin="10" HorizontalAlignment="Left">
+      Polygon Examples
+    </TextBlock>
+  </Border>
+
+  <StackPanel Orientation="Horizontal" Margin="10">
+
+    <Border Style="{StaticResource MyGridBorderStyle}">
+      <Canvas Height="300" Width="300">
+  
+        <!-- Draws a triangle with a blue interior. -->
+        <Polygon Points="10,110 60,10 110,110" 
+          Fill="Blue" />
+
+        <!-- Draws a triangle with a blue interior and a black outline. 
+             The Canvas.Top setting moves the Polygon down 150 pixels. -->
+        <Polygon Points="10,110 60,10 110,110"
+          Fill="Blue"
+          Stroke="Black" StrokeThickness="4"
+          Canvas.Top="150" />
+    
+        <!-- Draws another triangle with a blue interior.
+             The Canvas.Left setting moves the Polygon 150 pixels to the right. -->
+        <Polygon Points="10,110 110,110 110,10"
+          Fill="Blue"
+          Canvas.Left="150" />
+
+        <!-- Draws a triangle with a black outline. 
+             The Canvas.Left and Canvas.Top settings move 
+             the Polygon down 150 pixels and 150 pixels to the right.-->
+        <Polygon Points="10,110 110,110 110,10"
+          Stroke="Black" StrokeThickness="4"
+          Canvas.Left="150" Canvas.Top="150" />  
+
+
+      </Canvas>
+    </Border>
+
+    <Border Style="{StaticResource MyGridBorderStyle}">
+      <Canvas Height="350" Width="350">
+  
+        <Polygon Name="hexagon"
+          Stroke="Blue"
+          StrokeThickness="2.0"
+          Points="176,30 302.44,103 302.44,249 176,322 49.5603,249 49.5603,103">
+          <Polygon.Fill>
+            <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Color="Yellow" Offset="0" />
+                <GradientStop Color="Gold" Offset="0.25" />
+              </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+          </Polygon.Fill>
+        </Polygon>
+   
+        <Polygon Name="star" 
+          Stroke="Blue" 
+          Fill="DarkOrange" 
+          StrokeThickness="2.0" 
+          Points="176.5,50 189.2,155.003 286.485,113.5 201.9,177 286.485,240.5 
+          189.2,198.997 176.5,304 163.8,198.997 66.5148,240.5 151.1,177 
+          66.5148,113.5 163.8,155.003" />
+
+
+      </Canvas>
+      </Border>
+    </StackPanel>
+  </StackPanel>
+</Page>

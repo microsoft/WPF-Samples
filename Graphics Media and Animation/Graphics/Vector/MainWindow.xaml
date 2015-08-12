@@ -1,0 +1,176 @@
+﻿<Window x:Class="Vector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vector"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <Grid Name="mainGridPanel" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Top Border -->
+        <Rectangle 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="3"
+            Fill="#99CCCCCC"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="10,10,0,10">
+            Vector Sample
+        </TextBlock>
+
+        <!--Begin: List of operations-->
+        <Rectangle Grid.Row="2" Grid.Column="0"
+            Fill="#99CCCCFF" RadiusX="10" RadiusY="10"/>
+
+        <DockPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Margin ="10,20,0,0" DockPanel.Dock ="Top">
+             Vector Operations
+            </TextBlock>
+
+            <!-- A list of radio buttons used to select which operation to perform -->
+            <ScrollViewer Width="400" Height="400" DockPanel.Dock="Left" Margin ="10">
+                <StackPanel>
+                    <RadioButton Checked="PerformOperation"  Name="rb1">Add point1 to vector1 using the overloaded + operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb2">Add vector1 to vector2 using the overloaded + operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb3">Add vecotr1 to vector2 using the static Add method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb4">Add point1 to vector1 using the static Add method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb5">Subtract vector1 from vector2 using the overloaded - operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb6">Subtract vector1 from vecotr2 using the static Subtract method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb7">Multiple vector1 by scalar1 using the overloaded * operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb8">Multiple scalar1 by vector1 using the overloaded * operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb9">Multiple vector1 by vector2 using the overloaded * operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb10">Multiple vector1 by matrix1 using the overloaded * operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb11">Multiple vector1 by scalar1 using the static Multiply method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb12">Multiple scalar1 by vector1 using the static Multiply method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb13">Multiple vector1 by vector2 using the static Multiply method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb14">Multiple vector1 by matrix1 using the static Multiply method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb15">Divide vector1 by scalar1 using the overloaded / operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb16">Divide vector1 by scalar1 using the static Vector Divide method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb17">Gets the hashcode of vector1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb18">Calculate the length of vector1 using the length property</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb19">Calculate the square of the length of vector1 using the lengthsquared method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb20">Normalize Vector1 using the Normalize method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb21">Calculate the angle between vector1 and vector2</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb22">Calculate the crossproduct of vector1 and vector2</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb23">Calculate the determinant of vector1 and vector2</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb24">Check vector1 and vector2 for equality using the overloaded == operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb25">Check vector1 and vector2 for equality using the static Equals method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb26">Check if an Object and vector1 for equality using the non-static Equals method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb27">Converts a string representation of a vector into a Vector structure</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb28">Check vector1 and vector2 for inequality using the overloaded != operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb29">Negate vector1 using the Negate method</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb30">Negate vector1 using overloaded unary negation operator</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb31">Gets the ToString of vector1</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb32">Cast vector1 into a Size structure</RadioButton>
+                    <RadioButton Checked="PerformOperation"  Name="rb33">Cast vector1 into a Point structure</RadioButton>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+        <!--End: List of operations-->
+
+        <!-- Begin: The Variable and Result Tables -->
+        <Rectangle Grid.Row="2" Grid.Column="2"
+            Fill="#99CCCCCC" RadiusX="10" RadiusY="10"/>
+
+        <DockPanel Grid.Row="2" Grid.Column="2" Margin ="0,10,0,30">
+
+            <!-- Displays the variables used in the operations -->
+
+            <Grid DockPanel.Dock="Top"  Margin="20,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                 Variables
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0">
+                 Point 1:
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="txtPoint1" />
+                <TextBlock Grid.Row="2" Grid.Column="0">
+                 Point 2:
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="txtPoint2" />
+                <TextBlock Grid.Row="3" Grid.Column="0">
+                 Vector 1:
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="txtVector1" />
+                <TextBlock Grid.Row="4" Grid.Column="0">
+                 Vector 2:
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="txtVector2" />
+                <TextBlock Grid.Row="5" Grid.Column="0">
+                 Matrix 1:
+                </TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="1" Name="txtMatrix1" />
+                <TextBlock Grid.Row="6" Grid.Column="0">
+                 Scalar 1:
+                </TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="1" Name="txtScalar1" />
+            </Grid>
+
+            <!-- Displays the result information of the operations -->
+            <Grid DockPanel.Dock="Top"
+                  Margin="20,110,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                    Results
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0">
+                    Operation:
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="txtOperation" />
+                <TextBlock Grid.Row="2" Grid.Column="0">
+                    Syntax:
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="txtSyntax" />
+                <TextBlock Grid.Row="3" Grid.Column="0">
+                    Result:
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="txtResultValue" />
+                <TextBlock Grid.Row="4" Grid.Column="0">
+                    Result Type:
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="txtResultType" />
+            </Grid>
+
+        </DockPanel>
+        <!-- End: The Variable and Result Tables -->
+
+    </Grid>
+</Window>

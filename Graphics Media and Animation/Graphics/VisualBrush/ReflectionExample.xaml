@@ -1,0 +1,95 @@
+<!-- This example shows how to use a VisualBrush to create a reflection.     
+     ReflectionExample.xaml.cs contains the code that initializes and updates the reflection. 
+  -->
+<Page  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  x:Class="VisualBrush.ReflectionExample"
+  Background="White">
+  
+  <Page.Triggers>
+    <EventTrigger RoutedEvent="Page.Loaded">
+      <BeginStoryboard>
+        <Storyboard>
+          <DoubleAnimation Storyboard.TargetName="bouncingBall" Storyboard.TargetProperty="(Canvas.Top)"
+            From="0" To="250" Duration="0:0:3" RepeatBehavior="Forever" AutoReverse="True"
+            AccelerationRatio="1.0" />
+          <DoubleAnimation Storyboard.TargetName="bouncingBall" Storyboard.TargetProperty="(Canvas.Left)"
+            From="0" To="350" Duration="0:0:20" RepeatBehavior="Forever" AutoReverse="True"
+            AccelerationRatio="1.0" />           
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  
+  </Page.Triggers>
+
+  
+  <StackPanel>
+    <Canvas Name="reflectedCanvas" Height="300" Width="400">
+              <Canvas.Background>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0.0" Color="#CCCCFF" />
+                    <GradientStop Offset="1.0" Color="White" />
+                  </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+              </Canvas.Background>    
+    
+      <TextBlock Width="390" Canvas.Top="40" Canvas.Left="5"
+        TextWrapping="Wrap">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse vel ante. Donec luctus tortor sit amet est. Nullam pulvinar odio et wisi. Pellentesque quis magna. Sed pellentesque. Nulla euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque pulvinar, augue non ornare malesuada, odio urna hendrerit augue, et rutrum ante nulla eget lectus. Nulla nonummy. Maecenas dui arcu, feugiat quis, dapibus quis, blandit non, leo. Nullam auctor, turpis ac elementum ultricies, justo orci dictum metus, molestie elementum turpis mauris a turpis. Nullam tortor nibh, sollicitudin eu, pulvinar vitae, vestibulum id, nibh. Integer eget mauris nec libero congue sollicitudin.
+      </TextBlock>
+    
+      <Ellipse Name="bouncingBall" 
+        Height="50" Width="50">
+        <Ellipse.Fill>
+          <RadialGradientBrush GradientOrigin="0.75,0.25">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="White" Offset="0.0" />
+              <GradientStop Color="Red" Offset="0.75" />
+              <GradientStop Color="DarkRed" Offset="1.0" />
+            </RadialGradientBrush.GradientStops>
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+      
+      <TextBox Canvas.Left="75" Canvas.Top="250">Hello, World!</TextBox>
+      
+    </Canvas>
+    
+    <Rectangle Height="1" Fill="Gray" Width="400" />
+    <Canvas 
+      Height="{Binding Path=(Canvas.ActualHeight), ElementName=reflectedCanvas}" 
+      Width="{Binding Path=(Canvas.ActualWidth), ElementName=reflectedCanvas}">
+      <Canvas.Background>
+        <VisualBrush x:Name="myVisualBrush" 
+          Stretch="None" AlignmentX="Left" AlignmentY="Top"
+          Opacity="0.75"
+          Visual="{Binding ElementName=reflectedCanvas}">  
+  
+
+          <VisualBrush.RelativeTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="-1" />
+              <TranslateTransform  Y="1" />
+            </TransformGroup>
+          </VisualBrush.RelativeTransform>
+
+        </VisualBrush>
+      </Canvas.Background>
+    
+      <Canvas.OpacityMask>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FF000000" Offset="0.0" />
+            <GradientStop Color="#00000000" Offset="0.5" />
+          </LinearGradientBrush.GradientStops>  
+        </LinearGradientBrush>
+      </Canvas.OpacityMask>
+    </Canvas> 
+  
+  
+  
+  </StackPanel>
+  
+</Page>

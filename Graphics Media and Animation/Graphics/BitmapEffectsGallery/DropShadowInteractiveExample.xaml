@@ -1,0 +1,73 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="{StaticResource MyGridBrushResource}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+
+      <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" 
+       HorizontalAlignment="Left" Padding="20" Width="550" Margin="0,10,0,0">
+        <TextBlock>
+          Change the property values of the DropShadowBitMapEffect.
+        </TextBlock>
+      </Border>
+
+      <StackPanel Margin="20" Orientation="Horizontal">
+        
+        <!-- This Grid holds the controls used to interactively change property values of the BitmapEffect. -->
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <!-- Control to interactively change the ShadowDepth of the DropShadowBitmapEffect.-->
+          <Label Grid.Row="1" Grid.Column="0">ShadowDepth</Label>
+          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=ShadowDepth, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the Color of the shadow cast by the DropShadowBitmapEffect.-->
+          <Label Grid.Row="2" Grid.Column="0">Color</Label>
+          <ComboBox Grid.Row="2" Grid.Column="1" Name="cbColor">
+             <ComboBoxItem>Red</ComboBoxItem>
+             <ComboBoxItem>Blue</ComboBoxItem>
+             <ComboBoxItem>Green</ComboBoxItem>
+             <ComboBoxItem IsSelected="True">Black</ComboBoxItem>
+          </ComboBox>
+          
+          <!-- Control to interactively change the Direction of the shadow cast by the DropShadowBitmapEffect.-->
+          <Label Grid.Row="3" Grid.Column="0">Direction (0-360)</Label>
+          <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Direction, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the Softness of the shadow cast by the DropShadowBitmapEffect.-->
+          <Label Grid.Row="4" Grid.Column="0">Softness (0-1)</Label>
+          <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Softness, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Control to interactively change the Opacity of the shadow cast by the DropShadowBitmapEffect.-->
+          <Label Grid.Row="5" Grid.Column="0">Opacity (0-1)</Label>
+          <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=InteractiveEffect, Path=Opacity, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+
+        <Button Margin="50" Width="200">
+          DropShadow Under this Button
+          <Button.BitmapEffect>
+
+            <!-- Apply an DropShadowBitmapEffect to the Button. The properties of this DropShadowBitmapEffect
+                 are dynamically changed by the controls in this sample. -->
+            <DropShadowBitmapEffect x:Name="InteractiveEffect" Direction="320" ShadowDepth="25" Softness="1" 
+             Opacity="0.5" Color="{Binding ElementName=cbColor,Path=SelectedValue.Content}" />
+
+          </Button.BitmapEffect>
+        </Button>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

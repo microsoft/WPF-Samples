@@ -1,0 +1,130 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      WindowTitle="Animate Height"
+      x:Class="AnimateHeight.Page1"
+      Loaded="CheckLang">
+  <!--IB: example code-->
+
+ 
+<TabControl MinHeight="500" MaxHeight="700" MinWidth="400">
+        <TabItem Style="{StaticResource TabStyle}" Header="Animate Height Sample" IsSelected="true">
+          <StackPanel>
+            <TextBlock Style="{StaticResource HeaderStyle}">Animate Height Sample</TextBlock>
+
+            <TextBlock Style="{StaticResource MainContentStyle}">This example uses markup to animate the height property of a gradient brush.</TextBlock>
+
+          </StackPanel>
+        </TabItem>
+
+        <TabItem Name="xaml" Style="{StaticResource TabStyle}" Header="XAML">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+          <TextBlock Name="xamlCheck">
+          <TextBox Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
+<![CDATA[<!-- default.xaml
+*
+* This Sample shows a Rectangle Element with Gradient Fill and an Animated Height
+*
+-->
+  <DockPanel>
+
+    <!-- Create a Rectangle -->
+
+    <Rectangle Width="200" Height="200" Name="myRectangle">
+
+      <!-- Set the Rectangle's Fill Property with a LinearGradientBrush -->
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" SpreadMethod="Pad" EndPoint="0,1" MappingMode="RelativeToBoundingBox">
+          <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+             <GradientStop Offset="0" Color="red" />
+             <GradientStop Offset="0.5" Color="green" />
+             <GradientStop Offset="0.9074074" Color="blue" />
+            </GradientStopCollection>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+      
+    <DockPanel.Triggers>
+     <EventTrigger RoutedEvent="Page.Loaded"> 
+       <BeginStoryboard Name="myBeginStoryboard">
+         <Storyboard Name="myStoryboard">
+           <DoubleAnimation Storyboard.TargetName="myRectangle" Storyboard.TargetProperty="(Rectangle.Height)" 
+            From="0" To="100" 
+            RepeatBehavior="0:0:50" BeginTime="0:0:0.5" />
+           <DoubleAnimation Storyboard.TargetName="myRectangle" Storyboard.TargetProperty="(Rectangle.Height)"
+            From="0" To="100" AutoReverse="true" RepeatBehavior="0:0:50" BeginTime="0:0:0.5" Duration="0:0:2"/>
+         </Storyboard>
+       </BeginStoryboard>
+     </EventTrigger>
+    </DockPanel.Triggers>
+  </DockPanel>]]>            
+            </TextBox>
+          </TextBlock>
+        </ScrollViewer>
+        </TabItem>
+        <TabItem Name="xamlcsharp" Style="{StaticResource TabStyle}" Header="XAML + C#">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xcsharpCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+              <TabItem Style="{StaticResource TabStyle2}" Header="C#" />
+          </TabControl>
+        </TabItem>
+
+        <TabItem Name="xamlvb" Style="{StaticResource TabStyle}" Header="XAML + Visual Basic.NET">
+          <TabControl TabStripPlacement="Right">
+            <TabItem Name="xvbCheck" Style="{StaticResource TabStyle2}" Header="XAML" />
+              <TabItem Style="{StaticResource TabStyle2}" Header="VB.NET" />
+          </TabControl>
+        </TabItem>
+        <TabItem Name="csharp" Style="{StaticResource TabStyle}" Header="C#" />
+
+    <TabItem Name="vb" Style="{StaticResource TabStyle}" Header="Visual Basic.NET" />
+
+    <TabItem Name="managedcpp" Style="{StaticResource TabStyle}" Header="Managed C++" />
+
+    <TabItem Style="{StaticResource TabStyle}" Header="Preview Sample">
+<!-- default.xaml
+*
+* This Sample shows a Rectangle Element with Gradient Fill and an Animated Height
+*
+-->
+<Canvas>      <!--IB: removed the setter timeline and applied it to the root-->
+  <DockPanel>
+
+    <!-- Create a Rectangle -->
+
+    <Rectangle Width="200" Height="200" Name="myRectangle">
+
+      <!-- Set the Rectangle's Fill Property with a LinearGradientBrush -->
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0,0" SpreadMethod="Pad" EndPoint="0,1" MappingMode="RelativeToBoundingBox">
+          <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+             <GradientStop Offset="0" Color="red" />
+             <GradientStop Offset="0.5" Color="green" />
+             <GradientStop Offset="0.9074074" Color="blue" />
+            </GradientStopCollection>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+      
+    <DockPanel.Triggers>
+     <EventTrigger RoutedEvent="Page.Loaded"> 
+       <BeginStoryboard Name="myBeginStoryboard">
+         <Storyboard Name="myStoryboard">
+           <DoubleAnimation Storyboard.TargetName="myRectangle" Storyboard.TargetProperty="(Rectangle.Height)" 
+            From="0" To="100" 
+            RepeatBehavior="0:0:50" BeginTime="0:0:0.5" />
+           <DoubleAnimation Storyboard.TargetName="myRectangle" Storyboard.TargetProperty="(Rectangle.Height)"
+            From="0" To="100" AutoReverse="true" RepeatBehavior="0:0:50" BeginTime="0:0:0.5" Duration="0:0:2"/>
+         </Storyboard>
+       </BeginStoryboard>
+     </EventTrigger>
+    </DockPanel.Triggers>
+  </DockPanel>
+</Canvas>
+        </TabItem>
+      </TabControl>
+ 
+</Page>

@@ -1,0 +1,45 @@
+<!-- Demonstrates the DoubleAnimationUsingKeyFrames class. 
+     DoubleAnimationUsingKeyFramess with
+     different interoplation settings are used to animate a set transforms
+     applied to similar rectangles. -->
+<Page  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="keyframes_markup.DoubleAnimationUsingKeyFramesExample"
+  WindowTitle="DoubleAnimationUsingKeyFrames Example">
+
+  <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+
+    <Button Name="myAnimatedButton" Margin="200" Width="120" RenderTransformOrigin="0.5,0.5">Click Me
+    
+      <Button.RenderTransform>
+        <RotateTransform Angle="0" />
+      </Button.RenderTransform>
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Click">
+          <BeginStoryboard>
+            <Storyboard>
+            <!-- Animates the angle of a RotateTransform from a base value of 0
+                 to 300, 45, and then 225 using a combination of interpolation
+                 methods. -->
+              <DoubleAnimationUsingKeyFrames
+                Storyboard.TargetName="myAnimatedButton"
+                Storyboard.TargetProperty="(Button.RenderTransform).(RotateTransform.Angle)"
+                Duration="0:0:10" FillBehavior="Stop">
+                <DoubleAnimationUsingKeyFrames.KeyFrames>
+
+                  <LinearDoubleKeyFrame Value="300" KeyTime="0:0:3" />
+                  <DiscreteDoubleKeyFrame Value="225" KeyTime="0:0:3.5" />
+                  <DiscreteDoubleKeyFrame Value="180" KeyTime="0:0:4" />
+                  <DiscreteDoubleKeyFrame Value="90" KeyTime="0:0:4.5" />
+                  <SplineDoubleKeyFrame Value="-180" KeyTime="0:0:10" KeySpline="0.25,0.5 0.75,1" />
+                                
+                </DoubleAnimationUsingKeyFrames.KeyFrames>
+              </DoubleAnimationUsingKeyFrames>           
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers> 
+    </Button>
+  </StackPanel>
+</Page>

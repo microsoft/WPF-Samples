@@ -1,0 +1,19 @@
+﻿<Canvas  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="DragDropThumbOps.Pane"
+>
+    <Canvas Width="100" Height="100" Background="Green" Name="myCanvasStretch">
+        <TextBox Canvas.Left="0"  Canvas.Top="0"  Name="changes" 
+         Width="{Binding ElementName=myCanvasStretch,Path=Width}"  
+         Height="{Binding ElementName=myCanvasStretch,Path=Height}" 
+         Text="Size: 100, 100" Background="Green" Foreground="Yellow"
+         BorderThickness="0"/>
+
+        <Thumb Name="myThumb" Canvas.Left="80" Canvas.Top="80" Background="Blue" 
+          Width="20" Height="20" DragDelta="OnDragDelta" 
+          DragStarted="OnDragStarted" DragCompleted="OnDragCompleted"
+          />
+
+    </Canvas>
+</Canvas>

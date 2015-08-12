@@ -1,0 +1,65 @@
+﻿<!-- This example shows how to draw Ellipse elements. -->
+<Page 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.EllipseExample"
+    WindowTitle="Ellipse Example">
+<StackPanel>    
+<Border>
+  <Border.Background>
+    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+      <LinearGradientBrush.GradientStops>
+        <GradientStop Color="#CCCCFF" Offset="0" />
+        <GradientStop Color="AliceBlue" Offset="0.25" />
+      </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+  </Border.Background>
+  <TextBlock Margin="10" HorizontalAlignment="Left"> 
+    Ellipse Examples
+  </TextBlock>
+</Border>  
+
+<StackPanel Margin="10">
+<Border Style="{StaticResource MyGridBorderStyle}">
+  <Canvas Height="200" Width="200">
+
+    <!-- Draws an oval with a blue interior. -->
+    <Ellipse
+      Width="100"
+      Height="50"
+      Fill="Blue"
+      Canvas.Left="10"
+      Canvas.Top="25" />
+
+    <!-- Draws an oval with a blue interior and a black outline. -->
+    <Ellipse
+      Width="100"
+      Height="50"
+      Fill="Blue"
+      Stroke="Black"
+      StrokeThickness="4"
+      Canvas.Left="10"
+      Canvas.Top="100"/>
+
+    <!-- Draws a circle with a blue interior. -->
+    <Ellipse
+      Width="50"
+      Height="50"
+      Fill="Blue"
+      Canvas.Left="135"
+      Canvas.Top="25"/>
+
+    <!-- Draws a circle with a blue interior and a black outline. -->
+    <Ellipse
+      Width="50"
+      Height="50"
+      Stroke="Black"
+      StrokeThickness="4"
+      Canvas.Left="135"
+      Canvas.Top="100" />
+
+  </Canvas>
+</Border>
+</StackPanel>
+</StackPanel>
+</Page>

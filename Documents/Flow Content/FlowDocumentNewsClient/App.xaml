@@ -1,0 +1,50 @@
+﻿<Application x:Class="FlowDocumentNewsClient.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FlowDocumentNewsClient"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="HeaderStyle">
+            <Setter Property="Paragraph.FontFamily" Value="Palatino Linotype" />
+            <Setter Property="Paragraph.FontWeight" Value="Bold" />
+            <Setter Property="Paragraph.FontSize" Value="20" />
+            <Setter Property="Paragraph.Margin" Value="5" />
+            <Setter Property="Paragraph.TextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="BylineStyle">
+            <Setter Property="Paragraph.FontFamily" Value="Palatino Linotype" />
+            <Setter Property="Paragraph.FontWeight" Value="Normal" />
+            <Setter Property="Paragraph.FontStyle" Value="Italic" />
+            <Setter Property="Paragraph.FontSize" Value="10" />
+            <Setter Property="Paragraph.TextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="DateStyle">
+            <Setter Property="Paragraph.FontFamily" Value="Palatino Linotype" />
+            <Setter Property="Paragraph.FontWeight" Value="Bold" />
+            <Setter Property="Paragraph.FontStyle" Value="Italic" />
+            <Setter Property="Paragraph.FontSize" Value="14" />
+            <Setter Property="Paragraph.Margin" Value="2" />
+            <Setter Property="Paragraph.TextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="TitleStyle">
+            <Setter Property="Paragraph.FontFamily" Value="Palatino Linotype" />
+            <Setter Property="Paragraph.FontWeight" Value="Bold" />
+            <Setter Property="Paragraph.FontSize" Value="35" />
+            <Setter Property="Paragraph.Margin" Value="5" />
+            <Setter Property="Typography.Capitals" Value="SmallCaps" />
+            <Setter Property="Paragraph.TextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="MainContentStyle">
+            <Setter Property="Paragraph.FontFamily" Value="Palatino Linotype" />
+            <Setter Property="Paragraph.FontSize" Value="11" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+
+            <Setter Property="Paragraph.Margin" Value="5,10,5,10" />
+        </Style>
+
+    </Application.Resources>
+</Application>
