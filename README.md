@@ -53,3 +53,246 @@ For more info about the programming models, platforms, languages, and APIs demon
   <td><a href="Accessibility">Fragment Provider</a></td>
  </tr>
 </table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Application Management</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Clipboard</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">DataBinding</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Drag & Drop</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Fundamentals</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Getting Started</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Globalization and Localization</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Graphics, Media and Animation</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Migratin and Interoperability</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Sample Applications</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Window Management</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+   <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Provider</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Fragment Provider</a></td>
+ </tr>
+</table>
+
