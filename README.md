@@ -198,7 +198,7 @@ For more info about the programming models, platforms, languages, and APIs demon
   <td><a href="Accessibility">TextPattern Search and Selection</a></td>
  </tr>
   <tr>
-  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/ms771275.aspx">*Test Script Generator</a></td>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/ms771275.aspx">Test Script Generator(MSDN)</a></td>
   <td><a href="Accessibility">TrackFocus</a></td>
  </tr>
 </table>
@@ -220,6 +220,24 @@ For more info about the programming models, platforms, languages, and APIs demon
   <td><a href="Accessibility">Single Instance Detection</a></td>
   <td><a href="Accessibility">Skinned Application</a></td>
   <td><a href="Accessibility">Unhandled Application Exception</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Navigation</th>
+ </tr>
+<tr>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/aa972175.aspx">MSDN</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Application Extensibility</th>
+ </tr>
+<tr>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/bb913904.aspx">MSDN</a></td>
  </tr>
 </table>
 
@@ -299,28 +317,6 @@ For more info about the programming models, platforms, languages, and APIs demon
  </tr>
  <tr>
   <td><a href="Accessibility">Thumb Drag Functionality</a></td>
- </tr>
-</table>
-
-<table>
- <tr>
-  <th colspan="5" align="left">Fundamentals</th>
- </tr>
-<tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
  </tr>
 </table>
 
