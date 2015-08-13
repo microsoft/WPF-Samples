@@ -34,6 +34,23 @@ For more info about the programming models, platforms, languages, and APIs demon
 
 <table>
  <tr>
+  <th colspan="5" align="left">Getting Started</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Hello World Sample</a></td>
+  <td><a href="Accessibility">Simple Layout</a></td>
+  <td><a href="Accessibility">Complex Layout</a></td>
+  <td><a href="Accessibility">Dynamic Application</a></td>
+   <td><a href="Accessibility">Multipage Application</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">WPF Controls Gallery</a></td>
+  <td><a href="Accessibility">Sample Gallery</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
   <th colspan="5" align="left">Accessibility</th>
  </tr>
 <tr>
@@ -83,7 +100,6 @@ For more info about the programming models, platforms, languages, and APIs demon
   <td><a href="Accessibility">Clipboard Viewer</a></td>
  </tr>
 </table>
-
 
 <table>
 <tr>
@@ -178,45 +194,34 @@ For more info about the programming models, platforms, languages, and APIs demon
 
 <table>
  <tr>
-  <th colspan="5" align="left">Getting Started</th>
- </tr>
-<tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
- </tr>
-</table>
-
-<table>
- <tr>
   <th colspan="5" align="left">Globalization and Localization</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Automatic Layout for Localizable Applications</a></td>
+  <td><a href="Accessibility">FlowDirection</a></td>
+  <td><a href="Accessibility">Gradient</a></td>
+  <td><a href="Accessibility">Grid for Localizable Applications</a></td>
+  <td><a href="Accessibility">Globalization Homepage</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Globalization Run Dialog</a></td>
+  <td><a href="Accessibility">Image</a></td>
+  <td><a href="Accessibility">Implementing Localizable String Resources in XAML</a></td>
+  <td><a href="Accessibility">LanguageAttribute</a></td>
+  <td><a href="Accessibility">LeftToRight and RightToLeft</a></td>
  </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <tr>
+  <td><a href="Accessibility">LocBaml Tool</a></td>
+  <td><a href="Accessibility">Numbers</a></td>
+  <td><a href="Accessibility">Numbers2</a></td>
+  <td><a href="Accessibility">Numbers3</a></td>
+  <td><a href="Accessibility">NumbersCSharp</a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Paths</a></td>
+  <td><a href="Accessibility">Resources for Localizable Applications</a></td>
+  <td><a href="Accessibility">RunSpan</a></td>
+  <td><a href="Accessibility">Span</a></td>
  </tr>
 </table>
 
@@ -244,23 +249,35 @@ For more info about the programming models, platforms, languages, and APIs demon
 
 <table>
  <tr>
-  <th colspan="5" align="left">Migratin and Interoperability</th>
+  <th colspan="5" align="left">Migration and Interoperability</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Arranging Windows Forms Controls in WPF</a></td>
+  <td><a href="Accessibility">Data Binding in Hybrid Applications</a></td>
+  <td><a href="Accessibility">Enabling Visual Styles in a Hybrid Application</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Hosting an ActiveX Control in WPF by Using XAML</a></td>
+  <td><a href="Accessibility">Hosting a Simple WPF in Windows Forms</a></td>
+  <td><a href="Accessibility">Hosting a Win32 ListBox Control in WPF</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Hosting a Windows Forms Composite Control in WPF</a></td>
+  <td><a href="Accessibility">Hosting a Windows Forms Control in WPF</a></td>
+  <td><a href="Accessibility">Hosting a Windows Forms Control in WPF</a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Hosting WPF Content in a Win32 Window</a></td>
+  <td><a href="Accessibility">Hosting a WPF Composite Control in Windows Forms</a></td>
+  <td><a href="Accessibility">Localizing a Hybrid Application/a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Mapping Properties Using the ElementHost Control</a></td>
+  <td><a href="Accessibility">Mapping Properties Using the WindowsFormsHost Element</a></td>
+  <td><a href="Accessibility">Win32 Clock Interoperation</a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Hosting a Win32 HWND in WPF</a></td>
  </tr>
 </table>
 
