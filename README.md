@@ -227,23 +227,69 @@ For more info about the programming models, platforms, languages, and APIs demon
 
 <table>
  <tr>
-  <th colspan="5" align="left">Graphics, Media and Animation</th>
+  <th colspan="5" align="left">Graphics</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Bitmap Effects</a></td>
+  <td><a href="Accessibility">Brushes</a></td>
+  <td><a href="Accessibility">Geometries</a></td>
+  <td><a href="Accessibility">Imaging</a></td>
+   <td><a href="Accessibility">Shapes</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Transformations</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Animation</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Animation Example</a></td>
+  <td><a href="Accessibility">Property Animation</a></td>
+  <td><a href="Accessibility">Animating the Opacity of an Element</a></td>
+  <td><a href="Accessibility">Animation Timing Behavior</a></td>
+   <td><a href="Accessibility">Custom Animation</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">From, To, and By Animation Target Values</a></td>
+  <td><a href="Accessibility">KeyFrame Animation</a></td>
+  <td><a href="Accessibility">Local Animations</a></td>
+  <td><a href="Accessibility">Key Spline Animation</a></td>
+  <td><a href="Accessibility">Path Animation/a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Per-Frame Animation</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Visual Layer</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Using the CompositionTarget</a></td>
+  <td><a href="Accessibility">Hit Test Using DrawingVisuals</a></td>
+  <td><a href="Accessibility">Hit Test with Win32 Interoperation</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Media</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Media Gallery</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Speech</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Using Speech</a></td>
  </tr>
 </table>
 
