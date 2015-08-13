@@ -59,20 +59,18 @@ For more info about the programming models, platforms, languages, and APIs demon
   <th colspan="5" align="left">Application Management</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Application Activation and Deactivation</a></td>
+  <td><a href="Accessibility">Application Cookies</a></td>
+  <td><a href="Accessibility">Application Shutdown</a></td>
+  <td><a href="Accessibility">Managing Unhandled Exceptions on Secondary UI Threads</a></td>
+  <td><a href="Accessibility">Managing Unhandled Exceptions on Secondary Worker Threads</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Processing Command Line Arguments</a></td>
+  <td><a href="Accessibility">Reusable Custom Application Class</a></td>
+  <td><a href="Accessibility">Single Instance Detection</a></td>
+  <td><a href="Accessibility">Skinned Application</a></td>
+  <td><a href="Accessibility">Unhandled Application Exception</a></td>
  </tr>
 </table>
 
@@ -81,42 +79,62 @@ For more info about the programming models, platforms, languages, and APIs demon
   <th colspan="5" align="left">Clipboard</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Clipboard Spy</a></td>
+  <td><a href="Accessibility">Clipboard Viewer</a></td>
  </tr>
 </table>
 
+
 <table>
- <tr>
+<tr>
   <th colspan="5" align="left">DataBinding</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Simple Binding</a></td>
+  <td><a href="Accessibility">Creating a Binding in Code</a></td>
+  <td><a href="Accessibility">Controlling the Direction and Timing of the Data Flow</a></td>
+  <td><a href="Accessibility">Binding with a Custom Value Converter</a></td>
+  <td><a href="Accessibility">Sorting and Filtering Items in a View</a></td>
  </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+<tr>
+  <td><a href="Accessibility">Sorting and Grouping Data in XAML</a></td>
+  <td><a href="Accessibility">Adding and Removing Groups</a></td>
+  <td><a href="Accessibility">Binding Validation</a></td>
+  <td><a href="Accessibility">Business Layer Validation</a></td>
+  <td><a href="Accessibility">Binding to XML Data</a></td>
  </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+<tr>
+  <td><a href="Accessibility">XMLDataProvider with Embedded Data File</a></td>
+  <td><a href="Accessibility">Binding Using XML Namespaces</a></td>
+  <td><a href="Accessibility">Introduction to Data Templating</a></td>
+  <td><a href="Accessibility">Binding Using Data Triggers</a></td>
+  <td><a href="Accessibility">Displaying Hierarchical Data</a></td>
+</tr>
+<tr>
+  <td><a href="Accessibility">Binding the Properties of UI Elements</a></td>
+  <td><a href="Accessibility">Binding to a Collection</a></td>
+  <td><a href="Accessibility">Binding Using Composite Collections</a></td>
+  <td><a href="Accessibility">Master-Detail Scenario Using ObjectDataProvider</a></td>
+  <td><a href="Accessibility">Master-Detail Scenario Using XmlDataProvider</a></td>
+</tr>
+<tr>
+  <td><a href="Accessibility">inding to the Results of a Method</a></td>
+  <td><a href="Accessibility">Implementing Property Change Notification</a></td>
+  <td><a href="Accessibility">Implementing Parameterized MultiBinding</a></td>
+  <td><a href="Accessibility">Binding Using PriorityBinding</a></td>
+   <td><a href="Accessibility">Showing System Colors Using Data Services</a></td>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Explicitly Updating the Binding Source</a></td>
+  <td><a href="Accessibility">Binding to an ADO.NET DataSet</a></td>
+  <td><a href="Accessibility">Binding to a Web Service</a></td>
+  <td><a href="Accessibility">LINQ Query</a></td>
+   <td><a href="Accessibility">Formatting a String on a Binding</a></td>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Changing a Collection by Using IEditableCollectionView</a></td>
+  <td><a href="Accessibility">Validate the Data of an Object</a></td>
+   <td><a href="Accessibility">Validate an Item in an ItemsControl</a></td>
  </tr>
 </table>
 
@@ -125,20 +143,14 @@ For more info about the programming models, platforms, languages, and APIs demon
   <th colspan="5" align="left">Drag & Drop</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Drag and Drop an Object on a Canvas</a></td>
+  <td><a href="Accessibility">Create a Data Object from a Text Selection</a></td>
+  <td><a href="Accessibility">Drag-and-Drop Events Explorer</a></td>
+  <td><a href="Accessibility">Data Formats Spy</a></td>
+   <td><a href="Accessibility">Load a Dropped File</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
- </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Thumb Drag Functionality</a></td>
  </tr>
 </table>
 
@@ -257,20 +269,42 @@ For more info about the programming models, platforms, languages, and APIs demon
   <th colspan="5" align="left">Sample Applications</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Calculator</a></td>
+  <td><a href="Accessibility">Concentric Rings</a></td>
+  <td><a href="Accessibility">Cube Animation</a></td>
+  <td><a href="Accessibility">Data Binding</a></td>
+  <td><a href="Accessibility">Drop Shadow Ink</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Editing Examiner</a></td>
+  <td><a href="Accessibility">ExpenseIt</a></td>
+  <td><a href="Accessibility">ExpenseIt - Standalone</a></td>
+  <td><a href="Accessibility">Font Dialog Box</a></td>
+  <td><a href="Accessibility">Geometry Designer</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Graphing Calculator</a></td>
+  <td><a href="Accessibility">HexSphere</a></td>
+  <td><a href="Accessibility">Layout to Layout Transitions</a></td>
+  <td><a href="Accessibility">Logon Screen</a></td>
+  <td><a href="Accessibility">Notepad</a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Particle Effects</a></td>
+  <td><a href="Accessibility">Photo Store</a></td>
+  <td><a href="Accessibility">SDK Viewer</a></td>
+  <td><a href="Accessibility">Logon Screen</a></td>
+  <td><a href="Accessibility">Slide Puzzle</a></td>
+ </tr>
+  <tr>
+  <td><a href="Accessibility">Sticky Notes</a></td>
+  <td><a href="Accessibility">Traffic Alert</a></td>
+  <td><a href="Accessibility">Video Text</a></td>
+  <td><a href="Accessibility">WPF Photo Viewer</a></td>
+  <td><a href="Accessibility">XAML to HTML Conversion</a></td>
+ </tr>
+   <tr>
+  <td><a href="Accessibility">Video Viewer</a></td>
  </tr>
 </table>
 
@@ -279,20 +313,21 @@ For more info about the programming models, platforms, languages, and APIs demon
   <th colspan="5" align="left">Window Management</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">Customized Window UI</a></td>
+  <td><a href="Accessibility">Dialog Box Sample</a></td>
+  <td><a href="Accessibility">Hide a Window Without Closing</a></td>
+  <td><a href="Accessibility">MessageBox</a></td>
+   <td><a href="Accessibility">Non-Rectangular Windows</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">Notification Icon</a></td>
+  <td><a href="Accessibility">Save Window Placement State</a></td>
+  <td><a href="Accessibility">Show a Window Without Activating</a></td>
+  <td><a href="Accessibility">Window Activation and Deactivation</a></td>
+  <td><a href="Accessibility">Window Sizing Order of Precedence</a></td>
  </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <tr>
+   <td><a href="Accessibility">Wizard</a></td>
  </tr>
 </table>
 
