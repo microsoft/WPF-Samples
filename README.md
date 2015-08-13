@@ -51,23 +51,155 @@ For more info about the programming models, platforms, languages, and APIs demon
 
 <table>
  <tr>
+  <th colspan="5" align="left">Base Elements</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">ContextMenuOpening Handlers</a></td>
+  <td><a href="Accessibility">Creating a FocusVisualStyle</a></td>
+  <td><a href="Accessibility">Finding the Index of an Element in a Panel</a></td>
+  <td><a href="Accessibility">Height Properties</a></td>
+   <td><a href="Accessibility">Loaded Even</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Setting Margins</a></td>
+  <td><a href="Accessibility">ThicknessConverter</a></td>
+  <td><a href="Accessibility">Using Elements</a></td>
+  <td><a href="Accessibility">Visibility Changes to a UIElement</a></td>
+  <td><a href="Accessibility">Width Properties Comparison</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Element Tree and Serialization</th>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Overriding the Logical Tree</a></td>
+  <td><a href="Accessibility">Searching for an Element</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Properties</th>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Custom classes with Dependency Properties</a></td>
+  <td><a href="Accessibility">Restoring Default Values</a></td>
+  <td><a href="Accessibility">PropertyChanged and CoerceValue Callbacks</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Events</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Adding an Event Handler</a></td>
+  <td><a href="Accessibility">Custom Routed Events</a></td>
+  <td><a href="Accessibility">Finding a Source Element in an Event Handler</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Routed Event Handling Sample</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Input and Commands</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Handling an Event When a Command</a></td>
+  <td><a href="Accessibility">Handling an Event When a Command Occurs Using Code</a></td>
+  <td><a href="Accessibility">Changing the Cursor Type</a></td>
+  <td><a href="Accessibility">Detecting Mouse Button State</a></td>
+   <td><a href="Accessibility">Firing Events When an Element Gains and Loses Focus</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Keyboard Key</a></td>
+  <td><a href="Accessibility">Mouse Pointer</a></td>
+  <td><a href="Accessibility">Moving an Object with the Mouse Pointer</a></td>
+  <td><a href="Accessibility">Create Command Bindings Using Code</a></td>
+  <td><a href="Accessibility">Create a Custom RoutedCommand</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">EditingCommands</a></td>
+  <td><a href="Accessibility">Disable Command Source via Dispatcher Timer</a></td>
+  <td><a href="Accessibility">Disable Command Source via System Timer</a></td>
+  <td><a href="Accessibility">Capture and Uncapture</a></td>
+  <td><a href="Accessibility">Implement ICommandSource</a></td>
+ </tr>
+ <tr>
+  <td><a href="Accessibility">Manipulate Focus Programmatically</a></td>
+  <td><a href="Accessibility">Count the Key Strokes of a Specific Key</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Resources</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Application Resources</a></td>
+  <td><a href="Accessibility">Defining a Resource</a></td>
+  <td><a href="Accessibility">Merged ResourceDictionary</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Styles and Templates</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Introduction to Styling and Templating</a></td>
+  <td><a href="Accessibility">Event Triggers</a></td>
+  <td><a href="Accessibility">Content Control Style</a></td>
+  <td><a href="Accessibility">Finding Template-Generated Elements</a></td>
+   <td><a href="Accessibility">Alternating the Appearance of Items</a></td>
+ </tr>
+ <tr>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/aa358533.aspx">Themes</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Threading</th>
+ </tr>
+<tr>
+  <td><a href="Accessibility">Multithreading Web Browser</a></td>
+  <td><a href="Accessibility">Single Threaded Application with Long Running Calculation</a></td>
+  <td><a href="Accessibility">Weather Service Simulation with Dispatcher</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="5" align="left">Digital Ink</th>
+ </tr>
+<tr>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/aa972145.aspx">MSDN</a></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
   <th colspan="5" align="left">Accessibility</th>
  </tr>
 <tr>
   <td><a href="Accessibility">Simple Provider</a></td>
   <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-   <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="Accessibility">FetchTimer</a></td>
+  <td><a href="Accessibility">Highlighter</a></td>
  </tr>
  <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
-  <td><a href="Accessibility">Simple Provider</a></td>
+  <td><a href="Accessibility">InvokePattern, ExpandCollapsePattern, and TogglePattern</a></td>
+  <td><a href="Accessibility">SelectionPattern and SelectionItemPattern</a></td>
+  <td><a href="Accessibility">TextPattern Search and Selection</a></td>
  </tr>
- <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <tr>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/ms771275.aspx">*Test Script Generator</a></td>
+  <td><a href="Accessibility">TrackFocus</a></td>
  </tr>
 </table>
 
