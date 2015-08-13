@@ -12,9 +12,6 @@ namespace MasterDetail
 
         public string Name { get; }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }

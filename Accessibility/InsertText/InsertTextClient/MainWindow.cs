@@ -459,10 +459,7 @@ namespace InsertTextClient
         /// <param name="flags">The flag(s) of interest.</param>
         /// <param name="bit">The bit value(s).</param>
         /// --------------------------------------------------------------------
-        private bool IsBitSet(int flags, int bit)
-        {
-            return (flags & bit) == bit;
-        }
+        private bool IsBitSet(int flags, int bit) => (flags & bit) == bit;
 
         /// --------------------------------------------------------------------
         /// <summary>

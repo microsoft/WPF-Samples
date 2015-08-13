@@ -64,7 +64,7 @@ namespace SlidePuzzleDemo
                     var vc = new VectorContent();
 
                     // Must explicitly start storyboards that only appear in VisualBrushes
-                    vc.BeginStoryboard(vc.myStoryboard);
+                    vc.BeginStoryboard(vc.MyStoryboard);
 
                     _elementToChopUp = vc;
                     _puzzleSize = new Size(500, 500);
@@ -91,7 +91,7 @@ namespace SlidePuzzleDemo
                 case "SpinningCube":
                 {
                     var vc = new VectorContent();
-                    vc.BeginStoryboard(vc.myStoryboard);
+                    vc.BeginStoryboard(vc.MyStoryboard);
                     // Must explicitly start storyboards that only appear in VisualBrushes
                     var masterImage = (Image) Resources["TableImage"];
 
@@ -102,7 +102,7 @@ namespace SlidePuzzleDemo
                     };
 
 
-                    var myStoryboard = (Storyboard) sc.Resources["myStoryboard"];
+                    var myStoryboard = (Storyboard) sc.Resources["MyStoryboard"];
                     sc.BeginStoryboard(myStoryboard);
                     // Must explicitly start storyboards that only appear in VisualBrushes
                     _elementToChopUp = sc;
@@ -135,20 +135,17 @@ namespace SlidePuzzleDemo
         private void OnMoveMade(object sender, HandledEventArgs e)
         {
             // Blur or unblur based on whether the move was a valid one.
-            var blur = (BlurBitmapEffect) ControlPanel.BitmapEffect;
+            var blur = (DropShadowEffect)StatusLabel.Effect; //(BlurBitmapEffect)ControlPanelBitmapEffect;
             if (blur != null)
             {
                 if (e.Handled)
                 {
-                    if (blur.Radius >= 2.0)
-                    {
-                        blur.Radius -= 2.0;
-                    }
+                    blur.BlurRadius = 0.0;
                     StatusLabel.Content = "";
                 }
                 else
                 {
-                    blur.Radius += 2.0;
+                    if (blur.BlurRadius >= 4.0) blur.BlurRadius = 2.0; else blur.BlurRadius = 4.0;
                     StatusLabel.Content = "Bad Move!";
                 }
             }
@@ -219,6 +216,11 @@ namespace SlidePuzzleDemo
         public Puzzle()
         {
             InitializeComponent();
+            var dropShadow = new DropShadowEffect();
+            dropShadow.ShadowDepth = 0;
+            dropShadow.BlurRadius = 0;
+            dropShadow.Color = Colors.Red;
+            StatusLabel.Effect = dropShadow;
         }
 
         private PuzzleGrid _puzzleGrid;

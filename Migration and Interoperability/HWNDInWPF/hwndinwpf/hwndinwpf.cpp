@@ -146,10 +146,6 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         if (initialized) return;
         initialized = true;
 
-        // TODO: Place code here.
-        MSG msg;
-        HACCEL hAccelTable;
-
         // Initialize global strings
         LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
         LoadString(hInstance, IDC_TYPICALWIN32DIALOG, szWindowClass, MAX_LOADSTRING);
@@ -203,7 +199,7 @@ namespace ManagedCpp
         }
 
     public: 
-        virtual bool TabInto(TraversalRequest^ request) override {
+        virtual bool TabIntoCore(TraversalRequest^ request) override {
             if (request->FocusNavigationDirection == FocusNavigationDirection::Last) {
                 HWND lastTabStop = GetDlgItem(dialog, IDCANCEL);
                 SetFocus(lastTabStop);
@@ -216,7 +212,7 @@ namespace ManagedCpp
         }
 
 #undef TranslateAccelerator
-        virtual bool TranslateAccelerator(System::Windows::Interop::MSG% msg, 
+        virtual bool TranslateAcceleratorCore(System::Windows::Interop::MSG% msg, 
             ModifierKeys modifiers) override 
         {
             ::MSG m = ConvertMessage(msg);
@@ -264,7 +260,7 @@ namespace ManagedCpp
             return false; // not a key we handled
         }
 
-        virtual bool OnMnemonic(System::Windows::Interop::MSG% msg, ModifierKeys modifiers) override {
+        virtual bool OnMnemonicCore(System::Windows::Interop::MSG% msg, ModifierKeys modifiers) override {
             ::MSG m = ConvertMessage(msg);
 
             // If it's one of our mnemonics, set focus to the appropriate hwnd

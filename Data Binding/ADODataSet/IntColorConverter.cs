@@ -16,9 +16,6 @@ namespace ADODataSet
             return numValue < 350 ? Brushes.Green : Brushes.Red;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => null;
     }
 }

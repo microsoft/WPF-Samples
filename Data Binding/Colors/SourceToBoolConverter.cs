@@ -18,9 +18,6 @@ namespace Colors
             return (source != ColorItem.Sources.BuiltIn);
         }
 
-        object IValueConverter.ConvertBack(object o, Type type, object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+        object IValueConverter.ConvertBack(object o, Type type, object parameter, CultureInfo culture) => null;
     }
 }

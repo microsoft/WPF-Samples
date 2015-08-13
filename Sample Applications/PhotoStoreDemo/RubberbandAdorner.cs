@@ -87,10 +87,7 @@ namespace PhotoStoreDemo
             ReleaseMouseCapture();
         }
 
-        protected override Visual GetVisualChild(int index)
-        {
-            return Rubberband;
-        }
+        protected override Visual GetVisualChild(int index) => Rubberband;
     }
 
 

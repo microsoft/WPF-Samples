@@ -62,7 +62,7 @@ namespace DocumentSerialization
 
             if (filename == null)
             {
-                throw new ArgumentNullException("filename");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             try
@@ -109,15 +109,15 @@ namespace DocumentSerialization
         {
             if (filename == null)
             {
-                throw new ArgumentNullException("filename");
+                throw new ArgumentNullException(nameof(filename));
             }
             if (start == null)
             {
-                throw new ArgumentNullException("start");
+                throw new ArgumentNullException(nameof(start));
             }
             if (end == null)
             {
-                throw new ArgumentNullException("end");
+                throw new ArgumentNullException(nameof(end));
             }
 
             // Do a programmatic serialization of the container.
@@ -143,11 +143,11 @@ namespace DocumentSerialization
 
             if (filename == null)
             {
-                throw new ArgumentNullException("filename");
+                throw new ArgumentNullException(nameof(filename));
             }
             if (position == null)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             using (TextReader textReader = new StreamReader(filename, detectEncodingTrue))

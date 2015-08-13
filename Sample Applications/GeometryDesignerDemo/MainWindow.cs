@@ -116,10 +116,7 @@ namespace GeometryDesignerDemo
             public abstract void Parse();
             public abstract Geometry CreateGeometry();
 
-            protected double DoubleParser(string s)
-            {
-                return double.Parse(s);
-            }
+            protected double DoubleParser(string s) => double.Parse(s);
 
             protected Point PointParser(string o)
             {
@@ -870,10 +867,7 @@ namespace GeometryDesignerDemo
             }
         }
 
-        private object SearchUpdatedElement(string p)
-        {
-            return DrawingPane.Children.Cast<object>().FirstOrDefault(o => o is Path && ((Path) o).Name == p);
-        }
+        private object SearchUpdatedElement(string p) => DrawingPane.Children.Cast<object>().FirstOrDefault(o => o is Path && ((Path)o).Name == p);
 
         private void UpdateArcGeometry(Point movingEndLocation, string id)
         {
@@ -1295,10 +1289,7 @@ namespace GeometryDesignerDemo
             return "Bezier";
         }
 
-        private string GetControlPointName(string id)
-        {
-            return null;
-        }
+        private string GetControlPointName(string id) => null;
 
         private void AddControlPoints(ArrayList controlPoints, string geometryType)
         {

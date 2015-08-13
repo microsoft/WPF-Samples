@@ -1106,19 +1106,16 @@ namespace FontDialog
             string propertyName,
             DependencyProperty targetProperty,
             PropertyChangedCallback changeCallback
-            )
-        {
-            return DependencyProperty.Register(
+            ) => DependencyProperty.Register(
                 propertyName,
                 targetProperty.PropertyType,
-                typeof (FontChooser),
+                typeof(FontChooser),
                 new FontPropertyMetadata(
                     targetProperty.DefaultMetadata.DefaultValue,
                     changeCallback,
                     targetProperty
                     )
                 );
-        }
 
         #endregion
 
@@ -1449,10 +1446,7 @@ namespace FontDialog
             }
         }
 
-        private static string LookupString(string tag)
-        {
-            return Properties.Resources.ResourceManager.GetString(tag, CultureInfo.CurrentUICulture);
-        }
+        private static string LookupString(string tag) => Properties.Resources.ResourceManager.GetString(tag, CultureInfo.CurrentUICulture);
 
         private TabState CurrentTabState
         {

@@ -293,6 +293,8 @@ namespace DocumentSerialization
             throw new NotSupportedException();
         }
 
+#pragma warning disable 0067
+
         /// <summary>
         /// This event will be invoked if the writer wants a PrintTicker
         /// </summary>
@@ -312,6 +314,8 @@ namespace DocumentSerialization
         /// This event will be invoked if the writer has been cancelled
         /// </summary>
         public override event WritingCancelledEventHandler WritingCancelled;
+
+#pragma warning restore 0067
 
         private void SerializeVisualTree(DependencyObject objectTree)
         {

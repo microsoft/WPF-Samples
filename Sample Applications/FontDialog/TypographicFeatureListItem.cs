@@ -21,14 +21,8 @@ namespace FontDialog
 
         public DependencyProperty ChooserProperty { get; }
 
-        int IComparable.CompareTo(object obj)
-        {
-            return string.Compare(_displayName, obj.ToString(), true, CultureInfo.CurrentCulture);
-        }
+        int IComparable.CompareTo(object obj) => string.Compare(_displayName, obj.ToString(), true, CultureInfo.CurrentCulture);
 
-        public override string ToString()
-        {
-            return _displayName;
-        }
+        public override string ToString() => _displayName;
     }
 }

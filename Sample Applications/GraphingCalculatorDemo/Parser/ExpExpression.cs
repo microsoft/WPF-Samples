@@ -14,10 +14,7 @@ namespace GraphingCalculatorDemo.Parser
         {
         }
 
-        protected override double Operate(double d1, double d2)
-        {
-            return Math.Pow(d1, d2);
-        }
+        protected override double Operate(double d1, double d2) => Math.Pow(d1, d2);
 
         public override IExpression Differentiate(string byVar)
         {
@@ -78,9 +75,6 @@ namespace GraphingCalculatorDemo.Parser
             return new ExpExpression(newLeft, newRight);
         }
 
-        public override string ToString()
-        {
-            return "(" + left.ToString() + "^" + right.ToString() + ")";
-        }
+        public override string ToString() => "(" + left.ToString() + "^" + right.ToString() + ")";
     }
 }

@@ -42,10 +42,7 @@ namespace GraphingCalculatorDemo.Parser
         /// <summary>
         ///     Return the value this variable represents
         /// </summary>
-        public double Evaluate()
-        {
-            return Value;
-        }
+        public double Evaluate() => Value;
 
         /// <summary>
         ///     Differentiate the Variable by input variable.
@@ -82,10 +79,7 @@ namespace GraphingCalculatorDemo.Parser
             return new VariableExpression(_identifier);
         }
 
-        string IExpression.ToString()
-        {
-            return _identifier;
-        }
+        string IExpression.ToString() => _identifier;
 
         public static void Define(string variableName, double value)
         {

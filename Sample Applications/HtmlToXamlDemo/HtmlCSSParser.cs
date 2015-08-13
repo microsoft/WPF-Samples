@@ -694,21 +694,11 @@ namespace HtmlToXamlDemo
             }
         }
 
-        private static string ParseCssListStyleType(string styleValue, ref int nextIndex)
-        {
-            return ParseWordEnumeration(ListStyleTypes, styleValue, ref nextIndex);
-        }
+        private static string ParseCssListStyleType(string styleValue, ref int nextIndex) => ParseWordEnumeration(ListStyleTypes, styleValue, ref nextIndex);
 
-        private static string ParseCssListStylePosition(string styleValue, ref int nextIndex)
-        {
-            return ParseWordEnumeration(ListStylePositions, styleValue, ref nextIndex);
-        }
+        private static string ParseCssListStylePosition(string styleValue, ref int nextIndex) => ParseWordEnumeration(ListStylePositions, styleValue, ref nextIndex);
 
-        private static string ParseCssListStyleImage(string styleValue, ref int nextIndex)
-        {
-            // TODO: Implement URL parsing for images
-            return null;
-        }
+        private static string ParseCssListStyleImage(string styleValue, ref int nextIndex) => null;
 
         private static void ParseCssTextDecoration(string styleValue, ref int nextIndex, Hashtable localProperties)
         {
@@ -838,10 +828,7 @@ namespace HtmlToXamlDemo
             }
         }
 
-        private static string ParseCssBorderStyle(string styleValue, ref int nextIndex)
-        {
-            return ParseWordEnumeration(BorderStyles, styleValue, ref nextIndex);
-        }
+        private static string ParseCssBorderStyle(string styleValue, ref int nextIndex) => ParseWordEnumeration(BorderStyles, styleValue, ref nextIndex);
 
         // .................................................................
         //

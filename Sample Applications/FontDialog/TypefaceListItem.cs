@@ -114,14 +114,8 @@ namespace FontDialog
             return 0;
         }
 
-        public override string ToString()
-        {
-            return _displayName;
-        }
+        public override string ToString() => _displayName;
 
-        internal static string GetDisplayName(Typeface typeface)
-        {
-            return NameDictionaryHelper.GetDisplayName(typeface.FaceNames);
-        }
+        internal static string GetDisplayName(Typeface typeface) => NameDictionaryHelper.GetDisplayName(typeface.FaceNames);
     }
 }

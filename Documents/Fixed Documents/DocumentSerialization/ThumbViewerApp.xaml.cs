@@ -49,13 +49,7 @@ namespace DocumentSerialization
 
         #region Private Properties
 
-        private string ApplicationName
-        {
-            get
-            {
-                return "Thumbnail Viewer";
-            }
-        }
+        private string ApplicationName => "Thumbnail Viewer";
 
         #endregion Private Properties
 

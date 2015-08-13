@@ -66,10 +66,7 @@ namespace Linq
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public override string ToString()
-        {
-            return _name;
-        }
+        public override string ToString() => _name;
 
         protected void OnPropertyChanged(string info)
         {

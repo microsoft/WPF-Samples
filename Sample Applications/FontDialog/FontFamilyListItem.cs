@@ -30,15 +30,9 @@ namespace FontDialog
             }
         }
 
-        int IComparable.CompareTo(object obj)
-        {
-            return string.Compare(_displayName, obj.ToString(), true, CultureInfo.CurrentCulture);
-        }
+        int IComparable.CompareTo(object obj) => string.Compare(_displayName, obj.ToString(), true, CultureInfo.CurrentCulture);
 
-        public override string ToString()
-        {
-            return _displayName;
-        }
+        public override string ToString() => _displayName;
 
         internal static bool IsSymbolFont(FontFamily fontFamily)
         {
@@ -53,9 +47,6 @@ namespace FontDialog
             return false;
         }
 
-        internal static string GetDisplayName(FontFamily family)
-        {
-            return NameDictionaryHelper.GetDisplayName(family.FamilyNames);
-        }
+        internal static string GetDisplayName(FontFamily family) => NameDictionaryHelper.GetDisplayName(family.FamilyNames);
     }
 }

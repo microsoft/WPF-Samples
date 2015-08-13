@@ -156,11 +156,11 @@ namespace DocumentSerialization
         {
             if (property == null)
             {
-                throw new ArgumentNullException("property");
+                throw new ArgumentNullException(nameof(property));
             }
             if (value == null)
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             if (IsPopulatingStyle)
@@ -402,13 +402,7 @@ namespace DocumentSerialization
         /// <summary>
         /// Whether the reader is reading a style rather than content.
         /// </summary>
-        private bool IsPopulatingStyle
-        {
-            get
-            {
-                return _currentStyle != null;
-            }
-        }
+        private bool IsPopulatingStyle => _currentStyle != null;
 
         /// <summary>Resources used to hold styles.</summary>
         private ResourceDictionary GetResources(TextPointer position)
@@ -523,7 +517,7 @@ namespace DocumentSerialization
             /// Whether the specified mapping returns the default value for
             /// the current reader state.
             /// </summary>
-            internal bool IsDefaultValue { get { return XmlValue == null; } }
+            internal bool IsDefaultValue => XmlValue == null;
 
             #endregion Map data.
 
@@ -643,10 +637,7 @@ namespace DocumentSerialization
             /// value in an XML name/value pair.
             /// </summary>
             private static SimplePropertyMap FromAttribute(DependencyProperty property,
-                object value, string xmlName, string xmlAttribute)
-            {
-                return FromAttribute(property, value, xmlName, xmlAttribute, null);
-            }
+                object value, string xmlName, string xmlAttribute) => FromAttribute(property, value, xmlName, xmlAttribute, null);
 
             /// <summary>
             /// Initializes a new SimplePropertyMap instance mapping for the given

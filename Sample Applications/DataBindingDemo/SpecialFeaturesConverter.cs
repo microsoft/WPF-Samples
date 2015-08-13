@@ -26,9 +26,6 @@ namespace DataBindingDemo
             return false;
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        {
-            return new[] {Binding.DoNothing, Binding.DoNothing};
-        }
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) => new[] { Binding.DoNothing, Binding.DoNothing };
     }
 }

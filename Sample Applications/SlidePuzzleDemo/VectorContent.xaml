@@ -8,7 +8,7 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <BeginStoryboard.Storyboard>
-                        <Storyboard x:Name="myStoryboard">
+                        <Storyboard x:Name="MyStoryboard">
 
                             <ColorAnimation To="Orange" Duration="0:0:5" AutoReverse="true" RepeatBehavior="Forever"
                                             Storyboard.TargetName="BottomBackgroundColor"

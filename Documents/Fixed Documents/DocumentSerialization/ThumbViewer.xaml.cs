@@ -73,29 +73,24 @@ namespace DocumentSerialization
         }// end:AddCommandHandlers()
 
 
-        public static RoutedCommand Exit
-            { get { return DeclareCommand(ref _Exit, "FileExit"); } }
+        public static RoutedCommand Exit => DeclareCommand(ref _Exit, "FileExit");
 
         private static RoutedCommand _Exit;
 
-        public static RoutedCommand SaveAs
-            { get { return DeclareCommand(ref _SaveAs, "SaveAs"); } }
+        public static RoutedCommand SaveAs => DeclareCommand(ref _SaveAs, "SaveAs");
 
         private static RoutedCommand _SaveAs;
 
-        public static RoutedCommand AddBookmark
-            { get { return DeclareCommand(ref _AddBookmark, "AddBookmark"); } }
+        public static RoutedCommand AddBookmark => DeclareCommand(ref _AddBookmark, "AddBookmark");
 
         private static RoutedCommand _AddBookmark;
 
-        public static RoutedCommand AddComment
-            { get { return DeclareCommand(ref _AddComment, "AddComment"); } }
+        public static RoutedCommand AddComment => DeclareCommand(ref _AddComment, "AddComment");
 
         private static RoutedCommand _AddComment;
 
         private static RoutedCommand DeclareCommand(ref RoutedCommand command,
-                                                      string commandDebugName)
-            { return DeclareCommand(ref command, commandDebugName, null); }
+                                                      string commandDebugName) => DeclareCommand(ref command, commandDebugName, null);
 
         private static RoutedCommand DeclareCommand(ref RoutedCommand command,
                                 string commandDebugName, InputGesture gesture)
@@ -232,7 +227,7 @@ namespace DocumentSerialization
         // ----------------------------- OpenFile -----------------------------
         private bool OpenFile(string fileName)
         {
-            if (fileName == null)  throw new ArgumentNullException("fileName");
+            if (fileName == null)  throw new ArgumentNullException(nameof(fileName));
 
             // Check file existence
             if (!System.IO.File.Exists(fileName))
@@ -354,10 +349,7 @@ namespace DocumentSerialization
 
 
         // -------------------------- OpenFileFilter --------------------------
-        private string OpenFileFilter
-        {
-            get { return "XAML FlowDocuments (*.xaml)|*.xaml"; }
-        }
+        private string OpenFileFilter => "XAML FlowDocuments (*.xaml)|*.xaml";
 
 
         // ---------------------------- OnNewQuery ----------------------------
@@ -538,7 +530,7 @@ namespace DocumentSerialization
         ///   if there was an error or the user canceled the save.</returns>
         private bool SaveToFile(string fileName)
         {
-            if (fileName == null)  throw new ArgumentNullException("fileName");
+            if (fileName == null)  throw new ArgumentNullException(nameof(fileName));
 
             // If the file already exists, delete it (replace).
             if ( File.Exists(fileName) )  File.Delete(fileName);

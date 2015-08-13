@@ -48,10 +48,7 @@ namespace EditingExaminerDemo
         /// </summary>
         /// <param name="type">The type of object to create.</param>
         /// <returns>A reference to the newly created object.</returns>
-        public static object CreateInstance(Type type)
-        {
-            return Activator.CreateInstance(type);
-        }
+        public static object CreateInstance(Type type) => Activator.CreateInstance(type);
 
         /// <summary>
         ///     Supply type name and it will create the object for you.

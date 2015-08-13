@@ -28,10 +28,7 @@ namespace SlidePuzzleDemo
             _cells[_emptyRow, _emptyCol] = EmptyCellId;
         }
 
-        public bool IsEmptyCell(int row, int col)
-        {
-            return (row == _emptyRow && col == _emptyCol);
-        }
+        public bool IsEmptyCell(int row, int col) => (row == _emptyRow && col == _emptyCol);
 
         public MoveStatus GetMoveStatus(int row, int col)
         {

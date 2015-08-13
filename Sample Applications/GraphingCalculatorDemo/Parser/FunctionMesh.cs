@@ -215,10 +215,7 @@ namespace GraphingCalculatorDemo.Parser
             IExpression fx,
             IExpression fy,
             IExpression fz
-            )
-        {
-            return new Vector3D(fx.Evaluate(), fy.Evaluate(), fz.Evaluate());
-        }
+            ) => new Vector3D(fx.Evaluate(), fy.Evaluate(), fz.Evaluate());
 
         private Vector3D TryToVector3DAgain(
             IExpression fx,

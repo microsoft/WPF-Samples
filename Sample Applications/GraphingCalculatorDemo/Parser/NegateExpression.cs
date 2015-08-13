@@ -14,19 +14,9 @@ namespace GraphingCalculatorDemo.Parser
         {
         }
 
-        protected override double Operate(double d)
-        {
-            return -d;
-        }
+        protected override double Operate(double d) => -d;
 
-        public override IExpression Differentiate(string byVar)
-        {
-            //      f(x) = -g(x);
-            // d( f(x) ) = -( d( g(x) ) );
-            // d( g(x) ) = g'(x)
-            //     f'(x) = -g'(x);
-            return new NegateExpression(child.Differentiate(byVar));
-        }
+        public override IExpression Differentiate(string byVar) => new NegateExpression(child.Differentiate(byVar));
 
         public override IExpression Simplify()
         {
@@ -41,9 +31,6 @@ namespace GraphingCalculatorDemo.Parser
             return new NegateExpression(newChild);
         }
 
-        public override string ToString()
-        {
-            return "(-" + child.ToString() + ")";
-        }
+        public override string ToString() => "(-" + child.ToString() + ")";
     }
 }

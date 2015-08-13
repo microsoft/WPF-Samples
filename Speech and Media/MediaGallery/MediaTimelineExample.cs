@@ -84,9 +84,6 @@ namespace MediaGallery
             return newValue;
         }
 
-        public object ConvertBack(object o, Type type, object param, CultureInfo cul)
-        {
-            return null;
-        }
+        public object ConvertBack(object o, Type type, object param, CultureInfo cul) => null;
     }
 }

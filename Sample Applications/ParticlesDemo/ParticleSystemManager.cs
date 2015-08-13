@@ -17,10 +17,7 @@ namespace ParticlesDemo
             _particleSystems = new Dictionary<Color, ParticleSystem>();
         }
 
-        public int ActiveParticleCount
-        {
-            get { return _particleSystems.Values.Sum(ps => ps.Count); }
-        }
+        public int ActiveParticleCount => _particleSystems.Values.Sum(ps => ps.Count);
 
         public void Update(float elapsed)
         {

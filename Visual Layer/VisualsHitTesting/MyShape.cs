@@ -142,12 +142,8 @@ namespace SDKSample
         {
             private static readonly Random myRandom = new Random();
 
-            public static Color GenRandomColor()
-            {
-                // Generate a random color value.
-                return Color.FromRgb((byte) myRandom.Next(0, 255), (byte) myRandom.Next(0, 255),
-                    (byte) myRandom.Next(0, 255));
-            }
+            public static Color GenRandomColor() => Color.FromRgb((byte)myRandom.Next(0, 255), (byte)myRandom.Next(0, 255),
+                    (byte)myRandom.Next(0, 255));
         }
     }
 }

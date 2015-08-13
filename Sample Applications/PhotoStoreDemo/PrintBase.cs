@@ -63,9 +63,6 @@ namespace PhotoStoreDemo
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }
 
-        public override string ToString()
-        {
-            return PrintType.ToString();
-        }
+        public override string ToString() => PrintType.ToString();
     }
 }

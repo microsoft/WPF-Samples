@@ -407,10 +407,7 @@ namespace HtmlToXamlDemo
             _openedElements.Push(htmlElement);
         }
 
-        private bool IsElementOpened(string htmlElementName)
-        {
-            return _openedElements.Any(openedElement => openedElement.LocalName == htmlElementName);
-        }
+        private bool IsElementOpened(string htmlElementName) => _openedElements.Any(openedElement => openedElement.LocalName == htmlElementName);
 
         private void CloseElement(string htmlElementName)
         {

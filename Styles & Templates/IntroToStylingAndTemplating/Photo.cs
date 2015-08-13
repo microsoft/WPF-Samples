@@ -12,9 +12,6 @@ namespace IntroToStylingAndTemplating
 
         public string Source { get; }
 
-        public override string ToString()
-        {
-            return Source;
-        }
+        public override string ToString() => Source;
     }
 }

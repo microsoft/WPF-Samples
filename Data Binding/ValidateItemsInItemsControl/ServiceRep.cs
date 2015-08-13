@@ -18,9 +18,6 @@ namespace ValidateItemsInItemsControl
         public string Name { get; set; }
         public Region Area { get; set; }
 
-        public override string ToString()
-        {
-            return Name + " - " + Area;
-        }
+        public override string ToString() => Name + " - " + Area;
     }
 }

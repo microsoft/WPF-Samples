@@ -113,11 +113,8 @@ namespace FontDialog
             return tag;
         }
 
-        private static bool IsPrefixOf(string prefix, string tag)
-        {
-            return prefix.Length < tag.Length &&
+        private static bool IsPrefixOf(string prefix, string tag) => prefix.Length < tag.Length &&
                    tag[prefix.Length] == '-' &&
                    string.CompareOrdinal(prefix, 0, tag, 0, prefix.Length) == 0;
-        }
     }
 }

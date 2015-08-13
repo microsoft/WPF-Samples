@@ -35,9 +35,6 @@ namespace BindValidation
             BindingOperations.GetBindingExpression(textBox3, TextBox.TextProperty).UpdateSource();
         }
 
-        private object ReturnExceptionHandler(object bindingExpression, Exception exception)
-        {
-            return "This is from the UpdateSourceExceptionFilterCallBack.";
-        }
+        private object ReturnExceptionHandler(object bindingExpression, Exception exception) => "This is from the UpdateSourceExceptionFilterCallBack.";
     }
 }

@@ -87,10 +87,7 @@ namespace FragmentProvider
         /// </summary>
         /// <param name="i">The zero-based index of the item.</param>
         /// <returns>The control for the item.</returns>
-        public CustomListItem GetItem(int i)
-        {
-            return (CustomListItem) _itemsArray[i];
-        }
+        public CustomListItem GetItem(int i) => (CustomListItem)_itemsArray[i];
 
         /// <summary>
         ///     Gets the number of items in the list.
@@ -102,11 +99,7 @@ namespace FragmentProvider
         /// </summary>
         /// <param name="listItem">The item.</param>
         /// <returns>The zero-based index.</returns>
-        public int ItemIndex(CustomListItem listItem)
-        {
-            // Allows CustomListItem to requery its index, as it can change.
-            return _itemsArray.IndexOf(listItem);
-        }
+        public int ItemIndex(CustomListItem listItem) => _itemsArray.IndexOf(listItem);
 
         /// <summary>
         ///     Removes an item from the list.

@@ -71,9 +71,6 @@ namespace CustomAnimation
             return returnValue*Radius + defaultOriginValue;
         }
 
-        protected override Freezable CreateInstanceCore()
-        {
-            return new CircleAnimation();
-        }
+        protected override Freezable CreateInstanceCore() => new CircleAnimation();
     }
 }

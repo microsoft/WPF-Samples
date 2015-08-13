@@ -14,21 +14,11 @@ namespace GraphingCalculatorDemo.Parser
         {
         }
 
-        protected override double Operate(double d)
-        {
-            return Math.Tan(d);
-        }
+        protected override double Operate(double d) => Math.Tan(d);
 
-        public override IExpression Differentiate(string byVar)
-        {
-            //      f(x) = tan( g(x) );
-            // d( f(x) ) = cos^-2( g(x) ) * d( g(x) );
-            // d( g(x) ) = g'(x)
-            //     f'(x) = cos^-2( g(x) ) * g'(x);
-            return new MultExpression(new ExpExpression(new CosineExpression(child),
+        public override IExpression Differentiate(string byVar) => new MultExpression(new ExpExpression(new CosineExpression(child),
                 new ConstantExpression(-2)),
                 child.Differentiate(byVar));
-        }
 
         public override IExpression Simplify()
         {
@@ -43,9 +33,6 @@ namespace GraphingCalculatorDemo.Parser
             return new TangentExpression(newChild);
         }
 
-        public override string ToString()
-        {
-            return "tan(" + child.ToString() + ")";
-        }
+        public override string ToString() => "tan(" + child.ToString() + ")";
     }
 }

@@ -22,9 +22,6 @@ namespace DataBindingToStringFomat
         public double Price { get; set; }
         public DateTime OfferExpires { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Description}, {Price:c}, {OfferExpires:D}";
-        }
+        public override string ToString() => $"{Description}, {Price:c}, {OfferExpires:D}";
     }
 }

@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,11 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="HtmlSerializerFactory.cs" />
-    <Compile Include="HtmlSerializerWriter.cs" />
     <Compile Include="ImageButton.cs" />
-    <Compile Include="RtfSerializerFactory.cs" />
-    <Compile Include="RtfSerializerWriter.cs" />
     <Compile Include="SerializerWriter\htmlserializerfactory.cs" />
     <Compile Include="SerializerWriter\htmlserializerwriter.cs" />
     <Compile Include="SerializerWriter\rtfserializerfactory.cs" />
@@ -76,16 +73,12 @@
     <Compile Include="ThumbViewerApp.xaml.cs">
       <DependentUpon>ThumbViewerApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TxtSerializerFactory.cs" />
-    <Compile Include="TxtSerializerWriter.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="VisibilityToBoolConverter.cs" />
     <Compile Include="WordXmlSerialize\wordxmlreader.cs" />
     <Compile Include="WordXmlSerialize\wordxmlserializer.cs" />
     <Compile Include="WordXmlSerialize\wordxmlwriter.cs" />
     <Compile Include="XamlRtfConverter.cs" />
-    <Compile Include="XamlSerializerFactory.cs" />
-    <Compile Include="XamlSerializerWriter.cs" />
     <Page Include="content\chocolate\chocolate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

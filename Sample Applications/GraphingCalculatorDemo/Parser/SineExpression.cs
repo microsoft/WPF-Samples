@@ -14,19 +14,9 @@ namespace GraphingCalculatorDemo.Parser
         {
         }
 
-        protected override double Operate(double d)
-        {
-            return Math.Sin(d);
-        }
+        protected override double Operate(double d) => Math.Sin(d);
 
-        public override IExpression Differentiate(string byVar)
-        {
-            //      f(x) = sin( g(x) );
-            // d( f(x) ) = cos( g(x) ) * d( g(x) );
-            // d( g(x) ) = g'(x)
-            //     f'(x) = cos( g(x) ) * g'(x);
-            return new MultExpression(new CosineExpression(child), child.Differentiate(byVar));
-        }
+        public override IExpression Differentiate(string byVar) => new MultExpression(new CosineExpression(child), child.Differentiate(byVar));
 
         public override IExpression Simplify()
         {
@@ -41,9 +31,6 @@ namespace GraphingCalculatorDemo.Parser
             return new SineExpression(newChild);
         }
 
-        public override string ToString()
-        {
-            return "sin(" + child.ToString() + ")";
-        }
+        public override string ToString() => "sin(" + child.ToString() + ")";
     }
 }

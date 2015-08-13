@@ -2523,11 +2523,7 @@ namespace DocumentSerialization
         //
         // .................................................................
 
-        private static string GetColorValue(string colorValue)
-        {
-            // TODO: Implement color conversion
-            return colorValue;
-        }
+        private static string GetColorValue(string colorValue) => colorValue;
 
         /// <summary>
         /// Applies properties to xamlTableCellElement based on the html td element it is converted from.

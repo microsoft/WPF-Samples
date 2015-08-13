@@ -61,10 +61,7 @@ namespace ValidateItemSample
             }
         }
 
-        public override string ToString()
-        {
-            return $"{Description}, {Price:c}, {OfferExpires:D}";
-        }
+        public override string ToString() => $"{Description}, {Price:c}, {OfferExpires:D}";
 
         private struct ItemData
         {

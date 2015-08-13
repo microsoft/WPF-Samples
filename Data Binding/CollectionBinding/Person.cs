@@ -54,10 +54,7 @@ namespace CollectionBinding
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public override string ToString()
-        {
-            return _firstname;
-        }
+        public override string ToString() => _firstname;
 
         protected void OnPropertyChanged(string info)
         {

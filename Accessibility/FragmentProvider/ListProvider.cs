@@ -107,19 +107,13 @@ namespace FragmentProvider
         ///     Gets any fragment roots that are embedded in this fragment.
         /// </summary>
         /// <returns>Null in this case.</returns>
-        IRawElementProviderSimple[] IRawElementProviderFragment.GetEmbeddedFragmentRoots()
-        {
-            return null;
-        }
+        IRawElementProviderSimple[] IRawElementProviderFragment.GetEmbeddedFragmentRoots() => null;
 
         /// <summary>
         ///     Gets the runtime identifier of the UI Automation element.
         /// </summary>
         /// <returns>Fragment roots return null.</returns>
-        int[] IRawElementProviderFragment.GetRuntimeId()
-        {
-            return null;
-        }
+        int[] IRawElementProviderFragment.GetRuntimeId() => null;
 
         /// <summary>
         ///     Navigates to adjacent elements in the UI Automation tree.

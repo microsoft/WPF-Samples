@@ -168,9 +168,6 @@ namespace PhotoViewerDemo
             }
         }
 
-        protected override Visual GetVisualChild(int index)
-        {
-            return _visualChildren[index];
-        }
+        protected override Visual GetVisualChild(int index) => _visualChildren[index];
     }
 }

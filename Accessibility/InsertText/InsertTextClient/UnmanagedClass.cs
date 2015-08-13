@@ -56,10 +56,7 @@ namespace InsertTextClient
                 return hTemp;
             }
 
-            public static implicit operator IntPtr(Hwnd h)
-            {
-                return h.h;
-            }
+            public static implicit operator IntPtr(Hwnd h) => h.h;
 
             public static Hwnd Null
             {
@@ -70,15 +67,9 @@ namespace InsertTextClient
                 }
             }
 
-            public static bool operator ==(Hwnd hl, Hwnd hr)
-            {
-                return hl.h == hr.h;
-            }
+            public static bool operator ==(Hwnd hl, Hwnd hr) => hl.h == hr.h;
 
-            public static bool operator !=(Hwnd hl, Hwnd hr)
-            {
-                return hl.h != hr.h;
-            }
+            public static bool operator !=(Hwnd hl, Hwnd hr) => hl.h != hr.h;
 
             public override bool Equals(object oCompare)
             {
@@ -86,10 +77,7 @@ namespace InsertTextClient
                 return h == hr.h;
             }
 
-            public override int GetHashCode()
-            {
-                return (int) h;
-            }
+            public override int GetHashCode() => (int)h;
         }
     }
 }

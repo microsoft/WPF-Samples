@@ -14,9 +14,6 @@ namespace PhotoStoreDemo
         public string Description { get; }
         public double Cost { get; }
 
-        public override string ToString()
-        {
-            return Description;
-        }
+        public override string ToString() => Description;
     }
 }

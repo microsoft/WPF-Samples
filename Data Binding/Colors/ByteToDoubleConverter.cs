@@ -11,10 +11,7 @@ namespace Colors
 
     public class ByteToDoubleConverter : IValueConverter
     {
-        object IValueConverter.Convert(object o, Type type, object parameter, CultureInfo culture)
-        {
-            return Convert.ChangeType(o, typeof (double));
-        }
+        object IValueConverter.Convert(object o, Type type, object parameter, CultureInfo culture) => Convert.ChangeType(o, typeof(double));
 
         object IValueConverter.ConvertBack(object o, Type type, object parameter, CultureInfo culture)
         {

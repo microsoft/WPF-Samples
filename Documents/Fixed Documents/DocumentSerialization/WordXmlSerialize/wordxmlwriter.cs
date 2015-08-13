@@ -106,7 +106,7 @@ namespace DocumentSerialization
         {
             if (property == null)
             {
-                throw new ArgumentNullException("property");
+                throw new ArgumentNullException(nameof(property));
             }
             return false;
         }
@@ -118,7 +118,7 @@ namespace DocumentSerialization
         {
             if (property == null)
             {
-                throw new ArgumentNullException("property");
+                throw new ArgumentNullException(nameof(property));
             }
             return
                 (property == TextBlock.FontWeightProperty) ||

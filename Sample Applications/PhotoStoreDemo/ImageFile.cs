@@ -19,9 +19,6 @@ namespace PhotoStoreDemo
         public Uri Uri { get; }
         public BitmapFrame Image { get; }
 
-        public override string ToString()
-        {
-            return Path;
-        }
+        public override string ToString() => Path;
     }
 }

@@ -33,9 +33,6 @@ namespace EditingExaminerDemo
         ///     Override the ToSring method
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return string.IsNullOrEmpty(Error) ? Value?.ToString() ?? "null" : Error;
-        }
+        public override string ToString() => string.IsNullOrEmpty(Error) ? Value?.ToString() ?? "null" : Error;
     }
 }

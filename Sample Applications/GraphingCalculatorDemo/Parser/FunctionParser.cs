@@ -385,9 +385,6 @@ namespace GraphingCalculatorDemo.Parser
         ///     true if the CurrentToken's type is in the set
         ///     false if it is not
         /// </returns>
-        private static bool Check(TokenSet tokens)
-        {
-            return tokens.Contains(_currentToken.Type);
-        }
+        private static bool Check(TokenSet tokens) => tokens.Contains(_currentToken.Type);
     }
 }

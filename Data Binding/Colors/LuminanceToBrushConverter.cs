@@ -19,9 +19,6 @@ namespace Colors
             return (luminance < 0.5) ? Brushes.White : Brushes.Black;
         }
 
-        object IValueConverter.ConvertBack(object o, Type type, object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+        object IValueConverter.ConvertBack(object o, Type type, object parameter, CultureInfo culture) => null;
     }
 }

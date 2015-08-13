@@ -18,15 +18,9 @@ namespace GraphingCalculatorDemo.Parser
 
         public IExpression Child => child;
 
-        public double Evaluate()
-        {
-            return Operate(child.Evaluate());
-        }
+        public double Evaluate() => Operate(child.Evaluate());
 
-        string IExpression.ToString()
-        {
-            return ToString();
-        }
+        string IExpression.ToString() => ToString();
 
         public abstract IExpression Differentiate(string byVar);
         public abstract IExpression Simplify();

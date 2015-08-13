@@ -13,8 +13,6 @@ namespace CodeOnlyBinding
         public Button Button;
         public Button Button2;
         public DockPanel Dp;
-        public Binding MyBinding;
-        public MyData MyDataObject;
         public TextBlock MyText;
 
         public void OnClick(object obj, RoutedEventArgs args)

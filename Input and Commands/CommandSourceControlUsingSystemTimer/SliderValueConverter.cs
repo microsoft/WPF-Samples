@@ -23,9 +23,6 @@ namespace CommandSourceControlUsingSystemTimer
         public object ConvertBack(object value,
             Type targetType,
             object parameter,
-            CultureInfo culture)
-        {
-            return null;
-        }
+            CultureInfo culture) => null;
     }
 }

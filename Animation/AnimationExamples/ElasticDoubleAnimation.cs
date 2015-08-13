@@ -109,10 +109,7 @@ namespace AnimationExamples
             return returnValue;
         }
 
-        protected override Freezable CreateInstanceCore()
-        {
-            return new ElasticDoubleAnimation();
-        }
+        protected override Freezable CreateInstanceCore() => new ElasticDoubleAnimation();
 
         private static double EaseOut(double timeFraction, double start, double delta, double springiness,
             double oscillations)

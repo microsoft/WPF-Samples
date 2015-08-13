@@ -212,10 +212,7 @@ namespace PerFrameAnimation
 
         protected override int VisualChildrenCount => _vc.Count;
 
-        protected override Visual GetVisualChild(int index)
-        {
-            return _vc[index];
-        }
+        protected override Visual GetVisualChild(int index) => _vc[index];
 
         #endregion
     }

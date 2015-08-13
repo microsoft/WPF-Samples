@@ -105,10 +105,7 @@ namespace EditBoxControlLibrary
         /// <summary>
         ///     override function to return infomation about visual tree.
         /// </summary>
-        protected override Visual GetVisualChild(int index)
-        {
-            return _visualChildren[index];
-        }
+        protected override Visual GetVisualChild(int index) => _visualChildren[index];
 
         #endregion
 

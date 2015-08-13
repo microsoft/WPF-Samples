@@ -93,16 +93,10 @@ namespace GraphingCalculatorDemo.Parser
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        private bool IsAlpha(char c)
-        {
-            return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
-        }
+        private bool IsAlpha(char c) => (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        private bool IsNumber(char c)
-        {
-            return ('.' == c || ('0' <= c && c <= '9'));
-        }
+        private bool IsNumber(char c) => ('.' == c || ('0' <= c && c <= '9'));
     }
 }

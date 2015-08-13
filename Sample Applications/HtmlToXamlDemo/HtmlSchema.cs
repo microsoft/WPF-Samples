@@ -64,12 +64,7 @@ namespace HtmlToXamlDemo
         /// <param name="xmlElementName">
         ///     string representing name to test
         /// </param>
-        internal static bool IsEmptyElement(string xmlElementName)
-        {
-            // convert to lowercase before we check
-            // because element names are not case sensitive
-            return _htmlEmptyElements.Contains(xmlElementName.ToLower());
-        }
+        internal static bool IsEmptyElement(string xmlElementName) => _htmlEmptyElements.Contains(xmlElementName.ToLower());
 
         /// <summary>
         ///     returns true if xmlElementName represents a block formattinng element.
@@ -78,20 +73,14 @@ namespace HtmlToXamlDemo
         /// </summary>
         /// <param name="xmlElementName"></param>
         /// <returns></returns>
-        internal static bool IsBlockElement(string xmlElementName)
-        {
-            return _htmlBlockElements.Contains(xmlElementName);
-        }
+        internal static bool IsBlockElement(string xmlElementName) => _htmlBlockElements.Contains(xmlElementName);
 
         /// <summary>
         ///     returns true if the xmlElementName represents an inline formatting element
         /// </summary>
         /// <param name="xmlElementName"></param>
         /// <returns></returns>
-        internal static bool IsInlineElement(string xmlElementName)
-        {
-            return _htmlInlineElements.Contains(xmlElementName);
-        }
+        internal static bool IsInlineElement(string xmlElementName) => _htmlInlineElements.Contains(xmlElementName);
 
         /// <summary>
         ///     It is a list of known html elements which we
@@ -101,10 +90,7 @@ namespace HtmlToXamlDemo
         ///     elements during html parsing, and adding the
         ///     to a tree produced by html parser.
         /// </summary>
-        internal static bool IsKnownOpenableElement(string xmlElementName)
-        {
-            return _htmlOtherOpenableElements.Contains(xmlElementName);
-        }
+        internal static bool IsKnownOpenableElement(string xmlElementName) => _htmlOtherOpenableElements.Contains(xmlElementName);
 
         /// <summary>
         ///     returns true when xmlElementName closes when the outer element closes
@@ -113,11 +99,7 @@ namespace HtmlToXamlDemo
         /// <param name="xmlElementName">
         ///     string representing name to test
         /// </param>
-        internal static bool ClosesOnParentElementEnd(string xmlElementName)
-        {
-            // convert to lowercase when testing
-            return _htmlElementsClosingOnParentElementEnd.Contains(xmlElementName.ToLower());
-        }
+        internal static bool ClosesOnParentElementEnd(string xmlElementName) => _htmlElementsClosingOnParentElementEnd.Contains(xmlElementName.ToLower());
 
         /// <summary>
         ///     returns true if the current element closes when the new element, whose name has just been read, starts

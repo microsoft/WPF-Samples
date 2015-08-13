@@ -609,21 +609,11 @@ namespace DocumentSerialization
             }
         }
 
-        private static string ParseCssListStyleType(string styleValue, ref int nextIndex)
-        {
-            return ParseWordEnumeration(_listStyleTypes, styleValue, ref nextIndex);
-        }
+        private static string ParseCssListStyleType(string styleValue, ref int nextIndex) => ParseWordEnumeration(_listStyleTypes, styleValue, ref nextIndex);
 
-        private static string ParseCssListStylePosition(string styleValue, ref int nextIndex)
-        {
-            return ParseWordEnumeration(_listStylePositions, styleValue, ref nextIndex);
-        }
+        private static string ParseCssListStylePosition(string styleValue, ref int nextIndex) => ParseWordEnumeration(_listStylePositions, styleValue, ref nextIndex);
 
-        private static string ParseCssListStyleImage(string styleValue, ref int nextIndex)
-        {
-            // TODO: Implement URL parsing for images
-            return null;
-        }
+        private static string ParseCssListStyleImage(string styleValue, ref int nextIndex) => null;
 
         // .................................................................
         //
@@ -791,10 +781,7 @@ namespace DocumentSerialization
 
         private static readonly string[] _borderStyles = new string[] { "none", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset" };
 
-        private static string ParseCssBorderStyle(string styleValue, ref int nextIndex)
-        {
-            return ParseWordEnumeration(_borderStyles, styleValue, ref nextIndex);
-        }
+        private static string ParseCssBorderStyle(string styleValue, ref int nextIndex) => ParseWordEnumeration(_borderStyles, styleValue, ref nextIndex);
 
 
         // .................................................................

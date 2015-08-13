@@ -13,7 +13,7 @@
 
         <Grid Name="PodClock" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.Resources>
-                <Storyboard x:Key="Sb">
+                <Storyboard x:Key="sb">
                     <DoubleAnimation From="0" To="360" Duration="12:00:00" RepeatBehavior="Forever"
                         Storyboard.TargetName="HourHand"
                         Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)" 

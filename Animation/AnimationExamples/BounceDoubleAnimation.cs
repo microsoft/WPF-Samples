@@ -138,10 +138,7 @@ namespace AnimationExamples
             return returnValue;
         }
 
-        protected override Freezable CreateInstanceCore()
-        {
-            return new BounceDoubleAnimation();
-        }
+        protected override Freezable CreateInstanceCore() => new BounceDoubleAnimation();
 
         private static double EaseOut(double timeFraction, double start, double delta, double bounciness, int bounces)
         {

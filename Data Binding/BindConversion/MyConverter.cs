@@ -26,9 +26,6 @@ namespace BindConversion
         }
 
         public object ConvertBack(object o, Type type,
-            object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+            object parameter, CultureInfo culture) => null;
     }
 }

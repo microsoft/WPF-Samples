@@ -95,10 +95,7 @@ namespace DragDropObjects
             return finalSize;
         }
 
-        protected override Visual GetVisualChild(int index)
-        {
-            return _child;
-        }
+        protected override Visual GetVisualChild(int index) => _child;
 
         private void UpdatePosition()
         {

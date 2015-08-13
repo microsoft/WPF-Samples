@@ -51,9 +51,6 @@ namespace HierarchicalDataTemplate
             d.Teams.Add(new Team("Team Epsilon"));
         }
 
-        public League this[string name]
-        {
-            get { return this.FirstOrDefault(l => l.Name == name); }
-        }
+        public League this[string name] => this.FirstOrDefault(l => l.Name == name);
     }
 }

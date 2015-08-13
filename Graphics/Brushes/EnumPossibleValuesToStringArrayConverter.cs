@@ -11,14 +11,8 @@ namespace Brushes
     [ValueConversion(typeof (object), typeof (string[]))]
     public class EnumPossibleValuesToStringArrayConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return new ArrayList(Enum.GetNames(value.GetType()));
-        }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => new ArrayList(Enum.GetNames(value.GetType()));
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => null;
     }
 }

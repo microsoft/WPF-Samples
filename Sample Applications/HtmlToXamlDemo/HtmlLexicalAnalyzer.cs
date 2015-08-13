@@ -485,10 +485,7 @@ namespace HtmlToXamlDemo
         ///     true if the character can be the first character in a name
         ///     false otherwise
         /// </returns>
-        private bool IsGoodForNameStart(char character)
-        {
-            return character == '_' || char.IsLetter(character);
-        }
+        private bool IsGoodForNameStart(char character) => character == '_' || char.IsLetter(character);
 
         /// <summary>
         ///     checks if a character can be used as a non-starting character in a name
@@ -501,19 +498,13 @@ namespace HtmlToXamlDemo
         /// <returns>
         ///     true if the character can be a valid part of a name
         /// </returns>
-        private bool IsGoodForName(char character)
-        {
-            // we are not concerned with escaped characters in names
-            // we assume that character entities are allowed as part of a name
-            return
-                IsGoodForNameStart(character) ||
+        private bool IsGoodForName(char character) => IsGoodForNameStart(character) ||
                 character == '.' ||
                 character == '-' ||
                 character == ':' ||
                 char.IsDigit(character) ||
                 IsCombiningCharacter(character) ||
                 IsExtender(character);
-        }
 
         /// <summary>
         ///     identifies a character as being a combining character, permitted in a name
@@ -526,11 +517,7 @@ namespace HtmlToXamlDemo
         /// <returns>
         ///     true if the character is a combining character, false otherwise
         /// </returns>
-        private bool IsCombiningCharacter(char character)
-        {
-            // TODO: put actual code with checks against all combining characters here
-            return false;
-        }
+        private bool IsCombiningCharacter(char character) => false;
 
         /// <summary>
         ///     identifies a character as being an extender, permitted in a name
@@ -543,11 +530,7 @@ namespace HtmlToXamlDemo
         /// <returns>
         ///     true if the character is an extender, false otherwise
         /// </returns>
-        private bool IsExtender(char character)
-        {
-            // TODO: put actual code with checks against all extenders here
-            return false;
-        }
+        private bool IsExtender(char character) => false;
 
         /// <summary>
         ///     skips dynamic content starting with '<![' and ending with ']>'

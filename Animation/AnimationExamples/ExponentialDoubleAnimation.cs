@@ -107,10 +107,7 @@ namespace AnimationExamples
             return returnValue;
         }
 
-        protected override Freezable CreateInstanceCore()
-        {
-            return new ExponentialDoubleAnimation();
-        }
+        protected override Freezable CreateInstanceCore() => new ExponentialDoubleAnimation();
 
         private static double EaseIn(double timeFraction, double start, double delta, double power)
         {

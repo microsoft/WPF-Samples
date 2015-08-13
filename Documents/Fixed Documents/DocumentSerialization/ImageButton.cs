@@ -46,10 +46,7 @@ namespace DocumentSerialization
         /// </summary>
         public static readonly DependencyProperty SourceProperty = DependencyProperty.RegisterAttached("Source", typeof(ImageSource), typeof(ImageButton));
 
-        public static ImageSource GetSource(DependencyObject obj)
-        {
-            return (ImageSource)obj.GetValue(SourceProperty);
-        }
+        public static ImageSource GetSource(DependencyObject obj) => (ImageSource)obj.GetValue(SourceProperty);
 
         public static void SetSource(DependencyObject obj, ImageSource value)
         {
@@ -62,10 +59,7 @@ namespace DocumentSerialization
         /// </summary>
         public static readonly DependencyProperty HoverSourceProperty = DependencyProperty.RegisterAttached("HoverSource", typeof(ImageSource), typeof(ImageButton));
 
-        public static ImageSource GetHoverSource(DependencyObject obj)
-        {
-            return (ImageSource)obj.GetValue(HoverSourceProperty);
-        }
+        public static ImageSource GetHoverSource(DependencyObject obj) => (ImageSource)obj.GetValue(HoverSourceProperty);
 
         public static void SetHoverSource(DependencyObject obj, ImageSource value)
         {
@@ -78,10 +72,7 @@ namespace DocumentSerialization
         /// </summary>
         public static readonly DependencyProperty SelectedSourceProperty = DependencyProperty.RegisterAttached("SelectedSource", typeof(ImageSource), typeof(ImageButton));
 
-        public static ImageSource GetSelectedSource(DependencyObject obj)
-        {
-            return (ImageSource)obj.GetValue(SelectedSourceProperty);
-        }
+        public static ImageSource GetSelectedSource(DependencyObject obj) => (ImageSource)obj.GetValue(SelectedSourceProperty);
 
         public static void SetSelectedSource(DependencyObject obj, ImageSource value)
         {

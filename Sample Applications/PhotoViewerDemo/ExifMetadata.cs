@@ -291,15 +291,9 @@ namespace PhotoViewerDemo
             }
         }
 
-        private decimal ParseUnsignedRational(ulong exifValue)
-        {
-            return (exifValue & 0xFFFFFFFFL)/(decimal) ((exifValue & 0xFFFFFFFF00000000L) >> 32);
-        }
+        private decimal ParseUnsignedRational(ulong exifValue) => (exifValue & 0xFFFFFFFFL) / (decimal)((exifValue & 0xFFFFFFFF00000000L) >> 32);
 
-        private decimal ParseSignedRational(long exifValue)
-        {
-            return (exifValue & 0xFFFFFFFFL)/(decimal) ((exifValue & 0x7FFFFFFF00000000L) >> 32);
-        }
+        private decimal ParseSignedRational(long exifValue) => (exifValue & 0xFFFFFFFFL) / (decimal)((exifValue & 0x7FFFFFFF00000000L) >> 32);
 
         private object QueryMetadata(string query)
         {

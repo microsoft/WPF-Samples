@@ -46,9 +46,6 @@ namespace AnnotationsStyling
         } // end:Convert
         // --------------------------- ConvertBack ----------------------------
         public object ConvertBack(object value, Type targetType,
-            object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+            object parameter, CultureInfo culture) => null;
     }
 }

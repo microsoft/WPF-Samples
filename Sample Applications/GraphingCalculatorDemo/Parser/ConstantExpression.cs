@@ -23,32 +23,16 @@ namespace GraphingCalculatorDemo.Parser
         /// <summary>
         ///     A constant always evaluates to its value.
         /// </summary>
-        public double Evaluate()
-        {
-            return Value;
-        }
+        public double Evaluate() => Value;
 
         /// <summary>
         ///     The derivative of a constant is 0.
         /// </summary>
-        public IExpression Differentiate(string byVar)
-        {
-            //      f(x) = c;
-            // d( f(x) ) = c * d( c );
-            //    d( c ) = 0;
-            //     f'(x) = 0;
-            return new ConstantExpression(0);
-        }
+        public IExpression Differentiate(string byVar) => new ConstantExpression(0);
 
-        public IExpression Simplify()
-        {
-            return new ConstantExpression(Value);
-        }
+        public IExpression Simplify() => new ConstantExpression(Value);
 
-        string IExpression.ToString()
-        {
-            return Value.ToString(CultureInfo.InvariantCulture);
-        }
+        string IExpression.ToString() => Value.ToString(CultureInfo.InvariantCulture);
     }
 
     //--------------------------------------------------------------

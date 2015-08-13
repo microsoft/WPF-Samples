@@ -20,15 +20,9 @@ namespace GraphingCalculatorDemo.Parser
         public IExpression Left => left;
         public IExpression Right => right;
 
-        public double Evaluate()
-        {
-            return Operate(left.Evaluate(), right.Evaluate());
-        }
+        public double Evaluate() => Operate(left.Evaluate(), right.Evaluate());
 
-        string IExpression.ToString()
-        {
-            return ToString();
-        }
+        string IExpression.ToString() => ToString();
 
         public abstract IExpression Differentiate(string byVar);
         public abstract IExpression Simplify();

@@ -198,10 +198,7 @@ namespace PerFrameAnimation
             SetRenderTransformOffset(e, renderTranslation);
         }
 
-        private Point GetCenter(Rect r)
-        {
-            return new Point((r.Left + r.Right)/2.0, (r.Top + r.Bottom)/2.0);
-        }
+        private Point GetCenter(Rect r) => new Point((r.Left + r.Right) / 2.0, (r.Top + r.Bottom) / 2.0);
 
         #region Private Members
 

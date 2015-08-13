@@ -335,11 +335,7 @@ namespace SelectionPatternSample
         ///     Index of current list box item.
         /// </param>
         /// --------------------------------------------------------------------
-        internal ListBoxItem GetClientItemFromIndex(ListBox listBox, int index)
-        {
-            return
-                (ListBoxItem) (listBox.ItemContainerGenerator.ContainerFromIndex(index));
-        }
+        internal ListBoxItem GetClientItemFromIndex(ListBox listBox, int index) => (ListBoxItem)(listBox.ItemContainerGenerator.ContainerFromIndex(index));
 
         /// --------------------------------------------------------------------
         /// <summary>

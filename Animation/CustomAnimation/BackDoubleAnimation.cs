@@ -109,10 +109,7 @@ namespace CustomAnimation
             return returnValue;
         }
 
-        protected override Freezable CreateInstanceCore()
-        {
-            return new BackDoubleAnimation();
-        }
+        protected override Freezable CreateInstanceCore() => new BackDoubleAnimation();
 
         private static double EaseOut(double timeFraction, double start, double delta, double amplitude,
             double suppression)

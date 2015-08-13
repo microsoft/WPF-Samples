@@ -297,21 +297,9 @@ namespace DocumentSerialization
 
         #region Internal Properties
 
-        internal HtmlTokenType NextTokenType
-        {
-            get
-            {
-                return _nextTokenType;
-            }
-        }
+        internal HtmlTokenType NextTokenType => _nextTokenType;
 
-        internal string NextToken
-        {
-            get
-            {
-                return _nextToken.ToString();
-            }
-        }
+        internal string NextToken => _nextToken.ToString();
 
         #endregion Internal Properties
 
@@ -502,10 +490,7 @@ namespace DocumentSerialization
         /// true if the character can be the first character in a name
         /// false otherwise
         /// </returns>
-        private bool IsGoodForNameStart(char character)
-        {
-            return character == '_' || Char.IsLetter(character);
-        }
+        private bool IsGoodForNameStart(char character) => character == '_' || Char.IsLetter(character);
 
         /// <summary>
         /// checks if a character can be used as a non-starting character in a name
@@ -518,19 +503,13 @@ namespace DocumentSerialization
         /// <returns>
         /// true if the character can be a valid part of a name
         /// </returns>
-        private bool IsGoodForName(char character)
-        {
-            // we are not concerned with escaped characters in names
-            // we assume that character entities are allowed as part of a name
-            return 
-                this.IsGoodForNameStart(character) || 
-                character == '.' || 
-                character == '-' || 
+        private bool IsGoodForName(char character) => this.IsGoodForNameStart(character) ||
+                character == '.' ||
+                character == '-' ||
                 character == ':' ||
-                Char.IsDigit(character) || 
-                IsCombiningCharacter(character) || 
+                Char.IsDigit(character) ||
+                IsCombiningCharacter(character) ||
                 IsExtender(character);
-        }
 
         /// <summary>
         /// identifies a character as being a combining character, permitted in a name
@@ -543,11 +522,7 @@ namespace DocumentSerialization
         /// <returns>
         /// true if the character is a combining character, false otherwise
         /// </returns>
-        private bool IsCombiningCharacter(char character)
-        {
-            // TODO: put actual code with checks against all combining characters here
-            return false;
-        }
+        private bool IsCombiningCharacter(char character) => false;
 
         /// <summary>
         /// identifies a character as being an extender, permitted in a name
@@ -560,11 +535,7 @@ namespace DocumentSerialization
         /// <returns>
         /// true if the character is an extender, false otherwise
         /// </returns>
-        private bool IsExtender(char character)
-        {
-            // TODO: put actual code with checks against all extenders here
-            return false;
-        }
+        private bool IsExtender(char character) => false;
 
         /// <summary>
         /// skips dynamic content starting with '<![' and ending with ']>' 
@@ -734,55 +705,17 @@ namespace DocumentSerialization
 
         #region Private Properties
 
-        private char NextCharacter
-        {
-            get
-            {
-                return _nextCharacter;
-            }
-        }
+        private char NextCharacter => _nextCharacter;
 
-        private bool IsAtEndOfStream
-        {
-            get
-            {
-                return _nextCharacterCode == -1;
-            }
-        }
+        private bool IsAtEndOfStream => _nextCharacterCode == -1;
 
-        private bool IsAtTagStart
-        {
-            get
-            {
-                return _nextCharacter == '<' && (_lookAheadCharacter == '/' || IsGoodForNameStart(_lookAheadCharacter)) && !_isNextCharacterEntity;
-            }
-        }
+        private bool IsAtTagStart => _nextCharacter == '<' && (_lookAheadCharacter == '/' || IsGoodForNameStart(_lookAheadCharacter)) && !_isNextCharacterEntity;
 
-        private bool IsAtTagEnd
-        {
-            // check if at end of empty tag or regular tag
-            get
-            {
-                return (_nextCharacter == '>' || (_nextCharacter == '/' && _lookAheadCharacter == '>')) && !_isNextCharacterEntity;
-            }
-        }
+        private bool IsAtTagEnd => (_nextCharacter == '>' || (_nextCharacter == '/' && _lookAheadCharacter == '>')) && !_isNextCharacterEntity;
 
-        private bool IsAtDirectiveStart
-        {
-            get
-            {
-                return (_nextCharacter == '<' && _lookAheadCharacter == '!' && !this.IsNextCharacterEntity);
-            }
-        }
+        private bool IsAtDirectiveStart => (_nextCharacter == '<' && _lookAheadCharacter == '!' && !this.IsNextCharacterEntity);
 
-        private bool IsNextCharacterEntity
-        {
-            // check if next character is an entity
-            get
-            {
-                return _isNextCharacterEntity;
-            }
-        }
+        private bool IsNextCharacterEntity => _isNextCharacterEntity;
 
         #endregion Private Properties
 

@@ -26,9 +26,6 @@ namespace PhotoViewerDemo
         public BitmapFrame Image { get; set; }
         public ExifMetadata Metadata { get; }
 
-        public override string ToString()
-        {
-            return _source.ToString();
-        }
+        public override string ToString() => _source.ToString();
     }
 }

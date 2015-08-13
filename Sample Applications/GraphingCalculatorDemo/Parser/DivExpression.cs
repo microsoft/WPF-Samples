@@ -12,19 +12,11 @@ namespace GraphingCalculatorDemo.Parser
         {
         }
 
-        protected override double Operate(double d1, double d2)
-        {
-            return d1/d2;
-        }
+        protected override double Operate(double d1, double d2) => d1 / d2;
 
-        public override IExpression Differentiate(string byVar)
-        {
-            //      f(x) = g(x)/h(x);
-            //     f'(x) = ( g'(x)*h(x) - g(x)*h'(x) )/( h(x)^2 ) ;
-            return new DivExpression(new SubExpression(new MultExpression(left.Differentiate(byVar), right),
+        public override IExpression Differentiate(string byVar) => new DivExpression(new SubExpression(new MultExpression(left.Differentiate(byVar), right),
                 new MultExpression(left, right.Differentiate(byVar))),
                 new ExpExpression(right, new ConstantExpression(2)));
-        }
 
         public override IExpression Simplify()
         {
@@ -86,9 +78,6 @@ namespace GraphingCalculatorDemo.Parser
             return new DivExpression(newLeft, newRight);
         }
 
-        public override string ToString()
-        {
-            return "(" + left.ToString() + "/" + right.ToString() + ")";
-        }
+        public override string ToString() => "(" + left.ToString() + "/" + right.ToString() + ")";
     }
 }

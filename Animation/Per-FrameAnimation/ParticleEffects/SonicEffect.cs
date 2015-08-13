@@ -13,8 +13,6 @@ namespace PerFrameAnimation
 
     public class SonicEffect : OverlayRenderDecorator
     {
-        private decimal _s;
-
         protected override void OnAttachChild(UIElement child)
         {
             child.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
