@@ -640,3 +640,89 @@
 /Documents/Annotations/AnnotatedDocumentViewer/AnnotatedDocumentViewer.csproj.user
 /Documents/Flow Content/TabularData/bin/Debug
 /WPFSamples.opensdf
+/Animation/AnimationExamples/obj/Debug
+/Animation/AnimationTiming/obj/Debug
+/Animation/CustomAnimation/obj/Debug
+/Animation/KeyFrameAnimation/obj/Debug
+/Animation/KeySplineAnimations/obj/Debug
+/Animation/Per-FrameAnimation/obj/Debug
+/Animation/PathAnimations/obj/Debug
+/Animation/OpacityAnimation/obj/Debug
+/Animation/LocalAnimations/obj/Debug
+/Animation/PropertyAnimation/obj/Debug
+/Animation/TargetValues/obj/Debug
+/Element Tree/OverridingLogicalTree/obj/Debug
+/Element Tree/SearchingForElement/obj/Debug
+/Elements/ContextMenuOpening/obj/Debug
+/Elements/FindingElementInPanel/obj/Debug
+/Elements/FocusVisualStyle/obj/Debug
+/Elements/HeightProperties/obj/Debug
+/Elements/LoadedEvent/obj/Debug
+/Elements/SettingMargins/obj/Debug
+/Elements/ThicknessConverter/obj/Debug
+/Elements/UsingElements/obj/Debug
+/Events/AddingEventHandler/obj/Debug
+/Elements/WidthProperties/obj/Debug
+/Elements/VisibiltyChanges/obj/Debug
+/Events/RoutedEventHandling/obj/Debug
+/Events/FindingSourceElement/obj/Debug
+/Events/CustomRoutedEvents/obj/Debug
+/Graphics/2DTransforms/obj/Debug
+/Graphics/BitmapEffectsGallery/obj/Debug
+/Graphics/BitmapMetadata/obj/Debug
+/Graphics/BMPEncoderAndDecoder/obj/Debug
+/Graphics/Brushes/obj/Debug
+/Graphics/ClipRegion/obj/Debug
+/Graphics/Converter/obj/Debug
+/Graphics/DrawingBrush/obj/Debug
+/Graphics/Geometery/obj/Debug
+/Graphics/GIFEncoderAndDecoder/obj/Debug
+/Graphics/ImageBrush/obj/Debug
+/Graphics/ImageView/obj/Debug
+/Graphics/JPEGEncoderAndDecoder/obj/Debug
+/Graphics/Matrix/obj/Debug
+/Graphics/OpacityMasking/obj/Debug
+/Graphics/PNGEncoderAndDecoder/obj/Debug
+/Graphics/Point/obj/Debug
+/Graphics/ShapeElements/obj/Debug
+/Graphics/ShapesGallery/obj/Debug
+/Graphics/SystemBrushesAndColors/obj/Debug
+/Graphics/TIFFEncoderAndDecoder/obj/Debug
+/Graphics/Vector/obj/Debug
+/Graphics/VisualBrush/obj/Debug
+/Graphics/WDPEncoderAndDecoder/obj/Debug
+/Input and Commands/CaptureUnCaptureMouse/obj/Debug
+/Input and Commands/CommandSourceControlUsingSystemTimer/obj/Debug
+/Input and Commands/CommandSourceControlWithDispatcherTimer/obj/Debug
+/Input and Commands/CursorType/obj/Debug
+/Input and Commands/CustomRoutedCommand/obj/Debug
+/Input and Commands/EditingCommands/obj/Debug
+/Input and Commands/EventOnGainAndLooseFocus/obj/Debug
+/Input and Commands/HandlingEventOnCommand/obj/Debug
+/Input and Commands/HandlingEventOnCommandUsingCode/obj/Debug
+/Input and Commands/ICommandSourceImplementation/obj/Debug
+/Input and Commands/KeyboardKey/obj/Debug
+/Input and Commands/KeyStrokeCounter/obj/Debug
+/Input and Commands/MousePointer/obj/Debug
+/Input and Commands/MouseState/obj/Debug
+/Input and Commands/MoveObjectWithMouse/obj/Debug
+/Input and Commands/ProgrammaticFocusControl/obj/Debug
+/Properties/Callbacks/obj/Debug
+/Properties/CustomClassesWithDP/obj/Debug
+/Properties/RestoringDefaultValues/obj/Debug
+/Resources/ApplicationResources/obj/Debug
+/Resources/DefiningResources/obj/Debug
+/Resources/MergedResources/obj/Debug
+/Speech and Media/MediaGallery/obj/Debug
+/Speech and Media/UsingSpeech/obj/Debug
+/Styles & Templates/AlternatingAppearanceOfItems/obj/Debug
+/Styles & Templates/ContentControlStyle/obj/Debug
+/Styles & Templates/EventTriggers/obj/Debug
+/Styles & Templates/FindingElementsInTemplates/obj/Debug
+/Styles & Templates/IntroToStylingAndTemplating/obj/Debug
+/Threading/MultiThreadingWebBrowser/obj/Debug
+/Threading/SingleThreadedApplication/obj/Debug
+/Threading/UsingDispatcher/obj/Debug
+/Visual Layer/CompositionTarget/obj/Debug
+/Visual Layer/DrawingVisual/obj/Debug
+/Visual Layer/VisualsHitTesting/obj/Debug
