@@ -135,7 +135,7 @@ namespace SlidePuzzleDemo
         private void OnMoveMade(object sender, HandledEventArgs e)
         {
             // Blur or unblur based on whether the move was a valid one.
-            var blur = (DropShadowEffect)StatusLabel.Effect; //(BlurBitmapEffect)ControlPanelBitmapEffect;
+            var blur = (DropShadowEffect)StatusLabel.Effect;
             if (blur != null)
             {
                 if (e.Handled)
