@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFApp"
         xmlns:mcl="clr-namespace:MyControls;assembly=FormsControlLibrary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="560" Width="560">
     <DockPanel>
         <DockPanel.Resources>
             <Style x:Key="InlineText" TargetType="{x:Type Inline}">
@@ -22,7 +22,7 @@
         <StackPanel Orientation="Vertical"
                  DockPanel.Dock="Left"
                  Background="Bisque"
-                 Width="250">
+                 Width="170">
 
             <TextBlock  Margin="10,10,10,10"
                    FontWeight="Bold"

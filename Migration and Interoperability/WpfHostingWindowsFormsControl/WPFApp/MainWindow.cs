@@ -21,13 +21,21 @@ namespace WPFApp
         private FontStyle _initFontStyle;
         private FontWeight _initFontWeight;
         private SolidColorBrush _initForeBrush;
-        private NavigationWindow _myWindow;
+        private MainWindow _myWindow;
         private bool _uiIsReady;
+
+        public MainWindow() {
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
+            Init(sender, e);
+        }
 
         private void Init(object sender, EventArgs e)
         {
             _app = Application.Current;
-            _myWindow = (NavigationWindow) _app.MainWindow;
+            _myWindow = (MainWindow)_app.MainWindow;
             _myWindow.SizeToContent = SizeToContent.WidthAndHeight;
             wfh.TabIndex = 10;
             _initFontSize = wfh.FontSize;
