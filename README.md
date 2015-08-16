@@ -187,8 +187,8 @@ For more info about the programming models, platforms, languages, and APIs demon
   <th colspan="5" align="left">Accessibility</th>
  </tr>
 <tr>
-  <td><a href="Accessibility">Simple Provider</a></td>
-  <td><a href="Accessibility">Fragment Provider</a></td>
+  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/ms771275.aspx">Test Script Generator(MSDN)</a></td>
+  <td><a href="Accessibility">TrackFocus</a></td>
   <td><a href="Accessibility">FetchTimer</a></td>
   <td><a href="Accessibility">Highlighter</a></td>
  </tr>
@@ -196,10 +196,6 @@ For more info about the programming models, platforms, languages, and APIs demon
   <td><a href="Accessibility">InvokePattern, ExpandCollapsePattern, and TogglePattern</a></td>
   <td><a href="Accessibility">SelectionPattern and SelectionItemPattern</a></td>
   <td><a href="Accessibility">TextPattern Search and Selection</a></td>
- </tr>
-  <tr>
-  <td><a href="https://msdn.microsoft.com/en-us/library/vstudio/ms771275.aspx">Test Script Generator(MSDN)</a></td>
-  <td><a href="Accessibility">TrackFocus</a></td>
  </tr>
 </table>
 

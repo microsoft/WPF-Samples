@@ -1,10 +1,12 @@
 
-# %Sample% sample
+# FetchTimer Sample
 
-This sample shows how to use the %objective
+This sample demonstrates some aspects of caching (prefetching) in Microsoft UI Automation and supplies comparative performance values.
+After launching the sample, leave it in the foreground while moving the cursor over various elements on the desktop. Press Alt+G to retrieve the AutomationElement at the cursor. The sample performs three tests: fetching the element without caching, fetching it with caching, and updating the cache.
+You can set the scope and caching mode of element retrieval by using the checkboxes.
 
 ## Remarks
-
+The sample is designed to demonstrate the use of CacheRequest and related classes and methods, but does not necessarily reflect a real-world implementation of UI Automation caching as a whole.
 
 ## Build the sample
 
