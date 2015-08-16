@@ -465,29 +465,27 @@ For more info about the programming models, platforms, languages, and APIs demon
  <tr>
   <td><a href="Accessibility">Editing Examiner</a></td>
   <td><a href="Accessibility">ExpenseIt</a></td>
-  <td><a href="Accessibility">ExpenseIt - Standalone</a></td>
   <td><a href="Accessibility">Font Dialog Box</a></td>
   <td><a href="Accessibility">Geometry Designer</a></td>
+  <td><a href="Accessibility">WPF Photo Viewer</a></td>
  </tr>
  <tr>
   <td><a href="Accessibility">Graphing Calculator</a></td>
   <td><a href="Accessibility">HexSphere</a></td>
   <td><a href="Accessibility">Layout to Layout Transitions</a></td>
-  <td><a href="Accessibility">Logon Screen</a></td>
-  <td><a href="Accessibility">Notepad</a></td>
+  <td><a href="https://msdn.microsoft.com/en-us/library/ms771318(v=vs.90).aspx">Logon Screen (MSDN)</a></td>
+  <td><a href="https://msdn.microsoft.com/en-us/library/aa972157(v=vs.90).aspx">Notepad (MSDN)</a></td>
  </tr>
   <tr>
   <td><a href="Accessibility">Particle Effects</a></td>
   <td><a href="Accessibility">Photo Store</a></td>
   <td><a href="Accessibility">SDK Viewer</a></td>
-  <td><a href="Accessibility">Logon Screen</a></td>
   <td><a href="Accessibility">Slide Puzzle</a></td>
- </tr>
-  <tr>
   <td><a href="Accessibility">Sticky Notes</a></td>
-  <td><a href="Accessibility">WPF Photo Viewer</a></td>
+ </tr>
+ <tr>
   <td><a href="Accessibility">XAML to HTML Conversion</a></td>
-    <td><a href="Accessibility">Video Viewer</a></td>
+  <td><a href="Accessibility">Video Viewer</a></td>
  </tr>
 </table>
 
