@@ -485,13 +485,9 @@ For more info about the programming models, platforms, languages, and APIs demon
  </tr>
   <tr>
   <td><a href="Accessibility">Sticky Notes</a></td>
-  <td><a href="Accessibility">Traffic Alert</a></td>
-  <td><a href="Accessibility">Video Text</a></td>
   <td><a href="Accessibility">WPF Photo Viewer</a></td>
   <td><a href="Accessibility">XAML to HTML Conversion</a></td>
- </tr>
-   <tr>
-  <td><a href="Accessibility">Video Viewer</a></td>
+    <td><a href="Accessibility">Video Viewer</a></td>
  </tr>
 </table>
 

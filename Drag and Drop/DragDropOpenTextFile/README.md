@@ -3,6 +3,7 @@
 This sample will open and display the contents of a file dropped on the sample. Methods demonstrated in this sample include:
 - GetData
 - GetDataPresent
+
 In this sample, event handlers monitor the PreviewDragOver and PreviewDrop events on a TextBox. When an object is dragged over the TextBox, a PreviewDragOver event handler checks to see if the object is a single file, and adjusts the DragDropEffects to indicate that a single file can be dropped, and anything else cannot. When a single file is dropped on the TextBox, a PreviewDrop event handler displays the file contents in the TextBox.
 
 ## Build the sample
