@@ -72,8 +72,8 @@ namespace PhotoFlipperDemo
             if (nextPic > MaxPics)
                 nextPic = 1;
 
-            var df1 = FindResource("pic_01" + _currentPic) as DiffuseMaterial;
-            var df2 = FindResource("pic_01" + nextPic) as DiffuseMaterial;
+            var df1 = FindResource("Pic01" + _currentPic) as DiffuseMaterial;
+            var df2 = FindResource("Pic01" + nextPic) as DiffuseMaterial;
 
             if ((df1 == null) || (df2 == null))
                 return;
