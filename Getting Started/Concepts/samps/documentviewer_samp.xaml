@@ -25,27 +25,27 @@
     &lt;Paragraph>&lt;Rectangle Fill="Black" Height="1" Width="500" HorizontalAlignment="Left" />&lt;LineBreak/>&lt;/Paragraph>
     
     &lt;Paragraph Style="{StaticResource DisStyle}">[This topic is pre-release documentation and is subject to change in future releases. Blank topics are included as placeholders.]&lt;LineBreak/>&lt;/Paragraph>
-&lt;Paragraph Style="{StaticResource mainContentStyle}">The Canvas element is used to position content according to absolute x- and y-coordinates. Canvas provides ultimate flexibility for positioning and arranging elements on the screen. Elements can be drawn in a unique location, or in the event that elements occupy the same coordinates, the order in which they appear in markup determines the order in which elements are drawn.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">The Canvas element is used to position content according to absolute x- and y-coordinates. Canvas provides ultimate flexibility for positioning and arranging elements on the screen. Elements can be drawn in a unique location, or in the event that elements occupy the same coordinates, the order in which they appear in markup determines the order in which elements are drawn.&lt;/Paragraph>
 
-&lt;Paragraph Style="{StaticResource mainContentStyle}">This topic contains the following sections.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">This topic contains the following sections.&lt;/Paragraph>
 
 &lt;List>
 
-&lt;ListItem>&lt;Paragraph Style="{StaticResource mainContentStyle}">What Can I Do with the Canvas?&lt;/Paragraph>&lt;/ListItem>
-&lt;ListItem>&lt;Paragraph Style="{StaticResource mainContentStyle}">Adding a Border to a Canvas Element&lt;/Paragraph>&lt;/ListItem>
-&lt;ListItem>&lt;Paragraph Style="{StaticResource mainContentStyle}">Order of Elements in a Canvas&lt;/Paragraph>&lt;/ListItem>
-&lt;ListItem>&lt;Paragraph Style="{StaticResource mainContentStyle}">Creating a Canvas in "XAML"&lt;/Paragraph>&lt;/ListItem>
-&lt;ListItem>&lt;Paragraph Style="{StaticResource mainContentStyle}">Creating a Canvas in Code&lt;/Paragraph>&lt;/ListItem>
+&lt;ListItem>&lt;Paragraph Style="{StaticResource MainContentStyle}">What Can I Do with the Canvas?&lt;/Paragraph>&lt;/ListItem>
+&lt;ListItem>&lt;Paragraph Style="{StaticResource MainContentStyle}">Adding a Border to a Canvas Element&lt;/Paragraph>&lt;/ListItem>
+&lt;ListItem>&lt;Paragraph Style="{StaticResource MainContentStyle}">Order of Elements in a Canvas&lt;/Paragraph>&lt;/ListItem>
+&lt;ListItem>&lt;Paragraph Style="{StaticResource MainContentStyle}">Creating a Canvas in "XAML"&lt;/Paragraph>&lt;/ListItem>
+&lt;ListItem>&lt;Paragraph Style="{StaticResource MainContentStyle}">Creating a Canvas in Code&lt;/Paragraph>&lt;/ListItem>
 
 &lt;/List>
     
     &lt;Paragraph Style="{StaticResource SubHeaderStyle}">What Can I Do with the Canvas?&lt;/Paragraph>
-    &lt;Paragraph Style="{StaticResource mainContentStyle}">Canvas provides the most flexible layout support of any Panel element. Height and Width properties are used to define the area of the canvas, and elements inside are assigned absolute coordinates relative to the upper left corner of the parent Canvas. This allows you to position and arrange elements precisely where you want them on the screen.&lt;/Paragraph>
+    &lt;Paragraph Style="{StaticResource MainContentStyle}">Canvas provides the most flexible layout support of any Panel element. Height and Width properties are used to define the area of the canvas, and elements inside are assigned absolute coordinates relative to the upper left corner of the parent Canvas. This allows you to position and arrange elements precisely where you want them on the screen.&lt;/Paragraph>
 
 &lt;Paragraph Style="{StaticResource SubHeaderStyle}">Adding a Border to a Canvas Element&lt;/Paragraph>
-&lt;Paragraph Style="{StaticResource mainContentStyle}">In order for a Canvas element to have a border, it must be encapsulated within a Border element.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">In order for a Canvas element to have a border, it must be encapsulated within a Border element.&lt;/Paragraph>
 
-&lt;Paragraph Style="{StaticResource mainContentStyle}">The following code example shows how to display Hello World within a Canvas with a border and background.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">The following code example shows how to display Hello World within a Canvas with a border and background.&lt;/Paragraph>
 &lt;Paragraph Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
 &lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     &lt;Border 
@@ -63,9 +63,9 @@
 &lt;/Page>
 &lt;/Paragraph>
 &lt;Paragraph Style="{StaticResource SubHeaderStyle}">Order of Elements in a Canvas&lt;/Paragraph>
-&lt;Paragraph Style="{StaticResource mainContentStyle}">The order of child elements (z-index) in a Canvas is determined by their order in "Extensible Application Markup Language" ("XAML") or code. As a consequence, layered order can be achieved when elements share the same coordinates. Canvas and Grid are the only layout controls that supports sharing of space in this manner.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">The order of child elements (z-index) in a Canvas is determined by their order in "Extensible Application Markup Language" ("XAML") or code. As a consequence, layered order can be achieved when elements share the same coordinates. Canvas and Grid are the only layout controls that supports sharing of space in this manner.&lt;/Paragraph>
 
-&lt;Paragraph Style="{StaticResource mainContentStyle}">The following example demonstrates how to achieve layered order of elements within a Canvas. Notice that each Rectangle element is drawn in the order it appears in "XAML".&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">The following example demonstrates how to achieve layered order of elements within a Canvas. Notice that each Rectangle element is drawn in the order it appears in "XAML".&lt;/Paragraph>
 
 &lt;Paragraph Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
 &lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -83,9 +83,9 @@
 &lt;/Page>
 &lt;/Paragraph>
 &lt;Paragraph Style="{StaticResource SubHeaderStyle}">Creating a Canvas in "XAML"&lt;/Paragraph>
-&lt;Paragraph Style="{StaticResource mainContentStyle}">A Canvas can be instantiated simply by using "XAML".&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">A Canvas can be instantiated simply by using "XAML".&lt;/Paragraph>
 
-&lt;Paragraph Style="{StaticResource mainContentStyle}">The following markup example demonstrates how to use Canvas to absolutely position content. This markup produces three 100-pixel squares. The first square is red, and its top-left (x, y) position is specified as (0, 0). The second square is green, and its top-left position is (100, 100), just below and to the right of the first square. The third square is blue, and its top-left position is (50, 50), thus encompassing the lower-right quadrant of the first square and the upper-left quadrant of the second. Because the third square is laid out last, it appears to be on top of the other two squares—that is, the overlapping portions assume the color of the third box.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">The following markup example demonstrates how to use Canvas to absolutely position content. This markup produces three 100-pixel squares. The first square is red, and its top-left (x, y) position is specified as (0, 0). The second square is green, and its top-left position is (100, 100), just below and to the right of the first square. The third square is blue, and its top-left position is (50, 50), thus encompassing the lower-right quadrant of the first square and the upper-left quadrant of the second. Because the third square is laid out last, it appears to be on top of the other two squares—that is, the overlapping portions assume the color of the third box.&lt;/Paragraph>
 
 &lt;Paragraph Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
 &lt;Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -104,7 +104,7 @@
 &lt;/Paragraph>
 &lt;Paragraph Style="{StaticResource noteParagraph}">&lt;Bold>Note:&lt;/Bold> The Canvas element does not automatically produce scrollbars, even if its assigned width and height are greater than the available screen space. To render scrollbars, wrap the project in its entirety within a ScrollViewer element.&lt;/Paragraph>
 &lt;Paragraph Style="{StaticResource SubHeaderStyle}">Creating a Canvas in Code&lt;/Paragraph>
-&lt;Paragraph Style="{StaticResource mainContentStyle}">The following code example shows how to instantiate and use a Canvas using C#. Two TextBlock elements are absolutely positioned using the SetTop and SetLeft methods of the Canvas. The Canvas is assigned a Background color of LightSteelBlue.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">The following code example shows how to instantiate and use a Canvas using C#. Two TextBlock elements are absolutely positioned using the SetTop and SetLeft methods of the Canvas. The Canvas is assigned a Background color of LightSteelBlue.&lt;/Paragraph>
 
 &lt;Paragraph Style="{StaticResource CodeSnippetParagraph}" xml:space="preserve">
 [C#]using System;
@@ -170,7 +170,7 @@ namespace Canvas_Demo
 }
 &lt;/Paragraph>
 
-&lt;Paragraph Style="{StaticResource mainContentStyle}">Send comments about this topic to Microsoft. © Microsoft Corporation. All rights reserved.&lt;/Paragraph>
+&lt;Paragraph Style="{StaticResource MainContentStyle}">Send comments about this topic to Microsoft. © Microsoft Corporation. All rights reserved.&lt;/Paragraph>
     
 
 &lt;/FlowDocument>

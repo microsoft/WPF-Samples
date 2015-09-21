@@ -355,25 +355,25 @@
     <Paragraph><Rectangle Fill="Black" Height="1" Width="500" HorizontalAlignment="Left" /><LineBreak/></Paragraph>
     
     <Paragraph Style="{StaticResource DisStyle}">[This topic is pre-release documentation and is subject to change in future releases. Blank topics are included as placeholders.]<LineBreak/></Paragraph>
-<Paragraph Style="{StaticResource mainContentStyle}">The Canvas element is used to position content according to absolute x- and y-coordinates. Canvas provides ultimate flexibility for positioning and arranging elements on the screen. Elements can be drawn in a unique location, or in the event that elements occupy the same coordinates, the order in which they appear in markup determines the order in which elements are drawn.</Paragraph>
+<Paragraph Style="{StaticResource MainContentStyle}">The Canvas element is used to position content according to absolute x- and y-coordinates. Canvas provides ultimate flexibility for positioning and arranging elements on the screen. Elements can be drawn in a unique location, or in the event that elements occupy the same coordinates, the order in which they appear in markup determines the order in which elements are drawn.</Paragraph>
 
-<Paragraph Style="{StaticResource mainContentStyle}">This topic contains the following sections.</Paragraph>
+<Paragraph Style="{StaticResource MainContentStyle}">This topic contains the following sections.</Paragraph>
 
 <List>
 
-<ListItem><Paragraph Style="{StaticResource mainContentStyle}">What Can I Do with the Canvas?</Paragraph></ListItem>
-<ListItem><Paragraph Style="{StaticResource mainContentStyle}">Adding a Border to a Canvas Element</Paragraph></ListItem>
-<ListItem><Paragraph Style="{StaticResource mainContentStyle}">Order of Elements in a Canvas</Paragraph></ListItem>
-<ListItem><Paragraph Style="{StaticResource mainContentStyle}">Creating a Canvas in "XAML"</Paragraph></ListItem>
-<ListItem><Paragraph Style="{StaticResource mainContentStyle}">Creating a Canvas in Code</Paragraph></ListItem>
+<ListItem><Paragraph Style="{StaticResource MainContentStyle}">What Can I Do with the Canvas?</Paragraph></ListItem>
+<ListItem><Paragraph Style="{StaticResource MainContentStyle}">Adding a Border to a Canvas Element</Paragraph></ListItem>
+<ListItem><Paragraph Style="{StaticResource MainContentStyle}">Order of Elements in a Canvas</Paragraph></ListItem>
+<ListItem><Paragraph Style="{StaticResource MainContentStyle}">Creating a Canvas in "XAML"</Paragraph></ListItem>
+<ListItem><Paragraph Style="{StaticResource MainContentStyle}">Creating a Canvas in Code</Paragraph></ListItem>
 
 </List>
     
     <Paragraph Style="{StaticResource SubHeaderStyle}">What Can I Do with the Canvas?</Paragraph>
-    <Paragraph Style="{StaticResource mainContentStyle}">Canvas provides the most flexible layout support of any Panel element. Height and Width properties are used to define the area of the canvas, and elements inside are assigned absolute coordinates relative to the upper left corner of the parent Canvas. This allows you to position and arrange elements precisely where you want them on the screen.</Paragraph>
+    <Paragraph Style="{StaticResource MainContentStyle}">Canvas provides the most flexible layout support of any Panel element. Height and Width properties are used to define the area of the canvas, and elements inside are assigned absolute coordinates relative to the upper left corner of the parent Canvas. This allows you to position and arrange elements precisely where you want them on the screen.</Paragraph>
 
 <Paragraph Style="{StaticResource SubHeaderStyle}">Adding a Border to a Canvas Element</Paragraph>
-<Paragraph Style="{StaticResource mainContentStyle}">In order for a Canvas element to have a border, it must be encapsulated within a Border element.</Paragraph>
+<Paragraph Style="{StaticResource MainContentStyle}">In order for a Canvas element to have a border, it must be encapsulated within a Border element.</Paragraph>
 </FlowDocument>
 </FlowDocumentPageViewer>
 </Grid>]]>
