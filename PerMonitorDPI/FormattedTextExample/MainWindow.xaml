@@ -1,0 +1,64 @@
+﻿<Window x:Class="FormattedTextExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormattedTextExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Background="Black">
+    <Viewbox Stretch="Uniform">
+        <Canvas 
+      Name="canvas" 
+      Background="Black"
+      Width="400"
+      Height="300">
+            <!-- The Path that clips the video and is used for the path animation.
+           The data for the Path is set in Window1.xaml.cs. Note that the Fill
+           is set to Transparent in order to let the video show through. -->
+            <Path 
+        Canvas.Top="10"
+        Canvas.Left="40"
+        Name="path"
+        Stroke="Maroon"
+        Fill="Transparent" />
+
+            <!-- The animated ball that follows the path -->
+            <!-- The Top/Left starting point is offset with the Path Top/Left starting point,
+           in order to align correctly. -->
+            <Ellipse			  
+        Name="ellipse" 
+        Canvas.Top="0" 
+        Canvas.Left="30" 	
+        Width="20"
+        Height="20">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <RadialGradientBrush.GradientStops>
+                            <GradientStop Color="#ffff" Offset="0"/>
+                            <GradientStop Color="#0fff" Offset="1"/>
+                        </RadialGradientBrush.GradientStops>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <MatrixTransform />
+                </Ellipse.RenderTransform>
+                <Ellipse.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard x:Name="storyboard">
+                                    <MatrixAnimationUsingPath 
+                  x:Name="matrixAnimation"
+                  Duration="0:00:59" 
+                  RepeatBehavior="Forever"
+                  Storyboard.TargetProperty="RenderTransform.Matrix" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Ellipse.Triggers>
+            </Ellipse>
+
+        </Canvas>
+    </Viewbox>
+</Window>

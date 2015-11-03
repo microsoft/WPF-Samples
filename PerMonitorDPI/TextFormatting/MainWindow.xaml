@@ -1,0 +1,151 @@
+﻿<Window x:Class="TextFormatting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextFormatting"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="Auto" Loaded="Window_Loaded">
+    <DockPanel
+      Background="CornSilk">
+        <Border DockPanel.Dock="Top" 
+         Style="{StaticResource ToolBarGradient}">
+            <Grid ShowGridLines="true" Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!-- Font Properties -->
+                <ComboBox Name="fontFamilyCB" Grid.Column="0" SelectionChanged="FontFamilyChangedEventHandler" />
+                <ComboBox Name="fontSizeCB" Grid.Column="1" Width="50" SelectionChanged="FontSizeChangedEventHandler"/>
+                <ToggleButton Name="boldButton" Grid.Column="3" Width="25" FontWeight="Bold" Click="BoldClickedEventHandler">B</ToggleButton>
+                <ToggleButton Name="italicButton" Grid.Column="4" Width="25" FontStyle="Italic" Click="ItalicClickEventHandler">I</ToggleButton>
+                <!-- Decoration Buttons -->
+                <ToggleButton Name="underlineButton" Grid.Column="5" Width="25" Click="DecorationClickEventHandler">
+                    <TextBlock TextDecorations="Underline">U</TextBlock>
+                </ToggleButton>
+                <ToggleButton Name="strikeButton" Grid.Column="6" Width="25" Click="DecorationClickEventHandler">
+                    <TextBlock TextDecorations="Strikethrough">S</TextBlock>
+                </ToggleButton>
+                <!-- Alignment Buttons -->
+                <ToggleButton Name="leftAlign" IsChecked="true" Grid.Column="8" Width="25" 
+               Checked="AlignmentChanged">L</ToggleButton>
+                <ToggleButton Name="centerAlign" Grid.Column="9" Width="25" 
+               Checked="AlignmentChanged">C</ToggleButton>
+                <ToggleButton Name="rightAlign" Grid.Column="10" Width="25" 
+               Checked="AlignmentChanged">R</ToggleButton>
+                <ToggleButton Name="justify" Grid.Column="11" Width="25" 
+               Checked="AlignmentChanged">J</ToggleButton>
+            </Grid>
+        </Border>
+        <!-- Typography, not Enabled -->
+        <Border Name="typographyMenuBar" DockPanel.Dock="Top"
+         Style="{StaticResource ToolBarGradient}">
+            <Grid ShowGridLines="true" 
+            Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" VerticalAlignment="Center">Capitols</Label>
+                <ComboBox Grid.Column="1"></ComboBox>
+                <Label Grid.Column="3" VerticalAlignment="Center">Varients</Label>
+                <ComboBox Grid.Column="4" Width="50"></ComboBox>
+                <CheckBox Grid.Column="5" VerticalAlignment="Center" Margin="5">Kerning</CheckBox>
+                <CheckBox Grid.Column="6" VerticalAlignment="Center" Margin="5">Slashed 0</CheckBox>
+                <CheckBox Grid.Column="7" VerticalAlignment="Center" Margin="5">Standard Ligatures</CheckBox>
+                <CheckBox Grid.Column="8" VerticalAlignment="Center" Margin="5">Standard Swashes</CheckBox>
+            </Grid>
+        </Border>
+        <!-- Text to Format -->
+        <Grid DockPanel.Dock="Top" 
+         ShowGridLines="true"
+         Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left">
+                Text:
+            </Label>
+            <TextBox Name="textToFormat" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
+            Width="600" Height="150" AcceptsReturn="true" 
+            TextWrapping="WrapWithOverflow" TextChanged="TextChangedEventHandler">
+                Lorem ipsum dolor sit amet, consectetuer
+               adipiscing elit. Pellentesque ullamcorper dictum odio
+               Aenean hendrerit wisi ac justo. Nulla ultrices porta ipsum.
+               Mauris in risus. In mattis tincidunt felis. Duis nec purus 
+               vel sapien ornare imperdiet. Phasellus laoreet, diam non 
+               viverra congue, est elit tempus enim, in eleifend dui dolor 
+               non magna. Nulla facilisi. Maecenas dignissim nisl in erat. 
+               In mollis diam sed diam. Cras vel purus. Praesent luctus nulla 
+               eu nulla. Vestibulum ante ipsum primis in faucibus orci luctus 
+               et ultrices posuere cubilia Curae; Aliquam erat volutpat. 
+               Maecenas eget pede.
+            </TextBox>
+            <Label Grid.Column="3" Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"></Label>
+        </Grid>
+        <!-- Text Formatting destination -->
+        <Grid DockPanel.Dock="Top"
+         ShowGridLines="true"
+         Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Grid.Row="0"
+            HorizontalAlignment="Center" FontWeight="Bold" FontSize="16">
+                Text Formatting
+            </Label>
+            <Border Grid.Column="1" Grid.Row="1" Width="600" Height="400" Margin="5">
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <DrawingBrush x:Name="myDrawingBrush" Stretch="None" 
+                     AlignmentY="Top" AlignmentX="Left" >
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup x:Name="textDest" />
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Border>
+        </Grid>
+
+    </DockPanel>
+</Window>
