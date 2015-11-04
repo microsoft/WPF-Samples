@@ -20,6 +20,7 @@ namespace ImageScaling
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string _baseImagePath = "images\\MSFT_logo.scale-{0}.png";
         public MainWindow()
         {
             InitializeComponent();
@@ -40,26 +41,28 @@ namespace ImageScaling
 
         private void UpdateImage(DpiScaleInfo dpiInfo)
         {
-            int scale = (int)(dpiInfo.DpiScaleX * 100);
+            string newImagePath;
+            int scale = (int)(dpiInfo.PixelsPerDip * 100);
             BitmapImage src;
-            switch (scale)
+            if (scale <= 100)
             {
-                case 100:
-                    src = new BitmapImage(new Uri("scaled100.bmp", UriKind.Relative));
-                    image.Source = src;
-                    break;
-                case 125:
-                    src = new BitmapImage(new Uri("scaled125.bmp", UriKind.Relative));
-                    image.Source = src;
-                    break;
-                case 150:
-                    src = new BitmapImage(new Uri("scaled150.bmp", UriKind.Relative));
-                    image.Source = src;
-                    break;
-                case 200:
-                    src = new BitmapImage(new Uri("scaled200.bmp", UriKind.Relative));
-                    image.Source = src;
-                    break;
+                scale = 100;
+            }
+            else if (scale <= 200)
+            {
+                scale = 200;
+            }
+            else
+            {
+                scale = 400;
+            }
+            newImagePath = string.Format(_baseImagePath, "" + scale);
+            if (!string.Equals(image.Tag.ToString(), newImagePath))
+            {
+                src = new BitmapImage(new Uri(newImagePath, UriKind.Relative));
+                image.Source = src;
+                image.Tag = newImagePath;
+                textLabel.Text = newImagePath;
             }
         }
     }

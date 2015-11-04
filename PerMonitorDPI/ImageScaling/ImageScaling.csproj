@@ -104,11 +104,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="scaled100.bmp" />
-    <Resource Include="scaled125.bmp" />
-    <Resource Include="scaled150.bmp" />
-    <Resource Include="scaled200.bmp" />
+    <Resource Include="images\MSFT_logo.scale-100.png" />
+    <Resource Include="images\MSFT_logo.scale-200.png" />
+    <Resource Include="images\MSFT_logo.scale-400.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageScaling"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="150" Margin="167,25,0,0" VerticalAlignment="Top" Width="150"/>
+        Title="ImageScaling-Per Monitor DPI" SizeToContent="WidthAndHeight" >
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="image" 
+               Source="images\\MSFT_logo.scale-100.png" Tag="images\\MSFT_logo.scale-100.png"
+               Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="textLabel" Text="images\\MSFT_logo.scale-100.png" 
+                   Grid.Row="1" FontSize="20"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
