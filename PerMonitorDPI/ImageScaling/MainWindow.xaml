@@ -9,13 +9,14 @@
     <Grid Margin="40">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="image" 
-               Source="images\\MSFT_logo.scale-100.png" Tag="images\\MSFT_logo.scale-100.png"
-               Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock x:Name="textLabel" Text="images\\MSFT_logo.scale-100.png" 
-                   Grid.Row="1" FontSize="20"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="textLabel" Text="images\MSFT_logo.scale-100.png" 
+                   Grid.Row="0" FontSize="20" />
+
+        <Image Source="images\MSFT_logo.scale-100.png" Grid.Row="1"
+               Initialized="Image_Load" Width="524" Height="193" />
     </Grid>
 </Window>

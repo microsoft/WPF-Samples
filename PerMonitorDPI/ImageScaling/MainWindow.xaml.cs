@@ -20,50 +20,30 @@ namespace ImageScaling
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string _baseImagePath = "images\\MSFT_logo.scale-{0}.png";
         public MainWindow()
         {
             InitializeComponent();
-            this.Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Image_Load(object sender, EventArgs e)
         {
-            UpdateImage(VisualTreeHelper.GetDpi(image));
+            Image image = (Image)sender;
+            UpdateImageSourceForDpi(image);
+
             image.DpiChanged += Image_DpiChanged;
         }
 
         private void Image_DpiChanged(object sender, RoutedEventArgs e)
         {
             Image image = (Image)sender;
-            UpdateImage(VisualTreeHelper.GetDpi(image));
+            UpdateImageSourceForDpi(image);
         }
 
-        private void UpdateImage(DpiScaleInfo dpiInfo)
+        private void UpdateImageSourceForDpi(Image image)
         {
-            string newImagePath;
-            int scale = (int)(dpiInfo.PixelsPerDip * 100);
-            BitmapImage src;
-            if (scale <= 100)
-            {
-                scale = 100;
-            }
-            else if (scale <= 200)
-            {
-                scale = 200;
-            }
-            else
-            {
-                scale = 400;
-            }
-            newImagePath = string.Format(_baseImagePath, "" + scale);
-            if (!string.Equals(image.Tag.ToString(), newImagePath))
-            {
-                src = new BitmapImage(new Uri(newImagePath, UriKind.Relative));
-                image.Source = src;
-                image.Tag = newImagePath;
-                textLabel.Text = newImagePath;
-            }
+            string imageUrl = ImageDpiHelper.GetDesiredImageUrlForDpi(image);
+            ImageDpiHelper.UpdateImageSource(image, imageUrl);
+            textLabel.Text = imageUrl + " for DPI of " + (VisualTreeHelper.GetDpi(image).PixelsPerDip * 100);
         }
     }
 }
