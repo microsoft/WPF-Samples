@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,8 +15,8 @@ namespace ImageScaling
             int bestScale = ImageDpiHelper.GetBestScale(imageScaleInfo.PixelsPerDip);
 
             var sourceUrl = image.Source.ToString();
-
-            string imagePattern = sourceUrl.Replace(".scale-100.", ".scale-{0}.");
+            string imagePattern = Regex.Replace(sourceUrl, ".scale-[0-9]{3}.", ".scale-{0}.");
+            //string imagePattern = sourceUrl.Replace(".scale-100.", ".scale-{0}.");
 
             string newImagePath = null;
             if (imagePattern != null)
@@ -51,7 +52,7 @@ namespace ImageScaling
         {
             Uri uri = new Uri(newImagePath, UriKind.RelativeOrAbsolute);
             //TODO: need to make this be a relative URI so it works with F5...other wise the component in the path breaks with Foo.vshost.exe
-            BitmapImage src = new BitmapImage();
+            BitmapImage src = new BitmapImage(uri);
 
             image.Source = src;
         }
