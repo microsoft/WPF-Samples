@@ -10,13 +10,12 @@ namespace ImageScaling
     public static class ImageDpiHelper
     {
         public static string GetDesiredImageUrlForDpi(Image image)
-        {
+        {            
             DpiScaleInfo imageScaleInfo = VisualTreeHelper.GetDpi(image);
             int bestScale = ImageDpiHelper.GetBestScale(imageScaleInfo.PixelsPerDip);
 
             var sourceUrl = image.Source.ToString();
             string imagePattern = Regex.Replace(sourceUrl, ".scale-[0-9]{3}.", ".scale-{0}.");
-            //string imagePattern = sourceUrl.Replace(".scale-100.", ".scale-{0}.");
 
             string newImagePath = null;
             if (imagePattern != null)
