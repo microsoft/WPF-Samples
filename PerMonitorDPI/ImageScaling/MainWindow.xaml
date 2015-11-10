@@ -10,13 +10,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="textLabel" Text="images\MSFT_logo.scale-100.png" 
-                   Grid.Row="0" FontSize="20" />
+        <TextBlock x:Name="textLabel" Text="images\MSFT_logo.scale-100.png" Grid.Row="4" FontSize="20" Margin="10" />
 
+        <TextBlock Grid.Row="0" FontSize="18">Using &lt;Image Source="..." Initialize="PickRightScaledImage" Width="524" Height="193" /&gt;:</TextBlock>
         <Image Source="images\MSFT_logo.scale-100.png" Grid.Row="1"
-               Initialized="Image_Load" Width="524" Height="193" />
+               Initialized="PickRightScaledImage" Width="524" Height="193" />
+
+        <TextBlock Grid.Row="2" FontSize="18">Using &lt;local:DpiAwareImage Source="..." /&gt;:</TextBlock>
+        <local:DpiAwareImage Source="images\MSFT_logo.scale-100.png" Grid.Row="3" />
+
     </Grid>
 </Window>

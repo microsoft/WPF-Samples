@@ -9,6 +9,11 @@ namespace ImageScaling
 {
     public static class ImageDpiHelper
     {
+        /// <summary>
+        /// Given an image, get its current DPI and choose the best source image to scale to that DPI.
+        /// </summary>
+        /// <param name="image">image element</param>
+        /// <returns>image URL for the most appropriate scale, given DPI</returns>
         public static string GetDesiredImageUrlForDpi(Image image)
         {            
             DpiScaleInfo imageScaleInfo = VisualTreeHelper.GetDpi(image);
@@ -26,6 +31,14 @@ namespace ImageScaling
             return newImagePath;
         }
 
+
+        /// <summary>
+        /// Given a target pixelsPerDip value, choose the best scale of image to use.
+        /// Per the Windows team, this technique prefers scaling down, rather than up
+        /// and recommends using 100, 200, and 400 scale iamges.
+        /// </summary>
+        /// <param name="currentPixelsPerDip"></param>
+        /// <returns></returns>
         public static int GetBestScale(double currentPixelsPerDip)
         {
             int currentScale = (int)(currentPixelsPerDip * 100);
@@ -47,13 +60,16 @@ namespace ImageScaling
             return bestScale;
         }
 
+        /// <summary>
+        /// Updates the image's Source to the newImagePath
+        /// </summary>
+        /// <param name="image">image element</param>
+        /// <param name="newImagePath">URI of the desired image to use</param>
         public static void UpdateImageSource(Image image, string newImagePath)
         {
             Uri uri = new Uri(newImagePath, UriKind.RelativeOrAbsolute);
-            //TODO: need to make this be a relative URI so it works with F5...other wise the component in the path breaks with Foo.vshost.exe
-            BitmapImage src = new BitmapImage(uri);
-
-            image.Source = src;
+            BitmapImage bitmapImage = new BitmapImage(uri);
+            image.Source = bitmapImage;
         }
     }
 }
