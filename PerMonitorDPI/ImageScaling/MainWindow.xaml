@@ -1,0 +1,28 @@
+﻿<Window x:Class="ImageScaling.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageScaling"
+        mc:Ignorable="d" 
+        Title="ImageScaling-Per Monitor DPI" SizeToContent="WidthAndHeight" >
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="textLabel" Text="images\MSFT_logo.scale-100.png" Grid.Row="4" FontSize="20" Margin="10" />
+
+        <TextBlock Grid.Row="0" FontSize="18">Using &lt;Image Source="..." Initialize="PickRightScaledImage" Width="524" Height="193" /&gt;:</TextBlock>
+        <Image Source="images\MSFT_logo.scale-100.png" Grid.Row="1"
+               Initialized="PickRightScaledImage" Width="524" Height="193" />
+
+        <TextBlock Grid.Row="2" FontSize="18">Using &lt;local:DpiAwareImage Source="..." /&gt;:</TextBlock>
+        <local:DpiAwareImage Source="images\MSFT_logo.scale-100.png" Grid.Row="3" />
+
+    </Grid>
+</Window>
