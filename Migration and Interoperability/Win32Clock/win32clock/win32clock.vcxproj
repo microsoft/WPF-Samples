@@ -14,6 +14,7 @@
     <ProjectGuid>{8625A303-646D-4D87-BC14-29CD4D079CD9}</ProjectGuid>
     <RootNamespace>win32clock</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
