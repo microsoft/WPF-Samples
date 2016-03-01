@@ -27,9 +27,9 @@ namespace TextFormatting
             InitializeComponent();
         }
 
-        protected override void OnDpiChanged(DpiScaleInfo oldDpiScaleInfo, DpiScaleInfo newDpiScaleInfo)
+        protected override void OnDpiChanged(DpiScale oldDpiScale, DpiScale newDpiScale)
         {
-            _pixelsPerDip = newDpiScaleInfo.PixelsPerDip;
+            _pixelsPerDip = newDpiScale.PixelsPerDip;
             UpdateFormattedText(_pixelsPerDip);
         }
 
