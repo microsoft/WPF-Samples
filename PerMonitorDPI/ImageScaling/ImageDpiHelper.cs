@@ -16,7 +16,7 @@ namespace ImageScaling
         /// <returns>image URL for the most appropriate scale, given DPI</returns>
         public static string GetDesiredImageUrlForDpi(Image image)
         {            
-            DpiScaleInfo imageScaleInfo = VisualTreeHelper.GetDpi(image);
+            DpiScale imageScaleInfo = VisualTreeHelper.GetDpi(image);
             int bestScale = ImageDpiHelper.GetBestScale(imageScaleInfo.PixelsPerDip);
 
             var sourceUrl = image.Source.ToString();

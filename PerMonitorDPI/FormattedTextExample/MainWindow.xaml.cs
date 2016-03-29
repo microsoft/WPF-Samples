@@ -31,12 +31,12 @@ namespace FormattedTextExample
             DrawFormattedText(VisualTreeHelper.GetDpi(this));
         }
 
-        protected override void OnDpiChanged(DpiScaleInfo oldDpiScaleInfo, DpiScaleInfo newDpiScaleInfo)
+        protected override void OnDpiChanged(DpiScale oldDpiScaleInfo, DpiScale newDpiScaleInfo)
         {
             DrawFormattedText(newDpiScaleInfo);
         }
 
-        private void DrawFormattedText(DpiScaleInfo dpiInfo)
+        private void DrawFormattedText(DpiScale dpiInfo)
         {
             FormattedText formattedText = new FormattedText(
                 "FABLE",

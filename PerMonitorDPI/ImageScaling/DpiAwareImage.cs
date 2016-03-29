@@ -21,17 +21,17 @@ namespace ImageScaling
         // on initial load, ensure we are using the right scaled image, based on the DPI.
         private void DpiAwareImage_Initialized(object sender, EventArgs e)
         {
-            DpiScaleInfo newDpi = VisualTreeHelper.GetDpi(sender as Visual);
+            DpiScale newDpi = VisualTreeHelper.GetDpi(sender as Visual);
             ScaleRightImage(newDpi);
         }
         
         // when DPI changes, ensure we are using the right scaled image, based on the DPI.
-        protected override void OnDpiChanged(DpiScaleInfo oldDpi, DpiScaleInfo newDpi)
+        protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)
         {
             ScaleRightImage(newDpi);
         }
 
-        private void ScaleRightImage(DpiScaleInfo newDpi)
+        private void ScaleRightImage(DpiScale newDpi)
         {
             // update bestScale
             bestScale = ImageDpiHelper.GetBestScale(newDpi.PixelsPerDip);
