@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is to supress FXCop warning about the spelling of Notifier -->
+<Dictionary>
+    <Words>
+        <Recognized>
+            <Word>Notifier</Word>
+        </Recognized>
+    </Words>
+</Dictionary>

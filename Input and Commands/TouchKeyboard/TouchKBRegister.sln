@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchKBRegister", "TouchKBRegister\TouchKBRegister.csproj", "{A8270645-EB8B-4F88-9BFB-DCA9B99C1B23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchKeyboardNotifier", "TouchKeyboardNotifier\TouchKeyboardNotifier.csproj", "{B4C448D1-8853-4738-99E0-FAB7C7A63314}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8270645-EB8B-4F88-9BFB-DCA9B99C1B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8270645-EB8B-4F88-9BFB-DCA9B99C1B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8270645-EB8B-4F88-9BFB-DCA9B99C1B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8270645-EB8B-4F88-9BFB-DCA9B99C1B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C448D1-8853-4738-99E0-FAB7C7A63314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C448D1-8853-4738-99E0-FAB7C7A63314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C448D1-8853-4738-99E0-FAB7C7A63314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C448D1-8853-4738-99E0-FAB7C7A63314}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 1
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://vstfdevdiv:8080/devdiv2
+		SccLocalPath0 = .
+	EndGlobalSection
+EndGlobal

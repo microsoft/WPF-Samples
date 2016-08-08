@@ -1,0 +1,40 @@
+﻿<Window x:Class="TouchKBRegister.MenuSibling"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tkn="clr-namespace:Microsoft.Windows.Input.TouchKeyboard;assembly=TouchKeyboardNotifier"
+        xmlns:local="clr-namespace:TouchKBRegister"
+        mc:Ignorable="d"
+        Title="Menu Sibling" Height="3150" Width="525">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem Header="Save"></MenuItem>
+                <MenuItem Header="Open"></MenuItem>
+                <MenuItem Header="Exit"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <tkn:TouchKeyboardAwareDecorator>
+            <StackPanel>
+                <Button Height="150">1</Button>
+                <Button Height="150">2</Button>
+                <TextBox Height="150">3</TextBox>
+                <TextBox Height="150">4</TextBox>
+                <TextBox Height="150">5</TextBox>
+                <ComboBox Height="150">
+                    <ComboBox.Items>
+                        <ComboBoxItem>1</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>4</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>6</ComboBoxItem>
+                    </ComboBox.Items>
+                </ComboBox>
+                <TextBox Height="150">7</TextBox>
+                <TextBox Height="150">8</TextBox>
+            </StackPanel>
+        </tkn:TouchKeyboardAwareDecorator>
+    </StackPanel>
+</Window>
