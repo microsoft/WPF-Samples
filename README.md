@@ -1,6 +1,6 @@
 # WPF-Samples
 This repo contains the samples that demonstrate the API usage patterns and popular features for the Windows Presentation Foundation in the .NET Framework for Desktop. These samples were initially hosted on [MSDN](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx), and we are gradually 
-moving all the interesting WPF samples over to GitHub.All the samples have been retargeted to [.NET 4.5.2](http://www.microsoft.com/en-us/download/details.aspx?id=42642).
+moving all the interesting WPF samples over to GitHub. All the samples have been retargeted to [.NET 4.5.2](http://www.microsoft.com/en-us/download/details.aspx?id=42642).
 
 For additional WPF samples, see [WPF Samples](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx).
 
