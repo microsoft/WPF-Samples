@@ -31,11 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropShadow", "Sample Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditingExaminerDemo", "Sample Applications\EditingExaminerDemo\EditingExaminerDemo.csproj", "{E689F47C-198B-4E3C-941D-81BD73D61B2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseItDemo", "Sample Applications\ExpenseItDemo\ExpenseItDemo.csproj", "{D1729F17-99A5-45AF-AB38-72FA6ECCE609}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseItDemo", "Sample Applications\ExpenseIt\ExpenseItDemo\ExpenseItDemo.csproj", "{D1729F17-99A5-45AF-AB38-72FA6ECCE609}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExpenseIt", "ExpenseIt", "{07258053-D6F1-4D8F-B3E4-A93423EFDF78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditBoxControlLibrary", "Sample Applications\EditBoxControlLibrary\EditBoxControlLibrary.csproj", "{558EEE03-6927-4FE6-AEB6-972769960849}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditBoxControlLibrary", "Sample Applications\ExpenseIt\EditBoxControlLibrary\EditBoxControlLibrary.csproj", "{558EEE03-6927-4FE6-AEB6-972769960849}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontDialogDemo", "Sample Applications\FontDialog\FontDialogDemo.csproj", "{18DA881E-FE67-46E6-95E5-6FDC99331E2B}"
 EndProject
@@ -599,6 +599,7 @@ Global
 		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{D3B9551D-FE81-4DD9-BCF1-5470C4DDF877}.Release|Any CPU.ActiveCfg = Release|Any CPU
