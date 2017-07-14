@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bookdata.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="readme.txt" />
   </ItemGroup>
