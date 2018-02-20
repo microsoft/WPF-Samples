@@ -64,17 +64,17 @@ namespace CustomComboBox
 
     public class WatchNowCommand : ICommand
     {
-        Action<object> _execut;
+        Action<object> _execute;
         public WatchNowCommand(Action<object> execute)
         {
-            _execut = execute;
+            _execute = execute;
         }
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter) => true;
 
         public void Execute(object parameter) =>
-            _execut(parameter);
+            _execute(parameter);
 
     }
 }
