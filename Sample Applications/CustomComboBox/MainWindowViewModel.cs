@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CustomComboBox
@@ -14,12 +11,12 @@ namespace CustomComboBox
         {
             Movies2 = new List<string>
             {
-                "String1",
-                "String2",
-                "String3",
-                "String4",
-                "String5",
-                "String6"
+                "Movie1",
+                "Movie2",
+                "Movie3",
+                "Movie4",
+                "Movie5",
+                "Movie6"
             };
             Movies = new List<Movie>
             {

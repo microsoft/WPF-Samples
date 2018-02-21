@@ -14,13 +14,13 @@
         <converters:StringToStringAndColorConverter x:Key="stringConverter"/>
     </Window.Resources>
     <Grid>
-        <local:DropList x:Name="ElBox" Content="Watch Now" SubTitle="Movie: "
-                             FontSize="10" FontStretch="Condensed" FontWeight="Bold"
-                             Cursor="Hand"
+        <local:DropList Content="Watch Now" SubTitle="Movie: "
+                             FontWeight="Bold"
                              HorizontalAlignment="Center" VerticalAlignment="Top"
-                             Style="{StaticResource mgcBtn}" 
+                             Style="{StaticResource DropListStyle}" 
                              ItemsSource="{Binding Movies}" Command="{Binding OnWatchNow}" 
                              DisplayMemberPath="Title"/>
+
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" HorizontalAlignment="Left"
                        Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text}" 

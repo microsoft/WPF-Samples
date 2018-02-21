@@ -92,7 +92,7 @@
             <GradientStop Offset="1" Color="Black"/>
         </LinearGradientBrush>
 
-        <Storyboard x:Key="selectedItem">
+        <Storyboard x:Key="selectedItemStoryboard">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
                 <DiscreteObjectKeyFrame KeyTime="0:0:0">
                     <DiscreteObjectKeyFrame.Value>
@@ -161,8 +161,8 @@
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="SelectionStates">
                                     <VisualState x:Name="Unselected" />
-                                    <VisualState x:Name="Selected" Storyboard="{StaticResource selectedItem}"/>
-                                    <VisualState x:Name="SelectedUnfocused" Storyboard="{StaticResource selectedItem}"/>
+                                    <VisualState x:Name="Selected" Storyboard="{StaticResource selectedItemStoryboard}"/>
+                                    <VisualState x:Name="SelectedUnfocused" Storyboard="{StaticResource selectedItemStoryboard}"/>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                             <ContentPresenter/>
@@ -172,23 +172,25 @@
             </Setter>
         </Style>
 
-        <Style TargetType="{x:Type ContentControl}" x:Key="mgcBtn">
+        <Style TargetType="{x:Type ContentControl}" x:Key="DropListStyle">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="10"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ContentControl}" x:Name="cont">
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Border Canvas.ZIndex="1" CornerRadius="4" BorderThickness="1" BorderBrush="Black" Background="{StaticResource btn3d}">
+                            <Border CornerRadius="4" BorderThickness="1" BorderBrush="Black" Background="{StaticResource btn3d}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="32"/>
                                         <ColumnDefinition Width="1"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <ToggleButton Name="tog">
+                                    <ToggleButton>
                                         <ToggleButton.Template>
                                             <ControlTemplate TargetType="ToggleButton">
                                                 <Border Background="Transparent">
@@ -230,10 +232,9 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
                                     <Grid Grid.Column="2" Height="37">
-                                        <Button Command="{Binding ElementName=ElBox, Path=Command}" 
+                                        <Button Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
-                                                Content="{TemplateBinding Content}" 
-                                                Background="Red" Name="btn">
+                                                Content="{TemplateBinding Content}">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Border CornerRadius="4">
@@ -246,7 +247,7 @@
                                                                 </ContentPresenter>
                                                             </Grid>
                                                             <StackPanel Orientation="Horizontal" Margin="4,0">
-                                                                <TextBlock Text="{Binding ElementName=ElBox, Path=SubTitle}" Foreground="#D3D3D3" FontWeight="Normal" FontSize="8"/>
+                                                                <TextBlock Text="{Binding Path=SubTitle, RelativeSource={RelativeSource FindAncestor, AncestorType=local:DropList}}" Foreground="#D3D3D3" FontWeight="Normal" FontSize="8"/>
                                                                 <TextBlock Text="{Binding ElementName=lstBx, Path=SelectedValue}" 
                                                                            Foreground="Gold" FontWeight="Bold" FontSize="8"/>
                                                             </StackPanel>
@@ -258,14 +259,13 @@
                                     </Grid>
                                 </Grid>
                             </Border>
-                            <ListBox Canvas.ZIndex="0" Name="lstBx" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
+                            <ListBox Name="lstBx" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
                                      ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}" 
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}">
                                 <ListBox.Resources>
                                     <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBarStyle}" />
                                     <Style TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}" />
-
                                 </ListBox.Resources>
                             </ListBox>
 

@@ -58,16 +58,6 @@ namespace CustomComboBox
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable<object>), typeof(DropList));
 
 
-        public object SelectedItem
-        {
-            get { return GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
-        }
-
-        public static readonly DependencyProperty SelectedItemProperty =
-            DependencyProperty.Register("SelectedItem", typeof(object), typeof(DropList), new PropertyMetadata(null));
-
-
         public string DisplayMemberPath
         {
             get { return (string)GetValue(DisplayMemberPathProperty); }
