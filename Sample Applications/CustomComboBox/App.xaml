@@ -150,6 +150,7 @@
         </Style>
         <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
             <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -190,7 +191,7 @@
                                         <ColumnDefinition Width="1"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <ToggleButton>
+                                    <ToggleButton FocusVisualStyle="{x:Null}">
                                         <ToggleButton.Template>
                                             <ControlTemplate TargetType="ToggleButton">
                                                 <Border Background="Transparent">
@@ -232,7 +233,7 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
                                     <Grid Grid.Column="2" Height="37">
-                                        <Button Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
+                                        <Button FocusVisualStyle="{x:Null}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
                                                 Content="{TemplateBinding Content}">
                                             <Button.Template>
