@@ -43,7 +43,7 @@ namespace HtmlToXamlDemo
             xamlReader = new XmlTextReader(new StringReader(xamlString));
 
             htmlStringBuilder = new StringBuilder(100);
-            htmlWriter = new XmlTextWriter(new StringWriter(htmlStringBuilder));
+            htmlWriter = new HtmlEncodedTextWriter(new StringWriter(htmlStringBuilder));
 
             if (!WriteFlowDocument(xamlReader, htmlWriter))
             {
