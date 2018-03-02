@@ -10,21 +10,15 @@ namespace HtmlToXamlDemo
 {
     public class HtmlEncodedTextWriter : XmlTextWriter
     {
-        private readonly XmlTextWriter _textWriter;
-
-        public HtmlEncodedTextWriter(TextWriter w) : base(w)
-        {
-            _textWriter = this;
-        }
+        public HtmlEncodedTextWriter(TextWriter w) : base(w) { }
 
         #region Overrides of XmlTextWriter
-
 
         /// <inheritdoc />
         public override void WriteString(string text)
         {
             text = WebUtility.HtmlEncode(text);
-            _textWriter.WriteRaw(text);
+            WriteRaw(text);
         }
 
         #endregion
