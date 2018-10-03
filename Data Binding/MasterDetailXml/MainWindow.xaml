@@ -39,7 +39,9 @@
                  IsSynchronizedWithCurrentItem="true"/>
         </StackPanel>
         <StackPanel>
-            <Label Content="{Binding XPath=@name}"/>
+            <Label Content="{Binding XPath=@name}" 
+                   DataContext="{Binding ElementName=divisionsListBox,
+                                         Path=SelectedItem}"/>
             <ListBox DataContext="{Binding ElementName=divisionsListBox,
                                        Path=SelectedItem}"
                  ItemsSource="{Binding XPath=Team}"
