@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HostingWfInWpfWithXaml"
         xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
 
-        <WindowsFormsHost>
+        <wfi:WindowsFormsHost>
             <forms:MaskedTextBox x:Name="mtbDate" Mask="00/00/0000"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
 
     </Grid>
 </Window>

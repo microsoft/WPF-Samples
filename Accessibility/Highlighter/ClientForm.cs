@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
+using Application = System.Windows.Forms.Application;
 
 namespace Highlighter
 {

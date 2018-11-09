@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfLayoutHostingWfWithXaml"
         xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
    <Grid ShowGridLines="true">
@@ -24,66 +25,66 @@
 
     <!-- Default layout. -->
     <Canvas Grid.Row="0" Grid.Column="0">
-        <WindowsFormsHost Background="Yellow">
+        <wfi:WindowsFormsHost Background="Yellow">
             <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Sizing to content. -->
     <Canvas Grid.Row="1" Grid.Column="0">
-        <WindowsFormsHost Background="Orange">
+        <wfi:WindowsFormsHost Background="Orange">
             <forms:Button Text="Windows Forms control with more content" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <Canvas Grid.Row="2" Grid.Column="0">
-        <WindowsFormsHost FontSize="24" Background="Yellow">
+        <wfi:WindowsFormsHost FontSize="24" Background="Yellow">
             <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Absolute positioning. -->
     <Canvas Grid.Row="3" Grid.Column="0">
-        <WindowsFormsHost Canvas.Top="20" Canvas.Left="20" Background="Yellow">
+        <wfi:WindowsFormsHost Canvas.Top="20" Canvas.Left="20" Background="Yellow">
             <forms:Button Text="Windows Forms control with absolute positioning" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Explicit sizing. -->
     <Canvas Grid.Row="4" Grid.Column="0">
-        <WindowsFormsHost Width="50" Height="70" Background="Yellow">
+        <wfi:WindowsFormsHost Width="50" Height="70" Background="Yellow">
             <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Setting hosted control properties directly. -->
     <Canvas Grid.Row="0" Grid.Column="1">
-        <WindowsFormsHost Width="160" Height="50" Background="Yellow">
+        <wfi:WindowsFormsHost Width="160" Height="50" Background="Yellow">
             <forms:Button Name="button1" Click="Button1Click" Text="Click me" FlatStyle="Flat" BackColor="Green"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Z-order demonstration. -->
     <Canvas Grid.Row="1" Grid.Column="1">
         <Label Content="A WPF label" FontSize="24"/>
-        <WindowsFormsHost Canvas.Top="20" Canvas.Left="20" Background="Yellow">
+        <wfi:WindowsFormsHost Canvas.Top="20" Canvas.Left="20" Background="Yellow">
                 <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Docking a WindowsFormsHost element. -->
     <DockPanel LastChildFill="false"  Grid.Row="2" Grid.Column="1">
-        <WindowsFormsHost DockPanel.Dock="Right"  Canvas.Top="20" Canvas.Left="20" Background="Yellow">
+        <wfi:WindowsFormsHost DockPanel.Dock="Right"  Canvas.Top="20" Canvas.Left="20" Background="Yellow">
                 <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </DockPanel>
 
     <!-- Setting Visibility to hidden and collapsed. -->
     <StackPanel Grid.Row="3" Grid.Column="1">
         <Button Name="button2" Click="Button2Click" Content="Click to make invisible" Background="OrangeRed"/>
-        <WindowsFormsHost Name="host1"  Background="Yellow">
+        <wfi:WindowsFormsHost Name="host1"  Background="Yellow">
                 <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
         <Button Name="button3" Click="Button3Click" Content="Click to collapse" Background="OrangeRed"/>
     </StackPanel>
 
@@ -91,9 +92,9 @@
     <!-- The MonthCalendar has a discrete size. -->
     <StackPanel Grid.Row="4" Grid.Column="1">
         <Label Content="A WPF element" Background="OrangeRed"/>
-        <WindowsFormsHost Background="Yellow">
+        <wfi:WindowsFormsHost Background="Yellow">
                 <forms:MonthCalendar/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
         <Label Content="Another WPF element" Background="OrangeRed"/>
     </StackPanel>
 
@@ -106,9 +107,9 @@
 
         <Label Content="A WPF UIElement" Background="OrangeRed"/>
 
-        <WindowsFormsHost Background="Yellow">
+        <wfi:WindowsFormsHost Background="Yellow">
                 <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
 
         <Label Content="Another WPF UIElement" Background="OrangeRed"/>
 
@@ -123,9 +124,9 @@
 
         <Label Content="A WPF element" Background="OrangeRed"/>
 
-        <WindowsFormsHost Background="Yellow">
+        <wfi:WindowsFormsHost Background="Yellow">
                 <forms:Button Text="Windows Forms control" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
 
         <Label Content="Another WPF element" Background="OrangeRed"/>
 
@@ -133,23 +134,23 @@
 
     <!-- Padding. -->
     <Canvas Grid.Row="2" Grid.Column="2">
-        <WindowsFormsHost Padding="0, 20, 0, 0" Background="Yellow">
+        <wfi:WindowsFormsHost Padding="0, 20, 0, 0" Background="Yellow">
                 <forms:Button Text="Windows Forms control with padding" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Margin. -->
     <Canvas Grid.Row="3" Grid.Column="2">
-        <WindowsFormsHost Margin="20, 20, 0, 0" Background="Yellow">
+        <wfi:WindowsFormsHost Margin="20, 20, 0, 0" Background="Yellow">
                 <forms:Button Text="Windows Forms control with margin" FlatStyle="Flat"/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </Canvas>
 
     <!-- Flow layout. -->
     <DockPanel Grid.Row="4" Grid.Column="2">
-        <WindowsFormsHost Name="flowLayoutHost" Background="Yellow">
+        <wfi:WindowsFormsHost Name="flowLayoutHost" Background="Yellow">
                 <forms:FlowLayoutPanel/>
-        </WindowsFormsHost>
+        </wfi:WindowsFormsHost>
     </DockPanel>
 
     </Grid>

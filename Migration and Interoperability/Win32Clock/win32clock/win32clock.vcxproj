@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <!-- TODO: No C++ support for netcoreapp3.0 yet, so force allow P2P from netfx -> netcoreapp -->
+    <AssetTargetFallback>netcoreapp3.0</AssetTargetFallback>
     <ProjectGuid>{8625A303-646D-4D87-BC14-29CD4D079CD9}</ProjectGuid>
     <RootNamespace>win32clock</RootNamespace>
     <Keyword>Win32Proj</Keyword>
@@ -121,6 +123,7 @@
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
     </Reference>
+    <Reference Include="System.Runtime" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
