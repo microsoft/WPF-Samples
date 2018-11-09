@@ -74,4 +74,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Includ
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InsertTextTarget\InsertTextTarget.csproj">
+      <Project>{22788661-2cbc-4933-b031-4817cbce6c89}</Project>
+      <Name>InsertTextTarget</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

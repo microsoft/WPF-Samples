@@ -99,4 +99,16 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config"
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EditBoxControlLibrary\EditBoxControlLibrary.csproj">
+      <Project>{558eee03-6927-4fe6-aeb6-972769960849}</Project>
+      <Name>EditBoxControlLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Watermark.png" />
+  </ItemGroup>
+
+</Project>

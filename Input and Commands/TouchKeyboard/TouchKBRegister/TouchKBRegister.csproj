@@ -101,4 +101,37 @@
       <DependentUpon>SxSDecorators.xaml</DependentUpon>
     </Compile>
     <Compile Include="LotsOfStacking.xaml.cs">
-      <Dep
+      <DependentUpon>LotsOfStacking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuChild.xaml.cs">
+      <DependentUpon>MenuChild.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuSibling.xaml.cs">
+      <DependentUpon>MenuSibling.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="Properties\app.manifest" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TouchKeyboardNotifier\TouchKeyboardNotifier.csproj">
+      <Project>{b4c448d1-8853-4738-99e0-fab7c7a63314}</Project>
+      <Name>TouchKeyboardNotifier</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+</Project>

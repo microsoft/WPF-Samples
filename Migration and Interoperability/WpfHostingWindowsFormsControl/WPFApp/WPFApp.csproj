@@ -74,4 +74,19 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingl
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FormsControlLibrary\FormsControlLibrary.csproj">
+      <Project>{dafd8300-8a73-4e07-8480-695c14b491e0}</Project>
+      <Name>FormsControlLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>
