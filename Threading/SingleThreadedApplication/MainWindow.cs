@@ -54,7 +54,7 @@ namespace SingleThreadedApplication
             {
                 if (_num%i == 0)
                 {
-                    // Set not a prime flag to ture.
+                    // Set not a prime flag to true.
                     _notAPrime = true;
                     break;
                 }
