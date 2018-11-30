@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WinFormsHost"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight">
     <Grid>
-        <wfi:WindowsFormsHost x:Name="winFormsHost" Background="AliceBlue" Height="350" Width="525"
+        <WindowsFormsHost x:Name="winFormsHost" Background="AliceBlue" Height="350" Width="525"
                           HorizontalAlignment="Center" VerticalAlignment="Center">
             <local:LoginControl x:Name="loginControl"/>
-        </wfi:WindowsFormsHost>
+        </WindowsFormsHost>
     </Grid>
 </Window>

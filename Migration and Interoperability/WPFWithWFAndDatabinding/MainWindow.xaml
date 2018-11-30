@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFWithWFAndDatabinding"
         xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"  Loaded="WindowLoaded" >
     <Grid x:Name="mainGrid">
@@ -53,9 +52,9 @@
             <TextBox Margin="5,0,5,2" Width="30" HorizontalAlignment="Left" Text="{Binding Path=Region}"/>
             <TextBox Margin="5,0,5,2" Width="50" HorizontalAlignment="Left" Text="{Binding Path=PostalCode}"/>
         </StackPanel>
-        <wfi:WindowsFormsHost Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="20,5,5,5" Height="300">
+        <WindowsFormsHost Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="20,5,5,5" Height="300">
             <forms:DataGridView x:Name="dataGridView1"/>
-        </wfi:WindowsFormsHost>
+        </WindowsFormsHost>
         <TextBlock Grid.Row="2" FontSize="96" Opacity=".2" Margin="20,5,5,5" Grid.Column="0" Grid.ColumnSpan="3">Northwind</TextBlock>
     </Grid>
 </Window>

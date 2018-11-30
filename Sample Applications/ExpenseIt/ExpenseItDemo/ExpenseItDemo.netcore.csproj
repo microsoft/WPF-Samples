@@ -110,7 +110,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EditBoxControlLibrary\EditBoxControlLibrary.csproj">
+    <ProjectReference Include="..\EditBoxControlLibrary\EditBoxControlLibrary.netcore.csproj">
       <Project>{558eee03-6927-4fe6-aeb6-972769960849}</Project>
       <Name>EditBoxControlLibrary</Name>
     </ProjectReference>
