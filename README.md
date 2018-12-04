@@ -37,7 +37,7 @@ The easiest way to use these samples without using Git is to download the zip fi
    **Notes:** 
    * Before you unzip the archive, right-click it, select Properties, and then select Unblock.
    * Most samples should work independently
-   * By default, all the .NET Framework samples target .NET 4.7.2, you can change this to in the Project->Properties page in Visual Studio.
+   * By default, all the .NET Framework samples target .NET 4.7.2, you can change this in the Project->Properties page in Visual Studio.
    * The .NET SDK versions of the projects target .NET core 3.0.
 
 For more info about the programming models, platforms, languages, and APIs demonstrated in these samples, please refer to the guidance  available in  [MSDN](https://msdn.microsoft.com/en-us/library/ms754130.aspx). These samples are provided as-is in order to indicate or demonstrate the functionality of the programming models and feature APIs for WPF.
