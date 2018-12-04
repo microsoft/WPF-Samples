@@ -15,7 +15,7 @@ Help us improve out samples by sending us a pull-request or opening a [GitHub Is
 Questions: mail wpfteam@microsoft.com
 
 ## WPF development
-These samples require Visual Studio 2017 to build, test, and deploy. The multitargeted .NET SDK samples require the .NET Core SDK.
+These samples require Visual Studio 2017 to build, test, and deploy. The .NET Core projects (netcore.csproj) require the .NET Core 3 SDK.
 
    [Get a free copy of Visual Studio 2017 Community Edition with support for building WPF apps](https://www.visualstudio.com/wpf-vs)
 
@@ -28,7 +28,7 @@ To use the samples with Git, clone the WPF-Samples repository with 'git clone ht
 After cloning the WPF-Samples respository, there will be two solution files in the root directory: WPF-Samples.sln (targeting .NET Framework 4.5.2) and WPF-Samples.netcore.sln (.NET SDK, targeting .NET core 3.0 and .NET Framework 4.72).
 
 * To build the samples, open one of the solution files in Visual Studio 2017 and build the solution.
-* Alternatively, navigate to the directory of a sample.  There will be two project files: sampleName.csproj (.NET 4.5.2) and sampleName.netcore.csproj (multitargeted .NET core 3.0 and .NET Framework 4.7.2). Build with 'dotnet build' or 'msbuild' specifying the target project file. 
+* Alternatively, navigate to the directory of a sample.  There will be two project files: sampleName.csproj (.NET 4.7.2) and sampleName.netcore.csproj (.NET Core 3.0). Build with 'dotnet build' or 'msbuild' specifying the target project file. 
 
 The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in Visual Studio 2017.
 
