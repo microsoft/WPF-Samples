@@ -15,11 +15,14 @@ Help us improve out samples by sending us a pull-request or opening a [GitHub Is
 Questions: mail wpfteam@microsoft.com
 
 ## WPF development
+
 These samples require Visual Studio 2017 to build, test, and deploy. The .NET Core projects (netcore.csproj) require the .NET Core 3 SDK.
 
    [Get a free copy of Visual Studio 2017 Community Edition with support for building WPF apps](https://www.visualstudio.com/wpf-vs)
 
    [.NET Core SDK](https://github.com/dotnet/core-sdk)
+
+WPF on .NET Core 3.0 has been open-sourced, and is now available on [Github](https://github.com/dotnet/wpf)
    
 ## Using the samples
 
