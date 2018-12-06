@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# 2-D Transforms sample
 
 This sample shows how to use the %objective
 
