@@ -57,6 +57,8 @@ namespace HtmlToXamlDemo
         public const string XamlBorderBrush = "BorderBrush";
         public const string XamlBorderThickness = "BorderThickness";
         public const string XamlTable = "Table";
+        // flowdocument table requires this element, take Table prefix because XMLReader cannot resolve the namespace of this element 
+        public const string XamlTableColumnGroup = "Table.Columns";
         public const string XamlTableColumn = "TableColumn";
         public const string XamlTableRowGroup = "TableRowGroup";
         public const string XamlTableRow = "TableRow";
@@ -1226,6 +1228,10 @@ namespace HtmlToXamlDemo
             ArrayList columnStartsAllRows, Hashtable currentProperties, CssStylesheet stylesheet,
             List<XmlElement> sourceContext)
         {
+            // Flow document table requires <Table.Columns> element to include <TableColumn/> element as 
+            // defined in https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/how-to-define-a-table-with-xaml
+            // Notic: CreateElement("Table", "Columns", XamlNamespace) would add xmlns attribute to <Table.Columns> and lead to XMLReader crash.
+            XmlElement xamlTableColumnGroupElement = xamlTableElement.OwnerDocument.CreateElement(null, XamlTableColumnGroup, XamlNamespace);
             // Add column information
             if (columnStartsAllRows != null)
             {
@@ -1235,12 +1241,12 @@ namespace HtmlToXamlDemo
                 {
                     XmlElement xamlColumnElement;
 
-                    xamlColumnElement = xamlTableElement.OwnerDocument.CreateElement(null, XamlTableColumn,
+                    xamlColumnElement = xamlTableColumnGroupElement.OwnerDocument.CreateElement(null, XamlTableColumn,
                         XamlNamespace);
                     xamlColumnElement.SetAttribute(XamlWidth,
                         ((double) columnStartsAllRows[columnIndex + 1] - (double) columnStartsAllRows[columnIndex])
                             .ToString(CultureInfo.InvariantCulture));
-                    xamlTableElement.AppendChild(xamlColumnElement);
+                    xamlTableColumnGroupElement.AppendChild(xamlColumnElement);
                 }
             }
             else
@@ -1254,12 +1260,12 @@ namespace HtmlToXamlDemo
                     if (htmlChildNode.LocalName.ToLower() == "colgroup")
                     {
                         // TODO: add column width information to this function as a parameter and process it
-                        AddTableColumnGroup(xamlTableElement, (XmlElement) htmlChildNode, currentProperties, stylesheet,
+                        AddTableColumnGroup(xamlTableColumnGroupElement, (XmlElement) htmlChildNode, currentProperties, stylesheet,
                             sourceContext);
                     }
                     else if (htmlChildNode.LocalName.ToLower() == "col")
                     {
-                        AddTableColumn(xamlTableElement, (XmlElement) htmlChildNode, currentProperties, stylesheet,
+                        AddTableColumn(xamlTableColumnGroupElement, (XmlElement) htmlChildNode, currentProperties, stylesheet,
                             sourceContext);
                     }
                     else if (htmlChildNode is XmlElement)
@@ -1269,13 +1275,17 @@ namespace HtmlToXamlDemo
                     }
                 }
             }
+            if (xamlTableColumnGroupElement.HasChildNodes)
+            {
+                xamlTableElement.AppendChild(xamlTableColumnGroupElement);
+            }
         }
 
         /// <summary>
         ///     Converts htmlColgroupElement into Xaml TableColumnGroup element, and appends it to the parent
         ///     xamlTableElement
         /// </summary>
-        /// <param name="xamlTableElement">
+        /// <param name="xamlTableColumnGroupElement">
         ///     XmlElement representing Xaml Table element to which the converted column group should be added
         /// </param>
         /// <param name="htmlColgroupElement">
@@ -1283,7 +1293,7 @@ namespace HtmlToXamlDemo
         ///     <param name="inheritedProperties">
         ///         Properties inherited from parent context
         ///     </param>
-        private static void AddTableColumnGroup(XmlElement xamlTableElement, XmlElement htmlColgroupElement,
+        private static void AddTableColumnGroup(XmlElement xamlTableColumnGroupElement, XmlElement htmlColgroupElement,
             Hashtable inheritedProperties, CssStylesheet stylesheet, List<XmlElement> sourceContext)
         {
             Hashtable localProperties;
@@ -1298,7 +1308,7 @@ namespace HtmlToXamlDemo
             {
                 if (htmlNode is XmlElement && htmlNode.LocalName.ToLower() == "col")
                 {
-                    AddTableColumn(xamlTableElement, (XmlElement) htmlNode, currentProperties, stylesheet, sourceContext);
+                    AddTableColumn(xamlTableColumnGroupElement, (XmlElement) htmlNode, currentProperties, stylesheet, sourceContext);
                 }
             }
         }
@@ -1307,7 +1317,7 @@ namespace HtmlToXamlDemo
         ///     Converts htmlColElement into Xaml TableColumn element, and appends it to the parent
         ///     xamlTableColumnGroupElement
         /// </summary>
-        /// <param name="xamlTableElement"></param>
+        /// <param name="xamlTableColumnGroupElement"></param>
         /// <param name="htmlColElement">
         ///     XmlElement representing Html col element to be converted
         /// </param>
@@ -1316,20 +1326,20 @@ namespace HtmlToXamlDemo
         /// </param>
         /// <param name="stylesheet"></param>
         /// <param name="sourceContext"></param>
-        private static void AddTableColumn(XmlElement xamlTableElement, XmlElement htmlColElement,
+        private static void AddTableColumn(XmlElement xamlTableColumnGroupElement, XmlElement htmlColElement,
             Hashtable inheritedProperties, CssStylesheet stylesheet, List<XmlElement> sourceContext)
         {
             Hashtable localProperties;
             var currentProperties = GetElementProperties(htmlColElement, inheritedProperties, out localProperties,
                 stylesheet, sourceContext);
 
-            var xamlTableColumnElement = xamlTableElement.OwnerDocument.CreateElement(null, XamlTableColumn,
+            var xamlTableColumnElement = xamlTableColumnGroupElement.OwnerDocument.CreateElement(null, XamlTableColumn,
                 XamlNamespace);
 
             // TODO: process local properties for TableColumn element
 
             // Col is an empty element, with no subtree 
-            xamlTableElement.AppendChild(xamlTableColumnElement);
+            xamlTableColumnGroupElement.AppendChild(xamlTableColumnElement);
         }
 
         /// <summary>
