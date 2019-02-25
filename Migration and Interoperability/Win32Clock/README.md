@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# Win32 Clock Interoperation Sample
 
 This sample shows how to use the %objective
 
