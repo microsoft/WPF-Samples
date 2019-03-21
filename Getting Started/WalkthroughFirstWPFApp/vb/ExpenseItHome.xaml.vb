@@ -1,5 +1,3 @@
-﻿Imports System.Text
-
 Namespace ExpenseIt
 	''' <summary>
 	''' Interaction logic for ExpenseItHome.xaml
