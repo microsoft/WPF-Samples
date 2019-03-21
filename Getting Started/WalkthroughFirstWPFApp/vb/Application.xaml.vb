@@ -1,5 +1,3 @@
-﻿Imports System.Configuration
-
 Namespace ExpenseIt9
 	''' <summary>
 	''' Interaction logic for App.xaml
