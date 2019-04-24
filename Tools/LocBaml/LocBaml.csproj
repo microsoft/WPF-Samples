@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <TargetType>exe</TargetType>
+    <UseWPF>true</UseWPF>
+   </PropertyGroup>
+
+   <ItemGroup>
+        <EmbeddedResource Include="Resources\StringTable.resText">
+            <LogicalName>Resources.StringTable.resources</LogicalName>
+        </EmbeddedResource>
+   </ItemGroup>
+
+</Project>

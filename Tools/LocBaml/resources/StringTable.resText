@@ -1,0 +1,39 @@
+Msg_Usage=Syntax: LocBaml [Input] [Options]\r\nInput: .Baml .resource .exe or .dll\r\nOptions:\r\n    <Parsing>\r\n    /parse           parse input file to get localizable resources\r\n    /out[:fileName]  output file name that contains the list of localizable resources\r\n                     It can be .csv file or .txt. Default to .csv file if output file name is not given\r\n    /asmpath[:name]  assembly references where localizability attributes are defined\r\n    Example:         LocBaml.exe /parse Abc.baml /out:c:\\ABC.csv\r\n\r\n    <Generating>\r\n    /generate        generate localized binary\r\n    /tran[:filename] the .csv or .txt that contains list of translations\r\n    /cul[:culture]   culture name\r\n    /out[:dir]       output directory for the localized binaries\r\n    Example:         LocBaml.exe /generate ABC.resources /trans:abc.resources.csv /out:c:\\ /cul:en-US
+Msg_Copyright=Microsoft (R) Baml Localization Utility {0}\r\n
+; Command line parsing error strings.
+Err_AmbigousOption=Ambiguous option: /{0}
+Err_UnknownOption=Unknown option: /{0}
+Err_NoValueRequired=The /{0} option does not require a value
+Err_ValueRequired=The /{0} option requires a value
+Err_InvalidOption=The /{0} option is invalid
+
+; text file parsing error
+EmptyRowEncountered=An empty row is encountered.
+NullBamlKeyNameInRow=Each row must have the 2nd column as the key to the resource.
+InvalidRow=Invalid row encountered.
+ResourceKeyFormatError=The key to a resource must be in the format of [resource name]:[class name].[property name].
+
+; command line parsing
+MustChooseOneAction=You must choose an action between /parse or /generate.
+InputFileRequired=Source input file is required.
+FileNotFound=File '{0}' not found.
+FileTypeNotSupported=The input source file type '{0}' is not supported.
+CultureNameNeeded=Culture name must be specified when generating file type '{0}'.
+TranslationNeeded=Translation file is needed when generating the localized output.
+TranslationNotFound=Translation file '{0}' not found.
+OutputDirectoryNeeded=You need to specify output directory when generating.
+OutputDirectoryError=The output directory '{0}' not found.
+ErrorMessage=Error: {0}
+
+
+; verbose output
+WriteBamlValues=Writing localizable values for baml stream...
+ProcessingBaml='{0}'...
+GenerateBaml=Generating localized Baml '{0}'...
+GenerateResource=Generating localized resource stream '{0}'...
+GenerateAssembly=Generating localized Assembly...
+GenerateStandaloneBaml=Generating standalone Baml resource in assembly '{0}'...
+Done=Done
+DoneGeneratingResource=Done generating resource stream '{0}'
+DoneGeneratingAssembly=Done generating Assembly
+
