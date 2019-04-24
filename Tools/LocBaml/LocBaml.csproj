@@ -2,10 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <Configuration>Release</Configuration>
-    <ProductVersion>8.0.50215</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-
     <TargetType>exe</TargetType>
     <UseWPF>true</UseWPF>
    </PropertyGroup>
