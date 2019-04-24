@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# VisualBrush sample
 
 This sample shows how to use the %objective
 

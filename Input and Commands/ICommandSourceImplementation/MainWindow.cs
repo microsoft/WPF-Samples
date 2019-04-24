@@ -1,4 +1,4 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
+// // Copyright (c) Microsoft. All rights reserved.
 // // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Windows;
@@ -46,7 +46,7 @@ namespace ICommandSourceImplementation
         }
 
         // The CanExecuteRoutedEvent Handler
-        // If the Command Source is a TextBox, then set CanExecute to ture;
+        // If the Command Source is a TextBox, then set CanExecute to true;
         // Otherwise, set it to false
         private void SliderUpdateCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

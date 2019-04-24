@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# ImageBrush Sample
 
 This sample shows how to use the %objective
 

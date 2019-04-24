@@ -9,7 +9,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Windows.Input.TouchKeyboard</RootNamespace>
     <AssemblyName>TouchKeyboardNotifier</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetPlatformVersion>10.0</TargetPlatformVersion>
     <TargetFrameworkProfile />
