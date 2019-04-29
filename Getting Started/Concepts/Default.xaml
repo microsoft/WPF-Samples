@@ -58,7 +58,7 @@
                                 </RadialGradientBrush>
                             </Shape.Fill>
                         </Rectangle>
-                        <TextBox Name="TextBox1" TextChanged="HandleTextChanged"   Margin="0,20,0,0"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  FontFamily="Consolas" FontSize="12pt" BorderBrush="transparent" Grid.Row="1" AcceptsTab="True" AcceptsReturn="True" DataContext="{Binding Source={StaticResource XamlDefault}, XPath=/InitialSyntax}" Text="{Binding XPath=Syntax}" />
+                        <TextBox Name="TextBox1" AutomationProperties.Name="XAML Content" TextChanged="HandleTextChanged"   Margin="0,20,0,0"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  FontFamily="Consolas" FontSize="12pt" BorderBrush="transparent" Grid.Row="1" AcceptsTab="True" AcceptsReturn="True" DataContext="{Binding Source={StaticResource XamlDefault}, XPath=/InitialSyntax}" Text="{Binding XPath=Syntax}" />
                         <TextBlock Name="ErrorText" Margin="100,5,60,0" TextTrimming="WordEllipsis" Foreground="red" FontSize="10pt" FontWeight="bold" />
                     </Grid>                
                 </TabItem.Content>
@@ -78,7 +78,7 @@
                         <Grid Grid.Column="1">
                             <StackPanel Margin="20">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="right">
-                                    <ComboBox IsEditable="False"  Margin="10" Name="myCombo" SelectionChanged="SelectLang">
+                                    <ComboBox IsEditable="False"  Margin="10" Name="myCombo" AutomationProperties.Name="Select Language" SelectionChanged="SelectLang">
                                         <ComboBoxItem Name="cbItem5">Show All (no filtering)</ComboBoxItem>
                                         <ComboBoxItem Name="cbItem1">XAML</ComboBoxItem>
                                         <ComboBoxItem Name="cbItem6">XAML + C#</ComboBoxItem>

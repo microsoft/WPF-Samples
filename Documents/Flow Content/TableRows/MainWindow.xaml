@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:TableRows"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <FlowDocumentScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top">
-        <FlowDocument>
+    <FlowDocumentScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top" AutomationProperties.Name="Viewer">
+        <FlowDocument AutomationProperties.Name="Table">
             <Paragraph>
                 <Button  Click="AddRow">Add a New TableRow to the Table</Button>
             </Paragraph>

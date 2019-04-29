@@ -34,9 +34,9 @@
 
         <ToolBarTray Grid.Row="0">
             <!-- Annotations Toolbar -->
-            <ToolBar>
+            <ToolBar AutomationProperties.Name="StickyNote Options">
                 <GroupBox Header="StickyNote Style">
-                    <ComboBox Name="StyleCombo" Width="Auto"
+                    <ComboBox Name="StickyNote Style" AutomationProperties.Name="StyleCombo" Width="Auto"
                     ItemsSource="{Binding ElementName=Viewer,Path=Resources.MergedDictionaries,Converter={StaticResource ResourceConverter}}"
                     ItemTemplate="{StaticResource StyleOptionTemplate}"
                     SelectionChanged="OnStyleSelected"/>
@@ -67,7 +67,7 @@
             </ToolBar>
         </ToolBarTray>
 
-        <FlowDocumentPageViewer Name="Viewer" Grid.Row="1">
+        <FlowDocumentPageViewer Name="Viewer" AutomationProperties.Name="Viewer" Grid.Row="1">
             <FlowDocumentPageViewer.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -77,7 +77,7 @@
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </FlowDocumentPageViewer.Resources>
-            <FlowDocument>
+            <FlowDocument AutomationProperties.Name="Sample Text">
                 <Paragraph>
                     This sample demonstrates how through the use of styles you can change
           the appearance and behavior of annotation text or ink sticky-notes,

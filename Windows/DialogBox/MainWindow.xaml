@@ -9,7 +9,7 @@
     >
     <DockPanel>
 
-        <Menu DockPanel.Dock="Top">
+        <Menu DockPanel.Dock="Top" AutomationProperties.Name="Toolbar">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open" Click="fileOpen_Click" />
                 <MenuItem Header="_Save" Click="fileSave_Click" />
@@ -30,6 +30,7 @@
 
         <TextBox
       Name="documentTextBox"
+      AutomationProperties.Name="Document"
       TextChanged="documentTextBox_TextChanged" 
       ScrollViewer.CanContentScroll="True" 
       ScrollViewer.HorizontalScrollBarVisibility="Visible" 

@@ -720,8 +720,8 @@
             <TextBlock TextWrapping="Wrap" Margin="10" Name="tb2" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2"/>
         </Grid>
         <Border MinHeight="400" MinWidth="600" BorderBrush="Black" BorderThickness="2" Padding="5" Background="White">
-            <FlowDocumentPageViewer>
-                <FlowDocument FontFamily="Palatino Linotype" Background="White" Name="fd1">
+            <FlowDocumentPageViewer AutomationProperties.Name="Viewer">
+                <FlowDocument AutomationProperties.Name="Sample Doc" FontFamily="Palatino Linotype" Background="White" Name="fd1">
                     <Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
     Nam laoreet dolor et dolor. Vestibulum quis nunc auctor ante dignissim venenatis. Curabitur wisi. 
     Donec faucibus auctor ipsum. In fermentum dui.  Ut suscipit aliquam eros. Nullam elementum quam eu 

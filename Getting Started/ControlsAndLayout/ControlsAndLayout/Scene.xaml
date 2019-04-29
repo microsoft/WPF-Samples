@@ -72,13 +72,13 @@
                                 <Expander.Header>
                                     <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" >Layout</TextBlock>
                                 </Expander.Header>
-                                <ListBox Name="LayoutListBox" DataContext="{Binding Source={StaticResource SamplesList}, XPath=/Samples/Category[1]/Sample}"    ItemsSource="{Binding}" SelectionChanged="HandleSelectionChanged"  Style="{DynamicResource SamplesListBox}"  IsSynchronizedWithCurrentItem="True"  />
+                                <ListBox Name="LayoutListBox" AutomationProperties.Name="Layout" DataContext="{Binding Source={StaticResource SamplesList}, XPath=/Samples/Category[1]/Sample}"    ItemsSource="{Binding}" SelectionChanged="HandleSelectionChanged"  Style="{DynamicResource SamplesListBox}"  IsSynchronizedWithCurrentItem="True"  />
                             </Expander>
                             <Expander  Margin="0,0,0,10" DockPanel.Dock="top" Background="white" FocusVisualStyle="{x:Null}">
                                 <Expander.Header>
                                     <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold"  TextTrimming="WordEllipsis">Controls</TextBlock>
                                 </Expander.Header>
-                                <ListBox MaxHeight="300"  DataContext="{Binding Source={StaticResource SamplesList}, XPath=/Samples/Category[2]/Sample}" ItemsSource="{Binding}" SelectionChanged="HandleSelectionChanged" Style="{DynamicResource SamplesListBox}"  IsSynchronizedWithCurrentItem="True" SelectedValue="X" />
+                                <ListBox MaxHeight="300" AutomationProperties.Name="Controls"  DataContext="{Binding Source={StaticResource SamplesList}, XPath=/Samples/Category[2]/Sample}" ItemsSource="{Binding}" SelectionChanged="HandleSelectionChanged" Style="{DynamicResource SamplesListBox}"  IsSynchronizedWithCurrentItem="True" SelectedValue="X" />
                             </Expander>
                         </DockPanel>
                     </Grid>
@@ -120,7 +120,7 @@
                                 </Shape.Fill>
                             </Rectangle>
                             <GridSplitter Margin="10,0,10,0" Opacity="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Height="5" Background="White" Cursor="SizeNS"/>
-                            <TextBox Name="TextBox1" TextChanged="HandleTextChanged"   Margin="0,20,0,0"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  FontFamily="Consolas" FontSize="12pt" BorderBrush="transparent"     Grid.Row="1" AcceptsTab="True" AcceptsReturn="True" Text="{Binding XPath=Syntax}" />
+                            <TextBox Name="TextBox1" AutomationProperties.Name="XAML Content" TextChanged="HandleTextChanged"   Margin="0,20,0,0"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  FontFamily="Consolas" FontSize="12pt" BorderBrush="transparent"     Grid.Row="1" AcceptsTab="True" AcceptsReturn="True" Text="{Binding XPath=Syntax}" />
                             <StackPanel Grid.Row="2"  Orientation="Horizontal" Margin="0,5,0,0">
 
                                 <RadioButton  HorizontalAlignment="left" Margin="5"   Click="ShowPreview"   Content="Preview" VerticalAlignment="top"/>

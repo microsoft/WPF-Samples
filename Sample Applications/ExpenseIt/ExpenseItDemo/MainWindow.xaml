@@ -84,7 +84,8 @@
         <DockPanel>
 
             <!-- Menu Bar-->
-            <Menu DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Top"
+                  AutomationProperties.Name="Toolbar">
 
                 <!-- File Menu-->
                 <MenuItem Header="_File">
@@ -121,7 +122,7 @@
                        Grid.Row="0">
                     _Email:
                 </Label>
-                <TextBox Name="emailTextBox" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="0">
+                <TextBox Name="emailTextBox" AutomationProperties.Name="Email" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="0">
                     <TextBox.Text>
                         <Binding Path="Alias" UpdateSourceTrigger="PropertyChanged">
                             <!-- SECURITY: Email alias must be valid email address eg xxx@xxx.com -->
@@ -138,7 +139,8 @@
                        Grid.Column="0" Grid.Row="1">
                     Employee _Number:
                 </Label>
-                <TextBox Name="employeeNumberTextBox" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="1">
+                <TextBox Name="employeeNumberTextBox" AutomationProperties.Name="Employee Number" 
+                         Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="1">
                     <TextBox.Text>
                         <Binding Path="EmployeeNumber" UpdateSourceTrigger="PropertyChanged">
                             <!-- SECURITY: EmployeeNumber must be an int and 5 digits long -->
@@ -156,6 +158,7 @@
                     _Cost Center:
                 </Label>
                 <ComboBox Name="costCenterTextBox"
+                          AutomationProperties.Name="Cost Center"
                           Style="{StaticResource CostCenterList}"
                           Grid.Column="1" Grid.Row="2"
                           ItemTemplate="{StaticResource CostCenterTemplate}"
@@ -177,8 +180,8 @@
                        Grid.Column="0" Grid.Row="3">
                     E_mployees:
                 </Label>
-                <ListBox Name="employeeTypeRadioButtons" Style="{StaticResource HorizontalRadioList}" Grid.Column="1"
-                         Grid.Row="3">
+                <ListBox Name="employeeTypeRadioButtons" AutomationProperties.Name="Employee Type"
+                         Style="{StaticResource HorizontalRadioList}" Grid.Column="1" Grid.Row="3">
                     <ListBoxItem Style="{StaticResource HorizontalRadio}">
                         FTE
                         <ListBoxItem.ToolTip>
@@ -200,7 +203,7 @@
                 </ListBox>
 
                 <!-- Employee List -->
-                <ListBox Style="{StaticResource EmployeeList}"
+                <ListBox AutomationProperties.Name="Employees" Style="{StaticResource EmployeeList}"
                          Grid.Column="1" Grid.Row="4"
                          ItemTemplate="{StaticResource EmployeeItemTemplate}"
                          ItemsSource="{Binding Source={StaticResource Employees}}">

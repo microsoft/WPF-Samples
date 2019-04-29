@@ -25,16 +25,16 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0">Associate with Owner Window?</Label>
-        <CheckBox Grid.Column="1" Grid.Row="0" Name="ownerCheckBox" />
+        <CheckBox Grid.Column="1" Grid.Row="0" Name="ownerCheckBox" AutomationProperties.Name="Associate with Owner Window"/>
 
         <Label Grid.Column="0" Grid.Row="1">messageBoxText:</Label>
-        <TextBox Grid.Column="1" Grid.Row="1" Name ="messageBoxText">MessageBoxText</TextBox>
+        <TextBox Grid.Column="1" Grid.Row="1" Name ="messageBoxText" AutomationProperties.Name="Message Box">MessageBoxText</TextBox>
 
         <Label Grid.Column="0" Grid.Row="2">caption:</Label>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="caption">Caption</TextBox>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="caption" AutomationProperties.Name="Caption">Caption</TextBox>
 
         <Label Grid.Column="0" Grid.Row="3">button:</Label>
-        <ComboBox Grid.Column="1" Grid.Row="3" Name="buttonComboBox">
+        <ComboBox Grid.Column="1" Grid.Row="3" Name="buttonComboBox" AutomationProperties.Name="Button">
             <ComboBoxItem IsSelected="True">OK</ComboBoxItem>
             <ComboBoxItem>OKCancel</ComboBoxItem>
             <ComboBoxItem>YesNo</ComboBoxItem>
@@ -42,7 +42,7 @@
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="4">icon:</Label>
-        <ComboBox Grid.Column="1" Grid.Row="4" Name="imageComboBox">
+        <ComboBox Grid.Column="1" Grid.Row="4" Name="imageComboBox" AutomationProperties.Name="Icon">
             <ComboBoxItem>Asterisk</ComboBoxItem>
             <ComboBoxItem>Error</ComboBoxItem>
             <ComboBoxItem>Exclamation</ComboBoxItem>
@@ -55,7 +55,7 @@
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="5">defaultResult:</Label>
-        <ComboBox Grid.Column="1" Grid.Row="5" Name="defaultResultComboBox">
+        <ComboBox Grid.Column="1" Grid.Row="5" Name="defaultResultComboBox" AutomationProperties.Name="Default Result">
             <ComboBoxItem>Cancel</ComboBoxItem>
             <ComboBoxItem>No</ComboBoxItem>
             <ComboBoxItem IsSelected="True">None</ComboBoxItem>
@@ -64,7 +64,7 @@
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="6">options</Label>
-        <ComboBox Grid.Column="1" Grid.Row="6" Name="optionsComboBox">
+        <ComboBox Grid.Column="1" Grid.Row="6" Name="optionsComboBox" AutomationProperties.Name="Options">
             <ComboBoxItem>DefaultDesktopOnly</ComboBoxItem>
             <ComboBoxItem IsSelected="True">None</ComboBoxItem>
             <ComboBoxItem>RightAlign</ComboBoxItem>

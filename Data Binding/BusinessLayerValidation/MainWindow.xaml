@@ -23,7 +23,7 @@
 
     <StackPanel Margin="20">
         <TextBlock>Enter your age:</TextBlock>
-        <TextBox Style="{StaticResource TextBoxInError}">
+        <TextBox AutomationProperties.Name="Age Field" Style="{StaticResource TextBoxInError}">
             <TextBox.Text>
                 <!--By setting ValidatesOnExceptions to True, it checks for exceptions
                 that are thrown during the update of the source property.

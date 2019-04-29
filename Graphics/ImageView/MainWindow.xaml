@@ -51,6 +51,7 @@
                 </Border>
                 <ListBox
 					Name="imageListBox"
+                    AutomationProperties.Name="Image Selection"
 					Style="{StaticResource ScrollingListBox}"
 					ItemContainerStyle="{StaticResource ImageListStyle}"
 					ItemsSource="{Binding}"

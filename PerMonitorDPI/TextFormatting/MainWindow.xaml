@@ -30,8 +30,10 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <!-- Font Properties -->
-                <ComboBox Name="fontFamilyCB" Grid.Column="0" SelectionChanged="FontFamilyChangedEventHandler" />
-                <ComboBox Name="fontSizeCB" Grid.Column="1" Width="50" SelectionChanged="FontSizeChangedEventHandler"/>
+                <ComboBox Name="fontFamilyCB" AutomationProperties.Name="Font Family" 
+                 Grid.Column="0" SelectionChanged="FontFamilyChangedEventHandler" />
+                <ComboBox Name="fontSizeCB" AutomationProperties.Name="Font Size" 
+                 Grid.Column="1" Width="50" SelectionChanged="FontSizeChangedEventHandler"/>
                 <ToggleButton Name="boldButton" Grid.Column="3" Width="25" FontWeight="Bold" Click="BoldClickedEventHandler">B</ToggleButton>
                 <ToggleButton Name="italicButton" Grid.Column="4" Width="25" FontStyle="Italic" Click="ItalicClickEventHandler">I</ToggleButton>
                 <!-- Decoration Buttons -->
@@ -74,7 +76,7 @@
                 <Label Grid.Column="0" VerticalAlignment="Center">Capitols</Label>
                 <ComboBox Grid.Column="1"></ComboBox>
                 <Label Grid.Column="3" VerticalAlignment="Center">Varients</Label>
-                <ComboBox Grid.Column="4" Width="50"></ComboBox>
+                <ComboBox Grid.Column="4" Width="50" AutomationProperties.Name="Font Size"></ComboBox>
                 <CheckBox Grid.Column="5" VerticalAlignment="Center" Margin="5">Kerning</CheckBox>
                 <CheckBox Grid.Column="6" VerticalAlignment="Center" Margin="5">Slashed 0</CheckBox>
                 <CheckBox Grid.Column="7" VerticalAlignment="Center" Margin="5">Standard Ligatures</CheckBox>
@@ -98,7 +100,8 @@
             HorizontalAlignment="Left">
                 Text:
             </Label>
-            <TextBox Name="textToFormat" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
+            <TextBox Name="textToFormat" AutomationProperties.Name="Editable Text" 
+            Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
             Width="600" Height="150" AcceptsReturn="true" 
             TextWrapping="WrapWithOverflow" TextChanged="TextChangedEventHandler">
                 Lorem ipsum dolor sit amet, consectetuer

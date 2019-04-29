@@ -149,6 +149,7 @@
               >
                                 <CheckBox
                   Name="cbCopyRtfDataFormat"
+                  AutomationProperties.Name="Rich Text Format"
                   VerticalAlignment="Center"
                   VerticalContentAlignment="Center"
                   Margin="2"
@@ -162,6 +163,7 @@
               >
                                 <CheckBox
                   Name="cbCopyTextDataFormat"
+                  AutomationProperties.Name="Text"
                   IsChecked="True"            
                   VerticalAlignment="Center"
                   VerticalContentAlignment="Center"
@@ -176,6 +178,7 @@
               >
                                 <CheckBox
                   Name="cbCopyXamlDataFormat"
+                  AutomationProperties.Name="XAML"
                   VerticalAlignment="Center"
                   VerticalContentAlignment="Center"
                   Margin="2"
@@ -189,6 +192,7 @@
               >
                                 <CheckBox
                   Name="cbCustomSampleDataFormat"
+                  AutomationProperties.Name="Custom Sample"
                   VerticalAlignment="Center"
                   VerticalContentAlignment="Center"
                   Margin="2"
@@ -208,13 +212,15 @@
                             <StackPanel>
                                 <Label >Copy Data From:</Label>
                                 <RadioButton 
-                    Name="rbCopyDataFromRichTextBox" 
+                    Name="rbCopyDataFromRichTextBox"
+                    AutomationProperties.Name="Copy data from RichTextBox"
                     Margin="2" 
                     GroupName="CopyDataFrom" 
                     IsChecked="True"
                 >RichTextBox</RadioButton>
                                 <RadioButton 
                     Name="rbCopyDataFromFile" 
+                    AutomationProperties.Name="Copy data from file"
                     Margin="2" 
                     GroupName="CopyDataFrom"
                 >File</RadioButton>
@@ -228,6 +234,7 @@
               >
                                 <CheckBox
                   Name="cbFlushOnCopy"
+                  AutomationProperties.Name="Flush On Copy"
                   VerticalAlignment="Center"
                   VerticalContentAlignment="Center"
                   Margin="2"
@@ -249,7 +256,8 @@
                         <StackPanel>
                             <Label>Paste(Get) Format:</Label>
                             <ListBox
-                Name="lbPasteDataFormat" 
+                Name="lbPasteDataFormat"
+                AutomationProperties.Name="Paste Format"                
                 Height="90"
                 Margin="2"
               />
@@ -266,12 +274,14 @@
                                 <Label >Paste Data To:</Label>
                                 <RadioButton 
                     Name="rbPasteDataToRichTextBox"
+                    AutomationProperties.Name="Paste data to RichTextBox"
                     Margin="2" 
                     GroupName="PasteDataTo" 
                     IsChecked="True"
                 >RichTextBox</RadioButton>
                                 <RadioButton 
                     Name="rbPasteDataToFile"
+                    AutomationProperties.Name="Paste data to File"
                     Margin="2" 
                     GroupName="PasteDataTo"
                 >File</RadioButton>
@@ -284,6 +294,7 @@
               >
                                 <CheckBox
                   Name="cbAutoConvertibleData"
+                  AutomationProperties.Name="Autoconvert"
                   IsChecked="True" 
                   VerticalAlignment="Center"
                   VerticalContentAlignment="Center"
@@ -328,6 +339,7 @@
 
                 <TextBox
             Name="clipboardInfo" 
+            AutomationProperties.Name="Clipboard Info"
             IsReadOnly="True"
             AcceptsReturn="True"
             VerticalScrollBarVisibility="Auto"
@@ -351,7 +363,8 @@
                         </StackPanel>
 
                         <RichTextBox
-            Name="richTextBox" 
+            Name="richTextBox"
+            AutomationProperties.Name="Clipboard Data"
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Auto"
             Height="100"

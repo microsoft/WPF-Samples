@@ -64,6 +64,7 @@
     <StackPanel>
         <TextBlock FontSize="20" Text="My Task List:"/>
         <ListBox Width="400" Margin="10"
+             AutomationProperties.Name="Tasks"
              ItemsSource="{Binding Source={StaticResource MyTodoList}}"
              ItemTemplateSelector="{StaticResource MyDataTemplateSelector}"
              HorizontalContentAlignment="Stretch" 

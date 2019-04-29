@@ -35,7 +35,8 @@
         </StackPanel>
 
         <TextBox
-        Name="tbDisplayFileContents" 
+        Name="tbDisplayFileContents"
+        AutomationProperties.Name="File Contents"
         Grid.Row="1" 
         AcceptsReturn="True" AcceptsTab="True" 
         AllowDrop="True" 

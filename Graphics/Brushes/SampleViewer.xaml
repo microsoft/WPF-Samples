@@ -22,7 +22,7 @@
 
   <DockPanel Name="mainPanel">
 
-    <Menu DockPanel.Dock="Top">
+    <Menu AutomationProperties.Name="File Options" DockPanel.Dock="Top">
       <MenuItem Header="_File" >
         <MenuItem Command="{x:Static examples:SampleViewer.ExitCommand}">
           <MenuItem.CommandBindings>
@@ -71,6 +71,7 @@
               <!-- Lists the different brush samples. The list is
                    defined in the sampleResources\TOC.xml file. -->
               <TreeView Name="myPageList"
+                AutomationProperties.Name="My Page List"
                 KeyboardNavigation.DirectionalNavigation="Cycle" 
                 BorderBrush="Transparent"
                 Background="Transparent"

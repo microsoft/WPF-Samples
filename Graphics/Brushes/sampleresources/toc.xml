@@ -7,7 +7,7 @@
   </Example>
 
 
-  <Example Title="SolidColorBrush">
+  <Example Title="SolidColorBrush" AutomationProperties.Name="Solid Color Brush">
 
     <Children>
 

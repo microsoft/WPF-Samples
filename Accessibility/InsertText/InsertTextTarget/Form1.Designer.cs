@@ -110,6 +110,7 @@ namespace InsertTextW32Target
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(15, 40);
             this.checkBox1.Name = "checkBox1";
+            this.checkBox1.AccessibleName = "Set Multi-Line TextBox to Read-only";
             this.checkBox1.Size = new System.Drawing.Size(74, 17);
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "Read-only";
@@ -121,6 +122,7 @@ namespace InsertTextW32Target
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(15, 132);
             this.checkBox2.Name = "checkBox2";
+            this.checkBox2.AccessibleName = "Set RichTextBox to Read-only";
             this.checkBox2.Size = new System.Drawing.Size(74, 17);
             this.checkBox2.TabIndex = 9;
             this.checkBox2.Text = "Read-only";
@@ -132,6 +134,7 @@ namespace InsertTextW32Target
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(15, 266);
             this.checkBox3.Name = "checkBox3";
+            this.checkBox3.AccessibleName = "Set Single-Line TextBox to Read-only";
             this.checkBox3.Size = new System.Drawing.Size(74, 17);
             this.checkBox3.TabIndex = 10;
             this.checkBox3.Text = "Read-only";

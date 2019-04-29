@@ -42,7 +42,7 @@
                     </AlternationConverter>
                 </Grid.Resources>
 
-                <ListBox ItemsSource="{Binding Source={StaticResource GroupedData}}"
+                <ListBox AutomationProperties.Name="Alternating Background Colors" ItemsSource="{Binding Source={StaticResource GroupedData}}"
                      DisplayMemberPath="CityName" AlternationCount="3" Name="lb">
 
                     <ListBox.GroupStyle>
@@ -135,7 +135,7 @@
                     </Style>
 
                 </Grid.Resources>
-                <TreeView ItemsSource="{Binding Source={StaticResource MyTreeViewData}}"
+                <TreeView AutomationProperties.Name="Alternating Font and backgrounds" ItemsSource="{Binding Source={StaticResource MyTreeViewData}}"
                           ItemTemplate="{StaticResource Level1Data}"/>
             </Grid>
         </StackPanel>

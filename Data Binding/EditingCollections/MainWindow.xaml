@@ -25,7 +25,8 @@
       leverages the APIs of IEditableCollectionView, it 
       does not need to manipulate the source collection directly.
         </TextBlock>
-        <ListView Name="itemsControl"  ItemsSource="{StaticResource MyData}">
+        <ListView Name="itemsControl"  ItemsSource="{StaticResource MyData}"
+                  AutomationProperties.Name="Items for Sale">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Item"

@@ -45,7 +45,7 @@
         <TextBlock>
         TreeView control with TreeViewItem content explicitly 
         defined as Header strings</TextBlock>
-        <TreeView>
+        <TreeView AutomationProperties.Name="Headers">
             <TreeViewItem Header="Employee1">
                 <TreeViewItem Header="Jesper"/>
                 <TreeViewItem Header="Aaberg"/>
@@ -62,7 +62,7 @@
         TreeView control with leaf nodes specified as
         Items that are Buttons
         </TextBlock>
-        <TreeView>
+        <TreeView AutomationProperties.Name="Leaf Node Buttons">
             <TreeViewItem Header ="Employee1">
                 <TreeViewItem.Items>
                     <Button Click="OnClick">Jesper</Button>
@@ -83,7 +83,7 @@
           defined as Buttons and and leaf nodes
           that are Header strings
         </TextBlock>
-        <TreeView>
+        <TreeView AutomationProperties.Name="Root Node Buttons, Leaf Node Headers">
             <TreeViewItem>
                 <TreeViewItem.Header>
                     <Button Click="OnClick">Employee1</Button>
@@ -106,13 +106,14 @@
         by databinding with an XMLDataProvider and using a 
         HierarchicalDataTemplate
         </TextBlock>
-        <TreeView ItemsSource="{Binding Source={StaticResource MyEmployeeData}, 
+        <TreeView AutomationProperties.Name="Data Binding" 
+                  ItemsSource="{Binding Source={StaticResource MyEmployeeData}, 
         XPath=EmployeeInfo}"/>
         <TextBlock>
        TreeView control whose Items contain DockPanel controls
        with embedded Image and TextBlock content
         </TextBlock>
-        <TreeView>
+        <TreeView AutomationProperties.Name="Embedded Images">
             <TreeViewItem Header="Animals">
                 <TreeViewItem.Items>
                     <DockPanel>

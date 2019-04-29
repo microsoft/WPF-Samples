@@ -10,7 +10,7 @@
         Width="525"
         Icon="appicon.ico">
     <DockPanel Name="MyPanel">
-        <Menu DockPanel.Dock="Top" Height="26">
+        <Menu DockPanel.Dock="Top" Height="26" AutomationProperties.Name="File Options">
             <MenuItem Header="File">
                 <MenuItem Click="OnMenuExit" Header="Exit" />
             </MenuItem>
@@ -96,8 +96,8 @@
                 M+
             </Button>
             <TextBlock Name="BMemBox" Grid.Column="3" Grid.Row="1" Margin="10,17,10,17" Grid.ColumnSpan="2">Memory: [empty]</TextBlock>
-            <local:MyTextBox Grid.ColumnSpan="9" x:Name="DisplayBox" Height="30" Margin="5" />
-            <local:MyTextBox Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="5" x:Name="PaperBox" />
+            <local:MyTextBox Grid.ColumnSpan="9" x:Name="DisplayBox" Height="30" Margin="5" AutomationProperties.Name="Display Box" />
+            <local:MyTextBox Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="5" x:Name="PaperBox" AutomationProperties.Name="Paper Box" />
         </Grid>
     </DockPanel>
 </Window>

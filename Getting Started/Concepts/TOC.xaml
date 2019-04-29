@@ -37,7 +37,7 @@
             <Expander.Header>
                 <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Animation</TextBlock>
             </Expander.Header>
-            <ListBox >
+            <ListBox AutomationProperties.Name="Animation">
                 <ListBoxItem Style="{StaticResource ListItemStyler}">
                     <Hyperlink NavigateUri="samps\animateheight_samp.xaml" TargetName="frame2">Animate Height Sample</Hyperlink>
                 </ListBoxItem>
@@ -71,7 +71,7 @@
             <Expander.Header>
                 <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Controls</TextBlock>
             </Expander.Header>
-            <ListBox>
+            <ListBox AutomationProperties.Name="Controls">
                 <ListBoxItem Style="{StaticResource ListItemStyler}">
                     <Hyperlink NavigateUri="samps\button_samp.xaml" TargetName="frame2">Button Sample</Hyperlink>
                 </ListBoxItem>
@@ -115,7 +115,7 @@
             <Expander.Header>
                 <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Databinding</TextBlock>
             </Expander.Header>
-            <ListBox >
+            <ListBox AutomationProperties.Name="Data Binding">
                 <ListBoxItem Style="{StaticResource ListItemStyler}">
                     <Hyperlink NavigateUri="samps\datatrigger_samp.xaml" TargetName="frame2">Data Trigger Sample</Hyperlink>
                 </ListBoxItem>
@@ -150,7 +150,7 @@
             <Expander.Header>
                 <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Graphics</TextBlock>
             </Expander.Header>
-            <ListBox >
+            <ListBox AutomationProperties.Name="Graphics">
                 <ListBoxItem Style="{StaticResource ListItemStyler}">
                     <Hyperlink NavigateUri="samps\brushtypes_samp.xaml" TargetName="frame2">Brush Types Sample</Hyperlink>
                 </ListBoxItem>
@@ -176,7 +176,7 @@
             <Expander.Header>
                 <TextBlock Margin="10,0,0,0"  FontFamily="Calibri" FontWeight="bold" FontSize="10pt">Layout</TextBlock>
             </Expander.Header>
-            <ListBox >
+            <ListBox AutomationProperties.Name="Layout">
                 <ListBoxItem Style="{StaticResource ListItemStyler}">
                     <Hyperlink NavigateUri="samps\actualwidth_samp.xaml" TargetName="frame2">ActualWidth Property Sample</Hyperlink>
                 </ListBoxItem>

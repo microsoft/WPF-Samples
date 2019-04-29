@@ -63,6 +63,7 @@ namespace SelectionPatternTarget
             "Item6"});
             this.ListBox.Location = new System.Drawing.Point(36, 25);
             this.ListBox.Name = "ListBox";
+            this.ListBox.AccessibleName = "ListBox";
             this.ListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.ListBox.Size = new System.Drawing.Size(121, 95);
             this.ListBox.TabIndex = 0;
@@ -82,6 +83,7 @@ namespace SelectionPatternTarget
             listViewItem6});
             this.ListView.Location = new System.Drawing.Point(27, 28);
             this.ListView.Name = "ListView";
+            this.ListView.AccessibleName = "ListView";
             this.ListView.Size = new System.Drawing.Size(150, 86);
             this.ListView.TabIndex = 1;
             this.ListView.UseCompatibleStateImageBehavior = false;
@@ -98,6 +100,7 @@ namespace SelectionPatternTarget
             "Item6"});
             this.ComboBox.Location = new System.Drawing.Point(36, 28);
             this.ComboBox.Name = "ComboBox";
+            this.ComboBox.AccessibleName = "ComboBox";
             this.ComboBox.Size = new System.Drawing.Size(121, 21);
             this.ComboBox.TabIndex = 2;
             // 
@@ -114,6 +117,7 @@ namespace SelectionPatternTarget
             "CheckBoxItem6"});
             this.CheckedListBox.Location = new System.Drawing.Point(27, 26);
             this.CheckedListBox.Name = "CheckedListBox";
+            this.CheckedListBox.AccessibleName = "CheckedListBox";
             this.CheckedListBox.Size = new System.Drawing.Size(120, 94);
             this.CheckedListBox.TabIndex = 3;
             this.CheckedListBox.UseWaitCursor = true;

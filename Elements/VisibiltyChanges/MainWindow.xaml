@@ -18,7 +18,7 @@
                     <Button Name="btn3" Height="25" Click="ContentCol">Visibility="Collapsed"</Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center">
-                    <TextBox Name="tb1" Width="100" Height="50">A TextBox</TextBox>
+                    <TextBox Name="tb1" Width="100" Height="50" AutomationProperties.Name="Sample Text">A TextBox</TextBox>
                     <TextBlock Name="txt1" TextWrapping="Wrap" FontSize="14"/>
                 </StackPanel>
             </DockPanel>
