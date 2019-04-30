@@ -1,0 +1,32 @@
+﻿<Window x:Class="CustomComboBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomComboBox"
+        xmlns:converters="clr-namespace:CustomComboBox.Converters"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <converters:StringToStringAndColorConverter x:Key="stringConverter"/>
+    </Window.Resources>
+    <Grid>
+        <local:DropList Content="Watch Now" SubTitle="Movie: "
+                             FontWeight="Bold"
+                             HorizontalAlignment="Center" VerticalAlignment="Top"
+                             Style="{StaticResource DropListStyle}" 
+                             ItemsSource="{Binding Movies}" Command="{Binding OnWatchNow}" 
+                             DisplayMemberPath="Title"/>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" HorizontalAlignment="Left"
+                       Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text}" 
+                       Foreground="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=color}"/>
+            <TextBlock Text="{Binding SelectedMovie}" HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+</Window>
