@@ -56,9 +56,9 @@ namespace ImageView
         {
             var imageFiles = new ArrayList();
 
-            //Get directory path of myData (down two directory levels)
+            //Get directory path of myData
             var currDir = Directory.GetCurrentDirectory();
-            var temp = currDir + "\\..\\..\\myData";
+            var temp = currDir + "\\myData";
             var files = Directory.GetFiles(temp, "*.jpg");
 
             foreach (var image in files)
