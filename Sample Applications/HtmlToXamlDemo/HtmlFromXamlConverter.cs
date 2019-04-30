@@ -260,8 +260,7 @@ namespace HtmlToXamlDemo
 
             for (var i = 0; i < values.Length; i++)
             {
-                double value;
-                if (double.TryParse(values[i], out value))
+                if (double.TryParse(values[i], NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
                 {
                     values[i] = Math.Ceiling(value).ToString(CultureInfo.InvariantCulture);
                 }
