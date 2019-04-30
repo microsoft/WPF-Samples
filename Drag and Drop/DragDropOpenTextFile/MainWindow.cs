@@ -67,8 +67,8 @@ namespace DragDropOpenTextFile
             if (args.Data.GetDataPresent(DataFormats.FileDrop, true))
             {
                 var fileNames = args.Data.GetData(DataFormats.FileDrop, true) as string[];
-                // Check fo a single file or folder.
-                if (fileNames.Length == 1)
+                // Check for a single file or folder.
+                if (fileNames?.Length is 1)
                 {
                     // Check for a file (a directory will return false).
                     if (File.Exists(fileNames[0]))
