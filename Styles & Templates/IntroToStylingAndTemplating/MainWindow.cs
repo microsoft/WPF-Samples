@@ -21,7 +21,7 @@ namespace IntroToStylingAndTemplating
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
             _photos = (PhotoList) (Resources["MyPhotos"] as ObjectDataProvider).Data;
-            _photos.Path = "...\\...\\Images";
+            _photos.Path = "..\\..\\Images";
         }
     }
 }
