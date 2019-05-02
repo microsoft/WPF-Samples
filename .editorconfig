@@ -1,0 +1,9 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*.cs]
+end_of_line = crlf
+indent_style = space
+indent_size = 4
