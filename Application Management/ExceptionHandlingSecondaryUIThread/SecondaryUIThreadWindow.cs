@@ -18,17 +18,17 @@ namespace ExceptionHandlingSecondaryUIThread
             Title = $"Running on Secondary UI Thread {Thread.CurrentThread.ManagedThreadId}";
         }
 
-        private void raiseExceptionOnSecondaryUIThreadButton_Click(object sender, RoutedEventArgs e)
+	    private void raiseExceptionOnSecondaryUIThreadButton_Click(object sender, RoutedEventArgs e)
         {
             // Raise an exception on the secondary UI thread
             string msg = $"Exception raised on secondary UI thread {Dispatcher.Thread.ManagedThreadId}.";
             throw new Exception(msg);
         }
 
-        private void SecondaryUiThreadWindow_Closed(object sender, EventArgs e)
-        {
-            // End this thread of execution
-            Dispatcher.InvokeShutdown();
-        }
+	    private void SecondaryUIThreadWindow_OnClosed(object sender, EventArgs e)
+	    {
+		    // End this thread of execution
+		    Dispatcher.InvokeShutdown();
+	    }
     }
 }
