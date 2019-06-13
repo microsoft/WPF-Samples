@@ -1,6 +1,0 @@
-<Project>
-  <PropertyGroup>
-    <TargetFrameworks Condition="$(MSBuildProjectName.Contains('netcore'))">netcoreapp3.0</TargetFrameworks>
-    <TargetFrameworkVersion Condition="!$(MSBuildProjectName.Contains('netcore'))">v4.7.2</TargetFrameworkVersion>
-  </PropertyGroup>
-</Project>
