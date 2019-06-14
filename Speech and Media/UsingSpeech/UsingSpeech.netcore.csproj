@@ -2,8 +2,9 @@
   <PropertyGroup>
      <!-- Speech is not yet supported by .NET core 3.0 -->
     <TargetFrameworks>net472</TargetFrameworks>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWpf>true</UseWpf>
+    <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">   
     <Reference Include="System.Windows.Forms" />
