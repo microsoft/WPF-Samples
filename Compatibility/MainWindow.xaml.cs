@@ -22,7 +22,6 @@ namespace Wpf_AppCompat_Quirks
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -184,7 +183,7 @@ namespace Wpf_AppCompat_Quirks
         private void PopulateAppContextInformation()
         {
             string[] appContextClasses =
-                {
+            {
                 "BaseAppContextSwitches",
                 "CoreAppContextSwitches",
                 "FrameworkAppContextSwitches",
@@ -226,7 +225,7 @@ namespace Wpf_AppCompat_Quirks
             foreach (var compatPreferenceClass in compatibilityPreferenceClasses)
             {
                 var tPref = GetCompatPreferenceType(compatPreferenceClass);
-                var properties = tPref.GetProperties().ToList().Union(tPref.GetProperties(BindingFlags.Static | BindingFlags.NonPublic)).ToList() ;
+                var properties = tPref.GetProperties().Union(tPref.GetProperties(BindingFlags.Static | BindingFlags.NonPublic)).ToList() ;
 
                 foreach (var property in properties)
                 {

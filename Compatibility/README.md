@@ -15,7 +15,6 @@ These flags are no longer set in `App.Config` as was the practice in .NET Framew
 
 ### `CompatibilityPreferences`
 
-
 WPF also uses an `App.config` based quirking system that are implemented by the following types: 
 
 - `System.Windows.CoreCompatibilityPreferences`

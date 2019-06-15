@@ -34,10 +34,12 @@
     //  - High-DPI related accessibility fixes.
     "Switch.System.Windows.DoNotUsePresentationDpiCapabilityTier2OrGreater": false,
 
-    // Switch to enable WPF support for the WM_POINTER based stylus/touch stack
+    // This turns off the entirety of the WPF touch support, leaving WM_POINTER
+    // messages to be processed by DefWndProc(), or be handled by the application directly.
     "Switch.System.Windows.Input.Stylus.DisableStylusAndTouchSupport": false,
 
     // https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/mitigation-pointer-based-touch-and-stylus-support
+    // Switch to enable WPF support for the WM_POINTER based stylus/touch stack
     "Switch.System.Windows.Input.Stylus.EnablePointerSupport": false,
 
     // Switch to disable diagnostic features
@@ -47,6 +49,8 @@
     "Switch.System.Windows.Diagnostics.AllowChangesDuringVisualTreeChanged": false,
 
     // Switch to disable automatic touch keyboard invocation on focus of a control
+    // This flag only works on Windows 10 1607 (RS1; Anniversary Update), Windows 10 1703 (RS2; Creators Update), 
+    // and Windows 10 1709 (RS3; Fall Creators Update)
     "Switch.System.Windows.Input.Stylus.DisableImplicitTouchKeyboardInvocation": false,
 
     // Desktop/Interactive Window Stations:
@@ -94,6 +98,7 @@
     // FrameworkAppContextSwitches
 
     // Switch to enable non-adorner based rendering of TextSelection in TextBox and PasswordBox
+    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-TextBox-PasswordBox-text-selection-does-not-follow-system-colors.md
     "Switch.System.Windows.Controls.Text.UseAdornerForTextboxSelectionRendering": true,
 
     // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-layout-rounding-of-margins-has-changed.md
@@ -138,7 +143,7 @@
      //is in legacy scenarios prior to .NET 4.7.1.
     "Switch.MS.Internal.UseSha1AsDefaultHashAlgorithmForDigitalSignatures": false,
 
-    // Allowing developers to turn off the Invoke added by DDVSO:543980 as there are compat issues with
+    // Allowing developers to turn off the Invoke added by a previous code change, as there are compat issues with
     // timing during shutdown for some applications.
     "Switch.MS.Internal.DoNotInvokeInWeakEventTableShutdownListener": false,
 
@@ -149,17 +154,13 @@
     "Switch.MS.Internal.EnableWeakEventMemoryImprovements": false,
 
     // AccessibilitySwitches
-
+    // https://docs.microsoft.com/en-us/dotnet/framework/whats-new/whats-new-in-accessibility
     // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements.MD
+    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements-48.md
+
     "Switch.UseLegacyAccessibilityFeatures": false,
-
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements-48.md
     "Switch.UseLegacyAccessibilityFeatures.2": false,
-
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements-48.md
     "Switch.UseLegacyAccessibilityFeatures.3": false,
-
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements-48.md
     "Switch.UseLegacyToolTipDisplay": false,
 
     // Guards the fix for the automation tree under a plain ItemsControl
