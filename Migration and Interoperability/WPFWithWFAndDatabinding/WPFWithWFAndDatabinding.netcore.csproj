@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFrameworks>net472</TargetFrameworks>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWpf>true</UseWpf>
+    <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">   
     <Reference Include="System.Windows.Forms" />
