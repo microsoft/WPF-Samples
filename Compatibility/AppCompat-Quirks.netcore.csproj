@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AppCompat_Quirks</RootNamespace>
     <UseWPF>true</UseWPF>
-    <ApplicationManifest>app1.manifest</ApplicationManifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
 </Project>
