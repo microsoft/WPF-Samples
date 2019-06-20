@@ -1,0 +1,27 @@
+﻿<!--
+Licensed to the .NET Foundation under one or more agreements.
+The .NET Foundation licenses this file to you under the MIT license.
+See the LICENSE file in the project root for more information.
+-->
+<Window x:Class="Wpf_AppCompat_Quirks.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_AppCompat_Quirks"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Application Compatibility Switches HOWTO Sample" Height="800" Width="900">
+    <ScrollViewer>
+        <StackPanel>
+            <Label>
+                <TextBlock TextWrapping="Wrap">
+                    See <Run FontWeight="Bold">runtimeconfig.template.json</Run> and <Run FontWeight="Bold">App.config</Run> for a list of supported application compatibility switches, alongwith the respective default values on .NET Core.
+                </TextBlock>
+            </Label>
+            <DataGrid ItemsSource="{Binding AppContextSwitches}" />
+            <DataGrid ItemsSource="{Binding CompatibilityPreferences}" />
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>
