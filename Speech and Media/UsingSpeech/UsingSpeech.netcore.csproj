@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
      <!-- Speech is not yet supported by .NET core 3.0 -->
-    <TargetFrameworks>net472</TargetFrameworks>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWpf>true</UseWpf>
     <EnableDefaultItems>false</EnableDefaultItems>
