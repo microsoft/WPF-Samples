@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
     <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
   <PropertyGroup>
