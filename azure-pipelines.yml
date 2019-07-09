@@ -15,14 +15,20 @@ variables:
 
 steps:
 - task: DotNetCoreInstaller@0
+  displayName: "Install .NET Core SDK"
   inputs:
     version: '3.0.100-preview6-012264'
 
-- task: NuGetCommand@2
+- task: VSBuild@1
+  displayName: "Restore NuGet Packages"
   inputs:
-    restoreSolution: '$(solution)'
+    solution: '$(solution)'
+    msbuildArgs: '/p:SkipInvalidConfigurations=true /t:Restore'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: VSBuild@1
+  displayName: "Build Solutions"
   inputs:
     solution: '$(solution)'
     msbuildArgs: '/p:SkipInvalidConfigurations=true'
