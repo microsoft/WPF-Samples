@@ -34,9 +34,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="hwndInWPF">
-      <HintPath>..\hwndinwpf\Debug\hwndInWPF.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\hwndinwpf\hwndInWPF.vcxproj" />
+    
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
