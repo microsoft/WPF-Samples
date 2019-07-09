@@ -78,6 +78,7 @@ namespace DrawingVisual
             // Retrieve the DrawingContext from the DrawingVisual.
             DrawingContext drawingContext = drawingVisual.RenderOpen();
 
+#pragma warning disable CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
             // Draw a formatted text string into the DrawingContext.
             drawingContext.DrawText(
                 new FormattedText("Click Me!",
@@ -86,6 +87,7 @@ namespace DrawingVisual
                     new Typeface("Verdana"),
                     36, Brushes.Black),
                 new Point(200, 116));
+#pragma warning enable CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
 
             // Close the DrawingContext to persist changes to the DrawingVisual.
             drawingContext.Close();

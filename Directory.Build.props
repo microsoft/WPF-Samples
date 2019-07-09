@@ -1,5 +1,5 @@
 <Project>
-   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">   
+   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) And '$(_MicrosoftNetSdkWindowsDesktop)' == 'true'">   
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="PresentationCore" />
