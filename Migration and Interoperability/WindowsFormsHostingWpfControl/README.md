@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# Hosting a WPF Composite Control in Windows Forms sample
 
 This sample shows how to use the %objective
 
