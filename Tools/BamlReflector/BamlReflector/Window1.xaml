@@ -1,0 +1,130 @@
+﻿<!--
+Licensed to the .NET Foundation under one or more agreements.
+The .NET Foundation licenses this file to you under the MIT license.
+See the LICENSE file in the project root for more information.
+-->
+<Window x:Class="BamlReflector.Window1" x:Name="window"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:l="clr-namespace:BamlReflector"
+    xmlns:bamltools="clr-namespace:BamlTools;assembly=BamlTools"
+    Title="BamlReflector" Height="600" Width="900">
+
+    <Window.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type l:ReferenceAssembly_VM}"
+                                                  ItemsSource="{Binding ApplicationResources}">
+            <TextBlock FontStyle="Italic" Text="{Binding Name}" />
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type bamltools:ApplicationResource}"
+                                                  ItemsSource="{Binding BamlResources}">
+            <TextBlock FontWeight="Bold" Text="{Binding ResourceName}" />
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type bamltools:BamlResource}" >
+            <TextBlock Text="{Binding BamlName}" />
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />  <!--Menu Bar-->
+            <RowDefinition Height="*" />     <!--Content-->
+            <RowDefinition Height="Auto" />  <!--Assembly FullName Status Bar-->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>  <!--Resources TreeView-->
+            <ColumnDefinition Width="*"/>    <!--Main Content-->
+        </Grid.ColumnDefinitions>
+        
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Click="OnOpen_Executed"/>
+                <MenuItem Header="E_xit" Click="OnExit_Executed" />
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="Show Addresses" IsCheckable="True"
+                          IsChecked="{Binding Path=ShowAddresses}" />
+                <MenuItem Header="Show Record Numbers" IsCheckable="True"
+                          IsChecked="{Binding Path=ShowRecordNumbers}" />
+                <MenuItem Header="Show Debug Record" IsCheckable="True"
+                          IsChecked="{Binding Path=ShowDebugRecords}" />
+                <MenuItem Header="Show Table Records" IsCheckable="True"
+                          IsChecked="{Binding Path=ShowTableRecords}" />
+            </MenuItem>
+        </Menu>
+        
+        <!--Status Bar: Assembly FullName-->
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding LocalAssembly.FullName}" />
+
+        <!--BAML/XAML Resources-->
+        <TreeView Grid.Row="1" DockPanel.Dock="Bottom" x:Name="treeview" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            SelectedItemChanged="Treeview_SelectedItemChanged">
+            <TreeViewItem ItemsSource="{Binding LoadedReferenceAssemblies}" Header="Reference Assemblies"/>
+        </TreeView>
+        
+        <GridSplitter Grid.Column="0" Grid.Row="1" ResizeDirection="Columns" Width="5"/>
+
+        <!--Main Content-->
+        <TabControl Grid.Column="1" Grid.Row="1" >
+            <TabItem Header="Hex Dump">
+                <TextBox FontFamily="Consolas" IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             Text="{Binding Path=HexDump, Mode=OneWay}" />
+            </TabItem>
+            <TabItem Header="BAML(Hex)">
+                <TextBox FontFamily="Consolas" IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             Text="{Binding Path=BamlDisassembly_Old, Mode=OneWay}" />
+            </TabItem>
+            <TabItem Header="BAML(Text)">
+                <TextBox FontFamily="Consolas" IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             Text="{Binding Path=BamlDisassembly_New, Mode=OneWay }" />
+            </TabItem>
+            <TabItem Header="BAML Tables">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <DockPanel>
+                        <DockPanel>
+                            <Label DockPanel.Dock="Top">Type Info</Label>
+                            <ListView FontFamily="Consolas" ItemsSource="{Binding Path=TypeInfoTable}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="30" Header="Id"  DisplayMemberBinding="{Binding TypeId}" />
+                                        <GridViewColumn Width="auto" Header="Value" DisplayMemberBinding="{Binding FullName}" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label DockPanel.Dock="Top">Attribute Info</Label>
+                            <ListView FontFamily="Consolas" ItemsSource="{Binding Path=AttributeInfoTable}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="30" Header="Id"  DisplayMemberBinding="{Binding AttributeId}"/>
+                                        <GridViewColumn Width="auto" Header="Value" DisplayMemberBinding="{Binding Name}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </DockPanel>
+                    </DockPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="XAML Node Stream">
+                <TextBox FontFamily="Consolas" IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             Text="{Binding Path=XamlNodeStream, Mode=OneWay }" />
+            </TabItem>
+            <TabItem Header="XAML">
+                <TextBox FontFamily="Consolas" IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             Text="{Binding Path=XamlText, Mode=OneWay }" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
