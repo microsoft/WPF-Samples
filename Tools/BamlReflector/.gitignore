@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/*
+/BamlTools/bin/*
+/BamlTools/obj/*
+/BamlReflector/obj/*
+/BamlReflector/bin/*
