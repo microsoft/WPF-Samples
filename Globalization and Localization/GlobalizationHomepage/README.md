@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# Globalization Homepage sample
 
 This sample shows how to use the %objective
 
