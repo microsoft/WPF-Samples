@@ -326,13 +326,14 @@ namespace EditBoxControlLibrary
         private EditBoxAdorner _adorner;
         //A TextBox in the visual tree
         private FrameworkElement _textBox;
-        //Specifies whether an EditBox can switch to editing mode. 
-        //Set to true if the ListViewItem that contains the EditBox is 
-        //selected, when the mouse pointer moves over the EditBox
+        //Specifies whether an EditBox can switch to editing mode.
+        //Set to true if the ListViewItem that contains the EditBox is
+        //selected, and the mouse pointer moves over the EditBox.
         private bool _canBeEdit;
         //Specifies whether an EditBox can switch to editing mode.
-        //Set to true when the ListViewItem that contains the EditBox is 
-        //selected when the mouse pointer moves over the EditBox.
+        //Set to true if the ListViewItem that contains the EditBox is
+        //selected, the mouse pointer is over the EditBox, and MouseUp
+        //event occurs for the left mouse button.
         private bool _isMouseWithinScope;
         //The ListView control that contains the EditBox
         private ItemsControl _itemsControl;
