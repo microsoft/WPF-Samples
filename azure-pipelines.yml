@@ -29,7 +29,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArgs: /bl:$(Build.ArtifactStagingDirectory)\msbuild.$(solution).binlog
+    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\msbuild.$(solution).binlog
     createLogFile: true
 
 - task: PublishBuildArtifacts@1
