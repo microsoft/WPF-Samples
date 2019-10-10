@@ -66,6 +66,7 @@ steps:
     command: 'build'
     projects: '$(netcoresolutionfordotnetbuild)'
     arguments: '/bl:$(Build.ArtifactsStagingDirectory)\netcore.dotnet.binlog'
+  continueOnError: true
 
 - task: PublishBuildArtifacts@1
   name: PublishDotNetBuildNetCoreLogs
