@@ -29,13 +29,13 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArgs: /bl:'$(Build.ArtifactStagingDirectory)\msbuild.binlog'
+    msbuildArgs: /bl:'$(Build.SourcesDirectory)\msbuild.binlog'
     createLogFile: true
 
 - task: PublishBuildArtifacts@1
   name: PublishLogs
   displayName: 'Publish Build Logs'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)\msbuild.binlog'
+    PathtoPublish: '$(Build.SourcesDirectory)\msbuild.binlog'
     ArtifactName: 'msbuild.binlog'
     publishLocation: 'Container'
