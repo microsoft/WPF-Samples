@@ -10,7 +10,6 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '*.sln'
   netfxsolution: 'WPFSamples.sln'
   netcoresolution: 'WPFSamples.netcore.sln'
   buildPlatform: 'Any CPU'
@@ -21,27 +20,9 @@ steps:
   displayName: 'Download and Cache Nuget tool'
 
 - task: NuGetCommand@2
-  displayName: 'Restore Solutions'
+  displayName: 'Restore .NET Core Samples'
   inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  displayName: 'Build .NET Framework Samples'
-  inputs:
-    vsVersion: latest
-    solution: '$(netfxsolution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netfx.binlog
-  continueOnError: true
-
-- task: PublishBuildArtifacts@1
-  name: PublishNetFxLogs
-  displayName: 'Publish .NET Framework Build Logs'
-  inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\netfx.binlog
-    ArtifactName: 'Build Logs'
-    publishLocation: 'Container'
+    restoreSolution: '$(netcoresolution)'
 
 - task: VSBuild@1
   displayName: 'Build .NET Core Samples'
@@ -58,5 +39,37 @@ steps:
   displayName: 'Publish .NET Core Build Logs'
   inputs:
     PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.binlog
+    ArtifactName: 'Build Logs'
+    publishLocation: 'Container'
+
+- task: PowerShell@2
+  displayName: 'Clean Files From Previous Build'
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      
+      git clean -xdf
+
+- task: NuGetCommand@2
+  displayName: 'Restore .NET Framework Samples'
+  inputs:
+    restoreSolution: '$(netfxsolution)'
+
+- task: VSBuild@1
+  displayName: 'Build .NET Framework Samples'
+  inputs:
+    vsVersion: latest
+    solution: '$(netfxsolution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netfx.binlog
+  continueOnError: true
+
+- task: PublishBuildArtifacts@1
+  name: PublishNetFxLogs
+  displayName: 'Publish .NET Framework Build Logs'
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)\netfx.binlog
     ArtifactName: 'Build Logs'
     publishLocation: 'Container'
