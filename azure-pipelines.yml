@@ -12,6 +12,7 @@ pool:
 variables:
   netfxsolution: 'WPFSamples.sln'
   netcoresolution: 'WPFSamples.netcore.sln'
+  netcoresolutionfordotnetbuild: 'WPFSamples.netcore.dotnetbuild.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -55,7 +56,7 @@ steps:
   displayName: 'Restore .NET Core Samples using dotnet.exe'
   inputs:
     command: 'restore'
-    projects: '$(netcoresolution)'
+    projects: '$(netcoresolutionfordotnetbuild)'
     feedsToUse: 'config'
     nugetConfigPath: 'NuGet.config'
 
@@ -63,7 +64,7 @@ steps:
   displayName: 'Build .NET Core Samples using dotnet.exe'
   inputs:
     command: 'build'
-    projects: '$(netcoresolution)'
+    projects: '$(netcoresolutionfordotnetbuild)'
     arguments: '/bl:$(Build.ArtifactsStagingDirectory)\netcore.dotnet.binlog'
 
 - task: PublishBuildArtifacts@1
