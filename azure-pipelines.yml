@@ -60,6 +60,7 @@ steps:
     nugetConfigPath: 'NuGet.config'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Build .NET Core Samples using dotnet.exe'
   inputs:
     command: 'build'
     projects: '''$(netcoresolution)'
@@ -69,7 +70,7 @@ steps:
   name: PublishDotNetBuildNetCoreLogs
   displayName: 'Publish .NET Core dotnet.exe Build Logs'
   inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.vsbuild.binlog
+    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.dotnet.binlog
     ArtifactName: 'Build Logs'
     publishLocation: 'Container'
 
