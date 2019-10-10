@@ -63,7 +63,7 @@ steps:
   displayName: 'Build .NET Core Samples using dotnet.exe'
   inputs:
     command: 'build'
-    projects: '''$(netcoresolution)'
+    projects: '$(netcoresolution)'
     arguments: '/bl:$(Build.ArtifactsStagingDirectory)\netcore.dotnet.binlog'
 
 - task: PublishBuildArtifacts@1
