@@ -35,6 +35,14 @@ steps:
     msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netfx.binlog
   continueOnError: true
 
+- task: PublishBuildArtifacts@1
+  name: PublishLogs
+  displayName: 'Publish .NET Framework Build Logs'
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)\netfx.binlog
+    ArtifactName: netfx.binlog
+    publishLocation: 'Container'
+
 - task: VSBuild@1
   displayName: 'Build .NET Core Samples'
   inputs:
@@ -47,8 +55,8 @@ steps:
 
 - task: PublishBuildArtifacts@1
   name: PublishLogs
-  displayName: 'Publish Build Logs'
+  displayName: 'Publish .NET Core Build Logs'
   inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\*.binlog
-    ArtifactName: msbuild.binlog
+    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.binlog
+    ArtifactName: netcore.binlog
     publishLocation: 'Container'
