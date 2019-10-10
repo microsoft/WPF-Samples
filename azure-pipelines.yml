@@ -11,11 +11,14 @@ pool:
 
 variables:
   solution: '*.sln'
+  netfxsolution: 'WPFSamples.sln'
+  netcoresolution: 'WPFSamples.netcore.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
+  displayName: 'Download and Cache Nuget tool'
 
 - task: NuGetCommand@2
   displayName: 'Restore Solutions'
@@ -23,14 +26,23 @@ steps:
     restoreSolution: '$(solution)'
 
 - task: VSBuild@1
-  displayName: 'Build Solutions'
+  displayName: 'Build .NET Framework Samples'
   inputs:
     vsVersion: latest
-    solution: '$(solution)'
+    solution: '$(netfxsolution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\msbuild.$(solution).binlog
-    createLogFile: true
+    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netfx.binlog
+  continueOnError: true
+
+- task: VSBuild@1
+  displayName: 'Build .NET Core Samples'
+  inputs:
+    vsVersion: latest
+    solution: '$(netcoresolution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netcore.binlog
   continueOnError: true
 
 - task: PublishBuildArtifacts@1
