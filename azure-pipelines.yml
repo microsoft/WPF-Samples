@@ -25,20 +25,20 @@ steps:
     restoreSolution: '$(netcoresolution)'
 
 - task: VSBuild@1
-  displayName: 'Build .NET Core Samples'
+  displayName: 'Build .NET Core Samples using VSBuild'
   inputs:
     vsVersion: latest
     solution: '$(netcoresolution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netcore.binlog
+    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netcore.vsbuild.binlog
   continueOnError: true
 
 - task: PublishBuildArtifacts@1
-  name: PublishNetCoreLogs
-  displayName: 'Publish .NET Core Build Logs'
+  name: PublishVsBuildNetCoreLogs
+  displayName: 'Publish .NET Core VSBuild Build Logs'
   inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.binlog
+    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.vsbuild.binlog
     ArtifactName: 'Build Logs'
     publishLocation: 'Container'
 
@@ -51,6 +51,37 @@ steps:
       
       git clean -xdf
 
+- task: DotNetCoreCLI@2
+  displayName: 'Restore .NET Core Samples using dotnet.exe'
+  inputs:
+    command: 'restore'
+    projects: '$(netcoresolution)'
+    feedsToUse: 'config'
+    nugetConfigPath: 'NuGet.config'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '''$(netcoresolution)'
+    arguments: '/bl:$(Build.ArtifactsStagingDirectory)\netcore.dotnet.binlog'
+
+- task: PublishBuildArtifacts@1
+  name: PublishDotNetBuildNetCoreLogs
+  displayName: 'Publish .NET Core dotnet.exe Build Logs'
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.vsbuild.binlog
+    ArtifactName: 'Build Logs'
+    publishLocation: 'Container'
+
+- task: PowerShell@2
+  displayName: 'Clean Files From Previous Build'
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      
+      git clean -xdf
+      
 - task: NuGetCommand@2
   displayName: 'Restore .NET Framework Samples'
   inputs:
