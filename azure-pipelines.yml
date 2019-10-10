@@ -31,6 +31,7 @@ steps:
     configuration: '$(buildConfiguration)'
     msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\msbuild.$(solution).binlog
     createLogFile: true
+  continueOnError: true
 
 - task: PublishBuildArtifacts@1
   name: PublishLogs
