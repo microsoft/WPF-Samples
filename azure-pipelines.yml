@@ -40,7 +40,7 @@ steps:
   displayName: 'Publish .NET Framework Build Logs'
   inputs:
     PathtoPublish: $(Build.ArtifactStagingDirectory)\netfx.binlog
-    ArtifactName: netfx.binlog
+    ArtifactName: 'Build Logs'
     publishLocation: 'Container'
 
 - task: VSBuild@1
@@ -58,5 +58,5 @@ steps:
   displayName: 'Publish .NET Core Build Logs'
   inputs:
     PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.binlog
-    ArtifactName: netcore.binlog
+    ArtifactName: 'Build Logs'
     publishLocation: 'Container'
