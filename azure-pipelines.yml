@@ -36,7 +36,7 @@ steps:
   continueOnError: true
 
 - task: PublishBuildArtifacts@1
-  name: PublishLogs
+  name: PublishNetFxLogs
   displayName: 'Publish .NET Framework Build Logs'
   inputs:
     PathtoPublish: $(Build.ArtifactStagingDirectory)\netfx.binlog
@@ -54,7 +54,7 @@ steps:
   continueOnError: true
 
 - task: PublishBuildArtifacts@1
-  name: PublishLogs
+  name: PublishNetCoreLogs
   displayName: 'Publish .NET Core Build Logs'
   inputs:
     PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.binlog
