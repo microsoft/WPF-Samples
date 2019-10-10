@@ -23,6 +23,9 @@ steps:
 
 - task: VSBuild@1
   inputs:
+    vsVersion: latest
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    msbuildArgs: /bl
+    createLogFile: true
