@@ -18,14 +18,24 @@ steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
+  displayName: 'Restore Solutions'
   inputs:
     restoreSolution: '$(solution)'
 
 - task: VSBuild@1
+  displayName: 'Build Solutions'
   inputs:
     vsVersion: latest
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArgs: /bl
+    msbuildArgs: /bl:'$(Build.ArtifactStagingDirectory)\msbuild.binlog'
     createLogFile: true
+
+- task: PublishBuildArtifacts@1
+  name: PublishLogs
+  displayName: 'Publish Build Logs'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\msbuild.binlog'
+    ArtifactName: 'msbuild.binlog'
+    publishLocation: 'Container'
