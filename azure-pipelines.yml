@@ -64,6 +64,7 @@ stages:
         restoreSolution: '$(msbuildonlysolution)'
 
      - task: VSBuild@1
+       continueOnError: true
        displayName: 'Build .NET Core Samples using VSBuild'
        inputs:
         vsVersion: latest
@@ -71,9 +72,9 @@ stages:
         platform: '$(_Platform)'
         configuration: '$(_Configuration)'
         msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.binlog
-      continueOnError: true
 
      - task: VSBuild@1
+       continueOnError: true
        displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
        inputs:
         vsVersion: latest
@@ -81,15 +82,14 @@ stages:
         platform: '$(_Platform)'
         configuration: '$(_Configuration)'
         msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.binlog
-      continueOnError: true
 
      - task: PublishBuildArtifacts@1
+       continueOnError: true
        displayName: 'Publish .NET Core VSBuild Build Logs'
        inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)\vsbuild'
+        PathtoPublish: $(Build.ArtifactStagingDirectory)\vsbuild
         ArtifactName: 'Build Logs'
         publishLocation: 'Container'
-      continueOnError: true
 
      - task: PowerShell@2
        displayName: 'Clean Files From Previous Build'
@@ -101,26 +101,25 @@ stages:
           git clean -xdf
 
      - task: DotNetCoreCLI@2
+       continueOnError: true
        displayName: 'Restore .NET Core Samples using dotnet.exe'
        inputs:
         command: 'restore'
         projects: '$(solution)'
         feedsToUse: 'config'
         nugetConfigPath: 'NuGet.config'
-       continueOnError: true
         
      - task: DotNetCoreCLI@2
+       continueOnError: true
        displayName: 'Build .NET Core Samples using dotnet.exe'
        inputs:
         command: 'build'
         projects: '$(solution)'
-        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog' /p:Configuration=$_Configuration /p:Platform=$(_Platform)
-       continueOnError: true
+        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog /p:Configuration=$_Configuration /p:Platform=$(_Platform)'
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
        inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)\netcore'
+        PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore
         ArtifactName: 'Build Logs'
         publishLocation: 'Container'
-      continueOnError: true
