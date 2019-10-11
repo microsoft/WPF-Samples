@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.28927.53
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migration and Interoperability", "Migration and Interoperability", "{2071EB17-1D03-4B61-B267-2B0EB14B1258}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostingWfInWPF.netcore", "Migration and Interoperability\HostingWfInWPF\HostingWfInWPF.netcore.csproj", "{75E45E90-2C6F-4512-A551-C255303C436F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostingWfInWPF", "Migration and Interoperability\HostingWfInWPF\HostingWfInWPF.csproj", "{75E45E90-2C6F-4512-A551-C255303C436F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostingWfWithVisualStyles.netcore", "Migration and Interoperability\HostingWfWithVisualStyles\HostingWfWithVisualStyles.netcore.csproj", "{6E8CC9C4-566C-43F1-8353-80D1FBFB483C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostingWfWithVisualStyles", "Migration and Interoperability\HostingWfWithVisualStyles\HostingWfWithVisualStyles.csproj", "{6E8CC9C4-566C-43F1-8353-80D1FBFB483C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyMappingWithElementHost.netcore", "Migration and Interoperability\PropertyMappingWithElementHost\PropertyMappingWithElementHost.netcore.csproj", "{B105D741-5DA2-4857-B603-932EC96A9A94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyMappingWithElementHost", "Migration and Interoperability\PropertyMappingWithElementHost\PropertyMappingWithElementHost.csproj", "{B105D741-5DA2-4857-B603-932EC96A9A94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HWNDInWPF", "HWNDInWPF", "{E71EFD27-A815-4083-9325-7704A5108312}"
 EndProject
@@ -17,15 +17,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hwndInWPF", "Migration and 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win32Clock", "Win32Clock", "{52A1BF80-DD3F-4F1A-A21A-B06DE8970AD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFClock.netcore", "Migration and Interoperability\Win32Clock\WPFCLOCK\WPFClock.netcore.csproj", "{7289753F-C0EF-4C91-82DA-D53F75222152}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFClock", "Migration and Interoperability\Win32Clock\WPFCLOCK\WPFClock.csproj", "{7289753F-C0EF-4C91-82DA-D53F75222152}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFControls.netcore", "Migration and Interoperability\WindowsFormsHostingWpfControl\WPFControls\WPFControls.netcore.csproj", "{27E26A5C-1333-44FF-81DC-DD4DB0BFC313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFControls", "Migration and Interoperability\WindowsFormsHostingWpfControl\WPFControls\WPFControls.csproj", "{27E26A5C-1333-44FF-81DC-DD4DB0BFC313}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32HostingWPFPage", "Migration and Interoperability\Win32HostingWPFPage\cpp\win32hostingwpfpage.vcxproj", "{8E4A7F4E-64A9-4313-AAD8-C0E888223A32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WpfHostingWindowsFormsControl", "WpfHostingWindowsFormsControl", "{CCF7EF7F-EC50-40F3-9D03-16C3AB7757B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFHostingWin32Control.netcore", "Migration and Interoperability\WPFHostingWin32Control\WPFHostingWin32Control.netcore.csproj", "{73B41952-C297-4064-AAF9-99E564B13EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFHostingWin32Control", "Migration and Interoperability\WPFHostingWin32Control\WPFHostingWin32Control.csproj", "{73B41952-C297-4064-AAF9-99E564B13EAF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsFormsHostingWPFControl", "WindowsFormsHostingWPFControl", "{A02AFB38-A24D-48D7-BBE5-A4124EA098EC}"
 EndProject
