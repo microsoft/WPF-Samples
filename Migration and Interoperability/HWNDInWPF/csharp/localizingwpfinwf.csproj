@@ -10,7 +10,7 @@
     <RootNamespace>LocalizingWpfInWf</RootNamespace>
     <AssemblyName>LocalizingWpfInWf</AssemblyName>
     <UICulture>en-US</UICulture>
-    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.1</TargetFrameworkVersion>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
