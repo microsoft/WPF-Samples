@@ -71,7 +71,7 @@ stages:
         solution: '$(solution)'
         platform: '$(_Platform)'
         configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:'$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).binlog'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).binlog"
 
      - task: VSBuild@1
        continueOnError: true
@@ -81,7 +81,7 @@ stages:
         solution: '$(msbuildonlysolution)'
         platform: '$(_Platform)'
         configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:'$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).binlog'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).binlog"
 
      - task: PublishBuildArtifacts@1
        continueOnError: true
@@ -117,7 +117,7 @@ stages:
         command: 'build'
         projects: '$(solution)'
         configuration: $(_Configuration)
-        arguments: '/bl:''$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).binlog'' /p:Platform=''$(_Platform)'''
+        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).binlog" /p:Platform="$(_Platform)"'
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
