@@ -105,6 +105,7 @@ stages:
        displayName: 'Restore .NET Core Samples using dotnet.exe'
        inputs:
         command: 'restore'
+        configuration: $(_Configuration)
         projects: '$(solution)'
         feedsToUse: 'config'
         nugetConfigPath: 'NuGet.config'
@@ -115,7 +116,8 @@ stages:
        inputs:
         command: 'build'
         projects: '$(solution)'
-        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog /p:Configuration=$(_Configuration) /p:Platform=$(_Platform)'
+        configuration: $(_Configuration)
+        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog /p:Platform=''$(_Platform)'''
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
