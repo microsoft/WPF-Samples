@@ -6,9 +6,9 @@
 variables:
 
   - name: solution
-    value: 'WPFSamples.netcore.sln'
+    value: 'WPFSamples.sln'
   - name: msbuildonlysolution
-    value: 'WPFSamples.netcore.msbuild.sln'
+    value: 'WPFSamples.msbuild.sln'
 
 trigger:
 - master
