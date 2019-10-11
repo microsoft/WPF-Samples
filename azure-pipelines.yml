@@ -23,7 +23,7 @@ stages:
   jobs:
   - job: Windows
     pool:
-     name: 'windows-latest'
+     vmImage: 'windows-latest'
     variables:
      - name: _Configuration
        value: Debug
