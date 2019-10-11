@@ -3,111 +3,124 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
+variables:
+
+  - name: solution
+    value: 'WPFSamples.netcore.sln'
+  - name: msbuildonlysolution
+    value: 'WPFSamples.netcore.msbuild.sln'
+
 trigger:
 - master
+- release/*
 
 pool:
   vmImage: 'windows-latest'
 
-variables:
-  netfxsolution: 'WPFSamples.sln'
-  netcoresolution: 'WPFSamples.netcore.sln'
-  netcoresolutionfordotnetbuild: 'WPFSamples.netcore.dotnetbuild.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Windows
+    pool:
+     name: 'windows-latest'
+    variables:
+     - name: _Configuration
+       value: Debug
+     - name: _Platform
+       value: x86
+    strategy:
+     matrix:
+      Build_Debug_AnyCPU:
+        _Configuration: Debug
+        _Platform: "Any CPU"
+      Build_Release_AnyCPU:
+        _Configuration: Release
+        _Platform: "Any CPU"
+      Build_Debug_x86:
+        _Configuration: Debug
+        _Platform: x86
+      Build_Release_x86:
+        _Configuration: Release
+        _Platform: x86
+      Build_Debug_x64:
+        _Configuration: Debug
+        _Platform: x64
+      Build_Release_x64:
+        _Configuration: Release
+        _Platform: x64
+    steps:
+     - task: NuGetToolInstaller@1
+       displayName: 'Download and Cache Nuget tool'
 
-steps:
-- task: NuGetToolInstaller@1
-  displayName: 'Download and Cache Nuget tool'
+     - task: NuGetCommand@2
+       displayName: 'Restore .NET Core Samples Using NuGet'
+       inputs:
+        restoreSolution: '$(solution)'
+     
+     - task: NuGetCommand@2
+       displayName: 'Restore MSBuild-only .NET Core Samples Using NuGet'
+       inputs:
+        restoreSolution: '$(msbuildonlysolution)'
 
-- task: NuGetCommand@2
-  displayName: 'Restore .NET Core Samples'
-  inputs:
-    restoreSolution: '$(netcoresolution)'
+     - task: VSBuild@1
+       displayName: 'Build .NET Core Samples using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(solution)'
+        platform: '$(_Platform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.binlog
+      continueOnError: true
 
-- task: VSBuild@1
-  displayName: 'Build .NET Core Samples using VSBuild'
-  inputs:
-    vsVersion: latest
-    solution: '$(netcoresolution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netcore.vsbuild.binlog
-  continueOnError: true
+     - task: VSBuild@1
+       displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(msbuildonlysolution)'
+        platform: '$(_Platform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.binlog
+      continueOnError: true
 
-- task: PublishBuildArtifacts@1
-  name: PublishVsBuildNetCoreLogs
-  displayName: 'Publish .NET Core VSBuild Build Logs'
-  inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.vsbuild.binlog
-    ArtifactName: 'Build Logs'
-    publishLocation: 'Container'
-  continueOnError: true
+     - task: PublishBuildArtifacts@1
+       displayName: 'Publish .NET Core VSBuild Build Logs'
+       inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)\vsbuild'
+        ArtifactName: 'Build Logs'
+        publishLocation: 'Container'
+      continueOnError: true
 
-- task: PowerShell@2
-  displayName: 'Clean Files From Previous Build'
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
+     - task: PowerShell@2
+       displayName: 'Clean Files From Previous Build'
+       inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
       
-      git clean -xdf
+          git clean -xdf
 
-- task: DotNetCoreCLI@2
-  displayName: 'Restore .NET Core Samples using dotnet.exe'
-  inputs:
-    command: 'restore'
-    projects: '$(netcoresolutionfordotnetbuild)'
-    feedsToUse: 'config'
-    nugetConfigPath: 'NuGet.config'
-  continueOnError: true
+     - task: DotNetCoreCLI@2
+       displayName: 'Restore .NET Core Samples using dotnet.exe'
+       inputs:
+        command: 'restore'
+        projects: '$(solution)'
+        feedsToUse: 'config'
+        nugetConfigPath: 'NuGet.config'
+       continueOnError: true
+        
+     - task: DotNetCoreCLI@2
+       displayName: 'Build .NET Core Samples using dotnet.exe'
+       inputs:
+        command: 'build'
+        projects: '$(solution)'
+        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog' /p:Configuration=$_Configuration /p:Platform=$(_Platform)
+       continueOnError: true
 
-- task: DotNetCoreCLI@2
-  displayName: 'Build .NET Core Samples using dotnet.exe'
-  inputs:
-    command: 'build'
-    projects: '$(netcoresolutionfordotnetbuild)'
-    arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore.dotnet.binlog'
-  continueOnError: true
-
-- task: PublishBuildArtifacts@1
-  name: PublishDotNetBuildNetCoreLogs
-  displayName: 'Publish .NET Core dotnet.exe Build Logs'
-  inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore.dotnet.binlog
-    ArtifactName: 'Build Logs'
-    publishLocation: 'Container'
-  continueOnError: true
-
-- task: PowerShell@2
-  displayName: 'Clean Files From Previous Build'
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-      
-      git clean -xdf
-      
-- task: NuGetCommand@2
-  displayName: 'Restore .NET Framework Samples'
-  inputs:
-    restoreSolution: '$(netfxsolution)'
-  continueOnError: true
-
-- task: VSBuild@1
-  displayName: 'Build .NET Framework Samples'
-  inputs:
-    vsVersion: latest
-    solution: '$(netfxsolution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    msbuildArgs: /m /bl:$(Build.ArtifactStagingDirectory)\netfx.binlog
-  continueOnError: true
-
-- task: PublishBuildArtifacts@1
-  name: PublishNetFxLogs
-  displayName: 'Publish .NET Framework Build Logs'
-  inputs:
-    PathtoPublish: $(Build.ArtifactStagingDirectory)\netfx.binlog
-    ArtifactName: 'Build Logs'
-    publishLocation: 'Container'
+     - task: PublishBuildArtifacts@1
+       displayName: 'Publish .NET Core Dotnet.exe Build Logs'
+       inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)\netcore'
+        ArtifactName: 'Build Logs'
+        publishLocation: 'Container'
+      continueOnError: true
