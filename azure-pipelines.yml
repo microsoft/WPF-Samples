@@ -115,7 +115,7 @@ stages:
        inputs:
         command: 'build'
         projects: '$(solution)'
-        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog /p:Configuration=$_Configuration /p:Platform=$(_Platform)'
+        arguments: '/bl:$(Build.ArtifactStagingDirectory)\netcore\dotnet.binlog /p:Configuration=$(_Configuration) /p:Platform=$(_Platform)'
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
