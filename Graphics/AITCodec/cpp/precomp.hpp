@@ -25,7 +25,7 @@
 
 #include <algorithm>
 
-#include <typeinfo.h>
+#include <typeinfo>
 
 #include <wincodec.h>
 #include <wincodecsdk.h>
