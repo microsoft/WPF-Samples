@@ -60,7 +60,7 @@ stages:
        displayName: 'Download and Cache Nuget tool'
 
      - task: NuGetCommand@2
-       displayName: 'Restore .NET Core Samples Using NuGet'
+       displayName: 'Restore Samples Using NuGet'
        inputs:
         restoreSolution: '$(solution)'
         
