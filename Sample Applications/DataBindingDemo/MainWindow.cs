@@ -17,7 +17,7 @@ namespace DataBindingDemo
         public MainWindow()
         {
             InitializeComponent();
-            _listingDataView = (CollectionViewSource) (Resources["listingDataView"]);
+            _listingDataView = (CollectionViewSource) (Resources["ListingDataView"]);
         }
 
         private void OpenAddProductWindow(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBindingDemo"
         mc:Ignorable="d"
-        Title="AddProductWindow" Height="300" Width="300">
+        Title="Add Product Listing" SizeToContent="WidthAndHeight" Loaded="OnInit">
     <Window.Resources>
         <local:SpecialFeaturesConverter x:Key="SpecialFeaturesConverter" />
         <ControlTemplate x:Key="ValidationTemplate">
