@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IntroToStylingAndTemplating"
         mc:Ignorable="d"
-        Title="MainWindow" Loaded="WindowLoaded" SizeToContent="WidthAndHeight">
+        Title="Style Intro Sample" Loaded="WindowLoaded" SizeToContent="WidthAndHeight">
     <Window.Resources>
         <ObjectDataProvider x:Key="MyPhotos"
       ObjectType="{x:Type local:PhotoList}"/>
