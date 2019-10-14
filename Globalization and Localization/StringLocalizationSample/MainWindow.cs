@@ -18,7 +18,7 @@ namespace StringLocalizationSample
         private void messageBoxButton_Click(object sender, RoutedEventArgs e)
         {
             // Programmatic use of string resource from StringResources.xaml resource dictionary
-            var localizedMessage = (string) Application.Current.FindResource("localizedMessage");
+            var localizedMessage = (string) Application.Current.FindResource("LocalizedMessage");
             MessageBox.Show(localizedMessage);
         }
     }
