@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# Windows Forms control with absolute positioning sample
 
 This sample shows how to use the %objective
 

@@ -1,37 +1,127 @@
-# Build and test .NET Core projects
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
 # Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+variables:
+
+  - name: solution
+    value: 'WPFSamples.sln'
+  - name: msbuildonlysolution
+    value: 'WPFSamples.msbuild.sln'
 
 trigger:
 - master
+- release/*
 
 pool:
   vmImage: 'windows-latest'
 
-variables:
-  solution: 'WPFSamples*.sln'
-  buildPlatform: 'Mixed Platforms'
-  buildConfiguration: 'Release'
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Windows
+    pool:
+     vmImage: 'windows-latest'
+    variables:
+     - name: _Configuration
+       value: Debug
+     - name: _Platform
+       value: x86
+    strategy:
+     matrix:
+      Build_Debug_AnyCPU:
+        _Configuration: Debug
+        _Platform: "Any CPU"
+      Build_Release_AnyCPU:
+        _Configuration: Release
+        _Platform: "Any CPU"
+      Build_Debug_x86:
+        _Configuration: Debug
+        _Platform: x86
+      Build_Release_x86:
+        _Configuration: Release
+        _Platform: x86
+      Build_Debug_x64:
+        _Configuration: Debug
+        _Platform: x64
+      Build_Release_x64:
+        _Configuration: Release
+        _Platform: x64
+    steps:
+     - task: NuGetToolInstaller@1
+       displayName: 'Download and Cache Nuget tool'
 
-steps:
-- task: DotNetCoreInstaller@0
-  displayName: "Install .NET Core SDK"
-  inputs:
-    version: '3.0.100-preview6-012264'
+     - task: NuGetCommand@2
+       displayName: 'Restore .NET Core Samples Using NuGet'
+       inputs:
+        restoreSolution: '$(solution)'
+     
+     - task: NuGetCommand@2
+       displayName: 'Restore MSBuild-only .NET Core Samples Using NuGet'
+       inputs:
+        restoreSolution: '$(msbuildonlysolution)'
 
-- task: VSBuild@1
-  displayName: "Restore NuGet Packages"
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:SkipInvalidConfigurations=true /t:Restore'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+     - task: VSBuild@1
+       continueOnError: true
+       displayName: 'Build .NET Core Samples using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(solution)'
+        platform: '$(_Platform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).binlog"
 
-- task: VSBuild@1
-  displayName: "Build Solutions"
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:SkipInvalidConfigurations=true'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+     - task: VSBuild@1
+       continueOnError: true
+       displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(msbuildonlysolution)'
+        platform: '$(_Platform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).binlog"
 
+     - task: PublishBuildArtifacts@1
+       continueOnError: true
+       displayName: 'Publish .NET Core VSBuild Build Logs'
+       inputs:
+        PathtoPublish: $(Build.ArtifactStagingDirectory)\vsbuild
+        ArtifactName: 'Build Logs'
+        publishLocation: 'Container'
+
+     - task: PowerShell@2
+       displayName: 'Clean Files From Previous Build'
+       inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+      
+          git clean -xdf
+
+     - task: DotNetCoreCLI@2
+       continueOnError: true
+       displayName: 'Restore .NET Core Samples using dotnet.exe'
+       inputs:
+        command: 'restore'
+        configuration: $(_Configuration)
+        projects: '$(solution)'
+        feedsToUse: 'config'
+        nugetConfigPath: 'NuGet.config'
+        
+     - task: DotNetCoreCLI@2
+       continueOnError: true
+       displayName: 'Build .NET Core Samples using dotnet.exe'
+       inputs:
+        command: 'build'
+        projects: '$(solution)'
+        configuration: $(_Configuration)
+        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).binlog" /p:Platform="$(_Platform)"'
+
+     - task: PublishBuildArtifacts@1
+       displayName: 'Publish .NET Core Dotnet.exe Build Logs'
+       inputs:
+        PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore
+        ArtifactName: 'Build Logs'
+        publishLocation: 'Container'
