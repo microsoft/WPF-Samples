@@ -25,7 +25,7 @@ namespace ExceptionHandlingSecondaryUIThread
             throw new Exception(msg);
         }
 
-        private void SecondaryUiThreadWindow_Closed(object sender, EventArgs e)
+        private void SecondaryUIThreadWindow_OnClosed(object sender, EventArgs e)
         {
             // End this thread of execution
             Dispatcher.InvokeShutdown();

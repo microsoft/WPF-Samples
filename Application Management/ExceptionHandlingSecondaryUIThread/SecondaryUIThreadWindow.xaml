@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExceptionHandlingSecondaryUIThread"
         mc:Ignorable="d"
-        Title="SecondaryUIThreadWindow" Height="300" Width="300">
+        Title="SecondaryUIThreadWindow" Height="300" Width="300"
+        Closed="SecondaryUIThreadWindow_OnClosed">
     <Grid>
         <Button Click="raiseExceptionOnSecondaryUIThreadButton_Click">Raise an Exception on the Secondary UI Thread</Button>
     </Grid>
