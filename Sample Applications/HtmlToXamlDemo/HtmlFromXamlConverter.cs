@@ -43,7 +43,7 @@ namespace HtmlToXamlDemo
             xamlReader = new XmlTextReader(new StringReader(xamlString));
 
             htmlStringBuilder = new StringBuilder(100);
-            htmlWriter = new XmlTextWriter(new StringWriter(htmlStringBuilder));
+            htmlWriter = new HtmlEncodedTextWriter(new StringWriter(htmlStringBuilder));
 
             if (!WriteFlowDocument(xamlReader, htmlWriter))
             {
@@ -92,8 +92,8 @@ namespace HtmlToXamlDemo
             // on every element level (it will be re-initialized on every level).
             var inlineStyle = new StringBuilder();
 
-            htmlWriter.WriteStartElement("HTML");
-            htmlWriter.WriteStartElement("BODY");
+            htmlWriter.WriteStartElement("html");
+            htmlWriter.WriteStartElement("body");
 
             WriteFormattingProperties(xamlReader, htmlWriter, inlineStyle);
 
@@ -221,10 +221,10 @@ namespace HtmlToXamlDemo
                         css = "width:" + xamlReader.Value + ";";
                         break;
                     case "ColumnSpan":
-                        htmlWriter.WriteAttributeString("COLSPAN", xamlReader.Value);
+                        htmlWriter.WriteAttributeString("colspan", xamlReader.Value);
                         break;
                     case "RowSpan":
-                        htmlWriter.WriteAttributeString("ROWSPAN", xamlReader.Value);
+                        htmlWriter.WriteAttributeString("rowspan", xamlReader.Value);
                         break;
                 }
 
@@ -337,7 +337,7 @@ namespace HtmlToXamlDemo
                                 if (htmlWriter != null && !elementContentStarted && inlineStyle.Length > 0)
                                 {
                                     // Output STYLE attribute and clear inlineStyle buffer.
-                                    htmlWriter.WriteAttributeString("STYLE", inlineStyle.ToString());
+                                    htmlWriter.WriteAttributeString("style", inlineStyle.ToString());
                                     inlineStyle.Remove(0, inlineStyle.Length);
                                 }
                                 elementContentStarted = true;
@@ -351,7 +351,7 @@ namespace HtmlToXamlDemo
                             {
                                 if (!elementContentStarted && inlineStyle.Length > 0)
                                 {
-                                    htmlWriter.WriteAttributeString("STYLE", inlineStyle.ToString());
+                                    htmlWriter.WriteAttributeString("style", inlineStyle.ToString());
                                 }
                                 htmlWriter.WriteComment(xamlReader.Value);
                             }
@@ -364,7 +364,7 @@ namespace HtmlToXamlDemo
                             {
                                 if (!elementContentStarted && inlineStyle.Length > 0)
                                 {
-                                    htmlWriter.WriteAttributeString("STYLE", inlineStyle.ToString());
+                                    htmlWriter.WriteAttributeString("style", inlineStyle.ToString());
                                 }
                                 htmlWriter.WriteString(xamlReader.Value);
                             }
@@ -431,40 +431,40 @@ namespace HtmlToXamlDemo
                 {
                     case "Run":
                     case "Span":
-                        htmlElementName = "SPAN";
+                        htmlElementName = "span";
                         break;
                     case "InlineUIContainer":
-                        htmlElementName = "SPAN";
+                        htmlElementName = "span";
                         break;
                     case "Bold":
-                        htmlElementName = "B";
+                        htmlElementName = "b";
                         break;
                     case "Italic":
-                        htmlElementName = "I";
+                        htmlElementName = "i";
                         break;
                     case "Paragraph":
-                        htmlElementName = "P";
+                        htmlElementName = "p";
                         break;
                     case "BlockUIContainer":
-                        htmlElementName = "DIV";
+                        htmlElementName = "div";
                         break;
                     case "Section":
-                        htmlElementName = "DIV";
+                        htmlElementName = "div";
                         break;
                     case "Table":
-                        htmlElementName = "TABLE";
+                        htmlElementName = "table";
                         break;
                     case "TableColumn":
-                        htmlElementName = "COL";
+                        htmlElementName = "col";
                         break;
                     case "TableRowGroup":
-                        htmlElementName = "TBODY";
+                        htmlElementName = "tbody";
                         break;
                     case "TableRow":
-                        htmlElementName = "TR";
+                        htmlElementName = "tr";
                         break;
                     case "TableCell":
-                        htmlElementName = "TD";
+                        htmlElementName = "td";
                         break;
                     case "List":
                         var marker = xamlReader.GetAttribute("MarkerStyle");
@@ -472,15 +472,15 @@ namespace HtmlToXamlDemo
                             marker == "Square" ||
                             marker == "Box")
                         {
-                            htmlElementName = "UL";
+                            htmlElementName = "ul";
                         }
                         else
                         {
-                            htmlElementName = "OL";
+                            htmlElementName = "ol";
                         }
                         break;
                     case "ListItem":
-                        htmlElementName = "LI";
+                        htmlElementName = "li";
                         break;
                     default:
                         htmlElementName = null; // Ignore the element

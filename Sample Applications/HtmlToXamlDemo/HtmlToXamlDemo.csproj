@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="CssStylesheet.cs" />
     <Compile Include="HtmlCSSParser.cs" />
+    <Compile Include="HtmlEncodedTextWriter.cs" />
     <Compile Include="HtmlFromXamlConverter.cs" />
     <Compile Include="HtmlLexicalAnalyzer.cs" />
     <Compile Include="HtmlParser.cs" />
