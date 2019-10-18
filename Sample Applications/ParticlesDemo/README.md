@@ -2,7 +2,7 @@
 This sample application demonstrates how to produce particle effects within a Viewport3D. Random particle effects are drawn to the screen creating an interesting visual experience. The total number of particles and current frames per second are displayed within the host window.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2015](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2019](https://www.visualstudio.com/wpf-vs).
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 
