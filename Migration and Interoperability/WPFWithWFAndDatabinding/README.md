@@ -1,5 +1,5 @@
 
-# %Sample% sample
+# Data Binding in Hybrid Applications Sample
 
 This sample shows how to use the %objective
 
