@@ -60,7 +60,7 @@
                   Margin="8" Style="{StaticResource CheckBoxStyle}">
             Show only bargains
         </CheckBox>
-        <CheckBox Name="Sorting" Grid.Row="1" Grid.Column="3"
+        <CheckBox Name="Sorting" Grid.Row="1" Grid.Column="2"
                   Checked="AddSorting" Unchecked="RemoveSorting"
                   Margin="8" Style="{StaticResource CheckBoxStyle}">
             Sort by category and date
