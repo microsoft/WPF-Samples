@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Per-Frame Animation Sample"
+---
 
 # Per-Frame Animation Sample
 This sample shows how to create per-frame animations using the CompositionTarget Rendering event. It contains several examples that vary in complexity, from a single attraction animation applied to a single object, to a frame-rate-independent firework particle effect.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

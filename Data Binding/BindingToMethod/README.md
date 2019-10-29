@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Binding to the Results of a Method Sample"
+---
 
 # Binding to the Results of a Method Sample
 This sample shows how bind to the results of a method using the MethodName property of the ObjectDataProvider class. For more information, see How to: Bind to a Method.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

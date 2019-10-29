@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Defining a Resource Sample"        
+description: "This example demonstrates how to define a resource at the page root level on a FrameworkElement and reference it in attributes of child elements."
+---
 
 # Defining a Resource Sample
 This example demonstrates how to define a resource at the page root level on a FrameworkElement and reference it in attributes of child elements.
@@ -10,4 +19,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

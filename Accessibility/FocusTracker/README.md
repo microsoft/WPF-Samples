@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "TrackFocus Sample"
+---
 
 # TrackFocus Sample
 This sample tracks the input focus on the desktop and displays information about focus changes, using Microsoft UI Automation. This is a simple console application that might be used as a starting-point for an application that uses UI Automation to track events on the desktop.
@@ -20,4 +28,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

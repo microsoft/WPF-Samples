@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Hit Test Using DrawingVisuals Sample"
+---
 # Hit Test Using DrawingVisuals Sample
 This sample illustrates how to use DrawingVisual objects to create lightweight graphics. The sample also shows how to implement hit testing at the visual object level.
 
@@ -9,4 +17,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

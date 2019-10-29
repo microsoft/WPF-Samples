@@ -1,4 +1,12 @@
-﻿# Support for Touch Keyboard Notifications and Occlusion Handling in WPF
+﻿---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Support for Touch Keyboard Notifications and Occlusion Handling in WPF"
+---
+# Support for Touch Keyboard Notifications and Occlusion Handling in WPF
 
 ## Overview
 In .NET 4.6.2 or above on Windows 10 Anniversary Update or above, WPF supports automatic display of the Windows touch keyboard (tiptsf).  This functionality occurs automatically when a 

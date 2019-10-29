@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "XAML to HTML Conversion Demo"
+---
 # XAML to HTML Conversion Demo
 This sample demonstrates how to create a conversion utility that can change Extensible Application Markup Language (XAML) content to HTML, and vice versa. It demonstrates several techniques for content serialization.
 
@@ -9,4 +17,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

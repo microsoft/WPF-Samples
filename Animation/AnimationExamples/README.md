@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Animation Example Gallery"
+---
 
 # Animation Example Gallery
 This sample shows how to animate a variety of objects, include text, 2-D transforms, and 3-D transforms. It also demonstrates splined interpolation, path animations, and custom animations.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "WPF Photo Viewer Demo"
+---
 # WPF Photo Viewer Demo
 This sample application demonstrates how to create a lightweight image viewing and editing tool using Windows Presentation Foundation (WPF). Image thumbnails are displayed in the preview pane, while metadata associated with an image is displayed within a panel to the right of the screen.
 
@@ -9,4 +17,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

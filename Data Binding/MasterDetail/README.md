@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Master-Detail Scenario Using XmlDataProvider Sample"
+---
 
 # Master-Detail Scenario Using XmlDataProvider Sample
 This sample shows how to use three synchronized ListBox controls to display XML data that is hierarchical (such as a list that contains other lists). For more information, see How to: Use the Master-Detail Pattern with Hierarchical Data and How to: Use the Master-Detail Pattern with Hierarchical XML Data.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Changing a Collection by Using IEditableCollectionView Sample"
+---
 
 # Changing a Collection by Using IEditableCollectionView Sample
 This sample uses the members that are provided by the IEditableCollectionView interface to add and change items in a ListView. The IEditableCollectionView provides a common API so that you can use the same members to add, edit, and remove items of a collection, if the collection supports such operations, regardless of the collection's type.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

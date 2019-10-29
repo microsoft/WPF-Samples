@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Save Window Placement State Sample"
+---
 # Save Window Placement State Sample
 This sample illustrates how to save the size, location, and state of a Window to ensure that the Window opens in the same position it was closed. Furthermore, this sample is multi-monitor aware.
 
@@ -9,4 +17,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Finding the Source Element in an Event Handler Sample"
+---
 
 # Finding the Source Element in an Event Handler Sample
 This example describes how to find the source element of an element in the event handler, by accessing event arguments from an event that was routed to an element other than the one that raised the event.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Binding to a Collection Sample"        
+description: "This sample shows how to bind to a collection. The accompanying topic is How to: Bind to a Collection and Display Information Based on Selection."
+---
 
 # Binding to a Collection Sample
 This sample shows how to bind to a collection. The accompanying topic is How to: Bind to a Collection and Display Information Based on Selection.
@@ -10,4 +19,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

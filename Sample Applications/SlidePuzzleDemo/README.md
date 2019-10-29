@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Slide Puzzle Demo"
+---
 # Slide Puzzle Demo
 This sample application is a slide puzzle game that demonstrates Windows Presentation Foundation (WPF) as a lightweight gaming platform. The background "pieces" for the slide puzzle are user selectable and demonstrate the flexibility of WPF. Selectable background elements include buttons, bitmaps, vector content, video, documents and animations.
 
@@ -9,4 +17,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

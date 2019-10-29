@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Clipboard Viewer Sample"
+---
 
 # Clipboard Viewer Sample
 This sample demonstrates Clipboard operations using a variety of data formats. It provides a viewer application with controls that read and set DataObject properties so that the user may experiment with Clipboard scenarios.
@@ -13,4 +21,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

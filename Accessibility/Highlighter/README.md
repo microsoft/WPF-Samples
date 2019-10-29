@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Highlighter Sample"
+---
 
 # Highlighter Sample
 This sample demonstrates how to keep track of focus changes so that focused elements can be highlighted on the screen. The highlight is a simple colored rectangle, but it could be a magnifier window or some other tool to make the focused element more accessible.
@@ -14,4 +22,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

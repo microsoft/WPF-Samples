@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Video Viewer Demo"        
+description: "This sample creates a video viewing application that demonstrates styling, data binding, and data templating features."
+---
 # Video Viewer Demo
 This sample creates a video viewing application that demonstrates styling, data binding, and data templating features.
 
@@ -9,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

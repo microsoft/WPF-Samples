@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Concentric Rings Demo"        
+description: "This sample application demonstrates several animation techniques, generating an interesting visual effect similar to the Microsoft Xbox 360 logo."
+---
 # Concentric Rings Demo
 This sample application demonstrates several animation techniques, generating an interesting visual effect similar to the Microsoft Xbox 360 logo.
 
@@ -9,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Setting Margins Sample"
+---
 
 # Setting Margins Sample
 This example describes how to set margins, by changing any existing property value for the margin in code-behind. The Margin property is a property of the FrameworkElement base element, and is thus inherited by a variety of controls and other elements.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

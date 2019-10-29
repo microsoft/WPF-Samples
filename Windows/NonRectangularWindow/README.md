@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Non-Rectangular Windows Sample"
+---
 # Non-Rectangular Windows Sample
 This sample demonstrates how to create a non-rectangular window, which is configured using the Background, AllowsTransparency, and WindowStyle properties of the Window type.
 

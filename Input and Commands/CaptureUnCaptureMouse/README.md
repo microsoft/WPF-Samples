@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Capture and Uncapture the Mouse"
+---
 # Capture and Uncapture the Mouse
 The follow sample demonstrates how to make an object capture and uncapture the mouse and how this affects mouse related events from other objects in the application.
 
@@ -11,4 +19,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

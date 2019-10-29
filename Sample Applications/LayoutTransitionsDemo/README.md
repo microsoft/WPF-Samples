@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Layout to Layout Transitions Demo"        
+description: "This sample application demonstrates several techniques for animating from one layout state to another."
+---
 # Layout to Layout Transitions Demo
 This sample application demonstrates several techniques for animating from one layout state to another.
 
@@ -9,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

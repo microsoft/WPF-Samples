@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Adding and Removing Groups Sample"
+---
 
 # Adding and Removing Groups Sample
 This sample shows how to group XML data based on an attribute value using PropertyGroupDescription. You can use a similar technique to apply grouping to non-XML data based on a property value.
@@ -12,4 +20,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

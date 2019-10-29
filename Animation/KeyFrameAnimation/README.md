@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Key Frame Animation Sample"        
+description: "This sample shows how to use key frame animations to animate along a set of target values."
+---
 
 # Key Frame Animation Sample
 This sample shows how to use key frame animations to animate along a set of target values.
@@ -10,4 +19,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

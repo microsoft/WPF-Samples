@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Introduction to Data Templating Sample"
+---
 
 # Introduction to Data Templating Sample
 This sample demonstrates how to use DataTemplate, DataTrigger, and DataTemplateSelector to specify the presentation of your data. For information about this sample, see Data Templating Overview.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

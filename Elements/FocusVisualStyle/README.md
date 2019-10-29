@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Creating a FocusVisualStyle Sample"        
+description: "This example describes how to create a style for use as a FocusVisualStyle on a control."
+---
 
 # Creating a FocusVisualStyle Sample
 This example describes how to create a style for use as a FocusVisualStyle on a control.
@@ -10,4 +19,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

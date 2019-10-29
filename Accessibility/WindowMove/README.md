@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "WindowPattern Sample"
+---
 
 # WindowPattern Sample
 This sample demonstrates how to use the WindowPattern control pattern to control the screen location of a top-level window as well as register and listen for standard window events.
@@ -12,4 +20,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

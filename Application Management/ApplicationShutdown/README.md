@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Application Shutdown Sample"        
+description: "This sample demonstrates the implicit and explicit mechanisms for calling Shutdown and Shutdown."
+---
 
 # Application Shutdown Sample
 This sample demonstrates the implicit and explicit mechanisms for calling Shutdown and Shutdown.

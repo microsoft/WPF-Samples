@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "First WPF app sample"
+---
 # First WPF app sample
 
 This sample provides the C# code files for a starter WPF app, as described in [Walkthrough: My first WPF desktop application](https://docs.microsoft.com/dotnet/framework/wpf/getting-started/walkthrough-my-first-wpf-desktop-application).
@@ -21,4 +29,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 The completed walkthrough's UI will resemble the following.
 
 ![First WPF app sample UI](../Walkthrough-finished-UI-example.png)
+
 

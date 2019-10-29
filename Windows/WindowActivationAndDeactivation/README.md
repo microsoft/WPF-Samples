@@ -1,3 +1,12 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Window Activation and Deactivation Sample"        
+description: "This sample demonstrates the use of Activated and Deactivated to only play a media file when a window is currently active."
+---
 # Window Activation and Deactivation Sample
 This sample demonstrates the use of Activated and Deactivated to only play a media file when a window is currently active.
 
@@ -9,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

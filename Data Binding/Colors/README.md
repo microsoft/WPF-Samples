@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Showing System Colors Using Data Services Sample"
+---
 
 # Showing System Colors Using Data Services Sample
 The sample displays a list of the system colors and lets you sort the list in several ways. You can also add new colors to the list and modify properties of the new colors.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

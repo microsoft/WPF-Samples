@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Single Threaded Application With Long Running Calculation Sample"
+---
 # Single Threaded Application With Long Running Calculation Sample
 This sample demonstrates how to keep the UI from becoming non-responsive in single threaded application which performs a long operation.
 This sample has a Button which when clicked starts calculating prime numbers. This calculation is theoretically unending, so if the event handler simple went into a loop and started calculating prime numbers, the call would never return and the UI thread would freeze.
@@ -12,4 +20,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 

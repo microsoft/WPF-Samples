@@ -1,3 +1,11 @@
+---
+languages:
+- csharp
+products:
+- windows-wpf
+page_type: sample
+name: "Local Animations Sample"
+---
 
 # Local Animations Sample
 This sample shows how to use local, or non-storyboard, animations. Non-storyboard animations are only available in code. To create an animation in Extensible Application Markup Language (XAML), use a storyboard. For an example that shows how to use storyboards to animate properties, see the Property Animation Sample.
@@ -10,4 +18,5 @@ The easiest way to use these samples without using Git is to download the zip fi
 
 ### Deploying and running the sample
 - To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
+
 
