@@ -41,17 +41,17 @@ stages:
         _Configuration: Debug
         _Platform: 'Any CPU'
         _TargetFramework: 'netcoreapp3.0'
-        _ToolPlatform: Any CPU
+        _ToolPlatform: x86
       Debug-AnyCPU-netcoreapp3.1:
         _Configuration: Debug
         _Platform: 'Any CPU'
         _TargetFramework: 'netcoreapp3.1'
-        _ToolPlatform: Any CPU
+        _ToolPlatform: x86
       Debug-AnyCPU-netcoreapp5.0:
         _Configuration: Debug
         _Platform: 'Any CPU'
         _TargetFramework: 'netcoreapp5.0'
-        _ToolPlatform: Any CPU
+        _ToolPlatform: x86
       Debug-x64-netcoreapp3.0:
         _Configuration: Debug
         _Platform: 'x64'
@@ -86,17 +86,17 @@ stages:
         _Configuration: Release
         _Platform: 'Any CPU'
         _TargetFramework: 'netcoreapp3.0'
-        _ToolPlatform: Any CPU
+        _ToolPlatform: x86
       Release-AnyCPU-netcoreapp3.1:
         _Configuration: Release
         _Platform: 'Any CPU'
         _TargetFramework: 'netcoreapp3.1'
-        _ToolPlatform: Any CPU
+        _ToolPlatform: x86
       Release-AnyCPU-netcoreapp5.0:
         _Configuration: Release
         _Platform: 'Any CPU'
         _TargetFramework: 'netcoreapp5.0'
-        _ToolPlatform: Any CPU
+        _ToolPlatform: x86
       Release-x64-netcoreapp3.0:
         _Configuration: Release
         _Platform: 'x64'
