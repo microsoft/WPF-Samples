@@ -33,98 +33,100 @@ stages:
        value: x86
      - name: _ToolPlatform
        value: x86
+     - name: _TargetFramework
+       value: 'netcoreapp3.0'
     strategy:
      matrix:
       Debug-AnyCPU-netcoreapp3.0:
         _Configuration: Debug
         _Platform: AnyCPU
-        _TargetFramework: netcoreapp3.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
       Debug-AnyCPU-netcoreapp3.1:
         _Configuration: Debug
         _Platform: AnyCPU
-        _TargetFramework: netcoreapp3.1
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
       Debug-AnyCPU-netcoreapp5.0:
         _Configuration: Debug
         _Platform: AnyCPU
-        _TargetFramework: netcoreapp5.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
       Debug-x64-netcoreapp3.0:
         _Configuration: Debug
         _Platform: x64
-        _TargetFramework: netcoreapp3.0
-        _ToolPlatform:x64
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x64
       Debug-x64-netcoreapp3.1:
         _Configuration: Debug
         _Platform: x64
-        _TargetFramework: netcoreapp3.1
-        _ToolPlatform:x64
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x64
       Debug-x64-netcoreapp5.0:
         _Configuration: Debug
         _Platform: x64
-        _TargetFramework: netcoreapp5.0
-        _ToolPlatform:x64
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x64
       Debug-x86-netcoreapp3.0:
         _Configuration: Debug
         _Platform: x86
-        _TargetFramework: netcoreapp3.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
       Debug-x86-netcoreapp3.1:
         _Configuration: Debug
         _Platform: x86
-        _TargetFramework: netcoreapp3.1
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
       Debug-x86-netcoreapp5.0:
         _Configuration: Debug
         _Platform: x86
-        _TargetFramework: netcoreapp5.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
       Release-AnyCPU-netcoreapp3.0:
         _Configuration: Release
         _Platform: AnyCPU
-        _TargetFramework: netcoreapp3.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
       Release-AnyCPU-netcoreapp3.1:
         _Configuration: Release
         _Platform: AnyCPU
-        _TargetFramework: netcoreapp3.1
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
       Release-AnyCPU-netcoreapp5.0:
         _Configuration: Release
         _Platform: AnyCPU
-        _TargetFramework: netcoreapp5.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
       Release-x64-netcoreapp3.0:
         _Configuration: Release
         _Platform: x64
-        _TargetFramework: netcoreapp3.0
-        _ToolPlatform:x64
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x64
       Release-x64-netcoreapp3.1:
         _Configuration: Release
         _Platform: x64
-        _TargetFramework: netcoreapp3.1
-        _ToolPlatform:x64
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x64
       Release-x64-netcoreapp5.0:
         _Configuration: Release
         _Platform: x64
-        _TargetFramework: netcoreapp5.0
-        _ToolPlatform:x64
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x64
       Release-x86-netcoreapp3.0:
         _Configuration: Release
         _Platform: x86
-        _TargetFramework: netcoreapp3.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
       Release-x86-netcoreapp3.1:
         _Configuration: Release
         _Platform: x86
-        _TargetFramework: netcoreapp3.1
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
       Release-x86-netcoreapp5.0:
         _Configuration: Release
         _Platform: x86
-        _TargetFramework: netcoreapp5.0
-        _ToolPlatform:x86
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
     steps:
      - task: NuGetToolInstaller@1
        displayName: 'Download and Cache Nuget tool'
