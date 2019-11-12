@@ -165,7 +165,7 @@ stages:
         platform: '$(_Platform)'
         msbuildArchitecture: '$(_ToolPlatform)'
         configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: VSBuild@1
        continueOnError: true
@@ -176,7 +176,7 @@ stages:
         platform: '$(_Platform)'
         msbuildArchitecture: '$(_ToolPlatform)'
         configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: PublishBuildArtifacts@1
        continueOnError: true
@@ -212,7 +212,7 @@ stages:
         command: 'build'
         projects: '$(solution)'
         configuration: $(_Configuration)
-        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).$(TargetFramework).binlog" /p:Platform="$(_Platform)" /p:LangVersion=$(LangVersion)'
+        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:Platform="$(_Platform)" /p:LangVersion=$(LangVersion)'
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
