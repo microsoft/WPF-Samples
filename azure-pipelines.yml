@@ -35,29 +35,103 @@ stages:
        value: x86
     strategy:
      matrix:
-      Build_Debug_AnyCPU:
+      Debug-AnyCPU-netcoreapp3.0:
         _Configuration: Debug
-        _Platform: "Any CPU"
-      Build_Release_AnyCPU:
-        _Configuration: Release
-        _Platform: "Any CPU"
-      Build_Debug_x86:
+        _Platform: AnyCPU
+        _TargetFramework: netcoreapp3.0
+        _ToolPlatform:x86
+      Debug-AnyCPU-netcoreapp3.1:
         _Configuration: Debug
-        _Platform: x86
-      Build_Release_x86:
-        _Configuration: Release
-        _Platform: x86
-      Build_Debug_x64:
+        _Platform: AnyCPU
+        _TargetFramework: netcoreapp3.1
+        _ToolPlatform:x86
+      Debug-AnyCPU-netcoreapp5.0:
+        _Configuration: Debug
+        _Platform: AnyCPU
+        _TargetFramework: netcoreapp5.0
+        _ToolPlatform:x86
+      Debug-x64-netcoreapp3.0:
         _Configuration: Debug
         _Platform: x64
-        _ToolPlatform: x64
-      Build_Release_x64:
+        _TargetFramework: netcoreapp3.0
+        _ToolPlatform:x64
+      Debug-x64-netcoreapp3.1:
+        _Configuration: Debug
+        _Platform: x64
+        _TargetFramework: netcoreapp3.1
+        _ToolPlatform:x64
+      Debug-x64-netcoreapp5.0:
+        _Configuration: Debug
+        _Platform: x64
+        _TargetFramework: netcoreapp5.0
+        _ToolPlatform:x64
+      Debug-x86-netcoreapp3.0:
+        _Configuration: Debug
+        _Platform: x86
+        _TargetFramework: netcoreapp3.0
+        _ToolPlatform:x86
+      Debug-x86-netcoreapp3.1:
+        _Configuration: Debug
+        _Platform: x86
+        _TargetFramework: netcoreapp3.1
+        _ToolPlatform:x86
+      Debug-x86-netcoreapp5.0:
+        _Configuration: Debug
+        _Platform: x86
+        _TargetFramework: netcoreapp5.0
+        _ToolPlatform:x86
+      Release-AnyCPU-netcoreapp3.0:
+        _Configuration: Release
+        _Platform: AnyCPU
+        _TargetFramework: netcoreapp3.0
+        _ToolPlatform:x86
+      Release-AnyCPU-netcoreapp3.1:
+        _Configuration: Release
+        _Platform: AnyCPU
+        _TargetFramework: netcoreapp3.1
+        _ToolPlatform:x86
+      Release-AnyCPU-netcoreapp5.0:
+        _Configuration: Release
+        _Platform: AnyCPU
+        _TargetFramework: netcoreapp5.0
+        _ToolPlatform:x86
+      Release-x64-netcoreapp3.0:
         _Configuration: Release
         _Platform: x64
-        _ToolPlatform: x64 
+        _TargetFramework: netcoreapp3.0
+        _ToolPlatform:x64
+      Release-x64-netcoreapp3.1:
+        _Configuration: Release
+        _Platform: x64
+        _TargetFramework: netcoreapp3.1
+        _ToolPlatform:x64
+      Release-x64-netcoreapp5.0:
+        _Configuration: Release
+        _Platform: x64
+        _TargetFramework: netcoreapp5.0
+        _ToolPlatform:x64
+      Release-x86-netcoreapp3.0:
+        _Configuration: Release
+        _Platform: x86
+        _TargetFramework: netcoreapp3.0
+        _ToolPlatform:x86
+      Release-x86-netcoreapp3.1:
+        _Configuration: Release
+        _Platform: x86
+        _TargetFramework: netcoreapp3.1
+        _ToolPlatform:x86
+      Release-x86-netcoreapp5.0:
+        _Configuration: Release
+        _Platform: x86
+        _TargetFramework: netcoreapp5.0
+        _ToolPlatform:x86
     steps:
      - task: NuGetToolInstaller@1
        displayName: 'Download and Cache Nuget tool'
+
+     - powershell: |
+         Copy-Item .\eng\$(_TargetFramework).json global.json -Force 
+       displayName: Update global.json to match TargetFramework of the Build
 
      - powershell: ./eng/EnsureGlobalJsonSdk.ps1 -g global.json -i "$(Agent.ToolsDirectory)/dotnet" -a $(_ToolPlatform)
        displayName: Install .NET Core 
