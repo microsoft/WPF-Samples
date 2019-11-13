@@ -135,7 +135,7 @@ stages:
          Copy-Item .\eng\$(_TargetFramework).json global.json -Force -Verbose
        displayName: Update global.json to match TargetFramework of the Build
 
-     - powershell: ./eng/EnsureGlobalJsonSdk.ps1 -g global.json -i "$(Agent.ToolsDirectory)/dotnet" -a $(_ToolPlatform)
+     - powershell: ./eng/EnsureGlobalJsonSdk.ps1 -g global.json -i "$(Agent.ToolsDirectory)/dotnet" -a $(_ToolPlatform) -f $(_TargetFramework) -Verbose
        displayName: Install .NET Core 
 
      - powershell: |
@@ -192,7 +192,8 @@ stages:
         targetType: 'inline'
         script: |
           # Write your PowerShell commands here.
-      
+          
+          git checkout global.json
           git clean -xdf
 
      - task: DotNetCoreCLI@2
