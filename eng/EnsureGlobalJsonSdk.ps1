@@ -87,7 +87,7 @@ function Use-RunAs {
     }  
 } 
 
-Use-RunAs
+<#Use-RunAs#>
 if (Test-Path $globalJson) {
     $json = Get-Content $globalJson | ConvertFrom-Json
 
