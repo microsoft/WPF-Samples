@@ -136,7 +136,7 @@ if (Test-Path $globalJson) {
         
         Add-EnvPath -path $installPath -prepend -emitAzPipelineLogCommand
 
-        <#
+        #
            Emit the right signals to Azure Pipelines about 
            updating env vars
         #>
@@ -164,6 +164,8 @@ if (Test-Path $globalJson) {
             #>
             $json.sdk.version = $sdk_version
             $json | ConvertTo-Json | Set-Content $globalJson -Force
+            Write-Verbose "global.json updated"
+            Write-Verbose (Get-Content $globalJson)
         }
     }
 }
