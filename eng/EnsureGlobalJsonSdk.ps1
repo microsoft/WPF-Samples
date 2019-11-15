@@ -136,7 +136,7 @@ if (Test-Path $globalJson) {
         
         Add-EnvPath -path $installPath -prepend -emitAzPipelineLogCommand
 
-        #
+        <#
            Emit the right signals to Azure Pipelines about 
            updating env vars
         #>
