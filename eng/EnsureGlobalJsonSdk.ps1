@@ -165,7 +165,7 @@ if (Test-Path $globalJson) {
             $json.sdk.version = $sdk_version
             $json | ConvertTo-Json | Set-Content $globalJson -Force
             Write-Verbose "global.json updated"
-            Write-Verbose (Get-Content $globalJson)
+            Write-Verbose (Get-Content $globalJson -Raw)
         }
     }
 }
