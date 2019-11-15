@@ -49,45 +49,55 @@ Function Get-Tfm {
     return IIf ($WellKnownTFMs -icontains $tfm) $tfm ""
 }
 
+function Add-EnvPath {
+    param(
+        [string]$path, 
+        [switch]$prepend = $false,
+        [switch]$emitAzPipelineLogCommand = $false 
+    )
+
+    
+    [string]$envPath = $env:Path.ToLowerInvariant()
+    if (-not $path.EndsWith('\')) {
+        $path += '\'
+    }
+
+    <# 
+        Remove any previous instance of $path from 
+        $env:Path 
+
+        Try from longest to shortest possible combination
+    #>
+    if ($envPath.Contains("$path;")) {                                <# path\to\dir\; #>
+        $envPath = $envPath.Replace("$path;", '')
+    } elseif ($envPath.Contains($path)) {                             <# path\to\dir\  #>
+        $envPath = $envPath.Replace($path, '')
+    } elseif ($path.Contains($path.TrimEnd('\') + ";")) {             <# path\to\dir;  #>
+        $envPath = $envPath.Replace($path.TrimEnd('\') + ";", '')
+    } elseif ($path.Contains($path.TrimEnd('\'))) {                   <# path\to\dir   #>
+        $envPath = $envPath.Replace($path.TrimEnd('\'), '')
+    }
+
+    if ($prepend) {
+        $envPath = "$path;" + $envPath
+    } else {
+        $envPath += ";$path"
+    }
+
+    $env:Path = $envPath
+
+    if ($emitAzPipelineLogCommand) {
+        if ($prepend) {
+            Write-Host "##vso[task.prependpath]$path"
+        } else {
+            Write-Host "##vso[task.setvariable variable=PATH]$envPath"
+        }
+    }
+
+    Write-Verbose "Added $path to PATH variable"
+}
 
 
-# Use-RunAs function from TechNet Script Gallery
-# https://gallery.technet.microsoft.com/scriptcenter/63fd1c0d-da57-4fb4-9645-ea52fc4f1dfb
-function Use-RunAs {    
-    # Check if script is running as Adminstrator and if not use RunAs 
-    # Use Check Switch to check if admin 
-    param([Switch]$Check) 
-     
-    $IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()` 
-        ).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator") 
-         
-    if ($Check) { 
-		return $IsAdmin 
-	}     
-    if ($MyInvocation.ScriptName -ne "") {  
-        if (-not $IsAdmin) {  
-            try {  
-				$arg = "-file `"$($MyInvocation.ScriptName)`"" 
-				
-				Write-Verbose "Starting elevated process..."
-				Write-Verbose '\t' "$psHome\powershell.exe" -Verb Runas -ArgumentList $arg -ErrorAction 'stop'  
-				
-                Start-Process "$psHome\powershell.exe" -Verb Runas -ArgumentList $arg -ErrorAction 'stop'  
-            } 
-            catch { 
-                Write-Warning "Error - Failed to restart script with runas"  
-                break               
-            } 
-            Exit # Quit this session of powershell 
-        }  
-    }  
-    else {  
-        Write-Warning "Error - Script must be saved as a .ps1 file first"  
-        break  
-    }  
-} 
-
-<#Use-RunAs#>
 if (Test-Path $globalJson) {
     $json = Get-Content $globalJson | ConvertFrom-Json
 
@@ -124,8 +134,17 @@ if (Test-Path $globalJson) {
         .$dotnet_install -Channel $channel -Version $sdk_version -Architecture $architecture -InstallDir $installPath
         Write-Verbose "Installed SDK Version=$sdk_version Channel=$channel Architecture=$architecture to $installPath"
         
-        Write-Host "##vso[task.prependpath]$installPath"
-        Write-Verbose "Added $installPath to Azure Pipelines PATH variable"
+        Add-EnvPath -path $installPath -prepend -emitAzPipelineLogCommand
+
+        #
+           Emit the right signals to Azure Pipelines about 
+           updating env vars
+        #>
+        Write-Host "##vso[task.setvariable variable=DOTNET_MULTILEVEL_LOOKUP]0"
+        Write-Host "##vso[task.setvariable variable=DOTNET_SKIP_FIRST_TIME_EXPERIENCE]1"
+
+        $env:DOTNET_MULTILEVEL_LOOKUP = 0
+        $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1
 
         <# 
             If $TargetFramework is specified, then an alternate SDK was requested.
@@ -135,8 +154,16 @@ if (Test-Path $globalJson) {
                     git checkout global.json
         #>
         if ($TargetFramework) {
-            $dotnet = Join-Path $installPath 'dotnet.exe'
-            & $dotnet new globaljson --sdk-version $sdk_version --force
+            <# 
+                We would like to use '$dotnet new globaljson --sdk-version $sdk_version --force', but,...
+                ..when global.json has a sdk.version that's different from the sdk installed, dotnet.exe complains:
+
+                "A compatible installed .NET Core SDK for global.json version [3.0.100] from [path/to/global.json] was not found"
+
+                So let's update global.json using JSON API's. 
+            #>
+            $json.sdk.version = $sdk_version
+            $json | ConvertTo-Json | Set-Content $globalJson -Force
         }
     }
 }
