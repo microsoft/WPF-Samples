@@ -193,7 +193,6 @@ stages:
         script: |
           # Write your PowerShell commands here.
           
-          git checkout global.json
           git clean -xdf
 
      - task: DotNetCoreCLI@2
@@ -221,3 +220,13 @@ stages:
         PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore
         ArtifactName: 'Build Logs'
         publishLocation: 'Container'
+        
+     - task: PowerShell@2
+       displayName: 'Clean Files From Previous Builds'
+       inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          git checkout global.json
+          git clean -xdf        
