@@ -184,15 +184,15 @@ Function Get-LogFile {
         [bool]$UseMsBuild,
         [string]$SolutionFile,
         [string]$ArtifactsDir, 
-        [string]$suffix=''
+        [string]$action='build'
     )
 
     $prefix = if ($UseMsBuild) { 'msbuild' } else { 'dotnet' } 
     
     $sln = [System.IO.Path]::GetFileNameWithoutExtension($SolutionFile)
     $name = $sln + '.' + $prefix
-    if (-not [string]::IsNullOrEmpty($suffix)) {
-        $name += '.' + $suffix
+    if (-not [string]::IsNullOrEmpty($action)) {
+        $name += '_' + $action
     }
 
     return Join-Path $ArtifactsDir ($name + '.binlog')
@@ -211,14 +211,21 @@ Function Get-BuildArgs {
     
     [string]$escapeparser = '--%'
     
+    $Verbosity = 'quiet'
+    $NodeReuse = 'false'
+    $LangVersion = 'preview'
+    
     if (-not $Restore) {
-        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal /nr:false"
+        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     } else {
-        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal /nr:false"
+        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     }
     
     if ($UseMsBuild) {
         $BuildArgs += " /m"
+        if ($Restore) {
+            $BuildArgs += " /t:restore"
+        }
     }
     
     return $BuildArgs
@@ -283,22 +290,30 @@ Try {
 
     Set-Location $RepoRoot 
 
+    $LogFiles = @()
+    $BuildCommands = @()
+    
     if (-not $UseMsBuild) {
         $LogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts
-        $RestoreLogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
+        $RestoreLogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts -action 'restore' 
+
+        $LogFiles += $RestoreLogFile
+        $LogFiles += $LogFile
 
         $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier 
-        $RestoreArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore
 
         $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
         Write-Verbose $BuildCmd
         if (-not $DryRun) {
+            $BuildCommands += $BuildCmd
             Invoke-Expression $BuildCmd
         }
 
         $BuildCmd = "$DotNet publish $BuildArgs $Solution"
         Write-Verbose $BuildCmd
         if (-not $DryRun) {
+            $BuildCommands += $BuildCmd        
             Invoke-Expression $BuildCmd
         }
     }
@@ -306,40 +321,63 @@ Try {
     
     if ($UseMsBuild) {       
         $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
-        $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
+        $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -action 'restore' 
                
         $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
-        $RestoreArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
 
         $LogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts
-        $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -suffix 'restore' 
-        $BuildArgs2 =  "$escapeparser /bl:$LogFile2 /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /m /clp:Summary;Verbosity=minimal /t:publish"
-        $RestoreArgs2 = "/t:restore /p:RuntimeIdentifier=$RuntimeIdentifier /bl:$RestoreLogFile2 /noconlog /m"
+        $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -action 'restore' 
+        
+        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
+        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
 
+        $LogFiles += $RestoreLogFile
+        $LogFiles += $LogFile
+        $LogFiles += $RestoreLogFile2
+        $LogFiles += $LogFile2
+        
         $BuildCmd = "msbuild $RestoreArgs $Solution"
         Write-Verbose $BuildCmd
         if (-not $DryRun) {
+            $BuildCommands += $BuildCmd        
             Invoke-Expression $BuildCmd
         }
 
         $BuildCmd = "msbuild $BuildArgs $Solution"
         Write-Verbose $BuildCmd
         if (-not $DryRun) {
+            $BuildCommands += $BuildCmd        
             Invoke-Expression $BuildCmd
         }
 
         $BuildCmd = "msbuild $RestoreArgs2 $MsBuildOnlySolution"
         Write-Verbose $BuildCmd
         if (-not $DryRun) {
+            $BuildCommands += $BuildCmd        
             Invoke-Expression $BuildCmd
         }
 
         $BuildCmd = "msbuild $BuildArgs2 $MsBuildOnlySolution"
         Write-Verbose $BuildCmd
         if (-not $DryRun) {
+            $BuildCommands += $BuildCmd        
             Invoke-Expression $BuildCmd
         }
     }
+   
+
+
+    Write-Host "Build Commands:"
+    $BuildCommands.ForEach({
+        Write-Host ("`t" + $_)
+    })
+    Write-Host "\n"
+    
+    Write-Host "Build Logs:"
+    $LogFiles.ForEach({
+        Write-Host ("`t" + $_)
+    })
 }
 Finally {
     <# restore global.json #>
