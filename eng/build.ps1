@@ -198,6 +198,32 @@ Function Get-LogFile {
     return Join-Path $ArtifactsDir ($name + '.binlog')
 }
 
+Function Get-BuildArgs {
+    [CmdletBinding(PositionalBinding=$false)]
+    param(
+        [string]$LogFile,
+        [string]$Platform,
+        [string]$PublishDir,
+        [string]$RuntimeIdentifier,
+        [switch]$UseMsBuild,
+        [switch]$Restore
+    )
+    
+    [string]$escapeparser = '--%'
+    
+    if (-not $Restore) {
+        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
+    } else {
+        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
+    }
+    
+    if ($UseMsBuild) {
+        $BuildArgs += " /m"
+    }
+    
+    return $BuildArgs
+}
+
 Function Ensure-Directory {
     param(
         [string]$Directory
@@ -217,6 +243,9 @@ if ($psISE) {
 if ($UseMsBuild) {
     Start-VsDevCmd
 }
+
+[string]$escapeparser = '--%'
+
 $Architecture = Fixup-Architecture $Architecture
 $RepoRoot = (Get-Item $Eng).Parent.FullName
 $GlobalJson = Join-Path $RepoRoot 'global.json' 
@@ -225,6 +254,7 @@ $DotNet = Join-Path $DotNetToolsDirectory 'dotnet.exe'
 $Solution = Join-Path $RepoRoot 'WPFSamples.sln'
 $MsBuildOnlySolution = Join-Path $RepoRoot 'WPFSamples.msbuild.sln'
 
+$EnsureGlobalJsonSdk = Join-Path $Eng 'EnsureGlobalJsonSdk.ps1'
 
 if (-not $TargetFramework) {
     $json = (Get-Content $GlobalJson | ConvertFrom-Json)
@@ -243,77 +273,76 @@ Ensure-Directory $PublishDir
 <# Save Global.json file #>
 Copy-Item $GlobalJson -Destination (join-path $ArtifactsTemp 'global.json') -Force
 
-<# Run in local scope to inherit updates to $env:PATH #>
-$EnsureGlobalJsonSdk = Join-Path $Eng 'EnsureGlobalJsonSdk.ps1'
-. $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework
-if (-not (Test-Path $DotNet)) {
-    Write-Error "$DotNet not found - exiting"
-    exit
+Try {
+    <# Run in local scope to inherit updates to $env:PATH #>
+    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework
+    if (-not (Test-Path $DotNet)) {
+        Write-Error "$DotNet not found - exiting"
+        exit
+    }
+
+    Set-Location $RepoRoot 
+
+    if (-not $UseMsBuild) {
+        $LogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts
+        $RestoreLogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
+
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier 
+        $RestoreArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore
+
+        $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
+        Write-Verbose $BuildCmd
+        if (-not $DryRun) {
+            Invoke-Expression $BuildCmd
+        }
+
+        $BuildCmd = "$DotNet publish $BuildArgs $Solution"
+        Write-Verbose $BuildCmd
+        if (-not $DryRun) {
+            Invoke-Expression $BuildCmd
+        }
+    }
+
+    
+    if ($UseMsBuild) {       
+        $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
+        $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
+               
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
+        $RestoreArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
+
+        $LogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts
+        $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -suffix 'restore' 
+        $BuildArgs2 =  "$escapeparser /bl:$LogFile2 /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /m /clp:Summary;Verbosity=minimal /t:publish"
+        $RestoreArgs2 = "/t:restore /p:RuntimeIdentifier=$RuntimeIdentifier /bl:$RestoreLogFile2 /noconlog /m"
+
+        $BuildCmd = "msbuild $RestoreArgs $Solution"
+        Write-Verbose $BuildCmd
+        if (-not $DryRun) {
+            Invoke-Expression $BuildCmd
+        }
+
+        $BuildCmd = "msbuild $BuildArgs $Solution"
+        Write-Verbose $BuildCmd
+        if (-not $DryRun) {
+            Invoke-Expression $BuildCmd
+        }
+
+        $BuildCmd = "msbuild $RestoreArgs2 $MsBuildOnlySolution"
+        Write-Verbose $BuildCmd
+        if (-not $DryRun) {
+            Invoke-Expression $BuildCmd
+        }
+
+        $BuildCmd = "msbuild $BuildArgs2 $MsBuildOnlySolution"
+        Write-Verbose $BuildCmd
+        if (-not $DryRun) {
+            Invoke-Expression $BuildCmd
+        }
+    }
 }
-
-
-
-Set-Location $RepoRoot 
-
-$escapeparser = '--%'
-if (-not $UseMsBuild) {
-    $LogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts
-    $RestoreLogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
-
-    $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
-    $RestoreArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
-
-    $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
-    Write-Verbose $BuildCmd
-    if (-not $DryRun) {
-        Invoke-Expression $BuildCmd
-    }
-
-    $BuildCmd = "$DotNet publish $BuildArgs $Solution"
-    Write-Verbose $BuildCmd
-    if (-not $DryRun) {
-        Invoke-Expression $BuildCmd
-    }
+Finally {
+    <# restore global.json #>
+    Copy-Item (Join-Path $ArtifactsTemp 'global.json') $GlobalJson -Force
 }
-
-if ($UseMsBuild) {
-    $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
-    $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
-
-    $BuildArgs =   "$escapeparser /bl:$LogFile /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /m /clp:Summary;Verbosity=minimal /t:publish"
-    $RestoreArgs = "/t:restore /p:RuntimeIdentifier=$RuntimeIdentifier /bl:$RestoreLogFile /noconlog /m"
-
-    $LogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts
-    $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -suffix 'restore' 
-    $BuildArgs2 =  "$escapeparser /bl:$LogFile2 /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /m /clp:Summary;Verbosity=minimal /t:publish"
-    $RestoreArgs2 = "/t:restore /p:RuntimeIdentifier=$RuntimeIdentifier /bl:$RestoreLogFile2 /noconlog /m"
-
-    $BuildCmd = "msbuild $RestoreArgs $Solution"
-    Write-Verbose $BuildCmd
-    if (-not $DryRun) {
-        Invoke-Expression $BuildCmd
-    }
-
-    $BuildCmd = "msbuild $BuildArgs $Solution"
-    Write-Verbose $BuildCmd
-    if (-not $DryRun) {
-        Invoke-Expression $BuildCmd
-    }
-
-    $BuildCmd = "msbuild $RestoreArgs2 $MsBuildOnlySolution"
-    Write-Verbose $BuildCmd
-    if (-not $DryRun) {
-        Invoke-Expression $BuildCmd
-    }
-
-    $BuildCmd = "msbuild $BuildArgs2 $MsBuildOnlySolution"
-    Write-Verbose $BuildCmd
-    if (-not $DryRun) {
-        Invoke-Expression $BuildCmd
-    }
-}
-
-<# restore global.json #>
-Copy-Item (Join-Path $ArtifactsTemp 'global.json') $GlobalJson -Force
-
 
