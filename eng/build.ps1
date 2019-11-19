@@ -198,6 +198,16 @@ Function Get-LogFile {
     return Join-Path $ArtifactsDir ($name + '.binlog')
 }
 
+Function Ensure-Directory {
+    param(
+        [string]$Directory
+    )
+    
+    if (-not (Test-Path $Directory)) {
+        New-Item -ItemType Directory -Path $Directory | Out-Null
+    }
+}
+
 if ($psISE) {
     $Eng =  (Get-Item (Split-Path $psISE.CurrentFile.FullPath -Parent)).FullName
 } else {
@@ -226,13 +236,9 @@ $PublishDir = Join-Path $Artifacts 'publish'
 $ArtifactsTemp = Join-Path $Artifacts 'Temp' 
 $RuntimeIdentifier = Identify-RID $Architecture
 
-if (-not (Test-Path $Artifacts)) {
-    New-Item -ItemType Directory -Path $Artifacts
-}
-
-if (-not (Test-Path $ArtifactsTemp)) {
-    New-Item -ItemType Directory -Path $ArtifactsTemp
-}
+Ensure-Directory $Artifacts
+Ensure-Directory $ArtifactsTemp
+Ensure-Directory $PublishDir
 
 <# Save Global.json file #>
 Copy-Item $GlobalJson -Destination (join-path $ArtifactsTemp 'global.json') -Force
@@ -249,12 +255,13 @@ if (-not (Test-Path $DotNet)) {
 
 Set-Location $RepoRoot 
 
+$escapeparser = '--%'
 if (-not $UseMsBuild) {
     $LogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts
     $RestoreLogFile = Get-LogFile -UseMsBuild $false -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
 
-    $BuildArgs = "/bl:$LogFile /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier"
-    $RestoreArgs = "/bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier"
+    $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
+    $RestoreArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
 
     $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
     Write-Verbose $BuildCmd
@@ -262,7 +269,7 @@ if (-not $UseMsBuild) {
         Invoke-Expression $BuildCmd
     }
 
-    $BuildCmd = "$DotNet $BuildArgs $Solution"
+    $BuildCmd = "$DotNet publish $BuildArgs $Solution"
     Write-Verbose $BuildCmd
     if (-not $DryRun) {
         Invoke-Expression $BuildCmd
@@ -273,7 +280,6 @@ if ($UseMsBuild) {
     $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
     $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -suffix 'restore' 
 
-    $escapeparser = '--%'
     $BuildArgs =   "$escapeparser /bl:$LogFile /p:Platform=$Architecture /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /m /clp:Summary;Verbosity=minimal /t:publish"
     $RestoreArgs = "/t:restore /p:RuntimeIdentifier=$RuntimeIdentifier /bl:$RestoreLogFile /noconlog /m"
 
