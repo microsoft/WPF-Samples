@@ -212,9 +212,9 @@ Function Get-BuildArgs {
     [string]$escapeparser = '--%'
     
     if (-not $Restore) {
-        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
+        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=preview /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal /nr:false"
     } else {
-        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal"
+        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=minimal /nr:false"
     }
     
     if ($UseMsBuild) {
