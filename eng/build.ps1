@@ -37,7 +37,6 @@
 .EXAMPLE
     build.ps1
     Builds the repo 
-    
 .EXAMPLE 
     build.ps1 -TargetFramework netcoreapp5.0 -UseMsBuild
     
