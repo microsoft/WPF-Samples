@@ -9,6 +9,8 @@ variables:
     value: 'WPFSamples.sln'
   - name: msbuildonlysolution
     value: 'WPFSamples.msbuild.sln'
+  - name: LangVersion
+    value: preview
 
 trigger:
 - master
@@ -29,29 +31,116 @@ stages:
        value: Debug
      - name: _Platform
        value: x86
+     - name: _ToolPlatform
+       value: x86
+     - name: _TargetFramework
+       value: 'netcoreapp3.0'
     strategy:
      matrix:
-      Build_Debug_AnyCPU:
+      Debug-AnyCPU-netcoreapp3.0:
         _Configuration: Debug
-        _Platform: "Any CPU"
-      Build_Release_AnyCPU:
-        _Configuration: Release
-        _Platform: "Any CPU"
-      Build_Debug_x86:
+        _Platform: 'Any CPU'
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
+      Debug-AnyCPU-netcoreapp3.1:
         _Configuration: Debug
-        _Platform: x86
-      Build_Release_x86:
-        _Configuration: Release
-        _Platform: x86
-      Build_Debug_x64:
+        _Platform: 'Any CPU'
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
+      Debug-AnyCPU-netcoreapp5.0:
         _Configuration: Debug
-        _Platform: x64
-      Build_Release_x64:
+        _Platform: 'Any CPU'
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
+      Debug-x64-netcoreapp3.0:
+        _Configuration: Debug
+        _Platform: 'x64'
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x64
+      Debug-x64-netcoreapp3.1:
+        _Configuration: Debug
+        _Platform: 'x64'
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x64
+      Debug-x64-netcoreapp5.0:
+        _Configuration: Debug
+        _Platform: 'x64'
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x64
+      Debug-x86-netcoreapp3.0:
+        _Configuration: Debug
+        _Platform: 'x86'
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
+      Debug-x86-netcoreapp3.1:
+        _Configuration: Debug
+        _Platform: 'x86'
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
+      Debug-x86-netcoreapp5.0:
+        _Configuration: Debug
+        _Platform: 'x86'
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
+      Release-AnyCPU-netcoreapp3.0:
         _Configuration: Release
-        _Platform: x64
+        _Platform: 'Any CPU'
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
+      Release-AnyCPU-netcoreapp3.1:
+        _Configuration: Release
+        _Platform: 'Any CPU'
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
+      Release-AnyCPU-netcoreapp5.0:
+        _Configuration: Release
+        _Platform: 'Any CPU'
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
+      Release-x64-netcoreapp3.0:
+        _Configuration: Release
+        _Platform: 'x64'
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x64
+      Release-x64-netcoreapp3.1:
+        _Configuration: Release
+        _Platform: 'x64'
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x64
+      Release-x64-netcoreapp5.0:
+        _Configuration: Release
+        _Platform: 'x64'
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x64
+      Release-x86-netcoreapp3.0:
+        _Configuration: Release
+        _Platform: 'x86'
+        _TargetFramework: 'netcoreapp3.0'
+        _ToolPlatform: x86
+      Release-x86-netcoreapp3.1:
+        _Configuration: Release
+        _Platform: 'x86'
+        _TargetFramework: 'netcoreapp3.1'
+        _ToolPlatform: x86
+      Release-x86-netcoreapp5.0:
+        _Configuration: Release
+        _Platform: 'x86'
+        _TargetFramework: 'netcoreapp5.0'
+        _ToolPlatform: x86
     steps:
      - task: NuGetToolInstaller@1
        displayName: 'Download and Cache Nuget tool'
+
+     - powershell: ./eng/EnsureGlobalJsonSdk.ps1 -g global.json -i "$(Agent.ToolsDirectory)/dotnet" -a $(_ToolPlatform) -f $(_TargetFramework) -Verbose
+       displayName: Install .NET Core 
+
+     - powershell: |
+          Write-Host "Path Environment Variable:"
+          Write-Host $env:PATH
+          Write-Host 
+          Write-Host "List of Installed .NET Core SDK's"
+          dotnet --list-sdks
+       displayName: List .NET SDK's
 
      - task: NuGetCommand@2
        displayName: 'Restore .NET Core Samples Using NuGet'
@@ -70,8 +159,9 @@ stages:
         vsVersion: latest
         solution: '$(solution)'
         platform: '$(_Platform)'
+        msbuildArchitecture: '$(_ToolPlatform)'
         configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).binlog"
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: VSBuild@1
        continueOnError: true
@@ -80,8 +170,9 @@ stages:
         vsVersion: latest
         solution: '$(msbuildonlysolution)'
         platform: '$(_Platform)'
+        msbuildArchitecture: '$(_ToolPlatform)'
         configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).binlog"
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: PublishBuildArtifacts@1
        continueOnError: true
@@ -97,7 +188,7 @@ stages:
         targetType: 'inline'
         script: |
           # Write your PowerShell commands here.
-      
+          
           git clean -xdf
 
      - task: DotNetCoreCLI@2
@@ -117,7 +208,7 @@ stages:
         command: 'build'
         projects: '$(solution)'
         configuration: $(_Configuration)
-        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).binlog" /p:Platform="$(_Platform)"'
+        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:Platform="$(_Platform)" /p:LangVersion=$(LangVersion)'
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
@@ -125,3 +216,13 @@ stages:
         PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore
         ArtifactName: 'Build Logs'
         publishLocation: 'Container'
+        
+     - task: PowerShell@2
+       displayName: 'Clean Files From Previous Builds'
+       inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          git checkout global.json
+          git clean -xdf        
