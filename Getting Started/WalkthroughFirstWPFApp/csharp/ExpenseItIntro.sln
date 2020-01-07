@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseItIntro", "ExpenseItIntro.csproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseItIntro", "ExpenseItIntro.csproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +11,15 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.ActiveCfg = Debug|x86
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.Build.0 = Debug|x86
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.ActiveCfg = Release|x86
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.Build.0 = Release|x86
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.Build.0 = Debug|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AC375CC-5B07-463D-9ED6-5C447D2133A3}
 	EndGlobalSection
 EndGlobal
