@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPage", "MultiPage\Mult
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLayout", "SimpleLayout\SimpleLayout.csproj", "{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLayout", "SimpleLayout\SimpleLayout.csproj", "{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseItIntro", "WalkthroughFirstWPFApp\csharp\ExpenseItIntro.csproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,11 +50,15 @@ Global
 		{8BB5C536-404D-4E91-8C2D-61D0D6494D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8BB5C536-404D-4E91-8C2D-61D0D6494D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BB5C536-404D-4E91-8C2D-61D0D6494D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BB5C536-404D-4E91-8C2D-61D0D6494D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB5C536-404D-4E91-8C2D-61D0D6494D67}.Release|Any CPU.Build.0 = Release|Any CPU		
 		{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}.Release|Any CPU.Build.0 = Release|Any CPU		
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
