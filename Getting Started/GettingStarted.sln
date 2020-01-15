@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPage", "MultiPage\Mult
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLayout", "SimpleLayout\SimpleLayout.csproj", "{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLayout", "SimpleLayout\SimpleLayout.csproj", "{2D81B26B-2525-41EA-9CBC-A4AA3B29579C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseItIntro", "WalkthroughFirstWPFApp\csharp\ExpenseItIntro.csproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
 EndProject
 Global
