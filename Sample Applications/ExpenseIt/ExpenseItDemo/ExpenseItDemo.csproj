@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
-	  <OutputType>WinExe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>ExpenseIt9</RootNamespace>
     <AssemblyName>ExpenseIt9</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
