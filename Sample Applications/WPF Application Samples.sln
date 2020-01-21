@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcentricRingsDemo", "Conc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeAnimationDemo", "CubeAnimationDemo\CubeAnimationDemo.csproj", "{8EF611EF-44AD-4871-9CF9-A80D501A1300}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomComboBox", "CustomComboBox\CustomComboBox.csproj", "{9E3EECAF-86CF-45CB-8ABB-01A850A308F0}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBindingDemo", "DataBindingDemo\DataBindingDemo.csproj", "{D56C3A49-C7A9-42E5-9C59-AF1670B08276}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropShadow", "DropShadow\DropShadow.csproj", "{5E760E96-A59B-491D-9FDC-70587AE24240}"
@@ -69,6 +71,10 @@ Global
 		{8EF611EF-44AD-4871-9CF9-A80D501A1300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EF611EF-44AD-4871-9CF9-A80D501A1300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EF611EF-44AD-4871-9CF9-A80D501A1300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3EECAF-86CF-45CB-8ABB-01A850A308F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3EECAF-86CF-45CB-8ABB-01A850A308F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3EECAF-86CF-45CB-8ABB-01A850A308F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3EECAF-86CF-45CB-8ABB-01A850A308F0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D56C3A49-C7A9-42E5-9C59-AF1670B08276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D56C3A49-C7A9-42E5-9C59-AF1670B08276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D56C3A49-C7A9-42E5-9C59-AF1670B08276}.Release|Any CPU.ActiveCfg = Release|Any CPU
