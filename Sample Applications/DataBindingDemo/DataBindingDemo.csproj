@@ -6,7 +6,6 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DataBindingDemo</RootNamespace>
     <AssemblyName>DataBindingDemo</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
 </Project>

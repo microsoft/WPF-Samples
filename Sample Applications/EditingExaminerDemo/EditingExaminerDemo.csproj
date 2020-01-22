@@ -6,7 +6,6 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>EditingExaminerDemo</RootNamespace>
     <AssemblyName>EditingExaminerDemo</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
 </Project>

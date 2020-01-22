@@ -6,7 +6,6 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ExpenseIt9</RootNamespace>
     <AssemblyName>ExpenseIt9</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>

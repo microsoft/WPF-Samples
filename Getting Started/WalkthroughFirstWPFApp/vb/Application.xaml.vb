@@ -1,3 +1,5 @@
+Imports System.Windows
+
 Namespace ExpenseIt9
 	''' <summary>
 	''' Interaction logic for App.xaml

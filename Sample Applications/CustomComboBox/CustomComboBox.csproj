@@ -5,6 +5,5 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CustomComboBox</RootNamespace>
     <AssemblyName>CustomComboBox</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 </Project>

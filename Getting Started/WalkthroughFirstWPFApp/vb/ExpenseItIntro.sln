@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExpenseItIntro", "ExpenseItIntro.vbproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
 EndProject
 Global
@@ -9,12 +11,15 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.ActiveCfg = Debug|x86
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.Build.0 = Debug|x86
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.ActiveCfg = Release|x86
-		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.Build.0 = Release|x86
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Debug|x86.Build.0 = Debug|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8379EF4B-0574-4046-BF37-46C44CE7A505}
 	EndGlobalSection
 EndGlobal
