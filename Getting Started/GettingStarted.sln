@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleLayout", "SimpleLayou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseItIntro", "WalkthroughFirstWPFApp\csharp\ExpenseItIntro.csproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseItIntro", "WalkthroughFirstWPFApp\vb\ExpenseItIntro.vbproj", "{B7A77E2B-932E-465E-BDFA-8AF218B8854F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseItIntro2", "WalkthroughFirstWPFApp\vb\ExpenseItIntro.vbproj", "{B7A77E2B-932E-465E-BDFA-8AF218B8854F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

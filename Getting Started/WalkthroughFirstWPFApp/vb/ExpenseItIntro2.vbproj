@@ -5,7 +5,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ExpenseIt9</RootNamespace>
     <AssemblyName>ExpenseIt9</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>14.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
