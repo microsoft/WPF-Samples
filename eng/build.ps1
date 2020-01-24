@@ -261,7 +261,7 @@ Function Get-BuildArgs {
     
     $Verbosity = 'quiet'
     $NodeReuse = 'false'
-    $LangVersion = 'preview'
+    $LangVersion = 'latest'
     
     if (-not $Restore) {
         $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
