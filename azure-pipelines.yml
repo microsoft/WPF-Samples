@@ -10,7 +10,7 @@ variables:
   - name: msbuildonlysolution
     value: 'WPFSamples.msbuild.sln'
   - name: LangVersion
-    value: preview
+    value: latest
 
 trigger:
 - master
