@@ -12,68 +12,21 @@
     WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ExpenseIt9;component/css/Styles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style x:Key="EmployeeList" TargetType="{x:Type ListBox}">
-            <Setter Property="Margin" Value="0,5,5,0" />
-            <Setter Property="MinHeight" Value="50" />
-        </Style>
+            <DataTemplate x:Key="EmployeeItemTemplate">
+                <TextBlock Text="{Binding XPath=@Name}" />
+            </DataTemplate>
 
-        <Style x:Key="CostCenterList" TargetType="{x:Type ComboBox}">
-            <Setter Property="Margin" Value="0,5,5,0" />
-        </Style>
-
-        <Style x:Key="HorizontalRadio" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Margin" Value="0,5,5,0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <RadioButton Focusable="false"
-                                     Content="{TemplateBinding ContentPresenter.Content}"
-                                     VerticalAlignment="Center"
-                                     IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="HorizontalRadioList" TargetType="{x:Type ListBox}">
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Margin" Value="0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBox}">
-                        <StackPanel KeyboardNavigation.TabNavigation="Once" IsItemsHost="True" Orientation="Horizontal"
-                                    Height="25" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="InputText" TargetType="{x:Type TextBox}">
-            <Setter Property="FontFamily" Value="Trebuchet MS" />
-            <Setter Property="Foreground" Value="#0066CC" />
-            <Setter Property="FontSize" Value="10pt" />
-            <Setter Property="Margin" Value="0,5,5,0" />
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
-                </Trigger>
-                <Trigger Property="Validation.HasError" Value="false">
-                    <Setter Property="ToolTip"
-                            Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <DataTemplate x:Key="EmployeeItemTemplate">
-            <TextBlock Text="{Binding XPath=@Name}" />
-        </DataTemplate>
-
-        <DataTemplate x:Key="CostCenterTemplate">
-            <TextBlock Text="{Binding XPath=@Name}" />
-        </DataTemplate>
-
+            <DataTemplate x:Key="CostCenterTemplate">
+                <TextBlock Text="{Binding XPath=@Name}" />
+            </DataTemplate>
+            
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
