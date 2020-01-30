@@ -25,7 +25,7 @@
     You can identify this by loking at global.json sdk.version property, or <TargetFramework> property 
     in project files im this repo. 
     
-    Alternative TargetFramework can be supplied to build. Currently, netcoreapp3.0 (default), netcoreapp3.1 
+    Alternative TargetFramework can be supplied to build. Currently, netcoreapp3.1 (default),
     and netcoreapp5.0 are supported.
 .PARAMETER DryRun 
     When this switch is specified, the build is simulated, but the actual build is not run. 
@@ -60,7 +60,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.0', 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
   $TargetFramework='', 
 
   [switch]

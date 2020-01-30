@@ -18,7 +18,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.0', 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
   $TargetFramework=''
 )
 
