@@ -13,94 +13,34 @@
 
     <Window.Resources>
 
-        <Style x:Key="ReadOnlyText" TargetType="{x:Type TextBox}">
-            <Setter Property="Margin" Value="0,5,5,0" />
-            <Setter Property="IsReadOnly" Value="True" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style x:Key="FunctionButton" TargetType="{x:Type Button}">
-            <Setter Property="Margin" Value="5,5,5,0" />
-            <Setter Property="Padding" Value="5,2,5,2" />
-            <Setter Property="MinWidth" Value="80" />
-        </Style>
-
-        <Style x:Key="TableLabel" TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="10pt" />
-            <Setter Property="Padding" Value="5,0,5,0" />
-        </Style>
-
-        <Style x:Key="TableLabelRightAligned" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TableLabel}">
-            <Setter Property="HorizontalAlignment" Value="Right" />
-        </Style>
-
-        <Style x:Key="CommandButtonPanel" TargetType="{x:Type StackPanel}">
-            <Setter Property="Orientation" Value="Horizontal" />
-            <Setter Property="HorizontalAlignment" Value="Right" />
-        </Style>
-
-        <Style x:Key="SeparatorRectangle" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource TotalRectangle}">
-            <Setter Property="Height" Value="3" />
-            <Setter Property="RadiusX" Value="2" />
-            <Setter Property="RadiusY" Value="2" />
-        </Style>
-
-        <Style x:Key="TopSeparatorRectangle" TargetType="{x:Type Rectangle}"
-               BasedOn="{StaticResource SeparatorRectangle}">
-            <Setter Property="Margin" Value="5,10,5,5" />
-        </Style>
-
-        <Style x:Key="BottomSeparatorRectangle" TargetType="{x:Type Rectangle}"
-               BasedOn="{StaticResource SeparatorRectangle}">
-            <Setter Property="Margin" Value="5,10,5,0" />
-        </Style>
-
-        <Style x:Key="ExpenseScroller" TargetType="{x:Type ItemsControl}">
-            <Setter Property="Margin" Value="10,0,10,0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ItemsControl}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <StackPanel IsItemsHost="True" />
-                        </ScrollViewer>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ExpenseChartSmall" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource ExpenseChart}">
-            <Setter Property="MinWidth" Value="100" />
-            <Setter Property="MinHeight" Value="70" />
-            <Setter Property="MaxWidth" Value="100" />
-            <Setter Property="MaxHeight" Value="70" />
-            <Setter Property="Margin" Value="5,5,5,5" />
-        </Style>
-
-        <DataTemplate x:Key="ExpenseTemplate">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="33*" />
-                    <ColumnDefinition Width="33*" />
-                    <ColumnDefinition Width="33*" />
-                </Grid.ColumnDefinitions>
-                <TextBox Text="{Binding Path=Type}" Grid.Column="0" />
-                <TextBox Text="{Binding Path=Description}" Grid.Column="1" />
-                <TextBox Grid.Column="2" TextAlignment="Right">
-                    <TextBox.Text>
-                        <Binding Path="Cost" UpdateSourceTrigger="PropertyChanged">
-                            <!-- SECURITY: Cost must be an int -->
-                            <Binding.ValidationRules>
-                                <localValidation:NumberValidationRule />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-
-            </Grid>
-        </DataTemplate>
+            <DataTemplate x:Key="ExpenseTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="33*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding Path=Type}" Grid.Column="0" />
+                    <TextBox Text="{Binding Path=Description}" Grid.Column="1" />
+                    <TextBox Grid.Column="2" TextAlignment="Right">
+                        <TextBox.Text>
+                            <Binding Path="Cost" UpdateSourceTrigger="PropertyChanged">
+                                <!-- SECURITY: Cost must be an int -->
+                                <Binding.ValidationRules>
+                                    <localValidation:NumberValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+            </DataTemplate>
+         </ResourceDictionary>
 
     </Window.Resources>
 
