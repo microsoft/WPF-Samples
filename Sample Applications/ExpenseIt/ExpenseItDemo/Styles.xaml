@@ -1,0 +1,308 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ExpenseItDemo">
+
+    <Style x:Key="WatermarkImage" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="/ExpenseIt9;component/watermark.png" />
+        <Setter Property="HorizontalAlignment" Value="left" />
+        <Setter Property="VerticalAlignment" Value="top" />
+        <Setter Property="Width" Value="230" />
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+
+    <Style x:Key="CommandButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="0,10,5,5" />
+        <Setter Property="Padding" Value="5,2,5,2" />
+        <Setter Property="MinWidth" Value="80" />
+    </Style>
+
+    <Style x:Key="WindowContentGrid" TargetType="{x:Type Grid}">
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style x:Key="Label" TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="DarkSlateBlue" />
+        <Setter Property="FontSize" Value="10pt" />
+        <Setter Property="Margin" Value="0,3,0,0" />
+        <Setter Property="FontFamily" Value="Trebuchet MS" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="ExpenseChart" TargetType="{x:Type ItemsControl}">
+        <Setter Property="DataContext" Value="{DynamicResource ExpenseData}" />
+        <Setter Property="ItemsSource" Value="{Binding Path=LineItems}" />
+        <Setter Property="ItemTemplate" Value="{DynamicResource ExpenseChartBar}" />
+        <Setter Property="Margin" Value="5,5,5,0" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="MinHeight" Value="50" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+
+                        <Rectangle StrokeThickness="1" RadiusX="10" RadiusY="10">
+
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="#4E87D4" Offset="0" />
+                                            <GradientStop Color="#73B2F5" Offset="1" />
+                                        </GradientStopCollection>
+                                    </GradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="#73B2F5" Offset="0" />
+                                            <GradientStop Color="#4E87D4" Offset="1" />
+                                        </GradientStopCollection>
+                                    </GradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+
+                        </Rectangle>
+
+                        <Viewbox Margin="1"
+                                     Stretch="Uniform">
+                            <StackPanel Orientation="Horizontal"
+                                            IsItemsHost="True" />
+                        </Viewbox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TotalExpenses" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="18pt" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="0,10,15,10" />
+    </Style>
+
+    <Style x:Key="TotalExpensesFlow" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="TotalHeaderGrid" TargetType="{x:Type Grid}">
+        <Setter Property="Margin" Value="10,10,10,0" />
+    </Style>
+
+    <Style x:Key="TotalRectangle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Margin" Value="5,5,5,0" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="RadiusX" Value="10" />
+        <Setter Property="RadiusY" Value="10" />
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#4E87D4" Offset="0" />
+                            <GradientStop Color="#73B2F5" Offset="1" />
+                        </GradientStopCollection>
+                    </GradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#73B2F5" Offset="0" />
+                            <GradientStop Color="#4E87D4" Offset="1" />
+                        </GradientStopCollection>
+                    </GradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EmployeeList" TargetType="{x:Type ListBox}">
+        <Setter Property="Margin" Value="0,5,5,0" />
+        <Setter Property="MinHeight" Value="50" />
+    </Style>
+
+    <Style x:Key="CostCenterList" TargetType="{x:Type ComboBox}">
+        <Setter Property="Margin" Value="0,5,5,0" />
+    </Style>
+
+    <Style x:Key="HorizontalRadio" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Margin" Value="0,5,5,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <RadioButton Focusable="false"
+                                     Content="{TemplateBinding ContentPresenter.Content}"
+                                     VerticalAlignment="Center"
+                                     IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HorizontalRadioList" TargetType="{x:Type ListBox}">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <StackPanel KeyboardNavigation.TabNavigation="Once" IsItemsHost="True" Orientation="Horizontal"
+                                    Height="25" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="InputText" TargetType="{x:Type TextBox}">
+        <Setter Property="FontFamily" Value="Trebuchet MS" />
+        <Setter Property="Foreground" Value="#0066CC" />
+        <Setter Property="FontSize" Value="10pt" />
+        <Setter Property="Margin" Value="0,5,5,0" />
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+            </Trigger>
+            <Trigger Property="Validation.HasError" Value="false">
+                <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+    <Style x:Key="ReadOnlyText" TargetType="{x:Type TextBox}">
+        <Setter Property="Margin" Value="0,5,5,0" />
+        <Setter Property="IsReadOnly" Value="True" />
+    </Style>
+
+    <Style x:Key="FunctionButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="5,5,5,0" />
+        <Setter Property="Padding" Value="5,2,5,2" />
+        <Setter Property="MinWidth" Value="80" />
+    </Style>
+
+    <Style x:Key="TableLabel" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="10pt" />
+        <Setter Property="Padding" Value="5,0,5,0" />
+    </Style>
+
+    <Style x:Key="TableLabelRightAligned" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TableLabel}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="CommandButtonPanel" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="SeparatorRectangle" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource TotalRectangle}">
+        <Setter Property="Height" Value="3" />
+        <Setter Property="RadiusX" Value="2" />
+        <Setter Property="RadiusY" Value="2" />
+    </Style>
+
+    <Style x:Key="TopSeparatorRectangle" TargetType="{x:Type Rectangle}"
+               BasedOn="{StaticResource SeparatorRectangle}">
+        <Setter Property="Margin" Value="5,10,5,5" />
+    </Style>
+
+    <Style x:Key="BottomSeparatorRectangle" TargetType="{x:Type Rectangle}"
+               BasedOn="{StaticResource SeparatorRectangle}">
+        <Setter Property="Margin" Value="5,10,5,0" />
+    </Style>
+
+    <Style x:Key="ExpenseScroller" TargetType="{x:Type ItemsControl}">
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel IsItemsHost="True" />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+     <Style x:Key="ExpenseChartSmall" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource ExpenseChart}">
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MinHeight" Value="70" />
+        <Setter Property="MaxWidth" Value="100" />
+        <Setter Property="MaxHeight" Value="70" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+    </Style>
+
+    <Style x:Key="ExpenseGrid" TargetType="{x:Type Grid}">
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="40" />
+    </Style>
+
+    <Style x:Key="ExpenseRectangle1" TargetType="{x:Type Rectangle}">
+        <Setter Property="Margin" Value="10,10,10,0" />
+        <Setter Property="Fill" Value="#33000000" />
+        <Setter Property="RadiusX" Value="2" />
+        <Setter Property="RadiusY" Value="2" />
+    </Style>
+
+    <RadialGradientBrush x:Key="brushExpenseRectangle2">
+        <GradientStop Color="LimeGreen" Offset="0" />
+        <GradientStop Color="DarkGreen" Offset="1" />
+    </RadialGradientBrush>
+
+    <Style x:Key="ExpenseRectangle2" TargetType="{x:Type Rectangle}">
+        <Setter Property="Margin" Value="10,10,10,0" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="0.5" />
+        <Setter Property="RadiusX" Value="2" />
+        <Setter Property="RadiusY" Value="2" />
+        <Setter Property="Fill" Value="{StaticResource brushExpenseRectangle2}"/>
+    </Style>
+
+    <LinearGradientBrush x:Key="brushExpenseRectangle3" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#aaffffff" Offset="0" />
+        <GradientStop Color="transparent" Offset="1" />
+    </LinearGradientBrush>
+
+    <Style x:Key="ExpenseRectangle3" TargetType="{x:Type Rectangle}">
+        <Setter Property="Margin" Value="11,12,11,0" />
+        <Setter Property="RadiusX" Value="1" />
+        <Setter Property="RadiusY" Value="1" />
+        <Setter Property="Fill" Value="{StaticResource brushExpenseRectangle3}"/>
+    </Style>
+
+    <Style x:Key="ExpenseViewbox" TargetType="{x:Type Viewbox}">
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Margin" Value="2" />
+    </Style>
+
+    <Style x:Key="ExpenseRowDescription" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="10pt" />
+        <Setter Property="FontFamily" Value="Ariel" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="Width" Value="100" />
+    </Style>
+
+    <Style x:Key="ExpenseRowCost" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="4pt" />
+        <Setter Property="FontFamily" Value="Ariel" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="0,5,0,3" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+</ResourceDictionary>
