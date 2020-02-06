@@ -7,7 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
 	Title="ExpenseIt - View Expense Report">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         
         <!--Templates to display expense report data-->
@@ -66,8 +73,6 @@
             
             <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
 
-               
-
                 <!-- Expense type and Amount table -->
                 <DataGrid ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource columnHeaderStyle}" AutoGenerateColumns="False" RowHeaderWidth="0" >
                    
@@ -82,5 +87,5 @@
         </Grid>
 
     </Grid>
-    
+
 </Page>

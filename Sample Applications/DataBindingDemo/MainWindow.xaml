@@ -7,28 +7,19 @@
         mc:Ignorable="d"
         Title="List of Products" SizeToContent="WidthAndHeight">
     <Window.Resources>
-        <Style TargetType="{x:Type ListBoxItem}">
-            <Style.Triggers>
-                <Trigger Property="Selector.IsSelected" Value="True">
-                    <Setter Property="Background" Value="Moccasin" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DataBindingDemo;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="GroupingHeaderTemplate">
+                <TextBlock Text="{Binding Path=Name}"
+                           Foreground="Navy" FontWeight="Bold" FontSize="12" />
+            </DataTemplate>
 
-        <DataTemplate x:Key="GroupingHeaderTemplate">
-            <TextBlock Text="{Binding Path=Name}"
-                       Foreground="Navy" FontWeight="Bold" FontSize="12" />
-        </DataTemplate>
-
-        <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
-            <Setter Property="Foreground" Value="#333333" />
-            <Setter Property="FontWeight" Value="Bold" />
-        </Style>
-
-        <CollectionViewSource
-            Source="{Binding Source={x:Static Application.Current}, Path=AuctionItems}"
-            x:Key="ListingDataView" />
-
+            <CollectionViewSource
+                Source="{Binding Source={x:Static Application.Current}, Path=AuctionItems}"
+                x:Key="ListingDataView" />
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
