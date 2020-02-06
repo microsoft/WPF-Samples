@@ -59,7 +59,6 @@
                 </DataGrid>
 
             </DataTemplate>
-
          </ResourceDictionary>
 
     </Window.Resources>
