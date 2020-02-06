@@ -90,8 +90,15 @@
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
 
-    <Style x:Key="TotalHeaderGrid" TargetType="{x:Type Grid}">
+    <LinearGradientBrush x:Key="brushExpenseRectangle4" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#73B2F5" Offset="0" />
+        <GradientStop Color="#4E87D4" Offset="1" />
+    </LinearGradientBrush>
+
+    <Style x:Key="TotalDataGrid" TargetType="{x:Type DataGrid}">
+        <Setter Property="Background" Value="{StaticResource brushExpenseRectangle4}"/>
         <Setter Property="Margin" Value="10,10,10,0" />
+        <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=RenderSize.Width}" />
     </Style>
 
     <Style x:Key="TotalRectangle" TargetType="{x:Type Rectangle}">
@@ -178,8 +185,6 @@
         </Style.Triggers>
     </Style>
 
-
-
     <Style x:Key="ReadOnlyText" TargetType="{x:Type TextBox}">
         <Setter Property="Margin" Value="0,5,5,0" />
         <Setter Property="IsReadOnly" Value="True" />
@@ -191,8 +196,13 @@
         <Setter Property="MinWidth" Value="80" />
     </Style>
 
-    <Style x:Key="TableLabel" TargetType="{x:Type TextBlock}">
+    <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource TotalDataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ColumnHeaderStyle1}" />
+    </Style>
+
+    <Style x:Key="ColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="Bold" />
@@ -200,7 +210,11 @@
         <Setter Property="Padding" Value="5,0,5,0" />
     </Style>
 
-    <Style x:Key="TableLabelRightAligned" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TableLabel}">
+    <Style x:Key="ColumnHeaderStyle2" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource ColumnHeaderStyle1}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="CostColumnStyle" TargetType="{x:Type DataGridCell}" >
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
 
@@ -223,19 +237,6 @@
     <Style x:Key="BottomSeparatorRectangle" TargetType="{x:Type Rectangle}"
                BasedOn="{StaticResource SeparatorRectangle}">
         <Setter Property="Margin" Value="5,10,5,0" />
-    </Style>
-
-    <Style x:Key="ExpenseScroller" TargetType="{x:Type ItemsControl}">
-        <Setter Property="Margin" Value="10,0,10,0" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ItemsControl}">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel IsItemsHost="True" />
-                    </ScrollViewer>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 
      <Style x:Key="ExpenseChartSmall" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource ExpenseChart}">

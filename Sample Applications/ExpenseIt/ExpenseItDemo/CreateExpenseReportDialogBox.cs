@@ -2,6 +2,7 @@
 // // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ExpenseItDemo
 {
@@ -42,6 +43,19 @@ namespace ExpenseItDemo
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void expenseDataGrid1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.Column.Header.ToString() == "Type")
+            {
+                e.Column.Header = "Expense Type";
+            }
+            if (e.Column.Header.ToString() == "Cost")
+            {
+                e.Column.HeaderStyle = FindResource("ColumnHeaderStyle2") as Style;
+                e.Column.CellStyle = FindResource("CostColumnStyle") as Style;
+            }
         }
     }
 }
