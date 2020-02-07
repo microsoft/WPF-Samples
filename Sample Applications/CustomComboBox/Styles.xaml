@@ -21,6 +21,103 @@
         </Setter>
     </Style>
 
+    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid Width="12">
+            <Track x:Name="PART_Track" HorizontalAlignment="Center"
+                       IsDirectionReversed="true">
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}" Margin="1,0">
+                        <Thumb.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0" Color="Gray"/>
+                                <GradientStop Offset="0.5" Color="Black"/>
+                                <GradientStop Offset="1" Color="Gray"/>
+                            </LinearGradientBrush>
+                        </Thumb.BorderBrush>
+
+                        <Thumb.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="Gray" Offset="0.0" x:Name="stopa"/>
+                                <GradientStop Color="Black" Offset="1.0" x:Name="stopb"/>
+                            </LinearGradientBrush>
+                        </Thumb.Background>
+                    </Thumb>
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="18" />
+                <ColumnDefinition Width="0.00001*" />
+                <ColumnDefinition MaxWidth="18" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="3"
+                        CornerRadius="2"
+                        Background="#F0F0F0" />
+            <Track x:Name="PART_Tracka"
+                       Grid.Column="1"
+                       IsDirectionReversed="False">
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,1">
+                    </Thumb>
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="ScrollBarStyle" TargetType="{x:Type ScrollBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="SmallChange" Value="1" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Margin" Value="-3,3" />
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Width" Value="15" />
+                <Setter Property="Height" Value="Auto" />
+                <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <LinearGradientBrush x:Key="btn3d" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="Gray"/>
+        <GradientStop Offset="1" Color="Black"/>
+    </LinearGradientBrush>
+
+    <Storyboard x:Key="selectedItemStoryboard">
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                <DiscreteObjectKeyFrame.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Offset="0.2" Color="Black"/>
+                        <GradientStop Offset="0.6" Color="#73ffd700"/>
+                        <GradientStop Offset="0.65" Color="Black"/>
+                    </LinearGradientBrush>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                <DiscreteObjectKeyFrame.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Offset="0" Color="White"/>
+                        <GradientStop Offset="0.25" Color="Black"/>
+                        <GradientStop Offset="0.5" Color="White"/>
+                        <GradientStop Offset="0.75" Color="Black"/>
+                        <GradientStop Offset="1" Color="White"/>
+                    </LinearGradientBrush>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
     <Style x:Key="listBoxStyle" TargetType="ListBox">
         <Setter Property="Foreground" Value="#AEAEAE"/>
         <Setter Property="Template">
@@ -194,102 +291,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Grid Width="12">
-            <Track x:Name="PART_Track" HorizontalAlignment="Center"
-                       IsDirectionReversed="true">
-                <Track.Thumb>
-                    <Thumb Style="{StaticResource ScrollBarThumb}" Margin="1,0">
-                        <Thumb.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Offset="0" Color="Gray"/>
-                                <GradientStop Offset="0.5" Color="Black"/>
-                                <GradientStop Offset="1" Color="Gray"/>
-                            </LinearGradientBrush>
-                        </Thumb.BorderBrush>
-
-                        <Thumb.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="Gray" Offset="0.0" x:Name="stopa"/>
-                                <GradientStop Color="Black" Offset="1.0" x:Name="stopb"/>
-                            </LinearGradientBrush>
-                        </Thumb.Background>
-                    </Thumb>
-                </Track.Thumb>
-            </Track>
-        </Grid>
-    </ControlTemplate>
-
-    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="18" />
-                <ColumnDefinition Width="0.00001*" />
-                <ColumnDefinition MaxWidth="18" />
-            </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3"
-                        CornerRadius="2"
-                        Background="#F0F0F0" />
-            <Track x:Name="PART_Tracka"
-                       Grid.Column="1"
-                       IsDirectionReversed="False">
-                <Track.Thumb>
-                    <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,1">
-                    </Thumb>
-                </Track.Thumb>
-            </Track>
-        </Grid>
-    </ControlTemplate>
-
-    <Style x:Key="ScrollBarStyle" TargetType="{x:Type ScrollBar}">
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="SmallChange" Value="1" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Margin" Value="-3,3" />
-        <Style.Triggers>
-            <Trigger Property="Orientation" Value="Horizontal">
-                <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
-            </Trigger>
-            <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Width" Value="15" />
-                <Setter Property="Height" Value="Auto" />
-                <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <LinearGradientBrush x:Key="btn3d" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop Offset="0" Color="Gray"/>
-        <GradientStop Offset="1" Color="Black"/>
-    </LinearGradientBrush>
-
-    <Storyboard x:Key="selectedItemStoryboard">
-        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
-            <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                <DiscreteObjectKeyFrame.Value>
-                    <LinearGradientBrush>
-                        <GradientStop Offset="0.2" Color="Black"/>
-                        <GradientStop Offset="0.6" Color="#73ffd700"/>
-                        <GradientStop Offset="0.65" Color="Black"/>
-                    </LinearGradientBrush>
-                </DiscreteObjectKeyFrame.Value>
-            </DiscreteObjectKeyFrame>
-        </ObjectAnimationUsingKeyFrames>
-
-        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
-            <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                <DiscreteObjectKeyFrame.Value>
-                    <LinearGradientBrush>
-                        <GradientStop Offset="0" Color="White"/>
-                        <GradientStop Offset="0.25" Color="Black"/>
-                        <GradientStop Offset="0.5" Color="White"/>
-                        <GradientStop Offset="0.75" Color="Black"/>
-                        <GradientStop Offset="1" Color="White"/>
-                    </LinearGradientBrush>
-                </DiscreteObjectKeyFrame.Value>
-            </DiscreteObjectKeyFrame>
-        </ObjectAnimationUsingKeyFrames>
-    </Storyboard>
 
 </ResourceDictionary>

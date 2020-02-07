@@ -12,21 +12,12 @@
     WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-
             <DataTemplate x:Key="EmployeeItemTemplate">
                 <TextBlock Text="{Binding XPath=@Name}" />
             </DataTemplate>
-
             <DataTemplate x:Key="CostCenterTemplate">
                 <TextBlock Text="{Binding XPath=@Name}" />
             </DataTemplate>
-            
-        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>

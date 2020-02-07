@@ -1,17 +1,14 @@
 ﻿<Application x:Class="ExpenseItDemo.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ExpenseItDemo"
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
-                </ResourceDictionary>
+                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
             <ExpenseReport x:Key="ExpenseData"
                        xmlns="clr-namespace:ExpenseItDemo"
                        Alias="Someone@example.com"
@@ -57,7 +54,7 @@
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0"
                            Height="{Binding Path=Cost}"
-                           Style="{StaticResource ExpenseRectangle1}">
+                           Style="{StaticResource ExpenseRectangleBrackground}">
                         <Rectangle.RenderTransform>
                             <TranslateTransform X="1"
                                             Y="1" />
@@ -65,11 +62,11 @@
                     </Rectangle>
                     <Rectangle Grid.Row="0"
                            Height="{Binding Path=Cost}"
-                           Style="{StaticResource ExpenseRectangle2}">
+                           Style="{StaticResource BarsInExpenseChart}">
                     </Rectangle>
                     <Rectangle Grid.Row="0"
                            Height="{Binding Path=Cost}"
-                           Style="{StaticResource ExpenseRectangle3}">
+                           Style="{StaticResource ExpenseChartRectangle}">
                     </Rectangle>
                     <Viewbox Grid.Row="1"
                          Style="{StaticResource ExpenseViewbox}">
@@ -82,6 +79,5 @@
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>
