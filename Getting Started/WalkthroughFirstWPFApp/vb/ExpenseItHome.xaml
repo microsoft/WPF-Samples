@@ -7,7 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
 	Title="ExpenseIt - Home">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Margin="10,0,10,10">
        
         <Grid.Resources>
