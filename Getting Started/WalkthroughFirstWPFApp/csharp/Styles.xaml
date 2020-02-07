@@ -25,6 +25,12 @@
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
+        <Style.Triggers>
+            <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- DataGrid header style -->
@@ -42,6 +48,12 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
+        <Style.Triggers>
+            <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- Button style -->
