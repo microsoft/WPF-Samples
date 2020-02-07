@@ -47,7 +47,14 @@
             
             <!-- Name item template -->
             <DataTemplate x:Key="nameItemTemplate">
-                <Label Content="{Binding XPath=@Name}"/>
+                <!-- 
+                     When a ListBoxItem is selected, the default styles sets the Foreground to SystemColors.HighlightTextBrushKey.
+                     However, when a Label is part of the ListBoxItem, Label's default style overrides this to SystemColors.ControlTextBrushKey.
+                     This is appropriate when a Label is on its own, but not in a ListBoxItem.  To fix the contrast issues this 
+                     induces in high contrast scenarios, bind to the ListBoxItem Foreground so that we get the appropriate theme colors.
+                -->
+                <Label Content="{Binding XPath=@Name}" 
+                       Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
             </DataTemplate>
             
         </Grid.Resources>
