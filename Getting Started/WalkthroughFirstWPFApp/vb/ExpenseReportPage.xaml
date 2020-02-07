@@ -7,7 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
 	Title="ExpenseIt - View Expense Report">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         
         <!--Templates to display expense report data-->

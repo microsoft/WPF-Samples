@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DataBindingDemo">
+
+    <Style x:Key="TitleStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="DodgerBlue" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <Style x:Key="SmallTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="DimGray" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="TextStyleTextBlock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#333333" />
+    </Style>
+
+    <Style x:Key="TextStyleTextBox" TargetType="TextBox">
+        <Setter Property="Foreground" Value="#333333" />
+        <Setter Property="MaxLength" Value="40" />
+        <Setter Property="Width" Value="392" />
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self},
+                              Path=(Validation.Errors)[0].ErrorContent}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ComboBoxItemStyle" TargetType="ComboBoxItem">
+        <Setter Property="Foreground" Value="#333333" />
+    </Style>
+
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="#333333" />
+    </Style>
+
+    <Style x:Key="borderStyle1" TargetType="Border">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="Padding" Value="7" />
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Width" Value="500" />
+    </Style>
+
+    <Style x:Key="borderStyle2" TargetType="Border">
+        <Setter Property="BorderThickness" Value="0,0,0,2" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style x:Key="polygonStyle1" TargetType="Polygon">
+        <Setter Property="Fill" Value="Yellow"/>
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeLineJoin" Value="Round" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="Visibility" Value="Hidden" />
+    </Style>
+
+    <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="#333333" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Style.Triggers>
+            <Trigger Property="Selector.IsSelected" Value="True">
+                <Setter Property="Background" Value="Moccasin" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
