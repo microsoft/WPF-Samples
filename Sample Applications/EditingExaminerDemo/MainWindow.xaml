@@ -10,13 +10,6 @@
     MinHeight="600"
     MinWidth="750"
     SizeChanged="window_SizeChanged">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/EditingExaminerDemo;component/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <StackPanel Name="TopPanel" Width="800" Height="600">
         <StackPanel Name="Panel1" Orientation="Vertical">
             <TabControl Name="MainTab" SelectionChanged="UpdateDisplayTabs">
@@ -30,7 +23,7 @@
                 </TabItem>
                 <TabItem Header="Help"
                          AutomationProperties.HelpText="Help Tab: The content in this tab explains how to use the demo.">
-                    <FlowDocumentScrollViewer Margin="10" Style="{StaticResource scrollViewer1}">
+                    <FlowDocumentScrollViewer Margin="10" Style="{StaticResource ScrollViewer}">
                         <FlowDocument
                             ColumnWidth="400"
                             IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
@@ -209,7 +202,7 @@ Selection = RichTextBox.Selection;
                 </TabItem>
             </TabControl>
             <StackPanel Name="Panel3">
-                <Label Name="Label1" BorderThickness="1,0,1,0" Style="{StaticResource labelStyle1}" HorizontalContentAlignment="Center"
+                <Label Name="Label1" BorderThickness="1,0,1,0" Style="{StaticResource ImmediateWindowLabel}" HorizontalContentAlignment="Center"
                        Width="400" Height="25">
                     Immediate Window
                 </Label>
@@ -222,7 +215,7 @@ Selection = RichTextBox.Selection;
             </StackPanel>
         </StackPanel>
         <StackPanel Name="Panel4">
-            <TextBox Name="ErrorMessageBox" Height="60" IsReadOnly="True" Style="{StaticResource textBoxStyle1}">No exception!</TextBox>
+            <TextBox Name="ErrorMessageBox" Height="60" IsReadOnly="True" Style="{StaticResource ErrorMessageTextBox}">No exception!</TextBox>
         </StackPanel>
     </StackPanel>
 </Window>

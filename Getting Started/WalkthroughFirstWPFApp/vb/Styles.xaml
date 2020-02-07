@@ -3,7 +3,7 @@
     xmlns:local="clr-namespace:ExpenseIt9">
 
     <!-- Header text style -->
-    <Style x:Key="headerTextStyle">
+    <Style x:Key="HeaderTextStyle">
         <Setter Property="Label.VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Label.FontFamily" Value="Trebuchet MS"></Setter>
         <Setter Property="Label.FontWeight" Value="Bold"></Setter>
@@ -12,7 +12,7 @@
     </Style>
 
     <!-- Label style -->
-    <Style x:Key="labelStyle" TargetType="{x:Type Label}">
+    <Style x:Key="LabelStyle" TargetType="{x:Type Label}">
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="Bold" />
@@ -20,14 +20,14 @@
     </Style>
 
     <!-- List header style -->
-    <Style x:Key="listHeaderStyle" TargetType="{x:Type Border}">
+    <Style x:Key="ListHeaderStyle" TargetType="{x:Type Border}">
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
     </Style>
 
     <!-- DataGrid header style -->
-    <Style x:Key="columnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+    <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
@@ -42,7 +42,7 @@
     </Style>
 
     <!-- Button style -->
-    <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="125" />
         <Setter Property="Height" Value="25" />
         <Setter Property="Margin" Value="0,10,0,0" />

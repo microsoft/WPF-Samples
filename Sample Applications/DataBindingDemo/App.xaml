@@ -13,7 +13,7 @@
             <local:DateConverter x:Key="DateConverter" />
 
             <DataTemplate DataType="{x:Type local:AuctionItem}" >
-                <Border Style="{StaticResource borderStyle1}" Name="border">
+                <Border Style="{StaticResource AuctionItemBorderStyle}" Name="border">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -29,7 +29,7 @@
 
                         <Polygon Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
                                  Name="star"
-                                 Style="{StaticResource polygonStyle1}"
+                                 Style="{StaticResource PolygonStyle}"
                                  Points="9,2 11,7 17,7 12,10 14,15 9,12 4,15 6,10 1,7 7,7"/>
 
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"

@@ -11,41 +11,7 @@
     ShowInTaskbar="False"
     WindowStartupLocation="CenterOwner">
 
-    <Window.Resources>
-
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-
-            <DataTemplate x:Key="ExpenseTemplate">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="33*" />
-                        <ColumnDefinition Width="33*" />
-                        <ColumnDefinition Width="33*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBox Text="{Binding Path=Type}" Grid.Column="0" />
-                    <TextBox Text="{Binding Path=Description}" Grid.Column="1" />
-                    <TextBox Grid.Column="2" TextAlignment="Right">
-                        <TextBox.Text>
-                            <Binding Path="Cost" UpdateSourceTrigger="PropertyChanged">
-                                <!-- SECURITY: Cost must be an int -->
-                                <Binding.ValidationRules>
-                                    <localValidation:NumberValidationRule />
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox.Text>
-                    </TextBox>
-                </Grid>
-            </DataTemplate>
-         </ResourceDictionary>
-
-    </Window.Resources>
-
     <Grid>
-
         <!-- Watermark -->
         <Image Style="{StaticResource WatermarkImage}" />
 
@@ -82,7 +48,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- Alias -->
-                <Label Style="{StaticResource Label}" Target="{Binding ElementName=Alias}" Grid.Column="2" Grid.Row="0">
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=aliasTextBox}" Grid.Column="2" Grid.Row="0">
                     Email _Alias:
                 </Label>
                 <TextBox Name="aliasTextBox" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="0"
@@ -93,7 +59,7 @@
                 </TextBox>
 
                 <!-- Employee Number -->
-                <Label Style="{StaticResource Label}" Target="{Binding ElementName=Number}" Grid.Column="2"
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=employeeNumberTextBox}" Grid.Column="2"
                        Grid.Row="1">
                     Employee _Number:
                 </Label>
@@ -105,7 +71,7 @@
                 </TextBox>
 
                 <!-- Cost Center -->
-                <Label Style="{StaticResource Label}" Target="{Binding ElementName=costCenter}" Grid.Column="2"
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=costCenterTextBox}" Grid.Column="2"
                        Grid.Row="2">
                     _Cost Center:
                 </Label>
@@ -125,7 +91,7 @@
             <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
 
                 <!-- Add Expense Button -->
-                <Button Style="{StaticResource FunctionButton}" Click="addExpenseButton_Click">
+                <Button Style="{StaticResource FunctionButton}" Click="addExpenseButton_Click" Name="addExpenseButton">
                     Add _Expense
                     <Button.ToolTip>
                         <TextBlock>add expense</TextBlock>
@@ -133,12 +99,14 @@
                 </Button>
 
                 <!-- View Chart Button-->
-                <Button Style="{StaticResource FunctionButton}" Click="viewChartButton_Click">
+                <Button Style="{StaticResource FunctionButton}" Click="viewChartButton_Click" Name="viewExpenseButton">
                     <Button.ToolTip>
                         <TextBlock>View chart</TextBlock>
                     </Button.ToolTip>
-                    <DockPanel>
-                        <TextBlock DockPanel.Dock="Top" TextAlignment="Center">View Chart</TextBlock>
+                    <DockPanel KeyboardNavigation.TabNavigation="None">
+                        <Label DockPanel.Dock="Top" Target="{Binding ElementName=viewExpenseButton}" HorizontalAlignment="Center">
+                            _View Chart
+                        </Label>
                         <ItemsControl Style="{StaticResource ExpenseChartSmall}" />
                     </DockPanel>
                 </Button>
@@ -146,53 +114,34 @@
 
             <!-- Expense Report List -->
             <Rectangle Style="{StaticResource TotalRectangle}" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-            <Grid Style="{StaticResource TotalHeaderGrid}" Grid.Row="2" Grid.ColumnSpan="2">
-
-                <Grid.ToolTip>
-                    <TextBlock>Expense Report</TextBlock>
-                </Grid.ToolTip>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="33*" />
-                    <ColumnDefinition Width="33*" />
-                    <ColumnDefinition Width="33*" />
-                </Grid.ColumnDefinitions>
-
-                <Grid.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#73B2F5" Offset="0" />
-                        <GradientStop Color="#4E87D4" Offset="1" />
-                    </LinearGradientBrush>
-                </Grid.Background>
-
-                <!-- Expense Type Column Header -->
-                <TextBlock Style="{StaticResource TableLabel}" Grid.Column="0">
-                    Expense Type
-                    <TextBlock.ToolTip>
-                        <TextBlock>Expense type</TextBlock>
-                    </TextBlock.ToolTip>
-                </TextBlock>
-
-                <!-- Description Column Header -->
-                <TextBlock Style="{StaticResource TableLabel}" Grid.Column="1">
-                    Description
-                    <TextBlock.ToolTip>
-                        <TextBlock>Desription</TextBlock>
-                    </TextBlock.ToolTip>
-                </TextBlock>
-
-                <!-- Amount Column Header -->
-                <TextBlock Style="{StaticResource TableLabelRightAligned}" Grid.Column="2">
-                    Amount
-                    <TextBlock.ToolTip>
-                        <TextBlock>Amount</TextBlock>
-                    </TextBlock.ToolTip>
-                </TextBlock>
-            </Grid>
-            <ItemsControl Name="expensesItemsControl"
-                          Style="{StaticResource ExpenseScroller}"
-                          Grid.Row="3" Grid.ColumnSpan="2"
-                          ItemTemplate="{StaticResource ExpenseTemplate}"
-                          ItemsSource="{Binding Path=LineItems}" />
+            <DataGrid Style="{DynamicResource DataGridStyle}"
+                          Grid.RowSpan="2"
+                          Grid.Row="2"
+                          Grid.ColumnSpan="2"
+                          Width="Auto"
+                          ColumnWidth="*"
+                          ItemsSource="{Binding LineItems}"
+                          HeadersVisibility="Column"
+                          Name="expenseDataGrid1"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ToolTip>
+                        <TextBlock>Expense Report</TextBlock>
+                    </DataGrid.ToolTip>
+                <DataGrid.Columns>
+                        <DataGridTextColumn Header="Expense type" Binding="{Binding Type}" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                        <DataGridTextColumn Header="Cost" CellStyle="{StaticResource RightAlignedCell}" HeaderStyle="{StaticResource RightAlignedColumnHeader}">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="Cost" UpdateSourceTrigger="PropertyChanged">
+                                    <!-- SECURITY: Cost must be an int -->
+                                    <Binding.ValidationRules>
+                                        <localValidation:NumberValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
 
             <!-- Total Expenses -->
             <Rectangle Style="{StaticResource TotalRectangle}" Grid.Row="4" Grid.ColumnSpan="2" />

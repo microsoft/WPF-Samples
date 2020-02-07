@@ -2,16 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:EditingExaminerDemo">
 
-    <Style x:Key="scrollViewer1" TargetType="FlowDocumentScrollViewer">
+    <Style x:Key="ScrollViewer" TargetType="FlowDocumentScrollViewer">
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="BorderThickness" Value="1" />
     </Style>
 
-    <Style x:Key="labelStyle1" TargetType="Label">
+    <Style x:Key="ImmediateWindowLabel" TargetType="Label">
         <Setter Property="BorderBrush" Value="Gray"/>
     </Style>
 
-    <Style x:Key="textBoxStyle1" TargetType="TextBox">
+    <Style x:Key="ErrorMessageTextBox" TargetType="TextBox">
         <Setter Property="Foreground" Value="Red" />
         <Setter Property="BorderBrush" Value="Red" />
     </Style>

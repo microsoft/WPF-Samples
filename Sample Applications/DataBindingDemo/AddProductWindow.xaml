@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="Add Product Listing" SizeToContent="WidthAndHeight" Loaded="OnInit">
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/DataBindingDemo;component/Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
             <local:SpecialFeaturesConverter x:Key="SpecialFeaturesConverter" />
             <ControlTemplate x:Key="ValidationTemplate">
                 <DockPanel>
@@ -18,7 +14,6 @@
                     <AdornedElementPlaceholder />
                 </DockPanel>
             </ControlTemplate>
-        </ResourceDictionary>
     </Window.Resources>
 
     <Border Padding="20">
@@ -29,7 +24,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Border Grid.Row="0"
-                    Style="{StaticResource borderStyle2}">
+                    Style="{StaticResource BorderStyle}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
