@@ -27,8 +27,8 @@
         <Style.Triggers>
             <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
-                <Setter Property="Label.Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="Label.Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -41,7 +41,7 @@
         <Style.Triggers>
             <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="Label.Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -52,6 +52,19 @@
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
         <Setter Property="Foreground" Value="White" />
+        <Style.Triggers>
+            <!-- 
+                When in high contrast modes, follow system colors to present proper contrast between adjacent colors.
+                Also add a border here to differentiate the header from the actual data as we no longer have a 
+                disparate color.
+            -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- List header text style -->
