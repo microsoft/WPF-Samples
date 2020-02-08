@@ -180,6 +180,9 @@
                 <Setter Property="ToolTip"
                             Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
             </Trigger>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
