@@ -6,16 +6,6 @@
         xmlns:local="clr-namespace:ExpenseItDemo"
         mc:Ignorable="d"
         Title="ViewChartWindow" Height="300" Width="300">
-    <Window.Resources>
-
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
     <Grid Style="{StaticResource WindowContentGrid}">
 
         <Grid>

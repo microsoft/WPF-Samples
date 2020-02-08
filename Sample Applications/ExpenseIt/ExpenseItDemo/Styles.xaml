@@ -95,8 +95,15 @@
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
 
-    <Style x:Key="TotalHeaderGrid" TargetType="{x:Type Grid}">
+    <LinearGradientBrush x:Key="DataGridBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#73B2F5" Offset="0" />
+        <GradientStop Color="#4E87D4" Offset="1" />
+    </LinearGradientBrush>
+
+    <Style x:Key="TotalDataGrid" TargetType="{x:Type DataGrid}">
+        <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>
         <Setter Property="Margin" Value="10,10,10,0" />
+        <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=RenderSize.Width}" />
     </Style>
 
     <Style x:Key="TotalRectangle" TargetType="{x:Type Rectangle}">
@@ -186,8 +193,6 @@
         </Style.Triggers>
     </Style>
 
-
-
     <Style x:Key="ReadOnlyText" TargetType="{x:Type TextBox}">
         <Setter Property="Margin" Value="0,5,5,0" />
         <Setter Property="IsReadOnly" Value="True" />
@@ -199,8 +204,9 @@
         <Setter Property="MinWidth" Value="80" />
     </Style>
 
-    <Style x:Key="TableLabel" TargetType="{x:Type TextBlock}">
+    <Style x:Key="LeftAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="Bold" />
@@ -208,8 +214,16 @@
         <Setter Property="Padding" Value="5,0,5,0" />
     </Style>
 
-    <Style x:Key="TableLabelRightAligned" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TableLabel}">
+    <Style x:Key="RightAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource LeftAlignedColumnHeader}">
         <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}" >
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource TotalDataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource LeftAlignedColumnHeader}" />
     </Style>
 
     <Style x:Key="CommandButtonPanel" TargetType="{x:Type StackPanel}">
@@ -233,20 +247,7 @@
         <Setter Property="Margin" Value="5,10,5,0" />
     </Style>
 
-    <Style x:Key="ExpenseScroller" TargetType="{x:Type ItemsControl}">
-        <Setter Property="Margin" Value="10,0,10,0" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ItemsControl}">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel IsItemsHost="True" />
-                    </ScrollViewer>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-     <Style x:Key="ExpenseChartSmall" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource ExpenseChart}">
+    <Style x:Key="ExpenseChartSmall" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource ExpenseChart}">
         <Setter Property="MinWidth" Value="100" />
         <Setter Property="MinHeight" Value="70" />
         <Setter Property="MaxWidth" Value="100" />
@@ -259,37 +260,37 @@
         <Setter Property="Width" Value="40" />
     </Style>
 
-    <Style x:Key="ExpenseRectangle1" TargetType="{x:Type Rectangle}">
+    <Style x:Key="ExpenseRectangleBrackground" TargetType="{x:Type Rectangle}">
         <Setter Property="Margin" Value="10,10,10,0" />
         <Setter Property="Fill" Value="#33000000" />
         <Setter Property="RadiusX" Value="2" />
         <Setter Property="RadiusY" Value="2" />
     </Style>
 
-    <RadialGradientBrush x:Key="brushExpenseRectangle2">
+    <RadialGradientBrush x:Key="BrushForBarsInExpenseChart">
         <GradientStop Color="LimeGreen" Offset="0" />
         <GradientStop Color="DarkGreen" Offset="1" />
     </RadialGradientBrush>
 
-    <Style x:Key="ExpenseRectangle2" TargetType="{x:Type Rectangle}">
+    <Style x:Key="BarsInExpenseChart" TargetType="{x:Type Rectangle}">
         <Setter Property="Margin" Value="10,10,10,0" />
         <Setter Property="Stroke" Value="Black" />
         <Setter Property="StrokeThickness" Value="0.5" />
         <Setter Property="RadiusX" Value="2" />
         <Setter Property="RadiusY" Value="2" />
-        <Setter Property="Fill" Value="{StaticResource brushExpenseRectangle2}"/>
+        <Setter Property="Fill" Value="{StaticResource BrushForBarsInExpenseChart}"/>
     </Style>
 
-    <LinearGradientBrush x:Key="brushExpenseRectangle3" StartPoint="0,0" EndPoint="0,1">
+    <LinearGradientBrush x:Key="BrushExpenseChartRectangle" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#aaffffff" Offset="0" />
         <GradientStop Color="transparent" Offset="1" />
     </LinearGradientBrush>
 
-    <Style x:Key="ExpenseRectangle3" TargetType="{x:Type Rectangle}">
+    <Style x:Key="ExpenseChartRectangle" TargetType="{x:Type Rectangle}">
         <Setter Property="Margin" Value="11,12,11,0" />
         <Setter Property="RadiusX" Value="1" />
         <Setter Property="RadiusY" Value="1" />
-        <Setter Property="Fill" Value="{StaticResource brushExpenseRectangle3}"/>
+        <Setter Property="Fill" Value="{StaticResource BrushExpenseChartRectangle}"/>
     </Style>
 
     <Style x:Key="ExpenseViewbox" TargetType="{x:Type Viewbox}">
