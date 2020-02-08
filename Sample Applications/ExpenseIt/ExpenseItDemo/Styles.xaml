@@ -28,6 +28,11 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Right" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Label.Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="ExpenseChart" TargetType="{x:Type ItemsControl}">
@@ -182,6 +187,9 @@
                 <Setter Property="ToolTip"
                             Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
             </Trigger>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
