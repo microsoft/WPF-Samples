@@ -190,7 +190,7 @@
                                     <ColumnDefinition Width="1"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton FocusVisualStyle="{x:Null}">
+                                <ToggleButton FocusVisualStyle="{x:Null}" AutomationProperties.Name="Play">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <Border Background="Transparent">
@@ -232,7 +232,7 @@
                                     </Rectangle.Fill>
                                 </Rectangle>
                                 <Grid Grid.Column="2" Height="37">
-                                    <Button FocusVisualStyle="{x:Null}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    <Button AutomationProperties.Name="Watch Now"  FocusVisualStyle="{x:Null}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
                                                 Content="{TemplateBinding Content}">
                                         <Button.Template>
@@ -259,7 +259,7 @@
                                 </Grid>
                             </Grid>
                         </Border>
-                        <ListBox Name="lstBx" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
+                        <ListBox Name="lstBx" AutomationProperties.Name="Movies" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
                                      FocusVisualStyle="{x:Null}"
                                      ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}" 
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
