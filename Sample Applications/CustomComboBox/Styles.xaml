@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:CustomComboBox">
-    
+
     <Style x:Key="CustomFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -11,7 +11,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -99,7 +99,7 @@
         <GradientStop Offset="0" Color="Gray"/>
         <GradientStop Offset="1" Color="Black"/>
     </LinearGradientBrush>
-    
+
     <Storyboard x:Key="selectedItemStoryboard">
         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
             <DiscreteObjectKeyFrame KeyTime="0:0:0">
@@ -202,11 +202,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <ToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}"
-                                AutomationProperties.Name="Play">
+                                              AutomationProperties.Name="Play">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <Border Background="Transparent">
-                                                <Polygon Points="12,12 12,26, 22,19" Fill="#4B86B1" RenderTransformOrigin="0.5,0.5"
+                                                <Polygon Points="12,12 12,26, 22,19" Fill="#6BE1FF" RenderTransformOrigin="0.5,0.5"
                                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                                     <Polygon.RenderTransform>
                                                         <RotateTransform x:Name="polyRotate" Angle="0"/>
@@ -244,8 +244,7 @@
                                     </Rectangle.Fill>
                                 </Rectangle>
                                 <Grid Grid.Column="2" Height="37">
-                                    <Button FocusVisualStyle="{DynamicResource CustomFocusVisual}" 
-                                    <Button AutomationProperties.Name="Watch Now" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    <Button AutomationProperties.Name="Watch Now"  FocusVisualStyle="{DynamicResource CustomFocusVisual}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
                                                 Content="{TemplateBinding Content}">
                                         <Button.Template>
@@ -273,8 +272,8 @@
                             </Grid>
                         </Border>
                         <ListBox Name="lstBx" AutomationProperties.Name="Movies" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
-                                     ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                     ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}">
                             <ListBox.Resources>
