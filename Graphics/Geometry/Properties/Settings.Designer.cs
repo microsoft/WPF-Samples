@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Geometery.Properties
+namespace Geometry.Properties
 {
 
 

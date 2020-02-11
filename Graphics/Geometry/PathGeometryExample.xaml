@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="Geometery.PathGeometryExample" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="PathGeometry Examples">
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Class="Geometry.PathGeometryExample" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="PathGeometry Examples">
   <Page.Resources>
     <Style TargetType="{x:Type Border}">
     <Setter Property="HorizontalAlignment" Value="Left" />
