@@ -1,7 +1,7 @@
-﻿<Application x:Class="Geometery.App"
+﻿<Application x:Class="Geometry.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Geometery"
+             xmlns:local="clr-namespace:Geometry"
              xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
              StartupUri="SampleViewer.xaml">
     <Application.Resources>

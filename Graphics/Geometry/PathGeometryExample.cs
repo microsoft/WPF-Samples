@@ -3,7 +3,7 @@
 
 using System.Windows.Controls;
 
-namespace Geometery
+namespace Geometry
 {
     public partial class PathGeometryExample : Page
     {

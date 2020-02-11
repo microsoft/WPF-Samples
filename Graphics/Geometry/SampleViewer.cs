@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 
-namespace Geometery
+namespace Geometry
 {
     public partial class SampleViewer : Page
     {

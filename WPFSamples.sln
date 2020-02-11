@@ -291,7 +291,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitmapEffectsGallery", "Gra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Geometries", "Geometries", "{3BDF5468-2EF9-4BD3-9E8B-675D03FE3B06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geometery", "Graphics\Geometery\Geometery.csproj", "{87466DDE-BDEF-4531-9BC3-17CFFDEF092D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geometry", "Graphics\Geometry\Geometry.csproj", "{87466DDE-BDEF-4531-9BC3-17CFFDEF092D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Brushes Samples", "Brushes Samples", "{9CA9DB4A-FB87-43AF-AB04-F8D4C305475D}"
 EndProject
