@@ -21,13 +21,16 @@ namespace ExpenseItDemo
             InitializeComponent();
         }
 
-
         private void addExpenseButton_Click(object sender, RoutedEventArgs e)
         {
             var app = Application.Current;
             var expenseReport = (ExpenseReport) app.FindResource("ExpenseData");
             expenseReport?.LineItems.Add(new LineItem());
+            
             DataGridRow row =null;
+
+            // Dispatching this at loaded priority so the new row has been added before our code runs
+            // Grab the last row in the datagrid and search up the visual tree to get the DataGridCellsPresenter for the first cell in the last row
             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
             {
                 row = expenseDataGrid1.ItemContainerGenerator.ContainerFromIndex(expenseDataGrid1.Items.Count - 1) as DataGridRow;
@@ -43,6 +46,7 @@ namespace ExpenseItDemo
                 }
             }));
         }
+
         private static DataGridCell GetCell(DataGrid dataGrid, DataGridRow rowContainer, int column)
         {
             if (rowContainer != null)
