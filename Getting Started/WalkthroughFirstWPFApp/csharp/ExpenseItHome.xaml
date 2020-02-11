@@ -69,7 +69,9 @@
             <Label Style="{StaticResource ListHeaderTextStyle}">Names</Label>
         </Border>
 
-        <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2" 
+        <ListBox Name="peopleListBox" 
+                 AutomationProperties.Name="Names"
+                 Grid.Column="1" Grid.Row="2" 
                  ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Person}"
                  ItemTemplate="{StaticResource nameItemTemplate}">
         </ListBox>
