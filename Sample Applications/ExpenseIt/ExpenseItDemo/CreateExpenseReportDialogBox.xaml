@@ -51,7 +51,7 @@
                 <Label Style="{StaticResource Label}" Target="{Binding ElementName=aliasTextBox}" Grid.Column="2" Grid.Row="0">
                     Email _Alias:
                 </Label>
-                <TextBox Name="aliasTextBox" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="0"
+                <TextBox Name="aliasTextBox" AutomationProperties.Name="Email Alias" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="0"
                          Text="{Binding Path=Alias}">
                     <TextBox.ToolTip>
                         <TextBlock>email alias</TextBlock>
@@ -63,7 +63,7 @@
                        Grid.Row="1">
                     Employee _Number:
                 </Label>
-                <TextBox Name="employeeNumberTextBox" Style="{StaticResource ReadOnlyText}" Grid.Column="3"
+                <TextBox Name="employeeNumberTextBox" AutomationProperties.Name="Employee Number" Style="{StaticResource ReadOnlyText}" Grid.Column="3"
                          Grid.Row="1" Text="{Binding Path=EmployeeNumber}">
                     <TextBox.ToolTip>
                         <TextBlock>employee number</TextBlock>
@@ -75,7 +75,7 @@
                        Grid.Row="2">
                     _Cost Center:
                 </Label>
-                <TextBox Name="costCenterTextBox" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="2"
+                <TextBox Name="costCenterTextBox" AutomationProperties.Name="Cost Center" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="2"
                          Text="{Binding Path=CostCenter}">
                     <TextBox.ToolTip>
                         <TextBlock>cost center</TextBlock>
@@ -99,7 +99,7 @@
                 </Button>
 
                 <!-- View Chart Button-->
-                <Button Style="{StaticResource FunctionButton}" Click="viewChartButton_Click" Name="viewExpenseButton">
+                <Button Style="{StaticResource FunctionButton}" Click="viewChartButton_Click" Name="viewExpenseButton" AutomationProperties.Name="View Chart">
                     <Button.ToolTip>
                         <TextBlock>View chart</TextBlock>
                     </Button.ToolTip>
@@ -124,7 +124,8 @@
                           HeadersVisibility="Column"
                           Name="expenseDataGrid1"
                           AutoGenerateColumns="False"
-                          CanUserAddRows="False">
+                          CanUserAddRows="False"
+                          AutomationProperties.Name="Expense Report">
                     <DataGrid.ToolTip>
                         <TextBlock>Expense Report</TextBlock>
                     </DataGrid.ToolTip>

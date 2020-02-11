@@ -70,6 +70,7 @@
         </Border>
        
         <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2" 
+                 AutomationProperties.Name="Names"
                  ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Person}"
                  ItemTemplate="{StaticResource nameItemTemplate}">
         </ListBox>
