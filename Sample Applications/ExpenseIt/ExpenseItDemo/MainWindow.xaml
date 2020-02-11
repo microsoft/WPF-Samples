@@ -28,7 +28,7 @@
         <DockPanel>
 
             <!-- Menu Bar-->
-            <Menu AutomationProperties.Name="Expense it demo" DockPanel.Dock="Top">
+            <Menu AutomationProperties.Name="Expense It Demo" DockPanel.Dock="Top">
 
                 <!-- File Menu-->
                 <MenuItem Header="_File">
