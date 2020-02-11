@@ -201,7 +201,8 @@
                                     <ColumnDefinition Width="1"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}">
+                                <ToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                AutomationProperties.Name="Play">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <Border Background="Transparent">
@@ -243,7 +244,8 @@
                                     </Rectangle.Fill>
                                 </Rectangle>
                                 <Grid Grid.Column="2" Height="37">
-                                    <Button FocusVisualStyle="{DynamicResource CustomFocusVisual}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    <Button FocusVisualStyle="{DynamicResource CustomFocusVisual}" 
+                                    <Button AutomationProperties.Name="Watch Now" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
                                                 Content="{TemplateBinding Content}">
                                         <Button.Template>
@@ -270,9 +272,9 @@
                                 </Grid>
                             </Grid>
                         </Border>
-                        <ListBox Name="lstBx" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
+                        <ListBox Name="lstBx" AutomationProperties.Name="Movies" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
+                                     ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      FocusVisualStyle="{DynamicResource CustomFocusVisual}"
-                                     ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}" 
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}">
                             <ListBox.Resources>

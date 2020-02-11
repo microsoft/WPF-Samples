@@ -50,13 +50,13 @@
                                Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">
                         Item Description:
                     </TextBlock>
-                    <TextBox Name="DescriptionEntryForm" Grid.Row="1" Grid.Column="1"
+                    <TextBox Name="DescriptionEntryForm" AutomationProperties.Name="Item Description" Grid.Row="1" Grid.Column="1"
                              Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price:</TextBlock>
 
-                    <TextBox Name="StartPriceEntryForm" Grid.Row="2" Grid.Column="1"
+                    <TextBox Name="StartPriceEntryForm" AutomationProperties.Name="Start Price" Grid.Row="2" Grid.Column="1"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5">
                         <TextBox.Text>
                             <Binding Path="StartPrice" UpdateSourceTrigger="PropertyChanged">
@@ -69,7 +69,7 @@
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Date:</TextBlock>
 
-                    <TextBox Name="StartDateEntryForm" Grid.Row="3" Grid.Column="1"
+                    <TextBox Name="StartDateEntryForm" AutomationProperties.Name="Start Date" Grid.Row="3" Grid.Column="1"
                              Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5">
                         <TextBox.Text>
@@ -83,7 +83,7 @@
                     </TextBox>
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Category:</TextBlock>
-                    <ComboBox Name="CategoryEntryForm" Grid.Row="4" Grid.Column="1"
+                    <ComboBox Name="CategoryEntryForm" AutomationProperties.Name="Category" Grid.Row="4" Grid.Column="1"
                               SelectedValue="{Binding Path=Category}"
                               Style="{StaticResource ComboBoxStyle}"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
@@ -96,7 +96,7 @@
                     </ComboBox>
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Special Features:</TextBlock>
-                    <ComboBox Name="SpecialFeaturesEntryForm" Grid.Row="5" Grid.Column="1"
+                    <ComboBox Name="SpecialFeaturesEntryForm" AutomationProperties.Name="Special Features" Grid.Row="5" Grid.Column="1"
                               SelectedValue="{Binding Path=SpecialFeatures}"
                               Style="{StaticResource ComboBoxStyle}"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">

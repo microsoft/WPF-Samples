@@ -15,17 +15,16 @@
             <TabControl Name="MainTab" SelectionChanged="UpdateDisplayTabs">
                 <TabItem Name="RichTab" Header="RichTextBox"
                          AutomationProperties.HelpText="Make edits in this RichTextBox. As you edit, you can see what your edits look like in real time in the tabs below.">
-                    <RichTextBox Name="MainEditor" TextChanged="UpdateDisplayTabs" AcceptsTab="True" Height="250"
+                    <RichTextBox Name="MainEditor" AutomationProperties.Name="Rich Text" TextChanged="UpdateDisplayTabs" AcceptsTab="True" Height="250"
                                  Width="800" VerticalScrollBarVisibility="Visible" />
                 </TabItem>
-                <TabItem Name="PanelTab" Header="Panel" AutomationProperties.HelpText="Panel Tab">
+                <TabItem Name="PanelTab" AutomationProperties.Name="Panel" Header="Panel" AutomationProperties.HelpText="Panel Tab">
                     <StackPanel />
                 </TabItem>
-                <TabItem Header="Help"
-                         AutomationProperties.HelpText="Help Tab: The content in this tab explains how to use the demo.">
+                <TabItem Header="Help" AutomationProperties.Name="Help" AutomationProperties.HelpText="Help Tab: The content in this tab explains how to use the demo.">
                     <FlowDocumentScrollViewer Margin="10" Style="{StaticResource ScrollViewer}">
                         <FlowDocument
-                            ColumnWidth="400"
+                            ColumnWidth="400" AutomationProperties.Name="Help Text"
                             IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
                             <Section FontSize="12">
                                 <Paragraph FontSize="22" FontWeight="Bold">Introducing Editing Examiner</Paragraph>
@@ -153,13 +152,13 @@ Selection = RichTextBox.Selection;
         <StackPanel Name="Panel2" Orientation="Horizontal">
             <TabControl SelectionChanged="UpdateDisplayTabs" Name="TabControl" HorizontalContentAlignment="Left"
                         Width="400" Height="250">
-                <TabItem Header="DocumentTree"
+                <TabItem Header="DocumentTree" 
                          AutomationProperties.HelpText="The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox. This allows you to visualize the document hierarchy.">
-                    <TreeView Name="TextTreeView" />
+                    <TreeView Name="TextTreeView" AutomationProperties.Name="Document Elements"/>
                 </TabItem>
-                <TabItem Header="SelectionXaml" Name="TabSelectionXaml"
+                <TabItem Header="SelectionXaml" Name="TabSelectionXaml" 
                          AutomationProperties.HelpText="This tab displays the underlying XAML of the selected content within the RichTextBox.">
-                    <TextBox Name="SelectionXaml" VerticalScrollBarVisibility="Visible"
+                    <TextBox Name="SelectionXaml" VerticalScrollBarVisibility="Visible" AutomationProperties.Name="Selection Xaml"
                              AutomationProperties.HelpText="Displays underlying XAML of selected content of RichTextBox.">
                         <TextBox.ContextMenu>
                             <ContextMenu>
@@ -171,9 +170,9 @@ Selection = RichTextBox.Selection;
                         </TextBox.ContextMenu>
                     </TextBox>
                 </TabItem>
-                <TabItem Header="TextSerializedXaml" Name="TabTextSerializedXaml"
+                <TabItem Header="TextSerializedXaml" Name="TabTextSerializedXaml" 
                          AutomationProperties.HelpText="By clicking on the Text Serialization tab, the underlying XAML is exposed, using WPF serialization features. The TreeView is instantly updated when the Tab is selected. You can edit your XAML content and set it back to the RichTextBox by right clicking and selecting the correct item.">
-                    <TextBox Name="TextSerializedXaml" VerticalScrollBarVisibility="Visible"
+                    <TextBox Name="TextSerializedXaml" AutomationProperties.Name="Text Serialized Xaml" VerticalScrollBarVisibility="Visible"
                              AutomationProperties.HelpText="Displays underlying XAML of RichTextBox.">
                         <TextBox.ContextMenu>
                             <ContextMenu>
@@ -185,9 +184,9 @@ Selection = RichTextBox.Selection;
                         </TextBox.ContextMenu>
                     </TextBox>
                 </TabItem>
-                <TabItem Header="CoreXaml" Name="TabCoreXaml"
+                <TabItem Header="CoreXaml" Name="TabCoreXaml" 
                          AutomationProperties.HelpText="This tab accesses the WPF core parser in order to parse an object. The object can then be inserted back into the RichTextBox. Alternately you can use this view to see how the RichTextBox content is serialized back to XAML.">
-                    <RichTextBox Name="CoreXaml" VerticalScrollBarVisibility="Visible">
+                    <RichTextBox Name="CoreXaml" AutomationProperties.Name="Core Xaml" VerticalScrollBarVisibility="Visible">
                         <RichTextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Cut" Command="Cut" />
@@ -206,16 +205,16 @@ Selection = RichTextBox.Selection;
                        Width="400" Height="25">
                     Immediate Window
                 </Label>
-                <TextBox Name="ImmediateWindow" Width="400" Height="205" VerticalScrollBarVisibility="Visible"
+                <TextBox Name="ImmediateWindow" AutomationProperties.Name="Immediate Window" Width="400" Height="205" VerticalScrollBarVisibility="Visible"
                          IsReadOnly="True"
                          AutomationProperties.HelpText="This provides an instant way to invoke methods, and get or set properties." />
-                <ComboBox Name="CommandInputBox" Width="400" IsEditable="True" LostFocus="CommandInputBox_FocusEvent"
+                <ComboBox Name="CommandInputBox" AutomationProperties.Name="Command input" Width="400" IsEditable="True" LostFocus="CommandInputBox_FocusEvent"
                           GotFocus="CommandInputBox_FocusEvent"
                           AutomationProperties.HelpText="This input box is for command input." />
             </StackPanel>
         </StackPanel>
         <StackPanel Name="Panel4">
-            <TextBox Name="ErrorMessageBox" Height="60" IsReadOnly="True" Style="{StaticResource ErrorMessageTextBox}">No exception!</TextBox>
+            <TextBox Name="ErrorMessageBox" AutomationProperties.Name="Error Message Box" Height="60" IsReadOnly="True" Style="{StaticResource ErrorMessageTextBox}">No exception!</TextBox>
         </StackPanel>
     </StackPanel>
 </Window>

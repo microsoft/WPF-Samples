@@ -60,7 +60,7 @@
             <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
 
                 <!-- Expense type and Amount table -->
-                <DataGrid ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" AutoGenerateColumns="False" RowHeaderWidth="0" >
+                <DataGrid AutomationProperties.Name="Expense report" ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" AutoGenerateColumns="False" RowHeaderWidth="0" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ExpenseType" Binding="{Binding XPath=@ExpenseType}"  />
                         <DataGridTextColumn Header="Amount" Binding="{Binding XPath=@ExpenseAmount}" />

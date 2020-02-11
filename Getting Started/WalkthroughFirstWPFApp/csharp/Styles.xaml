@@ -9,6 +9,13 @@
         <Setter Property="Label.FontWeight" Value="Bold"></Setter>
         <Setter Property="Label.FontSize" Value="18"></Setter>
         <Setter Property="Label.Foreground" Value="#0066cc"></Setter>
+        <Style.Triggers>
+            <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Label.Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Label.Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- Label style -->
@@ -17,6 +24,13 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Margin" Value="0,0,0,5" />
+        <Style.Triggers>
+            <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- List header style -->
@@ -24,6 +38,12 @@
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
+        <Style.Triggers>
+            <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Label.Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- DataGrid header style -->
@@ -32,6 +52,19 @@
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
         <Setter Property="Foreground" Value="White" />
+        <Style.Triggers>
+            <!-- 
+                When in high contrast modes, follow system colors to present proper contrast between adjacent colors.
+                Also add a border here to differentiate the header from the actual data as we no longer have a 
+                disparate color.
+            -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- List header text style -->
@@ -39,6 +72,12 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
+        <Style.Triggers>
+            <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- Button style -->
