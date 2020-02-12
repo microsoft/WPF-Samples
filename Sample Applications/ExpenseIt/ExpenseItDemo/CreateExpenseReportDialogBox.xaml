@@ -124,6 +124,7 @@
                           HeadersVisibility="Column"
                           Name="expenseDataGrid1"
                           AutoGenerateColumns="False"
+                          CanUserAddRows="False"
                           AutomationProperties.Name="Expense Report">
                     <DataGrid.ToolTip>
                         <TextBlock>Expense Report</TextBlock>
