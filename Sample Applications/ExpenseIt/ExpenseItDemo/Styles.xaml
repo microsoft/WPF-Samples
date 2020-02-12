@@ -116,6 +116,12 @@
         <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>
         <Setter Property="Margin" Value="10,10,10,0" />
         <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=RenderSize.Width}" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="TotalRectangle" TargetType="{x:Type Rectangle}">
@@ -225,19 +231,40 @@
     <Style x:Key="LeftAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontSize" Value="10pt" />
         <Setter Property="Padding" Value="5,0,5,0" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                <Setter Property="BorderThickness" Value=".5" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                <Setter Property="FontWeight" Value="ExtraBold" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="RightAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource LeftAlignedColumnHeader}">
-        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+    </Style>
+    
+    <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}" >
+        <Setter Property="TextBlock.TextAlignment" Value="Right" />
+        
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="BorderThickness" Value=".5" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}" >
-        <Setter Property="HorizontalAlignment" Value="Right" />
+    <Style x:Key="LeftAlignedCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource RightAlignedCell}">
+        <Setter Property="TextBlock.TextAlignment" Value="Left" />
     </Style>
 
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource TotalDataGrid}">
