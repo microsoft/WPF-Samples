@@ -22,11 +22,8 @@
                              DisplayMemberPath="Title"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock FontWeight="Bold" HorizontalAlignment="Left"
-                       Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text}" 
-                       Foreground="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=color}"/>
+            <TextBlock Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text}" Style="{DynamicResource streamingTextStyle}"/>
             <TextBlock Text="{Binding SelectedMovie}" HorizontalAlignment="Center" />
-
         </StackPanel>
     </Grid>
 </Window>
