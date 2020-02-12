@@ -14,5 +14,15 @@
     <Style x:Key="ErrorMessageTextBox" TargetType="TextBox">
         <Setter Property="Foreground" Value="Red" />
         <Setter Property="BorderBrush" Value="Red" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="4" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
