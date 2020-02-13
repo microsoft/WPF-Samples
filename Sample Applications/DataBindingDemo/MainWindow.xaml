@@ -8,8 +8,7 @@
         Title="List of Products" SizeToContent="WidthAndHeight">
     <Window.Resources>
             <DataTemplate x:Key="GroupingHeaderTemplate">
-                <TextBlock Text="{Binding Path=Name}"
-                           Foreground="Navy" FontWeight="Bold" FontSize="12" />
+                <TextBlock Text="{Binding Path=Name}" Style="{StaticResource GroupHeaderStyle}"/>
             </DataTemplate>
 
             <CollectionViewSource
