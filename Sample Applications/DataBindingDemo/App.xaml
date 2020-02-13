@@ -33,8 +33,8 @@
                                  Points="9,2 11,7 17,7 12,10 14,15 9,12 4,15 6,10 1,7 7,7"/>
 
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"
-                                   Name="descriptionTitle" 
-                                   Style="{StaticResource SmallTitleStyle}" >
+                                   Name="descriptionTitle"
+                                   Style="{StaticResource SmallTitleStyle}">
                             Description:
                         </TextBlock>
                         <TextBlock Name="DescriptionDTDataType" Grid.Row="0" Grid.Column="2"
@@ -42,7 +42,7 @@
                                    Style="{StaticResource TextStyleTextBlock}" />
 
                         <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,8,0"
-                                   Name="currentPriceTitle" 
+                                   Name="currentPriceTitle"
                                    Style="{StaticResource SmallTitleStyle}">
                             Current Price:
                         </TextBlock>

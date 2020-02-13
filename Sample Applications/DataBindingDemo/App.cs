@@ -92,6 +92,5 @@ namespace DataBindingDemo
 
             #endregion
         }
-
     }
 }
