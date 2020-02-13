@@ -283,16 +283,20 @@ namespace EditingExaminerDemo
 
         private void CommandInputBox_FocusEvent(object sender, RoutedEventArgs e)
         {
+            // When in high contrast, set appropriate system colors for the command text.
+            Brush focusedForeground = (SystemParameters.HighContrast) ? SystemColors.WindowTextBrush : Brushes.Black;
+            Brush unfocusedForeground = (SystemParameters.HighContrast) ? SystemColors.GrayTextBrush : Brushes.Blue;
+
             if (e != null && e.RoutedEvent.Name == "GotFocus")
             {
-                CommandInputBox.Foreground = Brushes.Black;
+                CommandInputBox.Foreground = focusedForeground;
                 CommandInputBox.Text = "";
                 CommandInputBox.Items.Clear();
                 SetDefaultItems();
             }
             else
             {
-                CommandInputBox.Foreground = Brushes.Blue;
+                CommandInputBox.Foreground = unfocusedForeground;
                 CommandInputBox.Text = "Type Command here!";
                 CommandInputBox.Items.Clear();
             }
