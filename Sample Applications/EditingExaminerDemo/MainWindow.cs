@@ -41,6 +41,20 @@ namespace EditingExaminerDemo
 
             _inputTextBox = ReflectionUtils.GetProperty(CommandInputBox, "EditableTextBoxSite") as TextBox;
             _inputTextBox.TextChanged += _inputTextBox_TextChanged;
+
+            CoreXaml.Loaded += CoreXaml_Loaded;
+        }
+
+        /// <summary>
+        /// In high contrast scenarios, we need to ensure that the syntax highlighting
+        /// colors are updated.  Since theme switching reloads the control, we can reset
+        /// the text during load and update the colors selected in the Runs.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CoreXaml_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateDisplayTabs(null, null);
         }
 
         private void RefreshTable()
@@ -269,16 +283,20 @@ namespace EditingExaminerDemo
 
         private void CommandInputBox_FocusEvent(object sender, RoutedEventArgs e)
         {
+            // When in high contrast, set appropriate system colors for the command text.
+            Brush focusedForeground = (SystemParameters.HighContrast) ? SystemColors.WindowTextBrush : Brushes.Black;
+            Brush unfocusedForeground = (SystemParameters.HighContrast) ? SystemColors.GrayTextBrush : Brushes.Blue;
+
             if (e != null && e.RoutedEvent.Name == "GotFocus")
             {
-                CommandInputBox.Foreground = Brushes.Black;
+                CommandInputBox.Foreground = focusedForeground;
                 CommandInputBox.Text = "";
                 CommandInputBox.Items.Clear();
                 SetDefaultItems();
             }
             else
             {
-                CommandInputBox.Foreground = Brushes.Blue;
+                CommandInputBox.Foreground = unfocusedForeground;
                 CommandInputBox.Text = "Type Command here!";
                 CommandInputBox.Items.Clear();
             }
