@@ -52,21 +52,59 @@
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
             </DataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" />
-                    <Condition Binding="{Binding Path=MouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
-                </MultiDataTrigger.Conditions>
-                <MultiDataTrigger.Setters>
-                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                </MultiDataTrigger.Setters>
-            </MultiDataTrigger>
-
             <Trigger Property="Validation.HasError" Value="true">
                 <Setter Property="ToolTip"
                             Value="{Binding RelativeSource={RelativeSource Self},
                               Path=(Validation.Errors)[0].ErrorContent}" />
             </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ComboBoxItemStyle" TargetType="ComboBoxItem">
+        <Setter Property="Foreground" Value="#333333" />
+        <Style.Triggers>
+            <!--High contrast support-->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" />
+                    <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" />
+                    <Condition Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource Self}}" Value="true" />
+                    <Condition Binding="{Binding Path=IsHighlighted, RelativeSource={RelativeSource Self}}" Value="true" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="#333333" />
+        <Style.Triggers>
+            <!--High contrast support-->
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" />
+                    <Condition Binding="{Binding Path=IsSelectionBoxHighlighted, RelativeSource={RelativeSource Self}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
