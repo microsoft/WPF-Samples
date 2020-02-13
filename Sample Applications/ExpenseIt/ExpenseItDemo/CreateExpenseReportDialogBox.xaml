@@ -124,13 +124,14 @@
                           HeadersVisibility="Column"
                           Name="expenseDataGrid1"
                           AutoGenerateColumns="False"
+                          CanUserAddRows="False"
                           AutomationProperties.Name="Expense Report">
                     <DataGrid.ToolTip>
                         <TextBlock>Expense Report</TextBlock>
                     </DataGrid.ToolTip>
                 <DataGrid.Columns>
-                        <DataGridTextColumn Header="Expense type" Binding="{Binding Type}" />
-                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                    <DataGridTextColumn Header="Expense type" Binding="{Binding Type}" CellStyle="{StaticResource LeftAlignedCell}" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" CellStyle="{StaticResource LeftAlignedCell}" />
                         <DataGridTextColumn Header="Cost" CellStyle="{StaticResource RightAlignedCell}" HeaderStyle="{StaticResource RightAlignedColumnHeader}">
                             <DataGridTextColumn.Binding>
                                 <Binding Path="Cost" UpdateSourceTrigger="PropertyChanged">

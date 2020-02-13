@@ -3,11 +3,11 @@
 
 using System.Windows.Controls;
 
-namespace Geometery
+namespace Geometry
 {
-    public partial class CombiningGeometriesExample : Page
+    public partial class GeometryAttributeSyntaxExample : Page
     {
-        public CombiningGeometriesExample()
+        public GeometryAttributeSyntaxExample()
         {
             InitializeComponent();
         }

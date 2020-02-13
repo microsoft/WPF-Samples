@@ -10,8 +10,8 @@
     <ProjectGuid>{87466DDE-BDEF-4531-9BC3-17CFFDEF092D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Geometery</RootNamespace>
-    <AssemblyName>Geometery</AssemblyName>
+    <RootNamespace>Geometry</RootNamespace>
+    <AssemblyName>Geometry</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
