@@ -12,9 +12,11 @@
 
             <local:DateConverter x:Key="DateConverter" />
 
-            <DataTemplate DataType="{x:Type local:AuctionItem}" >
+            <DataTemplate DataType="{x:Type local:AuctionItem}">
                 <Border Style="{StaticResource AuctionItemBorderStyle}" Name="border">
-                    <Grid>
+                    <Grid Style="{StaticResource GridStyle}"
+                           Name="AuctionItemsGrid"
+                           MouseDown="OnGridFocus">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -33,8 +35,8 @@
                                  Points="9,2 11,7 17,7 12,10 14,15 9,12 4,15 6,10 1,7 7,7"/>
 
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"
-                                   Name="descriptionTitle"
-                                   Style="{StaticResource SmallTitleStyle}">
+                                   Name="descriptionTitle" 
+                                   Style="{StaticResource SmallTitleAlignmentStyle}" >
                             Description:
                         </TextBlock>
                         <TextBlock Name="DescriptionDTDataType" Grid.Row="0" Grid.Column="2"
@@ -42,12 +44,12 @@
                                    Style="{StaticResource TextStyleTextBlock}" />
 
                         <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,8,0"
-                                   Name="currentPriceTitle"
-                                   Style="{StaticResource SmallTitleStyle}">
+                                   Name="currentPriceTitle" 
+                                   Style="{StaticResource SmallTitleAlignmentStyle}">
                             Current Price:
                         </TextBlock>
                         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
-                            <TextBlock Text="$" Style="{StaticResource TextStyleTextBlock}" />
+                            <TextBlock Name="Dollar" Text="$" Style="{StaticResource TextStyleTextBlock}" />
                             <TextBlock Name="CurrentPriceDTDataType"
                                        Text="{Binding Path=CurrentPrice}"
                                        Style="{StaticResource TextStyleTextBlock}" />
@@ -61,8 +63,6 @@
                         </DataTrigger.Value>
                         <DataTrigger.Setters>
                             <Setter Property="BorderBrush" Value="DodgerBlue" TargetName="border" />
-                            <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
-                            <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
                             <Setter Property="BorderThickness" Value="3" TargetName="border" />
                             <Setter Property="Padding" Value="5" TargetName="border" />
                         </DataTrigger.Setters>
@@ -72,8 +72,6 @@
                             <local:SpecialFeatures>Highlight</local:SpecialFeatures>
                         </DataTrigger.Value>
                         <Setter Property="BorderBrush" Value="Orange" TargetName="border" />
-                        <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
-                        <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
                         <Setter Property="Visibility" Value="Visible" TargetName="star" />
                         <Setter Property="BorderThickness" Value="3" TargetName="border" />
                         <Setter Property="Padding" Value="5" TargetName="border" />
