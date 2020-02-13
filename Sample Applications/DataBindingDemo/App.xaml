@@ -12,11 +12,9 @@
 
             <local:DateConverter x:Key="DateConverter" />
 
-            <DataTemplate DataType="{x:Type local:AuctionItem}">
+            <DataTemplate DataType="{x:Type local:AuctionItem}" >
                 <Border Style="{StaticResource AuctionItemBorderStyle}" Name="border">
-                    <Grid Style="{StaticResource GridStyle}"
-                           Name="AuctionItemsGrid"
-                           MouseDown="OnGridFocus">
+                    <Grid Name="AuctionItemsGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -36,7 +34,7 @@
 
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"
                                    Name="descriptionTitle" 
-                                   Style="{StaticResource SmallTitleAlignmentStyle}" >
+                                   Style="{StaticResource SmallTitleStyle}" >
                             Description:
                         </TextBlock>
                         <TextBlock Name="DescriptionDTDataType" Grid.Row="0" Grid.Column="2"
@@ -45,7 +43,7 @@
 
                         <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,8,0"
                                    Name="currentPriceTitle" 
-                                   Style="{StaticResource SmallTitleAlignmentStyle}">
+                                   Style="{StaticResource SmallTitleStyle}">
                             Current Price:
                         </TextBlock>
                         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
@@ -63,6 +61,8 @@
                         </DataTrigger.Value>
                         <DataTrigger.Setters>
                             <Setter Property="BorderBrush" Value="DodgerBlue" TargetName="border" />
+                            <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
+                            <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
                             <Setter Property="BorderThickness" Value="3" TargetName="border" />
                             <Setter Property="Padding" Value="5" TargetName="border" />
                         </DataTrigger.Setters>
@@ -72,10 +72,29 @@
                             <local:SpecialFeatures>Highlight</local:SpecialFeatures>
                         </DataTrigger.Value>
                         <Setter Property="BorderBrush" Value="Orange" TargetName="border" />
+                        <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
+                        <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
                         <Setter Property="Visibility" Value="Visible" TargetName="star" />
                         <Setter Property="BorderThickness" Value="3" TargetName="border" />
                         <Setter Property="Padding" Value="5" TargetName="border" />
                     </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
+                        <Setter TargetName="descriptionTitle" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+                        <Setter TargetName="currentPriceTitle" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+                    </DataTrigger>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True" />
+                            <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter TargetName="descriptionTitle" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                            <Setter TargetName="DescriptionDTDataType" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                            <Setter TargetName="currentPriceTitle" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                            <Setter TargetName="Dollar" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                            <Setter TargetName="CurrentPriceDTDataType" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
                 </DataTemplate.Triggers>
             </DataTemplate>
 

@@ -8,34 +8,25 @@
         <Setter Property="FontSize" Value="18" />
     </Style>
 
-    <Style x:Key="GridStyle" TargetType="Grid" >
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Label.FontWeight" Value="Bold" />
-    </Style>
-
-    <Style x:Key="SmallTitleAlignmentStyle" TargetType="TextBlock">
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Right" />
-    </Style>
-
-    <Style x:Key="SmallTitleStyle" TargetType="TextBlock">
-        <Setter Property="Label.FontWeight" Value="Bold" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Right" />
-    </Style>
-
-    <Style x:Key="SmallTitleStyleOnFocus" TargetType="TextBlock" BasedOn="{StaticResource SmallTitleStyle}">
+    <Style x:Key="GroupHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="Navy" />
         <Style.Triggers>
-            <!-- High contrast support -->
+            <!--High contrast support-->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="SmallTitleStyleOnFocusLost" TargetType="TextBlock" BasedOn="{StaticResource SmallTitleStyle}">
+    <Style x:Key="SmallTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="DimGray" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
         <Style.Triggers>
-            <!-- High contrast support -->
+            <!--High contrast support-->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
             </DataTrigger>
@@ -43,14 +34,11 @@
     </Style>
 
     <Style x:Key="TextStyleTextBlock" TargetType="TextBlock">
-        <Setter Property="Label.FontWeight" Value="Normal" />
-    </Style>
-
-    <Style x:Key="TextStyleTextBlockOnFocus" TargetType="TextBlock" BasedOn="{StaticResource TextStyleTextBlock}">
+        <Setter Property="Foreground" Value="#333333" />
         <Style.Triggers>
-            <!-- High contrast support -->
+             <!--High contrast support--> 
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>

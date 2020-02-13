@@ -4,8 +4,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace DataBindingDemo
 {
@@ -16,8 +14,6 @@ namespace DataBindingDemo
     {
         public User CurrentUser { get; set; }
         public ObservableCollection<AuctionItem> AuctionItems { get; set; } = new ObservableCollection<AuctionItem>();
-        private Grid FocusedGrid { get => focusedGrid; set => focusedGrid = value; }
-        private Grid focusedGrid;
 
         private void AppStartup(object sender, StartupEventArgs args)
         {
@@ -95,62 +91,6 @@ namespace DataBindingDemo
             AuctionItems.Add(squashRacket);
 
             #endregion
-        }
-
-        private void OnGridFocus(object sender, RoutedEventArgs e)
-        {
-            var sen = sender as Grid;
-            // Return if user clicked on an already focused auction item row
-            if (FocusedGrid != null && FocusedGrid.Equals(sen)) return;
-
-            // Focus on the newly selected grid
-            FocusManager.SetFocusedElement(FocusManager.GetFocusScope(sen), sen);
-            var descriptionTitleTextBlock = (TextBlock)sen?.FindName("descriptionTitle");
-            var descriptionTitleDataType = (TextBlock)sen?.FindName("DescriptionDTDataType");
-            var currentPriceTextBlock = (TextBlock)sen?.FindName("currentPriceTitle");
-            var currentPriceDataType = (TextBlock)sen?.FindName("CurrentPriceDTDataType");
-            var dollarSymbol = (TextBlock)sen?.FindName("Dollar");
-
-            Style styleOnFocus1 = (Style)FindResource("SmallTitleStyleOnFocus");
-            if (styleOnFocus1 != null)
-            {
-                descriptionTitleTextBlock.Style = styleOnFocus1;
-                currentPriceTextBlock.Style = styleOnFocus1;
-            }
-
-            Style styleOnFocus2 = (Style)FindResource("TextStyleTextBlockOnFocus");
-            if (styleOnFocus2 != null)
-            {
-                descriptionTitleDataType.Style = styleOnFocus2;
-                currentPriceDataType.Style = styleOnFocus2;
-                dollarSymbol.Style = styleOnFocus2;
-            }
-
-            // Previous FocusedGrid now got unselected, so revert its style back
-            if (FocusedGrid != null)
-            {
-                descriptionTitleTextBlock = (TextBlock)FocusedGrid?.FindName("descriptionTitle");
-                descriptionTitleDataType = (TextBlock)FocusedGrid?.FindName("DescriptionDTDataType");
-                currentPriceTextBlock = (TextBlock)FocusedGrid?.FindName("currentPriceTitle");
-                currentPriceDataType = (TextBlock)FocusedGrid?.FindName("CurrentPriceDTDataType");
-                dollarSymbol = (TextBlock)FocusedGrid?.FindName("Dollar");
-                
-                Style styleOnFocusLost1 = (Style)FindResource("SmallTitleStyleOnFocusLost");
-                if (styleOnFocusLost1 != null)
-                {
-                    descriptionTitleTextBlock.Style = styleOnFocusLost1;
-                    currentPriceTextBlock.Style = styleOnFocusLost1;
-                }
-                Style styleOnFocusLost2 = (Style)FindResource("TextStyleTextBlock");
-                if (styleOnFocusLost2 != null)
-                {
-                    descriptionTitleDataType.Style = styleOnFocusLost2;
-                    currentPriceDataType.Style = styleOnFocusLost2;
-                    dollarSymbol.Style = styleOnFocusLost2;
-                }
-            }
-
-            FocusedGrid = sen;
         }
 
     }
