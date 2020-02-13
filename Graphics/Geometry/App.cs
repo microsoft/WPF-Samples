@@ -3,7 +3,7 @@
 
 using System.Windows;
 
-namespace Geometery
+namespace Geometry
 {
     /// <summary>
     ///     Interaction logic for App.xaml
