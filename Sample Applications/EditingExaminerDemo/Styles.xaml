@@ -25,4 +25,12 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="XamlSyntaxHighlighterStyle" TargetType="RichTextBox">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="FontSize" Value="14"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

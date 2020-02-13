@@ -142,14 +142,20 @@ namespace EditingExaminerDemo
 
         private static string ProcessEachTag(string str)
         {
-            var front = "<Run Foreground=\"Blue\">&lt;</Run>";
-            var end = "<Run Foreground=\"Blue\">&gt;</Run>";
-            var frontWithSlash = "<Run Foreground=\"Blue\">&lt;/</Run>";
-            var endWithSlash = "<Run Foreground=\"Blue\"> /&gt;</Run>"; //a space is added.
+            // In high contrast themes, we need to ensure the syntax highlighting follows system colors.
+            // Replace the normal colors here with visible ones so that we can still see the highlights.
+            var BlueNormalSyntaxHighlight = (SystemParameters.HighContrast) ? SystemColors.WindowTextColor.ToString() : "Blue";
+            var RedNormalSyntaxHighlight = (SystemParameters.HighContrast) ? SystemColors.HotTrackColor.ToString() : "Red";
+
+            var front = $"<Run Foreground=\"{BlueNormalSyntaxHighlight}\">&lt;</Run>";
+            var end = $"<Run Foreground=\"{BlueNormalSyntaxHighlight}\">&gt;</Run>";
+            var frontWithSlash = $"<Run Foreground=\"{BlueNormalSyntaxHighlight}\">&lt;/</Run>";
+            var endWithSlash = $"<Run Foreground=\"{BlueNormalSyntaxHighlight}\"> /&gt;</Run>"; //a space is added.
             var tagNameStart = "<Run FontWeight=\"Bold\">";
-            var propertynameStart = "<Run Foreground=\"Red\">";
-            var propertyValueStart = "\"<Run Foreground=\"Blue\">";
+            var propertynameStart = $"<Run Foreground=\"{RedNormalSyntaxHighlight}\">";
+            var propertyValueStart = $"\"<Run Foreground=\"{BlueNormalSyntaxHighlight}\">";
             var endRun = "</Run>";
+
             string returnValue;
             string[] strs;
             var i = 0;
