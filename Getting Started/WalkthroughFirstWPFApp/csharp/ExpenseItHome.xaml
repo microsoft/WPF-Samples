@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
-      Title="ExpenseIt - Home">
+      Title="ExpenseIt - Home"
+      Loaded="ExpenseItHome_Loaded">
 
     <Grid Margin="10,0,10,10">
         <Grid.Resources>
@@ -60,8 +61,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Set live region up to ensure page loads are announced. -->
         <!-- People list -->
-        <Label Grid.Column="1" Style="{StaticResource HeaderTextStyle}" >
+        <Label x:Name="LiveRegion" AutomationProperties.LiveSetting="Assertive" Grid.Column="1" Style="{StaticResource HeaderTextStyle}" >
             View Expense Report
         </Label>
 
@@ -74,6 +76,15 @@
                  Grid.Column="1" Grid.Row="2" 
                  ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Person}"
                  ItemTemplate="{StaticResource nameItemTemplate}">
+            <ListBox.Resources>
+                <!-- 
+                     When using XmlDataProvider, we need to ensure the ListViewItem properly sets the automation name
+                     instead of using the System.Xml.XmlElement.
+                -->
+                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}"/>
+                </Style>
+            </ListBox.Resources>
         </ListBox>
 
         <!-- View report button -->

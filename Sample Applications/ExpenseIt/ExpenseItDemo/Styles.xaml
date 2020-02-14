@@ -47,7 +47,7 @@
                 <ControlTemplate TargetType="{x:Type ItemsControl}">
                     <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
-                        <Rectangle StrokeThickness="1" RadiusX="10" RadiusY="10">
+                        <Rectangle Name="ExpenseChartRect" StrokeThickness="1" RadiusX="10" RadiusY="10">
 
                             <Rectangle.Stroke>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -79,6 +79,12 @@
                                             IsItemsHost="True" />
                         </Viewbox>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                            <Setter TargetName="ExpenseChartRect" Property="Stroke" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                            <Setter TargetName="ExpenseChartRect" Property="Fill" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -88,6 +94,12 @@
         <Setter Property="FontSize" Value="18pt" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="0,10,15,10" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="TotalExpensesFlow" TargetType="{x:Type StackPanel}">
@@ -104,6 +116,12 @@
         <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>
         <Setter Property="Margin" Value="10,10,10,0" />
         <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=RenderSize.Width}" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="TotalRectangle" TargetType="{x:Type Rectangle}">
@@ -135,6 +153,12 @@
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                <Setter Property="Fill" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="EmployeeList" TargetType="{x:Type ListBox}">
@@ -182,9 +206,13 @@
             <Trigger Property="Validation.HasError" Value="true">
                 <Setter Property="ToolTip"
                             Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                <Setter Property="AutomationProperties.HelpText" 
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
             </Trigger>
             <Trigger Property="Validation.HasError" Value="false">
                 <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
+                <Setter Property="AutomationProperties.HelpText" 
                             Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip.Content}" />
             </Trigger>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -207,19 +235,40 @@
     <Style x:Key="LeftAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontSize" Value="10pt" />
         <Setter Property="Padding" Value="5,0,5,0" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                <Setter Property="BorderThickness" Value=".5" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                <Setter Property="FontWeight" Value="ExtraBold" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="RightAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource LeftAlignedColumnHeader}">
-        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+    </Style>
+    
+    <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}" >
+        <Setter Property="TextBlock.TextAlignment" Value="Right" />
+        
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="BorderThickness" Value=".5" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}" >
-        <Setter Property="HorizontalAlignment" Value="Right" />
+    <Style x:Key="LeftAlignedCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource RightAlignedCell}">
+        <Setter Property="TextBlock.TextAlignment" Value="Left" />
     </Style>
 
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource TotalDataGrid}">
@@ -265,6 +314,11 @@
         <Setter Property="Fill" Value="#33000000" />
         <Setter Property="RadiusX" Value="2" />
         <Setter Property="RadiusY" Value="2" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Fill" Value="Transparent" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <RadialGradientBrush x:Key="BrushForBarsInExpenseChart">
@@ -279,6 +333,13 @@
         <Setter Property="RadiusX" Value="2" />
         <Setter Property="RadiusY" Value="2" />
         <Setter Property="Fill" Value="{StaticResource BrushForBarsInExpenseChart}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="Fill" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <LinearGradientBrush x:Key="BrushExpenseChartRectangle" StartPoint="0,0" EndPoint="0,1">
@@ -291,6 +352,11 @@
         <Setter Property="RadiusX" Value="1" />
         <Setter Property="RadiusY" Value="1" />
         <Setter Property="Fill" Value="{StaticResource BrushExpenseChartRectangle}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Fill" Value="Transparent" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="ExpenseViewbox" TargetType="{x:Type Viewbox}">
@@ -304,6 +370,11 @@
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="Width" Value="100" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="ExpenseRowCost" TargetType="{x:Type TextBlock}">
@@ -312,6 +383,11 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="0,5,0,3" />
         <Setter Property="TextAlignment" Value="Center" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

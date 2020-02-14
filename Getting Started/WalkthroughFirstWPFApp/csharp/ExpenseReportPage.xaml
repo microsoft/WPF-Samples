@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
-      Title="ExpenseIt - View Expense Report">
+      Title="ExpenseIt - View Expense Report"
+      Loaded="Page_Loaded">
 
     <Grid>
         <!--Templates to display expense report data-->
@@ -31,7 +32,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="1" Style="{StaticResource HeaderTextStyle}">
+        <!-- Set live region up to ensure page load is announced. -->
+        <Label x:Name="LiveRegion" AutomationProperties.LiveSetting="Assertive" Grid.Column="1" Style="{StaticResource HeaderTextStyle}">
             Expense Report For:
         </Label>
         <Grid Margin="10" Grid.Column="1" Grid.Row="1">
@@ -49,7 +51,7 @@
             <!-- Name -->
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Orientation="Horizontal">
                 <Label Style="{StaticResource LabelStyle}">Name:</Label>
-                <Label Style="{StaticResource LabelStyle}" Content="{Binding XPath=@Name}"></Label>
+                <Label x:Name="NameLiveRegion" AutomationProperties.LiveSetting="Assertive" Style="{StaticResource LabelStyle}" Content="{Binding XPath=@Name}"></Label>
             </StackPanel>
 
             <!-- Department -->
@@ -61,6 +63,15 @@
 
                 <!-- Expense type and Amount table -->
                 <DataGrid AutomationProperties.Name="Expense report" ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" AutoGenerateColumns="False" RowHeaderWidth="0" >
+                    <DataGrid.Resources>
+                        <!--
+                            When using XmlDataProvider, we need to ensure the DataGridRow properly sets the automation name
+                            instead of using the System.Xml.XmlElement.
+                        -->
+                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource {x:Type DataGridRow}}">
+                            <Setter Property="AutomationProperties.Name" Value="DataGrid Row"/>
+                        </Style>
+                    </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ExpenseType" Binding="{Binding XPath=@ExpenseType}"  />
                         <DataGridTextColumn Header="Amount" Binding="{Binding XPath=@ExpenseAmount}" />
