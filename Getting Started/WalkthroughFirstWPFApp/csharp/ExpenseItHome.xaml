@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
-      Title="ExpenseIt - Home">
+      Title="ExpenseIt - Home"
+      Loaded="ExpenseItHome_Loaded">
 
     <Grid Margin="10,0,10,10">
         <Grid.Resources>
@@ -60,8 +61,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Set live region up to ensure page loads are announced. -->
         <!-- People list -->
-        <Label Grid.Column="1" Style="{StaticResource HeaderTextStyle}" >
+        <Label x:Name="LiveRegion" AutomationProperties.LiveSetting="Assertive" Grid.Column="1" Style="{StaticResource HeaderTextStyle}" >
             View Expense Report
         </Label>
 

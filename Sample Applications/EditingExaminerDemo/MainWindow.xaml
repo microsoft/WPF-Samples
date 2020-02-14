@@ -186,7 +186,7 @@ Selection = RichTextBox.Selection;
                 </TabItem>
                 <TabItem Header="CoreXaml" Name="TabCoreXaml" 
                          AutomationProperties.HelpText="This tab accesses the WPF core parser in order to parse an object. The object can then be inserted back into the RichTextBox. Alternately you can use this view to see how the RichTextBox content is serialized back to XAML.">
-                    <RichTextBox Name="CoreXaml" AutomationProperties.Name="Core Xaml" VerticalScrollBarVisibility="Visible">
+                    <RichTextBox Name="CoreXaml" AutomationProperties.Name="Core Xaml" VerticalScrollBarVisibility="Visible" Style="{StaticResource XamlSyntaxHighlighterStyle}">
                         <RichTextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Cut" Command="Cut" />
