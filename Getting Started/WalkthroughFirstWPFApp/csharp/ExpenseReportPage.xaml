@@ -68,7 +68,7 @@
                             When using XmlDataProvider, we need to ensure the DataGridRow properly sets the automation name
                             instead of using the System.Xml.XmlElement.
                         -->
-                        <Style TargetType="{x:Type DataGridRow}">
+                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource {x:Type DataGridRow}}">
                             <Setter Property="AutomationProperties.Name" Value="DataGrid Row"/>
                         </Style>
                     </DataGrid.Resources>
