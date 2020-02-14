@@ -76,6 +76,15 @@
                  Grid.Column="1" Grid.Row="2" 
                  ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Person}"
                  ItemTemplate="{StaticResource nameItemTemplate}">
+            <ListBox.Resources>
+                <!-- 
+                     When using XmlDataProvider, we need to ensure the ListViewItem properly sets the automation name
+                     instead of using the System.Xml.XmlElement.
+                -->
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}"/>
+                </Style>
+            </ListBox.Resources>
         </ListBox>
 
         <!-- View report button -->
