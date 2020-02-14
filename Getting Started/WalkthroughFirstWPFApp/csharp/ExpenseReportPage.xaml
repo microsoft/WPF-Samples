@@ -63,6 +63,15 @@
 
                 <!-- Expense type and Amount table -->
                 <DataGrid AutomationProperties.Name="Expense report" ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" AutoGenerateColumns="False" RowHeaderWidth="0" >
+                    <DataGrid.Resources>
+                        <!--
+                            When using XmlDataProvider, we need to ensure the DataGridRow properly sets the automation name
+                            instead of using the System.Xml.XmlElement.
+                        -->
+                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource {x:Type DataGridRow}}">
+                            <Setter Property="AutomationProperties.Name" Value="DataGrid Row"/>
+                        </Style>
+                    </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ExpenseType" Binding="{Binding XPath=@ExpenseType}"  />
                         <DataGridTextColumn Header="Amount" Binding="{Binding XPath=@ExpenseAmount}" />
