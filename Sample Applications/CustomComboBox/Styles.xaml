@@ -1,7 +1,26 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:CustomComboBox">
- 
+                    xmlns:local="clr-namespace:CustomComboBox" 
+                    xmlns:converters="clr-namespace:CustomComboBox.Converters">
+    
+    <converters:StringToStringAndColorConverter x:Key="stringConverter"/>
+
+    <Style x:Key="CustomFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle x:Name="rect" StrokeThickness="2" Stroke="Yellow" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                            <Setter TargetName="rect" Property="Stroke" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
+                            <Setter TargetName="rect" Property="StrokeThickness" Value="3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -26,7 +45,7 @@
             <Track x:Name="PART_Track" HorizontalAlignment="Center"
                        IsDirectionReversed="true">
                 <Track.Thumb>
-                    <Thumb Style="{StaticResource ScrollBarThumb}" Margin="1,0">
+                    <Thumb x:Name="thumb" Style="{StaticResource ScrollBarThumb}" Margin="1,0">
                         <Thumb.BorderBrush>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Offset="0" Color="Gray"/>
@@ -45,6 +64,12 @@
                 </Track.Thumb>
             </Track>
         </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter TargetName="thumb" Property="Background" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                <Setter TargetName="thumb" Property="BorderBrush"  Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+            </DataTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
@@ -123,11 +148,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
-                    <Border Name="Border"
+                    <Border x:Name="outerBorder"
                                 BorderThickness="1"
                                 CornerRadius="4" BorderBrush="#FF888888">
                         <Grid>
-                            <Border CornerRadius="4" BorderBrush="White" BorderThickness="0">
+                            <Border x:Name="innerBorder" CornerRadius="4" BorderBrush="White" BorderThickness="0">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="Gray"/>
@@ -142,14 +167,27 @@
                             </Border>
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                            <Setter TargetName="innerBorder" Property="Background"  Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            <Setter TargetName="innerBorder" Property="BorderBrush"  Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                            <Setter TargetName="outerBorder" Property="BorderBrush"  Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                            <Setter TargetName="outerBorder" Property="BorderThickness"  Value="2"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground"  Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource CustomFocusVisual}"/>
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
@@ -170,9 +208,27 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="Border" 
+                                BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                BorderThickness="1,1,2,1"
+                                Padding="2"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type ContentControl}" x:Key="DropListStyle">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource CustomFocusVisual}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="10"/>
         <Setter Property="Template">
@@ -183,18 +239,19 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Border CornerRadius="4" BorderThickness="1" BorderBrush="Black" Background="{StaticResource btn3d}">
+                        <Border x:Name="border" CornerRadius="4" BorderThickness="1" BorderBrush="Black" Background="{StaticResource btn3d}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
-                                    <ColumnDefinition Width="1"/>
+                                    <ColumnDefinition  x:Name="col1" Width="1"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton FocusVisualStyle="{x:Null}" AutomationProperties.Name="Play">
+                                <ToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                              AutomationProperties.Name="Play">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <Border Background="Transparent">
-                                                <Polygon Points="12,12 12,26, 22,19" Fill="#4B86B1" RenderTransformOrigin="0.5,0.5"
+                                                <Polygon x:Name="polygon" Points="12,12 12,26, 22,19" Fill="#6BE1FF" RenderTransformOrigin="0.5,0.5"
                                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                                     <Polygon.RenderTransform>
                                                         <RotateTransform x:Name="polyRotate" Angle="0"/>
@@ -219,11 +276,14 @@
                                                         </Storyboard>
                                                     </BeginStoryboard>
                                                 </EventTrigger>
+                                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                                                    <Setter TargetName="polygon" Property="Fill" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" />
+                                                </DataTrigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                     </ToggleButton.Template>
                                 </ToggleButton>
-                                <Rectangle Grid.Column="1">
+                                <Rectangle x:Name="line" Grid.Column="1">
                                     <Rectangle.Fill>
                                         <LinearGradientBrush StartPoint="0.25,0" EndPoint="1,1">
                                             <GradientStop Offset="1" Color="Gray"/>
@@ -232,7 +292,7 @@
                                     </Rectangle.Fill>
                                 </Rectangle>
                                 <Grid Grid.Column="2" Height="37">
-                                    <Button AutomationProperties.Name="Watch Now"  FocusVisualStyle="{x:Null}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    <Button AutomationProperties.Name="Watch Now"  FocusVisualStyle="{DynamicResource CustomFocusVisual}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
                                                 Content="{TemplateBinding Content}">
                                         <Button.Template>
@@ -240,19 +300,27 @@
                                                 <Border CornerRadius="4">
                                                     <StackPanel Background="Transparent">
                                                         <Grid>
-                                                            <ContentPresenter HorizontalAlignment="Center" TextBlock.Foreground="White" Margin="0,5,0,0">
+                                                            <ContentPresenter x:Name="watchNowPresenter" HorizontalAlignment="Center" TextBlock.Foreground="White" Margin="0,5,0,0">
                                                                 <ContentPresenter.Effect>
                                                                     <DropShadowEffect BlurRadius="0.5" Direction="270" ShadowDepth="1"/>
                                                                 </ContentPresenter.Effect>
                                                             </ContentPresenter>
                                                         </Grid>
                                                         <StackPanel Orientation="Horizontal" Margin="4,0">
-                                                            <TextBlock Text="{Binding Path=SubTitle, RelativeSource={RelativeSource FindAncestor, AncestorType=local:DropList}}" Foreground="#D3D3D3" FontWeight="Normal" FontSize="8"/>
-                                                            <TextBlock Text="{Binding ElementName=lstBx, Path=SelectedValue}" 
+                                                            <TextBlock Name="movieText" Text="{Binding Path=SubTitle, RelativeSource={RelativeSource FindAncestor, AncestorType=local:DropList}}" Foreground="#D3D3D3" FontWeight="Normal" FontSize="8"/>
+                                                            <TextBlock Name="titleText" Text="{Binding ElementName=lstBx, Path=SelectedValue}" 
                                                                            Foreground="Gold" FontWeight="Bold" FontSize="8"/>
                                                         </StackPanel>
                                                     </StackPanel>
                                                 </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                                                        <Setter TargetName="watchNowPresenter" Property="TextBlock.Foreground"  Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                                        <Setter TargetName="watchNowPresenter" Property="Effect"  Value="{x:Null}"/>
+                                                        <Setter TargetName="movieText" Property="Foreground"  Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                                        <Setter TargetName="titleText" Property="Foreground"  Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                                    </DataTrigger>
+                                                </ControlTemplate.Triggers>
                                             </ControlTemplate>
                                         </Button.Template>
                                     </Button>
@@ -260,8 +328,8 @@
                             </Grid>
                         </Border>
                         <ListBox Name="lstBx" AutomationProperties.Name="Movies" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
-                                     FocusVisualStyle="{x:Null}"
-                                     ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}" 
+                                     FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                     ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}">
                             <ListBox.Resources>
@@ -287,9 +355,28 @@
                             </EventTrigger>
                         </Grid.Triggers>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                            <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                            <Setter TargetName="line" Property="Fill" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                            <Setter TargetName="col1" Property="Width" Value="2"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <Style x:Key="streamingTextStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Foreground" Value="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=color}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
