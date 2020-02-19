@@ -4,6 +4,14 @@ moving all the interesting WPF samples over to GitHub. All the samples have been
 
 You can also find an archive of samples targeting .NET 4.7.2 in the [netframework](https://github.com/microsoft/WPF-Samples/tree/netframework) branch.
 
+The samples in this repo are generally about illustrating specific concepts and may go against accessibility best practices. However, the team has spent some time illustrating accessibility best practices in a subset of these samples.
+
+* [ExpenseItIntro](https://github.com/microsoft/WPF-Samples/tree/master/Getting%20Started/WalkthroughFirstWPFApp)
+* [ExpenseItDemo](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/ExpenseIt/ExpenseItDemo)
+* [DataBindingDemo](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/DataBindingDemo)
+* [CustomComboBox](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/CustomComboBox)
+* [EditingExaminerDemo](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/EditingExaminerDemo)
+
 For additional WPF samples, see [WPF Samples](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx).
 
 Please note that the documentation on the repo is still being updated, so all links might not point to the right location.
