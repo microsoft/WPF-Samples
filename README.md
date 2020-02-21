@@ -44,5 +44,6 @@ The easiest way to use these samples without using Git is to download the zip fi
    * Before you unzip the archive, right-click it, select Properties, and then select Unblock.
    * Most samples should work independently
    * By default, all the samples target .NET core 3.0.
+   * If you do not have that exact SDK 3.1.101 installed then you will need to update the global.json file, open 'C:\Program Files\dotnet\sdk' and the highest sdk listed there is the one you set in the global.json 'version' key.
 
 For more info about the programming models, platforms, languages, and APIs demonstrated in these samples, please refer to the guidance  available in  [MSDN](https://msdn.microsoft.com/en-us/library/ms754130.aspx). These samples are provided as-is in order to indicate or demonstrate the functionality of the programming models and feature APIs for WPF.
