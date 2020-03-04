@@ -1,0 +1,72 @@
+﻿<Window x:Class="SpellChecking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpellChecking"
+        mc:Ignorable="d"
+        Title="Spell Checking Sample" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="FontWeight" Value="DemiBold" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="TextBox"/>
+        <TextBox Grid.Row="1" SpellCheck.IsEnabled="True">This is a mispeled word.</TextBox>
+
+        <Label Grid.Row="2" Content="RichTextBox" />
+        <RichTextBox Grid.Row="3" SpellCheck.IsEnabled="true" AcceptsReturn="True">
+            <RichTextBox.Document>
+                <FlowDocument>
+                    <Paragraph>
+                        <Run xml:lang="en-us" FontWeight="Bold">Mispeled</Run>
+                        <Run xml:lang="en-us"> word in English</Run>
+                        <LineBreak/>
+                        <Run xml:lang="it-it" FontWeight="Bold">Erratd</Run>
+                        <Run xml:lang="it-it"> parola in italiano</Run>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox.Document>
+        </RichTextBox>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="Check word for spelling-suggestions:" />
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtBoxWord" SpellCheck.IsEnabled="true"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="Check" Click="OnCheckWordForSpellingSuggestions" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Suggestions"/>
+                <ListBox Grid.Row="1" x:Name="lbSuggestions" ScrollViewer.VerticalScrollBarVisibility="Visible" />
+            </Grid>
+            
+        </Grid>
+    </Grid>
+</Window>
