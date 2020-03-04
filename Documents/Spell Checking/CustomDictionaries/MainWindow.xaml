@@ -23,7 +23,7 @@
             <SpellCheck.CustomDictionaries>
                 <sys:Uri>pack://application:,,,/CustomDictionary.lex</sys:Uri>
             </SpellCheck.CustomDictionaries>
-            Nonsense words like brimborion and jabberwocky are not identified are errors because they are included in CustomDictionary.lex. On the other hand, genuinely mispeled words would be identified as errors correctly!
+            Nonsense words like brimborion and jabberwocky are not identified as errors because they are included in CustomDictionary.lex. On the other hand, genuinely mispeled words would be identified as errors correctly!
         </TextBox>
     </Grid>
 </Window>
