@@ -1,0 +1,29 @@
+﻿<Window x:Class="CustomDictionaries.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:CustomDictionaries"
+        mc:Ignorable="d"
+        Title="Spell Checking Custom Dictionaries Sample" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Background" Value="LightGray" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="TextBox SpellCheck.IsEnabled=True + CustomDictionaries" HorizontalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" SpellCheck.IsEnabled="True" TextWrapping="WrapWithOverflow">
+            <SpellCheck.CustomDictionaries>
+                <sys:Uri>pack://application:,,,/CustomDictionary.lex</sys:Uri>
+            </SpellCheck.CustomDictionaries>
+            Nonsense words like brimborion and jabberwocky are not identified as errors because they are included in CustomDictionary.lex. On the other hand, genuinely mispeled words would be identified as errors correctly!
+        </TextBox>
+    </Grid>
+</Window>
