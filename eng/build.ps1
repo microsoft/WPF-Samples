@@ -34,6 +34,12 @@
     This requires that VS2019 be installed and avaialble on the local machine. 
     
     Some projects in this repo can be built only using MSBuild. 
+.PARAMETER SdkVersionOverride
+    Supply an SDK version to override global.json to use for building the samples
+.PARAMETER AdditionalNuGetFeeds
+    Supply Additonal NuGet feeds that may be required to build the samples. This is only
+    used when $SdkVersionOverride is specified, and the SDK is as-yet unreleased and requires
+    private NuGet feeds. 
 .EXAMPLE
     build.ps1
     Builds the repo 
@@ -69,7 +75,15 @@ param(
 
   [Parameter(HelpMessage='Use MSBuild instead of dotnet.exe')]
   [switch]
-  $UseMsBuild
+  $UseMsBuild,
+
+  [string]
+  [Parameter(HelpMessage='SDK Override Version')]
+  $SdkVersionOverride = $null,
+
+  [string[]]
+  [Parameter(HelpMessage='Additional NuGet Feeds for Overridden SDK Version')]
+  $AdditionalNuGetFeeds = $null
 )
 
 Function IIf($If, $Then, $Else) {
@@ -304,6 +318,7 @@ if ($UseMsBuild) {
 $Architecture = Fixup-Architecture $Architecture
 $RepoRoot = (Get-Item $Eng).Parent.FullName
 $GlobalJson = Join-Path $RepoRoot 'global.json' 
+$NuGetConfig = Join-Path $RepoRoot 'NuGet.config'
 $DotNetToolsDirectory = Join-Path $RepoRoot '.dotnet' 
 $DotNet = Join-Path $DotNetToolsDirectory 'dotnet.exe'
 $Solution = Join-Path $RepoRoot 'WPFSamples.sln'
@@ -328,9 +343,14 @@ Ensure-Directory $PublishDir
 <# Save Global.json file #>
 Copy-Item $GlobalJson -Destination (join-path $ArtifactsTemp 'global.json') -Force
 
+if ($AdditionalNuGetFeeds) {
+    # Save NuGet.config also 
+    Copy-Item $NuGetConfig -Destination (join-path $ArtifactsTemp 'Nuget.config') -Force
+}
+
 Try {
     <# Run in local scope to inherit updates to $env:PATH #>
-    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework
+    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework -AdditionalNuGetFeeds $AdditionalNuGetFeeds -SdkVersionOverride $SdkVersionOverride
     if (-not (Test-Path $DotNet)) {
         Write-Error "$DotNet not found - exiting"
         exit
@@ -430,5 +450,10 @@ Try {
 Finally {
     <# restore global.json #>
     Copy-Item (Join-Path $ArtifactsTemp 'global.json') $GlobalJson -Force
+
+    if ($AdditionalNuGetFeeds) {
+        # Also restore NuGet.config
+        Copy-Item (Join-Path $ArtifactsTemp 'NuGet.config') $NuGetConfig -Force
+    }
 }
 
