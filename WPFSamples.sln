@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExpenseIt", "ExpenseIt", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseItIntro", "Getting Started\WalkthroughFirstWPFApp\csharp\ExpenseItIntro.csproj", "{04A305B4-D6A2-458B-817C-7B0AA88F7FCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseItIntro2", "Getting Started\WalkthroughFirstWPFApp\vb\ExpenseItIntro2.vbproj", "{B7A77E2B-932E-465E-BDFA-8AF218B8854F}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExpenseItIntro2", "Getting Started\WalkthroughFirstWPFApp\vb\ExpenseItIntro2.vbproj", "{B7A77E2B-932E-465E-BDFA-8AF218B8854F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EditBoxControlLibrary", "Sample Applications\ExpenseIt\EditBoxControlLibrary\EditBoxControlLibrary.csproj", "{558EEE03-6927-4FE6-AEB6-972769960849}"
 EndProject
