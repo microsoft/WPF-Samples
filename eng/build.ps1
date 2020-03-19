@@ -278,7 +278,7 @@ Function Get-BuildArgs {
     $LangVersion = 'latest'
     
     if (-not $Restore) {
-        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
+        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:UseCommonOutputDirectory=true /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     } else {
         $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     }
