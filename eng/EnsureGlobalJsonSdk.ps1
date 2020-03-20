@@ -105,6 +105,7 @@ function Add-EnvPath {
     Write-Verbose "Added $path to PATH variable"
 }
 
+################### Main Script #####################
 
 if (Test-Path $globalJson) {
     $json = Get-Content $globalJson | ConvertFrom-Json
@@ -114,15 +115,16 @@ if (Test-Path $globalJson) {
         that of the version supplied in global.json/sdk.version, don't
         use it for further decisions.
     #>
-    if ($TargetFramework -ieq (Get-Tfm -SdkVersion $json.sdk.version)) {
-        $TargetFramework = ''
+    $script:EffectiveTargetFramework = $TargetFramework
+    if ($script:EffectiveTargetFramework -ieq (Get-Tfm -SdkVersion $json.sdk.version)) {
+        $script:EffectiveTargetFramework = ''
     }
 
-    if (-not $TargetFramework) {
+    if (-not $script:EffectiveTargetFramework) {
         $sdk_version = $json.sdk.version
     } else {
         Write-Verbose "Alternate TargetFramework requested - reading from altsdk section in global.json"
-        $sdk_version = $json.altsdk.$TargetFramework
+        $sdk_version = $json.altsdk.$script:EffectiveTargetFramework
         if ($sdk_version) {
             Write-Verbose "Alternate SDK Version: $sdk_version"
         } else {
@@ -161,13 +163,13 @@ if (Test-Path $globalJson) {
         $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1
 
         <# 
-            If $TargetFramework is specified, then an alternate SDK was requested.
+            If $script:EffectiveTargetFramework is present, then an alternate SDK was requested.
             This means that the build requires an updated global.json as well. 
 
             This is a destructive change. The global.json should be restored by doing this after a build:
                     git checkout global.json
         #>
-        if ($TargetFramework -or $SdkVersionOverride) {
+        if ($script:EffectiveTargetFramework -or $SdkVersionOverride) {
             <# 
                 We would like to use '$dotnet new globaljson --sdk-version $sdk_version --force', but,...
                 ..when global.json has a sdk.version that's different from the sdk installed, dotnet.exe complains:
