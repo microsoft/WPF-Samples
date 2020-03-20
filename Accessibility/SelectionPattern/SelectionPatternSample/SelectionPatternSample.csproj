@@ -107,6 +107,7 @@
     <ProjectReference Include="..\SelectionTarget\SelectionTarget.csproj">
       <Project>{0755f6c3-3fa5-4410-b0d0-4034c64cc138}</Project>
       <Name>SelectionTarget</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

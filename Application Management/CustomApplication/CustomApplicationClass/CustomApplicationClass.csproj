@@ -83,6 +83,7 @@
     <ProjectReference Include="..\CustomApplicationClient\CustomApplicationClient.csproj">
       <Project>{2e41b158-06cb-4f09-b2a8-67394c3fd22a}</Project>
       <Name>CustomApplicationClient</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
 

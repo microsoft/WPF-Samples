@@ -19,7 +19,15 @@ param(
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
   [ValidateSet('', $null, 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
-  $TargetFramework=''
+  $TargetFramework='',
+
+  [string]
+  [Parameter(HelpMessage='SDK Override Version')]
+  $SdkVersionOverride = $null,
+
+  [string[]]
+  [Parameter(HelpMessage='Additional NuGet Feeds for Overridden SDK Version')]
+  $AdditionalNuGetFeeds = $null
 )
 
 Function IIf($If, $Then, $Else) {
@@ -97,6 +105,7 @@ function Add-EnvPath {
     Write-Verbose "Added $path to PATH variable"
 }
 
+################### Main Script #####################
 
 if (Test-Path $globalJson) {
     $json = Get-Content $globalJson | ConvertFrom-Json
@@ -106,21 +115,28 @@ if (Test-Path $globalJson) {
         that of the version supplied in global.json/sdk.version, don't
         use it for further decisions.
     #>
-    if ($TargetFramework -ieq (Get-Tfm -SdkVersion $json.sdk.version)) {
-        $TargetFramework = ''
+    $script:EffectiveTargetFramework = $TargetFramework
+    if ($script:EffectiveTargetFramework -ieq (Get-Tfm -SdkVersion $json.sdk.version)) {
+        $script:EffectiveTargetFramework = ''
     }
 
-    if (-not $TargetFramework) {
+    if (-not $script:EffectiveTargetFramework) {
         $sdk_version = $json.sdk.version
     } else {
         Write-Verbose "Alternate TargetFramework requested - reading from altsdk section in global.json"
-        $sdk_version = $json.altsdk.$TargetFramework
+        $sdk_version = $json.altsdk.$script:EffectiveTargetFramework
         if ($sdk_version) {
             Write-Verbose "Alternate SDK Version: $sdk_version"
         } else {
             Write-Verbose "Alternate SDK Version not found"
         }
     }
+
+    if ($SdkVersionOverride) {
+        Write-Verbose "SdkVersionOverride=$SdkVersionOverride - overriding"
+        $sdk_version = $SdkVersionOverride
+    }
+
 
     if ($sdk_version) {
         $dotnet_install = "$env:TEMP\dotnet-install.ps1"
@@ -147,13 +163,13 @@ if (Test-Path $globalJson) {
         $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1
 
         <# 
-            If $TargetFramework is specified, then an alternate SDK was requested.
+            If $script:EffectiveTargetFramework is present, then an alternate SDK was requested.
             This means that the build requires an updated global.json as well. 
 
             This is a destructive change. The global.json should be restored by doing this after a build:
                     git checkout global.json
         #>
-        if ($TargetFramework) {
+        if ($script:EffectiveTargetFramework -or $SdkVersionOverride) {
             <# 
                 We would like to use '$dotnet new globaljson --sdk-version $sdk_version --force', but,...
                 ..when global.json has a sdk.version that's different from the sdk installed, dotnet.exe complains:
@@ -166,6 +182,29 @@ if (Test-Path $globalJson) {
             $json | ConvertTo-Json | Set-Content $globalJson -Force
             Write-Verbose "global.json updated"
             Write-Verbose (Get-Content $globalJson -Raw)
+        }
+
+        if ($SdkVersionOverride -and $AdditionalNuGetFeeds) {
+            $nugetConfig = Join-Path (Get-Item $globalJson).Directory.FullName 'NuGet.config'
+            if (Test-Path $nugetConfig) {
+                Write-Verbose "Additional Feeds requested - Updating NuGet.config"
+                Write-Verbose "Feeds are..."
+                $AdditionalNuGetFeeds | %{
+                    $feed = $_
+                    Write-Verbose "`t$feed"
+                }
+
+                # Download NuGet.exe 
+                $NuGetExe = join-path $env:TEMP 'nuget.exe'
+                if (-not (Test-Path $NuGetExe -PathType Leaf)) {
+                    Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile $NuGetExe
+                    Write-Verbose "Downloaded nuget.exe to $NuGetExe"
+                }
+
+                for ($i = 0; $i -lt $AdditionalNuGetFeeds.Count; $i++) {
+                    & $NuGetExe Sources Add -Name "transient-delete-$i" -Source $AdditionalNuGetFeeds[$i]
+                }
+            }
         }
     }
 }

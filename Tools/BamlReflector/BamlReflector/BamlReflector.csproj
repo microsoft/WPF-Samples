@@ -7,6 +7,8 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\BamlTools\BamlTools.csproj" />
+    <ProjectReference Include="..\BamlTools\BamlTools.csproj">
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
+    </ProjectReference>
   </ItemGroup>  
 </Project>

@@ -34,6 +34,12 @@
     This requires that VS2019 be installed and avaialble on the local machine. 
     
     Some projects in this repo can be built only using MSBuild. 
+.PARAMETER SdkVersionOverride
+    Supply an SDK version to override global.json to use for building the samples
+.PARAMETER AdditionalNuGetFeeds
+    Supply Additonal NuGet feeds that may be required to build the samples. This is only
+    used when $SdkVersionOverride is specified, and the SDK is as-yet unreleased and requires
+    private NuGet feeds. 
 .EXAMPLE
     build.ps1
     Builds the repo 
@@ -48,7 +54,7 @@
 #>
 [CmdletBinding(PositionalBinding=$false)]
 param(
-  [string] [Alias('a')]
+  [string] [Alias('a')][Alias('Platform')]
   [Parameter(HelpMessage='Architecture')]
   [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', IgnoreCase=$true)]
   $Architecture=$env:PROCESSOR_ARCHITECTURE, 
@@ -69,7 +75,15 @@ param(
 
   [Parameter(HelpMessage='Use MSBuild instead of dotnet.exe')]
   [switch]
-  $UseMsBuild
+  $UseMsBuild,
+
+  [string]
+  [Parameter(HelpMessage='SDK Override Version')]
+  $SdkVersionOverride = $null,
+
+  [string[]]
+  [Parameter(HelpMessage='Additional NuGet Feeds for Overridden SDK Version')]
+  $AdditionalNuGetFeeds = $null
 )
 
 Function IIf($If, $Then, $Else) {
@@ -222,7 +236,10 @@ Function Start-VsDevCmd {
     if ($installationPath -and (test-path "$installationPath\Common7\Tools\vsdevcmd.bat")) {
         & "${env:COMSPEC}" /s /c "`"$installationPath\Common7\Tools\vsdevcmd.bat`" -no_logo && set" | foreach-object {
             $name, $value = $_ -split '=', 2
-            set-content env:\"$name" $value
+            Write-Verbose "Setting env:$name=$value"
+            if ($name -and $value) {
+                set-content env:\"$name" "$value"
+            }
         }
     }
 }
@@ -249,10 +266,16 @@ Function Get-LogFile {
 Function Get-BuildArgs {
     [CmdletBinding(PositionalBinding=$false)]
     param(
+        [Parameter(Mandatory=$true)]
         [string]$LogFile,
+        [Parameter(Mandatory=$true)]
         [string]$Platform,
+        [Parameter(Mandatory=$true)]
         [string]$PublishDir,
+        [Parameter(Mandatory=$true)]
         [string]$RuntimeIdentifier,
+        [Parameter(Mandatory=$true)]
+        [string]$TargetFramework,
         [switch]$UseMsBuild,
         [switch]$Restore
     )
@@ -264,15 +287,17 @@ Function Get-BuildArgs {
     $LangVersion = 'latest'
     
     if (-not $Restore) {
-        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
+        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:UseCommonOutputDirectory=true /p:TargetFramework=$TargetFramework /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     } else {
-        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
+        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:TargetFramework=$TargetFramework /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     }
     
     if ($UseMsBuild) {
         $BuildArgs += " /m"
         if ($Restore) {
             $BuildArgs += " /t:restore"
+        } else {
+            $BuildArgs += " /t:publish"
         }
     }
     
@@ -289,6 +314,12 @@ Function Ensure-Directory {
     }
 }
 
+###################### Start of main script #########################
+
+# Chocolatey requires min TLS1.2
+# https://chocolatey.org/blog/remove-support-for-old-tls-versions
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+
 if ($psISE) {
     $Eng =  (Get-Item (Split-Path $psISE.CurrentFile.FullPath -Parent)).FullName
 } else {
@@ -304,6 +335,7 @@ if ($UseMsBuild) {
 $Architecture = Fixup-Architecture $Architecture
 $RepoRoot = (Get-Item $Eng).Parent.FullName
 $GlobalJson = Join-Path $RepoRoot 'global.json' 
+$NuGetConfig = Join-Path $RepoRoot 'NuGet.config'
 $DotNetToolsDirectory = Join-Path $RepoRoot '.dotnet' 
 $DotNet = Join-Path $DotNetToolsDirectory 'dotnet.exe'
 $Solution = Join-Path $RepoRoot 'WPFSamples.sln'
@@ -311,9 +343,19 @@ $MsBuildOnlySolution = Join-Path $RepoRoot 'WPFSamples.msbuild.sln'
 
 $EnsureGlobalJsonSdk = Join-Path $Eng 'EnsureGlobalJsonSdk.ps1'
 
-if (-not $TargetFramework) {
-    $json = (Get-Content $GlobalJson | ConvertFrom-Json)
-    $TargetFramework = Get-Tfm $json.sdk.version
+if ([string]::IsNullOrEmpty($TargetFramework)) {
+    if (-not $SdkVersionOverride) {
+        $json = (Get-Content $GlobalJson | ConvertFrom-Json)
+        $TargetFramework = Get-Tfm $json.sdk.version
+    } else {
+        $TargetFramework = Get-Tfm $SdkVersionOverride
+    }
+
+    if (-not $TargetFramework) {
+        Write-Error "TargetFramework could not be identified" -ErrorAction Stop
+    }
+
+    Write-Verbose "TargetFramework identified: $TargetFramework"
 }
 
 $Artifacts = Join-path (Join-path (Join-Path (Join-Path $RepoRoot 'artifacts') $Configuration) $TargetFramework) $Architecture
@@ -328,9 +370,14 @@ Ensure-Directory $PublishDir
 <# Save Global.json file #>
 Copy-Item $GlobalJson -Destination (join-path $ArtifactsTemp 'global.json') -Force
 
+if ($AdditionalNuGetFeeds) {
+    # Save NuGet.config also 
+    Copy-Item $NuGetConfig -Destination (join-path $ArtifactsTemp 'Nuget.config') -Force
+}
+
 Try {
     <# Run in local scope to inherit updates to $env:PATH #>
-    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework
+    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework -AdditionalNuGetFeeds $AdditionalNuGetFeeds -SdkVersionOverride $SdkVersionOverride
     if (-not (Test-Path $DotNet)) {
         Write-Error "$DotNet not found - exiting"
         exit
@@ -348,8 +395,8 @@ Try {
         $LogFiles += $RestoreLogFile
         $LogFiles += $LogFile
 
-        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier 
-        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -TargetFramework $TargetFramework
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore -TargetFramework $TargetFramework
 
         $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
         Write-Verbose $BuildCmd
@@ -371,14 +418,14 @@ Try {
         $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
         $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -action 'restore' 
                
-        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
-        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
 
         $LogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts
         $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -action 'restore' 
         
-        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
-        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
+        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
+        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
 
         $LogFiles += $RestoreLogFile
         $LogFiles += $LogFile
@@ -430,5 +477,9 @@ Try {
 Finally {
     <# restore global.json #>
     Copy-Item (Join-Path $ArtifactsTemp 'global.json') $GlobalJson -Force
-}
 
+    if ($AdditionalNuGetFeeds) {
+        # Also restore NuGet.config
+        Copy-Item (Join-Path $ArtifactsTemp 'NuGet.config') $NuGetConfig -Force
+    }
+}

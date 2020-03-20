@@ -107,6 +107,7 @@
     <ProjectReference Include="..\InsertTextTarget\InsertTextTarget.csproj">
       <Project>{22788661-2cbc-4933-b031-4817cbce6c89}</Project>
       <Name>InsertTextTarget</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
