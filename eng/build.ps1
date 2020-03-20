@@ -343,7 +343,7 @@ $MsBuildOnlySolution = Join-Path $RepoRoot 'WPFSamples.msbuild.sln'
 
 $EnsureGlobalJsonSdk = Join-Path $Eng 'EnsureGlobalJsonSdk.ps1'
 
-if (-not [string]::IsNullOrEmpty($TargetFramework)) {
+if ([string]::IsNullOrEmpty($TargetFramework)) {
     if (-not $SdkVersionOverride) {
         $json = (Get-Content $GlobalJson | ConvertFrom-Json)
         $TargetFramework = Get-Tfm $json.sdk.version
