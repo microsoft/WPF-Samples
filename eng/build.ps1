@@ -316,8 +316,9 @@ Function Ensure-Directory {
 
 ###################### Start of main script #########################
 
-$AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
-[System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
+# Chocolatey requires min TLS1.2
+# https://chocolatey.org/blog/remove-support-for-old-tls-versions
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
 if ($psISE) {
     $Eng =  (Get-Item (Split-Path $psISE.CurrentFile.FullPath -Parent)).FullName
