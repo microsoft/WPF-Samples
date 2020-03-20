@@ -87,6 +87,7 @@
     <ProjectReference Include="..\FindText\FindText.csproj">
       <Project>{117631d2-3687-49d6-bd15-7b9a21b4399a}</Project>
       <Name>FindText</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

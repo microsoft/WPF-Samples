@@ -81,6 +81,7 @@
     <ProjectReference Include="..\HostingWpfUserControlInWf\HostingWpfUserControlInWf.csproj">
       <Project>{158d6826-38d9-49b0-a6ca-a46df7be03e3}</Project>
       <Name>HostingWpfUserControlInWf</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

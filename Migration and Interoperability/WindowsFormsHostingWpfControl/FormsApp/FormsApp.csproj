@@ -86,6 +86,7 @@
     <ProjectReference Include="..\WPFControls\WPFControls.csproj">
       <Project>{27e26a5c-1333-44ff-81dc-dd4db0bfc313}</Project>
       <Name>WPFControls</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

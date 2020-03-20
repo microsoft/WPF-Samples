@@ -35,7 +35,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\hwndinwpf\hwndInWPF.vcxproj" />
+    <ProjectReference Include="..\hwndinwpf\hwndInWPF.vcxproj">
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="MyApp.xaml">

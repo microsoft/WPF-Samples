@@ -135,6 +135,7 @@
     <ProjectReference Include="..\TouchKeyboardNotifier\TouchKeyboardNotifier.csproj">
       <Project>{b4c448d1-8853-4738-99e0-fab7c7a63314}</Project>
       <Name>TouchKeyboardNotifier</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

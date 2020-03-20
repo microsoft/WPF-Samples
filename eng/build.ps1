@@ -54,7 +54,7 @@
 #>
 [CmdletBinding(PositionalBinding=$false)]
 param(
-  [string] [Alias('a')]
+  [string] [Alias('a')][Alias('Platform')]
   [Parameter(HelpMessage='Architecture')]
   [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', IgnoreCase=$true)]
   $Architecture=$env:PROCESSOR_ARCHITECTURE, 
@@ -266,10 +266,16 @@ Function Get-LogFile {
 Function Get-BuildArgs {
     [CmdletBinding(PositionalBinding=$false)]
     param(
+        [Parameter(Mandatory=$true)]
         [string]$LogFile,
+        [Parameter(Mandatory=$true)]
         [string]$Platform,
+        [Parameter(Mandatory=$true)]
         [string]$PublishDir,
+        [Parameter(Mandatory=$true)]
         [string]$RuntimeIdentifier,
+        [Parameter(Mandatory=$true)]
+        [string]$TargetFramework,
         [switch]$UseMsBuild,
         [switch]$Restore
     )
@@ -281,9 +287,9 @@ Function Get-BuildArgs {
     $LangVersion = 'latest'
     
     if (-not $Restore) {
-        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:UseCommonOutputDirectory=true /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
+        $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:UseCommonOutputDirectory=true /p:TargetFramework=$TargetFramework /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     } else {
-        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
+        $BuildArgs = "$escapeparser /bl:$RestoreLogFile /p:TargetFramework=$TargetFramework /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     }
     
     if ($UseMsBuild) {
@@ -329,9 +335,19 @@ $MsBuildOnlySolution = Join-Path $RepoRoot 'WPFSamples.msbuild.sln'
 
 $EnsureGlobalJsonSdk = Join-Path $Eng 'EnsureGlobalJsonSdk.ps1'
 
-if (-not $TargetFramework) {
-    $json = (Get-Content $GlobalJson | ConvertFrom-Json)
-    $TargetFramework = Get-Tfm $json.sdk.version
+if (-not [string]::IsNullOrEmpty($TargetFramework)) {
+    if (-not $SdkVersionOverride) {
+        $json = (Get-Content $GlobalJson | ConvertFrom-Json)
+        $TargetFramework = Get-Tfm $json.sdk.version
+    } else {
+        $TargetFramework = Get-Tfm $SdkVersionOverride
+    }
+
+    if (-not $TargetFramework) {
+        Write-Error "TargetFramework could not be identified" -ErrorAction Stop
+    }
+
+    Write-Verbose "TargetFramework identified: $TargetFramework"
 }
 
 $Artifacts = Join-path (Join-path (Join-Path (Join-Path $RepoRoot 'artifacts') $Configuration) $TargetFramework) $Architecture
@@ -371,8 +387,8 @@ Try {
         $LogFiles += $RestoreLogFile
         $LogFiles += $LogFile
 
-        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier 
-        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -TargetFramework $TargetFramework
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore -TargetFramework $TargetFramework
 
         $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
         Write-Verbose $BuildCmd
@@ -394,14 +410,14 @@ Try {
         $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
         $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -action 'restore' 
                
-        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
-        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
 
         $LogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts
         $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -action 'restore' 
         
-        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild
-        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore
+        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
+        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
 
         $LogFiles += $RestoreLogFile
         $LogFiles += $LogFile

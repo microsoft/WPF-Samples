@@ -103,6 +103,7 @@
     <ProjectReference Include="..\FormsControlLibrary\FormsControlLibrary.csproj">
       <Project>{dafd8300-8a73-4e07-8480-695c14b491e0}</Project>
       <Name>FormsControlLibrary</Name>
+      <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
