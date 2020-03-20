@@ -296,6 +296,8 @@ Function Get-BuildArgs {
         $BuildArgs += " /m"
         if ($Restore) {
             $BuildArgs += " /t:restore"
+        } else {
+            $BuildArgs += " /t:publish"
         }
     }
     
