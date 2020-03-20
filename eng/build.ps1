@@ -312,6 +312,11 @@ Function Ensure-Directory {
     }
 }
 
+###################### Start of main script #########################
+
+$AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
+[System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
+
 if ($psISE) {
     $Eng =  (Get-Item (Split-Path $psISE.CurrentFile.FullPath -Parent)).FullName
 } else {
