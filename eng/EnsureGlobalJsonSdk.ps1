@@ -18,7 +18,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'net5.0', IgnoreCase=$true)]
   $TargetFramework='',
 
   [string]
@@ -49,12 +49,13 @@ Function Get-Tfm {
         'netcoreapp2.2',
         'netcoreapp3.0',
         'netcoreapp3.1',
-        'netcoreapp5.0'
+        'net5.0'
     )
 
-    $tfm = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
+    $tfm1 = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
+	$tfm2 = ('net' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
 
-    return IIf ($WellKnownTFMs -icontains $tfm) $tfm ""
+    return IIf (($WellKnownTFMs -icontains $tfm1) -or ($WellKnownTFMs -icontains $tfm2)) $tfm ""
 }
 
 function Add-EnvPath {

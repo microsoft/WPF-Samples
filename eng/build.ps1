@@ -26,7 +26,7 @@
     in project files im this repo. 
     
     Alternative TargetFramework can be supplied to build. Currently, netcoreapp3.1 (default),
-    and netcoreapp5.0 are supported.
+    and net5.0 are supported.
 .PARAMETER DryRun 
     When this switch is specified, the build is simulated, but the actual build is not run. 
 .PARAMETER UseMsBuild 
@@ -44,9 +44,9 @@
     build.ps1
     Builds the repo 
 .EXAMPLE 
-    build.ps1 -TargetFramework netcoreapp5.0 -UseMsBuild
+    build.ps1 -TargetFramework net5.0 -UseMsBuild
     
-    Builds the repo using MSBuild for netcoreapp5.0 TFM 
+    Builds the repo using MSBuild for net5.0 TFM 
 .EXAMPLE 
     build.ps1 -UseMsBuild -Platform x86 -Configuration Release
     
@@ -66,7 +66,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.1', 'netcoreapp5.0', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'net5.0', IgnoreCase=$true)]
   $TargetFramework='', 
 
   [switch]
@@ -172,12 +172,13 @@ Function Get-Tfm {
         'netcoreapp2.2',
         'netcoreapp3.0',
         'netcoreapp3.1',
-        'netcoreapp5.0'
+        'net5.0'
     )
 
-    $tfm = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
+    $tfm1 = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
+	$tfm2 = ('net' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
 
-    return IIf ($WellKnownTFMs -icontains $tfm) $tfm ""
+    return IIf (($WellKnownTFMs -icontains $tfm1) -or ($WellKnownTFMs -icontains $tfm2)) $tfm ""
 }
 
 Function Identify-RID {
@@ -207,7 +208,7 @@ Function Get-VsWhere {
 
     if (-not (Test-Path $VsWhere)) {
         # Try again
-        Uninstall-Package -ProviderName Chocolatey -Name vswhere -Force
+        Uninstall-Package -ProviderName Chocolatey -Name vswhere -Force -ErrorAction SilentlyContinue
         Install-Package -ProviderName Chocolatey -Name vswhere -Force
         if (-not (Test-Path $VsWhere)) {
             # Let's try something else 
