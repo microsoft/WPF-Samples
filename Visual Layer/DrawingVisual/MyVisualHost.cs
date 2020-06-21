@@ -87,7 +87,7 @@ namespace DrawingVisual
                     new Typeface("Verdana"),
                     36, Brushes.Black),
                 new Point(200, 116));
-#pragma warning enable CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
+#pragma warning restore CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
 
             // Close the DrawingContext to persist changes to the DrawingVisual.
             drawingContext.Close();
