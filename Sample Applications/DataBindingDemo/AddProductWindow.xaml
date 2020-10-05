@@ -119,11 +119,11 @@
             </Border>
             <ContentControl Name="ShortPreview" Grid.Row="1"
                             Content="{Binding}"
-                            HorizontalAlignment="Left" />
+                            HorizontalAlignment="Left" IsTabStop="False" />
             <ContentControl Name="LongPreview" Grid.Row="2"
                             Content="{Binding}"
                             ContentTemplate="{StaticResource DetailsProductListingTemplate}"
-                            HorizontalAlignment="Left" />
+                            HorizontalAlignment="Left" IsTabStop="False" />
         </Grid>
     </Border>
 </Window>
