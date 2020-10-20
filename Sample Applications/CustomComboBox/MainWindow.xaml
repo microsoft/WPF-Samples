@@ -19,7 +19,8 @@
                              HorizontalAlignment="Center" VerticalAlignment="Top"
                              Style="{StaticResource DropListStyle}" 
                              ItemsSource="{Binding Movies}" Command="{Binding OnWatchNow}" 
-                             DisplayMemberPath="Title"/>
+                             DisplayMemberPath="Title"
+                             IsTabStop="False"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text}" Style="{DynamicResource streamingTextStyle}"/>
