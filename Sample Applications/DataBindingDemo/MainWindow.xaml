@@ -64,7 +64,7 @@
         <ContentControl Name="Detail" Grid.Row="3" Grid.ColumnSpan="3"
                         Content="{Binding Source={StaticResource ListingDataView}}"
                         ContentTemplate="{StaticResource DetailsProductListingTemplate}"
-                        Margin="9,0,0,0" />
+                        Margin="9,0,0,0" IsTabStop="False"/>
         <Button Name="OpenAddProduct" Grid.Row="4" Grid.Column="1" Content="Add Product" HorizontalAlignment="Center"
                 Margin="8"
                 Click="OpenAddProductWindow" />
