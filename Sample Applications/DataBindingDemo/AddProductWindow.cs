@@ -3,6 +3,9 @@
 
 using System;
 using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls;
 
 namespace DataBindingDemo
 {
@@ -28,6 +31,21 @@ namespace DataBindingDemo
             var item = (AuctionItem) (DataContext);
             ((App) Application.Current).AuctionItems.Add(item);
             Close();
+        }
+
+        private void OnValidationError(object sender, ValidationErrorEventArgs e)
+        {
+            // Get the current UIA ItemStatus from the element element. 
+            var oldStatus = AutomationProperties.GetItemStatus((DependencyObject)sender);
+
+            // Set some sample new ItemStatus here... 
+            var newStatus = e.Action == ValidationErrorEventAction.Added ? e.Error.ErrorContent.ToString() : String.Empty;
+            AutomationProperties.SetItemStatus((DependencyObject)sender, newStatus);
+            
+            // Having just set the new ItemStatus, raise a UIA property changed event. Note that the peer may 
+            // be null here unless a UIA client app such as Narrator or the AccEvent SDK tool are running. 
+            var automationPeer = UIElementAutomationPeer.FromElement((UIElement)sender);
+            automationPeer?.RaisePropertyChangedEvent(AutomationElementIdentifiers.ItemStatusProperty, oldStatus, newStatus);
         }
     }
 }
