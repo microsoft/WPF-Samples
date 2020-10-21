@@ -247,7 +247,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <ToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}"
-                                              AutomationProperties.Name="Play">
+                                              AutomationProperties.Name="Play" TabIndex="0">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <Border Background="Transparent">
@@ -294,7 +294,7 @@
                                 <Grid Grid.Column="2" Height="37">
                                     <Button AutomationProperties.Name="Watch Now"  FocusVisualStyle="{DynamicResource CustomFocusVisual}" Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 CommandParameter="{Binding ElementName=lstBx, Path=SelectedItem}" 
-                                                Content="{TemplateBinding Content}">
+                                                Content="{TemplateBinding Content}" TabIndex="2">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="4">
@@ -331,7 +331,8 @@
                                      FocusVisualStyle="{DynamicResource CustomFocusVisual}"
                                      ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
-                                     SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}">
+                                     SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}"
+                                     TabIndex="1">
                             <ListBox.Resources>
                                 <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBarStyle}" />
                                 <Style TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}" />
