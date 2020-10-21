@@ -103,7 +103,7 @@ namespace DataBindingDemo
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Price must be positive");
+                    throw new ArgumentException("Price must be positive. Provide a positive price");
                 }
                 _startPrice = value;
                 OnPropertyChanged("StartPrice");
