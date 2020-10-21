@@ -57,9 +57,11 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price:</TextBlock>
 
                     <TextBox Name="StartPriceEntryForm" AutomationProperties.Name="Start Price" Grid.Row="2" Grid.Column="1"
-                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5">
+                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5"
+                             Validation.Error="OnValidationError">
                         <TextBox.Text>
-                            <Binding Path="StartPrice" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="StartPrice" UpdateSourceTrigger="PropertyChanged"
+                                     NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
                                     <ExceptionValidationRule />
                                 </Binding.ValidationRules>
@@ -71,9 +73,12 @@
 
                     <TextBox Name="StartDateEntryForm" AutomationProperties.Name="Start Date" Grid.Row="3" Grid.Column="1"
                              Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
-                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5">
+                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5"
+                             Validation.Error="OnValidationError"
+                             AutomationProperties.LiveSetting="Assertive">
                         <TextBox.Text>
                             <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged"
+                                     NotifyOnValidationError="True"
                                      Converter="{StaticResource DateConverter}">
                                 <Binding.ValidationRules>
                                     <local:FutureDateRule />
