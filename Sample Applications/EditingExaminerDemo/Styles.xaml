@@ -2,11 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:EditingExaminerDemo">
 
-    <Style x:Key="ScrollViewer" TargetType="FlowDocumentScrollViewer">
-        <Setter Property="BorderBrush" Value="Black" />
-        <Setter Property="BorderThickness" Value="1" />
-    </Style>
-
     <Style x:Key="ImmediateWindowLabel" TargetType="Label">
         <Setter Property="BorderBrush" Value="Gray"/>
     </Style>
