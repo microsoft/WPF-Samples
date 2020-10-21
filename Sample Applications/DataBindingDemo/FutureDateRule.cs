@@ -18,13 +18,14 @@ namespace DataBindingDemo
             }
             catch (FormatException)
             {
-                return new ValidationResult(false, "Value is not a valid date.");
+                return new ValidationResult(false, "Value is not a valid date. Please enter a valid date");
             }
             if (DateTime.Now.Date > date)
             {
-                return new ValidationResult(false, "Please enter a date in the future.");
+                return new ValidationResult(false, "Value is not a future date. Please enter a date in the future.");
             }
             return ValidationResult.ValidResult;
         }
+
     }
 }
