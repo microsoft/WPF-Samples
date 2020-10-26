@@ -78,9 +78,10 @@ namespace DataBindingDemo
             // navigates around inside the item.
 
             return (_specialFeatures == SpecialFeatures.Highlight ?
-                        "SpotLight, " : "") +
+                        "Special Features: Highlight, " : (_specialFeatures == SpecialFeatures.Color ? "Specieal Features: Color": "")) +
                 "Description: " + _description + ", " +
                 "Current price: $" + this.CurrentPrice;
+
         }
         
 
