@@ -4,9 +4,9 @@
 .DESCRIPTION
     Builds and publishes the projects under artifacts\. Provides control over what TargetFramework to build against,
     which build engine to use (dotnet vs. MSBuild), and what architecture (x86, x64) to build. 
-.PARAMETER Architecture
+.PARAMETER Platform 
     The Platform architecture to build. 
-    Valid values are AnyCPU, 'Any CPU', x86, Win32, x64, and amd64. 
+    Valid values are AnyCPU, 'Any CPU', x86, Win32, x64, amd64, and ARM64. 
     
     The default is $env:PROCESSOR_ARCHITECTURE, i.e., the architecture of the current
     OS. 
@@ -54,10 +54,9 @@
 #>
 [CmdletBinding(PositionalBinding=$false)]
 param(
-  [string] [Alias('a')][Alias('Platform')]
-  [Parameter(HelpMessage='Architecture')]
-  [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', IgnoreCase=$true)]
-  $Architecture=$env:PROCESSOR_ARCHITECTURE, 
+  [Parameter(HelpMessage='Platform')]
+  [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', 'ARM64', IgnoreCase=$true)]
+  $Platform=$env:PROCESSOR_ARCHITECTURE, 
 
   [string] [Alias('c')]
   [Parameter(HelpMessage='Build Configuration')]
@@ -66,7 +65,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.1', 'net5.0', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'net5.0-windows', 'net6.0-windows', IgnoreCase=$true)]
   $TargetFramework='', 
 
   [switch]
@@ -140,23 +139,23 @@ function Add-EnvPath {
     Write-Verbose "Added $path to PATH variable"
 }
 
-Function Fixup-Architecture {
+Function Fixup-Platform{
   param(
       [string] [Alias('a')]
-      [Parameter(HelpMessage='Architecture')]
-      [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', IgnoreCase=$true)]
-      $Architecture
+      [Parameter(HelpMessage='Platform')]
+      [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', 'ARM64', IgnoreCase=$true)]
+      $Platform
   )
 
-  if ($Architecture -ieq 'amd64') {
+  if ($Platform -ieq 'amd64') {
     return 'x64'
   }
 
-  if ($Architecture -iin @('AnyCPU', 'Any CPU', 'Win32')) {
+  if ($Platform -iin @('AnyCPU', 'Any CPU', 'Win32')) {
     return 'x86'
   }
 
-  return $Architecture
+  return $Platform
 }
 
 Function Get-Tfm {
@@ -172,7 +171,8 @@ Function Get-Tfm {
         'netcoreapp2.2',
         'netcoreapp3.0',
         'netcoreapp3.1',
-        'net5.0'
+        'net5.0-windows',
+        'net6.0-windows'
     )
 
     $tfm1 = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
@@ -183,14 +183,15 @@ Function Get-Tfm {
 
 Function Identify-RID {
    param(
-    [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', IgnoreCase=$true)]
-    [string]$Architecture
+    [ValidateSet('x86', 'x64', 'amd64', 'AnyCPU', 'Any CPU', 'Win32', 'ARM64', IgnoreCase=$true)]
+    [string]$Platform
    )
 
-   switch($Architecture) 
+   switch($Platform) 
    {
     {$_ -iin @('x86', 'AnyCPU', 'Any CPU', 'Win32')} {'win-x86'}
     {$_ -iin @('x64', 'amd64')} {'win-x64'}
+    {$_ -iin @('ARM64', 'ARM64')} {'win-arm64'}
    }
 }
 
@@ -286,7 +287,7 @@ Function Get-BuildArgs {
     $Verbosity = 'quiet'
     $NodeReuse = 'false'
     $LangVersion = 'latest'
-    
+
     if (-not $Restore) {
         $BuildArgs = "$escapeparser /bl:$LogFile /p:Platform=$Platform /p:LangVersion=$LangVersion /p:PublishDir=$PublishDir /p:UseCommonOutputDirectory=true /p:TargetFramework=$TargetFramework /p:RuntimeIdentifier=$RuntimeIdentifier /clp:Summary;Verbosity=$Verbosity /nr:$NodeReuse"
     } else {
@@ -333,7 +334,7 @@ if ($UseMsBuild) {
 
 [string]$escapeparser = '--%'
 
-$Architecture = Fixup-Architecture $Architecture
+$Platform = Fixup-Platform $Platform
 $RepoRoot = (Get-Item $Eng).Parent.FullName
 $GlobalJson = Join-Path $RepoRoot 'global.json' 
 $NuGetConfig = Join-Path $RepoRoot 'NuGet.config'
@@ -359,10 +360,10 @@ if ([string]::IsNullOrEmpty($TargetFramework)) {
     Write-Verbose "TargetFramework identified: $TargetFramework"
 }
 
-$Artifacts = Join-path (Join-path (Join-Path (Join-Path $RepoRoot 'artifacts') $Configuration) $TargetFramework) $Architecture
+$Artifacts = Join-path (Join-path (Join-Path (Join-Path $RepoRoot 'artifacts') $Configuration) $TargetFramework) $Platform
 $PublishDir = Join-Path $Artifacts 'publish'
 $ArtifactsTemp = Join-Path $Artifacts 'Temp' 
-$RuntimeIdentifier = Identify-RID $Architecture
+$RuntimeIdentifier = Identify-RID $Platform
 
 Ensure-Directory $Artifacts
 Ensure-Directory $ArtifactsTemp
@@ -378,7 +379,7 @@ if ($AdditionalNuGetFeeds) {
 
 Try {
     <# Run in local scope to inherit updates to $env:PATH #>
-    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $Architecture -f $TargetFramework -AdditionalNuGetFeeds $AdditionalNuGetFeeds -SdkVersionOverride $SdkVersionOverride
+    . $EnsureGlobalJsonSdk -g $GlobalJson -i $DotNetToolsDirectory -a $env:PROCESSOR_ARCHITECTURE -f $TargetFramework -AdditionalNuGetFeeds $AdditionalNuGetFeeds -SdkVersionOverride $SdkVersionOverride
     if (-not (Test-Path $DotNet)) {
         Write-Error "$DotNet not found - exiting"
         exit
@@ -396,8 +397,8 @@ Try {
         $LogFiles += $RestoreLogFile
         $LogFiles += $LogFile
 
-        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -TargetFramework $TargetFramework
-        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore -TargetFramework $TargetFramework
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Platform -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -TargetFramework $TargetFramework
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Platform -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -Restore -TargetFramework $TargetFramework
 
         $BuildCmd = "$DotNet restore $RestoreArgs $Solution"
         Write-Verbose $BuildCmd
@@ -419,14 +420,14 @@ Try {
         $LogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts
         $RestoreLogFile = Get-LogFile -UseMsBuild $true -SolutionFile $Solution -ArtifactsDir $Artifacts -action 'restore' 
                
-        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
-        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
+        $BuildArgs = Get-BuildArgs -LogFile $LogFile -Platform $Platform -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
+        $RestoreArgs = Get-BuildArgs -LogFile $RestoreLogFile -Platform $Platform -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
 
         $LogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts
         $RestoreLogFile2 = Get-LogFile -UseMsBuild $true -SolutionFile $MsBuildOnlySolution -ArtifactsDir $Artifacts -action 'restore' 
         
-        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
-        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Architecture -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
+        $BuildArgs2 = Get-BuildArgs -LogFile $LogFile2 -Platform $Platform -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -TargetFramework $TargetFramework
+        $RestoreArgs2 = Get-BuildArgs -LogFile $RestoreLogFile2 -Platform $Platform -PublishDir $PublishDir -RuntimeIdentifier $RuntimeIdentifier -UseMsBuild -Restore -TargetFramework $TargetFramework
 
         $LogFiles += $RestoreLogFile
         $LogFiles += $LogFile
