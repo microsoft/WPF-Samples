@@ -23,8 +23,8 @@
                              IsTabStop="False"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text}" Style="{DynamicResource streamingTextStyle}"/>
-            <TextBlock Text="{Binding SelectedMovie}" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text, NotifyOnTargetUpdated=True}" Style="{DynamicResource streamingTextStyle}" TargetUpdated="TextBlock_TargetUpdated" AutomationProperties.LiveSetting="Assertive"/>
+            <TextBlock Text="{Binding SelectedMovie, NotifyOnTargetUpdated=True}" HorizontalAlignment="Center" TargetUpdated="TextBlock_TargetUpdated" AutomationProperties.LiveSetting="Assertive"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -27,6 +28,15 @@ namespace CustomComboBox
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void TextBlock_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            var listingPeer = ListBoxAutomationPeer.FromElement(sender as TextBlock);
+            if(listingPeer != null)
+            {
+                listingPeer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            }
         }
     }
 }
