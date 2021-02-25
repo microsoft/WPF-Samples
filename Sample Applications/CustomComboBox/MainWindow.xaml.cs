@@ -32,10 +32,13 @@ namespace CustomComboBox
 
         private void TextBlock_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-            var listingPeer = ListBoxAutomationPeer.FromElement(sender as TextBlock);
-            if(listingPeer != null)
+            if (e.Property == TextBlock.TextProperty)
             {
-                listingPeer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+                var textBlockPeer = UIElementAutomationPeer.FromElement(sender as TextBlock);
+                if(textBlockPeer != null)
+                {
+                    textBlockPeer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+                }
             }
         }
     }
