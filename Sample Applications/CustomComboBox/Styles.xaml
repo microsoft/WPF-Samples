@@ -189,7 +189,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CustomFocusVisual}"/>
         <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Focusable" Value="{Binding Path=Focusable, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Control}, AncestorLevel=1}}" />
+        <Setter Property="Focusable" Value="{Binding Path=Focusable, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}, AncestorLevel=1}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
