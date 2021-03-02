@@ -189,6 +189,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CustomFocusVisual}"/>
         <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Focusable" Value="{Binding Path=Focusable, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Control}, AncestorLevel=1}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
@@ -329,6 +330,7 @@
                         </Border>
                         <ListBox Name="lstBx" AutomationProperties.Name="Movies" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
                                      FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                     Focusable="False"
                                      ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}"
@@ -344,6 +346,9 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Height" From="0" To="60" Duration="0:0:0.5"/>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Focusable">
+                                            <DiscreteBooleanKeyFrame KeyTime="00:00:01" Value="True"/>
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -351,6 +356,9 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Height" From="60" To="0" Duration="0:0:0.5"/>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Focusable">
+                                            <DiscreteBooleanKeyFrame KeyTime="00:00:01" Value="False"/>
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
