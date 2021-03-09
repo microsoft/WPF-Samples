@@ -54,6 +54,7 @@
 
         <ListBox Name="Master" AutomationProperties.Name="List of Items For Sale" Grid.Row="2" Grid.ColumnSpan="3" Margin="8"
                  ItemsSource="{Binding Source={StaticResource ListingDataView}}"
+                 ItemContainerStyle="{StaticResource AuctionItemStyle}"
                  AutomationProperties.LiveSetting="Assertive">
             <ListBox.GroupStyle>
                 <GroupStyle
