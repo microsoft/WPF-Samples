@@ -209,6 +209,7 @@ Selection = RichTextBox.Selection;
                 </Label>
                 <TextBox Name="ImmediateWindow" AutomationProperties.Name="Immediate Window" Width="400" Height="205" VerticalScrollBarVisibility="Visible"
                          IsReadOnly="True"
+                         IsReadOnlyCaretVisible="True"
                          AutomationProperties.HelpText="This provides an instant way to invoke methods, and get or set properties." />
                 <ComboBox Name="CommandInputBox" AutomationProperties.Name="Command input" Width="400" IsEditable="True" LostFocus="CommandInputBox_FocusEvent"
                           GotFocus="CommandInputBox_FocusEvent"
