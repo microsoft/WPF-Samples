@@ -84,12 +84,9 @@ namespace CustomComboBox
     
     public class ExpandableToggleButtonAutomationPeer : ButtonAutomationPeer, IExpandCollapseProvider
     {
-        private ExpandableToggleButton button;
+        private ExpandableToggleButton Button { get { return Owner as ExpandableToggleButton; } }
 
-        public ExpandableToggleButtonAutomationPeer(ExpandableToggleButton owner) : base(owner)
-        {
-            this.button = owner;
-        }
+        public ExpandableToggleButtonAutomationPeer(ExpandableToggleButton owner) : base(owner) {}
 
         public override object GetPattern(PatternInterface patternInterface)
         {
@@ -104,18 +101,18 @@ namespace CustomComboBox
         {
             get
             {
-                return this.button.State;
+                return Button.State;
             }
         }
 
         public void Expand()
         {
-            this.button.State = ExpandCollapseState.Expanded;
+            Button.State = ExpandCollapseState.Expanded;
         }
 
         public void Collapse()
         {
-            this.button.State = ExpandCollapseState.Collapsed;
+            Button.State = ExpandCollapseState.Collapsed;
         }
     }
 }
