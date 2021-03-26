@@ -58,6 +58,16 @@ namespace CustomComboBox
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable<object>), typeof(DropList));
 
 
+        public Style ItemContainerStyle
+        {
+            get { return (Style)GetValue(ItemContainerStyleProperty); }
+            set { SetValue(ItemContainerStyleProperty, value); }
+
+        }
+
+        public static readonly DependencyProperty ItemContainerStyleProperty =
+            DependencyProperty.Register("ItemContainerStyle", typeof(Style), typeof(DropList));
+
         public string DisplayMemberPath
         {
             get { return (string)GetValue(DisplayMemberPathProperty); }
