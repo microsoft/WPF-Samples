@@ -143,6 +143,10 @@
         </ObjectAnimationUsingKeyFrames>
     </Storyboard>
 
+    <Style x:Key="MovieItemContainerStyle">
+        <Setter Property="AutomationProperties.Name" Value="{Binding Title}"/>
+    </Style>
+
     <Style x:Key="listBoxStyle" TargetType="ListBox">
         <Setter Property="Foreground" Value="#AEAEAE"/>
         <Setter Property="Template">
@@ -332,6 +336,7 @@
                                      FocusVisualStyle="{DynamicResource CustomFocusVisual}"
                                      Focusable="False"
                                      ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
+                                     ItemContainerStyle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemContainerStyle}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}"
                                      TabIndex="1">

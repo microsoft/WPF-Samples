@@ -16,7 +16,7 @@
                 <TabItem Name="RichTab" Header="RichTextBox"
                          AutomationProperties.HelpText="Make edits in this RichTextBox. As you edit, you can see what your edits look like in real time in the tabs below.">
                     <RichTextBox Name="MainEditor" AutomationProperties.Name="Rich Text" TextChanged="UpdateDisplayTabs" AcceptsTab="True" Height="250"
-                                 Width="800" VerticalScrollBarVisibility="Visible" />
+                                 Width="800" VerticalScrollBarVisibility="Visible" BorderBrush="Black" />
                 </TabItem>
                 <TabItem Name="PanelTab" AutomationProperties.Name="Panel" Header="Panel" AutomationProperties.HelpText="Panel Tab">
                     <StackPanel />
@@ -208,7 +208,7 @@ Selection = RichTextBox.Selection;
                     Immediate Window
                 </Label>
                 <TextBox Name="ImmediateWindow" AutomationProperties.Name="Immediate Window" Width="400" Height="205" VerticalScrollBarVisibility="Visible"
-                         IsReadOnly="True"
+                         IsReadOnly="True" BorderBrush="Black"
                          AutomationProperties.HelpText="This provides an instant way to invoke methods, and get or set properties." />
                 <ComboBox Name="CommandInputBox" AutomationProperties.Name="Command input" Width="400" IsEditable="True" LostFocus="CommandInputBox_FocusEvent"
                           GotFocus="CommandInputBox_FocusEvent"
