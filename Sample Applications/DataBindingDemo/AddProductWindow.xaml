@@ -91,6 +91,8 @@
                     <ComboBox Name="CategoryEntryForm" AutomationProperties.Name="Category" Grid.Row="4" Grid.Column="1"
                               SelectedValue="{Binding Path=Category}"
                               Style="{StaticResource ComboBoxStyle}"
+                              SelectionChanged="OnSelectionChanged"
+                              AutomationProperties.LiveSetting="Assertive"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
                         <local:ProductCategory>Books</local:ProductCategory>
                         <local:ProductCategory>Computers</local:ProductCategory>
@@ -104,6 +106,8 @@
                     <ComboBox Name="SpecialFeaturesEntryForm" AutomationProperties.Name="Special Features" Grid.Row="5" Grid.Column="1"
                               SelectedValue="{Binding Path=SpecialFeatures}"
                               Style="{StaticResource ComboBoxStyle}"
+                              SelectionChanged="OnSelectionChanged"
+                              AutomationProperties.LiveSetting="Assertive"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
                         <local:SpecialFeatures>None</local:SpecialFeatures>
                         <local:SpecialFeatures>Color</local:SpecialFeatures>
