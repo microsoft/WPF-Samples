@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace DataBindingDemo
 {
@@ -60,6 +61,15 @@ namespace DataBindingDemo
                 Close();
             }
 
+        }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var peer = UIElementAutomationPeer.FromElement(sender as ComboBox);
+            if(peer != null)
+            {
+                peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            }
         }
 
         private void OnValidationError(object sender, ValidationErrorEventArgs e)

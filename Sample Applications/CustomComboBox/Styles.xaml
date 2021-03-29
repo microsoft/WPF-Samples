@@ -193,6 +193,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CustomFocusVisual}"/>
         <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Focusable" Value="{Binding Path=Focusable, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}, AncestorLevel=1}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
@@ -250,10 +251,10 @@
                                     <ColumnDefinition  x:Name="col1" Width="1"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}"
-                                              AutomationProperties.Name="Play" TabIndex="0">
-                                    <ToggleButton.Template>
-                                        <ControlTemplate TargetType="ToggleButton">
+                                <local:ExpandableToggleButton FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                              AutomationProperties.Name="Movies list" TabIndex="0">
+                                    <local:ExpandableToggleButton.Template>
+                                        <ControlTemplate TargetType="local:ExpandableToggleButton">
                                             <Border Background="Transparent">
                                                 <Polygon x:Name="polygon" Points="12,12 12,26, 22,19" Fill="#6BE1FF" RenderTransformOrigin="0.5,0.5"
                                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -266,14 +267,14 @@
                                                 </Polygon>
                                             </Border>
                                             <ControlTemplate.Triggers>
-                                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                                <EventTrigger RoutedEvent="local:ExpandableToggleButton.Expanded">
                                                     <BeginStoryboard>
                                                         <Storyboard>
                                                             <DoubleAnimation Storyboard.TargetName="polyRotate" Storyboard.TargetProperty="Angle" From="0" To="90" Duration="0:0:0.5"/>
                                                         </Storyboard>
                                                     </BeginStoryboard>
                                                 </EventTrigger>
-                                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                                <EventTrigger RoutedEvent="local:ExpandableToggleButton.Collapsed">
                                                     <BeginStoryboard>
                                                         <Storyboard>
                                                             <DoubleAnimation Storyboard.TargetName="polyRotate" Storyboard.TargetProperty="Angle" From="90" To="0" Duration="0:0:0.5"/>
@@ -285,8 +286,8 @@
                                                 </DataTrigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
-                                    </ToggleButton.Template>
-                                </ToggleButton>
+                                    </local:ExpandableToggleButton.Template>
+                                </local:ExpandableToggleButton>
                                 <Rectangle x:Name="line" Grid.Column="1">
                                     <Rectangle.Fill>
                                         <LinearGradientBrush StartPoint="0.25,0" EndPoint="1,1">
@@ -333,6 +334,7 @@
                         </Border>
                         <ListBox Name="lstBx" AutomationProperties.Name="Movies" BorderThickness="1" Height="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
                                      FocusVisualStyle="{DynamicResource CustomFocusVisual}"
+                                     Focusable="False"
                                      ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemsSource}"
                                      ItemContainerStyle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemContainerStyle}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
@@ -345,17 +347,23 @@
                         </ListBox>
 
                         <Grid.Triggers>
-                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <EventTrigger RoutedEvent="local:ExpandableToggleButton.Expanded">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Height" From="0" To="60" Duration="0:0:0.5"/>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Focusable">
+                                            <DiscreteBooleanKeyFrame KeyTime="00:00:01" Value="True"/>
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
-                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <EventTrigger RoutedEvent="local:ExpandableToggleButton.Collapsed">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Height" From="60" To="0" Duration="0:0:0.5"/>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Focusable">
+                                            <DiscreteBooleanKeyFrame KeyTime="00:00:01" Value="False"/>
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
