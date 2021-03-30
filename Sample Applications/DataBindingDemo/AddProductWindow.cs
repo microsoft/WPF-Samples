@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace DataBindingDemo
 {
@@ -26,11 +27,49 @@ namespace DataBindingDemo
                 SpecialFeatures.None);
         }
 
+        private void AnnounceError(string message)
+        {
+            ErrorTextBlock.Visibility = Visibility.Visible;
+            ErrorTextBlock.Text = message;
+            if (AutomationPeer.ListenerExists(AutomationEvents.LiveRegionChanged))
+            {
+                var automationPeer = UIElementAutomationPeer.CreatePeerForElement(ErrorTextBlock);
+                automationPeer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            }
+        }
+
         private void SubmitProduct(object sender, RoutedEventArgs e)
         {
-            var item = (AuctionItem) (DataContext);
-            ((App) Application.Current).AuctionItems.Add(item);
-            Close();
+            var automationPeer = UIElementAutomationPeer.CreatePeerForElement(ErrorTextBlock);
+
+            if(StartDateEntryForm.Text.Length == 0 || StartPriceEntryForm.Text.Length == 0)
+            {
+                AnnounceError("Please, fill both date and start price");
+            }
+            else if (Validation.GetHasError(StartDateEntryForm))
+            {
+                AnnounceError("Please, enter a valid date");
+            }
+            else if (Validation.GetHasError(StartPriceEntryForm))
+            {
+                AnnounceError("Please, enter a valid price");
+            }
+            else
+            {
+                var item = (AuctionItem)(DataContext);
+                ((App) Application.Current).AuctionItems.Add(item);
+                Close();
+            }
+
+        }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var peer = UIElementAutomationPeer.FromElement(sender as ComboBox);
+            if(peer != null)
+            {
+                peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            }
         }
 
         private void OnValidationError(object sender, ValidationErrorEventArgs e)
