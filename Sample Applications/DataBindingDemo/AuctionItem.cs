@@ -45,45 +45,6 @@ namespace DataBindingDemo
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public override string ToString()
-        {
-            // All important information conveyed visually in the AuctionItem must
-            // be conveyed programmatically. The use of border color is purely 
-            // decorative, and so does not need to be exposed programmatically. The
-            // use of the star however in the visuals is important, as is all the 
-            // text shown in the item. These data can be exposed programmatically 
-            // through the UI Automation (UIA) Name property of the item by returning 
-            // the desired string in ToString() here. That string will typically be
-            // announced by a screen reader when arrowing to the item. The string is  
-            // not overwhelming when announced, but the order in which the data is 
-            // exposed in the string should match the order in which customers will 
-            // want to access it. So when the customer arrows quickly through the 
-            // list to reach an item of interest, the announcement should be ordered 
-            // to enable that rapid navigation through the items.
-
-            // Important: A shipping app would use localized text and currency
-            // symbols here. It also would consider whether the simple concatenation
-            // of the text would provide the expected experience in all regions.
-            // In some regions the text might need to be returned in some other order.
-
-            // Important: The text contained inside the item is exposed through the
-            // Control view of the UI Automation (UIA) API. This indicates to a 
-            // screen reader that the UI is of interest to customers. However, by 
-            // default the star UI is not exposed in this way. Given that the 
-            // information conveyed through the use of the star is very important, 
-            // it must be exposed programmatically to customers. That is being 
-            // achieved here by including related information in the accessible name 
-            // of the item. If that information was not being included here, action  
-            // must be taken to enable the star to be reached when a screen reader 
-            // navigates around inside the item.
-
-            return (_specialFeatures == SpecialFeatures.Highlight ?
-                        "SpotLight, " : "") +
-                "Description: " + _description + ", " +
-                "Current price: $" + this.CurrentPrice;
-        }
-        
-
         #region Properties Getters and Setters
 
         public string Description
