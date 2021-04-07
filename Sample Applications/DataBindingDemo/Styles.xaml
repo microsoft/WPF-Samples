@@ -158,4 +158,8 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="ErrorTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red" />
+    </Style>
+
 </ResourceDictionary>
