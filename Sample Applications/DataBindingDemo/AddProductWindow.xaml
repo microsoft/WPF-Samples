@@ -57,8 +57,9 @@
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price: *</TextBlock>
 
-                    <TextBox Name="StartPriceEntryForm" AutomationProperties.Name="Start Price, Required" Grid.Row="2" Grid.Column="1"
+                    <TextBox Name="StartPriceEntryForm" AutomationProperties.Name="Start Price" Grid.Row="2" Grid.Column="1"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5"
+                             AutomationProperties.IsRequiredForForm="True"
                              Validation.Error="OnValidationError">
                         <TextBox.Text>
                             <Binding Path="StartPrice" UpdateSourceTrigger="PropertyChanged"
@@ -72,10 +73,11 @@
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Date: *</TextBlock>
 
-                    <TextBox Name="StartDateEntryForm" AutomationProperties.Name="Start Date, Required" Grid.Row="3" Grid.Column="1"
+                    <TextBox Name="StartDateEntryForm" AutomationProperties.Name="Start Date" Grid.Row="3" Grid.Column="1"
                              Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5"
                              Validation.Error="OnValidationError"
+                             AutomationProperties.IsRequiredForForm="True"
                              AutomationProperties.LiveSetting="Assertive">
                         <TextBox.Text>
                             <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged"
