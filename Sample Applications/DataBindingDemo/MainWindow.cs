@@ -1,12 +1,15 @@
 ﻿// // Copyright (c) Microsoft. All rights reserved.
 // // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace DataBindingDemo
 {
@@ -21,11 +24,12 @@ namespace DataBindingDemo
         {
             InitializeComponent();
             _listingDataView = (CollectionViewSource) (Resources["ListingDataView"]);
+            FocusManager.SetIsFocusScope(Master, true);
         }
 
         private void OpenAddProductWindow(object sender, RoutedEventArgs e)
         {
-            var addProductWindow = new AddProductWindow();
+            var addProductWindow = new AddProductWindow(this);
             addProductWindow.ShowDialog();
         }
 
@@ -88,6 +92,18 @@ namespace DataBindingDemo
         private void RemoveFiltering(object sender, RoutedEventArgs args)
         {
             _listingDataView.Filter -= ShowOnlyBargainsFilter;
+            NotifyUpdate();
+        }
+
+        public void FocusNewProduct()
+        {
+            int index = Master.Items.Count - 1;
+            Master.SelectedIndex = index;
+            AuctionItem SelectedItem = Master.SelectedItem as AuctionItem;
+            ListBoxItem listBoxItem = Master.Items.GetItemAt(index) as ListBoxItem;
+            FocusManager.SetFocusedElement(Master, listBoxItem);
+            Keyboard.Focus(Master);
+            Master.ScrollIntoView(SelectedItem);
             NotifyUpdate();
         }
     }

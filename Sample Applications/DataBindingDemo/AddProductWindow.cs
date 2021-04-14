@@ -15,8 +15,11 @@ namespace DataBindingDemo
     /// </summary>
     public partial class AddProductWindow : Window
     {
-        public AddProductWindow()
+        MainWindow mainWindow;
+
+        public AddProductWindow(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
@@ -59,6 +62,7 @@ namespace DataBindingDemo
                 var item = (AuctionItem)(DataContext);
                 ((App) Application.Current).AuctionItems.Add(item);
                 Close();
+                mainWindow.FocusNewProduct();
             }
 
         }
