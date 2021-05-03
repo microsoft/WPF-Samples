@@ -51,13 +51,14 @@
             <!-- Name -->
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Orientation="Horizontal">
                 <Label Style="{StaticResource LabelStyle}">Name:</Label>
-                <Label x:Name="NameLiveRegion" AutomationProperties.LiveSetting="Assertive" Style="{StaticResource LabelStyle}" Content="{Binding XPath=@Name}"></Label>
+                <Label x:Name="NameLiveRegion" AutomationProperties.LiveSetting="Assertive" Style="{StaticResource LabelStyle}"
+                       Content="{Binding XPath=@Name}" AutomationProperties.Name="{Binding XPath=@Name}"></Label>
             </StackPanel>
 
             <!-- Department -->
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal">
                 <Label Style="{StaticResource LabelStyle}">Department:</Label>
-                <Label Style="{StaticResource LabelStyle}" Content="{Binding XPath=@Department}"></Label>
+                <Label Style="{StaticResource LabelStyle}" Content="{Binding XPath=@Department}" AutomationProperties.Name="{Binding XPath=@Department}"></Label>
             </StackPanel>
             <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
 
