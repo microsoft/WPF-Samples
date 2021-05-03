@@ -82,15 +82,37 @@ namespace ExpenseItDemo
             dlg.Show();
         }
 
+        bool isValid(DependencyObject parent)
+        {
+            if (System.Windows.Controls.Validation.GetHasError(parent)) return false;
+
+            for(int i = 0; i != VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                if (!isValid(child)) return false;
+            }
+
+            return true;
+        }
+
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                "Expense Report Created!",
-                "ExpenseIt Standalone",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
+            if(!isValid(expenseDataGrid1)){
+                MessageBox.Show(
+                    "Please, fix the errors.",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            } else
+            {
+                MessageBox.Show(
+                    "Expense Report Created!",
+                    "ExpenseIt Standalone",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
 
-            DialogResult = true;
+                DialogResult = true;
+            }
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
