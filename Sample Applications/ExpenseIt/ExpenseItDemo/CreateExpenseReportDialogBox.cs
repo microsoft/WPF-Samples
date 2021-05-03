@@ -19,6 +19,14 @@ namespace ExpenseItDemo
         public CreateExpenseReportDialogBox()
         {
             InitializeComponent();
+
+            var app = Application.Current;
+            var expenseReport = (ExpenseReport) app.FindResource("ExpenseData");
+
+            if (expenseReport != null && !expenseReport.Initialized)
+            {
+                expenseReport.InitializeItems();
+            }
         }
 
         private void addExpenseButton_Click(object sender, RoutedEventArgs e)
@@ -26,7 +34,7 @@ namespace ExpenseItDemo
             var app = Application.Current;
             var expenseReport = (ExpenseReport) app.FindResource("ExpenseData");
             expenseReport?.LineItems.Add(new LineItem());
-            
+
             DataGridRow row =null;
 
             // Dispatching this at loaded priority so the new row has been added before our code runs

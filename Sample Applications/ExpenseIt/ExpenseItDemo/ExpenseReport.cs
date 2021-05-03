@@ -17,11 +17,18 @@ namespace ExpenseItDemo
         private string _costCenter;
         private string _employeeNumber;
         private int _totalExpenses;
+        private bool _initialized = false;
 
         public ExpenseReport()
         {
             LineItems = new LineItemCollection();
             LineItems.LineItemCostChanged += OnLineItemCostChanged;
+        }
+
+        public void InitializeItems()
+        {
+            LineItems.InitializeItems();
+            _initialized = true;
         }
 
         public string Alias
@@ -61,6 +68,14 @@ namespace ExpenseItDemo
             {
                 RecalculateTotalExpense();
                 return _totalExpenses;
+            }
+        }
+
+        public bool Initialized
+        {
+            get
+            {
+                return _initialized;
             }
         }
 

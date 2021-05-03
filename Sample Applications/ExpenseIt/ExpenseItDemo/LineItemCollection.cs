@@ -11,6 +11,14 @@ namespace ExpenseItDemo
     {
         public event EventHandler LineItemCostChanged;
 
+        public void InitializeItems()
+        {
+            for(int i = 0; i < Items.Count; i++)
+            {
+                Items[i].PropertyChanged += LineItemPropertyChanged;
+            }
+        }
+
         public new void Add(LineItem item)
         {
             if (item != null)
