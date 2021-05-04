@@ -166,6 +166,28 @@
         <Setter Property="MinHeight" Value="50" />
     </Style>
 
+    <Style x:Key="EmployeeListItemFocus" TargetType="Control">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeThickness="1"
+                          Stroke="White"
+                          StrokeDashArray="1 2"
+                          SnapsToDevicePixels="true"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EmployeeListItem" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource EmployeeListItemFocus}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="CostCenterList" TargetType="{x:Type ComboBox}">
         <Setter Property="Margin" Value="0,5,5,0" />
     </Style>
