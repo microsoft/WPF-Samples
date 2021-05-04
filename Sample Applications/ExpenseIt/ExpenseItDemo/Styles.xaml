@@ -171,7 +171,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle StrokeThickness="1"
-                          Stroke="White"
+                          Stroke="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"
                           StrokeDashArray="1 2"
                           SnapsToDevicePixels="true"/>
                 </ControlTemplate>
