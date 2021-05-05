@@ -166,24 +166,25 @@
         <Setter Property="MinHeight" Value="50" />
     </Style>
 
-    <Style x:Key="EmployeeListItemFocus" TargetType="Control">
+    <Style x:Key="EmployeeListHighContrastFocusVisualStyle" TargetType="Control">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle StrokeThickness="1"
                           Stroke="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"
                           StrokeDashArray="1 2"
+                          Margin="0,1,0,1"
                           SnapsToDevicePixels="true"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="EmployeeListItem" TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="EmployeeListItemContainerStyle" TargetType="{x:Type ListBoxItem}">
         <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource EmployeeListItemFocus}"/>
+                <Setter Property="FocusVisualStyle" Value="{StaticResource EmployeeListHighContrastFocusVisualStyle}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

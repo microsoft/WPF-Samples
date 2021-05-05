@@ -149,7 +149,7 @@
                          Grid.Column="1" Grid.Row="4"
                          ItemTemplate="{StaticResource EmployeeItemTemplate}"
                          ItemsSource="{Binding Source={StaticResource Employees}}"
-                         ItemContainerStyle="{Binding Source={StaticResource EmployeeListItem}}"
+                         ItemContainerStyle="{StaticResource EmployeeListItemContainerStyle}"
                          AutomationProperties.Name="Employee Name">
                     <ListBox.ToolTip>
                         <TextBlock>Choose employee name.</TextBlock>
