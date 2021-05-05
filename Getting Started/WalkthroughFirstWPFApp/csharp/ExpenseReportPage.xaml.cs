@@ -29,6 +29,7 @@ namespace ExpenseIt
             // the report for.
             FrameworkElementAutomationPeer.FromElement(LiveRegion)?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
             FrameworkElementAutomationPeer.FromElement(NameLiveRegion)?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            FrameworkElementAutomationPeer.FromElement(DepartmentLiveRegion)?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
     }
   
