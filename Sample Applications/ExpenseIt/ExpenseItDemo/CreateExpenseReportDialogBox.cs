@@ -22,11 +22,7 @@ namespace ExpenseItDemo
 
             var app = Application.Current;
             var expenseReport = (ExpenseReport) app.FindResource("ExpenseData");
-
-            if (expenseReport != null && !expenseReport.Initialized)
-            {
-                expenseReport.InitializeItems();
-            }
+            expenseReport?.EnsureInitialized();
         }
 
         private void addExpenseButton_Click(object sender, RoutedEventArgs e)

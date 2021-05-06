@@ -25,10 +25,17 @@ namespace ExpenseItDemo
             LineItems.LineItemCostChanged += OnLineItemCostChanged;
         }
 
-        public void InitializeItems()
+        /*
+         * This method is needed because this app operates on a singleton ExpenseReport.
+         * It preloads that report with real LineItems directly from the markup. 
+         * Doing that, the markup call IList.Add avoiding the override created on the class.
+         * So, we need to ensure the List class subscribes to the Item's events after its creation.
+         * */
+        public void EnsureInitialized()
         {
-            LineItems.InitializeItems();
+            if (_initialized) return;
             _initialized = true;
+            LineItems.InitializeItems();
         }
 
         public string Alias
@@ -68,14 +75,6 @@ namespace ExpenseItDemo
             {
                 RecalculateTotalExpense();
                 return _totalExpenses;
-            }
-        }
-
-        public bool Initialized
-        {
-            get
-            {
-                return _initialized;
             }
         }
 
