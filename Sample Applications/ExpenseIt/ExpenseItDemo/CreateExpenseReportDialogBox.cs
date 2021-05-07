@@ -19,10 +19,6 @@ namespace ExpenseItDemo
         public CreateExpenseReportDialogBox()
         {
             InitializeComponent();
-
-            var app = Application.Current;
-            var expenseReport = (ExpenseReport) app.FindResource("ExpenseData");
-            expenseReport?.EnsureInitialized();
         }
 
         private void addExpenseButton_Click(object sender, RoutedEventArgs e)
