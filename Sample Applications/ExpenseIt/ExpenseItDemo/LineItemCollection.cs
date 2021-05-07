@@ -11,13 +11,12 @@ namespace ExpenseItDemo
     {
         public event EventHandler LineItemCostChanged;
 
-        public new void InsertItem(int index, LineItem item)
+        public void InitializeItems()
         {
-            if (item != null)
+            for(int i = 0; i < Items.Count; i++)
             {
-                item.PropertyChanged += LineItemPropertyChanged;
+                Items[i].PropertyChanged += LineItemPropertyChanged;
             }
-            base.InsertItem(index, item);
         }
 
         public new void Add(LineItem item)
