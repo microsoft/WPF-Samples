@@ -2,7 +2,9 @@
 // // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 
 namespace ExpenseItDemo
@@ -11,21 +13,9 @@ namespace ExpenseItDemo
     {
         public event EventHandler LineItemCostChanged;
 
-        public void InitializeItems()
+        public LineItemCollection()
         {
-            for(int i = 0; i < Items.Count; i++)
-            {
-                Items[i].PropertyChanged += LineItemPropertyChanged;
-            }
-        }
-
-        public new void Add(LineItem item)
-        {
-            if (item != null)
-            {
-                item.PropertyChanged += LineItemPropertyChanged;
-            }
-            base.Add(item);
+            CollectionChanged += OnListItemsChanged;
         }
 
         private void LineItemPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -33,6 +23,18 @@ namespace ExpenseItDemo
             if (e.PropertyName == "Cost")
             {
                 OnLineItemCostChanged(this, new EventArgs());
+            }
+        }
+
+        private void OnListItemsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if(e.Action == NotifyCollectionChangedAction.Add)
+            {
+                for(int i = 0; i < e.NewItems.Count; i++)
+                {
+                    LineItem item = e.NewItems[i] as LineItem;
+                    item.PropertyChanged += LineItemPropertyChanged;
+                }
             }
         }
 
