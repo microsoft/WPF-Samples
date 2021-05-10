@@ -141,7 +141,31 @@
                                     </Binding.ValidationRules>
                                 </Binding>
                             </DataGridTextColumn.Binding>
-                        </DataGridTextColumn>
+                        <DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Style.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Background"  Value="#FFFC9191"/>
+                                        <Setter Property="ToolTip"  Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="Validation.ErrorTemplate">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <StackPanel>
+                                                <AdornedElementPlaceholder x:Name="placeholder" />
+                                                <Popup HorizontalAlignment="Left" PopupAnimation="Fade" Placement="Bottom" IsOpen="true">
+                                                    <Grid Background="White">
+                                                        <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}"/>
+                                                    </Grid>
+                                                </Popup>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTextColumn.EditingElementStyle>
+                    </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
 
