@@ -392,6 +392,7 @@
         <Setter Property="FontFamily" Value="Ariel" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
         <Setter Property="Width" Value="100" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
