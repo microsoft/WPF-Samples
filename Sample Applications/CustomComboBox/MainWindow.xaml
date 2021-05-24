@@ -21,7 +21,7 @@
                              ItemsSource="{Binding Movies}" Command="{Binding OnWatchNow}" 
                              ItemContainerStyle="{StaticResource MovieItemContainerStyle}"
                              DisplayMemberPath="Title"
-                             IsTabStop="False"/>
+                             IsTabStop="False" Width="160"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="{Binding SelectedMovie, Converter={StaticResource stringConverter}, ConverterParameter=text, NotifyOnTargetUpdated=True}" Style="{DynamicResource streamingTextStyle}" TargetUpdated="TextBlock_TargetUpdated" AutomationProperties.LiveSetting="Assertive"/>
