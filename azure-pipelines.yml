@@ -13,7 +13,7 @@ variables:
     value: latest
 
 trigger:
-- master
+- main
 - release/*
 
 pool:
