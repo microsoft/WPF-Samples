@@ -116,6 +116,18 @@
         <Setter Property="Width" Value="500" />
     </Style>
 
+    <Style x:Key="AuctionItemContainerStyle">
+        <Setter Property="AutomationProperties.Name">
+            <Setter.Value>
+                <MultiBinding StringFormat="{} Color: {0}, Description: {1}, Current price: ${2}">
+                    <Binding Path="SpecialFeatures" />
+                    <Binding Path="Description" />
+                    <Binding Path="CurrentPrice" />
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="BorderStyle" TargetType="Border">
         <Setter Property="BorderThickness" Value="0,0,0,2" />
         <Setter Property="BorderBrush" Value="Black" />
@@ -144,6 +156,10 @@
                 <Setter Property="Background" Value="Moccasin" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ErrorTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red" />
     </Style>
 
 </ResourceDictionary>
