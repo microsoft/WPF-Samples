@@ -58,4 +58,11 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="HelpSectionTextHighContrastStyle" TargetType="Section">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
