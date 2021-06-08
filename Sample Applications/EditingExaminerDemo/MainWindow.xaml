@@ -28,7 +28,7 @@
                             <FlowDocument
                                 ColumnWidth="400" AutomationProperties.Name="Help Text"
                                 IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
-                                <Section FontSize="12">
+                                <Section FontSize="12" Style="{StaticResource HelpSectionTextHighContrastStyle}">
                                     <Paragraph FontSize="22" FontWeight="Bold">Introducing Editing Examiner</Paragraph>
 
                                     <Paragraph>
