@@ -339,7 +339,7 @@
                                      ItemContainerStyle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemContainerStyle}"
                                      DisplayMemberPath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}" 
                                      SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DisplayMemberPath}"
-                                     TabIndex="1">
+                                     TabIndex="1" Visibility="Collapsed">
                             <ListBox.Resources>
                                 <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBarStyle}" />
                                 <Style TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}" />
@@ -350,6 +350,9 @@
                             <EventTrigger RoutedEvent="local:ExpandableToggleButton.Expanded">
                                 <BeginStoryboard>
                                     <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
                                         <DoubleAnimation Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Height" From="0" To="60" Duration="0:0:0.5"/>
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Focusable">
                                             <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="True"/>
@@ -360,6 +363,9 @@
                             <EventTrigger RoutedEvent="local:ExpandableToggleButton.Collapsed">
                                 <BeginStoryboard>
                                     <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Collapsed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
                                         <DoubleAnimation Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Height" From="60" To="0" Duration="0:0:0.5"/>
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetName="lstBx" Storyboard.TargetProperty="Focusable">
                                             <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
