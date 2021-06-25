@@ -32,14 +32,14 @@
 
                 <!-- File Menu-->
                 <MenuItem Header="_File">
-                    <MenuItem Command="local:MainWindow.CreateExpenseReportCommand" />
+                    <MenuItem Command="local:MainWindow.CreateExpenseReportCommand"/>
                     <Separator />
-                    <MenuItem Command="local:MainWindow.ExitCommand" />
+                    <MenuItem Command="local:MainWindow.ExitCommand"/>
                 </MenuItem>
 
                 <!-- Help Menu-->
                 <MenuItem Header="_Help">
-                    <MenuItem Command="local:MainWindow.AboutCommand" />
+                    <MenuItem Command="local:MainWindow.AboutCommand"/>
                 </MenuItem>
 
             </Menu>
@@ -142,7 +142,7 @@
                             <TextBlock>Vendor employee type</TextBlock>
                         </ListBoxItem.ToolTip>
                     </ListBoxItem>
-                </ListBox>
+                </ListBox>  
 
                 <!-- Employee List -->
                 <ListBox Style="{StaticResource EmployeeList}"
@@ -158,10 +158,11 @@
 
                 <!-- Create Expense Report -->
                 <Button Name="createExpenseReportButton" Style="{StaticResource CommandButton}" Grid.Column="1"
-                        Grid.Row="5" Command="local:MainWindow.CreateExpenseReportCommand">
+                        Grid.Row="5" Command="local:MainWindow.CreateExpenseReportCommand"
+                        AutomationProperties.AcceleratorKey="Ctrl+Shift+C">
                     Create Expense _Report
                     <Button.ToolTip>
-                        <TextBlock>Create Expense Report.</TextBlock>
+                        <TextBlock>Opens a dialog for creating expense report</TextBlock>
                     </Button.ToolTip>
                 </Button>
 
