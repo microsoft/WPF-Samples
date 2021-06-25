@@ -32,14 +32,14 @@
 
                 <!-- File Menu-->
                 <MenuItem Header="_File">
-                    <MenuItem Command="local:MainWindow.CreateExpenseReportCommand" />
+                    <MenuItem Command="local:MainWindow.CreateExpenseReportCommand" Header="_Create Expense Report..."/>
                     <Separator />
-                    <MenuItem Command="local:MainWindow.ExitCommand" />
+                    <MenuItem Command="local:MainWindow.ExitCommand" Header="E_xit" />
                 </MenuItem>
 
                 <!-- Help Menu-->
                 <MenuItem Header="_Help">
-                    <MenuItem Command="local:MainWindow.AboutCommand" />
+                    <MenuItem Command="local:MainWindow.AboutCommand" Header="_About ExpenseIt Standalone" />
                 </MenuItem>
 
             </Menu>
@@ -142,7 +142,7 @@
                             <TextBlock>Vendor employee type</TextBlock>
                         </ListBoxItem.ToolTip>
                     </ListBoxItem>
-                </ListBox>
+                </ListBox>  
 
                 <!-- Employee List -->
                 <ListBox Style="{StaticResource EmployeeList}"

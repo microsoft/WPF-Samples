@@ -18,15 +18,14 @@ namespace ExpenseItDemo
         static MainWindow()
         {
             // Define CreateExpenseReportCommand
-            CreateExpenseReportCommand = new RoutedUICommand("_Create Expense Report...", "CreateExpenseReport",
-                typeof (MainWindow));
+            CreateExpenseReportCommand = new RoutedCommand("CreateExpenseReport", typeof(MainWindow));
             CreateExpenseReportCommand.InputGestures.Add(new KeyGesture(Key.C, ModifierKeys.Control | ModifierKeys.Shift));
 
             // Define ExitCommand
-            ExitCommand = new RoutedUICommand("E_xit", "Exit", typeof (MainWindow));
+            ExitCommand = new RoutedCommand("Exit", typeof(MainWindow));
 
             // Define AboutCommand
-            AboutCommand = new RoutedUICommand("_About ExpenseIt Standalone", "About", typeof (MainWindow));
+            AboutCommand = new RoutedCommand("About", typeof(MainWindow));
         }
 
         public MainWindow()
@@ -107,9 +106,9 @@ namespace ExpenseItDemo
 
         #region Commands
 
-        public static RoutedUICommand CreateExpenseReportCommand;
-        public static RoutedUICommand ExitCommand;
-        public static RoutedUICommand AboutCommand;
+        public static RoutedCommand CreateExpenseReportCommand;
+        public static RoutedCommand ExitCommand;
+        public static RoutedCommand AboutCommand;
 
         #endregion
     }
