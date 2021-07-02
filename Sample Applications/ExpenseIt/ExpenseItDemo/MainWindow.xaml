@@ -159,7 +159,7 @@
                 <!-- Create Expense Report -->
                 <Button Name="createExpenseReportButton" Style="{StaticResource CommandButton}" Grid.Column="1"
                         Grid.Row="5" Command="local:MainWindow.CreateExpenseReportCommand"
-                        AutomationProperties.AcceleratorKey="Alt+R">
+                        AutomationProperties.AcceleratorKey="Ctrl+Shift+C">
                     Create Expense _Report
                     <Button.ToolTip>
                         <TextBlock>Opens a dialog for creating expense report</TextBlock>
