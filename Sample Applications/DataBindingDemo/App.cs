@@ -3,6 +3,9 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Windows;
 
 namespace DataBindingDemo
@@ -18,6 +21,16 @@ namespace DataBindingDemo
         private void AppStartup(object sender, StartupEventArgs args)
         {
             LoadAuctionData();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var framework = Assembly.GetEntryAssembly()?.GetCustomAttribute<TargetFrameworkAttribute>()?.FrameworkName;
+            if(framework != ".NETCoreApp,Version=v6.0")
+            {
+                StartupUri = new Uri("MainWindowOld.xaml", UriKind.Relative);
+            }
         }
 
         private void LoadAuctionData()

@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <UseWpf>true</UseWpf>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>DataBindingDemo</RootNamespace>
-    <AssemblyName>DataBindingDemo</AssemblyName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWpf>true</UseWpf>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>DataBindingDemo</RootNamespace>
+		<AssemblyName>DataBindingDemo</AssemblyName>
+	</PropertyGroup>
 
-  <ItemGroup Condition ="'$(TargetFramework)' == 'net6.0-windows'">
-    <Page Remove="MainWindowOld.xaml" />
-    <Page Remove="AddProductWindowOld.xaml" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0-windows'">
-	<Page Remove="AddProductWindow.xaml" />
-	<Page Remove="MainWindow.xaml" />
-  </ItemGroup>
+	<ItemGroup Condition ="'$(TargetFramework)' == 'net6.0-windows'">
+		<Page Remove="MainWindowOld.xaml" />
+		<Page Remove="AddProductWindowOld.xaml" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' != 'net6.0-windows'">
+		<Page Remove="AddProductWindow.xaml" />
+		<Page Remove="MainWindow.xaml" />
+	</ItemGroup>
 
 </Project>
