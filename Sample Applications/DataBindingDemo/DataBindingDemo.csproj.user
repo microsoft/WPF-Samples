@@ -4,6 +4,12 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <ItemGroup>
+    <Page Update="AddProductWindowOld.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindowOld.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles.xaml">
       <SubType>Designer</SubType>
     </Page>
