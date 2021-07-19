@@ -32,7 +32,9 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
-                   Style="{StaticResource TitleStyle}" Margin="8,20,8,8">
+                   Style="{StaticResource TitleStyle}" Margin="8,20,8,8"
+                   AutomationProperties.HeadingLevel="Level1" 
+                   AutomationProperties.Name="{Binding RelativeSource={RelativeSource Self}, Path=Text}">
             List of items for sale:
         </TextBlock>
         <CheckBox Name="Grouping" Grid.Row="1" Grid.Column="0"
