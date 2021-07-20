@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -7,12 +7,5 @@
     <RootNamespace>EditingExaminerDemo</RootNamespace>
     <AssemblyName>EditingExaminerDemo</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
-    <Page Remove="MainWindowOld.xaml" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0-windows'">
-    <Page Remove="MainWindow.xaml" />
-  </ItemGroup>
 
 </Project>
