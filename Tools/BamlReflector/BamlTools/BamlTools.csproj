@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.Net.SDK.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
