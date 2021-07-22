@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.Net.SDK.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
     <UseWpf>true</UseWpf>
   </PropertyGroup>
