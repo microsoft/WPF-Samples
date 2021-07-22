@@ -18,15 +18,14 @@ namespace ExpenseItDemo
         static MainWindow()
         {
             // Define CreateExpenseReportCommand
-            CreateExpenseReportCommand = new RoutedUICommand("_Create Expense Report...", "CreateExpenseReport",
-                typeof (MainWindow));
+            CreateExpenseReportCommand = new RoutedUICommand("_Create Expense Report..." ,"CreateExpenseReport", typeof(MainWindow));
             CreateExpenseReportCommand.InputGestures.Add(new KeyGesture(Key.C, ModifierKeys.Control | ModifierKeys.Shift));
 
             // Define ExitCommand
-            ExitCommand = new RoutedUICommand("E_xit", "Exit", typeof (MainWindow));
+            ExitCommand = new RoutedUICommand("E_xit", "Exit", typeof(MainWindow));
 
             // Define AboutCommand
-            AboutCommand = new RoutedUICommand("_About ExpenseIt Standalone", "About", typeof (MainWindow));
+            AboutCommand = new RoutedUICommand("_About ExpenseIt Standalone", "About", typeof(MainWindow));
         }
 
         public MainWindow()

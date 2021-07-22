@@ -18,7 +18,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.1', 'net5.0', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'net6.0-windows', IgnoreCase=$true)]
   $TargetFramework='',
 
   [string]
@@ -49,7 +49,7 @@ Function Get-Tfm {
         'netcoreapp2.2',
         'netcoreapp3.0',
         'netcoreapp3.1',
-        'net5.0'
+        'net6.0-windows'
     )
 
     $tfm1 = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
