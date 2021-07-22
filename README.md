@@ -33,6 +33,8 @@ These samples require Visual Studio 2019 to build, test, and deploy, and also re
    [.NET Core SDK](https://github.com/dotnet/core-sdk)
 
 WPF on .NET Core 3.0 has been open-sourced, and is now available on [Github](https://github.com/dotnet/wpf)
+
+**Note:** If you are using the latest version of Visual Studio 2019 (16.9.0 and above), the .NET Core 3 SDK must be downloaded and installed manually to successfully build these samples. You can find installers for the .NET Core 3 SDK at the [github](https://github.com/dotnet/core-sdk) or at <https://dot.net/core>
    
 ## Using the samples
 
@@ -51,6 +53,6 @@ The easiest way to use these samples without using Git is to download the zip fi
    **Notes:** 
    * Before you unzip the archive, right-click it, select Properties, and then select Unblock.
    * Most samples should work independently
-   * By default, all the samples target .NET core 3.0.
+   * By default, all the samples target .NET core 3.0. (Installers for the .NET core 3 SDK can be found at <https://dot.net/core>)
 
 For more info about the programming models, platforms, languages, and APIs demonstrated in these samples, please refer to the guidance  available in  [MSDN](https://msdn.microsoft.com/en-us/library/ms754130.aspx). These samples are provided as-is in order to indicate or demonstrate the functionality of the programming models and feature APIs for WPF.

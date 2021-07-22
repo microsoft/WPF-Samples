@@ -166,6 +166,29 @@
         <Setter Property="MinHeight" Value="50" />
     </Style>
 
+    <Style x:Key="EmployeeListHighContrastFocusVisualStyle" TargetType="Control">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeThickness="1"
+                          Stroke="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"
+                          StrokeDashArray="1 2"
+                          Margin="0,1,0,1"
+                          SnapsToDevicePixels="true"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EmployeeListItemContainerStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="AutomationProperties.Name" Value="{Binding XPath=@Name}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource EmployeeListHighContrastFocusVisualStyle}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="CostCenterList" TargetType="{x:Type ComboBox}">
         <Setter Property="Margin" Value="0,5,5,0" />
     </Style>
@@ -369,6 +392,7 @@
         <Setter Property="FontFamily" Value="Ariel" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
         <Setter Property="Width" Value="100" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">

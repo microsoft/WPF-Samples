@@ -34,6 +34,7 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="106" />
@@ -55,10 +56,11 @@
                              Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price:</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price: *</TextBlock>
 
                     <TextBox Name="StartPriceEntryForm" AutomationProperties.Name="Start Price" Grid.Row="2" Grid.Column="1"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5"
+                             AutomationProperties.IsRequiredForForm="True"
                              Validation.Error="OnValidationError">
                         <TextBox.Text>
                             <Binding Path="StartPrice" UpdateSourceTrigger="PropertyChanged"
@@ -70,12 +72,13 @@
                         </TextBox.Text>
                     </TextBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Date:</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Date: *</TextBlock>
 
                     <TextBox Name="StartDateEntryForm" AutomationProperties.Name="Start Date" Grid.Row="3" Grid.Column="1"
                              Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
                              Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5"
                              Validation.Error="OnValidationError"
+                             AutomationProperties.IsRequiredForForm="True"
                              AutomationProperties.LiveSetting="Assertive">
                         <TextBox.Text>
                             <Binding Path="StartDate" UpdateSourceTrigger="PropertyChanged"
@@ -92,6 +95,8 @@
                     <ComboBox Name="CategoryEntryForm" AutomationProperties.Name="Category" Grid.Row="4" Grid.Column="1"
                               SelectedValue="{Binding Path=Category}"
                               Style="{StaticResource ComboBoxStyle}"
+                              SelectionChanged="OnSelectionChanged"
+                              AutomationProperties.LiveSetting="Assertive"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
                         <local:ProductCategory>Books</local:ProductCategory>
                         <local:ProductCategory>Computers</local:ProductCategory>
@@ -105,6 +110,8 @@
                     <ComboBox Name="SpecialFeaturesEntryForm" AutomationProperties.Name="Special Features" Grid.Row="5" Grid.Column="1"
                               SelectedValue="{Binding Path=SpecialFeatures}"
                               Style="{StaticResource ComboBoxStyle}"
+                              SelectionChanged="OnSelectionChanged"
+                              AutomationProperties.LiveSetting="Assertive"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Margin="8,5,0,5">
                         <local:SpecialFeatures>None</local:SpecialFeatures>
                         <local:SpecialFeatures>Color</local:SpecialFeatures>
@@ -121,6 +128,9 @@
 
                     <Button Name="Submit" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Content="Submit"
                             Margin="5" Click="SubmitProduct" />
+                    <TextBlock Name="ErrorTextBlock" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" Visibility="Collapsed"
+                               AutomationProperties.LiveSetting="Assertive"
+                               Style="{StaticResource ErrorTextBlockStyle}" />
                 </Grid>
             </Border>
             <ContentControl Name="ShortPreview" Grid.Row="1"
