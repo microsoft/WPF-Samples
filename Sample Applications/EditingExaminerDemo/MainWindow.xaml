@@ -28,8 +28,8 @@
                             <FlowDocument
                                 ColumnWidth="400" AutomationProperties.Name="Help Text"
                                 IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
-                                <Section FontSize="12" Style="{StaticResource HelpSectionTextHighContrastStyle}">
-                                    <Paragraph FontSize="22" FontWeight="Bold">Introducing Editing Examiner</Paragraph>
+                                <Section FontSize="12">
+                                    <Paragraph FontSize="22" FontWeight="Bold" AutomationProperties.HeadingLevel="Level1">Introducing Editing Examiner</Paragraph>
 
                                     <Paragraph>
                                         Editing Examiner lets you watch in real time as edits are performed within a
@@ -39,15 +39,15 @@
                                         perspectives.
                                     </Paragraph>
 
-                                    <Paragraph FontSize="18" FontWeight="Bold">Application Features</Paragraph>
-                                    <Paragraph FontSize="15" FontWeight="Bold">DocumentTree Tab</Paragraph>
+                                    <Paragraph FontSize="18" FontWeight="Bold" AutomationProperties.HeadingLevel="Level2">Application Features</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">DocumentTree Tab</Paragraph>
                                     <Paragraph>
                                         The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the
                                         TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox.
                                         This allows you to visualize the document hierarchy.
                                     </Paragraph>
 
-                                    <Paragraph FontSize="15" FontWeight="Bold">TextSerializedXaml Tab</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">TextSerializedXaml Tab</Paragraph>
 
                                     <Paragraph>
                                         By clicking on the Text Serialization tab, the underlying XAML is exposed, using WPF serialization
@@ -55,13 +55,13 @@
                                         and set it back to the RichTextBox by right clicking and selecting the correct item.
                                     </Paragraph>
 
-                                    <Paragraph FontSize="15" FontWeight="Bold">SelectionXAML Tab</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">SelectionXAML Tab</Paragraph>
 
                                     <Paragraph>
                                         This tab displays the underlying XAML of the selected content within the RichTextBox.
                                     </Paragraph>
 
-                                    <Paragraph FontSize="15" FontWeight="Bold">CoreXAML Tab:</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">CoreXAML Tab:</Paragraph>
 
                                     <Paragraph>
                                         This tab accesses the WPF core parser in order to parse an object. The object can then be inserted
@@ -70,7 +70,7 @@
                                     </Paragraph>
 
 
-                                    <Paragraph FontSize="15" FontWeight="Bold">Immediate Window:</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">Immediate Window:</Paragraph>
 
                                     <Paragraph>
                                         This provides an instant way to invoke methods, and get or set properties.
@@ -133,7 +133,7 @@ Selection = RichTextBox.Selection;
                                         </ListItem>
                                     </List>
 
-                                    <Paragraph FontSize="15" FontWeight="Bold">Error messages:</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">Error messages:</Paragraph>
 
                                     <Paragraph>There are two primary errors to look for when using the immediate window:</Paragraph>
                                     <List>
