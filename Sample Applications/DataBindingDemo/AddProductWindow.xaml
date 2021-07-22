@@ -43,6 +43,7 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                                Style="{StaticResource TitleStyle}"
+                               AutomationProperties.HeadingLevel="Level1"
                                Margin="5">
                         Item for sale:
                     </TextBlock>

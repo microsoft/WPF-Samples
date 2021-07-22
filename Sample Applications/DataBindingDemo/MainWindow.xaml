@@ -32,6 +32,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
+                   AutomationProperties.HeadingLevel="Level1"
                    Style="{StaticResource TitleStyle}" Margin="8,20,8,8">
             List of items for sale:
         </TextBlock>
