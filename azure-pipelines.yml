@@ -37,65 +37,35 @@ stages:
        value: 'netcoreapp3.1'
     strategy:
      matrix:
-      Debug-AnyCPU-netcoreapp3.1:
+      Debug-AnyCPU-net5.0-windows:
         _Configuration: Debug
         _Platform: 'Any CPU'
-        _TargetFramework: 'netcoreapp3.1'
+        _TargetFramework: 'net5.0-windows'
         _ToolPlatform: x86
-      Debug-AnyCPU-net5.0:
-        _Configuration: Debug
-        _Platform: 'Any CPU'
-        _TargetFramework: 'net5.0'
-        _ToolPlatform: x86
-      Debug-x64-netcoreapp3.1:
+      Debug-x64-net5.0-windows:
         _Configuration: Debug
         _Platform: 'x64'
-        _TargetFramework: 'netcoreapp3.1'
+        _TargetFramework: 'net5.0-windows'
         _ToolPlatform: x64
-      Debug-x64-net5.0:
-        _Configuration: Debug
-        _Platform: 'x64'
-        _TargetFramework: 'net5.0'
-        _ToolPlatform: x64
-      Debug-x86-netcoreapp3.1:
+      Debug-x86-net5.0-windows:
         _Configuration: Debug
         _Platform: 'x86'
-        _TargetFramework: 'netcoreapp3.1'
+        _TargetFramework: 'net5.0-windows'
         _ToolPlatform: x86
-      Debug-x86-net5.0:
-        _Configuration: Debug
-        _Platform: 'x86'
-        _TargetFramework: 'net5.0'
-        _ToolPlatform: x86
-      Release-AnyCPU-netcoreapp3.1:
+      Release-AnyCPU-net5.0-windows:
         _Configuration: Release
         _Platform: 'Any CPU'
-        _TargetFramework: 'netcoreapp3.1'
+        _TargetFramework: 'net5.0-windows'
         _ToolPlatform: x86
-      Release-AnyCPU-net5.0:
-        _Configuration: Release
-        _Platform: 'Any CPU'
-        _TargetFramework: 'net5.0'
-        _ToolPlatform: x86
-      Release-x64-netcoreapp3.1:
+      Release-x64-net5.0-windows:
         _Configuration: Release
         _Platform: 'x64'
-        _TargetFramework: 'netcoreapp3.1'
+        _TargetFramework: 'net5.0-windows'
         _ToolPlatform: x64
-      Release-x64-net5.0:
-        _Configuration: Release
-        _Platform: 'x64'
-        _TargetFramework: 'net5.0'
-        _ToolPlatform: x64
-      Release-x86-netcoreapp3.1:
+      Release-x86-net5.0-windows:
         _Configuration: Release
         _Platform: 'x86'
-        _TargetFramework: 'netcoreapp3.1'
-        _ToolPlatform: x86
-      Release-x86-net5.0:
-        _Configuration: Release
-        _Platform: 'x86'
-        _TargetFramework: 'net5.0'
+        _TargetFramework: 'net5.0-windows'
         _ToolPlatform: x86
     steps:
      - task: NuGetToolInstaller@1
