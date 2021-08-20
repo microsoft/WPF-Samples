@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace CustomComboBox
@@ -9,6 +10,7 @@ namespace CustomComboBox
     {
         public MainWindowViewModel()
         {
+            TextBlockVisibility = System.Windows.Visibility.Visible;
             Movies2 = new List<string>
             {
                 "Movie1",
@@ -35,7 +37,7 @@ namespace CustomComboBox
         {
             if (parameter != null)
             {
-
+                TextBlockVisibility = System.Windows.Visibility.Visible;
                 if (parameter is string s)
                     SelectedMovie = s;
                 else if (parameter is Movie m)
@@ -57,6 +59,22 @@ namespace CustomComboBox
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedMovie)));
             }
         }
+
+        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        {
+            if (!Equals(field, newValue))
+            {
+                field = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true;
+            }
+
+            return false;
+        }
+
+        private System.Windows.Visibility textBlockVisibility;
+
+        public System.Windows.Visibility TextBlockVisibility { get => textBlockVisibility; set => SetProperty(ref textBlockVisibility, value); }
     }
 
     public class WatchNowCommand : ICommand
