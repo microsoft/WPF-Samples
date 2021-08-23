@@ -22,7 +22,7 @@
 
     <Style x:Key="SmallTitleStyle" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="DimGray" />
+        <Setter Property="Foreground" Value="Black" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Style.Triggers>
@@ -34,7 +34,7 @@
     </Style>
 
     <Style x:Key="TextStyleTextBlock" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#333333" />
+        <Setter Property="Foreground" Value="Black" />
         <Style.Triggers>
              <!--High contrast support--> 
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
@@ -119,7 +119,7 @@
 
     <Style x:Key="AuctionItemBorderStyle" TargetType="Border">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Padding" Value="7" />
         <Setter Property="Margin" Value="3" />
         <Setter Property="Width" Value="500" />
