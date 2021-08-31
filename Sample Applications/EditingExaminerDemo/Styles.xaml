@@ -9,13 +9,14 @@
     <Style x:Key="ErrorMessageTextBox" TargetType="TextBox">
         <Setter Property="Foreground" Value="DarkRed" />
         <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="VerticalAlignment" Value="Center" />
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontSize" Value="14"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                 <Setter Property="BorderThickness" Value="4" />
             </DataTrigger>
         </Style.Triggers>
