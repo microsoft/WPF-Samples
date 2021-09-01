@@ -62,7 +62,7 @@
             <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
 
                 <!-- Expense type and Amount table -->
-                <DataGrid AutomationProperties.Name="Expense report" ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserResizeColumns="False" CanUserResizeRows="False" >
+                <DataGrid BorderThickness="2" BorderBrush="Black" AutomationProperties.Name="Expense report" ItemsSource="{Binding XPath=Expense}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserResizeColumns="False" CanUserResizeRows="False" >
                     <DataGrid.Resources>
                         <!--
                             When using XmlDataProvider, we need to ensure the DataGridRow properly sets the automation name

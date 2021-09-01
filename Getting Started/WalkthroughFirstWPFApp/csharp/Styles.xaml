@@ -8,7 +8,7 @@
         <Setter Property="Label.FontFamily" Value="Trebuchet MS"></Setter>
         <Setter Property="Label.FontWeight" Value="Bold"></Setter>
         <Setter Property="Label.FontSize" Value="18"></Setter>
-        <Setter Property="Label.Foreground" Value="#0066cc"></Setter>
+        <Setter Property="Label.Foreground" Value="#183862"></Setter>
         <Style.Triggers>
             <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -37,7 +37,7 @@
     <Style x:Key="ListHeaderStyle" TargetType="{x:Type Border}">
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
-        <Setter Property="Background" Value="#4E87D4" />
+        <Setter Property="Background" Value="#3274CD" />
         <Style.Triggers>
             <!-- When in high contrast modes, follow system colors to present proper contrast between adjacent colors. -->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -50,7 +50,7 @@
     <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
-        <Setter Property="Background" Value="#4E87D4" />
+        <Setter Property="Background" Value="#3274CD" />
         <Setter Property="Foreground" Value="White" />
         <Style.Triggers>
             <!-- 
