@@ -18,7 +18,17 @@
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                 <Setter Property="BorderThickness" Value="4" />
+
             </DataTrigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
