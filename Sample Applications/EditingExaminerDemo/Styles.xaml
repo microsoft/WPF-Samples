@@ -9,7 +9,6 @@
     <Style x:Key="ErrorMessageTextBox" TargetType="TextBox">
         <Setter Property="Foreground" Value="DarkRed" />
         <Setter Property="BorderBrush" Value="Red" />
-        <Setter Property="VerticalAlignment" Value="Center" />
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -18,7 +17,17 @@
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                 <Setter Property="BorderThickness" Value="4" />
+
             </DataTrigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
