@@ -399,4 +399,12 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="selectedMovieTextStyle" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=SelectedMovie}" Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
