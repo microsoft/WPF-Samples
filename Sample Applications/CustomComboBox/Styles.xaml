@@ -194,6 +194,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CustomFocusVisual}"/>
         <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="AutomationProperties.Name" Value="{Binding Path=Title}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
