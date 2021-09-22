@@ -21,7 +21,7 @@ WPF apps are System DPI aware by default, and need to declare themselves to be P
       <!-- The combination of below two tags have the following effect : 
       1) Per-Monitor for >= Windows 10 Anniversary Update
       2) System < Windows 10 Anniversary Update -->
-      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings"> PerMonitor</dpiAwareness>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitor</dpiAwareness>
       <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
     </windowsSettings>
   </application>
