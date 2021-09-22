@@ -61,3 +61,8 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+###############################################################################
+# Linguist tool configuration: exclude RTF from language stats
+###############################################################################
+*.rtf linguist-vendored
