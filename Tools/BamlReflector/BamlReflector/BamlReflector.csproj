@@ -6,6 +6,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\BamlTools\BamlTools.csproj">
       <SetTargetFramework>TargetFramework=$(TargetFramework)</SetTargetFramework>
