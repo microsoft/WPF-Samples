@@ -31,9 +31,13 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+		<!-- Removing AutomationLevel.HeadingLevel as it is not present for .NET Fx 4.8 -->
+		<!--<TextBlock Grid.Row="0" Grid.ColumnSpan="3"
+                   Style="{StaticResource TitleStyle}" Margin="8,20,8,8"
+                   AutomationProperties.HeadingLevel = "Level1"
+                   AutomationProperties.Name="{Binding RelativeSource={RelativeSource Self}, Path=Text}">-->
         <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
                    Style="{StaticResource TitleStyle}" Margin="8,20,8,8"
-                   AutomationProperties.HeadingLevel = "Level1" 
                    AutomationProperties.Name="{Binding RelativeSource={RelativeSource Self}, Path=Text}">
             List of items for sale:
         </TextBlock>

@@ -41,9 +41,13 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+					<!-- Disabling AutomationLevel.HeadingLevel as it is not present for .NET Fx 4.8 -->
+					<!--<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                                Style="{StaticResource TitleStyle}"
                                AutomationProperties.HeadingLevel="Level1"
+                               Margin="5">-->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                               Style="{StaticResource TitleStyle}"
                                Margin="5">
                         Item for sale:
                     </TextBlock>
