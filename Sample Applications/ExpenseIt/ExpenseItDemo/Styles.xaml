@@ -53,8 +53,8 @@
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientBrush.GradientStops>
                                         <GradientStopCollection>
-                                            <GradientStop Color="#4E87D4" Offset="0" />
-                                            <GradientStop Color="#73B2F5" Offset="1" />
+                                            <GradientStop Color="#1056A3" Offset="0" />
+                                            <GradientStop Color="#146CCD" Offset="1" />
                                         </GradientStopCollection>
                                     </GradientBrush.GradientStops>
                                 </LinearGradientBrush>
@@ -64,8 +64,8 @@
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientBrush.GradientStops>
                                         <GradientStopCollection>
-                                            <GradientStop Color="#73B2F5" Offset="0" />
-                                            <GradientStop Color="#4E87D4" Offset="1" />
+                                            <GradientStop Color="#146CCD" Offset="0" />
+                                            <GradientStop Color="#1056A3" Offset="1" />
                                         </GradientStopCollection>
                                     </GradientBrush.GradientStops>
                                 </LinearGradientBrush>
@@ -108,8 +108,8 @@
     </Style>
 
     <LinearGradientBrush x:Key="DataGridBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#73B2F5" Offset="0" />
-        <GradientStop Color="#4E87D4" Offset="1" />
+        <GradientStop Color="#146CCD" Offset="0" />
+        <GradientStop Color="#1056A3" Offset="1" />
     </LinearGradientBrush>
 
     <Style x:Key="TotalDataGrid" TargetType="{x:Type DataGrid}">
@@ -134,8 +134,8 @@
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientBrush.GradientStops>
                         <GradientStopCollection>
-                            <GradientStop Color="#4E87D4" Offset="0" />
-                            <GradientStop Color="#73B2F5" Offset="1" />
+                            <GradientStop Color="#1056A3" Offset="0" />
+                            <GradientStop Color="#146CCD" Offset="1" />
                         </GradientStopCollection>
                     </GradientBrush.GradientStops>
                 </LinearGradientBrush>
@@ -146,8 +146,8 @@
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientBrush.GradientStops>
                         <GradientStopCollection>
-                            <GradientStop Color="#73B2F5" Offset="0" />
-                            <GradientStop Color="#4E87D4" Offset="1" />
+                            <GradientStop Color="#146CCD" Offset="0" />
+                            <GradientStop Color="#1056A3" Offset="1" />
                         </GradientStopCollection>
                     </GradientBrush.GradientStops>
                 </LinearGradientBrush>
@@ -394,6 +394,7 @@
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="TextWrapping" Value="WrapWithOverflow" />
         <Setter Property="Width" Value="100" />
+        <Setter Property="Foreground" Value="AntiqueWhite" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
