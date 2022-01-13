@@ -17,7 +17,7 @@ namespace CustomComboBox.Converters
                 case "text":
                     return (value == null) ? "No movie selected!" : "Streaming.. ";
                 case "color":
-                    return (value == null) ? "Red" : "Green";
+                    return (value == null) ? "DarkRed" : "Green";
                 default:
                     return null;
             }
