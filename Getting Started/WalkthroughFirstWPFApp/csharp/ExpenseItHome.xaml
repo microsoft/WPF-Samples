@@ -68,7 +68,7 @@
         </Label>
 
         <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource ListHeaderStyle}">
-            <Label Style="{StaticResource ListHeaderTextStyle}">Names</Label>
+            <Label FontWeight="ExtraBold" Style="{StaticResource ListHeaderTextStyle}">Names</Label>
         </Border>
 
         <ListBox Name="peopleListBox" 
