@@ -49,7 +49,7 @@ namespace DataBindingDemo
         private void NotifyUpdate()
         {
             var listingPeer = ListBoxAutomationPeer.FromElement(Master);
-            listingPeer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            listingPeer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
 
         private void RemoveGrouping(object sender, RoutedEventArgs args)
