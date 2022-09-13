@@ -50,11 +50,22 @@
 
                     <TextBlock Grid.Row="1" Grid.Column="0"
                                Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">
-                        Item Description:
+                        Item Description: *
                     </TextBlock>
                     <TextBox Name="DescriptionEntryForm" AutomationProperties.Name="Item Description" Grid.Row="1" Grid.Column="1"
-                             Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5" />
+                             AutomationProperties.IsRequiredForForm="True"
+                             Style="{StaticResource TextStyleTextBox}" Margin="8,5,0,5" 
+                             Validation.Error="OnValidationError" >
+                        <TextBox.Text>
+                            
+                            <Binding Path="Description" UpdateSourceTrigger="PropertyChanged"
+                                     NotifyOnValidationError="True" >
+                                <Binding.ValidationRules>
+                                    <ExceptionValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource SmallTitleStyle}" Margin="0,5,0,5">Start Price: *</TextBlock>
 
