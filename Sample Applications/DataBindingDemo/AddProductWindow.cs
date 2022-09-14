@@ -22,7 +22,7 @@ namespace DataBindingDemo
        
         private void OnInit(object sender, RoutedEventArgs e)
         {
-            DataContext = new AuctionItem("Type your description here",
+            DataContext = new AuctionItem(null,
                 ProductCategory.DvDs, 1, DateTime.Now, ((App) Application.Current).CurrentUser,
                 SpecialFeatures.None);
         }
