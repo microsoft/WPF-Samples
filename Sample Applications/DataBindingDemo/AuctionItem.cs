@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace DataBindingDemo
 {
@@ -52,8 +53,14 @@ namespace DataBindingDemo
             get { return _description; }
             set
             {
+                
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Item description should be added");
+                }
                 _description = value;
                 OnPropertyChanged("Description");
+
             }
         }
 

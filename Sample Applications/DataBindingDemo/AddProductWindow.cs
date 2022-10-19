@@ -19,7 +19,7 @@ namespace DataBindingDemo
         {
             InitializeComponent();
         }
-
+       
         private void OnInit(object sender, RoutedEventArgs e)
         {
             DataContext = new AuctionItem("Type your description here",
@@ -42,9 +42,17 @@ namespace DataBindingDemo
         {
             var automationPeer = UIElementAutomationPeer.CreatePeerForElement(ErrorTextBlock);
 
-            if(StartDateEntryForm.Text.Length == 0 || StartPriceEntryForm.Text.Length == 0)
+            if(StartDateEntryForm.Text.Length == 0 )
             {
-                AnnounceError("Please, fill both date and start price");
+                AnnounceError("Please, fill start date");
+            }
+            else if(StartPriceEntryForm.Text.Length == 0)
+            {
+                AnnounceError("Please, fill start price");
+            }
+            else if(DescriptionEntryForm.Text.Length == 0)
+            {
+                AnnounceError("Please, fill item description");
             }
             else if (Validation.GetHasError(StartDateEntryForm))
             {
