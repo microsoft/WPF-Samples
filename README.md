@@ -44,7 +44,7 @@ After cloning the WPF-Samples respository, there will be two solution files in t
 
 The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in Visual Studio 2019.
 
-   [Download the samples ZIP](../../archive/master.zip)
+   [Download the samples ZIP](../../archive/main.zip)
 
    **Notes:** 
    * Before you unzip the archive, right-click it, select Properties, and then select Unblock.
