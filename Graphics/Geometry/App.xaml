@@ -141,9 +141,10 @@
                                 <Rectangle.RenderTransform>
                                     <ScaleTransform x:Name="glassCubeScaleTransform" />
                                 </Rectangle.RenderTransform>
-                                <Rectangle.BitmapEffect>
+                                <!--Rectangle BitmapEffect is obsolete.
+										 <Rectangle.BitmapEffect>
                                     <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
+                                </Rectangle.BitmapEffect>-->
                             </Rectangle>
                             <DockPanel>
                                 <ContentPresenter x:Name="myContentPresenter" Margin="15" 
