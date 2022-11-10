@@ -61,6 +61,9 @@
                                 <Binding ElementName="DescriptionEntryForm" Path="IsFocused"/>
                             </MultiBinding>
                         </TextBlock.Visibility>
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Opacity="0.5" Color="Black"/>
+                        </TextBlock.Foreground>
                     </TextBlock>
                     <TextBox Name="DescriptionEntryForm" AutomationProperties.Name="Item Description" Grid.Row="1" Grid.Column="1"
                              AutomationProperties.IsRequiredForForm="True"
