@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfTreeView.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Drag and Drop Winodow" Height="376" Width="434">
+    <Grid>
+        <TreeView Name="tvParameters" AllowDrop="True" Background="PowderBlue" Foreground="DarkBlue" FontSize="15">
+            <TreeViewItem Header="1" >
+                <TreeViewItem Header="1.1" >
+                    <TreeViewItem Header="1.1.1" >
+
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="2" >
+                <TreeViewItem Header="2.1" >
+                    <TreeViewItem Header="2.1.1" >
+                        <TreeViewItem Header="2.1.1.1" >
+                            <TreeViewItem Header="2.1.1.1.1" >
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+            <TreeViewItem Header="2.2" >
+                    <TreeViewItem Header="2.2.1" AllowDrop="True">
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <!-- We have to select the item which is right-clicked on -->
+                    <!--<EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown"/>-->
+                    <EventSetter Event="TreeViewItem.DragOver" Handler="treeView_DragOver"/>
+                    <EventSetter Event="TreeViewItem.Drop" Handler="treeView_Drop"/>
+                    <EventSetter Event="TreeViewItem.MouseMove" Handler="treeView_MouseMove"/>
+
+
+
+
+                </Style>
+
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+    </Grid>
+</Window>
