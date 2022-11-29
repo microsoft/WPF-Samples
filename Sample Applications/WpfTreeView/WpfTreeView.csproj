@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\c.png" />
+    <None Remove="Images\cpp.png" />
+    <None Remove="Images\csharp.png" />
+    <None Remove="Images\drive.png" />
+    <None Remove="Images\file.png" />
+    <None Remove="Images\folder-closed.png" />
+    <None Remove="Images\folder-open.png" />
+    <None Remove="Images\java.png" />
+    <None Remove="Images\javascript.png" />
+    <None Remove="Images\json.png" />
+    <None Remove="Images\pdf.png" />
+    <None Remove="Images\python.png" />
+    <None Remove="Images\txt.png" />
+    <None Remove="Images\xlsx.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\c.png" />
+    <Resource Include="Images\cpp.png" />
+    <Resource Include="Images\csharp.png" />
+    <Resource Include="Images\drive.png" />
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\folder-closed.png" />
+    <Resource Include="Images\folder-open.png" />
+    <Resource Include="Images\java.png" />
+    <Resource Include="Images\javascript.png" />
+    <Resource Include="Images\json.png" />
+    <Resource Include="Images\pdf.png" />
+    <Resource Include="Images\python.png" />
+    <Resource Include="Images\txt.png" />
+    <Resource Include="Images\xlsx.png" />
+  </ItemGroup>
+
+</Project>
