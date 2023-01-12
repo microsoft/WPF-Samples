@@ -164,7 +164,7 @@
     "Switch.UseLegacyToolTipDisplay": false,
 
     // Guards the fix for the automation tree under a plain ItemsControl
-    // https://github.com/microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md
+    // https://github.com/microsoft/dotnet/blob/master/releases/net481/dotnet481-changes.md
     "Switch.System.Windows.Controls.ItemsControlDoesNotSupportAutomation": false
   */
   }
