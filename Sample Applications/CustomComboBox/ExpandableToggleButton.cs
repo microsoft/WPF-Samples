@@ -44,12 +44,15 @@ namespace CustomComboBox
 
                 this.state = value;
 
-                if ((this.peer != null) && this.state != previousState)
+                if (this.state != previousState)
                 {
-                    this.peer.RaisePropertyChangedEvent(
+                    if (this.peer != null)
+                    {
+                        this.peer.RaisePropertyChangedEvent(
                        ExpandCollapsePatternIdentifiers.ExpandCollapseStateProperty,
                        previousState,
                        this.state);
+                    }
                     if(this.state == ExpandCollapseState.Collapsed)
                     {
                         RoutedEventArgs collapsedEventArgs = new RoutedEventArgs(CollapsedEvent);
