@@ -18,6 +18,7 @@
             <DataTemplate x:Key="CostCenterTemplate">
                 <TextBlock Text="{Binding XPath=@Name}" />
             </DataTemplate>
+        <SolidColorBrush x:Key="BorderColor">#FF63676E</SolidColorBrush>
     </Window.Resources>
 
     <Grid>
@@ -65,7 +66,7 @@
                        Grid.Row="0">
                     _Email:
                 </Label>
-                <TextBox Name="emailTextBox" AutomationProperties.Name="Email" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="0">
+                <TextBox Name="emailTextBox" AutomationProperties.Name="Email" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="0" BorderBrush= "{StaticResource BorderColor}" >
                     <TextBox.Text>
                         <Binding Path="Alias" UpdateSourceTrigger="PropertyChanged">
                             <!-- SECURITY: Email alias must be valid email address eg xxx@xxx.com -->
@@ -82,7 +83,7 @@
                        Grid.Column="0" Grid.Row="1">
                     Employee _Number:
                 </Label>
-                <TextBox Name="employeeNumberTextBox" AutomationProperties.Name="Employee Number" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="1">
+                <TextBox Name="employeeNumberTextBox" AutomationProperties.Name="Employee Number" Style="{StaticResource InputText}" Grid.Column="1" Grid.Row="1" BorderBrush= "{StaticResource BorderColor}" >
                     <TextBox.Text>
                         <Binding Path="EmployeeNumber" UpdateSourceTrigger="PropertyChanged">
                             <!-- SECURITY: EmployeeNumber must be an int and 5 digits long -->
@@ -106,7 +107,8 @@
                           ItemTemplate="{StaticResource CostCenterTemplate}"
                           ItemsSource="{Binding Source={StaticResource CostCenters}}"
                           SelectedValue="{Binding Path=CostCenter}"
-                          SelectedValuePath="@Number">
+                          SelectedValuePath="@Number" 
+                          BorderBrush= "{StaticResource BorderColor}">
                     <ComboBox.ToolTip>
                         <TextBlock>Choose cost center.</TextBlock>
                     </ComboBox.ToolTip>
@@ -123,8 +125,8 @@
                     E_mployees:
                 </Label>
                 <ListBox Name="employeeTypeRadioButtons" AutomationProperties.Name="Employees" Style="{StaticResource HorizontalRadioList}" Grid.Column="1"
-                         Grid.Row="3">
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                         Grid.Row="3" BorderBrush= "{StaticResource BorderColor}">
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}" >
                         FTE
                         <ListBoxItem.ToolTip>
                             <TextBlock>FTE employee type</TextBlock>
@@ -150,7 +152,8 @@
                          ItemTemplate="{StaticResource EmployeeItemTemplate}"
                          ItemsSource="{Binding Source={StaticResource Employees}}"
                          ItemContainerStyle="{StaticResource EmployeeListItemContainerStyle}"
-                         AutomationProperties.Name="Employee Name">
+                         AutomationProperties.Name="Employee Name"
+                         BorderBrush= "{StaticResource BorderColor}">
                     <ListBox.ToolTip>
                         <TextBlock>Choose employee name.</TextBlock>
                     </ListBox.ToolTip>
@@ -159,7 +162,7 @@
                 <!-- Create Expense Report -->
                 <Button Name="createExpenseReportButton" Style="{StaticResource CommandButton}" Grid.Column="1"
                         Grid.Row="5" Command="local:MainWindow.CreateExpenseReportCommand"
-                        AutomationProperties.AcceleratorKey="Ctrl+Shift+C">
+                        AutomationProperties.AcceleratorKey="Ctrl+Shift+C" BorderBrush= "{StaticResource BorderColor}">
                     Create Expense _Report
                     <Button.ToolTip>
                         <TextBlock>Opens a dialog for creating expense report</TextBlock>
