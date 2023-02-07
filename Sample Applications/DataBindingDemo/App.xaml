@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/DataBindingDemo;component/Styles.xaml"/>
+                <ResourceDictionary Source="/DataBindingDemo;component/ComboBoxtemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <local:DateConverter x:Key="DateConverter" />

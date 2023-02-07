@@ -4,6 +4,9 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <ItemGroup>
+    <Page Update="ComboBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles.xaml">
       <SubType>Designer</SubType>
     </Page>

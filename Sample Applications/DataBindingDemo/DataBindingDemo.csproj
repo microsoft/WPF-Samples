@@ -8,4 +8,8 @@
     <AssemblyName>DataBindingDemo</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
+  </ItemGroup>
+
 </Project>
