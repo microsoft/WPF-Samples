@@ -124,19 +124,19 @@
                 </Label>
                 <ListBox Name="employeeTypeRadioButtons" AutomationProperties.Name="Employees" Style="{StaticResource HorizontalRadioList}" Grid.Column="1"
                          Grid.Row="3">
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}" AutomationProperties.Name="FTE, Radio button">
                         FTE
                         <ListBoxItem.ToolTip>
                             <TextBlock>FTE employee type</TextBlock>
                         </ListBoxItem.ToolTip>
                     </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}" AutomationProperties.Name="CSG, Radio button">
                         CSG
                         <ListBoxItem.ToolTip>
                             <TextBlock>CSG employee type</TextBlock>
                         </ListBoxItem.ToolTip>
                     </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
+                    <ListBoxItem Style="{StaticResource HorizontalRadio}" AutomationProperties.Name="Vendor, Radio button">
                         Vendor
                         <ListBoxItem.ToolTip>
                             <TextBlock>Vendor employee type</TextBlock>
