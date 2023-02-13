@@ -128,7 +128,7 @@
     <Style x:Key="AuctionItemContainerStyle">
         <Setter Property="AutomationProperties.Name">
             <Setter.Value>
-                <MultiBinding StringFormat="{} Color: {0}, Description: {1}, Current price: ${2}">
+                <MultiBinding StringFormat="{} Special Feature: {0}, Description: {1}, Current price: ${2}">
                     <Binding Path="SpecialFeatures" />
                     <Binding Path="Description" />
                     <Binding Path="CurrentPrice" />
