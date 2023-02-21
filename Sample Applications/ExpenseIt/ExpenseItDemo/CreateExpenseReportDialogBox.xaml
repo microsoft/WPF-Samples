@@ -11,6 +11,9 @@
     ShowInTaskbar="False"
     WindowStartupLocation="CenterOwner">
 
+    <Window.Resources>
+        <SolidColorBrush x:Key="BorderColor">#FF63676E</SolidColorBrush>
+    </Window.Resources>
     <Grid>
         <!-- Watermark -->
         <Image Style="{StaticResource WatermarkImage}" />
@@ -52,7 +55,7 @@
                     Email _Alias:
                 </Label>
                 <TextBox Name="aliasTextBox" AutomationProperties.Name="Email Alias" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="0"
-                         Text="{Binding Path=Alias}">
+                         Text="{Binding Path=Alias}" BorderBrush= "{StaticResource BorderColor}">
                     <TextBox.ToolTip>
                         <TextBlock>email alias</TextBlock>
                     </TextBox.ToolTip>
@@ -64,7 +67,7 @@
                     Employee _Number:
                 </Label>
                 <TextBox Name="employeeNumberTextBox" AutomationProperties.Name="Employee Number" Style="{StaticResource ReadOnlyText}" Grid.Column="3"
-                         Grid.Row="1" Text="{Binding Path=EmployeeNumber}">
+                         Grid.Row="1" Text="{Binding Path=EmployeeNumber}" BorderBrush= "{StaticResource BorderColor}">
                     <TextBox.ToolTip>
                         <TextBlock>employee number</TextBlock>
                     </TextBox.ToolTip>
@@ -76,7 +79,7 @@
                     _Cost Center:
                 </Label>
                 <TextBox Name="costCenterTextBox" AutomationProperties.Name="Cost Center" Style="{StaticResource ReadOnlyText}" Grid.Column="3" Grid.Row="2"
-                         Text="{Binding Path=CostCenter}">
+                         Text="{Binding Path=CostCenter}"  BorderBrush= "{StaticResource BorderColor}">
                     <TextBox.ToolTip>
                         <TextBlock>cost center</TextBlock>
                     </TextBox.ToolTip>
@@ -125,7 +128,8 @@
                           Name="expenseDataGrid1"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
-                          AutomationProperties.Name="Expense Report">
+                          AutomationProperties.Name="Expense Report" BorderBrush="#FF0B0F13"
+                          >
                     <DataGrid.ToolTip>
                         <TextBlock>Expense Report</TextBlock>
                     </DataGrid.ToolTip>
