@@ -145,7 +145,7 @@ namespace EditingExaminerDemo
             // In high contrast themes, we need to ensure the syntax highlighting follows system colors.
             // Replace the normal colors here with visible ones so that we can still see the highlights.
             var BlueNormalSyntaxHighlight = (SystemParameters.HighContrast) ? SystemColors.WindowTextColor.ToString() : "Blue";
-            var RedNormalSyntaxHighlight = (SystemParameters.HighContrast) ? SystemColors.HotTrackColor.ToString() : "Red";
+            var RedNormalSyntaxHighlight = (SystemParameters.HighContrast) ? SystemColors.HotTrackColor.ToString() : "DarkRed";
 
             var front = $"<Run Foreground=\"{BlueNormalSyntaxHighlight}\">&lt;</Run>";
             var end = $"<Run Foreground=\"{BlueNormalSyntaxHighlight}\">&gt;</Run>";
