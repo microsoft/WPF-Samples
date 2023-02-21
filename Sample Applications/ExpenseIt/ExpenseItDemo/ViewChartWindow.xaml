@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
 
             <!-- Expenses Chart -->
-            <ItemsControl Style="{DynamicResource ExpenseChart}" Grid.Row="0" Grid.ColumnSpan="2" />
+            <ItemsControl Style="{DynamicResource ExpenseChart}" Grid.Row="0" Grid.ColumnSpan="2" IsTabStop="False" />
 
             <!-- Total Expenses -->
             <Rectangle Style="{StaticResource TotalRectangle}" Grid.Row="1" Grid.ColumnSpan="2" />
