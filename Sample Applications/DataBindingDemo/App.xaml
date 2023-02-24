@@ -71,7 +71,7 @@
                         <DataTrigger.Value>
                             <local:SpecialFeatures>Highlight</local:SpecialFeatures>
                         </DataTrigger.Value>
-                        <Setter Property="BorderBrush" Value="Orange" TargetName="border" />
+                        <Setter Property="BorderBrush" Value="OrangeRed" TargetName="border" />
                         <Setter Property="Foreground" Value="Navy" TargetName="descriptionTitle" />
                         <Setter Property="Foreground" Value="Navy" TargetName="currentPriceTitle" />
                         <Setter Property="Visibility" Value="Visible" TargetName="star" />
