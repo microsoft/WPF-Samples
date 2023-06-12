@@ -52,7 +52,18 @@
                 <Setter Property="BorderThickness" Value="4" />
 
             </DataTrigger>
-            
+
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderThickness" Value="1.5 1 7 4" />
+            </Trigger>
+
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderThickness" Value="1.5 1 7 4" />
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="1.5 1 7 4" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
