@@ -2,101 +2,102 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:EditingExaminerDemo">
 
-	<Style x:Key="ImmediateWindowLabel" TargetType="Label">
-		<Setter Property="BorderBrush" Value="Gray"/>
-	</Style>
+    <Style x:Key="ImmediateWindowLabel" TargetType="Label">
+        <Setter Property="BorderBrush" Value="Gray"/>
+    </Style>
 
-	<Style x:Key="ErrorMessageTextBox" TargetType="TextBox">
-		<Setter Property="Foreground" Value="DarkRed" />
-		<Setter Property="BorderBrush" Value="Red" />
-		<Setter Property="VerticalAlignment" Value="Center" />
-
-		<Setter Property="Template">
-			<Setter.Value>
+    <Style x:Key="ErrorMessageTextBox" TargetType="TextBox">
+        <Setter Property="Foreground" Value="DarkRed" />
+        <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border
-                        x:Name="border"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        Background="{TemplateBinding Background}"
-                        SnapsToDevicePixels="True">
-						<ScrollViewer
-                            x:Name="PART_ContentHost"
-                            Focusable="False"
-                            HorizontalScrollBarVisibility="Hidden"
-                            VerticalScrollBarVisibility="Hidden" />
-					</Border>
+				x:Name="border"
+				BorderBrush="{TemplateBinding BorderBrush}"
+				BorderThickness="{TemplateBinding BorderThickness}"
+				Background="{TemplateBinding Background}"
+				SnapsToDevicePixels="True">
+                        <ScrollViewer
+					x:Name="PART_ContentHost"
+					Focusable="False"
+					HorizontalScrollBarVisibility="Hidden"
+					VerticalScrollBarVisibility="Hidden" />
+                    </Border>
 
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsFocused" Value="True">
-							<Setter Property="BorderBrush" Value="Blue" />
-						</Trigger>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="Blue" />
+                        </Trigger>
 
-						<Trigger Property="IsKeyboardFocused" Value="True">
-							<Setter Property="BorderBrush" Value="Blue" />
-						</Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="Blue" />
+                        </Trigger>
 
-						<Trigger Property="IsMouseOver" Value="True" >
-							<Setter Property="BorderBrush" Value="Blue" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter Property="BorderBrush" Value="Blue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
 
-		<Style.Triggers>
+        <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                 <Setter Property="BorderThickness" Value="4" />
+
+            </DataTrigger>
+            
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="XamlSyntaxHighlighterStyle" TargetType="RichTextBox">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
+                <Setter Property="FontSize" Value="14"/>
             </DataTrigger>
         </Style.Triggers>
-	</Style>
+    </Style>
 
-	<Style x:Key="XamlSyntaxHighlighterStyle" TargetType="RichTextBox">
-		<Style.Triggers>
-			<DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
-				<Setter Property="FontSize" Value="14"/>
-			</DataTrigger>
-		</Style.Triggers>
-	</Style>
-
-	<Style x:Key="TextBoxBorderContrastStyle" TargetType="Control">
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type TextBoxBase}">
-					<Border x:Name="border"
+    <Style x:Key="TextBoxBorderContrastStyle" TargetType="Control">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="True">
-						<ScrollViewer x:Name="PART_ContentHost"
-                            Focusable="false"
-                            HorizontalScrollBarVisibility="Hidden"
+                        <ScrollViewer x:Name="PART_ContentHost" 
+                            Focusable="false" 
+                            HorizontalScrollBarVisibility="Hidden" 
                             VerticalScrollBarVisibility="Hidden" />
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter TargetName="border" Property="Opacity" Value="0.56"/>
-						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter TargetName="border" Property="BorderBrush" Value="Blue" />
-						</Trigger>
-						<Trigger Property="IsKeyboardFocused" Value="true">
-							<Setter TargetName="border" Property="BorderBrush" Value="Blue" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="HelpSectionTextHighContrastStyle" TargetType="Section">
-		<Style.Triggers>
-			<DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
-				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-			</DataTrigger>
-		</Style.Triggers>
-	</Style>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="border" Property="Opacity" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="Blue" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="Blue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HelpSectionTextHighContrastStyle" TargetType="Section">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
