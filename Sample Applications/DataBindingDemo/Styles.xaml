@@ -47,7 +47,6 @@
         <Setter Property="Foreground" Value="#333333" />
         <Setter Property="MaxLength" Value="40" />
         <Setter Property="Width" Value="392" />
-        <Setter Property="Background" Value="Black" />
         <Style.Triggers>
             <!-- High contrast support -->
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
