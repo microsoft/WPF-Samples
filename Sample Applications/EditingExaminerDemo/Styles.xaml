@@ -10,6 +10,8 @@
         <Setter Property="Foreground" Value="DarkRed" />
         <Setter Property="BorderBrush" Value="Red" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="2 2 7 1" />
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -54,15 +56,15 @@
             </DataTrigger>
 
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderThickness" Value="1.5 1 7 4" />
+                <Setter Property="BorderThickness" Value="1 1 1 6" />
             </Trigger>
 
             <Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="BorderThickness" Value="1.5 1 7 4" />
+                <Setter Property="BorderThickness" Value="1 1 1 6" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderThickness" Value="1.5 1 7 4" />
+                <Setter Property="BorderThickness" Value="1 1 1 6" />
             </Trigger>
         </Style.Triggers>
     </Style>
