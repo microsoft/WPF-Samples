@@ -10,6 +10,40 @@
         <Setter Property="Foreground" Value="DarkRed" />
         <Setter Property="BorderBrush" Value="Red" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="2 2 7 1" />
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border
+				x:Name="border"
+				BorderBrush="{TemplateBinding BorderBrush}"
+				BorderThickness="{TemplateBinding BorderThickness}"
+				Background="{TemplateBinding Background}"
+				SnapsToDevicePixels="True">
+                        <ScrollViewer
+					x:Name="PART_ContentHost"
+					Focusable="False"
+					HorizontalScrollBarVisibility="Hidden"
+					VerticalScrollBarVisibility="Hidden" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="Blue" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="Blue" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter Property="BorderBrush" Value="Blue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -20,14 +54,17 @@
                 <Setter Property="BorderThickness" Value="4" />
 
             </DataTrigger>
-            <Trigger Property="IsFocused" Value="true">
-                <Setter Property="BorderBrush" Value="Blue" />
+
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderThickness" Value="1 1 1 6" />
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" Value="Blue" />
+
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderThickness" Value="1 1 1 6" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="BorderBrush" Value="Blue" />
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="1 1 1 6" />
             </Trigger>
         </Style.Triggers>
     </Style>

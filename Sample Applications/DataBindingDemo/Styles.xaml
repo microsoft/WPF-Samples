@@ -122,7 +122,7 @@
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Padding" Value="7" />
         <Setter Property="Margin" Value="3" />
-        <Setter Property="Width" Value="500" />
+        <Setter Property="MinWidth" Value="500" />
     </Style>
 
     <Style x:Key="AuctionItemContainerStyle">
