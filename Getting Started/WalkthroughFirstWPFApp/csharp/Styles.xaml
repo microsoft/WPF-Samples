@@ -48,6 +48,7 @@
 
     <!-- DataGrid header style -->
     <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#3274CD" />
