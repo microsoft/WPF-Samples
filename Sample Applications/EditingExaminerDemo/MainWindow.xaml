@@ -157,7 +157,7 @@ Selection = RichTextBox.Selection;
                         Width="400" Height="250">
                 <TabItem Header="DocumentTree" 
                          AutomationProperties.HelpText="The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox. This allows you to visualize the document hierarchy.">
-                    <TreeView Name="TextTreeView" AutomationProperties.Name="Document Elements"/>
+                    <TreeView Name="TextTreeView" AutomationProperties.Name="Document Elements" Style="{StaticResource DocumentTreeViewBox}"/>
                 </TabItem>
                 <TabItem Header="SelectionXaml" Name="TabSelectionXaml" 
                          AutomationProperties.HelpText="This tab displays the underlying XAML of the selected content within the RichTextBox.">
