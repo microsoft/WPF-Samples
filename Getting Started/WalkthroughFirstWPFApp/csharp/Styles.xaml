@@ -48,11 +48,17 @@
 
     <!-- DataGrid header style -->
     <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#3274CD" />
+        <Setter Property="BorderBrush" Value="#3274CD" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="White" />
         <Style.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderBrush" Value="Black" />
+            </Trigger>
             <!-- 
                 When in high contrast modes, follow system colors to present proper contrast between adjacent colors.
                 Also add a border here to differentiate the header from the actual data as we no longer have a 
