@@ -205,7 +205,7 @@ Selection = RichTextBox.Selection;
             </TabControl>
             <StackPanel Name="Panel3">
                 <Label Name="Label1" BorderThickness="1,0,1,0" Style="{StaticResource ImmediateWindowLabel}" HorizontalContentAlignment="Center"
-                       Width="400" Height="25">
+                       Width="400" Height="Auto" MinHeight="25">
                     Immediate Window
                 </Label>
                 <TextBox Name="ImmediateWindow" AutomationProperties.Name="Immediate Window" Width="400" Height="205" VerticalScrollBarVisibility="Visible"
