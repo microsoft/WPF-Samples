@@ -32,7 +32,14 @@
         <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#4E87D4" />
+        <Setter Property="BorderBrush" Value="#4E87D4" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="White" />
+        <Style.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderBrush" Value="Black" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <!-- List header text style -->
