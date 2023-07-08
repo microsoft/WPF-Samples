@@ -1,10 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32;
 
 namespace CommonDialogs
 {
@@ -14,8 +14,6 @@ namespace CommonDialogs
         private string resultBody = "";
         private string dialogDescription = "";
         private string clickOperationDescription = "";
-
-
 
         public string ResultTitle
         {
