@@ -38,8 +38,6 @@
 		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
 	<ItemGroup>
-	</ItemGroup>
-	<ItemGroup>
 		<ApplicationDefinition Include="App.xaml">
 			<Generator>MSBuild:Compile</Generator>
 			<SubType>Designer</SubType>
@@ -52,13 +50,15 @@
 			<DependentUpon>App.xaml</DependentUpon>
 			<SubType>Code</SubType>
 		</Compile>
+		<Compile Include="DialogDataModel.cs" />
 		<Compile Include="MainWindow.xaml.cs">
 			<DependentUpon>MainWindow.xaml</DependentUpon>
 			<SubType>Code</SubType>
 		</Compile>
+		<Compile Include="RelayCommand.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="DataModel.cs" />
+		<Compile Include="MainWindowViewModel.cs" />
 	</ItemGroup>
 	<!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,6 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:CommonDialogs" mc:Ignorable="d" 
     Title="WPF Dialogs Sample Application" Height="500" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="DialogButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="5"/>
@@ -32,19 +35,19 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
-                <Button Content="Open File" Click="Button_OpenFileDialog" Style="{StaticResource DialogButtonStyle}"/>
-                <Button Content="Save File" Click="Button_SaveFileDialog" Style="{StaticResource DialogButtonStyle}"/>
-                <Button Content="Open Folder" Click="Button_OpenFolderDialog" Style="{StaticResource DialogButtonStyle}"/>
+                <Button Content="Open File" Command="{Binding OpenFileCommand}" Style="{StaticResource DialogButtonStyle}"/>
+                <Button Content="Save File" Command="{Binding SaveFileCommand}" Style="{StaticResource DialogButtonStyle}"/>
+                <Button Content="Open Folder" Command="{Binding OpenFolderCommand}" Style="{StaticResource DialogButtonStyle}"/>
             </StackPanel>
             <Border Grid.Column="1" BorderThickness="2,0,2,0" BorderBrush="Black">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <RichTextBox BorderThickness="0">
                         <FlowDocument>
                             <Paragraph FontSize="16" FontWeight="Bold">
-                                <Run Text="{Binding ResultTitle}" />
+                                <Run Text="{Binding Data.ResultTitle}" />
                             </Paragraph>
                             <Paragraph>
-                                <Run Text="{Binding ResultBody}" />
+                                <Run Text="{Binding Data.ResultBody}" />
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
@@ -52,10 +55,10 @@
             </Border>
             <StackPanel Orientation="Vertical" Grid.Column="2">
                 <TextBlock Text="Description" FontWeight="Bold" Margin="10,5" />
-                <TextBlock TextWrapping="Wrap" Text="{Binding DialogDescription, Mode=OneWay}" Margin="10,5"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Data.DialogDescription, Mode=OneWay}" Margin="10,5"/>
                 <Separator BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5"/>
                 <TextBlock Text="Click Button Operation" FontWeight="Bold" Margin="10,5" />
-                <TextBlock TextWrapping="Wrap" Text="{Binding ClickOperationDescription, Mode=OneWay}" Margin="10,5"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Data.ClickOperationDescription, Mode=OneWay}" Margin="10,5"/>
             </StackPanel>
         </Grid>
     </DockPanel>
