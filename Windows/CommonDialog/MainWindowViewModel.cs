@@ -145,9 +145,10 @@ namespace CommonDialogs
             //    foreach (var folder in openFolderDialog.FolderNames)
             //    {
             //        sb.AppendLine($"Folder Name : {folder}");
-
-            //        DirectoryInfo d = new DirectoryInfo(folder);
-            //        d.GetDirectories().ToList().ForEach(x => sb.AppendLine($"\t{x.Name}"));
+            //        foreach (var subfolder in Directory.EnumerateDirectories(folder))
+            //        {
+            //            sb.AppendLine($"\t{subfolder}");
+            //        }
             //    }
             //}
             //else
@@ -155,8 +156,8 @@ namespace CommonDialogs
             //    sb.AppendLine("No folder selected.");
             //    sb.AppendLine("Either cancel button was clicked or dialog was closed");
             //}
-            // Data.ResultTitle = sb.ToString();
-            // GetDialogRelatedInfo(openFolderDialog);
+            //Data.ResultTitle = sb.ToString();
+            //GetDialogRelatedInfo(openFolderDialog);
             throw new NotImplementedException();
         }
 

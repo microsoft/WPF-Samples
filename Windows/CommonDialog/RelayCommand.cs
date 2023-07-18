@@ -21,11 +21,6 @@ namespace CommonDialogs
 
         public bool CanExecute(object? parameter)
         {
-            if (parameter is null && default(T) is not null)
-            {
-                return false;
-            }
-
             if (TryGetCommandArg(parameter, out T? res))
             {
                 return this.CanExecute(res);
