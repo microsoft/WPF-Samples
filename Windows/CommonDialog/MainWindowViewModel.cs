@@ -43,7 +43,7 @@ namespace CommonDialogs
             };
 
             // Forces the preview pane to be shown irrespective of the system settings
-            //openFileDialog.ForcePreviewPane = true;
+            openFileDialog.ForcePreviewPane = true;
 
             // Allows to select multiple files in the dialog
             openFileDialog.Multiselect = true;
@@ -128,37 +128,36 @@ namespace CommonDialogs
 
         private void OpenFolderCommandExecute(object obj)
         {
-            //OpenFolderDialog openFolderDialog = new OpenFolderDialog()
-            //{
-            //    Title = "Select folder to open ...",
-            //    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
-            //};
+            OpenFolderDialog openFolderDialog = new OpenFolderDialog()
+            {
+               Title = "Select folder to open ...",
+               InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+            };
 
-            //openFolderDialog.Multiselect = true;
+            openFolderDialog.Multiselect = true;
 
-            //StringBuilder sb = new StringBuilder();
-            //if (openFolderDialog.ShowDialog() == true)
-            //{
-            //    sb.AppendLine($"List of all subdirectories in the selected folders :");
-            //    sb.AppendLine();
+            StringBuilder sb = new StringBuilder();
+            if (openFolderDialog.ShowDialog() == true)
+            {
+               sb.AppendLine($"List of all subdirectories in the selected folders :");
+               sb.AppendLine();
 
-            //    foreach (var folder in openFolderDialog.FolderNames)
-            //    {
-            //        sb.AppendLine($"Folder Name : {folder}");
-            //        foreach (var subfolder in Directory.EnumerateDirectories(folder))
-            //        {
-            //            sb.AppendLine($"\t{subfolder}");
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    sb.AppendLine("No folder selected.");
-            //    sb.AppendLine("Either cancel button was clicked or dialog was closed");
-            //}
-            //Data.ResultTitle = sb.ToString();
-            //GetDialogRelatedInfo(openFolderDialog);
-            throw new NotImplementedException();
+               foreach (var folder in openFolderDialog.FolderNames)
+               {
+                   sb.AppendLine($"Folder Name : {folder}");
+                   foreach (var subfolder in Directory.EnumerateDirectories(folder))
+                   {
+                       sb.AppendLine($"\t{subfolder}");
+                   }
+               }
+            }
+            else
+            {
+               sb.AppendLine("No folder selected.");
+               sb.AppendLine("Either cancel button was clicked or dialog was closed");
+            }
+            Data.ResultBody = sb.ToString();
+            GetDialogRelatedInfo(openFolderDialog);
         }
 
         public void GetDialogRelatedInfo(Microsoft.Win32.CommonDialog cd)
@@ -178,13 +177,13 @@ namespace CommonDialogs
                     "We have set the CreatePrompt and OverwritePrompt property to true, which will display a prompt warning user that the file does not exist and will be created and if you are overwriting an already existing file respectively.\n\n" +
                     "Once the user clicks OK, we write the contents to the selected file.";
             }
-            //else if (cd is OpenFolderDialog fbd)
-            //{
-            //    Data.ResultTitle = "Open Folder Dialog Results",
-            //    Data.DialogDescription = "OpenFolderDialog is a wrapper around the Win32 common dialog boxes.\n\nThis control allows developers to retrieve\\select the path of a folder.",
-            //    Data.ClickOperationDescription = "In this example, we have created an OpenFolderDialog that can be used to select multiple folders (Multiselect property).\n\n" +
-            //      "Once the user clicks OK, we print all the subdirectories in each selected folder."
-            //}
+            else if (cd is OpenFolderDialog fbd)
+            {
+               Data.ResultTitle = "Open Folder Dialog Results";
+               Data.DialogDescription = "OpenFolderDialog is a wrapper around the Win32 common dialog boxes.\n\nThis control allows developers to retrieve\\select the path of a folder.";
+               Data.ClickOperationDescription = "In this example, we have created an OpenFolderDialog that can be used to select multiple folders (Multiselect property).\n\n" +
+                 "Once the user clicks OK, we print all the subdirectories in each selected folder.";
+            }
         }
     }   
 }
