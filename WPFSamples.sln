@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28927.53
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33711.374
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Applications", "Sample Applications", "{122369C4-906B-4398-9F7D-DA33916262CF}"
 EndProject
@@ -518,6 +518,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpellChecking", "Documents\Spell Checking\SpellChecking\SpellChecking.csproj", "{74949E7C-71B0-4E03-8EC3-7CCA9E01397D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomDictionaries", "Documents\Spell Checking\CustomDictionaries\CustomDictionaries.csproj", "{CF0B6854-6CA8-4BAC-AF72-E97AE1E54593}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDialogs", "Windows\CommonDialog\CommonDialogs.csproj", "{41E866EB-A376-47B0-AADA-FC59ACE90A69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -3858,6 +3860,22 @@ Global
 		{CF0B6854-6CA8-4BAC-AF72-E97AE1E54593}.Release|x64.Build.0 = Release|Any CPU
 		{CF0B6854-6CA8-4BAC-AF72-E97AE1E54593}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF0B6854-6CA8-4BAC-AF72-E97AE1E54593}.Release|x86.Build.0 = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|x64.Build.0 = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Debug|x86.Build.0 = Debug|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|ARM64.Build.0 = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|x64.ActiveCfg = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|x64.Build.0 = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|x86.ActiveCfg = Release|Any CPU
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -4113,6 +4131,7 @@ Global
 		{8B9A2506-290B-4E20-ABA9-05A89F020809} = {F9BFF0BB-9124-49AE-8482-32A126D58AD2}
 		{74949E7C-71B0-4E03-8EC3-7CCA9E01397D} = {8B9A2506-290B-4E20-ABA9-05A89F020809}
 		{CF0B6854-6CA8-4BAC-AF72-E97AE1E54593} = {8B9A2506-290B-4E20-ABA9-05A89F020809}
+		{41E866EB-A376-47B0-AADA-FC59ACE90A69} = {168E363A-7B91-4FBF-A393-28BD29C818DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5999CD15-1B95-49B3-AD12-5FDC10B2FBAD}
