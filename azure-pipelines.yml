@@ -34,38 +34,38 @@ stages:
      - name: _ToolPlatform
        value: x86
      - name: _TargetFramework
-       value: 'net7.0-windows'
+       value: 'net8.0-windows'
     strategy:
      matrix:
-      Debug-AnyCPU-net7.0-windows:
+      Debug-AnyCPU:
         _Configuration: Debug
         _Platform: 'Any CPU'
-        _TargetFramework: 'net7.0-windows'
+        _TargetFramework: 'net8.0-windows'
         _ToolPlatform: x86
-      Debug-x64-net7.0-windows:
+      Debug-x64:
         _Configuration: Debug
         _Platform: 'x64'
-        _TargetFramework: 'net7.0-windows'
+        _TargetFramework: 'net8.0-windows'
         _ToolPlatform: x64
-      Debug-x86-net7.0-windows:
+      Debug-x86:
         _Configuration: Debug
         _Platform: 'x86'
-        _TargetFramework: 'net7.0-windows'
+        _TargetFramework: 'net8.0-windows'
         _ToolPlatform: x86
-      Release-AnyCPU-net7.0-windows:
+      Release-AnyCPU:
         _Configuration: Release
         _Platform: 'Any CPU'
-        _TargetFramework: 'net7.0-windows'
+        _TargetFramework: 'net8.0-windows'
         _ToolPlatform: x86
-      Release-x64-net7.0-windows:
+      Release-x64:
         _Configuration: Release
         _Platform: 'x64'
-        _TargetFramework: 'net7.0-windows'
+        _TargetFramework: 'net8.0-windows'
         _ToolPlatform: x64
-      Release-x86-net7.0-windows:
+      Release-x86:
         _Configuration: Release
         _Platform: 'x86'
-        _TargetFramework: 'net7.0-windows'
+        _TargetFramework: 'net8.0-windows'
         _ToolPlatform: x86
     steps:
      - task: NuGetToolInstaller@1
