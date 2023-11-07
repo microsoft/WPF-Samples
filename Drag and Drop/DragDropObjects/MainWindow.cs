@@ -6,8 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace DragDropObjects
 {
@@ -18,41 +16,14 @@ namespace DragDropObjects
     {
         private bool _isDown;
         private bool _isDragging;
-        private Canvas _myCanvas;
         private UIElement _originalElement;
         private double _originalLeft;
         private double _originalTop;
         private SimpleCircleAdorner _overlayElement;
         private Point _startPoint;
 
-        public void OnPageLoad(object sender, RoutedEventArgs e)
-        {
-            _myCanvas = new Canvas();
 
-            var rect1 = new Rectangle();
-            rect1.Height = rect1.Width = 32;
-            rect1.Fill = Brushes.Blue;
-
-            Canvas.SetTop(rect1, 8);
-            Canvas.SetLeft(rect1, 8);
-
-
-            var tb = new TextBox {Text = "This is a TextBox. Drag and drop me"};
-            Canvas.SetTop(tb, 100);
-            Canvas.SetLeft(tb, 100);
-
-            _myCanvas.Children.Add(rect1);
-            _myCanvas.Children.Add(tb);
-
-            _myCanvas.PreviewMouseLeftButtonDown += MyCanvas_PreviewMouseLeftButtonDown;
-            _myCanvas.PreviewMouseMove += MyCanvas_PreviewMouseMove;
-            _myCanvas.PreviewMouseLeftButtonUp += MyCanvas_PreviewMouseLeftButtonUp;
-            PreviewKeyDown += window1_PreviewKeyDown;
-
-            myStackPanel.Children.Add(_myCanvas);
-        }
-
-        private void window1_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void Window1_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape && _isDragging)
             {
@@ -64,12 +35,12 @@ namespace DragDropObjects
         {
             if (_isDown)
             {
-                DragFinished(false);
+                DragFinished();
                 e.Handled = true;
             }
         }
 
-        private void DragFinished(bool cancelled)
+        private void DragFinished(bool cancelled = false)
         {
             Mouse.Capture(null);
             if (_isDragging)
@@ -92,9 +63,9 @@ namespace DragDropObjects
             if (_isDown)
             {
                 if ((_isDragging == false) &&
-                    ((Math.Abs(e.GetPosition(_myCanvas).X - _startPoint.X) >
+                    ((Math.Abs(e.GetPosition(MyCanvas).X - _startPoint.X) >
                       SystemParameters.MinimumHorizontalDragDistance) ||
-                     (Math.Abs(e.GetPosition(_myCanvas).Y - _startPoint.Y) >
+                     (Math.Abs(e.GetPosition(MyCanvas).Y - _startPoint.Y) >
                       SystemParameters.MinimumVerticalDragDistance)))
                 {
                     DragStarted();
@@ -119,7 +90,7 @@ namespace DragDropObjects
 
         private void DragMoved()
         {
-            var currentPosition = Mouse.GetPosition(_myCanvas);
+            var currentPosition = Mouse.GetPosition(MyCanvas);
 
             _overlayElement.LeftOffset = currentPosition.X - _startPoint.X;
             _overlayElement.TopOffset = currentPosition.Y - _startPoint.Y;
@@ -127,19 +98,17 @@ namespace DragDropObjects
 
         private void MyCanvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.Source == _myCanvas)
+            if (e.Source == MyCanvas)
             {
             }
             else
             {
                 _isDown = true;
-                _startPoint = e.GetPosition(_myCanvas);
+                _startPoint = e.GetPosition(MyCanvas);
                 _originalElement = e.Source as UIElement;
-                _myCanvas.CaptureMouse();
+                MyCanvas.CaptureMouse();
                 e.Handled = true;
             }
         }
     }
-
-    // Adorners must subclass the abstract base class Adorner.
 }
