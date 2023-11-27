@@ -14,7 +14,6 @@
             <Style x:Uid="Style_1" x:Key="TopbarButtonStyle" TargetType="{x:Type ButtonBase}">
                 <Setter x:Uid="Setter_1" Property="Cursor" Value="Hand" />
                 <Setter x:Uid="Setter_2" Property="Template">
-                    <Setter.Value>
                         <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type ButtonBase}">
                             <Border x:Uid="Border_1" x:Name="Border" BorderThickness="1">
                                 <ContentPresenter x:Uid="ContentPresenter_1" />
@@ -26,13 +25,11 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
             <Style x:Uid="Style_2" x:Key="SidebarButtonStyle" TargetType="{x:Type ButtonBase}">
                 <Setter x:Uid="Setter_5" Property="Cursor" Value="Hand" />
                 <Setter x:Uid="Setter_6" Property="Template">
-                    <Setter.Value>
                         <ControlTemplate x:Uid="ControlTemplate_2" TargetType="{x:Type ButtonBase}">
                             <Border x:Uid="Border_2" x:Name="Border" BorderThickness="1">
                                 <ContentPresenter x:Uid="ContentPresenter_2" />
@@ -44,13 +41,11 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
             <Style x:Uid="Style_3" x:Key="GraybarButtonStyle" TargetType="{x:Type ButtonBase}">
                 <Setter x:Uid="Setter_9" Property="Cursor" Value="Hand" />
                 <Setter x:Uid="Setter_10" Property="Template">
-                    <Setter.Value>
                         <ControlTemplate x:Uid="ControlTemplate_3" TargetType="{x:Type ButtonBase}">
                             <Border x:Uid="Border_3" x:Name="Border" BorderThickness="1" Background="#F1F1F1">
                                 <ContentPresenter x:Uid="ContentPresenter_3" />
@@ -62,7 +57,6 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
         </DockPanel.Resources>

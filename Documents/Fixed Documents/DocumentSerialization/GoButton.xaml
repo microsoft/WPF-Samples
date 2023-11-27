@@ -4,7 +4,6 @@
   <StackPanel.Resources>
     <Style TargetType="{x:Type Menu}">
       <Setter Property="Background">
-        <Setter.Value>
           <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientBrush.GradientStops>
               <GradientStopCollection>
@@ -13,7 +12,6 @@
               </GradientStopCollection>
             </GradientBrush.GradientStops>
           </LinearGradientBrush>
-        </Setter.Value>
       </Setter>
     </Style>
   </StackPanel.Resources>

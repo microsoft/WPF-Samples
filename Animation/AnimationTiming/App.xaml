@@ -52,14 +52,12 @@
 
         <Style x:Key="MyIntroTextBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0.0" Color="#CCCCFF" />
                             <GradientStop Offset="1.0" Color="White" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="BorderBrush" Value="Gray" />
@@ -98,18 +96,14 @@
             <Setter Property="Padding" Value="20" />
             <Setter Property="Background" Value="{StaticResource MyGlassBrushResource}" />
             <Setter Property="BorderBrush">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0.0" Color="LightBlue" />
                             <GradientStop Offset="1.0" Color="Gray" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1" />
         </Style>
-
-
     </Application.Resources>
 </Application>

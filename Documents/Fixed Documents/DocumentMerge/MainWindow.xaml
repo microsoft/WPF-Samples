@@ -12,7 +12,6 @@
             <Style x:Key="MyListBoxStyle" TargetType="{x:Type ListBox}">
                 <Setter Property="SelectionMode" Value="Extended"/>
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ListBox}">
                             <Border Background="{TemplateBinding Panel.Background}"
                       BorderBrush="{TemplateBinding Border.BorderBrush}"
@@ -23,14 +22,12 @@
                                 </ScrollViewer>
                             </Border>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 
             <Style x:Key="DestListBoxItem" TargetType="{x:Type ListBoxItem}">
                 <EventSetter Event="Drop" Handler="DestItem_Drop" HandledEventsToo="True" />
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ListBoxItem}">
                             <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
                       Opacity="50" Width="80" Height="100" Margin="2" >
@@ -49,7 +46,6 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 
@@ -58,7 +54,6 @@
                      Handler ="rect_PreviewMouseLeftButtonDown"
                      HandledEventsToo="True" />
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ListBoxItem}">
                             <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
                       Opacity="50" Width="80" Height="100" Margin="2">
@@ -77,14 +72,12 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 
             <Style x:Key="DestPageListBoxItem" TargetType="{x:Type ListBoxItem}">
                 <EventSetter Event="Drop" Handler="DestPageItem_Drop" HandledEventsToo="True" />
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ListBoxItem}">
                             <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
                       Opacity="50" Width="80" Height="100" Margin="2" >
@@ -103,7 +96,6 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 
@@ -111,7 +103,6 @@
                 <EventSetter Event="PreviewMouseLeftButtonDown"
                      Handler ="page_PreviewMouseLeftButtonDown" HandledEventsToo="True" />
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ListBoxItem}">
                             <Border Name="myBorder" BorderBrush="Gray" BorderThickness="1"
                       Opacity="50" Width="80" Height="100" Margin="2" >
@@ -130,7 +121,6 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 

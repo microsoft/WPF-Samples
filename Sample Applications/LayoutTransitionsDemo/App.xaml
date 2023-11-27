@@ -16,7 +16,6 @@
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="transparent" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
                             <Rectangle x:Name="GelBackground" Opacity="1"
@@ -77,46 +76,38 @@
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="Height" Value="18" TargetName="GelShine" />
                                 <Setter Property="Rectangle.Fill" TargetName="GelShine">
-                                    <Setter.Value>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStop Offset="0" Color="#aaffffff" />
                                                 <GradientStop Offset="1" Color="Transparent" />
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
-                                    </Setter.Value>
                                 </Setter>
 
                                 <Setter Property="Height" Value="18" TargetName="GelShadow" />
                                 <Setter Property="Rectangle.Fill" TargetName="GelShadow">
-                                    <Setter.Value>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStop Offset="0" Color="Transparent" />
                                                 <GradientStop Offset="1" Color="#33000000" />
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
-                                    </Setter.Value>
                                 </Setter>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Rectangle.Stroke" Value="#000000" TargetName="GelBackground" />
                                 <Setter Property="Rectangle.Fill" TargetName="GelShine">
-                                    <Setter.Value>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStop Offset="0" Color="#55000000" />
                                                 <GradientStop Offset="1" Color="Transparent" />
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
-                                    </Setter.Value>
                                 </Setter>
                                 <Setter Property="Height" Value="8" TargetName="GelShine" />
                             </Trigger>
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Application.Resources>

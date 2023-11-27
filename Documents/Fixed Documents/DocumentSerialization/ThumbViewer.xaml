@@ -28,7 +28,6 @@
         <Setter Property="MinWidth" Value="0"/>
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type ButtonBase}">
               <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                 <ContentPresenter x:Name="Content" RenderTransformOrigin=".5, .5"/>
@@ -36,16 +35,12 @@
               <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                   <Setter Property="RenderTransform" TargetName="Content">
-                    <Setter.Value>
                       <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
-                    </Setter.Value>
                   </Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                   <Setter Property="RenderTransform" TargetName="Content">
-                    <Setter.Value>
                       <ScaleTransform ScaleX=".9" ScaleY=".9"/>
-                    </Setter.Value>
                   </Setter>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
@@ -56,7 +51,6 @@
                 </Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
       <Style x:Key="FlowViewers_GrowShrinkOpacityToggleButton" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource FlowViewers_GrowShrinkOpacityButtonBase}">
@@ -77,7 +71,6 @@
       </Style>
       <Style x:Key="FlowViewers_GrowShrinkOpacityRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource FlowViewers_GrowShrinkOpacityToggleButton}">
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type RadioButton}">
               <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                 <ContentPresenter x:Name="Content" RenderTransformOrigin=".5, .5"/>
@@ -85,14 +78,11 @@
               <ControlTemplate.Triggers>
                 <Trigger Property="IsPressed" Value="True">
                   <Setter Property="RenderTransform" TargetName="Content">
-                    <Setter.Value>
                       <ScaleTransform ScaleX=".9" ScaleY=".9"/>
-                    </Setter.Value>
                   </Setter>
                 </Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
       <!-- Slider -->
@@ -101,11 +91,9 @@
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type RepeatButton}">
               <Border Background="Transparent"/>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
       <PathGeometry x:Key="FlowViewers_Slider_ThumbGeometry" FillRule="Nonzero">
@@ -126,7 +114,6 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Padding" Value="6"/>
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type Thumb}">
               <Border Background="Transparent" Padding="{Binding Path=Padding,RelativeSource={RelativeSource TemplatedParent}}" Margin="-2">
                 <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Width="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}">
@@ -161,7 +148,6 @@
                 </Viewbox>
               </Border>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
       <Style x:Key="FlowViewers_Slider" TargetType="{x:Type Slider}">
@@ -182,7 +168,6 @@
         <Setter Property="Delay" Value="1000"/>
         <Setter Property="Interval" Value="250"/>
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type Slider}">
               <Border Background="Transparent" Padding="{TemplateBinding Padding}">
                 <Grid ClipToBounds="False" x:Name="Content">
@@ -234,17 +219,13 @@
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                   <Setter Property="RenderTransform">
-                    <Setter.Value>
                       <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
-                    </Setter.Value>
                   </Setter>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                   <Setter Property="Opacity" Value="1"/>
                   <Setter Property="RenderTransform">
-                    <Setter.Value>
                       <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
-                    </Setter.Value>
                   </Setter>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
@@ -252,7 +233,6 @@
                 </Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
       <!-- FlowDocumentPageViewer -->
@@ -262,7 +242,6 @@
         <Setter Property="ZoomIncrement" Value="10"/>
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type FlowDocumentPageViewer}">
               <DockPanel LastChildFill="True">
                 <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
@@ -362,12 +341,10 @@
                 </Grid>
               </DockPanel>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
       <Style TargetType="{x:Type Menu}">
         <Setter Property="Background">
-          <Setter.Value>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
               <GradientBrush.GradientStops>
                 <GradientStopCollection>
@@ -376,12 +353,10 @@
                 </GradientStopCollection>
               </GradientBrush.GradientStops>
             </LinearGradientBrush>
-          </Setter.Value>
         </Setter>
       </Style>
       <Style TargetType="{x:Type ToolBarTray}">
         <Setter Property="Background">
-          <Setter.Value>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
               <GradientBrush.GradientStops>
                 <GradientStopCollection>
@@ -390,12 +365,10 @@
                 </GradientStopCollection>
               </GradientBrush.GradientStops>
             </LinearGradientBrush>
-          </Setter.Value>
         </Setter>
       </Style>
       <Style TargetType="{x:Type ToolBar}">
         <Setter Property="Background">
-          <Setter.Value>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
               <GradientBrush.GradientStops>
                 <GradientStopCollection>
@@ -404,7 +377,6 @@
                 </GradientStopCollection>
               </GradientBrush.GradientStops>
             </LinearGradientBrush>
-          </Setter.Value>
         </Setter>
       </Style>
 
@@ -468,7 +440,6 @@
           <Setter Property="Cursor" Value="Hand" />
           <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
           <Setter Property="Template">
-            <Setter.Value>
               <ControlTemplate TargetType="{x:Type ToggleButton}">
                 <Border x:Name="ButtonBorder" BorderThickness="1" BorderBrush="Transparent">
                   <ContentPresenter Content="{TemplateBinding Content}" TextBlock.FontSize="13" Margin="4,4,4,4" />
@@ -484,7 +455,6 @@
                   </Trigger>
                 </ControlTemplate.Triggers>
               </ControlTemplate>
-            </Setter.Value>
           </Setter>
           <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">

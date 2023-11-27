@@ -11,22 +11,17 @@
 
     <!-- Set a default transform on the note. -->
     <Setter Property="RenderTransform">
-      <Setter.Value>
         <ScaleTransform ScaleX=".5" ScaleY=".5"/>
-      </Setter.Value>
     </Setter>
 
     <!-- Add a trigger that changes the default transform when clicked in. -->
     <Style.Triggers>
       <Trigger Property="StickyNoteControl.IsActive" Value="True">
         <Setter Property="RenderTransform">
-          <Setter.Value>
             <ScaleTransform ScaleX="1" ScaleY="1"/>
-          </Setter.Value>
         </Setter>
       </Trigger>
     </Style.Triggers>
-
   </Style>
 
 </ResourceDictionary>

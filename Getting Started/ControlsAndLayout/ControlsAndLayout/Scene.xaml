@@ -28,7 +28,6 @@
                 <Setter Property="Margin" Value="1" />
                 <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ListBoxItem}">
                             <Grid>
                                 <Rectangle x:Name="ListBG" Fill="{TemplateBinding Background}" RadiusX="5" RadiusY="5" Stroke="transparent" />
@@ -50,7 +49,6 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
         </Grid.Resources>

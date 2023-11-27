@@ -36,19 +36,16 @@
             </Grid>
         </DataTemplate>
 
-
         <!-- Main photo catalog view -->
         <Style TargetType="{x:Type ListBox}" x:Key="PhotoListBoxStyle">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <WrapPanel Margin="5" IsItemsHost="True" Orientation="Horizontal"
                                    ItemHeight="{Binding ElementName=ZoomSlider, Path='Value'}"
                                    ItemWidth="{Binding ElementName=ZoomSlider, Path='Value'}"
                                    VerticalAlignment="Top" HorizontalAlignment="Stretch" />
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -56,7 +53,6 @@
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Border SnapsToDevicePixels="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                 Background="{TemplateBinding Background}">
@@ -68,25 +64,21 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
         <!-- Removes dotted rectangle focus -->
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ItemsControl}">
                         <WrapPanel IsItemsHost="True" />
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
         <!-- For metadata properties pane -->
         <Style TargetType="{x:Type GroupBox}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type GroupBox}">
                         <Grid>
                             <Border Background="#AAFFFFFF" CornerRadius="4" BorderBrush="#66000000" BorderThickness="1">
@@ -107,7 +99,6 @@
                             <ContentPresenter Margin="6" />
                         </Grid>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -120,14 +111,12 @@
         <!-- Headers for metadata properties -->
         <Style x:Key="MetadataHeader" TargetType="{x:Type Label}">
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0.5" Color="{x:Static SystemColors.AppWorkspaceColor}" />
                             <GradientStop Offset="2" Color="Transparent" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontWeight" Value="Bold" />

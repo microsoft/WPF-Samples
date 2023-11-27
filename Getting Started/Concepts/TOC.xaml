@@ -12,24 +12,16 @@
             <Setter Property="ListBoxItem.FontSize" Value="10"/>
         </Style>
 
-
         <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}">
-
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border Background="White">
                             <ItemsPresenter />
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
-
         </Style>
-
-
     </Page.Resources>
-
 
     <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
     <StackPanel>

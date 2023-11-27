@@ -38,12 +38,9 @@
             <Setter Property="Rectangle.Height" Value="230"/>
             <Setter Property="Rectangle.Width" Value="50"/>
             <Setter Property="Rectangle.Fill">
-                <Setter.Value>
                     <SolidColorBrush Color="Gray" Opacity="0.25" />
-                </Setter.Value>
             </Setter>
         </Style>
-
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="MinWidth" Value="120"/>

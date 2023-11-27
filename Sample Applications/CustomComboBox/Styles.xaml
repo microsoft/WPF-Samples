@@ -7,7 +7,6 @@
 
     <Style x:Key="CustomFocusVisual">
         <Setter Property="Control.Template">
-            <Setter.Value>
                 <ControlTemplate>
                     <Rectangle x:Name="rect" StrokeThickness="2" Stroke="Yellow" />
                     <ControlTemplate.Triggers>
@@ -17,7 +16,6 @@
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
 
@@ -29,14 +27,12 @@
         <Setter Property="Width" Value="7" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border CornerRadius="4"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1" />
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
 
@@ -151,7 +147,6 @@
     <Style x:Key="listBoxStyle" TargetType="ListBox">
         <Setter Property="Foreground" Value="#AEAEAE"/>
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
                     <Border x:Name="outerBorder"
                                 BorderThickness="1"
@@ -181,7 +176,6 @@
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -196,7 +190,6 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="AutomationProperties.Name" Value="{Binding Path=Title}"/>
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Border x:Name="Border" 
                                 BorderThickness="1"
@@ -212,12 +205,10 @@
                         <ContentPresenter/>
                     </Border>
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="ListBoxItem">
                             <Border x:Name="Border" 
                                 BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
@@ -227,7 +218,6 @@
                                 <ContentPresenter/>
                             </Border>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </DataTrigger>
         </Style.Triggers>
@@ -238,7 +228,6 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="10"/>
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContentControl}">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -386,7 +375,6 @@
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
     

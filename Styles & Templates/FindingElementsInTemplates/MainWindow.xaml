@@ -39,7 +39,6 @@
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid Margin="5" Name="grid">
                             <Ellipse Stroke="DarkBlue" StrokeThickness="2">
@@ -54,7 +53,6 @@
                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>
