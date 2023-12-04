@@ -44,7 +44,7 @@ namespace PhotoStoreDemo
 #endif
 
             Photos = (PhotoList) (Application.Current.Resources["Photos"] as ObjectDataProvider)?.Data;
-            Photos.Path = "..\\..\\Photos";
+            Photos.Path = "..\\..\\..\\Photos";
             ShoppingCart = (PrintList) (Application.Current.Resources["ShoppingCart"] as ObjectDataProvider)?.Data;
         }
 
