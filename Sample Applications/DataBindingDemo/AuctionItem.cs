@@ -56,7 +56,7 @@ namespace DataBindingDemo
                 
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Item description should be added");
+                    throw new ArgumentException("Item Description Should be added");
                 }
                 _description = value;
                 OnPropertyChanged("Description");

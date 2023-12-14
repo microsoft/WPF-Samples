@@ -22,7 +22,7 @@ namespace DataBindingDemo
        
         private void OnInit(object sender, RoutedEventArgs e)
         {
-            DataContext = new AuctionItem("Type your description here",
+            DataContext = new AuctionItem(null,
                 ProductCategory.DvDs, 1, DateTime.Now, ((App) Application.Current).CurrentUser,
                 SpecialFeatures.None);
         }
@@ -52,7 +52,7 @@ namespace DataBindingDemo
             }
             else if(DescriptionEntryForm.Text.Length == 0)
             {
-                AnnounceError("Please, fill item description");
+                AnnounceError("Please, fill Item Discription");
             }
             else if (Validation.GetHasError(StartDateEntryForm))
             {
