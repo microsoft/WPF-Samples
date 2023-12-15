@@ -38,11 +38,11 @@ To use the samples with Git, clone the WPF-Samples repository with 'git clone ht
 
 After cloning the WPF-Samples respository, there will be two solution files in the root directory: WPF-Samples.sln and WPF-Samples.msbuild.sln 
 
-* To build the samples, open one of the solution files in Visual Studio 2019 and build the solution.
+* To build the samples, open one of the solution files in Visual Studio 2022 and build the solution.
 * Alternatively, navigate to the directory of a sample and build with 'dotnet build' or 'msbuild' specifying the target project file. 
 * WPF-Samples.msbuild.sln contains projects that can be built only with `msbuild` or Visual Studio, and will not compile with `dotnet build`. These projects contain C++ code, for which there is no support in `dotnet build`
 
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in Visual Studio 2019.
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in Visual Studio 2022.
 
    [Download the samples ZIP](../../archive/main.zip)
 

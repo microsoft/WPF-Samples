@@ -11,7 +11,7 @@ name: "Setting Margins Sample"
 This example describes how to set margins, by changing any existing property value for the margin in code-behind. The Margin property is a property of the FrameworkElement base element, and is thus inherited by a variety of controls and other elements.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2019](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 

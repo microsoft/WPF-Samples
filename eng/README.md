@@ -49,7 +49,7 @@ PARAMETERS
 
     -UseMsBuild [<SwitchParameter>]
         When this switch is specified, MSBuild is used as the build engine instead of dotnet.exe.
-        This requires that VS2019 be installed and avaialble on the local machine.
+        This requires that VS2022 be installed and avaialble on the local machine.
 
         Some projects in this repo can be built only using MSBuild.
 

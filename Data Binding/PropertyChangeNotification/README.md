@@ -11,7 +11,7 @@ name: "Implementing Property Change Notification Sample"
 This sample shows how to create data objects that implement the INotifyPropertyChanged interface to enable propagating changed data to the binding target.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2019](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 

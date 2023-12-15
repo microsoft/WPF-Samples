@@ -15,7 +15,7 @@ This example illustrates the following scenarios:
 - A class implements several callbacks, such as CoerceValueCallback, PropertyChangedCallback, and ValidateValueCallback, for a set of related dependency properties. The callbacks are also used to adjust the values of other properties or to prevent an initial invalid value set. These callbacks are registered as part of the dependency property characteristics of a dependency property. Whenever the appropriate condition is detected by the property system, the user-defined callback is invoked. For instance, a change in the effective value of a property invokes the registered PropertyChangedCallback .
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2019](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 
