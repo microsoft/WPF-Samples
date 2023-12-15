@@ -10,19 +10,22 @@
     MinHeight="600"
     MinWidth="750"
     SizeChanged="window_SizeChanged">
+    <Window.Resources>
+        <SolidColorBrush x:Key="TabBorderColor">#666464</SolidColorBrush>
+    </Window.Resources>
     <StackPanel Name="TopPanel" Width="800" Height="600">
         <StackPanel Name="Panel1" Orientation="Vertical">
-            <TabControl Name="MainTab" SelectionChanged="UpdateDisplayTabs">
-                <TabItem Name="RichTab" Header="RichTextBox"
+            <TabControl Name="MainTab" SelectionChanged="UpdateDisplayTabs" BorderBrush="{StaticResource TabBorderColor}">
+                <TabItem Name="RichTab" Header="RichTextBox" Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}"
                          AutomationProperties.HelpText="Make edits in this RichTextBox. As you edit, you can see what your edits look like in real time in the tabs below.">
                     <RichTextBox Name="MainEditor" AutomationProperties.Name="Rich Text" TextChanged="UpdateDisplayTabs" AcceptsTab="True" Height="250"
                                  Style="{StaticResource TextBoxBorderContrastStyle}"
                                  Width="800" VerticalScrollBarVisibility="Visible" BorderBrush="Black" />
                 </TabItem>
-                <TabItem Name="PanelTab" AutomationProperties.Name="Panel" Header="Panel" AutomationProperties.HelpText="Panel Tab">
+                <TabItem Name="PanelTab" AutomationProperties.Name="Panel" Header="Panel" AutomationProperties.HelpText="Panel Tab" Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}">
                     <StackPanel />
                 </TabItem>
-                <TabItem Header="Help" AutomationProperties.Name="Help" AutomationProperties.HelpText="Help Tab: The content in this tab explains how to use the demo.">
+                <TabItem Header="Help" AutomationProperties.Name="Help" AutomationProperties.HelpText="Help Tab: The content in this tab explains how to use the demo." Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}">
                     <Border BorderThickness="1" BorderBrush="Black">
                         <FlowDocumentScrollViewer Margin="1">
                             <FlowDocument
@@ -163,12 +166,12 @@ Selection = RichTextBox.Selection;
         </StackPanel>
         <StackPanel Name="Panel2" Orientation="Horizontal">
             <TabControl SelectionChanged="UpdateDisplayTabs" Name="TabControl" HorizontalContentAlignment="Left"
-                        Width="400" Height="250">
-                <TabItem Header="DocumentTree" 
+                        Width="400" Height="250" BorderBrush="{StaticResource TabBorderColor}">
+                <TabItem Header="DocumentTree" Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}"
                          AutomationProperties.HelpText="The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox. This allows you to visualize the document hierarchy.">
                     <TreeView Name="TextTreeView" AutomationProperties.Name="Document Elements"/>
                 </TabItem>
-                <TabItem Header="SelectionXaml" Name="TabSelectionXaml" 
+                <TabItem Header="SelectionXaml" Name="TabSelectionXaml" Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}"
                          AutomationProperties.HelpText="This tab displays the underlying XAML of the selected content within the RichTextBox.">
                     <TextBox Name="SelectionXaml" VerticalScrollBarVisibility="Visible" AutomationProperties.Name="Selection Xaml"
                              AutomationProperties.HelpText="Displays underlying XAML of selected content of RichTextBox.">
@@ -182,7 +185,7 @@ Selection = RichTextBox.Selection;
                         </TextBox.ContextMenu>
                     </TextBox>
                 </TabItem>
-                <TabItem Header="TextSerializedXaml" Name="TabTextSerializedXaml" 
+                <TabItem Header="TextSerializedXaml" Name="TabTextSerializedXaml" Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}"
                          AutomationProperties.HelpText="By clicking on the Text Serialization tab, the underlying XAML is exposed, using WPF serialization features. The TreeView is instantly updated when the Tab is selected. You can edit your XAML content and set it back to the RichTextBox by right clicking and selecting the correct item.">
                     <TextBox Name="TextSerializedXaml" AutomationProperties.Name="Text Serialized Xaml" VerticalScrollBarVisibility="Visible"
                              AutomationProperties.HelpText="Displays underlying XAML of RichTextBox.">
@@ -196,7 +199,7 @@ Selection = RichTextBox.Selection;
                         </TextBox.ContextMenu>
                     </TextBox>
                 </TabItem>
-                <TabItem Header="CoreXaml" Name="TabCoreXaml" 
+                <TabItem Header="CoreXaml" Name="TabCoreXaml" Template="{DynamicResource TabItemTemplate}" BorderBrush="{StaticResource TabBorderColor}"
                          AutomationProperties.HelpText="This tab accesses the WPF core parser in order to parse an object. The object can then be inserted back into the RichTextBox. Alternately you can use this view to see how the RichTextBox content is serialized back to XAML.">
                     <RichTextBox Name="CoreXaml" AutomationProperties.Name="Core Xaml" VerticalScrollBarVisibility="Visible" Style="{StaticResource XamlSyntaxHighlighterStyle}">
                         <RichTextBox.ContextMenu>
