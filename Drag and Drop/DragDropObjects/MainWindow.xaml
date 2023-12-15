@@ -5,15 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragDropObjects"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="OnPageLoad">
+        Title="MainWindow" Height="350" Width="525" PreviewKeyDown="Window1_PreviewKeyDown">
     <StackPanel Name="myStackPanel">
         <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" Padding="20">
-            <TextBlock Width="750" TextWrapping="Wrap" FontSize="12">
+            <TextBlock TextWrapping="Wrap" FontSize="12">
         This sample shows how to drag and drop objects on the screen.
         To visually indicate that the object is being dragged, a simple adorner
         is applied to an object as you drag it. Drag and drop the box and 
         TextBox below.
             </TextBlock>
         </Border>
+        <Canvas Name="MyCanvas"
+                PreviewMouseLeftButtonDown="MyCanvas_PreviewMouseLeftButtonDown" 
+                PreviewMouseMove="MyCanvas_PreviewMouseMove"
+                PreviewMouseLeftButtonUp="MyCanvas_PreviewMouseLeftButtonUp">
+            <Rectangle Fill="Blue" Height="32" Width="32" Canvas.Top="8" Canvas.Left="8"/>
+            <TextBox Text="This is a TextBox. Drag and drop me" Canvas.Top="100" Canvas.Left="100"/>
+        </Canvas>
     </StackPanel>
 </Window>
