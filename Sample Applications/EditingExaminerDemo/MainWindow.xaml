@@ -16,136 +16,139 @@
                 <TabItem Name="RichTab" Header="RichTextBox"
                          AutomationProperties.HelpText="Make edits in this RichTextBox. As you edit, you can see what your edits look like in real time in the tabs below.">
                     <RichTextBox Name="MainEditor" AutomationProperties.Name="Rich Text" TextChanged="UpdateDisplayTabs" AcceptsTab="True" Height="250"
-                                 Width="800" VerticalScrollBarVisibility="Visible" />
+                                 Style="{StaticResource TextBoxBorderContrastStyle}"
+                                 Width="800" VerticalScrollBarVisibility="Visible" BorderBrush="Black" />
                 </TabItem>
                 <TabItem Name="PanelTab" AutomationProperties.Name="Panel" Header="Panel" AutomationProperties.HelpText="Panel Tab">
                     <StackPanel />
                 </TabItem>
                 <TabItem Header="Help" AutomationProperties.Name="Help" AutomationProperties.HelpText="Help Tab: The content in this tab explains how to use the demo.">
-                    <FlowDocumentScrollViewer Margin="10" Style="{StaticResource ScrollViewer}">
-                        <FlowDocument
-                            ColumnWidth="400" AutomationProperties.Name="Help Text"
-                            IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
-                            <Section FontSize="12">
-                                <Paragraph FontSize="22" FontWeight="Bold">Introducing Editing Examiner</Paragraph>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <FlowDocumentScrollViewer Margin="1">
+                            <FlowDocument
+                                ColumnWidth="400" AutomationProperties.Name="Help Text"
+                                IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
+                                <Section FontSize="12" Style="{StaticResource HelpSectionTextHighContrastStyle}">
+                                    <Paragraph FontSize="22" FontWeight="Bold" AutomationProperties.HeadingLevel="Level1">Introducing Editing Examiner</Paragraph>
 
-                                <Paragraph>
-                                    Editing Examiner lets you watch in real time as edits are performed within a
-                                    RichTextBox control. It allows the user to load or partially insert XAML into a document by using the core parser
-                                    or the editing parser. In addition, it provides basic support for invoking methods, as well as getting and setting
-                                    properties. This tool is useful for examining the editing status of a Document from different
-                                    perspectives.
-                                </Paragraph>
+                                    <Paragraph>
+                                        Editing Examiner lets you watch in real time as edits are performed within a
+                                        RichTextBox control. It allows the user to load or partially insert XAML into a document by using the core parser
+                                        or the editing parser. In addition, it provides basic support for invoking methods, as well as getting and setting
+                                        properties. This tool is useful for examining the editing status of a Document from different
+                                        perspectives.
+                                    </Paragraph>
 
-                                <Paragraph FontSize="18" FontWeight="Bold">Application Features</Paragraph>
-                                <Paragraph FontSize="15" FontWeight="Bold">DocumentTree Tab</Paragraph>
-                                <Paragraph>
-                                    The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the
-                                    TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox.
-                                    This allows you to visualize the document hierarchy.
-                                </Paragraph>
+                                    <Paragraph FontSize="18" FontWeight="Bold" AutomationProperties.HeadingLevel="Level2">Application Features</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">DocumentTree Tab</Paragraph>
+                                    <Paragraph>
+                                        The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the
+                                        TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox.
+                                        This allows you to visualize the document hierarchy.
+                                    </Paragraph>
 
-                                <Paragraph FontSize="15" FontWeight="Bold">TextSerializedXaml Tab</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">TextSerializedXaml Tab</Paragraph>
 
-                                <Paragraph>
-                                    By clicking on the Text Serialization tab, the underlying XAML is exposed, using WPF serialization
-                                    features. The TreeView is instantly updated when the Tab is selected. You can edit your XAML content
-                                    and set it back to the RichTextBox by right clicking and selecting the correct item.
-                                </Paragraph>
+                                    <Paragraph>
+                                        By clicking on the Text Serialization tab, the underlying XAML is exposed, using WPF serialization
+                                        features. The TreeView is instantly updated when the Tab is selected. You can edit your XAML content
+                                        and set it back to the RichTextBox by right clicking and selecting the correct item.
+                                    </Paragraph>
 
-                                <Paragraph FontSize="15" FontWeight="Bold">SelectionXAML Tab</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">SelectionXAML Tab</Paragraph>
 
-                                <Paragraph>
-                                    This tab displays the underlying XAML of the selected content within the RichTextBox.
-                                </Paragraph>
+                                    <Paragraph>
+                                        This tab displays the underlying XAML of the selected content within the RichTextBox.
+                                    </Paragraph>
 
-                                <Paragraph FontSize="15" FontWeight="Bold">CoreXAML Tab:</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">CoreXAML Tab:</Paragraph>
 
-                                <Paragraph>
-                                    This tab accesses the WPF core parser in order to parse an object. The object can then be inserted
-                                    back into the RichTextBox. Alternately you can use this view to see how the RichTextBox content is
-                                    serialized back to XAML.
-                                </Paragraph>
+                                    <Paragraph>
+                                        This tab accesses the WPF core parser in order to parse an object. The object can then be inserted
+                                        back into the RichTextBox. Alternately you can use this view to see how the RichTextBox content is
+                                        serialized back to XAML.
+                                    </Paragraph>
 
 
-                                <Paragraph FontSize="15" FontWeight="Bold">Immediate Window:</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">Immediate Window:</Paragraph>
 
-                                <Paragraph>
-                                    This provides an instant way to invoke methods, and get or set properties.
+                                    <Paragraph>
+                                        This provides an instant way to invoke methods, and get or set properties.
 
-                                </Paragraph>
-                                <List MarkerOffset="25" MarkerStyle="Disc">
-                                    <ListItem>
-                                        <Paragraph>The lower input box (labeled "Type Command here!" is for command input.</Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>The upper TextBox (readonly) displays the output and command history.</Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>The {Enter} key is the only trigger for starting invoke operations.</Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>Object creation is supported by invoking a constructor.</Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>
-                                            You can save (declare) an object and use it later. For example:
-                                            <Run FontFamily="Courier New" xml:space="preserve">
+                                    </Paragraph>
+                                    <List MarkerOffset="25" MarkerStyle="Disc">
+                                        <ListItem>
+                                            <Paragraph>The lower input box (labeled "Type Command here!" is for command input.</Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>The upper TextBox (readonly) displays the output and command history.</Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>The {Enter} key is the only trigger for starting invoke operations.</Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>Object creation is supported by invoking a constructor.</Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>
+                                                You can save (declare) an object and use it later. For example:
+                                                <Run FontFamily="Courier New" xml:space="preserve">
                         
 Box = new TextBox();
 Box.Text="some text";
 RichTextBox.Selection.Text = Box.Text;
-                    </Run>
-                                        </Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>
-                                            You can also perform complicated object invocation such as the following:
-                                            <Run FontFamily="Courier New" xml:space="preserve">
+                        </Run>
+                                            </Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>
+                                                You can also perform complicated object invocation such as the following:
+                                                <Run FontFamily="Courier New" xml:space="preserve">
                         
 Document.Blocks.Add(new Paragraph(new Run("add Paragraph")));
 RichTextBox.FlowDirection = FlowDirection.RightToLeft;
-                      </Run>
-                                        </Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>
-                                            The command input box is actually an editable ComboBox. It provides a string search function.
-                                            It tries to be smart as a user is typing. It helps to search the property (or fields/methods)
-                                            and the candidates are in the drop down menu.
-                                        </Paragraph>
-                                    </ListItem>
+                          </Run>
+                                            </Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>
+                                                The command input box is actually an editable ComboBox. It provides a string search function.
+                                                It tries to be smart as a user is typing. It helps to search the property (or fields/methods)
+                                                and the candidates are in the drop down menu.
+                                            </Paragraph>
+                                        </ListItem>
 
-                                    <ListItem>
-                                        <Paragraph>
-                                            The internal table initially holds three objects, the RichTextBox, a Selection, and a Document. Only
-                                            the RichTextBox is actually required. The other two are added to the table for purposes of convenience.
-                                            The Selection and Document will not be automatically updated if you use the core parser to load new XAML.
-                                            For this to work, you must do the following:
-                                            <Run FontFamily="Courier New" xml:space="preserve">
+                                        <ListItem>
+                                            <Paragraph>
+                                                The internal table initially holds three objects, the RichTextBox, a Selection, and a Document. Only
+                                                the RichTextBox is actually required. The other two are added to the table for purposes of convenience.
+                                                The Selection and Document will not be automatically updated if you use the core parser to load new XAML.
+                                                For this to work, you must do the following:
+                                                <Run FontFamily="Courier New" xml:space="preserve">
                         
 Document  = RichTextBox.Document;
 Selection = RichTextBox.Selection;
-                    </Run>
-                                        </Paragraph>
-                                    </ListItem>
-                                </List>
+                        </Run>
+                                            </Paragraph>
+                                        </ListItem>
+                                    </List>
 
-                                <Paragraph FontSize="15" FontWeight="Bold">Error messages:</Paragraph>
+                                    <Paragraph FontSize="15" FontWeight="Bold" AutomationProperties.HeadingLevel="Level3">Error messages:</Paragraph>
 
-                                <Paragraph>There are two primary errors to look for when using the immediate window:</Paragraph>
-                                <List>
-                                    <ListItem>
-                                        <Paragraph>A field, property, or method is not found. This is a parsing error. It will be displayed in the history window. The return value is shown in the history log too. You can examine the return value for possible bugs.</Paragraph>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Paragraph>Exception occurred while invoking a method. This error is shown in the lower TextBox. If an incorrect parameter is passed, the exception will be shown.</Paragraph>
-                                    </ListItem>
-                                </List>
+                                    <Paragraph>There are two primary errors to look for when using the immediate window:</Paragraph>
+                                    <List>
+                                        <ListItem>
+                                            <Paragraph>A field, property, or method is not found. This is a parsing error. It will be displayed in the history window. The return value is shown in the history log too. You can examine the return value for possible bugs.</Paragraph>
+                                        </ListItem>
+                                        <ListItem>
+                                            <Paragraph>Exception occurred while invoking a method. This error is shown in the lower TextBox. If an incorrect parameter is passed, the exception will be shown.</Paragraph>
+                                        </ListItem>
+                                    </List>
 
-                            </Section>
-                        </FlowDocument>
-                    </FlowDocumentScrollViewer>
+                                </Section>
+                            </FlowDocument>
+                        </FlowDocumentScrollViewer>
+                    </Border>
                 </TabItem>
             </TabControl>
         </StackPanel>
@@ -154,7 +157,7 @@ Selection = RichTextBox.Selection;
                         Width="400" Height="250">
                 <TabItem Header="DocumentTree" 
                          AutomationProperties.HelpText="The DocumentTree Tab displays the entire TreeView of the document container. It demonstrates how to use the TextElementCollection features. It updates automatically on each TextChanged event of the RichTextBox. This allows you to visualize the document hierarchy.">
-                    <TreeView Name="TextTreeView" AutomationProperties.Name="Document Elements"/>
+                    <TreeView Name="TextTreeView" AutomationProperties.Name="Document Elements" Style="{StaticResource DocumentTreeViewBox}"/>
                 </TabItem>
                 <TabItem Header="SelectionXaml" Name="TabSelectionXaml" 
                          AutomationProperties.HelpText="This tab displays the underlying XAML of the selected content within the RichTextBox.">
@@ -202,11 +205,13 @@ Selection = RichTextBox.Selection;
             </TabControl>
             <StackPanel Name="Panel3">
                 <Label Name="Label1" BorderThickness="1,0,1,0" Style="{StaticResource ImmediateWindowLabel}" HorizontalContentAlignment="Center"
-                       Width="400" Height="25">
+                       Width="400" Height="Auto" MinHeight="25">
                     Immediate Window
                 </Label>
                 <TextBox Name="ImmediateWindow" AutomationProperties.Name="Immediate Window" Width="400" Height="205" VerticalScrollBarVisibility="Visible"
-                         IsReadOnly="True"
+                         IsReadOnly="True" BorderBrush="Black"
+                         Style="{StaticResource TextBoxBorderContrastStyle}"
+                         IsReadOnlyCaretVisible="True"
                          AutomationProperties.HelpText="This provides an instant way to invoke methods, and get or set properties." />
                 <ComboBox Name="CommandInputBox" AutomationProperties.Name="Command input" Width="400" IsEditable="True" LostFocus="CommandInputBox_FocusEvent"
                           GotFocus="CommandInputBox_FocusEvent"

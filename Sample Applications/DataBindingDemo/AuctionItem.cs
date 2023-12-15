@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace DataBindingDemo
 {
@@ -52,8 +53,14 @@ namespace DataBindingDemo
             get { return _description; }
             set
             {
+                
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Item Description Should be added");
+                }
                 _description = value;
                 OnPropertyChanged("Description");
+
             }
         }
 
@@ -64,7 +71,7 @@ namespace DataBindingDemo
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Price must be positive");
+                    throw new ArgumentException("Price must be positive. Provide a positive price");
                 }
                 _startPrice = value;
                 OnPropertyChanged("StartPrice");
@@ -130,3 +137,4 @@ namespace DataBindingDemo
         #endregion
     }
 }
+

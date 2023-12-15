@@ -22,7 +22,7 @@
 
     <Style x:Key="SmallTitleStyle" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="DimGray" />
+        <Setter Property="Foreground" Value="Black" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Style.Triggers>
@@ -34,7 +34,7 @@
     </Style>
 
     <Style x:Key="TextStyleTextBlock" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#333333" />
+        <Setter Property="Foreground" Value="Black" />
         <Style.Triggers>
              <!--High contrast support--> 
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" >
@@ -86,6 +86,15 @@
                     <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true" />
+                    <Condition Binding="{Binding Path=IsKeyboardFocused, RelativeSource={RelativeSource Self}}" Value="true" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -110,10 +119,22 @@
 
     <Style x:Key="AuctionItemBorderStyle" TargetType="Border">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Padding" Value="7" />
         <Setter Property="Margin" Value="3" />
-        <Setter Property="Width" Value="500" />
+        <Setter Property="MinWidth" Value="500" />
+    </Style>
+
+    <Style x:Key="AuctionItemContainerStyle">
+        <Setter Property="AutomationProperties.Name">
+            <Setter.Value>
+                <MultiBinding StringFormat="{} Special Feature: {0}, Description: {1}, Current price: ${2}">
+                    <Binding Path="SpecialFeatures" />
+                    <Binding Path="Description" />
+                    <Binding Path="CurrentPrice" />
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="BorderStyle" TargetType="Border">
@@ -144,6 +165,10 @@
                 <Setter Property="Background" Value="Moccasin" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ErrorTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red" />
     </Style>
 
 </ResourceDictionary>

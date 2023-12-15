@@ -1,6 +1,6 @@
 # WPF-Samples
-This repo contains the samples that demonstrate the API usage patterns and popular features for the Windows Presentation Foundation in the .NET Core for Desktop. These samples were initially hosted on [MSDN](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx), and we are gradually 
-moving all the interesting WPF samples over to GitHub. All the samples have been retargeted to  [.NET Core 3.0](https://github.com/dotnet/core-sdk).
+This repo contains the samples that demonstrate the API usage patterns and popular features for the Windows Presentation Foundation in the .NET for Desktop. These samples were initially hosted on [MSDN](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx), and we are gradually 
+moving all the interesting WPF samples over to GitHub. All the samples have been retargeted to  [.NET 6.0](https://dotnet.microsoft.com/en-us/download).
 
 You can also find an archive of samples targeting .NET 4.7.2 in the [netframework](https://github.com/microsoft/WPF-Samples/tree/netframework) branch.
 
@@ -14,8 +14,6 @@ The samples in this repo are generally about illustrating specific concepts and 
 
 For additional WPF samples, see [WPF Samples](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx).
 
-Please note that the documentation on the repo is still being updated, so all links might not point to the right location.
-
 ## License
 Unless otherwise mentioned, the samples are released under the [MIT license](https://github.com/Microsoft/WPF-Samples/blob/master/LICENSE)
 
@@ -26,13 +24,13 @@ Questions: mail wpfteam@microsoft.com
 
 ## WPF development
 
-These samples require Visual Studio 2019 to build, test, and deploy, and also require the .NET Core 3 SDK.
+These samples require Visual Studio 2022 to build, test, and deploy, and also require the .NET 6 SDK.
 
-   [Get a free copy of Visual Studio 2019 Community Edition with support for building WPF apps](https://www.visualstudio.com/wpf-vs)
+   [Get a free copy of Visual Studio 2022 Community Edition](https://www.visualstudio.com/wpf-vs)
 
    [.NET Core SDK](https://github.com/dotnet/core-sdk)
 
-WPF on .NET Core 3.0 has been open-sourced, and is now available on [Github](https://github.com/dotnet/wpf)
+WPF on .NET has been open-sourced, and is now available on [Github](https://github.com/dotnet/wpf)
    
 ## Using the samples
 
@@ -46,11 +44,11 @@ After cloning the WPF-Samples respository, there will be two solution files in t
 
 The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in Visual Studio 2019.
 
-   [Download the samples ZIP](../../archive/master.zip)
+   [Download the samples ZIP](../../archive/main.zip)
 
    **Notes:** 
    * Before you unzip the archive, right-click it, select Properties, and then select Unblock.
    * Most samples should work independently
-   * By default, all the samples target .NET core 3.0.
+   * By default, all the samples target .NET 6.0. (Installers for the .NET 6 SDK can be found at <https://dotnet.microsoft.com/en-us/download>)
 
 For more info about the programming models, platforms, languages, and APIs demonstrated in these samples, please refer to the guidance  available in  [MSDN](https://msdn.microsoft.com/en-us/library/ms754130.aspx). These samples are provided as-is in order to indicate or demonstrate the functionality of the programming models and feature APIs for WPF.

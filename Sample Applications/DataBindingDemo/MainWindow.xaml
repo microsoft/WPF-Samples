@@ -20,7 +20,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="300" />
+            <RowDefinition Height="200" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -32,7 +32,9 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
-                   Style="{StaticResource TitleStyle}" Margin="8,20,8,8">
+                   Style="{StaticResource TitleStyle}" Margin="8,20,8,8"
+                   AutomationProperties.HeadingLevel = "Level1" 
+                   AutomationProperties.Name="{Binding RelativeSource={RelativeSource Self}, Path=Text}">
             List of items for sale:
         </TextBlock>
         <CheckBox Name="Grouping" Grid.Row="1" Grid.Column="0"
@@ -52,8 +54,10 @@
         </CheckBox>
 
 
-        <ListBox Name="Master" AutomationProperties.Name="Master" Grid.Row="2" Grid.ColumnSpan="3" Margin="8"
-                 ItemsSource="{Binding Source={StaticResource ListingDataView}}">
+        <ListBox Name="Master" AutomationProperties.Name="Items For Sale" Grid.Row="2" Grid.ColumnSpan="3" Margin="8"
+                 ItemsSource="{Binding Source={StaticResource ListingDataView}}"
+                 ItemContainerStyle="{StaticResource AuctionItemContainerStyle}"
+                 AutomationProperties.LiveSetting="Assertive">
             <ListBox.GroupStyle>
                 <GroupStyle
                     HeaderTemplate="{StaticResource GroupingHeaderTemplate}" />
@@ -64,9 +68,10 @@
         <ContentControl Name="Detail" Grid.Row="3" Grid.ColumnSpan="3"
                         Content="{Binding Source={StaticResource ListingDataView}}"
                         ContentTemplate="{StaticResource DetailsProductListingTemplate}"
-                        Margin="9,0,0,0" />
+                        Margin="9,0,0,0" IsTabStop="False"/>
         <Button Name="OpenAddProduct" Grid.Row="4" Grid.Column="1" Content="Add Product" HorizontalAlignment="Center"
                 Margin="8"
                 Click="OpenAddProductWindow" />
+        
     </Grid>
 </Window>
