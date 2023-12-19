@@ -11,7 +11,9 @@ name: "Changing a Collection by Using IEditableCollectionView Sample"
 This sample uses the members that are provided by the IEditableCollectionView interface to add and change items in a ListView. The IEditableCollectionView provides a common API so that you can use the same members to add, edit, and remove items of a collection, if the collection supports such operations, regardless of the collection's type.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the [repo](https://github.com/microsoft/WPF-Samples?tab=readme-ov-file) page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+
+[Download the samples ZIP](../../archive/main.zip)
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 

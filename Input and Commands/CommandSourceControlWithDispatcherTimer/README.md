@@ -16,7 +16,9 @@ The CommandManager notifies the RoutedCommand via the RequerySuggested event tha
 This sample creates a RoutedCommand that can be executed only when the seconds in the current time are greater than a target value. A DispatcherTimer is created that calls InvalidateRequerySuggested every second. This insures that the command source will receive the CanExecuteChanged event so that it can call the CanExecute method on the command.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the [repo](https://github.com/microsoft/WPF-Samples?tab=readme-ov-file) page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+
+[Download the samples ZIP](../../archive/main.zip)
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 

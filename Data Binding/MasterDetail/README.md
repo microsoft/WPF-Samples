@@ -11,7 +11,9 @@ name: "Master-Detail Scenario Using XmlDataProvider Sample"
 This sample shows how to use three synchronized ListBox controls to display XML data that is hierarchical (such as a list that contains other lists). For more information, see How to: Use the Master-Detail Pattern with Hierarchical Data and How to: Use the Master-Detail Pattern with Hierarchical XML Data.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the [repo](https://github.com/microsoft/WPF-Samples?tab=readme-ov-file) page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+
+[Download the samples ZIP](../../archive/main.zip)
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 

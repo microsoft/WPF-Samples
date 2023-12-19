@@ -16,7 +16,9 @@ Command sources, such as the MenuItem class and the Button class, listen to the 
 The CommandManager notifies the RoutedCommand via the RequerySuggested event that conditions have changed with the command target. The RoutedCommand raises the CanExecuteChanged event which the command source listens to. Normally, this notification mechanism is adequate, but there are some situations where the CommandManager is unaware that the conditions have changed on the command target and thus the RequerySuggested event is never raised and the command source never queries the RoutedCommand. In these situations the CommandManager can be forced to raise the RequerySuggested event by calling InvalidateRequerySuggested.
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the [repo](https://github.com/microsoft/WPF-Samples?tab=readme-ov-file) page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+
+[Download the samples ZIP](../../archive/main.zip)
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 

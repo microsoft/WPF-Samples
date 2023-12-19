@@ -11,7 +11,9 @@ name: "Binding Using XML Namespaces Sample"
 This sample shows how to create a simple binding. For more information, see [How to: Create a Simple Binding](https://msdn.microsoft.com/en-us/library/vstudio/ms752047.aspx).
 
 ## Build the sample
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the [repo](https://github.com/microsoft/WPF-Samples?tab=readme-ov-file) page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
+
+[Download the samples ZIP](../../archive/main.zip)
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 
