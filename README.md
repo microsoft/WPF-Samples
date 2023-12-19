@@ -24,14 +24,39 @@ Questions: mail wpfteam@microsoft.com
 
 ## WPF development
 
-These samples require Visual Studio 2022 to build, test, and deploy, and also require the .NET 8 SDK.
+# For .NET 8 - main branch
+
+These samples require Visual Studio 2022(v17.8) to build, test, and deploy, and also require the most recent .NET 8 SDK.
 
    [Get a free copy of Visual Studio 2022 Community Edition](https://www.visualstudio.com/wpf-vs)
 
-   [.NET Core SDK](https://github.com/dotnet/core-sdk)
+   [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
+
+# For .NET 7
+
+These samples require Visual Studio 2022(v17.7), Visual Studio 2022 for Mac (v17.6) to build, test, and deploy, and also require the .NET 7 SDK.
+
+   [Get a free copy of Visual Studio 2022 Community Edition](https://www.visualstudio.com/wpf-vs)
+
+   [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+
+
+
+# For .NET 6
+
+These samples require Visual Studio 2022(v17.2), Visual Studio 2022 for Mac (v17.6) to build, test, and deploy, and also require the .NET 6 SDK.
+
+   [Get a free copy of Visual Studio 2022 Community Edition](https://www.visualstudio.com/wpf-vs)
+
+   [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
+
 
 WPF on .NET has been open-sourced, and is now available on [Github](https://github.com/dotnet/wpf)
-   
+
+
+
 ## Using the samples
 
 To use the samples with Git, clone the WPF-Samples repository with 'git clone https://github.com/microsoft/WPF-Samples'
