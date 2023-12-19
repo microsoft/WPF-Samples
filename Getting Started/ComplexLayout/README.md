@@ -23,7 +23,7 @@ The easiest way to use these samples without using Git is to download the zip fi
 ### Preview the layout
 
 The completed complex XAML layout will resemble the following!
-![A Screen Shot from Visual Studio 2019 showing a rich user interface which is created with just a dozen lines of XAML](WPF_ComplexLayout_Resultant_UI.png?raw=true "A Screen Shot from Visual Studio 2019 showing a rich user interface which is created with just a dozen lines of XAML")
+![A Screen Shot from Visual Studio 2022 showing a rich user interface which is created with just a dozen lines of XAML](WPF_ComplexLayout_Resultant_UI.png?raw=true "A Screen Shot from Visual Studio 2022 showing a rich user interface which is created with just a dozen lines of XAML")
 
 
 
