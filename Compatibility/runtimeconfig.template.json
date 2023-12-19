@@ -98,19 +98,19 @@
     // FrameworkAppContextSwitches
 
     // Switch to enable non-adorner based rendering of TextSelection in TextBox and PasswordBox
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-TextBox-PasswordBox-text-selection-does-not-follow-system-colors.md
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-TextBox-PasswordBox-text-selection-does-not-follow-system-colors.md
     "Switch.System.Windows.Controls.Text.UseAdornerForTextboxSelectionRendering": true,
 
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-layout-rounding-of-margins-has-changed.md
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-layout-rounding-of-margins-has-changed.md
     "Switch.MS.Internal.DoNotApplyLayoutRoundingToMarginsAndBorderThickness": false,
 
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-grid-allocation-of-space-to-star-columns.md
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-grid-allocation-of-space-to-star-columns.md
     "Switch.System.Windows.Controls.Grid.StarDefinitionsCanExceedAvailableSpace": false,
 
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-tabcontrol-selectionchanged-and-selectedcontent.md
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-tabcontrol-selectionchanged-and-selectedcontent.md
     "Switch.System.Windows.Controls.TabControl.SelectionPropertiesCanLagBehindSelectionChangedEvent": false,
 
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-MasterDetail-ADOdata-PrimaryKey.md
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-mainDetail-ADOdata-PrimaryKey.md
     "Switch.System.Windows.Data.DoNotUseFollowParentWhenBindingToADODataRelation": false,
 
     // Switch to enable IList indexer hiding a custom indexer in a binding path
@@ -155,8 +155,8 @@
 
     // AccessibilitySwitches
     // https://docs.microsoft.com/en-us/dotnet/framework/whats-new/whats-new-in-accessibility
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements.MD
-    // https://github.com/microsoft/dotnet/blob/master/Documentation/compatibility/wpf-accessibility-improvements-48.md
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-accessibility-improvements.MD
+    // https://github.com/microsoft/dotnet/blob/main/Documentation/compatibility/wpf-accessibility-improvements-48.md
 
     "Switch.UseLegacyAccessibilityFeatures": false,
     "Switch.UseLegacyAccessibilityFeatures.2": false,
@@ -164,7 +164,7 @@
     "Switch.UseLegacyToolTipDisplay": false,
 
     // Guards the fix for the automation tree under a plain ItemsControl
-    // https://github.com/microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md
+    // https://github.com/microsoft/dotnet/blob/main/releases/net48/dotnet48-changes.md
     "Switch.System.Windows.Controls.ItemsControlDoesNotSupportAutomation": false
   */
   }

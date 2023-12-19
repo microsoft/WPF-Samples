@@ -6,16 +6,16 @@ You can also find an archive of samples targeting .NET 4.7.2 in the [netframewor
 
 The samples in this repo are generally about illustrating specific concepts and may go against accessibility best practices. However, the team has spent some time illustrating accessibility best practices in a subset of these samples.
 
-* [ExpenseItIntro](https://github.com/microsoft/WPF-Samples/tree/master/Getting%20Started/WalkthroughFirstWPFApp)
-* [ExpenseItDemo](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/ExpenseIt/ExpenseItDemo)
-* [DataBindingDemo](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/DataBindingDemo)
-* [CustomComboBox](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/CustomComboBox)
-* [EditingExaminerDemo](https://github.com/microsoft/WPF-Samples/tree/master/Sample%20Applications/EditingExaminerDemo)
+* [ExpenseItIntro](https://github.com/microsoft/WPF-Samples/tree/main/Getting%20Started/WalkthroughFirstWPFApp)
+* [ExpenseItDemo](https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/ExpenseIt/ExpenseItDemo)
+* [DataBindingDemo](https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/DataBindingDemo)
+* [CustomComboBox](https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/CustomComboBox)
+* [EditingExaminerDemo](https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/EditingExaminerDemo)
 
-For additional WPF samples, see [WPF Samples](https://msdn.microsoft.com/en-us/library/vstudio/ms771633.aspx).
+For additional WPF samples, see [WPF Samples](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/wpf-samples?view=netframeworkdesktop-4.8).
 
 ## License
-Unless otherwise mentioned, the samples are released under the [MIT license](https://github.com/Microsoft/WPF-Samples/blob/master/LICENSE)
+Unless otherwise mentioned, the samples are released under the [MIT license](https://github.com/Microsoft/WPF-Samples/blob/main/LICENSE)
 
 ## Help us improve our samples
 Help us improve out samples by sending us a pull-request or opening a [GitHub Issue](https://github.com/Microsoft/WPF-Samples/issues)
