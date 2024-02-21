@@ -31,7 +31,6 @@ This is the full default StickyNote Style definition.
     <Setter Property="BorderThickness" Value="2" />
     <Setter Property="BorderBrush" Value="#FF008000" />
     <Setter Property="Background">
-     <Setter.Value>
         <DrawingBrush>
           <DrawingBrush.Drawing>
       <!-- Drawing a rotated linear gradient rectangle: Angle 20, Width 400 Height 300 -->
@@ -50,7 +49,6 @@ This is the full default StickyNote Style definition.
             </GeometryDrawing>
           </DrawingBrush.Drawing>
         </DrawingBrush>
-      </Setter.Value>
     </Setter>
     <Setter Property="Template" Value="{DynamicResource StickyNoteIconTemplate}" />
     <Style.Triggers>
@@ -172,7 +170,6 @@ This is the full default StickyNote Style definition.
         <Setter Property="Control.TabIndex" Value="0" />
         <Setter Property="Control.IsTabStop" Value="true" />
         <Setter Property="Background">
-          <Setter.Value>
             <DrawingBrush Viewbox="0,0,1,32" ViewboxUnits="Absolute" Viewport="0,0,1,32" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" TileMode="Tile" Stretch="None">
               <DrawingBrush.Drawing>
                 <GeometryDrawing Geometry="M 0, 31.5 L 1, 31.5">
@@ -182,7 +179,6 @@ This is the full default StickyNote Style definition.
                 </GeometryDrawing>
               </DrawingBrush.Drawing>
             </DrawingBrush>
-          </Setter.Value>
         </Setter>
         <Style.Triggers>
           <Trigger Property="StickyNoteControl.IsActive" Value="false">
@@ -263,7 +259,6 @@ This is the full default StickyNote Style definition.
   <Style x:Key="StickyNoteTitleThumbStyleKey" TargetType="{x:Type Thumb}">
     <Setter Property="Height" Value="20" />
     <Setter Property="Background">
-      <Setter.Value>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
           <GradientBrush.GradientStops>
             <GradientStopCollection x:Uid="GradientStopCollection_78">
@@ -272,19 +267,15 @@ This is the full default StickyNote Style definition.
             </GradientStopCollection>
           </GradientBrush.GradientStops>
         </LinearGradientBrush>
-      </Setter.Value>
     </Setter>
     <Setter Property="Template">
-      <Setter.Value>
         <ControlTemplate x:Uid="ControlTemplate_21">
           <Border Background="{TemplateBinding Background}" CornerRadius="5,5,0,0">
             <Border Margin="0,3,0,0" Width="40" Height="4" Background="{TemplateBinding Foreground}" VerticalAlignment="Top" HorizontalAlignment="Center" />
           </Border>
         </ControlTemplate>
-      </Setter.Value>
     </Setter>
     <Setter Property="Foreground">
-      <Setter.Value>
         <DrawingBrush Viewbox="0,0,1,1" Viewport="0,0,4,4" TileMode="Tile" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top">
           <DrawingBrush.Drawing>
             <DrawingGroup>
@@ -295,12 +286,10 @@ This is the full default StickyNote Style definition.
             </DrawingGroup>
           </DrawingBrush.Drawing>
         </DrawingBrush>
-      </Setter.Value>
     </Setter>
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="true">
         <Setter Property="Background">
-          <Setter.Value>
             <LinearGradientBrush x:Uid="LinearGradientBrush_79" StartPoint="0,0" EndPoint="0,1">
               <GradientBrush.GradientStops>
                 <GradientStopCollection x:Uid="GradientStopCollection_79">
@@ -309,7 +298,6 @@ This is the full default StickyNote Style definition.
                 </GradientStopCollection>
               </GradientBrush.GradientStops>
             </LinearGradientBrush>
-          </Setter.Value>
         </Setter>
       </Trigger>
       <MultiTrigger >
@@ -318,7 +306,6 @@ This is the full default StickyNote Style definition.
           <Condition Property="StickyNoteControl.IsActive" Value="false" />
         </MultiTrigger.Conditions>
         <Setter Property="Background">
-          <Setter.Value>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
               <GradientBrush.GradientStops>
                 <GradientStopCollection x:Uid="GradientStopCollection_80">
@@ -327,7 +314,6 @@ This is the full default StickyNote Style definition.
                 </GradientStopCollection>
               </GradientBrush.GradientStops>
             </LinearGradientBrush>
-          </Setter.Value>
         </Setter>
       </MultiTrigger>
     </Style.Triggers>
@@ -337,17 +323,14 @@ This is the full default StickyNote Style definition.
         -->
   <Style x:Key="StickyNoteResizeBottomRightThumbStyleKey" TargetType="{x:Type Thumb}">
     <Setter Property="Template">
-      <Setter.Value>
         <ControlTemplate>
           <Border Background="{TemplateBinding Background}" />
         </ControlTemplate>
-      </Setter.Value>
     </Setter>
     <Setter Property="Cursor" Value="SizeNWSE" />
     <Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
     <Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}" />
     <Setter Property="Background">
-      <Setter.Value>
         <DrawingBrush AlignmentX="Center" AlignmentY="Center" TileMode="None" Stretch="None">
           <DrawingBrush.Drawing>
             <DrawingGroup>
@@ -368,7 +351,6 @@ This is the full default StickyNote Style definition.
             </DrawingGroup>
           </DrawingBrush.Drawing>
         </DrawingBrush>
-      </Setter.Value>
     </Setter>
     <Style.Triggers>
       <Trigger Property="FlowDirection" Value="{x:Static FlowDirection.RightToLeft}">
@@ -382,13 +364,11 @@ This is the full default StickyNote Style definition.
   <Style x:Key="StickyNoteButtonStyleKey" BasedOn="{x:Null}" TargetType="{x:Type Button}">
     <Setter Property="OverridesDefaultStyle" Value="true" />
     <Setter Property="Template">
-      <Setter.Value>
         <ControlTemplate >
           <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
             <Border Background="{TemplateBinding Foreground}" />
           </Border>
         </ControlTemplate>
-      </Setter.Value>
     </Setter>
   </Style>
   <!--
@@ -402,7 +382,6 @@ This is the full default StickyNote Style definition.
     <Setter Property="BorderBrush" Value="#FF60BB60" />
     <Setter Property="BorderThickness" Value="1,1,1,1" />
     <Setter Property="Background">
-      <Setter.Value>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
           <GradientBrush.GradientStops>
             <GradientStopCollection>
@@ -411,11 +390,9 @@ This is the full default StickyNote Style definition.
             </GradientStopCollection>
           </GradientBrush.GradientStops>
         </LinearGradientBrush>
-      </Setter.Value>
     </Setter>
     <Setter Property="Margin" Value="0,0,3,0" />
     <Setter Property="Foreground">
-      <Setter.Value>
         <DrawingBrush ViewboxUnits="Absolute" Viewbox="0,0,24,18" Viewport="0,0,1,1" TileMode="Tile">
           <DrawingBrush.Drawing>
             <GeometryDrawing Geometry="M 6, 12 L 18, 12">
@@ -425,7 +402,6 @@ This is the full default StickyNote Style definition.
             </GeometryDrawing>
           </DrawingBrush.Drawing>
         </DrawingBrush>
-      </Setter.Value>
     </Setter>
   </Style>
 </ResourceDictionary>

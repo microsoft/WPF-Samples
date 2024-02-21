@@ -54,7 +54,6 @@
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Padding" Value="20" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
@@ -177,7 +176,6 @@
                             </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Application.Resources>

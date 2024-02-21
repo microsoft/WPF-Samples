@@ -448,14 +448,12 @@
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Margin" Value="5,5,0,0" />
                         <Setter Property="Background">
-                            <Setter.Value>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0.03,0.9">
                                     <LinearGradientBrush.GradientStops>
                                         <GradientStop Offset="0.0" Color="#FF808080" />
                                         <GradientStop Offset="1.0" Color="#FFA0A0A0" />
                                     </LinearGradientBrush.GradientStops>
                                 </LinearGradientBrush>
-                            </Setter.Value>
                         </Setter>
                         <Setter Property="Height" Value="25" />
                         <Setter Property="Width" Value="38" />

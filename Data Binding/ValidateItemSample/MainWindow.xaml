@@ -15,15 +15,12 @@
                 <Setter Property="Margin" Value="2"/>
                 <Setter Property="Focusable" Value="False"/>
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="HeaderedContentControl">
                             <DockPanel LastChildFill="False">
                                 <ContentPresenter ContentSource="Header" DockPanel.Dock="Left" Focusable="False" VerticalAlignment="Center"/>
                                 <ContentPresenter ContentSource="Content" Margin="5,0,0,0" DockPanel.Dock="Right" VerticalAlignment="Center"/>
                             </DockPanel>
-
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 

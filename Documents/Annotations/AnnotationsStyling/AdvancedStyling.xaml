@@ -11,20 +11,16 @@
       <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Ink}">
         <!-- Custom template that only contains required controls -->
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate>
                 <InkCanvas Name="PART_ContentControl" Background="LightYellow" />
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Trigger>
       <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Text}">
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate>
                 <RichTextBox Name="PART_ContentControl" Background="LightYellow"/>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Trigger>
     </Style.Triggers>
@@ -38,7 +34,6 @@
     <Style.Triggers>
       <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Ink}">
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate>
               <Grid Background="Green" Name="TheGrid">
                 <Grid.RowDefinitions>
@@ -51,12 +46,10 @@
                 <InkCanvas Grid.Row="1" Name="PART_ContentControl" Background="LightYellow" />
               </Grid>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Trigger>
       <Trigger Property="StickyNoteControl.StickyNoteType" Value="{x:Static StickyNoteType.Text}">
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate>
               <Grid Background="Green" Name="TheGrid">
                 <Grid.RowDefinitions>
@@ -69,18 +62,15 @@
                 <RichTextBox Grid.Row="1" Name="PART_ContentControl" Background="LightYellow"/>
               </Grid>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Trigger>
       <Trigger Property="StickyNoteControl.IsExpanded" Value="False">
         <Setter Property="Control.Template">
-          <Setter.Value>
             <ControlTemplate>
               <DockPanel Background="Blue">
                 <CheckBox IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=true}" />
               </DockPanel>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Trigger>
     </Style.Triggers>

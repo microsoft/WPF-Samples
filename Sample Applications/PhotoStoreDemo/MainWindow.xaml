@@ -164,7 +164,6 @@
 
         <Style x:Key="PhotoListStyle" TargetType="{x:Type ListBox}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border
                             BorderBrush="Gray"
@@ -181,7 +180,6 @@
                             </ScrollViewer>
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -230,7 +228,6 @@
 
         <Style x:Key="ShoppingCartStyle" TargetType="{x:Type ListBox}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
                         <Border
                             BorderBrush="Gray"
@@ -248,7 +245,6 @@
                             </ScrollViewer>
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -257,7 +253,6 @@
         <Style x:Key="ShoppingCartItem" TargetType="{x:Type ListBoxItem}">
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Border
                             x:Name="ContentBorder"
@@ -273,7 +268,6 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -281,7 +275,6 @@
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="OuterBorder"
                                 CornerRadius="3"
@@ -309,7 +302,6 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
             <Setter Property="Height" Value="18" />
             <Setter Property="Foreground" Value="MidnightBlue" />
@@ -337,7 +329,6 @@
 
         <Style x:Key="ScrollbarLineButton" TargetType="{x:Type RepeatButton}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
                         <Border
                             BorderBrush="Transparent"
@@ -347,7 +338,6 @@
                             <ContentPresenter x:Name="ContentSite" />
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
             <Setter Property="MinHeight" Value="12" />
             <Setter Property="MinWidth" Value="12" />
@@ -364,11 +354,9 @@
             <Setter Property="Focusable" Value="false" />
             <Setter Property="Command" Value="ScrollBar.PageUpCommand" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
                         <Rectangle Fill="Transparent" />
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -394,14 +382,12 @@
 
         <Style x:Key="ScrollBarVerticalThumb" TargetType="{x:Type Thumb}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
                         <Border CornerRadius="6"
                                 BorderBrush="Transparent"
                                 BorderThickness="1"
                                 Background="{DynamicResource VerticalScrollGradient}" />
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
             <Setter Property="MinHeight" Value="10" />
             <Setter Property="MinWidth" Value="10" />
@@ -409,14 +395,12 @@
 
         <Style x:Key="ScrollBarHorizontalThumb" TargetType="{x:Type Thumb}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
                         <Border CornerRadius="6"
                                 BorderBrush="Transparent"
                                 BorderThickness="1"
                                 Background="{DynamicResource ButtonGradient}" />
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
             <Setter Property="MinHeight" Value="10" />
             <Setter Property="MinWidth" Value="10" />
@@ -426,7 +410,6 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="MinWidth" Value="10" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ScrollBar}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -455,14 +438,12 @@
                                           Command="ScrollBar.LineDownCommand" Content=" v" />
                         </Grid>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="Orientation" Value="Horizontal">
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="MinHeight" Value="10" />
                     <Setter Property="Template">
-                        <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ScrollBar}">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -493,7 +474,6 @@
 
                                 </Grid>
                             </ControlTemplate>
-                        </Setter.Value>
                     </Setter>
                 </Trigger>
             </Style.Triggers>

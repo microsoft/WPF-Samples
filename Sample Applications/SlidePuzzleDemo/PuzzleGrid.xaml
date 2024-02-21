@@ -11,7 +11,6 @@
 
         <Style x:Key="PuzzleButtonStyle">
             <Setter Property="Button.Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
 
                         <ControlTemplate.Resources>
@@ -77,10 +76,7 @@
                         <!-- -->
 
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
-
     </Grid.Resources>
-
 </Grid>

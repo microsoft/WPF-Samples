@@ -6,14 +6,12 @@
     <Application.Resources>
         <Style x:Key="ToolBarGradient" TargetType="{x:Type Border}">
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0" Color="White" />
                             <GradientStop Offset="1" Color="Gray" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
         </Style>
     </Application.Resources>

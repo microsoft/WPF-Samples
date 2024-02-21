@@ -10,16 +10,12 @@
       <Setter Property="Background" Value="White" />
       <Setter Property="Padding" Value="10" />
       <Setter Property="BitmapEffect">
-        <Setter.Value>
           <OuterGlowBitmapEffect GlowColor="White" />
-        </Setter.Value>
       </Setter>
     </Style>
     <Style TargetType="{x:Type Rectangle}">
       <Setter Property="BitmapEffect">
-        <Setter.Value>
           <DropShadowBitmapEffect />
-        </Setter.Value>
       </Setter>
     </Style>
   </Page.Resources>

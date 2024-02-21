@@ -43,7 +43,6 @@
         <Setter Property="MinWidth" Value="80" />
         <Setter Property="MinHeight" Value="50" />
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ItemsControl}">
                     <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
@@ -86,7 +85,6 @@
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
 
@@ -130,7 +128,6 @@
         <Setter Property="RadiusX" Value="10" />
         <Setter Property="RadiusY" Value="10" />
         <Setter Property="Stroke">
-            <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientBrush.GradientStops>
                         <GradientStopCollection>
@@ -139,10 +136,8 @@
                         </GradientStopCollection>
                     </GradientBrush.GradientStops>
                 </LinearGradientBrush>
-            </Setter.Value>
         </Setter>
         <Setter Property="Fill">
-            <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientBrush.GradientStops>
                         <GradientStopCollection>
@@ -151,7 +146,6 @@
                         </GradientStopCollection>
                     </GradientBrush.GradientStops>
                 </LinearGradientBrush>
-            </Setter.Value>
         </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -168,7 +162,6 @@
 
     <Style x:Key="EmployeeListHighContrastFocusVisualStyle" TargetType="Control">
         <Setter Property="Control.Template">
-            <Setter.Value>
                 <ControlTemplate>
                     <Rectangle StrokeThickness="1"
                           Stroke="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"
@@ -176,7 +169,6 @@
                           Margin="0,1,0,1"
                           SnapsToDevicePixels="true"/>
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
 
@@ -196,14 +188,12 @@
     <Style x:Key="HorizontalRadio" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Margin" Value="0,5,5,0" />
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate>
                     <RadioButton Focusable="false"
                                      Content="{TemplateBinding ContentPresenter.Content}"
                                      VerticalAlignment="Center"
                                      IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" />
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
 
@@ -211,12 +201,10 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Template">
-            <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <StackPanel KeyboardNavigation.TabNavigation="Once" IsItemsHost="True" Orientation="Horizontal"
                                     Height="25" />
                 </ControlTemplate>
-            </Setter.Value>
         </Setter>
     </Style>
 

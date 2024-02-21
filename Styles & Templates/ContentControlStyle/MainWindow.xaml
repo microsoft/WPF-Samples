@@ -23,15 +23,12 @@
         </Grid.RowDefinitions>
 
         <Grid.Resources>
-
-
             <Style x:Key="ContentCtrl" TargetType="{x:Type ContentControl}">
                 <Setter Property="Background" Value="Red"/>
                 <Setter Property="Foreground" Value="Green"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContentControl}">
                             <Grid>
                                 <!--Keep the Ellipse a circle when ContentControl.Width
@@ -43,7 +40,6 @@
                                     HorizontalAlignment="Center"/>
                             </Grid>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
 
@@ -79,5 +75,4 @@
         <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="14" TextWrapping="WrapWithOverflow">This example demonstrates how to create and use a ContentTemplate and how to determine whether the control contains content.</TextBlock>
 
     </Grid>
-
 </Window>

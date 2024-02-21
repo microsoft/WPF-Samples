@@ -94,12 +94,10 @@
 
         <Style x:Key="MyIntroTextBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                         <GradientStop Offset="0.0" Color="#CCCCFF" />
                         <GradientStop Offset="0.0" Color="White" />
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="BorderBrush" Value="Gray" />
@@ -117,14 +115,9 @@
             <Setter Property="Margin" Value="20" />
         </Style>
 
-
-
         <Style TargetType="{x:Type Viewport3D}">
             <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
-
-
-
 
         <!-- 3D Models -->
         <MeshGeometry3D 

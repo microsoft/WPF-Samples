@@ -201,9 +201,7 @@
             <Setter Property="Stroke" Value="Black" />
             <Setter Property="StrokeThickness" Value="1" />
             <Setter Property="Fill">
-                <Setter.Value>
                     <SolidColorBrush Color="White" Opacity="0.5" />
-                </Setter.Value>
             </Setter>
             <Setter Property="Width" Value="20" />
             <Setter Property="Height" Value="20" />
@@ -234,7 +232,6 @@
       TargetType="{x:Type TreeViewItem}" >
             <Setter Property="Margin" Value="2, 2, 2, 0" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TreeViewItem}">
                         <RadioButton 
               Focusable="False" 
@@ -244,7 +241,6 @@
                 ContentSource="Header" />
                         </RadioButton>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
@@ -257,7 +253,6 @@
             <Setter Property="MinHeight"
               Value="13"/>
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Border MinWidth="19"
                     MinHeight="13"
@@ -287,13 +282,11 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
         <Style x:Key="TreeViewItemFocusVisual">
             <Setter Property="Control.Template">
-                <Setter.Value>
                     <ControlTemplate>
                         <Border>
                             <Rectangle Margin="0,0,0,0"
@@ -303,22 +296,18 @@
                 Opacity="1" />
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
         <Style x:Key="TreeViewItemHeaderStyle" TargetType="{x:Type TreeViewItem}" >
             <Setter Property="Margin" Value="2, 2, 2, 0" />
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                         <GradientStop Offset="0.0" Color="#22cc99ff" />
                         <GradientStop Offset="1.0" Color="#37cc99ff" />
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TreeViewItem}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -501,7 +490,6 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Application.Resources>

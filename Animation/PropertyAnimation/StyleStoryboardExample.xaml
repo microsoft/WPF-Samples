@@ -10,9 +10,7 @@
   <!-- Defines a Button style. -->
     <Style TargetType="{x:Type Button}" x:Key="MyButtonStyle">
       <Setter Property="Background">
-        <Setter.Value>
           <SolidColorBrush Color="Orange" />
-        </Setter.Value>
       </Setter>
       <Style.Triggers>
       
@@ -63,19 +61,11 @@
     </Style>
   </Page.Resources>
   
-
-
   <Border Background="White">
-    <StackPanel Margin="30" HorizontalAlignment="Left" MinWidth="500">
-
-      
+    <StackPanel Margin="30" HorizontalAlignment="Left" MinWidth="500">     
       <Button 
         Style="{StaticResource MyButtonStyle}"
-        Content="Click Me" />
-    
+        Content="Click Me" />    
     </StackPanel>
   </Border>
 </Page>
-
-
-

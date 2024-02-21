@@ -7,7 +7,6 @@
         <Style TargetType="{x:Type Canvas}">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Background">
-                <Setter.Value>
                     <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile"
               AlignmentX="Left" AlignmentY="Top">
                         <DrawingBrush.Drawing>
@@ -24,7 +23,6 @@
                             </DrawingGroup>
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
-                </Setter.Value>
             </Setter>
         </Style>
         
