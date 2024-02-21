@@ -1,0 +1,219 @@
+id: 
+name: GitOps.PullRequestIssueManagement
+description: GitOps.PullRequestIssueManagement primitive
+owner: 
+resource: repository
+disabled: false
+where: 
+configuration:
+  resourceManagementConfiguration:
+    scheduledSearches:
+    - description: Close stale issues and pull requests
+      frequencies:
+      - hourly:
+          hour: 3
+      filters:
+      - isPullRequest
+      - isOpen
+      - hasLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      - hasLabel:
+          label: ':zzz: no-recent-activity'
+      - noActivitySince:
+          days: 7
+      - isIssue
+      actions:
+      - closeIssue
+      - removeMilestone
+    - description: Add no recent activity label to issues and pull requests
+      frequencies:
+      - hourly:
+          hour: 3
+      filters:
+      - isPullRequest
+      - isOpen
+      - hasLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      - noActivitySince:
+          days: 14
+      - isNotLabeledWith:
+          label: ':zzz: no-recent-activity'
+      - isIssue
+      actions:
+      - addLabel:
+          label: ':zzz: no-recent-activity'
+      - addReply:
+          reply: >-
+            This submission has been automatically marked as stale because it has been marked as requiring author feedback but has not had any activity for **14 days**. 
+
+
+            It will be closed if no further activity occurs **within 7 days of this comment**.
+    - description: Close stale issues
+      frequencies:
+      - hourly:
+          hour: 3
+      filters:
+      - isIssue
+      - isOpen
+      - hasLabel:
+          label: needs-author-feedback
+      - hasLabel:
+          label: no-recent-activity
+      - noActivitySince:
+          days: 3
+      actions:
+      - closeIssue
+    - description: Add no recent activity label to issues
+      frequencies:
+      - hourly:
+          hour: 3
+      filters:
+      - isIssue
+      - isOpen
+      - hasLabel:
+          label: needs-author-feedback
+      - noActivitySince:
+          days: 4
+      - isNotLabeledWith:
+          label: no-recent-activity
+      actions:
+      - addLabel:
+          label: no-recent-activity
+      - addReply:
+          reply: This issue has been automatically marked as stale because it has marked as requiring author feedback but has not had any activity for **4 days**. It will be closed if no further activity occurs **within 3 days of this comment**. Thank you for your contributions!
+    eventResponderTasks:
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Opened
+      then:
+      - addCodeFlowLink
+      description: Add a CodeFlow link to new pull requests
+    - if:
+      - payloadType: Pull_Request_Review
+      - isAction:
+          action: Submitted
+      - isReviewState:
+          reviewState: Changes_requested
+      then:
+      - addLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      description: Add needs author feedback label to pull requests when changes are requested
+    - if:
+      - payloadType: Pull_Request
+      - isActivitySender:
+          issueAuthor: True
+      - not:
+          isAction:
+            action: Closed
+      - hasLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      then:
+      - removeLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      description: Remove needs author feedback label when the author responds to a pull request
+    - if:
+      - payloadType: Issue_Comment
+      - isActivitySender:
+          issueAuthor: True
+      - hasLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      then:
+      - removeLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      description: Remove needs author feedback label when the author comments on a pull request
+    - if:
+      - payloadType: Pull_Request_Review
+      - isActivitySender:
+          issueAuthor: True
+      - hasLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      then:
+      - removeLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      description: Remove needs author feedback label when the author responds to a pull request review comment
+    - if:
+      - payloadType: Pull_Request
+      - not:
+          isAction:
+            action: Closed
+      - hasLabel:
+          label: ':zzz: no-recent-activity'
+      then:
+      - removeLabel:
+          label: ':zzz: no-recent-activity'
+      description: Remove no recent activity label from pull requests
+    - if:
+      - payloadType: Issue_Comment
+      - hasLabel:
+          label: ':zzz: no-recent-activity'
+      then:
+      - removeLabel:
+          label: ':zzz: no-recent-activity'
+      description: Remove no recent activity label when a pull request is commented on
+    - if:
+      - payloadType: Pull_Request_Review
+      - hasLabel:
+          label: ':zzz: no-recent-activity'
+      then:
+      - removeLabel:
+          label: ':zzz: no-recent-activity'
+      description: Remove no recent activity label when a pull request is reviewed
+    - if:
+      - payloadType: Pull_Request
+      then:
+      - inPrLabel:
+          label: ':construction: work in progress'
+      description: In-PR label
+    - if:
+      - payloadType: Issue_Comment
+      - isActivitySender:
+          issueAuthor: True
+      - hasLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      then:
+      - removeLabel:
+          label: ':mailbox_with_no_mail: waiting-author-feedback'
+      description: Remove needs author feedback label when the author comments on an issue
+    - if:
+      - payloadType: Issue_Comment
+      - hasLabel:
+          label: ':zzz: no-recent-activity'
+      then:
+      - removeLabel:
+          label: ':zzz: no-recent-activity'
+      description: Remove no recent activity label when an issue is commented on
+    - if:
+      - payloadType: Issues
+      - not:
+          isAction:
+            action: Closed
+      - hasLabel:
+          label: ':zzz: no-recent-activity'
+      then:
+      - removeLabel:
+          label: ':zzz: no-recent-activity'
+      description: Remove no recent activity label from issue
+    - if:
+      - payloadType: Issues
+      - not:
+          isAction:
+            action: Closed
+      - hasLabel:
+          label: no-recent-activity
+      then:
+      - removeLabel:
+          label: no-recent-activity
+      description: Remove no recent activity label from issues
+    - if:
+      - payloadType: Issue_Comment
+      - hasLabel:
+          label: no-recent-activity
+      - isAction:
+          action: Edited
+      then:
+      - removeLabel:
+          label: no-recent-activity
+      description: Remove no recent activity label when an issue is commented on
+onFailure: 
+onSuccess:
