@@ -1897,16 +1897,13 @@ namespace DocumentSerialization
         /// Width of the current column
         /// </param>
         /// <param name="columnStarts">
-        /// ArrayList repsenting starting coordinates of all columns
+        /// ArrayList representing starting coordinates of all columns
         /// </param>
         private static int CalculateColumnSpan(int columnIndex, double columnWidth, ArrayList columnStarts)
         {
             // Current status of column width. Indicates the amount of width that has been scanned already
             double columnSpanningValue;
             int columnSpanningIndex;
-            int columnSpan;
-            double subColumnWidth; // Width of the smallest-grain columns in the table
-
             Debug.Assert(columnStarts != null);
             Debug.Assert(columnIndex < columnStarts.Count - 1);
             Debug.Assert((double)columnStarts[columnIndex] >= 0);
@@ -1914,12 +1911,11 @@ namespace DocumentSerialization
 
             columnSpanningIndex = columnIndex;
             columnSpanningValue = 0;
-            columnSpan = 0;
-            subColumnWidth = 0;
 
-            while (columnSpanningValue <  columnWidth && columnSpanningIndex < columnStarts.Count - 1)
+            while (columnSpanningValue < columnWidth && columnSpanningIndex < columnStarts.Count - 1)
             {
-                subColumnWidth = (double)columnStarts[columnSpanningIndex + 1] - (double)columnStarts[columnSpanningIndex];
+                // Width of the smallest-grain columns in the table
+                double subColumnWidth = (double)columnStarts[columnSpanningIndex + 1] - (double)columnStarts[columnSpanningIndex];
                 Debug.Assert(subColumnWidth > 0);
                 columnSpanningValue += subColumnWidth;
                 columnSpanningIndex++;
@@ -1927,7 +1923,7 @@ namespace DocumentSerialization
 
             // Now, we have either covered the width we needed to cover or reached the end of the table, in which
             // case the column spans all the columns until the end
-            columnSpan = columnSpanningIndex - columnIndex;
+            int columnSpan = columnSpanningIndex - columnIndex;
             Debug.Assert(columnSpan > 0);
 
             return columnSpan;

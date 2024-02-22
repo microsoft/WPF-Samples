@@ -28,39 +28,39 @@ using System.Drawing;
 
 namespace DocumentSerialization
 {
-    public partial class ThumbViewer : Window
+    public partial class ThumbViewer : Window, IDisposable
     {
         #region Command Handlers
         // ------------------------ AddCommandHandlers ------------------------
         private void AddCommandHandlers(FrameworkElement uiScope)
         {
-            CommandManager.RegisterClassCommandBinding( typeof(ThumbViewer),
+            CommandManager.RegisterClassCommandBinding(typeof(ThumbViewer),
                 new CommandBinding( ApplicationCommands.Open,
                             new ExecutedRoutedEventHandler(OnOpen),
-                            new CanExecuteRoutedEventHandler(OnNewQuery) ) );
+                            new CanExecuteRoutedEventHandler(OnNewQuery)));
 
             // Add Command Handlers
             CommandBindingCollection commandBindings = uiScope.CommandBindings;
 
             commandBindings.Add(
-                new CommandBinding( ThumbViewer.Exit,
+                new CommandBinding(ThumbViewer.Exit,
                             new ExecutedRoutedEventHandler(OnExit),
-                            new CanExecuteRoutedEventHandler(OnNewQuery) ) );
+                            new CanExecuteRoutedEventHandler(OnNewQuery)));
 
             commandBindings.Add(
-                new CommandBinding( ThumbViewer.SaveAs,
+                new CommandBinding(ThumbViewer.SaveAs,
                             new ExecutedRoutedEventHandler(OnSaveAs),
-                            new CanExecuteRoutedEventHandler(OnNewQuery) ) );
+                            new CanExecuteRoutedEventHandler(OnNewQuery)));
 
-            commandBindings.Add(
+            _ = commandBindings.Add(
                 new CommandBinding(ThumbViewer.AddBookmark,
                             new ExecutedRoutedEventHandler(OnAddBookmark),
-                            new CanExecuteRoutedEventHandler(OnNewQuery) ) );
+                            new CanExecuteRoutedEventHandler(OnNewQuery)));
 
             commandBindings.Add(
                 new CommandBinding(ThumbViewer.AddComment,
                             new ExecutedRoutedEventHandler(OnAddComment),
-                            new CanExecuteRoutedEventHandler(OnNewQuery) ) );
+                            new CanExecuteRoutedEventHandler(OnNewQuery)));
 
             // Enable Annotations
             _annotationBuffer = new MemoryStream();
@@ -167,7 +167,7 @@ namespace DocumentSerialization
         private static void OnOpen(object target, ExecutedRoutedEventArgs args)
         {
             ThumbViewer tv = (ThumbViewer)target;
-            if (tv.OpenDocument(null))  // null indicates prompt for filename.
+            if (tv.OpenDocument())
             {
                 tv.CreateThumbs();
             }
@@ -175,7 +175,7 @@ namespace DocumentSerialization
 
 
         // --------------------------- OpenDocument ---------------------------
-        public bool OpenDocument(string fileName)
+        public bool OpenDocument()
         {
             Microsoft.Win32.OpenFileDialog dialog;
 
@@ -189,8 +189,7 @@ namespace DocumentSerialization
             bool result = (bool)dialog.ShowDialog(null);
             if (result == false)  return false;
 
-            fileName = dialog.FileName;
-            return OpenFile(fileName);
+            return OpenFile(dialog.FileName);
         }// end:OpenDocument()
 
 
@@ -324,17 +323,17 @@ namespace DocumentSerialization
         ///   Copies the contents of one stream to another.</summary>
         /// <param name="src">
         ///   The source stream.</param>
-        /// <param name="dest">
+        /// <param name="destination">
         ///   The destination stream.</param>
-        private void CopyStream(Stream src, Stream dest)
+        private void CopyStream(Stream src, Stream destination)
         {
             long originalPosition = src.Position;
 
             src.Seek(0, SeekOrigin.Begin);
-            dest.Seek(0, SeekOrigin.Begin);
-            dest.SetLength(0); // Erase destination.
-            StreamReader reader = new StreamReader(src);
-            StreamWriter writer = new StreamWriter(dest);
+            destination.Seek(0, SeekOrigin.Begin);
+            destination.SetLength(0); // Erase destination.
+            StreamReader reader = new(src);
+            StreamWriter writer = new(destination);
             while (!reader.EndOfStream)
             {
                 char[] buffer = new char[50];
@@ -342,7 +341,7 @@ namespace DocumentSerialization
                 writer.Write(buffer);
             }
             writer.Flush();
-            dest.Seek(0, SeekOrigin.Begin);
+            destination.Seek(0, SeekOrigin.Begin);
 
             src.Seek(originalPosition, SeekOrigin.Begin);
         }// end:CopyStream()
@@ -419,20 +418,21 @@ namespace DocumentSerialization
             if (visual != null)
             {
                 Rect pageRect = new Rect(size);
-                RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
+                RenderTargetBitmap renderTargetBitmap = new(
                         (int)pageRect.Width, (int)pageRect.Height,
                          96.0, 96.0, PixelFormats.Pbgra32 );
                 renderTargetBitmap.Render(visual);
 
                 StackPanel sp = new StackPanel();
-                System.Windows.Controls.Image img = new System.Windows.Controls.Image();
-                img.Source = renderTargetBitmap;
-                img.Height = _thumbnailHeight;
-
                 TextBlock tb = new TextBlock(new Run(pageNumber.ToString()));
                 tb.FontSize = 10;
 
                 sp.Orientation = Orientation.Vertical;
+                System.Windows.Controls.Image img = new()
+                {
+                    Source = renderTargetBitmap,
+                    Height = _thumbnailHeight
+                };
                 sp.Children.Add(img);
                 sp.Children.Add(tb);
                 return sp;
@@ -496,7 +496,7 @@ namespace DocumentSerialization
             // If no filename was specified, prompt the user for one.
             if (fileName == null)
             {
-                // Create a File | Save As... dailog.
+                // Create a File | Save As... dialog.
                 Microsoft.Win32.SaveFileDialog dialog;
                 dialog = new Microsoft.Win32.SaveFileDialog();
                 dialog.CheckFileExists = false;
@@ -693,7 +693,7 @@ namespace DocumentSerialization
 
         // ------------------------ SplitterEndResize -------------------------
         /// <summary>
-        ///   Resizes Thumblist on Resizing Splitter.</summary>
+        ///   Resizes Thumb list on Resizing Splitter.</summary>
         void SplitterEndResize(object sender, DragCompletedEventArgs e)
         {
             LeftTabControl.Width = MainGrid.ColumnDefinitions[0].ActualWidth;
@@ -737,10 +737,10 @@ namespace DocumentSerialization
         private void IncrementPathData(System.Windows.Shapes.Path path, double p)
         {
             if (path == null)  return;
-            PathGeometry pGeom = path.Data as PathGeometry;
+            PathGeometry pGeometry = path.Data as PathGeometry;
 
-            if (pGeom == null) return;
-            PathFigure pFig = pGeom.Figures[0] as PathFigure;
+            if (pGeometry == null) return;
+            PathFigure pFig = pGeometry.Figures[0] as PathFigure;
 
             // Left Top to Left Bottom
             LineSegment lSegLTLB = pFig.Segments[0] as LineSegment;
@@ -862,7 +862,7 @@ namespace DocumentSerialization
                 if (!createMode)
                 {
                     Object currentItem = ThumbList.Items.CurrentItem;
-                    if ( !(currentItem is Border) )  continue;
+                    if ( currentItem is not Border )  continue;
                     PrepareBorderForDisplay((Border)currentItem);
                     ((Border)currentItem).Child = pageThumb;
                 }
@@ -871,7 +871,7 @@ namespace DocumentSerialization
                     Border border = CreateThumbBorder( _currentThumbnail + i + 1);
                     ThumbList.Items.Add(border);
                     ThumbList.Items.MoveCurrentToNext();
-                    if ( !(ThumbList.Items.CurrentItem is Border) )  continue;
+                    if ( ThumbList.Items.CurrentItem is not Border )  continue;
                     PrepareBorderForDisplay(border);
                     border.Child = pageThumb;
                     continue;
@@ -1069,12 +1069,12 @@ namespace DocumentSerialization
             string MarkText = "";
             if (spText != null)
             {
-                ContentLocator cloc =
+                ContentLocator cLocator =
                     ann.Anchors[0].ContentLocators[0] as ContentLocator;
-                if (cloc == null)         return;
-                if (cloc.Parts.Count < 2) return;
+                if (cLocator == null)         return;
+                if (cLocator.Parts.Count < 2) return;
 
-                ContentLocatorPart cPart = cloc.Parts[1];
+                ContentLocatorPart cPart = cLocator.Parts[1];
                 if (cPart == null)        return;
                 if (cPart.NameValuePairs["Segment0"] != null)
                 {
@@ -1089,7 +1089,7 @@ namespace DocumentSerialization
                     {
                         MarkText += tp.GetTextInRun(LogicalDirection.Forward);
                     }
-                    spText.Text = MarkText.Substring( 0,
+                    spText.Text = MarkText.Substring(0,
                         (MarkText.Length > 150) ? 150 : MarkText.Length );
                 }
             }
@@ -1107,7 +1107,7 @@ namespace DocumentSerialization
             ContextMenu parentMenu = thisMenu.Parent as ContextMenu;
             FrameworkElement dObj =
                 parentMenu.PlacementTarget as FrameworkElement;
-            while (!(dObj is StackPanel))
+            while (dObj is not StackPanel)
             {
                 dObj = dObj.Parent as FrameworkElement;
             }
@@ -1128,12 +1128,12 @@ namespace DocumentSerialization
                 ann = ((MenuItem)sender).Tag as Annotation;
             if (ann == null)          return;
 
-            ContentLocator cloc =
+            ContentLocator cLocator =
                 ann.Anchors[0].ContentLocators[0] as ContentLocator;
-            if (cloc == null)         return;
-            if (cloc.Parts.Count < 2) return;
+            if (cLocator == null)         return;
+            if (cLocator.Parts.Count < 2) return;
 
-            ContentLocatorPart cPart = cloc.Parts[1];
+            ContentLocatorPart cPart = cLocator.Parts[1];
             if (cPart == null)        return;
             if (cPart.NameValuePairs["Segment0"] != null)
             {
@@ -1194,11 +1194,27 @@ namespace DocumentSerialization
                 //      than zero.  This only occurs when the slider is being
                 //      initialized.  Basically we don't want to set the
                 //      ArticleZoomValue property BEFORE ZoomSlider_Loaded is
-                //      called.  There might be a better way of guarranting this.
+                //      called.  There might be a better way of guarantying this.
                 if ( (newValue != oldValue) && (oldValue > 0) )
                     _articleZoomValue = e.NewValue;
             }
         }// end:ZoomSlider_ValueChanged()
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Dispose managed resources
+                _annStore?.Dispose();
+                _annotationBuffer?.Dispose();
+            }
+        }
 
         #endregion Event Handling
 

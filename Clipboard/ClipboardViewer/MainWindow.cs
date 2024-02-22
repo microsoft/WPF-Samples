@@ -202,12 +202,11 @@ namespace ClipboardViewer
             if (dataObject == null)
             {
                 clipboardInfo.Text =
-                    clipboardInfo.Text =
                         "Can't access clipboard now! \n\nPlease click Dump All Clipboard Contents button again.";
             }
             else
             {
-                // Update the availabe data formats 
+                // Update the available data formats 
                 UpdateAvailableDataFormats(dataObject);
 
                 // Update the all available data contents
@@ -345,7 +344,7 @@ namespace ClipboardViewer
             }
 
             // Finally, consider a custom, application defined format.
-            // We use an arbitrary encoding here, for demonstartion purposes.
+            // We use an arbitrary encoding here, for demonstration purposes.
             if ((bool) cbCustomSampleDataFormat.IsChecked)
             {
                 fileName = null;
@@ -595,7 +594,7 @@ namespace ClipboardViewer
             }
             catch (IOException)
             {
-                MessageBox.Show("File is not acessible.\n", "File Open Error");
+                MessageBox.Show("File is not accessible.\n", "File Open Error");
                 return null;
             }
 
@@ -649,7 +648,7 @@ namespace ClipboardViewer
             }
             catch (IOException)
             {
-                MessageBox.Show("File is not acessible.\n", "File Write Error");
+                MessageBox.Show("File is not accessible.\n", "File Write Error");
                 return;
             }
 
@@ -677,7 +676,7 @@ namespace ClipboardViewer
             }
             catch (IOException)
             {
-                MessageBox.Show("File is not acessible.\n", "File Write Error");
+                MessageBox.Show("File is not accessible.\n", "File Write Error");
             }
 
             fileWriteStream.SetLength(0);

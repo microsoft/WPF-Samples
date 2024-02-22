@@ -61,7 +61,7 @@ namespace PhotoFlipperDemo
         }
 
         // Updates the matrices of the servants using the rotation quaternion.
-        private void Updateservants(Quaternion q, double s, Vector3D t)
+        private void UpdateServants(Quaternion q, double s, Vector3D t)
         {
             //RotateTransform3D rotation = new RotateTransform3D(q,_center);
             //ScaleTransform3D scale = new ScaleTransform3D(new Vector3D(s,s,s));
@@ -107,40 +107,49 @@ namespace PhotoFlipperDemo
             if (!Enabled) return;
             e.Handled = true;
 
-            var el = (UIElement) sender;
+            var el = (UIElement)sender;
 
             if (el.IsMouseCaptured)
             {
                 var delta = _point - e.MouseDevice.GetPosition(el);
-                var t = new Vector3D();
 
+                // Adjust the mouse delta based on the current operation
                 delta /= 2;
+
+                // Initialize the translation and rotation variables
+                var t = new Vector3D();
                 var q = _rotation;
 
                 if (_rotating)
                 {
-                    // We can redefine this 2D mouse delta as a 3D mouse delta
+                    // We redefine the 2D mouse delta as a 3D mouse delta
                     // where "into the screen" is Z
                     var mouse = new Vector3D(delta.X, -delta.Y, 0);
                     var axis = Vector3D.CrossProduct(mouse, new Vector3D(0, 0, 1));
                     var len = axis.Length;
+
+                    // Calculate the rotation delta
                     if (len < 0.00001 || _scaling)
                         _rotationDelta = new Quaternion(new Vector3D(0, 0, 1), 0);
                     else
                         _rotationDelta = new Quaternion(axis, len);
 
-                    q = _rotationDelta*_rotation;
+                    // Update the rotation quaternion
+                    q = _rotationDelta * _rotation;
                 }
                 else
                 {
+                    // Adjust the translation delta
                     delta /= 20;
                     _translateDelta.X = delta.X*-1;
                     _translateDelta.Y = delta.Y;
                 }
 
+                // Update the translation variable
                 t = _translate + _translateDelta;
 
-                Updateservants(q, _scale*_scaleDelta, t);
+                // Update the servants with the new rotation, scale, and translation
+                UpdateServants(q, _scale * _scaleDelta, t);
             }
         }
 
@@ -201,7 +210,7 @@ namespace PhotoFlipperDemo
             _scaleDelta += e.Delta/(double) 1000;
             var q = _rotation;
 
-            Updateservants(q, _scale*_scaleDelta, _translate);
+            UpdateServants(q, _scale*_scaleDelta, _translate);
         }
 
         private void MouseDoubleClickHandler(object sender, MouseButtonEventArgs e)
@@ -224,7 +233,7 @@ namespace PhotoFlipperDemo
             // up handler will also be called and this way it won't do anything.
             _rotationDelta = Quaternion.Identity;
             _scaleDelta = 1;
-            Updateservants(_rotation, _scale, _translate);
+            UpdateServants(_rotation, _scale, _translate);
         }
     }
 }

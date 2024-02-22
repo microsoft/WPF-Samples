@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS font Property
+        // Parsing CSS font Property
         //
         // .................................................................
 
@@ -99,7 +99,7 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS list-style Property
+        // Parsing CSS list-style Property
         //
         // .................................................................
 
@@ -114,7 +114,7 @@ namespace HtmlToXamlDemo
         private static readonly string[] ListStylePositions = {"inside", "outside"};
         // .................................................................
         //
-        // Pasring CSS text-decorations Property
+        // Parsing CSS text-decorations Property
         //
         // .................................................................
 
@@ -122,21 +122,21 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS text-transform Property
+        // Parsing CSS text-transform Property
         //
         // .................................................................
 
         private static readonly string[] TextTransforms = {"none", "capitalize", "uppercase", "lowercase"};
         // .................................................................
         //
-        // Pasring CSS text-align Property
+        // Parsing CSS text-align Property
         //
         // .................................................................
 
         private static readonly string[] TextAligns = {"left", "right", "center", "justify"};
         // .................................................................
         //
-        // Pasring CSS vertical-align Property
+        // Parsing CSS vertical-align Property
         //
         // .................................................................
 
@@ -148,21 +148,21 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS float Property
+        // Parsing CSS float Property
         //
         // .................................................................
 
         private static readonly string[] Floats = {"left", "right", "none"};
         // .................................................................
         //
-        // Pasring CSS clear Property
+        // Parsing CSS clear Property
         //
         // .................................................................
 
         private static readonly string[] Clears = {"none", "left", "right", "both"};
         // .................................................................
         //
-        // Pasring CSS border-style Propertie
+        // Parsing CSS border-style Properties
         //
         // .................................................................
 
@@ -396,7 +396,7 @@ namespace HtmlToXamlDemo
             return true;
         }
 
-        // CHecks whether the following character sequence matches to one of the given words,
+        // Checks whether the following character sequence matches to one of the given words,
         // and advances the nextIndex to matched word length.
         // Returns null in case if there is no match or the word matched.
         private static string ParseWordEnumeration(string[] words, string styleValue, ref int nextIndex)
@@ -428,7 +428,7 @@ namespace HtmlToXamlDemo
 
             var startIndex = nextIndex;
 
-            // Parse optional munis sign
+            // Parse optional minus sign
             if (nextIndex < styleValue.Length && styleValue[nextIndex] == '-')
             {
                 nextIndex++;
@@ -522,7 +522,7 @@ namespace HtmlToXamlDemo
                         color = ParseWordEnumeration(SystemColors, styleValue, ref nextIndex);
                         if (color != null)
                         {
-                            //  Implement smarter system color converions into real colors
+                            //  Implement smarter system color conversions into real colors
                             color = "black";
                         }
                     }
@@ -635,14 +635,17 @@ namespace HtmlToXamlDemo
 
                 if (fontFamily != null)
                 {
-                    //  css font-family can contein a list of names. We only consider the first name from the list. Need a decision what to do with remaining names
+                    //  css font-family can contain a list of names. We only consider the first name from the list. Need a decision what to do with remaining names
                     // fontFamilyList = (fontFamilyList == null) ? fontFamily : fontFamilyList + "," + fontFamily;
                     if (fontFamilyList == null && fontFamily.Length > 0)
                     {
                         if (fontFamily[0] == '"' || fontFamily[0] == '\'')
                         {
                             // Unquote the font family name
-                            fontFamily = fontFamily.Substring(1, fontFamily.Length - 2);
+                            if (fontFamily.Length >= 2)
+                            {
+                                fontFamily = fontFamily.Substring(1, fontFamily.Length - 2);
+                            }
                         }
                         fontFamilyList = fontFamily;
                     }
@@ -748,7 +751,7 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS margin and padding Properties
+        // Parsing CSS margin and padding Properties
         //
         // .................................................................
 
@@ -758,7 +761,7 @@ namespace HtmlToXamlDemo
         {
             // CSS Spec: 
             // If only one value is set, then the value applies to all four sides;
-            // If two or three values are set, then missinng value(s) are taken fromm the opposite side(s).
+            // If two or three values are set, then missing value(s) are taken from the opposite side(s).
             // The order they are applied is: top/right/bottom/left
 
             Debug.Assert(propertyName == "margin" || propertyName == "padding" || propertyName == "border-width" ||
@@ -812,7 +815,7 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS border Properties
+        // Parsing CSS border Properties
         //
         // .................................................................
 
@@ -832,7 +835,7 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring CSS Background Properties
+        // Parsing CSS Background Properties
         //
         // .................................................................
 

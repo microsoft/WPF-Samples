@@ -1,5 +1,5 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Windows;
@@ -12,7 +12,7 @@ namespace WPFWithWFAndDatabinding
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
         private readonly CustomersTableAdapter _customersTableAdapter =
             new CustomersTableAdapter();
@@ -78,6 +78,22 @@ namespace WPFWithWFAndDatabinding
         {
             var cv = sender as BindingListCollectionView;
             _nwBindingSource.Position = cv.CurrentPosition;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _customersTableAdapter?.Dispose();
+                _nwDataSet?.Dispose();
+                _ordersTableAdapter?.Dispose();
+            }
         }
     }
 }

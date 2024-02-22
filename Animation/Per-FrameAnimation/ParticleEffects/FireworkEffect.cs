@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Collections.Generic;
@@ -48,12 +48,12 @@ namespace PerFrameAnimation
             UpdateParticles(_timeTracker.Update());
         }
 
-        protected virtual void UpdateParticles(double deltatime)
+        protected virtual void UpdateParticles(double deltaTime)
         {
             //drop particles from mouse position
             if (MouseDropsParticles && IsMouseOver)
             {
-                _secondsUntilDrop -= deltatime;
+                _secondsUntilDrop -= deltaTime;
                 if (_secondsUntilDrop < 0.0)
                 {
                     AddRandomBurst(_lastMousePosition - new Vector(Radius/2.0, Radius/2.0), 1);
@@ -78,7 +78,7 @@ namespace PerFrameAnimation
                 {
                     p.Velocity += _gravity;
                 }
-                p.Location += p.Velocity*deltatime;
+                p.Location += p.Velocity*deltaTime;
 
                 if (BounceOffContainer)
                 {
@@ -118,12 +118,12 @@ namespace PerFrameAnimation
             foreach (var p in _particles)
             {
                 //figure out where in the particles life we are
-                var particlelife = (_timeTracker.ElapsedTime - p.LifeTime).TotalSeconds/
+                var particleLife = (_timeTracker.ElapsedTime - p.LifeTime).TotalSeconds/
                                    (p.DeathTime - p.LifeTime).TotalSeconds;
-                var currentcolor = Color.Multiply(p.StartColor, (float) (1.0 - particlelife)) +
-                                   Color.Multiply(p.EndColor, (float) particlelife);
-                Brush brush = new RadialGradientBrush(currentcolor,
-                    Color.FromArgb(0, currentcolor.R, currentcolor.G, currentcolor.B));
+                var currentColor = Color.Multiply(p.StartColor, (float) (1.0 - particleLife)) +
+                                   Color.Multiply(p.EndColor, (float) particleLife);
+                Brush brush = new RadialGradientBrush(currentColor,
+                    Color.FromArgb(0, currentColor.R, currentColor.G, currentColor.B));
 
                 var rect =
                     new RectangleGeometry(
@@ -193,7 +193,7 @@ namespace PerFrameAnimation
 
         public static readonly DependencyProperty RadiusProperty =
             DependencyProperty.Register(
-                "RadiusBase",
+                "Radius",
                 typeof (double),
                 typeof (FireworkEffect),
                 new FrameworkPropertyMetadata(15.0)
@@ -269,38 +269,38 @@ namespace PerFrameAnimation
 
         public double Radius
         {
-            get { return (double) GetValue(RadiusProperty); }
-            set { SetValue(RadiusProperty, value); }
+            get => (double)GetValue(RadiusProperty);
+            set => SetValue(RadiusProperty, value);
         }
 
         public double RadiusVariation
         {
-            get { return (double) GetValue(RadiusVariationProperty); }
-            set { SetValue(RadiusVariationProperty, value); }
+            get => (double)GetValue(RadiusVariationProperty);
+            set => SetValue(RadiusVariationProperty, value);
         }
 
         public Color StartColor
         {
-            get { return (Color) GetValue(StartColorProperty); }
-            set { SetValue(StartColorProperty, value); }
+            get => (Color)GetValue(StartColorProperty);
+            set => SetValue(StartColorProperty, value);
         }
 
         public Color EndColor
         {
-            get { return (Color) GetValue(EndColorProperty); }
-            set { SetValue(EndColorProperty, value); }
+            get => (Color)GetValue(EndColorProperty);
+            set => SetValue(EndColorProperty, value);
         }
 
         public Color StartColorVariation
         {
-            get { return (Color) GetValue(StartColorVariationProperty); }
-            set { SetValue(StartColorVariationProperty, value); }
+            get => (Color)GetValue(StartColorVariationProperty);
+            set => SetValue(StartColorVariationProperty, value);
         }
 
         public Color EndColorVariation
         {
-            get { return (Color) GetValue(EndColorVariationProperty); }
-            set { SetValue(EndColorVariationProperty, value); }
+            get => (Color)GetValue(EndColorVariationProperty);
+            set => SetValue(EndColorVariationProperty, value);
         }
 
 
@@ -314,20 +314,20 @@ namespace PerFrameAnimation
 
         public double MouseDropDelay
         {
-            get { return (double) GetValue(MouseDropDelayProperty); }
-            set { SetValue(MouseDropDelayProperty, value); }
+            get => (double)GetValue(MouseDropDelayProperty);
+            set => SetValue(MouseDropDelayProperty, value);
         }
 
         public double MouseDropDelayVariation
         {
-            get { return (double) GetValue(MouseDropDelayVariationProperty); }
-            set { SetValue(MouseDropDelayVariationProperty, value); }
+            get => (double)GetValue(MouseDropDelayVariationProperty);
+            set => SetValue(MouseDropDelayVariationProperty, value);
         }
 
         public int ClickBurstSize
         {
-            get { return (int) GetValue(ClickBurstSizeProperty); }
-            set { SetValue(ClickBurstSizeProperty, value); }
+            get => (int)GetValue(ClickBurstSizeProperty);
+            set => SetValue(ClickBurstSizeProperty, value);
         }
 
         #endregion
