@@ -259,6 +259,7 @@ STDMETHODIMP BaseFrameEncode::SetThumbnail(IWICBitmapSource *pIThumbnail)
 }
 
 
+#pragma warning(disable: 519)  // Disable warning 519 for this function
 STDMETHODIMP BaseFrameEncode::WritePixels(UINT lineCount, UINT cbStride, UINT cbBufferSize, BYTE *pbPixels)
 {
     HRESULT result = E_UNEXPECTED;
@@ -287,6 +288,7 @@ STDMETHODIMP BaseFrameEncode::WritePixels(UINT lineCount, UINT cbStride, UINT cb
 
     return result;
 }
+#pragma warning(default: 519)  // Re-enable warning 519
 
 STDMETHODIMP BaseFrameEncode::WriteSource(IWICBitmapSource *pIWICBitmapSource, WICRect *prc)
 {
