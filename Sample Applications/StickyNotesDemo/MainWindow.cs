@@ -223,14 +223,14 @@ namespace StickyNotesDemo
             var seconds = (int) double.Parse(token);
 
             tail = index + 1;
-            index = line.IndexOf('/', tail);
-            token = line.Substring(tail, (index - tail));
-            var month = int.Parse(token);
-
-            tail = index + 1;
-            index = line.IndexOf('/', tail);
+            index = line.IndexOf('-', tail);
             token = line.Substring(tail, (index - tail));
             var day = int.Parse(token);
+
+            tail = index + 1;
+            index = line.IndexOf('-', tail);
+            token = line.Substring(tail, (index - tail));
+            var month = int.Parse(token);
 
             tail = index + 1;
             index = line.IndexOf('|', tail);
