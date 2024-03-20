@@ -1,0 +1,67 @@
+ <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
+    xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers">
+
+    <Style x:Key="CardButton" TargetType="{x:Type Button}"
+               BasedOn="{StaticResource DefaultUiButtonStyle}">
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Padding" Value="20 10" />
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="ControlGroupPageTitle" TargetType="{x:Type TextBlock}"
+            >
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Padding" Value="10 0 0 5"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+
+    </Style>
+
+    <Style x:Key="ControlGroupPageDescription" TargetType="{x:Type TextBlock}"
+            >
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Padding" Value="10 0 0 0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+
+    </Style>
+
+    <ImageBrush x:Key="p64" ImageSource="pack://application:,,,/Assets/64-100x100.jpg" />
+    <ImageBrush x:Key="p65" ImageSource="pack://application:,,,/Assets/65-100x100.jpg" />
+    <ImageBrush x:Key="p91" ImageSource="pack://application:,,,/Assets/91-100x100.jpg" />
+    <ImageBrush x:Key="p103" ImageSource="pack://application:,,,/Assets/103-100x100.jpg" />
+    <ImageBrush x:Key="p177" ImageSource="pack://application:,,,/Assets/177-100x100.jpg" />
+    <ImageBrush x:Key="p334" ImageSource="pack://application:,,,/Assets/334-100x100.jpg" />
+    <ImageBrush x:Key="p338" ImageSource="pack://application:,,,/Assets/338-100x100.jpg" />
+    <ImageBrush x:Key="p342" ImageSource="pack://application:,,,/Assets/342-100x100.jpg" />
+    <ImageBrush x:Key="p349" ImageSource="pack://application:,,,/Assets/349-100x100.jpg" />
+    <ImageBrush x:Key="p366" ImageSource="pack://application:,,,/Assets/366-100x100.jpg" />
+    <ImageBrush x:Key="p367" ImageSource="pack://application:,,,/Assets/367-100x100.jpg" />
+    <ImageBrush x:Key="p373" ImageSource="pack://application:,,,/Assets/373-100x100.jpg" />
+    <ImageBrush x:Key="p375" ImageSource="pack://application:,,,/Assets/375-100x100.jpg" />
+    <ImageBrush x:Key="p378" ImageSource="pack://application:,,,/Assets/378-100x100.jpg" />
+    <ImageBrush x:Key="p399" ImageSource="pack://application:,,,/Assets/399-100x100.jpg" />
+    <ImageBrush x:Key="p447" ImageSource="pack://application:,,,/Assets/447-100x100.jpg" />
+    <ImageBrush x:Key="p453" ImageSource="pack://application:,,,/Assets/453-100x100.jpg" />
+    <ImageBrush x:Key="p473" ImageSource="pack://application:,,,/Assets/473-100x100.jpg" />
+    <ImageBrush x:Key="p469" ImageSource="pack://application:,,,/Assets/469-100x100.jpg" />
+    <ImageBrush x:Key="p505" ImageSource="pack://application:,,,/Assets/505-100x100.jpg" />
+
+</ResourceDictionary>

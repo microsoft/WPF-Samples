@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<PlatformTarget>x64</PlatformTarget>
+		<StartupObject>Win11ThemeGallery.App</StartupObject>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	
+	<ItemGroup>
+	  <ApplicationDefinition Remove="App.xaml" />
+	  <Page Include="App.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\win11.png" />
+		<Resource Include="Assets\win11-dashboard.png" />
+		<Resource Include="Assets\*-100x100.jpg" />
+	</ItemGroup>
+	
+	<PropertyGroup>
+		<WpfRepoRoot>{Enter the path to build binaries}</WpfRepoRoot>
+	</PropertyGroup>
+	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+	</ItemGroup>
+</Project>

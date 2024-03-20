@@ -1,0 +1,39 @@
+﻿<Page x:Class="Win11ThemeGallery.Views.StatusAndInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Win11ThemeGallery.Views" mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}" d:DesignHeight="450" d:DesignWidth="800" Title="StatusAndInfoPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
+            <TextBlock Style="{StaticResource ControlGroupPageTitle}" Text="{Binding ViewModel.PageTitle}" />
+            <TextBlock Style="{StaticResource ControlGroupPageDescription}" Text="{Binding ViewModel.PageDescription}"/>
+        </StackPanel>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding ViewModel.NavigationCards}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" Margin="10"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Style="{StaticResource CardButton}" Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:StatusAndInfoPage}}}" CommandParameter="{Binding PageType}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter Content="{Binding Icon}" Margin="0,0,8,0"/>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}" Margin="10 0 0 0"/>
+                                <TextBlock FontWeight="Normal" Text="{Binding Description}" Margin="10 0 0 0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>
