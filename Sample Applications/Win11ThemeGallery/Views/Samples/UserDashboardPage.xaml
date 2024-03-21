@@ -1,0 +1,151 @@
+﻿<Page x:Class="Win11ThemeGallery.Views.Samples.UserDashboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Win11ThemeGallery.Views.Samples"
+    xmlns:models="clr-namespace:Win11ThemeGallery.Models"
+    xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers" mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    d:DesignHeight="450" d:DesignWidth="800" Title="UserDashboardPage">
+    <Page.Resources>
+        <helpers:ImageIdToBrushConverter x:Key="ImageIdToBrushConverter" />
+        <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ListView Width="300" Grid.Row="0" ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}" SelectionMode="Single" SelectedItem="{Binding ViewModel.SelectedUser}">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:User}">
+                        <Grid Margin="8,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="Ellipse" Grid.RowSpan="2" Width="32" Height="32" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <Binding Path="ImageKey" Converter="{StaticResource ImageIdToBrushConverter}" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Margin="12,6,0,0" FontWeight="Bold" Text="{Binding Name, Mode=OneWay}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Margin="12,0,0,6" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{Binding Company, Mode=OneWay}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button HorizontalAlignment="Center" Grid.Row="1" Content="Add New User" Command="{Binding ViewModel.AddUserCommand}" Style="{StaticResource DefaultAccentUiButtonStyle}" Margin="10"/>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Row="0" Margin="20 10 20 10" 
+                        Visibility="{Binding ViewModel.SelectedUser, Converter={StaticResource NullToVisibilityConverter}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse x:Name="UserAvatar" Width="96" Height="96" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse.Fill>
+                                <Binding Path="ViewModel.SelectedUser.ImageKey" Converter="{StaticResource ImageIdToBrushConverter}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock FontSize="24" Text="{Binding ViewModel.SelectedUser.Name}" />
+                            <TextBlock FontSize="16" Text="{Binding ViewModel.SelectedUser.Company}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Address :" Width="80" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding ViewModel.SelectedUser.Address}" MaxWidth="250" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Age :" Width="80" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding ViewModel.SelectedUser.Age}" MaxWidth="300" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="DOJ :" Width="80" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding ViewModel.SelectedUser.DateOfJoining, StringFormat='D'}" MaxWidth="300" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Edit" Command="{Binding ViewModel.EditUserStartCommand}" Margin="10"/>
+                    <Button Content="Delete" Command="{Binding ViewModel.RemoveUserCommand}" CommandParameter="{Binding ViewModel.SelectedUser}" Margin="10"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Row="1" Margin="20 10 20 10"
+                  Visibility="{Binding ViewModel.EditableUser, Converter={StaticResource NullToVisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ScrollViewer Grid.Column="1">
+                    <StackPanel Margin="20 0 20 0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0 0 10 0">
+                                <Label Content="First Name" FontWeight="SemiBold" />
+                                <TextBox Text="{Binding ViewModel.EditableUser.FirstName}" Margin="0 5 0 15"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                                <Label Content="Last Name" FontWeight="SemiBold" />
+                                <TextBox Text="{Binding ViewModel.EditableUser.LastName}" Margin="0 5 0 15" />
+                            </StackPanel>
+                        </Grid>
+
+
+                        <Label Content="Company" FontWeight="SemiBold" />
+                        <TextBox Text="{Binding ViewModel.EditableUser.Company}" Margin="0 5 0 15" />
+
+                        <Label Content="Address" FontWeight="SemiBold" />
+                        <TextBox Text="{Binding ViewModel.EditableUser.Address}" Margin="0 5 0 15" />
+
+                        <Label Content="Age" FontWeight="SemiBold" />
+                        <Slider Minimum="21" Maximum="62" Value="{Binding ViewModel.EditableUser.Age}" Margin="0 5 0 15"/>
+
+                        <Label Content="Date of Joining" FontWeight="SemiBold" />
+                        <DatePicker SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" Margin="0 5 0 15"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0 5 0 15">
+                            <Label FontWeight="SemiBold" Content="Is user a new graduate ?" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                            <CheckBox IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content="Save" Command="{Binding ViewModel.EditUserCommitCommand}" Margin="10"/>
+                            <Button Content="Cancel" Command="{Binding ViewModel.EditUserCancelCommand}" Margin="10"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

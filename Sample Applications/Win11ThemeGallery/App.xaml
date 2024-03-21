@@ -1,0 +1,17 @@
+﻿<Application x:Class="Win11ThemeGallery.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Win11ThemeGallery"
+             xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers">
+    <Application.Resources>
+         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/PresentationFramework.FluentWindows;component/Resources/FluentWindows.xaml" />
+
+                <ResourceDictionary Source="Controls/ControlExample.xaml" />
+                <ResourceDictionary Source="Controls/PageStyles.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+         </ResourceDictionary>
+    </Application.Resources>
+</Application>
