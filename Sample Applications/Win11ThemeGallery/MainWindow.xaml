@@ -61,16 +61,6 @@
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
-                <DockPanel Grid.Row="2">
-                    <Button x:Name="SettingsButton" DockPanel.Dock="Bottom" 
-                            Margin="10" Width="250"
-                            HorizontalContentAlignment="Left"
-                            Command="{Binding ViewModel.SettingsCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Settings" Margin="10 0 0 0"/>
-                        </StackPanel>
-                    </Button>
-                </DockPanel>
             </Grid>
             <Border Padding="16" Grid.Column="1" >
                 <Frame x:Name="RootContentFrame"/>
