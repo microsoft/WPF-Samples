@@ -1,5 +1,5 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Collections;
@@ -49,8 +49,8 @@ namespace GeometryDesignerDemo
 
         private void OnShowHideXaml(object sender, RoutedEventArgs e)
         {
-            var xamlstring = XamlWriter.Save(DrawingPane);
-            ((TextBox) XAMLPane.Children[0]).Text = xamlstring;
+            var xamlString = XamlWriter.Save(DrawingPane);
+            ((TextBox) XAMLPane.Children[0]).Text = xamlString;
 
             if (!_isShow)
             {
@@ -137,9 +137,9 @@ namespace GeometryDesignerDemo
                 var retval = new Size();
 
                 var sizeString = o.Split(' ', ',', ';');
-                if (sizeString.Length == 0 || sizeString.Length != 2)
+                if (sizeString.Length != 2)
                     throw new ApplicationException(
-                        "Error: a size should contain two double that seperated by a space or ',' or ';'");
+                        "Error: a size should contain two double that separated by a space or ',' or ';'");
 
                 try
                 {
@@ -213,47 +213,47 @@ namespace GeometryDesignerDemo
             public override void Parse()
             {
                 var tbCenter = LogicalTreeHelper.FindLogicalNode(ParentPane, "EllipseCenterPoint") as TextBox;
-                var tbRadiusx = LogicalTreeHelper.FindLogicalNode(ParentPane, "EllipseRadiusX") as TextBox;
-                var tbRadiusy = LogicalTreeHelper.FindLogicalNode(ParentPane, "EllipseRadiusY") as TextBox;
+                var tbRadiusX = LogicalTreeHelper.FindLogicalNode(ParentPane, "EllipseRadiusX") as TextBox;
+                var tbRadiusY = LogicalTreeHelper.FindLogicalNode(ParentPane, "EllipseRadiusY") as TextBox;
 
                 _center = PointParser(tbCenter.Text);
-                _radiusx = DoubleParser(tbRadiusx.Text);
-                _radiusy = DoubleParser(tbRadiusy.Text);
+                _radiusX = DoubleParser(tbRadiusX.Text);
+                _radiusY = DoubleParser(tbRadiusY.Text);
 
                 //Center point
                 ControlPoints.Add(_center);
 
                 //TopLeft
-                ControlPoints.Add(new Point(_center.X - _radiusx, _center.Y));
+                ControlPoints.Add(new Point(_center.X - _radiusX, _center.Y));
 
                 //TopMiddle
-                ControlPoints.Add(new Point(_center.X, _center.Y - _radiusy));
+                ControlPoints.Add(new Point(_center.X, _center.Y - _radiusY));
 
                 //TopRight
-                ControlPoints.Add(new Point(_center.X + _radiusx, _center.Y));
+                ControlPoints.Add(new Point(_center.X + _radiusX, _center.Y));
 
                 //BottomMiddle
-                ControlPoints.Add(new Point(_center.X, _center.Y + _radiusy));
+                ControlPoints.Add(new Point(_center.X, _center.Y + _radiusY));
             }
 
             public override Geometry CreateGeometry()
             {
-                var retval = new EllipseGeometry(_center, _radiusx, _radiusy);
+                var retval = new EllipseGeometry(_center, _radiusX, _radiusY);
                 return retval;
             }
 
             #region Data Members
 
             private Point _center;
-            private double _radiusx;
-            private double _radiusy;
+            private double _radiusX;
+            private double _radiusY;
 
             #endregion
         }
 
-        public class RectanlgeG : GeometryBase
+        public class RectangleG : GeometryBase
         {
-            public RectanlgeG(FrameworkElement pane)
+            public RectangleG(FrameworkElement pane)
                 : base(pane)
             {
                 ControlPoints = new ArrayList();
@@ -263,50 +263,50 @@ namespace GeometryDesignerDemo
 
             public override Geometry CreateGeometry()
             {
-                var retval = new RectangleGeometry(new Rect(_topleft.X, _topleft.Y, _width, _height), _radiusx, _radiusy);
+                var retval = new RectangleGeometry(new Rect(_topLeft.X, _topLeft.Y, _width, _height), _radiusX, _radiusY);
 
                 return retval;
             }
 
             public override void Parse()
             {
-                var tbTopleft = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleTopLeftPoint") as TextBox;
-                var tbRadiusx = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleRadiusX") as TextBox;
-                var tbRadiusy = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleRadiusY") as TextBox;
+                var tbTopLeft = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleTopLeftPoint") as TextBox;
+                var tbRadiusX = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleRadiusX") as TextBox;
+                var tbRadiusY = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleRadiusY") as TextBox;
                 var tbWidth = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleWidth") as TextBox;
                 var tbHeight = LogicalTreeHelper.FindLogicalNode(ParentPane, "RectangleHeight") as TextBox;
 
-                _topleft = PointParser(tbTopleft.Text);
-                _radiusx = DoubleParser(tbRadiusx.Text);
-                _radiusy = DoubleParser(tbRadiusy.Text);
+                _topLeft = PointParser(tbTopLeft.Text);
+                _radiusX = DoubleParser(tbRadiusX.Text);
+                _radiusY = DoubleParser(tbRadiusY.Text);
                 _width = DoubleParser(tbWidth.Text);
                 _height = DoubleParser(tbHeight.Text);
 
                 //TopLeft point
-                ControlPoints.Add(_topleft);
+                ControlPoints.Add(_topLeft);
 
                 //TopRight
-                ControlPoints.Add(new Point(_topleft.X + _width, _topleft.Y));
+                ControlPoints.Add(new Point(_topLeft.X + _width, _topLeft.Y));
 
                 //BottomLeft
-                ControlPoints.Add(new Point(_topleft.X, _topleft.Y + _height));
+                ControlPoints.Add(new Point(_topLeft.X, _topLeft.Y + _height));
 
                 //BottomRight
-                ControlPoints.Add(new Point(_topleft.X + _width, _topleft.Y + _height));
+                ControlPoints.Add(new Point(_topLeft.X + _width, _topLeft.Y + _height));
 
-                if (_radiusx != 0 && _radiusy != 0)
+                if (_radiusX != 0 && _radiusY != 0)
                 {
-                    ControlPoints.Add(new Point(_topleft.X + _radiusx, _topleft.Y + _radiusy));
+                    ControlPoints.Add(new Point(_topLeft.X + _radiusX, _topLeft.Y + _radiusY));
                 }
             }
 
             #region Data Members
 
-            private Point _topleft;
+            private Point _topLeft;
             private double _width;
             private double _height;
-            private double _radiusx;
-            private double _radiusy;
+            private double _radiusX;
+            private double _radiusY;
 
             #endregion
         }
@@ -315,7 +315,7 @@ namespace GeometryDesignerDemo
         {
             #region Data Members
 
-            private Point _startpoint, _p1, _p2, _p3;
+            private Point _startPoint, _p1, _p2, _p3;
 
             #endregion
 
@@ -330,7 +330,7 @@ namespace GeometryDesignerDemo
             public override Geometry CreateGeometry()
             {
                 var retval = new PathGeometry();
-                var pf = new PathFigure {StartPoint = _startpoint};
+                var pf = new PathFigure {StartPoint = _startPoint};
                 pf.Segments.Add(new BezierSegment(_p1, _p2, _p3, true));
                 retval.Figures.Add(pf);
                 return retval;
@@ -338,17 +338,17 @@ namespace GeometryDesignerDemo
 
             public override void Parse()
             {
-                var tbStartpoint = LogicalTreeHelper.FindLogicalNode(ParentPane, "BezierStartPoint") as TextBox;
+                var tbStartPoint = LogicalTreeHelper.FindLogicalNode(ParentPane, "BezierStartPoint") as TextBox;
                 var tbPoint1 = LogicalTreeHelper.FindLogicalNode(ParentPane, "BezierPoint1") as TextBox;
                 var tbPoint2 = LogicalTreeHelper.FindLogicalNode(ParentPane, "BezierPoint2") as TextBox;
                 var tbPoint3 = LogicalTreeHelper.FindLogicalNode(ParentPane, "BezierPoint3") as TextBox;
 
-                _startpoint = PointParser(tbStartpoint.Text);
+                _startPoint = PointParser(tbStartPoint.Text);
                 _p1 = PointParser(tbPoint1.Text);
                 _p2 = PointParser(tbPoint2.Text);
                 _p3 = PointParser(tbPoint3.Text);
 
-                ControlPoints.Add(_startpoint);
+                ControlPoints.Add(_startPoint);
                 ControlPoints.Add(_p1);
                 ControlPoints.Add(_p2);
                 ControlPoints.Add(_p3);
@@ -368,47 +368,47 @@ namespace GeometryDesignerDemo
             public override Geometry CreateGeometry()
             {
                 var retval = new PathGeometry();
-                var pf = new PathFigure {StartPoint = _startpoint};
-                pf.Segments.Add(new ArcSegment(_point, _size, _xrotation, _largearc, _sweepArcDirection, true));
+                var pf = new PathFigure {StartPoint = _startPoint};
+                pf.Segments.Add(new ArcSegment(_point, _size, _xRotation, _largeArc, _sweepArcDirection, true));
                 retval.Figures.Add(pf);
                 return retval;
             }
 
             public override void Parse()
             {
-                var tbStartpoint = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcStartPoint") as TextBox;
+                var tbStartPoint = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcStartPoint") as TextBox;
                 var tbPoint = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcPoint") as TextBox;
                 var tbSize = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcSize") as TextBox;
-                var tbXrotation = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcXRotation") as TextBox;
-                var cbSweeparc = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcSweepArc") as ComboBox;
-                var cbLargearc = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcLargeArc") as ComboBox;
+                var tbXRotation = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcXRotation") as TextBox;
+                var cbSweepArc = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcSweepArc") as ComboBox;
+                var cbLargeArc = LogicalTreeHelper.FindLogicalNode(ParentPane, "ArcLargeArc") as ComboBox;
 
-                _startpoint = PointParser(tbStartpoint.Text);
+                _startPoint = PointParser(tbStartPoint.Text);
                 _point = PointParser(tbPoint.Text);
                 _size = SizeParser(tbSize.Text);
-                _xrotation = DoubleParser(tbXrotation.Text);
+                _xRotation = DoubleParser(tbXRotation.Text);
                 _sweepArcDirection = (SweepDirection) Enum.Parse(
                     typeof (SweepDirection),
                     (
                         (string)
                             (
-                                (ComboBoxItem) cbSweeparc.SelectedItem
+                                (ComboBoxItem) cbSweepArc.SelectedItem
                                 ).Content
                         )
                     );
 
-                _largearc = bool.Parse(((string) ((ComboBoxItem) cbLargearc.SelectedItem).Content));
-                ControlPoints.Add(_startpoint);
+                _largeArc = bool.Parse(((string) ((ComboBoxItem) cbLargeArc.SelectedItem).Content));
+                ControlPoints.Add(_startPoint);
                 ControlPoints.Add(_point);
             }
 
             #region Data Members
 
-            private Point _startpoint, _point;
+            private Point _startPoint, _point;
             private Size _size;
-            private bool _largearc;
+            private bool _largeArc;
             private SweepDirection _sweepArcDirection;
-            private double _xrotation;
+            private double _xRotation;
 
             #endregion
         }
@@ -524,9 +524,9 @@ namespace GeometryDesignerDemo
                             _rectangleCount++;
                             break;
                         case "Ellipse":
-                            path.Name = "Ellipse" + _elliipseCount;
+                            path.Name = "Ellipse" + _ellipseCount;
                             AddControlPoints(gb.ControlPoints, "Ellipse");
-                            _elliipseCount++;
+                            _ellipseCount++;
                             break;
                         case "Arc":
                             path.Name = "Arc" + _arcCount;
@@ -842,7 +842,7 @@ namespace GeometryDesignerDemo
         {
             var geometryType = GetGeometryTypeInId(id);
 
-            //Switch the controlpoint pane to the right panel
+            //Switch the control point pane to the right panel
             GeometryPaneChange(geometryType, false);
 
             switch (geometryType)
@@ -872,7 +872,7 @@ namespace GeometryDesignerDemo
         private void UpdateArcGeometry(Point movingEndLocation, string id)
         {
             var s = id.Split('_');
-            var controlPointType = GetContronPointTypeInId(id);
+            var controlPointType = GetControlPointTypeInId(id);
             var p = SearchUpdatedElement(s[0]) as Path;
             if (p == null)
             {
@@ -897,14 +897,14 @@ namespace GeometryDesignerDemo
             }
 
             p.Data = pg;
-            var xamlstring = XamlWriter.Save(DrawingPane);
-            ((TextBox) XAMLPane.Children[0]).Text = xamlstring;
+            var xamlString = XamlWriter.Save(DrawingPane);
+            ((TextBox) XAMLPane.Children[0]).Text = xamlString;
         }
 
         private void UpdateLineGeometry(Point movingEndLocation, string id)
         {
             var s = id.Split('_');
-            var controlPointType = GetContronPointTypeInId(id);
+            var controlPointType = GetControlPointTypeInId(id);
             var p = SearchUpdatedElement(s[0]) as Path;
             if (p == null)
             {
@@ -929,14 +929,14 @@ namespace GeometryDesignerDemo
                     throw new ApplicationException("Error: Incorrect controlpoint type, '" + controlPointType +
                                                    "' in UpdateLineGeometry()");
             }
-            var xamlstring = XamlWriter.Save(DrawingPane);
-            ((TextBox) XAMLPane.Children[0]).Text = xamlstring;
+            var xamlString = XamlWriter.Save(DrawingPane);
+            ((TextBox) XAMLPane.Children[0]).Text = xamlString;
         }
 
         private void UpdateEllipseGeometry(Point movingEndLocation, string id)
         {
             var s = id.Split('_');
-            var controlPointType = GetContronPointTypeInId(id);
+            var controlPointType = GetControlPointTypeInId(id);
             var p = SearchUpdatedElement(s[0]) as Path;
             if (p == null)
             {
@@ -956,7 +956,7 @@ namespace GeometryDesignerDemo
                 case "Center":
                     eg.Center = movingEndLocation;
 
-                    //Update the center in the RotateTransform when the ellipsegeometry's center is moved
+                    //Update the center in the RotateTransform when the ellipse geometry's center is moved
                     if (eg.Transform is RotateTransform)
                     {
                         var rtWithNewCenter = eg.Transform as RotateTransform;
@@ -1071,17 +1071,17 @@ namespace GeometryDesignerDemo
                     break;
 
                 default:
-                    throw new ApplicationException("Error: incorrect EllipseGeometry controlpoint type");
+                    throw new ApplicationException("Error: incorrect EllipseGeometry control point type");
             }
-            var xamlstring = XamlWriter.Save(DrawingPane);
-            ((TextBox) XAMLPane.Children[0]).Text = xamlstring;
+            var xamlString = XamlWriter.Save(DrawingPane);
+            ((TextBox) XAMLPane.Children[0]).Text = xamlString;
         }
 
         private void UpdateRectangleGeometry(Point movingEndLocation, string id)
         {
             double width, height;
             var s = id.Split('_');
-            var controlPointType = GetContronPointTypeInId(id);
+            var controlPointType = GetControlPointTypeInId(id);
             var p = SearchUpdatedElement(s[0]) as Path;
             if (p == null)
             {
@@ -1218,14 +1218,14 @@ namespace GeometryDesignerDemo
                 default:
                     throw new ApplicationException("Error: Incorrect control point type");
             }
-            var xamlstring = XamlWriter.Save(DrawingPane);
-            ((TextBox) XAMLPane.Children[0]).Text = xamlstring;
+            var xamlString = XamlWriter.Save(DrawingPane);
+            ((TextBox) XAMLPane.Children[0]).Text = xamlString;
         }
 
         private void UpdateBezierGeometry(Point movingEndLocation, string id)
         {
             var s = id.Split('_');
-            var controlPointType = GetContronPointTypeInId(id);
+            var controlPointType = GetControlPointTypeInId(id);
             var p = SearchUpdatedElement(s[0]) as Path;
             if (p == null)
             {
@@ -1257,11 +1257,11 @@ namespace GeometryDesignerDemo
             }
 
             p.Data = pg;
-            var xamlstring = XamlWriter.Save(DrawingPane);
-            ((TextBox) XAMLPane.Children[0]).Text = xamlstring;
+            var xamlString = XamlWriter.Save(DrawingPane);
+            ((TextBox) XAMLPane.Children[0]).Text = xamlString;
         }
 
-        private string GetContronPointTypeInId(string id)
+        private string GetControlPointTypeInId(string id)
         {
             var s = id.Split('_');
             return s[1];
@@ -1384,19 +1384,19 @@ namespace GeometryDesignerDemo
                 switch (i)
                 {
                     case 0:
-                        e.Name = "Ellipse" + _elliipseCount + "_Center";
+                        e.Name = "Ellipse" + _ellipseCount + "_Center";
                         break;
                     case 1:
-                        e.Name = "Ellipse" + _elliipseCount + "_TopLeft";
+                        e.Name = "Ellipse" + _ellipseCount + "_TopLeft";
                         break;
                     case 2:
-                        e.Name = "Ellipse" + _elliipseCount + "_TopMiddle";
+                        e.Name = "Ellipse" + _ellipseCount + "_TopMiddle";
                         break;
                     case 3:
-                        e.Name = "Ellipse" + _elliipseCount + "_TopRight";
+                        e.Name = "Ellipse" + _ellipseCount + "_TopRight";
                         break;
                     case 4:
-                        e.Name = "Ellipse" + _elliipseCount + "_BottomMiddle";
+                        e.Name = "Ellipse" + _ellipseCount + "_BottomMiddle";
                         break;
                     default:
                         throw new ApplicationException("Error: Incorrect control point ");
@@ -1582,7 +1582,7 @@ namespace GeometryDesignerDemo
                 case "Ellipse":
                     return new EllipseG(pane);
                 case "Rectangle":
-                    return new RectanlgeG(pane);
+                    return new RectangleG(pane);
                 case "Arc":
                     return new ArcG(pane);
                 case "Bezier":
@@ -1598,7 +1598,7 @@ namespace GeometryDesignerDemo
 
         private bool _initialSelection = true;
         private int _lineCount = 1;
-        private int _elliipseCount = 1;
+        private int _ellipseCount = 1;
         private int _rectangleCount = 1;
         private int _arcCount = 1;
         private int _bezierCount = 1;

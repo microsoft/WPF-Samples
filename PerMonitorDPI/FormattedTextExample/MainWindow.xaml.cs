@@ -38,32 +38,31 @@ namespace FormattedTextExample
 
         private void DrawFormattedText(DpiScale dpiInfo)
         {
+            // Create the formatted text
             FormattedText formattedText = new FormattedText(
                 "FABLE",
                 new System.Globalization.CultureInfo("en-US"),
                 FlowDirection.LeftToRight,
                 new Typeface(
-                    new System.Windows.Media.FontFamily("Segoe UI"),
+                    new FontFamily("Segoe UI"),
                     FontStyles.Normal,
                     FontWeights.Bold,
                     FontStretches.Normal),
                 120,
-                System.Windows.Media.Brushes.Red,
+                Brushes.Red,
                 dpiInfo.PixelsPerDip);
 
             // Build a geometry out of the text.
-            Geometry geometry = new PathGeometry();
-            geometry = formattedText.BuildGeometry(new System.Windows.Point(0, 0));
+            Geometry geometry = formattedText.BuildGeometry(new Point(0, 0));
 
-            // Adjust the geometry to fit the aspect ration of the video by scaling it.
+            // Adjust the geometry to fit the aspect ratio of the video by scaling it.
             ScaleTransform myScaleTransform = new ScaleTransform();
-            myScaleTransform.ScaleX = .85;
+            myScaleTransform.ScaleX = 0.85;
             myScaleTransform.ScaleY = 2.0;
             geometry.Transform = myScaleTransform;
 
             // Flatten the geometry and create a PathGeometry out of it.
-            PathGeometry pathGeometry = new PathGeometry();
-            pathGeometry = geometry.GetFlattenedPathGeometry();
+            PathGeometry pathGeometry = geometry.GetFlattenedPathGeometry();
 
             // Use the PathGeometry for the empty placeholder Path element in XAML.
             path.Data = pathGeometry;

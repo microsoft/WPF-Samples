@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Collections.Generic;
@@ -46,44 +46,48 @@ namespace PerFrameAnimation
                 forces.Y -= BorderForce/Math.Max(1, RenderSize.Height - childRect.Bottom);
 
                 //each other child pushes away based on the square distance
-                foreach (UIElement otherchild in LogicalTreeHelper.GetChildren(this))
+                foreach (UIElement otherChild in LogicalTreeHelper.GetChildren(this))
                 {
-                    //dont push against itself
-                    if (otherchild == child)
+                    //don't push against itself
+                    if (otherChild == child)
                         continue;
 
-                    var otherchildtruePosition = GetTruePosition(otherchild);
-                    var otherchildRect = new Rect(otherchildtruePosition, otherchild.RenderSize);
+                    var otherChildTruePosition = GetTruePosition(otherChild);
+                    var otherChildRect = new Rect(otherChildTruePosition, otherChild.RenderSize);
 
                     //make sure rects aren't the same
-                    if (otherchildRect == childRect)
+                    if (otherChildRect == childRect)
                         continue;
 
+                    double epsilon = 0.00001; // Define a small tolerance value
+
                     //ignore children with a size of 0,0
-                    if (otherchildRect.Width == 0 && otherchildRect.Height == 0 ||
-                        childRect.Width == 0 && childRect.Height == 0)
+                    if (Math.Abs(otherChildRect.Width - 0) < epsilon &&
+                                    Math.Abs(otherChildRect.Height - 0) < epsilon ||
+                                    Math.Abs(childRect.Width - 0) < epsilon &&
+                                    Math.Abs(childRect.Height - 0) < epsilon)
                         continue;
 
                     //vector from current other child to current child
                     //are they overlapping?  if so, distance is 0
-                    var toChild = AreRectsOverlapping(childRect, otherchildRect)
+                    var toChild = AreRectsOverlapping(childRect, otherChildRect)
                         ? new Vector(0, 0)
-                        : VectorBetweenRects(childRect, otherchildRect);
+                        : VectorBetweenRects(childRect, otherChildRect);
 
                     var length = toChild.Length;
                     if (length < 1)
                     {
                         length = 1;
                         var childCenter = GetCenter(childRect);
-                        var otherchildCenter = GetCenter(otherchildRect);
+                        var otherChildCenter = GetCenter(otherChildRect);
                         //compute toChild from the center of both rects
-                        toChild = childCenter - otherchildCenter;
+                        toChild = childCenter - otherChildCenter;
                     }
 
-                    var childpush = ChildForce/length;
+                    var childPush = ChildForce/length;
 
                     toChild.Normalize();
-                    forces += toChild*childpush;
+                    forces += toChild*childPush;
                 }
 
                 //add forces to velocity and store it for next iteration
@@ -108,14 +112,14 @@ namespace PerFrameAnimation
 
         private Point IntersectInsideRect(Rect r, Point raystart, Vector raydir)
         {
-            var xtop = raystart.X + raydir.X*(r.Top - raystart.Y)/raydir.Y;
-            var xbottom = raystart.X + raydir.X*(r.Bottom - raystart.Y)/raydir.Y;
-            var yleft = raystart.Y + raydir.Y*(r.Left - raystart.X)/raydir.X;
-            var yright = raystart.Y + raydir.Y*(r.Right - raystart.X)/raydir.X;
-            var top = new Point(xtop, r.Top);
-            var bottom = new Point(xbottom, r.Bottom);
-            var left = new Point(r.Left, yleft);
-            var right = new Point(r.Right, yright);
+            var xTop = raystart.X + raydir.X*(r.Top - raystart.Y)/raydir.Y;
+            var xBottom = raystart.X + raydir.X*(r.Bottom - raystart.Y)/raydir.Y;
+            var yLeft = raystart.Y + raydir.Y*(r.Left - raystart.X)/raydir.X;
+            var yRight = raystart.Y + raydir.Y*(r.Right - raystart.X)/raydir.X;
+            var top = new Point(xTop, r.Top);
+            var bottom = new Point(xBottom, r.Bottom);
+            var left = new Point(r.Left, yLeft);
+            var right = new Point(r.Right, yRight);
             var tv = raystart - top;
             var bv = raystart - bottom;
             var lv = raystart - left;

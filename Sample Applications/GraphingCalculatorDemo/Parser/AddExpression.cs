@@ -1,5 +1,7 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 
 namespace GraphingCalculatorDemo.Parser
 {
@@ -31,12 +33,15 @@ namespace GraphingCalculatorDemo.Parser
                 // two constants;  just evaluate it;
                 return new ConstantExpression(leftConst.Value + rightConst.Value);
             }
-            if (leftConst != null && leftConst.Value == 0)
+            if (leftConst != null && Math.Abs(leftConst.Value - 0) < double.Epsilon)
             {
+                // If the absolute difference between leftConst.Value and 0 is less than Epsilon,
+                // consider them equal within a defined precision.
+                
                 // 0 + y;  return y;
                 return newRight;
             }
-            if (rightConst != null && rightConst.Value == 0)
+            if (rightConst != null && Math.Abs(rightConst.Value - 0) < double.Epsilon)
             {
                 // x + 0;  return x;
                 return newLeft;
