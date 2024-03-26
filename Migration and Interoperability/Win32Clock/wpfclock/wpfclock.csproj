@@ -24,8 +24,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Clock.cs" />
   </ItemGroup>
   <ItemGroup>
