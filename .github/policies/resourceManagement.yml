@@ -48,6 +48,28 @@ configuration:
 
 
             It will be closed if no further activity occurs **within 7 days of this comment**.
+    - description: Add draft label
+      frequencies:
+      - hourly:
+          hour: 4
+      filters:
+      - isDraftPullRequest
+      - isNotLabeledWith:
+          label: draft
+      actions:
+      - addLabel:
+          label: draft
+    - description: Remove draft label
+      frequencies:
+      - hourly:
+          hour: 4
+      filters:
+      - isNotDraftPullRequest
+      - hasLabel:
+          label: draft
+      actions:
+      - removeLabel:
+          label: draft
     - description: Close stale issues
       frequencies:
       - hourly:
@@ -161,6 +183,21 @@ configuration:
       description: Remove no recent activity label when a pull request is reviewed
     - if:
       - payloadType: Pull_Request
+      - hasLabel:
+          label: ':octocat:  automerge'
+      then:
+      - enableAutoMerge:
+          mergeMethod: Squash
+      description: Automatically merge pull requests
+    - if:
+      - payloadType: Pull_Request
+      - labelRemoved:
+          label: ':octocat:  automerge'
+      then:
+      - disableAutoMerge
+      description: Automatically merge pull requests
+    - if:
+      - payloadType: Pull_Request
       then:
       - inPrLabel:
           label: ':construction: work in progress'
@@ -194,6 +231,27 @@ configuration:
       - removeLabel:
           label: ':zzz: no-recent-activity'
       description: Remove no recent activity label from issue
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Closed
+      then:
+      - removeMilestone
+      description: Remove closed issues from milestones
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Opened
+      then:
+      - addLabel:
+          label: PR
+      - requestReview:
+          reviewer: dipeshmsft
+      - requestReview:
+          reviewer: singhashish-wpf
+      - requestReview:
+          reviewer: anjali-wpf
+      description: Add PR Label to new Pull Requests
     - if:
       - payloadType: Issues
       - not:
