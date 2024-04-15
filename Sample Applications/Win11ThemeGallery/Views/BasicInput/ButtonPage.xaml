@@ -12,7 +12,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/PresentationFramework.FluentWindows;component/Styles/Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PresentationFramework.Fluent;component/Styles/Button.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate x:Key="ViewBoxCustomButtonContentTemplate">
