@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
 
@@ -25,6 +25,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "ProgressBar",
                 PageType = typeof(ProgressBarPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ProgressBar.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.ArrowDownload24 },
                 Description = "Shows the app progress on a task"
             },
@@ -32,6 +33,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "ToolTip",
                 PageType = typeof(ToolTipPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ToolTip.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.Comment24 },
                 Description = "Information in popup window"
             },

@@ -57,7 +57,10 @@
                          >
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}" >
-                            <TextBlock Text="{Binding Name}" Margin="2"/>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
+                                <TextBlock Text="{Binding Name}" Margin="2" VerticalAlignment="Center"/>
+                            </StackPanel>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
 
@@ -26,6 +26,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "Data Grid",
                 PageType = typeof(DataGridPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DataGrid.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.GridKanban20 },
                 Description = "Complex data presenter"
             },
@@ -33,6 +34,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "ListBox",
                 PageType = typeof(ListBoxPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ListBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.AppsListDetail24 },
                 Description = "Selectable list"
             },
@@ -40,6 +42,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "ListView",
                 PageType = typeof(ListViewPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ListView.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.GroupList24 },
                 Description = "Selectable list"
             },
@@ -47,6 +50,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "TreeView",
                 PageType = typeof(TreeViewPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TreeView.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextBulletListTree24 },
                 Description = "Hierarchical list control"
             },

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
 
@@ -25,6 +25,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "Expander",
                 PageType = typeof(ExpanderPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Expander.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
                 Description = "Expander allows to show and hide content"
             },
