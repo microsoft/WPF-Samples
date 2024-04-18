@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
 
@@ -25,6 +25,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "Label",
                 PageType = typeof(LabelPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Button.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextBaseline20 },
                 Description = "Caption of an item"
             },
@@ -32,6 +33,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "TextBlock",
                 PageType = typeof(TextBlockPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBlock.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextCaseLowercase24 },
                 Description = "Control for displaying text"
             },
@@ -39,6 +41,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "TextBox",
                 PageType = typeof(TextBoxPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextColor24 },
                 Description = "Plain text field"
             },
@@ -46,6 +49,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "RichTextEdit",
                 PageType = typeof(RichTextEditPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/RichEditBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.DrawText24 },
                 Description = "A rich text editing control"
             },
@@ -53,6 +57,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "PasswordBox",
                 PageType = typeof(PasswordBoxPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/PasswordBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.Password24 },
                 Description = "A control for entering passwords"
             },

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
 
@@ -25,6 +25,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "Button",
                 PageType = typeof(ButtonPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Button.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.ControlButton24 },
                 Description = "Simple Button"
             },
@@ -32,6 +33,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "CheckBox",
                 PageType = typeof(CheckBoxPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Checkbox.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
                 Description = "Button with binary choice"
             },
@@ -39,6 +41,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "ComboBox",
                 PageType = typeof(ComboBoxPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ComboBox.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.Filter16 },
                 Description = "Select item from a list"
             },
@@ -46,6 +49,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "RadioButton",
                 PageType = typeof(RadioButtonPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/RadioButton.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.RadioButton24 },
                 Description = "Set of mutually exclusive choices"
             },
@@ -53,6 +57,7 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "Slider",
                 PageType = typeof(SliderPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Slider.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.HandDraw24 },
                 Description = "Sliding value selector"
             },

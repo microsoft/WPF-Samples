@@ -13,6 +13,8 @@ namespace Win11ThemeGallery.Navigation
 
         public ICollection<NavigationItem> Children { get; set; } = new ObservableCollection<NavigationItem>();
 
+        public string Icon { get; set; } = "";
+
         public NavigationItem() { }
 
         public NavigationItem(string name, Type pageType)
