@@ -47,7 +47,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button HorizontalAlignment="Center" Grid.Row="1" Content="Add New User" Command="{Binding ViewModel.AddUserCommand}" Style="{StaticResource DefaultAccentUiButtonStyle}" Margin="10"/>
+            <Button HorizontalAlignment="Center" Grid.Row="1" Content="Add New User" Command="{Binding ViewModel.AddUserCommand}" Style="{DynamicResource DefaultAccentButtonStyle}" Margin="10"/>
         </Grid>
 
         <Grid Grid.Column="1">
