@@ -13,15 +13,6 @@ internal sealed class ImageIdToBrushConverter : IValueConverter
     {
         string imageKey = (string)value;
         return Application.Current.Resources[imageKey];
-
-        // switch (imageId)
-        // {
-        //     case "64":
-        //         return Application.Current.Resources["p64"];
-
-        //     default:
-        //         return Brushes.Transparent;
-        // }
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

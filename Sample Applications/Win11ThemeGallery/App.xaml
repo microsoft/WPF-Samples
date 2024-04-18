@@ -6,7 +6,7 @@
     <Application.Resources>
          <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/PresentationFramework.FluentWindows;component/Resources/FluentWindows.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PresentationFramework.Fluent;component/Resources/Fluent.xaml" />
 
                 <ResourceDictionary Source="Controls/ControlExample.xaml" />
                 <ResourceDictionary Source="Controls/PageStyles.xaml" />

@@ -1,11 +1,11 @@
  <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers">
 
     <Style x:Key="CardButton" TargetType="{x:Type Button}"
-               BasedOn="{StaticResource DefaultUiButtonStyle}">
+               BasedOn="{StaticResource DefaultButtonStyle}">
         <Setter Property="Width" Value="400"/>
         <Setter Property="Height" Value="100"/>
         <Setter Property="Margin" Value="10"/>
@@ -15,7 +15,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
     </Style>
 
-    <Style x:Key="ControlGroupPageTitle" TargetType="{x:Type TextBlock}"
+    <!-- <Style x:Key="ControlGroupPageTitle" TargetType="{x:Type TextBlock}"
             >
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         <Setter Property="FontSize" Value="40"/>
@@ -41,7 +41,42 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
 
-    </Style>
+    </Style> -->
+
+  <sys:Double x:Key="CaptionTextBlockFontSize">12</sys:Double>
+  <sys:Double x:Key="BodyTextBlockFontSize">14</sys:Double>
+  <sys:Double x:Key="SubtitleTextBlockFontSize">20</sys:Double>
+  <sys:Double x:Key="TitleTextBlockFontSize">28</sys:Double>
+  <sys:Double x:Key="TitleLargeTextBlockFontSize">40</sys:Double>
+  <sys:Double x:Key="DisplayTextBlockFontSize">68</sys:Double>
+
+  <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+    <Setter Property="FontSize" Value="{StaticResource BodyTextBlockFontSize}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+    <Setter Property="LineStackingStrategy" Value="MaxHeight" />
+  </Style>
+  <Style x:Key="CaptionTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource CaptionTextBlockFontSize}" />
+    <Setter Property="FontWeight" Value="Normal" />
+  </Style>
+  <Style x:Key="BodyTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontWeight" Value="Normal" />
+  </Style>
+  <Style x:Key="BodyStrongTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}" />
+  <Style x:Key="SubtitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource SubtitleTextBlockFontSize}" />
+  </Style>
+  <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource TitleTextBlockFontSize}" />
+  </Style>
+  <Style x:Key="TitleLargeTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource TitleLargeTextBlockFontSize}" />
+  </Style>
+  <Style x:Key="DisplayTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource DisplayTextBlockFontSize}" />
+  </Style>
 
     <ImageBrush x:Key="p64" ImageSource="pack://application:,,,/Assets/64-100x100.jpg" />
     <ImageBrush x:Key="p65" ImageSource="pack://application:,,,/Assets/65-100x100.jpg" />

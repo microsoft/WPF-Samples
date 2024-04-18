@@ -11,8 +11,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-            <TextBlock Style="{StaticResource ControlGroupPageTitle}" Text="{Binding ViewModel.PageTitle}" />
-            <TextBlock Style="{StaticResource ControlGroupPageDescription}" Text="{Binding ViewModel.PageDescription}"/>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
+            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
         </StackPanel>
 
         <ItemsControl Grid.Row="1" ItemsSource="{Binding ViewModel.NavigationCards}">

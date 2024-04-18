@@ -106,7 +106,7 @@
             Margin="0,32,0,0"
             HeaderText="WPF Accent Button"
             XamlCode="&lt;Button Appearance=&quot;Primary&quot; Content=&quot;WPF Accent Button&quot; Icon=&quot;Fluent24&quot; /&gt;">
-                    <Button Style="{StaticResource DefaultAccentUiButtonStyle}">
+                    <Button Style="{StaticResource DefaultAccentButtonStyle}">
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Symbol="Fluent24" />-->
                             <TextBlock Foreground="{DynamicResource AccentButtonForeground}" Text="WPF Accent Button" />
