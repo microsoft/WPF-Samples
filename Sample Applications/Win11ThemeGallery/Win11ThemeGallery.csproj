@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -19,6 +19,7 @@
 	<ItemGroup>
 		<Resource Include="Assets\ControlImages\*"/>
 		<Resource Include="Assets\win11.png" />
+		<!--<Resource Include="Assets\win11-16.png" />-->
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\*-100x100.jpg" />
 	</ItemGroup>

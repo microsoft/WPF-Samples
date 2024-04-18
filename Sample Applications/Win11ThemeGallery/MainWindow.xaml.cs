@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.ViewModels;
 using Win11ThemeGallery.Views;
@@ -29,6 +30,18 @@ public partial class MainWindow : Window
         _navigationService = navigationService;
         _navigationService.SetFrame(this.RootContentFrame);
         _navigationService.NavigateTo(typeof(DashboardPage));
+
+        WindowChrome.SetWindowChrome(
+            this,
+            new WindowChrome
+            {
+                CaptionHeight = 50,
+                CornerRadius = default,
+                GlassFrameThickness = new Thickness(-1),
+                ResizeBorderThickness = ResizeMode == ResizeMode.NoResize ? default : new Thickness(4),
+                UseAeroCaptionButtons = true
+            }
+        );
     }
 
     private IServiceProvider _serviceProvider;
