@@ -27,7 +27,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(LabelPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Button.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextBaseline20 },
-                Description = "Caption of an item"
+                Description = "Caption of an item."
             },
             new NavigationCard
             {
@@ -35,7 +35,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(TextBlockPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBlock.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextCaseLowercase24 },
-                Description = "Control for displaying text"
+                Description = "A lightweight control for displaying small amounts of text."
             },
             new NavigationCard
             {
@@ -43,7 +43,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(TextBoxPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TextColor24 },
-                Description = "Plain text field"
+                Description = "A single-line or multi-line plain text field."
             },
             new NavigationCard
             {
@@ -51,7 +51,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(RichTextEditPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/RichEditBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.DrawText24 },
-                Description = "A rich text editing control"
+                Description = "A control that displays formatted text, hyperlinks, inline images, and other rich content."
             },
             new NavigationCard
             {
@@ -59,7 +59,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(PasswordBoxPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/PasswordBox.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.Password24 },
-                Description = "A control for entering passwords"
+                Description = "A control for entering passwords."
             },
         };
 

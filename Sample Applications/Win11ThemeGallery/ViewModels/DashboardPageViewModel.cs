@@ -21,7 +21,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(BasicInputPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Button.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
-                Description = "Button, CheckBox, Slider..."
+                Description = "Button, CheckBox, ComboBox, RadioButton, Slider."
             },
             new NavigationCard
             {
@@ -29,7 +29,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(CollectionsPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DataGrid.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.Table24 },
-                Description = "DataGrid, ListBox..."
+                Description = "DataGrid, ListBox, ListView, TreeView."
             },
             new NavigationCard
             {
@@ -76,7 +76,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(TextPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBlock.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.DrawText24 },
-                Description = "Label, TextBox, ..."
+                Description = "Label, TextBlock, TextBox, RichTextEdit, PasswordBox."
             },
         };
 

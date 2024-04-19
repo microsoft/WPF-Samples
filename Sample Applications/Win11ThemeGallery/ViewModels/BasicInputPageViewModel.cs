@@ -27,7 +27,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(ButtonPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Button.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.ControlButton24 },
-                Description = "Simple Button"
+                Description = "A control that responds to user input and raises a Click event."
             },
             new NavigationCard
             {
@@ -35,7 +35,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(CheckBoxPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Checkbox.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
-                Description = "Button with binary choice"
+                Description = "A control that a user can select or clear."
             },
             new NavigationCard
             {
@@ -43,7 +43,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(ComboBoxPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ComboBox.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.Filter16 },
-                Description = "Select item from a list"
+                Description = "A drop-down list of items a user can select from."
             },
             new NavigationCard
             {
@@ -51,7 +51,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(RadioButtonPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/RadioButton.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.RadioButton24 },
-                Description = "Set of mutually exclusive choices"
+                Description = "A control that allows a user to select a single option from a group of options."
             },
             new NavigationCard
             {
@@ -59,7 +59,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(SliderPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Slider.png"))},
                 //Icon = new SymbolIcon { Symbol = SymbolRegular.HandDraw24 },
-                Description = "Sliding value selector"
+                Description = "A control that lets the user select from a range of values by moving a Thumb control along a track."
             },
 
         };

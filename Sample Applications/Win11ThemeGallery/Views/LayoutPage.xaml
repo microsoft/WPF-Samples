@@ -28,7 +28,7 @@
                             <ContentPresenter Width="50" Height="50" Content="{Binding Icon}" Margin="0,0,8,0"/>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="10 0 0 0"/>
-                                <TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextBlockStyle}" Margin="10 0 0 0" />
+                                <TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextBlockStyle}" Margin="10 0 0 0" Width="240" />
                             </StackPanel>
                         </StackPanel>
                     </Button>

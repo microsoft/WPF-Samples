@@ -23,7 +23,7 @@
         <ItemsControl Grid.Row="1" ItemsSource="{Binding ViewModel.NavigationCards}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" Margin="20 10"/>
+                    <WrapPanel Orientation="Horizontal" Margin="10"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
@@ -33,7 +33,7 @@
                             <ContentPresenter Width="50" Height="50" Content="{Binding Icon}" Margin="0,0,8,0"/>
                             <StackPanel Orientation="Vertical" Margin="10 0 10 0">
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="10 0 0 0"/>
-                                <TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextBlockStyle}" Margin="10 0 0 0" />
+                                <TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextBlockStyle}" Margin="10 0 0 0" Width="240" />
                             </StackPanel>
                         </StackPanel>
                     </Button>

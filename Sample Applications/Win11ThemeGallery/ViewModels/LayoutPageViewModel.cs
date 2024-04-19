@@ -27,7 +27,7 @@ namespace Win11ThemeGallery.ViewModels
                 PageType = typeof(ExpanderPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Expander.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
-                Description = "Expander allows to show and hide content"
+                Description = "A container with a header that can be expanded to show a body with more content."
             },
         };
 
