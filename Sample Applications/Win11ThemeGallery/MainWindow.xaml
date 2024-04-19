@@ -20,6 +20,69 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+    <Grid Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="BackButton"
+                VerticalAlignment="Center"
+                Command="{Binding ViewModel.BackCommand}"
+                Margin="5,0,0,0"
+                Grid.Column="0"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Background="Transparent"
+                BorderBrush="Transparent">
+            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE72B;" VerticalAlignment="Center" FontSize="12"/>
+        </Button>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Image
+                VerticalAlignment="Center"
+                Source="pack://application:,,,/Assets/win11.png" Height="20" Width="20" Margin="5,5,0,5"/>
+          
+          <TextBlock Text="WPF Win11 Gallery Application" 
+                VerticalAlignment="Center"
+                FontSize="12" 
+                Margin="10"/>
+        </StackPanel>
+
+        <!-- <Button x:Name="MinimizeButton"
+                VerticalAlignment="Center"
+                Command="{Binding ViewModel.MinimizeCommand}"
+                Grid.Column="2"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Background="Transparent"
+                BorderBrush="Transparent">
+            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE921;" VerticalAlignment="Center" FontSize="12"/>
+
+        </Button>
+
+        <Button x:Name="MaximizeButton"
+                VerticalAlignment="Center"
+                Command="{Binding ViewModel.MaximizeCommand}"
+                Grid.Column="3"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Background="Transparent"
+                BorderBrush="Transparent">
+            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE922;" VerticalAlignment="Center" FontSize="12"/>
+        </Button>
+
+        <Button x:Name="CloseButton"
+                VerticalAlignment="Center"
+                Command="{Binding ViewModel.CloseCommand}"
+                Grid.Column="4"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Background="Transparent"
+                BorderBrush="Transparent">
+            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE711;" VerticalAlignment="Center" FontSize="12"/>
+        </Button> -->
+    </Grid>
+      
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -31,49 +94,30 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="BackButton" 
-                                Margin="10 0 5 5"
-                                Command="{Binding ViewModel.BackCommand}">
-                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xF0B0;" VerticalAlignment="Center" FontSize="16"/>
-                        </Button>
-                        <Button x:Name="ForwardButton" 
-                                Margin="5 0 0 5"
-                                Command="{Binding ViewModel.ForwardCommand}">
-                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xF0AF;" VerticalAlignment="Center" FontSize="16" />
-                        </Button>
-                    </StackPanel>
+
                     <TextBox x:Name="SearchBox" 
-                             Margin="10" Width="250"
-                             KeyUp="SearchBox_KeyUp"
-                             LostFocus="SearchBox_LostFocus"
-                             />
-                </StackPanel>
-                <TreeView x:Name="ControlsList" 
+                         Margin="10" Width="250"
+                         KeyUp="SearchBox_KeyUp"
+                         LostFocus="SearchBox_LostFocus" />
+
+
+                    <TreeView x:Name="ControlsList" 
                          ItemsSource="{Binding ViewModel.Controls}"
                          SelectedItemChanged="ControlsList_SelectedItemChanged"
                          Margin="10" Grid.Row="1"
                          >
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}" >
-                            <TextBlock Text="{Binding Name}" Margin="2"/>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
+                                <TextBlock Text="{Binding Name}" Margin="2" VerticalAlignment="Center"/>
+                            </StackPanel>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
-                <DockPanel Grid.Row="2">
-                    <Button x:Name="SettingsButton" DockPanel.Dock="Bottom" 
-                            Margin="10" Width="250"
-                            HorizontalContentAlignment="Left"
-                            Command="{Binding ViewModel.SettingsCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Settings" Margin="10 0 0 0"/>
-                        </StackPanel>
-                    </Button>
-                </DockPanel>
             </Grid>
-            <Border Padding="16" Grid.Column="1" >
-                <Frame x:Name="RootContentFrame"/>
+            <Border Padding="16" Grid.Column="1" CornerRadius="8,0,0,0" Background="{DynamicResource SubtleFillColorSecondaryBrush}" Margin="12,12,0,0">
+                <Frame x:Name="RootContentFrame" />
             </Border>
         </Grid>
     </Grid>

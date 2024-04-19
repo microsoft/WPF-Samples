@@ -8,7 +8,6 @@
 		<UseWPF>true</UseWPF>
 		<PlatformTarget>x64</PlatformTarget>
 		<StartupObject>Win11ThemeGallery.App</StartupObject>
-		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	
@@ -18,13 +17,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Assets\ControlImages\*"/>
 		<Resource Include="Assets\win11.png" />
+		<!--<Resource Include="Assets\win11-16.png" />-->
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\*-100x100.jpg" />
 	</ItemGroup>
 	
 	<PropertyGroup>
-		<WpfRepoRoot>{Enter the path to build binaries}</WpfRepoRoot>
+		<WpfRepoRoot>E:\repos\wpf</WpfRepoRoot>
 	</PropertyGroup>
 	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
 

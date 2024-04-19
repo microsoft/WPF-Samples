@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
 
@@ -25,15 +25,17 @@ namespace Win11ThemeGallery.ViewModels
             {
                 Name = "Menu",
                 PageType = typeof(MenuPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Pivot.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.RowTriple24 },
-                Description = "Contains a collection of MenuItem elements"
+                Description = "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
             },
             new NavigationCard
             {
                 Name = "TabControl",
                 PageType = typeof(TabControlPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TabView.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.TabDesktopBottom24 },
-                Description = "Tab control like in browser"
+                Description = "A control that displays a collection of tabs."
             },
         };
 
