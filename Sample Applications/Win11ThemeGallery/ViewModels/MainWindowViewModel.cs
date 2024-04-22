@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
+using Win11ThemeGallery.Views.DesignGuidance;
 using Win11ThemeGallery.Views.Samples;
 
 namespace Win11ThemeGallery.ViewModels;
@@ -24,6 +25,16 @@ public partial class MainWindowViewModel : ObservableObject
             Name = "Home",
             PageType = typeof(DashboardPage),
             Icon = "\xE80F"
+        },
+        new NavigationItem
+        {
+            Name = "Design Guidance",
+            PageType = typeof(DesignGuidancePage),
+            Icon = "\xE8FD",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Colors", typeof(ColorsPage)),
+            }
         },
         new NavigationItem
         {
