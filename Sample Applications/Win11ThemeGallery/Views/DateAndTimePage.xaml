@@ -11,8 +11,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
+            <TextBlock Style="{DynamicResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
+            <TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
         </StackPanel>
 
         <ItemsControl Grid.Row="1" ItemsSource="{Binding ViewModel.NavigationCards}">
@@ -27,8 +27,8 @@
                         <StackPanel Orientation="Horizontal">
                             <ContentPresenter Width="50" Height="50" Content="{Binding Icon}" Margin="0,0,8,0"/>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="10 0 0 0"/>
-                                <TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextBlockStyle}" Margin="10 0 0 0" Width="240" />
+                                <TextBlock Text="{Binding Name}" Style="{DynamicResource BodyStrongTextBlockStyle}" Margin="10 0 0 0"/>
+                                <TextBlock Text="{Binding Description}" Style="{DynamicResource CaptionTextBlockStyle}" Margin="10 0 0 0" Width="240" />
                             </StackPanel>
                         </StackPanel>
                     </Button>
