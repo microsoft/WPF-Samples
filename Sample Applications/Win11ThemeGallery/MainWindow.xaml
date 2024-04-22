@@ -14,6 +14,62 @@
         Height="802" 
         Width="1450"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
+            <Setter Property="MinWidth" Value="46" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="EnclosingBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="EnclosingBorder" Property="Background" Value="#E5EAEF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TitleBarDefaultCloseButtonStyle" TargetType="Button">
+            <Setter Property="MinWidth" Value="46" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                    x:Name="EnclosingBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="EnclosingBorder" Property="Background" Value="#C42B1C" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -51,36 +107,39 @@
                 Margin="10"/>
         </StackPanel>
 
-        <!-- <Button x:Name="MinimizeButton"
+         <Button x:Name="MinimizeButton"
                 VerticalAlignment="Center"
-                Command="{Binding ViewModel.MinimizeCommand}"
                 Grid.Column="2"
                 WindowChrome.IsHitTestVisibleInChrome="True"
                 Background="Transparent"
-                BorderBrush="Transparent">
-            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE921;" VerticalAlignment="Center" FontSize="12"/>
+                BorderBrush="Transparent"
+                Click="MinimizeWindow"
+                Style="{StaticResource TitleBarDefaultButtonStyle}">
+                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE921;" VerticalAlignment="Center" FontSize="12"/>
 
         </Button>
 
         <Button x:Name="MaximizeButton"
                 VerticalAlignment="Center"
-                Command="{Binding ViewModel.MaximizeCommand}"
                 Grid.Column="3"
                 WindowChrome.IsHitTestVisibleInChrome="True"
                 Background="Transparent"
-                BorderBrush="Transparent">
-            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE922;" VerticalAlignment="Center" FontSize="12"/>
+                BorderBrush="Transparent"
+                Click="MaximizeWindow"
+                Style="{StaticResource TitleBarDefaultButtonStyle}">
+                <TextBlock x:Name="MaximizeIcon" FontFamily="Segoe Fluent Icons" Text="&#xE922;" VerticalAlignment="Center" FontSize="12"/>
         </Button>
 
-        <Button x:Name="CloseButton"
+            <Button x:Name="CloseButton"
                 VerticalAlignment="Center"
-                Command="{Binding ViewModel.CloseCommand}"
                 Grid.Column="4"
                 WindowChrome.IsHitTestVisibleInChrome="True"
                 Background="Transparent"
-                BorderBrush="Transparent">
-            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE711;" VerticalAlignment="Center" FontSize="12"/>
-        </Button> -->
+                BorderBrush="Transparent"
+                Click="CloseWindow"
+                Style="{StaticResource TitleBarDefaultCloseButtonStyle}">
+                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE711;" VerticalAlignment="Center" FontSize="14"/>
+            </Button> 
     </Grid>
       
         <Grid Grid.Row="1">
