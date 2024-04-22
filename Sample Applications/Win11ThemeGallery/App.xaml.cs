@@ -97,6 +97,12 @@ public partial class App : Application
             services.AddTransient<UserDashboardPage>();
             services.AddTransient<UserDashboardPageViewModel>();
 
+            services.AddTransient<TypographyPage>();
+            services.AddTransient<TypographyPageViewModel>();
+
+            services.AddTransient<IconsPage>();
+            services.AddTransient<IconsPageViewModel>();
+
             services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsPageViewModel>();
         }).Build();
