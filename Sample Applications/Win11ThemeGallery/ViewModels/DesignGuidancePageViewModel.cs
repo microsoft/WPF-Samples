@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
-using Win11ThemeGallery.Views.DesignGuidance;
+using Win11ThemeGallery.Views;
 
 namespace Win11ThemeGallery.ViewModels
 {

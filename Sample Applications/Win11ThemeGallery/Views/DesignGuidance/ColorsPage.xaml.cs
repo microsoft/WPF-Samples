@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Win11ThemeGallery.ViewModels.DesignGuidance;
+using Win11ThemeGallery.ViewModels;
 
-namespace Win11ThemeGallery.Views.DesignGuidance
+namespace Win11ThemeGallery.Views
 {
     /// <summary>
     /// Interaction logic for ColorsPage.xaml

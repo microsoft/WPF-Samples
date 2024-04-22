@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
-using Win11ThemeGallery.Views.DesignGuidance;
 using Win11ThemeGallery.Views.Samples;
 
 namespace Win11ThemeGallery.ViewModels;

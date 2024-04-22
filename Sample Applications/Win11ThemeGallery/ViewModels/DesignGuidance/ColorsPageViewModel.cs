@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Win11ThemeGallery.Navigation;
 
-namespace Win11ThemeGallery.ViewModels.DesignGuidance
+namespace Win11ThemeGallery.ViewModels
 {
     public partial class ColorsPageViewModel : ObservableObject
     {

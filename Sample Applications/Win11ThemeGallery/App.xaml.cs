@@ -9,8 +9,6 @@ using Win11ThemeGallery.ViewModels;
 using Win11ThemeGallery.Views;
 using Win11ThemeGallery.Views.Samples;
 using Win11ThemeGallery.ViewModels.Samples;
-using Win11ThemeGallery.Views.DesignGuidance;
-using Win11ThemeGallery.ViewModels.DesignGuidance;
 
 namespace Win11ThemeGallery;
 
