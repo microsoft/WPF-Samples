@@ -27,14 +27,26 @@ public partial class MainWindow : Window
         DataContext = this;
         InitializeComponent();
 
-        foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
+        var appContextBackdropData = AppContext.GetData("Switch.System.Windows.Appearance.DisableFluentThemeWindowBackdrop");
+        bool disableFluentThemeWindowBackdrop = false;
+
+        if (appContextBackdropData != null )
         {
-            if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
+            disableFluentThemeWindowBackdrop = bool.Parse(Convert.ToString(appContextBackdropData));
+        }
+        
+
+        if (!disableFluentThemeWindowBackdrop)
+        {
+            foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
             {
-                MinimizeButton.Visibility = Visibility.Collapsed;
-                MaximizeButton.Visibility = Visibility.Collapsed;
-                CloseButton.Visibility = Visibility.Collapsed;
-                break;
+                if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
+                {
+                    MinimizeButton.Visibility = Visibility.Collapsed;
+                    MaximizeButton.Visibility = Visibility.Collapsed;
+                    CloseButton.Visibility = Visibility.Collapsed;
+                    break;
+                }
             }
         }
 
