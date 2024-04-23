@@ -7,7 +7,6 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.Views;
-using Win11ThemeGallery.Views;
 
 namespace Win11ThemeGallery.ViewModels
 {
@@ -27,7 +26,7 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "Colors",
                 PageType = typeof(ColorsPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ColorPaletteResources.png"))},
-                Description = ""
+                Description = "Guide showing how to use colors in your app"
             },
             // new NavigationCard
             // {

@@ -13,7 +13,7 @@ namespace Win11ThemeGallery.ViewModels
         private string _pageTitle = "Colors";
 
         [ObservableProperty]
-        private string _pageDescription = "The Windows 11 color palette is designed to be bold and vibrant, with a focus on high contrast and accessibility. The palette includes a wide range of colors, from bright and saturated to soft and muted, allowing you to create a variety of visual styles and moods.";
+        private string _pageDescription = "Guide showing how to use colors in your app";
 
     }
 }

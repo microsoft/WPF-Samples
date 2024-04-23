@@ -34,19 +34,19 @@ namespace Win11ThemeGallery.Views
             switch (PageSelector.SelectedIndex)
             {
                 case 0:
-                    ColorSubpageNavigationFrame.Navigate(typeof(TextSection));
+                    ColorSubpageNavigationFrame.Navigate(new TextSection());
                     break;
                 case 1:
-                    ColorSubpageNavigationFrame.Navigate(typeof(FillSection));
+                    ColorSubpageNavigationFrame.Navigate(new FillSection());
                     break;
                 case 2:
-                    ColorSubpageNavigationFrame.Navigate(typeof(StrokeSection));
+                    ColorSubpageNavigationFrame.Navigate(new StrokeSection());
                     break;
                 case 3:
-                    ColorSubpageNavigationFrame.Navigate(typeof(BackgroundSection));
+                    ColorSubpageNavigationFrame.Navigate(new BackgroundSection());
                     break;
                 case 4:
-                    ColorSubpageNavigationFrame.Navigate(typeof(SignalSection));
+                    ColorSubpageNavigationFrame.Navigate(new SignalSection());
                     break;
             }
         }

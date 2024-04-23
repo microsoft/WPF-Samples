@@ -60,4 +60,12 @@
   <ImageBrush x:Key="p469" ImageSource="pack://application:,,,/Assets/469-100x100.jpg" />
   <ImageBrush x:Key="p505" ImageSource="pack://application:,,,/Assets/505-100x100.jpg" />
 
+  <Style x:Key="ColorTilesPanelStyle" TargetType="{x:Type Border}">
+    <Style.Setters>
+        <Setter Property="Background" Value="{DynamicResource ControlExampleDisplayBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style.Setters>
+  </Style>
 </ResourceDictionary>
