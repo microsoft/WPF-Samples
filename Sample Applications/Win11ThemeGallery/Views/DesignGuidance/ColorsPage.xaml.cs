@@ -48,6 +48,9 @@ namespace Win11ThemeGallery.Views
                 case 4:
                     ColorSubpageNavigationFrame.Navigate(new SignalSection());
                     break;
+                case 5:
+                    ColorSubpageNavigationFrame.Navigate(new HighContrastSection());
+                    break;
             }
         }
 

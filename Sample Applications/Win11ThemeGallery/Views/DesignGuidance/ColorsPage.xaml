@@ -50,6 +50,7 @@
           <sys:String>Stroke</sys:String>
           <sys:String>Background</sys:String>
           <sys:String>Signal</sys:String>
+          <sys:String>HighContrast</sys:String>
         </ComboBox>
 
         <Frame x:Name="ColorSubpageNavigationFrame" />
