@@ -37,6 +37,12 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
+            Name = "All Samples",
+            PageType = typeof(AllSamplesPage),
+            Icon = "\xE71D",
+        },
+        new NavigationItem
+        {
             Name = "Basic Input",
             PageType = typeof(BasicInputPage),
             Icon = "\xE73A",
