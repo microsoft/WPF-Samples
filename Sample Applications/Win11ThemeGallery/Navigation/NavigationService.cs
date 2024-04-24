@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace Win11ThemeGallery.Navigation;
 
 public interface INavigationService
 {
+    void Navigate(Type type);
+
     void NavigateTo(Type type);
 
     void SetFrame(Frame frame);
@@ -13,6 +16,7 @@ public interface INavigationService
 
     void NavigateForward();
 
+    event EventHandler<NavigatingEventArgs> Navigating;
 }
 
 
@@ -27,6 +31,8 @@ public class NavigationService : INavigationService
     private Stack<Type> _future;
 
     private readonly IServiceProvider _serviceProvider;
+
+    public event EventHandler<NavigatingEventArgs> Navigating;
 
 
     public NavigationService(IServiceProvider serviceProvider)
@@ -46,6 +52,14 @@ public class NavigationService : INavigationService
         if (type != null)
         {
             _future.Clear();
+            RaiseNavigatingEvent(type);
+        }
+    }
+
+    public void Navigate(Type type)
+    {
+        if(type != null)
+        {
             _history.Push(_currentPageType);
             _currentPageType = type;
             var page = _serviceProvider.GetRequiredService(type);
@@ -57,14 +71,12 @@ public class NavigationService : INavigationService
     {
         if(_history.Count > 0)
         {
-            Type type = _history.Peek();
+            Type type = _history.Pop();
             if (type != null)
             {
+                _future.Push(type);
+                RaiseNavigatingEvent(type);
                 _history.Pop();
-                _future.Push(_currentPageType);
-                _currentPageType = type;
-                var page = _serviceProvider.GetRequiredService(type);
-                _frame.Navigate(page);
             }
         }
     }
@@ -73,16 +85,18 @@ public class NavigationService : INavigationService
     {
         if(_future.Count > 0)
         {
-            Type type = _future.Peek();
+            Type type = _future.Pop();
             if (type != null)
             {
-                _future.Pop();
-                _history.Push(_currentPageType);
-                _currentPageType = type;
-                var page = _serviceProvider.GetRequiredService(type);
-                _frame.Navigate(page);
+                _history.Push(type);
+                RaiseNavigatingEvent(type);
             }
         }
+    }
+
+    public void RaiseNavigatingEvent(Type type)
+    {
+        Navigating?.Invoke(this, new NavigatingEventArgs(type));
     }
 
 }
