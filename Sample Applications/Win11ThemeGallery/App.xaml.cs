@@ -77,6 +77,8 @@ public partial class App : Application
 
             services.AddTransient<LayoutPage>();
             services.AddTransient<LayoutPageViewModel>();
+            services.AddTransient<AllSamplesPage>();
+            services.AddTransient<AllSamplesPageViewModel>();
             services.AddTransient<BasicInputPage>();
             services.AddTransient<BasicInputPageViewModel>();
             services.AddTransient<CollectionsPage>();
