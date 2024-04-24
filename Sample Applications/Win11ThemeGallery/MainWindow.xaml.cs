@@ -27,28 +27,7 @@ public partial class MainWindow : Window
         DataContext = this;
         InitializeComponent();
 
-        var appContextBackdropData = AppContext.GetData("Switch.System.Windows.Appearance.DisableFluentThemeWindowBackdrop");
-        bool disableFluentThemeWindowBackdrop = false;
-
-        if (appContextBackdropData != null )
-        {
-            disableFluentThemeWindowBackdrop = bool.Parse(Convert.ToString(appContextBackdropData));
-        }
-        
-
-        if (!disableFluentThemeWindowBackdrop)
-        {
-            foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
-            {
-                if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
-                {
-                    MinimizeButton.Visibility = Visibility.Collapsed;
-                    MaximizeButton.Visibility = Visibility.Collapsed;
-                    CloseButton.Visibility = Visibility.Collapsed;
-                    break;
-                }
-            }
-        }
+        Toggle_TitleButtonVisibility();
 
         _navigationService = navigationService;
         _navigationService.SetFrame(this.RootContentFrame);
@@ -77,6 +56,32 @@ public partial class MainWindow : Window
         if (ControlsList.SelectedItem is NavigationItem navItem)
         {
             _navigationService.NavigateTo(navItem.PageType);
+        }
+    }
+
+    private void Toggle_TitleButtonVisibility()
+    {
+        var appContextBackdropData = AppContext.GetData("Switch.System.Windows.Appearance.DisableFluentThemeWindowBackdrop");
+        bool disableFluentThemeWindowBackdrop = false;
+
+        if (appContextBackdropData != null)
+        {
+            disableFluentThemeWindowBackdrop = bool.Parse(Convert.ToString(appContextBackdropData));
+        }
+
+
+        if (!disableFluentThemeWindowBackdrop)
+        {
+            foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
+            {
+                if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
+                {
+                    MinimizeButton.Visibility = Visibility.Collapsed;
+                    MaximizeButton.Visibility = Visibility.Collapsed;
+                    CloseButton.Visibility = Visibility.Collapsed;
+                    break;
+                }
+            }
         }
     }
 
@@ -113,6 +118,6 @@ public partial class MainWindow : Window
 
     private void CloseWindow(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        Application.Current.Shutdown();
     }
 }

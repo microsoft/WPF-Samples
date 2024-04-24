@@ -16,8 +16,8 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
-            <Setter Property="MinWidth" Value="46" />
-            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="MinWidth" Value="48" />
+            <Setter Property="MinHeight" Value="32" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -43,8 +43,8 @@
         </Style>
 
         <Style x:Key="TitleBarDefaultCloseButtonStyle" TargetType="Button">
-            <Setter Property="MinWidth" Value="46" />
-            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="MinWidth" Value="48" />
+            <Setter Property="MinHeight" Value="32" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
