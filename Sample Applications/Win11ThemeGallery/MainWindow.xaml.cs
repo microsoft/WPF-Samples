@@ -44,6 +44,20 @@ public partial class MainWindow : Window
                 UseAeroCaptionButtons = true
             }
         );
+
+        this.StateChanged += MainWindow_StateChanged;
+    }
+
+    private void MainWindow_StateChanged(object sender, EventArgs e)
+    {
+        if (this.WindowState == WindowState.Maximized)
+        {
+            MainGrid.Margin = new Thickness(8);
+        }
+        else
+        {
+            MainGrid.Margin = default;
+        }
     }
 
     private IServiceProvider _serviceProvider;
@@ -103,7 +117,6 @@ public partial class MainWindow : Window
 
     private void MaximizeWindow(object sender, RoutedEventArgs e)
     {
-        Console.WriteLine(MaximizeIcon.Text);
         if(this.WindowState == WindowState.Maximized)
         {
             this.WindowState = WindowState.Normal;
