@@ -2,10 +2,13 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<RuntimeIdentifiers>win-x64;</RuntimeIdentifiers>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
+		<WindowsPackageType>None</WindowsPackageType>
+		<UseRidGraph>true</UseRidGraph>
 		<PlatformTarget>x64</PlatformTarget>
 		<Platforms>AnyCPU;x64</Platforms>
 		<StartupObject>Win11ThemeGallery.App</StartupObject>
@@ -24,8 +27,19 @@
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\*-100x100.jpg" />
 	</ItemGroup>
-	
-	<PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Windows.CsWin32" Version="0.2.164-beta">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.0.0" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240227000" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnablePreviewMsixTooling)'=='true'">
+		<ProjectCapability Include="Msix" />
+	</ItemGroup>
+	<!--<PropertyGroup>
 		<WpfRepoRoot>E:\Wpf</WpfRepoRoot>
 	</PropertyGroup>
 	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />

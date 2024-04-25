@@ -135,6 +135,12 @@ public partial class MainWindowViewModel : ObservableObject
                 new NavigationItem("PasswordBox", typeof(PasswordBoxPage)),
             }
         },
+        new NavigationItem
+        {
+            Name = "Notifications",
+            PageType = typeof(NotificationsPage),
+            Icon = "\xE8D2"
+        },
     };
 
     [ObservableProperty]
