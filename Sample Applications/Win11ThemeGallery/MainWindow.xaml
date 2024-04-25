@@ -95,26 +95,39 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                    <TextBox x:Name="SearchBox" 
-                         Margin="10" Width="250"
-                         KeyUp="SearchBox_KeyUp"
-                         LostFocus="SearchBox_LostFocus" />
+                <TextBox x:Name="SearchBox" 
+                        Margin="10" Width="250"
+                        KeyUp="SearchBox_KeyUp"
+                        LostFocus="SearchBox_LostFocus" />
 
 
-                    <TreeView x:Name="ControlsList" 
-                         ItemsSource="{Binding ViewModel.Controls}"
-                         SelectedItemChanged="ControlsList_SelectedItemChanged"
-                         Margin="10" Grid.Row="1"
-                         >
-                    <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Children}" >
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
-                                <TextBlock Text="{Binding Name}" Margin="2" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </HierarchicalDataTemplate>
-                    </TreeView.ItemTemplate>
-                </TreeView>
+                <TreeView x:Name="ControlsList" 
+                        ItemsSource="{Binding ViewModel.Controls}"
+                        SelectedItemChanged="ControlsList_SelectedItemChanged"
+                        Margin="10" Grid.Row="1"
+                        >
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
+                            <TextBlock Text="{Binding Name}" Margin="2" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+
+                <DockPanel Grid.Row="2">
+                    <Button x:Name="AboutButton" 
+                            DockPanel.Dock="Bottom" 
+                            Margin="10" Width="250" 
+                            HorizontalContentAlignment="Left"
+                            Command="{Binding ViewModel.AboutCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe Fluent Icons" Margin="0 4 0 0">&#xE946;</TextBlock>
+                            <TextBlock Text="About" Margin="8 0 0 0" />
+                        </StackPanel>
+                    </Button>
+                </DockPanel>
             </Grid>
             <Border Padding="16" Grid.Column="1" CornerRadius="8,0,0,0" Background="{DynamicResource SubtleFillColorSecondaryBrush}" Margin="12,12,0,0">
                 <Frame x:Name="RootContentFrame" />

@@ -142,6 +142,12 @@ public partial class MainWindowViewModel : ObservableObject
     }
 
     [RelayCommand]
+    public void About()
+    {
+        _navigationService.NavigateTo(typeof(AboutPage));
+    }
+
+    [RelayCommand]
     public void Back()
     {
         _navigationService.NavigateBack();
