@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Win11ThemeGallery.Models;
 using Win11ThemeGallery.Navigation;
 
 namespace Win11ThemeGallery.ViewModels
@@ -15,20 +17,17 @@ namespace Win11ThemeGallery.ViewModels
         [ObservableProperty]
         private string _pageDescription = "With the release of Windows 11, Segoe Fluent Icons is the recommended icon font.";
 
-        private readonly INavigationService _navigationService;
+        [ObservableProperty]
+        private ICollection<IconData> _icons;
 
-        public IconsPageViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-        }
+        [ObservableProperty]
+        private IconData? _selectedIcon;
 
-        [RelayCommand]
-        public void Navigate(object pageType)
+        public IconsPageViewModel()
         {
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
+            var jsonText = File.ReadAllText("Models/IconsData.json");
+            _icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
+            _selectedIcon = _icons.FirstOrDefault();
         }
     }
 }

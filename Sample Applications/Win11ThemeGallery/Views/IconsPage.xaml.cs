@@ -29,5 +29,6 @@ namespace Win11ThemeGallery.Views
         }
 
         public IconsPageViewModel ViewModel { get; }
+
     }
 }

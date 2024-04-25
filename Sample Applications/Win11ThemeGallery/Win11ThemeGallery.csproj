@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -28,6 +28,14 @@
 		<WpfRepoRoot>E:\repos\wpf</WpfRepoRoot>
 	</PropertyGroup>
 	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
+	<ItemGroup>
+	  <None Remove="Models\IconsData.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Models\IconsData.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
