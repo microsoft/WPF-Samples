@@ -27,6 +27,8 @@ public partial class MainWindow : Window
         DataContext = this;
         InitializeComponent();
 
+        Toggle_TitleButtonVisibility();
+
         _navigationService = navigationService;
         _navigationService.SetFrame(this.RootContentFrame);
         _navigationService.NavigateTo(typeof(DashboardPage));
@@ -57,6 +59,32 @@ public partial class MainWindow : Window
         }
     }
 
+    private void Toggle_TitleButtonVisibility()
+    {
+        var appContextBackdropData = AppContext.GetData("Switch.System.Windows.Appearance.DisableFluentThemeWindowBackdrop");
+        bool disableFluentThemeWindowBackdrop = false;
+
+        if (appContextBackdropData != null)
+        {
+            disableFluentThemeWindowBackdrop = bool.Parse(Convert.ToString(appContextBackdropData));
+        }
+
+
+        if (!disableFluentThemeWindowBackdrop)
+        {
+            foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
+            {
+                if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
+                {
+                    MinimizeButton.Visibility = Visibility.Collapsed;
+                    MaximizeButton.Visibility = Visibility.Collapsed;
+                    CloseButton.Visibility = Visibility.Collapsed;
+                    break;
+                }
+            }
+        }
+    }
+
     private void SearchBox_KeyUp(object sender, KeyEventArgs e)
     {
         ViewModel.UpdateSearchText(SearchBox.Text);
@@ -66,5 +94,30 @@ public partial class MainWindow : Window
     {
         SearchBox.Text = "";
         ViewModel.UpdateSearchText(SearchBox.Text);
+    }
+
+    private void MinimizeWindow(object sender, RoutedEventArgs e)
+    {
+        this.WindowState = WindowState.Minimized;
+    }
+
+    private void MaximizeWindow(object sender, RoutedEventArgs e)
+    {
+        Console.WriteLine(MaximizeIcon.Text);
+        if(this.WindowState == WindowState.Maximized)
+        {
+            this.WindowState = WindowState.Normal;
+            MaximizeIcon.Text = "\uE922";
+        }
+        else
+        {
+            this.WindowState = WindowState.Maximized;
+            MaximizeIcon.Text = "\uE923";
+        }
+    }
+
+    private void CloseWindow(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
     }
 }
