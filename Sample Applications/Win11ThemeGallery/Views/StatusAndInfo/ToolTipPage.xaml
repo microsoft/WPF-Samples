@@ -33,7 +33,11 @@
     <controls:ControlExample
         Margin="0"
         HeaderText="A button with a simple ToolTip."
-        XamlCode="&lt;Button ToolTipService.ToolTip=&quot;Simple ToolTip&quot; /&gt;">
+        XamlCode="&lt;Button 
+        &#10;&#9;Content=&quot;Button with a simple ToolTip.&quot; 
+        &#10;&#9;ToolTipService.InitialShowDelay=&quot;100&quot; 
+        &#10;&#9;ToolTipService.Placement=&quot;MousePoint&quot;
+        &#10;&#9;ToolTipService.ToolTip=&quot;Simple ToolTip&quot;/&gt;">
         <Button
             Content="Button with a simple ToolTip."
             ToolTipService.InitialShowDelay="100"

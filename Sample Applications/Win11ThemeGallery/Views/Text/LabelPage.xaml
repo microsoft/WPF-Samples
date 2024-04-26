@@ -40,7 +40,14 @@
         <controls:ControlExample
             Margin="0,36,0,0"
             HeaderText="A Label for TextBox."
-            XamlCode="&lt;Label Target=&quot;{Binding ElementName=MyTextBox}&quot; /&gt;">
+            XamlCode="&lt;Grid&gt;
+            &#10;&#9;&lt;Grid.RowDefinitions&gt;
+            &#10;&#9;&#9;&lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+            &#10;&#9;&#9;&lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+            &#10;&#9;&lt;/Grid.RowDefinitions&gt;
+            &#10;&#9;&lt;Label Grid.Row=&quot;0&quot; Content=&quot;I am a Label of the TextBox below.&quot; /&gt;
+            &#10;&#9;&lt;TextBox Grid.Row=&quot;1&quot; /&gt;
+            &#10;&lt;/Grid&gt;">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

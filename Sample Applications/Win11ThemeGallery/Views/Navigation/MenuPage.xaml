@@ -31,45 +31,60 @@
 
     <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
     <Grid Margin="0,0,0,24">
-        <controls:ControlExample Margin="0" HeaderText="Standard Menu.">
-            <controls:ControlExample.XamlCode>
-                &lt;Menu&gt;\n
-                \t&lt;MenuItem Header=&quot;File&quot; /&gt;\n
-                \t&lt;MenuItem Header=&quot;Edit&quot; /&gt;\n
-                \t&lt;MenuItem Header=&quot;Icon&quot; SymbolIcon=&quot;Fluent24&quot; /&gt;\n
-                \t&lt;MenuItem SymbolIcon=&quot;Fluent24&quot; /&gt;\n
-                &lt;/Menu&gt;
-            </controls:ControlExample.XamlCode>
-            <Menu FontSize="14">
-                    <MenuItem Header="File">
-                    <MenuItem Header="New" />
-                    <MenuItem Header="New window" />
-                    <MenuItem Header="Open..." />
-                    <MenuItem Header="Save" />
-                    <MenuItem Header="Save As..." />
-                    <Separator />
-                    <MenuItem Header="Exit" />
-                </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Header="Undo" />
-                    <Separator />
-                    <MenuItem Header="Cut" />
-                    <MenuItem Header="Copy" />
-                    <MenuItem Header="Paste" />
-                    <MenuItem IsEnabled="False" />
-                    <Separator />
-                    <MenuItem Header="Search with browser" />
-                    <MenuItem Header="Find..." />
-                    <MenuItem Header="Find next" />
-                    <Separator />
-                    <MenuItem Header="Select All" />
-                </MenuItem>
-                <Separator />
-                        <MenuItem/>
-                        <MenuItem/>
-                        <MenuItem/>
-            </Menu>
-        </controls:ControlExample>
+                <controls:ControlExample 
+                    Margin="0" 
+                    HeaderText="Standard Menu." 
+                    XamlCode="&lt;Menu&gt;
+                    &#10;&#9;&lt;MenuItem Header=&quot;File&quot;&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;New&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;New window&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Open...&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save As...&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Exit&quot; /&gt;
+                    &#10;&#9;&lt;/MenuItem&gt;
+                    &#10;&#9;&lt;MenuItem Header=&quot;Edit&quot;&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Undo&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Cut&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Copy&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Paste&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem IsEnabled=&quot;False&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Search with browser&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find...&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find Next&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Select All&quot; /&gt;
+                    &#10;&#9;&lt;/MenuItem&gt;
+                    &#10;&lt;/Menu&gt;">
+                    <Menu FontSize="14">
+                        <MenuItem Header="File">
+                            <MenuItem Header="New" />
+                            <MenuItem Header="New window" />
+                            <MenuItem Header="Open..." />
+                            <MenuItem Header="Save" />
+                            <MenuItem Header="Save As..." />
+                            <Separator />
+                            <MenuItem Header="Exit" />
+                        </MenuItem>
+                        <MenuItem Header="Edit">
+                            <MenuItem Header="Undo" />
+                            <Separator />
+                            <MenuItem Header="Cut" />
+                            <MenuItem Header="Copy" />
+                            <MenuItem Header="Paste" />
+                            <MenuItem IsEnabled="False" />
+                            <Separator />
+                            <MenuItem Header="Search with browser" />
+                            <MenuItem Header="Find..." />
+                            <MenuItem Header="Find next" />
+                            <Separator />
+                            <MenuItem Header="Select All" />
+                        </MenuItem>
+                    </Menu>
+                </controls:ControlExample>
     </Grid>
     </ScrollViewer>
   </Grid>

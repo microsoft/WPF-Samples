@@ -34,7 +34,11 @@
         <controls:ControlExample
             Margin="0"
             HeaderText="Standard RadioButton."
-            XamlCode="&lt;RadioButton Content=&quot;Option 1&quot; /&gt;">
+            XamlCode="&lt;StackPanel&gt;
+            &#10;&#9;&lt;RadioButton Content=&quot;Option 1&quot; GroupName=&quot;radio_group_one&quot; IsChecked=&quot;True&quot;/&gt;
+            &#10;&#9;&lt;RadioButton Content=&quot;Option 2&quot; GroupName=&quot;radio_group_one&quot; /&gt;
+            &#10;&#9;&lt;RadioButton Content=&quot;Option 3&quot; GroupName=&quot;radio_group_one&quot; /&gt;
+            &#10;&lt;/StackPanel&gt;">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -66,7 +70,11 @@
         <controls:ControlExample
             Margin="0,36,0,0"
             HeaderText="RadioButton with right to left flow direction."
-            XamlCode="&lt;RadioButton FlowDirection=&quot;RightToLeft&quot; /&gt;">
+            XamlCode="&lt;StackPanel&gt;
+            &#10;&#9;&lt;RadioButton Content=&quot;Option 1&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; IsChecked=&quot;True&quot;/&gt;
+            &#10;&#9;&lt;RadioButton Content=&quot;Option 2&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; /&gt;
+            &#10;&#9;&lt;RadioButton Content=&quot;Option 3&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; /&gt;
+            &#10;&lt;/StackPanel&gt;">
             <StackPanel Grid.Column="0">
                 <RadioButton
                     Content="Option 1"

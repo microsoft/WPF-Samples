@@ -36,13 +36,6 @@
                   XamlCode="&lt;RichTextBox /&gt;">
                     <RichTextBox/>
                 </controls:ControlExample>
-
-                <controls:ControlExample
-                  Margin="0"
-                  HeaderText="A simple RichTextBox"
-                  XamlCode="&lt;RichTextBox /&gt;">
-                    <RichTextBox/>
-                </controls:ControlExample>
             </StackPanel>
         </ScrollViewer>
   </Grid>
