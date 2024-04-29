@@ -15,7 +15,7 @@ namespace Win11ThemeGallery.ViewModels
         private string _pageTitle = "Icons";
 
         [ObservableProperty]
-        private string _pageDescription = "With the release of Windows 11, Segoe Fluent Icons is the recommended icon font.";
+        private string _pageDescription = "Guide showing how to use icons in your application.";
 
         [ObservableProperty]
         private ICollection<IconData> _icons;

@@ -33,20 +33,25 @@ public partial class MainWindowViewModel : ObservableObject
             Icon = "\xE8FD",
             Children = new ObservableCollection<NavigationItem>
             {
-                new NavigationItem("Colors", typeof(ColorsPage)),
+                new NavigationItem
+                {
+                    Name = "Colors",
+                    PageType = typeof(ColorsPage),
+                    Icon = "\xE790"
+                },
+                new NavigationItem
+                {
+                    Name = "Typography",
+                    PageType = typeof(TypographyPage),
+                    Icon = "\xE8D2"
+                },
+                new NavigationItem
+                {
+                    Name = "Icons",
+                    PageType = typeof(IconsPage),
+                    Icon = "\xED58"
+                },
             }
-        },
-        new NavigationItem
-        {
-            Name = "Typography",
-            PageType = typeof(TypographyPage),
-            Icon = "\xE8D2"
-        },
-        new NavigationItem
-        {
-            Name = "Icons",
-            PageType = typeof(IconsPage),
-            Icon = "\xED58"
         },
         new NavigationItem
         {

@@ -73,18 +73,29 @@
                     .</Span>
             </TextBlock>
         </controls:ControlExample>
-                <controls:ControlExample 
-                    Margin="0,36,0,0" 
-                    HeaderText="A TextBlock with inline text elements."
-                    XamlCode="&lt;TextBlock FontSize=&quot;14&quot; TextWrapping=&quot;Wrap&quot;&gt;
-                    &#10;&#9;Using CodeFlow is easy. We can shift through the changes, shift through the file, comment on the changes, resolve them. We can also see the description of the PR. All  this can be done using the shortcut commands. All the shortcuts are shown in the help window.
-                    &#10;&lt;/TextBlock&gt;">
+        <controls:ControlExample 
+            Margin="0,36,0,0" 
+            HeaderText="A TextBlock with inline text elements."
+            XamlCode="&lt;TextBlock FontSize=&quot;14&quot; TextWrapping=&quot;Wrap&quot;&gt;
+            &#10;
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            &#10;
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            &#10;
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            &#10;
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            &#10;&lt;/TextBlock&gt;">
                     
-                    <TextBlock FontSize="14" TextWrapping="Wrap">
-    Using CodeFlow is easy. We can shift through the changes, shift through the file, comment on the changes, resolve them. We can also see the description of the PR. All  this can be done using the shortcut commands. All the shortcuts are shown in the help window.
-                    </TextBlock>
-                </controls:ControlExample>
-            </StackPanel>
+            <TextBlock FontSize="14" TextWrapping="Wrap">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </TextBlock>
+        </controls:ControlExample>
+            
+    </StackPanel>
 
     </ScrollViewer>
   </Grid>
