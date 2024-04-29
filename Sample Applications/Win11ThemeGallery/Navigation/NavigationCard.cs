@@ -14,8 +14,6 @@ namespace Win11ThemeGallery.Navigation
 
         public string Description { get; set; } = "";
 
-        //public IconElement? Icon { get; set; } = null;
-
         public Object? Icon { get; set; } = null;
 
         public NavigationCard() { }

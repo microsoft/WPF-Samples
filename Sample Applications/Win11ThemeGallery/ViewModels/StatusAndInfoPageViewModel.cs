@@ -26,7 +26,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "ProgressBar",
                 PageType = typeof(ProgressBarPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ProgressBar.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.ArrowDownload24 },
                 Description = "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."
             },
             new NavigationCard
@@ -34,7 +33,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "ToolTip",
                 PageType = typeof(ToolTipPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ToolTip.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.Comment24 },
                 Description = "Displays information for an element in a pop-up window."
             },
         };
