@@ -1,0 +1,420 @@
+﻿<Page x:Class="Win11ThemeGallery.Views.BackgroundSection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Win11ThemeGallery.Views"
+      xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Foreground="{DynamicResource WindowForeground}"
+      Title="BackgroundSection">
+  
+  <StackPanel>
+
+        <!--  Card Background  -->
+        <controls:ColorPageExample
+            Title="Card Background"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used to create 'cards' - content blocks that live on page and layer backgrounds">
+            <Border
+                Width="60"
+                Height="30"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="4" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                ColorBrushName="CardBackgroundFillColorDefaultBrush"
+                ColorExplanation="Default card color"
+                ColorName="Card Background / Default"
+                ColorValue="#FFFFFF (B3, 70%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
+                ColorBrushName="CardBackgroundFillColorSecondaryBrush"
+                ColorExplanation="Alternate card color: slightly darker"
+                ColorName="Card Background / Secondary"
+                ColorValue="#F6F6F6 (80, 50%)" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                ColorBrushName="CardBackgroundTertiaryBrush"
+                ColorExplanation="Default card hover and pressed color"
+                ColorName="Card Background / Tertiary"
+                ColorValue="#FFFFFF (FF, 30%)"
+                ShowSeparator="False"
+                ShowWarning="True" />
+        </Grid></Border>
+
+
+        <!--  Smoke Background  -->
+        <controls:ColorPageExample
+            Title="Smoke Background"
+            Background="{DynamicResource SmokeFillColorDefaultBrush}"
+            Description="Used over windows and desktop to block them out as inaccessible.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource SmokeFillColorDefaultBrush}"
+                ColorBrushName="SmokeFillColorDefaultBrush"
+                ColorExplanation="Dims backgrounds behind dialogs"
+                ColorName="Smoke / Default"
+                ColorValue="#000000 (4D, 30%) " />
+        </Grid></Border>
+
+
+        <!--  Layer  -->
+
+        <controls:ColorPageExample
+            Title="Layer"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used on background colors of any material to create layering">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}">
+                <Border
+                    Width="90"
+                    HorizontalAlignment="Right"
+                    Background="{DynamicResource LayerFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1,0,0,0" />
+            </Border>
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource LayerFillColorDefaultBrush}"
+                ColorBrushName="LayerFillColorDefaultBrush"
+                ColorExplanation="Content layer color"
+                ColorName="Layer / Default"
+                ColorValue="#FFFFFF (80, 50%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource LayerFillColorAltBrush}"
+                ColorBrushName="LayerFillColorAltBrush"
+                ColorExplanation="Alternate content layer color"
+                ColorName="Layer / Alt"
+                ColorValue="#FFFFFF (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <!--  Layer on Acrylic  -->
+        <controls:ColorPageExample
+            Title="Layer on Acrylic"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used on background colors of any material to create layering.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}">
+                <Border
+                    Width="90"
+                    HorizontalAlignment="Right"
+                    Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1,0,0,0" />
+            </Border>
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
+                ColorBrushName="LayerOnAcrylicFillColorDefaultBrush"
+                ColorExplanation="Content layer color on acrylic surfaces"
+                ColorName="Layer On Acrylic / Default"
+                ColorValue="#FFFFFF (40, 25%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <!--  Layer on Mica Base Alt  -->
+        <controls:ColorPageExample
+            Title="Layer on Mica Base Alt"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for fills on Tab control.">
+            <Border
+                Width="150"
+                Height="30"
+                BorderBrush="{DynamicResource ControlStrokeColorSecondaryBrush}"
+                BorderThickness="1"
+                />
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+                ColorBrushName="LayerOnMicaBaseAltFillColorDefaultBrush"
+                ColorExplanation="Active Tab Rest, Content layer"
+                ColorName="Layer On Mica Base Alt / Default"
+                ColorValue="#FFFFFF (B3, 70%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
+                ColorBrushName="LayerOnMicaBaseAltFillColorTertiaryBrush"
+                ColorExplanation="Active Tab Drag"
+                ColorName="Layer On Mica Base Alt / Tertiary"
+                ColorValue="#F9F9F9 (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+
+        </Grid></Border>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource LayerOnMicaBaseAltFillColorTransparentBrush}"
+                ColorBrushName="LayerOnMicaBaseAltFillColorTransparentBrush"
+                ColorExplanation="Inactive Tab Rest"
+                ColorName="Layer On Mica Base Alt / Transparent"
+                ColorValue="Transparent"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False" />
+
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource LayerOnMicaBaseAltFillColorSecondaryBrush}"
+                ColorBrushName="LayerOnMicaBaseAltFillColorSecondaryBrush"
+                ColorExplanation="Inactive Tab Hover"
+                ColorName="Layer On Mica Base Alt / Secondary"
+                ColorValue="#000000 (0A, 3.73%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <!--  Solid background  -->
+        <controls:ColorPageExample
+            Title="Solid Background"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Solid background colors to place layers, cards or controls on.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="4" />
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
+                ColorBrushName="SolidBackgroundFillColorBaseBrush"
+                ColorExplanation="Used for the bottom most layer of an experience."
+                ColorName="Solid Background / Base"
+                ColorValue="#F3F3F (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource SolidBackgroundFillColorBaseAltBrush}"
+                ColorBrushName="SolidBackgroundFillColorBaseAltBrush"
+                ColorExplanation="Used for the bottom most layer of an experience."
+                ColorName="Solid Background / Base Alt"
+                ColorValue="#DADADA (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource SolidBackgroundFillColorSecondaryBrush}"
+                ColorBrushName="SolidBackgroundFillColorSecondaryBrush"
+                ColorExplanation="Alternate base color for those who need a darker background color."
+                ColorName="Solid Background / Secondary"
+                ColorValue="#EEEEEE (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="3"
+                Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}"
+                ColorBrushName="SolidBackgroundFillColorTertiaryBrush"
+                ColorExplanation="Content layer color"
+                ColorName="Solid Background / Tertiary"
+                ColorValue="#F9F9F9 (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+                ColorBrushName="SolidBackgroundFillColorQuarternaryBrush"
+                ColorExplanation="Alt content layer color."
+                ColorName="Solid Background / Quarternary"
+                ColorValue="#FFFFFF (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+                ColorBrushName="SolidBackgroundFillColorQuinaryBrush"
+                ColorExplanation="Used for solid default card colors"
+                ColorName="Solid Background / Quinary"
+                ColorValue="#FDFDFD (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowWarning="True" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+                ColorBrushName="SolidBackgroundFillColorSenaryBrush"
+                ColorExplanation="Used for solid default card color"
+                ColorName="Solid Background / Senary"
+                ColorValue="#FFFFFF (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ShowWarning="True" />
+        </Grid></Border>
+
+
+        <!--  Mica background  -->
+        <controls:ColorPageExample
+            Title="Mica Background"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Mica background colors to place layers, cards, or controls on.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
+                ColorBrushName="MicaBackgroundFillColorBaseBrush"
+                ColorExplanation="Used for the bottom most layer of an experience."
+                ColorName="Mica Background / Base"
+                ShowWarning="True" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
+                ColorBrushName="MicaBackgroundFillColorBaseAltBrush"
+                ColorExplanation="Default tab band background color."
+                ColorName="Mica Background / Base Alt"
+                ShowSeparator="False"
+                ShowWarning="True" />
+        </Grid></Border>
+
+        <!--  Acrylic background  -->
+        <controls:ColorPageExample
+            Title="Acrylic Background"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Acrylic background colors to place layers, cards, or controls on.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                ColorBrushName="AcrylicBackgroundFillColorBaseBrush"
+                ColorExplanation="Used for the bottom most layer of an acrylic surface only when the surface will use layers."
+                ColorName="Acrylic Background / Base"
+                ColorValue="#F3F3F3 (FF, 100%), 0% Tint Opacity, 90% Luminosity Opacity Fallback: #EEEEEE (FF, 100%)"
+                ShowSeparator="True" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"
+                ColorBrushName="AcrylicBackgroundFillColorDefaultBrush"
+                ColorExplanation="Default acrylic recipe used for control flyouts and surfaces that live with in the context of an app."
+                ColorName="Acrylic Background / Default"
+                ColorValue="#FCFCFC (FF, 100%), 0% Tint Opacity, 85% Luminosity Opacity Fallback: #F9F9F9 (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <!--  Accent Acrylic background  -->
+        <controls:ColorPageExample
+            Title="Accent Acrylic Background"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Acrylic background colors to place layers, cards, or controls on.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}"
+                ColorBrushName="AccentAcrylicBackgroundFillColorBaseBrush"
+                ColorExplanation="Used for the bottom most layer of an acrylic surface only when the surface will use layers."
+                ColorName="Accent Acrylic Background / Base"
+                ColorValue="Light 3, 80% Tint Opacity, 80% Luminosity Opacity Fallback: Light 3"
+                ShowSeparator="True" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource AccentAcrylicBackgroundFillColorDefaultBrush}"
+                ColorBrushName="AccentAcrylicBackgroundFillColorDefaultBrush"
+                ColorExplanation="Default acrylic recipe used for control flyouts and surfaces that live with in the context of an app."
+                ColorName="Accent Acrylic Background / Default"
+                ColorValue="Light 3, 80% Tint Opacity, 90% Luminosity Opacity Fallback: Light 3"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+    </StackPanel>
+</Page>

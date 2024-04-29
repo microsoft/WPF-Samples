@@ -27,6 +27,17 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
+
+            Name = "Design Guidance",
+            PageType = typeof(DesignGuidancePage),
+            Icon = "\xE8FD",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Colors", typeof(ColorsPage)),
+            }
+        },
+        new NavigationItem
+        {
             Name = "Typography",
             PageType = typeof(TypographyPage),
             Icon = "\xE8D2"

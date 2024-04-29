@@ -1,0 +1,367 @@
+﻿<Page x:Class="Win11ThemeGallery.Views.StrokeSection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Win11ThemeGallery.Views"
+      xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StrokeSection"
+      Foreground="{DynamicResource WindowForeground}">
+
+    <StackPanel>
+        <!--  Control Elevation (gradient strokes)  -->
+        <controls:ColorPageExample
+            Title="Control Elevation (gradient strokes)"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for standard control strokes and stroke states.">
+            <Button Content="Text" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource ControlElevationBorderBrush}"
+                ColorBrushName="ControlElevationBorderBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Rest"
+                ColorName="Control / Border"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control/Secondary" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource CircleElevationBorderBrush}"
+                ColorBrushName="CircleElevationBorderBrush"
+                ColorExplanation="Rest"
+                ColorName="Circle / Border"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control/Secondary" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource TextControlElevationBorderBrush}"
+                ColorBrushName="TextControlElevationBorderBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Rest"
+                ColorName="Text Control / Border"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default" />
+        </Grid>
+        </Border>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Grid.Column="0"
+                Background="{DynamicResource TextControlElevationBorderFocusedBrush}"
+                TileRadius="8,0,0,8"
+                ColorBrushName="TextControlElevationBorderFocusedBrush"
+                ColorExplanation="Active text fields"
+                ColorName="Text Control / Border Focused"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Fill/Accent/Default" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource AccentControlElevationBorderBrush}"
+                ColorBrushName="AccentControlElevationBorderBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Rest"
+                ColorName="Accent Control / Border"
+                ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary" />
+        </Grid>
+        </Border>
+
+        <!--  Control Stroke  -->
+        <controls:ColorPageExample
+            Title="Control Stroke"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for gradient stops in elevation borders, and for control states.">
+            <Button Content="Text" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                ColorBrushName="ControlStrokeColorDefaultBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Used in Control Elevation Brushes. Pressed or Disabled"
+                ColorName="Control Stroke / Default"
+                ColorValue="#000000 (0F, 5.78%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlStrokeColorSecondaryBrush}"
+                ColorBrushName="ControlStrokeColorSecondaryBrush"
+                ColorExplanation="Used in Control Elevation Brushes"
+                ColorName="Control Stroke / Secondary"
+                ColorValue="#000000 (29, 16.22%)" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlStrokeColorOnAccentDefaultBrush}"
+                ColorBrushName="ControlStrokeColorOnAccentDefaultBrush"
+                ColorExplanation="Used in Control Elevation Brushes. Pressed or Disabled"
+                ColorName="Control Stroke / On Accent Default"
+                ColorValue="#FFFFFF (14, 8%)" />
+            <controls:ColorTile
+                Grid.Column="3"
+                Background="{DynamicResource ControlStrokeColorOnAccentSecondaryBrush}"
+                ColorBrushName="ControlStrokeColorOnAccentSecondaryBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Used in Control Elevation Brushes"
+                ColorName="Control Stroke / On Accent Secondary"
+                ColorValue="#000000 (66, 40%)"
+                ShowSeparator="False" />
+        </Grid>
+        </Border>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Grid.Column="0"
+                Background="{DynamicResource ControlStrokeColorOnAccentTertiaryBrush}"
+                ColorBrushName="ControlStrokeColorOnAccentTertiaryBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Linework on Accent controls, ie: dividers"
+                ColorName="Control Stroke / On Accent Tertiary"
+                ColorValue="#000000 (37, 21.69%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlStrokeColorOnAccentDisabledBrush}"
+                ColorBrushName="ControlStrokeColorOnAccentDisabledBrush"
+                ColorExplanation="Disabled"
+                ColorName="Control Stroke / On Accent Disabled"
+                ColorValue="#000000 (0F, 5.78%)" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlStrokeColorForStrongFillWhenOnImageBrush}"
+                ColorBrushName="ControlStrokeColorForStrongFillWhenOnImageBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="When used with a 'strong' fill color, ensures a 3:1 contrast on any background"
+                ColorName="Control Stroke / For Strong Fill When On Image"
+                ColorValue="#FFFFFF (59, 35%)"
+                ShowSeparator="False" />
+        </Grid>
+        </Border>
+
+        <!--  Card Stroke  -->
+        <controls:ColorPageExample
+            Title="Card Stroke"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for card and layer colors.">
+            <Button>
+                <TextBlock Width="60" />
+            </Button>
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource CardStrokeColorDefaultBrush}"
+                ColorBrushName="CardStrokeColorDefaultBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Card layer and strokes"
+                ColorName="Control Stroke / Default"
+                ColorValue="#000000 (0F, 6.78%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                TileRadius="0,8,8,0"
+                ColorBrushName="CardStrokeColorDefaultSolidBrush"
+                ColorExplanation="Solid equivalent of Card Stroke / Default. Used in command bar for expanded states"
+                ColorName="Card Stroke / Default Solid"
+                ColorValue="#EBEBEB (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid>
+        </Border>
+
+        <!--  Control Strong Stroke  -->
+        <controls:ColorPageExample
+            Title="Control Strong Stroke"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for control strokes that must meet contrast ratio requirements of 3:1.">
+            <CheckBox
+                MinWidth="40"
+                MaxWidth="40" />
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+                ColorBrushName="ControlStrongStrokeColorDefaultBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="3:1 control border"
+                ColorName="Control Strong Stroke / Default"
+                ColorValue="#000000 (72, 44.58%)"
+                Foreground="{DynamicResource TextFillColorInverseBrush}"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlStrongStrokeColorDisabledBrush}"
+                ColorBrushName="ControlStrongStrokeColorDisabledBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Disabled"
+                ColorName="Control Strong Stroke / Disabled"
+                ColorValue="#FFFFFF (37, 21.69%)"
+                ShowSeparator="False" />
+        </Grid>
+        </Border>
+
+
+        <!--  Surface Stroke  -->
+        <controls:ColorPageExample
+            Title="Surface Stroke"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for strokes on background surfaces, ie: flyouts, windows, dialogs.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource SurfaceStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" />
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource SurfaceStrokeColorDefaultBrush}"
+                ColorBrushName="SurfaceStrokeColorDefaultBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Window and dialog borders, theme inverse"
+                ColorName="Surface Stroke / Default"
+                ColorValue="#757575 (66, 40%) Snapped Windows: #757575 (FF, 100%)"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
+                ColorBrushName="SurfaceStrokeColorFlyoutBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Control flyouts, always dark"
+                ColorName="Surface Stroke / Flyout"
+                ColorValue=""
+                ShowSeparator="False" />
+        </Grid>
+        </Border>
+
+        <!--  Divider Stroke  -->
+        <controls:ColorPageExample
+            Title="Divider Stroke"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme.">
+            <Border
+                Width="120"
+                Height="40"
+                Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource SurfaceStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}">
+                <Border
+                    Width="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    BorderBrush="{DynamicResource DividerStrokeColorDefaultBrush}"
+                    BorderThickness="1" />
+            </Border>
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource DividerStrokeColorDefaultBrush}"
+                ColorBrushName="DividerStrokeColorDefaultBrush"
+                TileRadius="8,8,8,8"
+                ColorExplanation="Content dividers"
+                ColorName="Divider Stroke / Default"
+                ColorValue="#0000000 (DF, 5.78%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False" />
+        </Grid>
+        </Border>
+
+        <!--  Focus Stroke  -->
+        <controls:ColorPageExample
+            Title="Focus Stroke"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme..">
+            <Border
+                BorderBrush="{DynamicResource FocusStrokeColorOuterBrush}"
+                BorderThickness="2"
+                CornerRadius="10">
+                <Border
+                    BorderBrush="{DynamicResource FocusStrokeColorInnerBrush}"
+                    BorderThickness="2"
+                    CornerRadius="9">
+                    <Border
+                        Width="120"
+                        Height="40"
+                        BorderBrush="{DynamicResource SurfaceStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource OverlayCornerRadius}">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Text="Text" />
+                    </Border>
+                </Border>
+            </Border>
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource FocusStrokeColorOuterBrush}"
+                ColorBrushName="FocusStrokeColorOuterBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Outer stroke color"
+                ColorName="Focus / Outer"
+                ColorValue="#000000 (E4, 89.56%)"
+                Foreground="{DynamicResource TextFillColorInverseBrush}"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource FocusStrokeColorInnerBrush}"
+                ColorBrushName="FocusStrokeColorInnerBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Inner stroke color"
+                ColorName="Focus / Inner"
+                ColorValue="#FFFFFF (B3, 70%)"
+                ShowSeparator="False" />
+        </Grid>   
+        </Border>     
+    </StackPanel>
+</Page>

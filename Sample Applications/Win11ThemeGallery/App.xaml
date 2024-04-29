@@ -10,6 +10,8 @@
 
                 <ResourceDictionary Source="Controls/ControlExample.xaml" />
                 <ResourceDictionary Source="Controls/PageStyles.xaml" />
+                <ResourceDictionary Source="Controls/ColorPageExample.xaml" />
+                <ResourceDictionary Source="Controls/ColorTile.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>
