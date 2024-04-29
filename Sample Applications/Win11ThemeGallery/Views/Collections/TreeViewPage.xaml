@@ -31,15 +31,27 @@
 
     <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
     <Grid Margin="0,0,0,24">
-        <controls:ControlExample Margin="0" HeaderText="Simple TreeView.">
-            <controls:ControlExample.XamlCode>
-                &lt;TreeView AllowDrop=&quot;True&quot;&gt;\n
-                \t&lt;TreeViewItem Header=&quot;Work Documents&quot; IsExpanded=&quot;True&quot;&gt;\n
-                \t\t&lt;TreeViewItem Header=&quot;Feature Schedule&quot;/&gt;\n
-                \t&lt;/TreeViewItem&gt;\n
-                &lt;/TreeView&gt;
-            </controls:ControlExample.XamlCode>
-            <TreeView AllowDrop="True" ScrollViewer.CanContentScroll="False">
+                <controls:ControlExample 
+            Margin="0" 
+            HeaderText="Simple TreeView."
+            XamlCode="&lt;TreeView AllowDrop=&quot;True&quot; ScrollViewer.CanContentScroll=&quot;False&quot;&gt;
+            &#10;&#9;&lt;TreeViewItem
+            &#10;&#9;&#9;Header=&quot;Work Documents&quot;
+            &#10;&#9;&#9;IsExpanded=&quot;True&quot;
+            &#10;&#9;&#9;IsSelected=&quot;True&quot;&gt;
+            &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Feature Schedule&quot; /&gt;
+            &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Overall Project Plan&quot; /&gt;
+            &#10;&#9;&lt;/TreeViewItem&gt;
+            &#10;&#9;&lt;TreeViewItem Header=&quot;Personal Documents&quot;&gt;
+            &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Contractor contact info&quot; /&gt;
+            &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Home Remodel&quot;&gt;
+            &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Paint Color Scheme&quot; /&gt;
+            &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Flooring Woodgrain Type&quot; /&gt;
+            &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Kitchen Cabinet Style&quot; /&gt;
+            &#10;&#9;&#9;&lt;/TreeViewItem&gt;
+            &#10;&#9;&lt;/TreeViewItem&gt;
+            &#10;&lt;/TreeViewItem&gt;">
+                    <TreeView AllowDrop="True" ScrollViewer.CanContentScroll="False">
                 <TreeViewItem
                     Header="Work Documents"
                     IsExpanded="True"
