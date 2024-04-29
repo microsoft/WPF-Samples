@@ -1,0 +1,292 @@
+﻿<Page x:Class="Win11ThemeGallery.Views.TypographyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Win11ThemeGallery.Views"
+      mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      xmlns:controls="clr-namespace:Win11ThemeGallery.Controls" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TypographyPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
+            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
+        </StackPanel>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <controls:ControlExample
+                Margin="0"
+                HeaderText="Type ramp"
+                XamlCode="&lt;TextBlock Text=&quot;Caption&quot; Style=&quot;{StaticResource CaptionTextBlockStyle}&quot; /&gt; \n
+                &lt;TextBlock Text=&quot;Body&quot; Style=&quot;{StaticResource BodyTextBlockStyle}&quot; /&gt; \n
+                &lt;TextBlock Text=&quot;Body Strong&quot; Style=&quot;{StaticResource BodyStrongTextBlockStyle}&quot; /&gt; \n
+                &lt;TextBlock Text=&quot;Subtitle&quot; Style=&quot;{StaticResource SubtitleTextBlockStyle}&quot; /&gt; \n
+                &lt;TextBlock Text=&quot;Title&quot; Style=&quot;{StaticResource TitleTextBlockStyle}&quot; /&gt; \n
+                &lt;TextBlock Text=&quot;Title Large&quot; Style=&quot;{StaticResource TitleLargeTextBlockStyle}&quot; /&gt; \n
+                &lt;TextBlock Text=&quot;Display&quot; Style=&quot;{StaticResource DisplayTextBlockStyle}&quot; /&gt; \n" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Example" />
+                            <TextBlock
+                        Grid.Column="1"
+                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Variable Font" />
+                            <TextBlock
+                        Grid.Column="2"
+                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Size/Line height" />
+                            <TextBlock
+                        Grid.Column="3"
+                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Style" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Caption" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Small, Regular" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="12/16 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="CaptionTextBlockStyle" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <Grid HorizontalAlignment="Stretch" MinHeight="68">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource BodyTextBlockStyle}"
+                        Text="Body" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Text, Regular" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="14/20 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="BodyTextBlockStyle" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                        Text="Body Strong" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Text, SemiBold" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="14/20 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="CaptionTextBlockStyle" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4">
+                        <Grid HorizontalAlignment="Stretch" MinHeight="68">
+                            <Grid.ColumnDefinitions> 
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="Subtitle" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Display, SemiBold" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="20/28 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="SubtitleTextBlockStyle" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5">
+                        <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource TitleTextBlockStyle}"
+                        Text="Title" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Display, SemiBold" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="28/36 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="TitleTextBlockStyle" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6">
+                        <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch" MinHeight="68">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource TitleLargeTextBlockStyle}"
+                        Text="Title Large" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Display, SemiBold" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="40/52 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="TitleLargeTextBlockStyle" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="7">
+                        <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource DisplayTextBlockStyle}"
+                        Text="Display" />
+                            <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Display, SemiBold" />
+                            <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="68/92 epx" />
+                            <TextBlock
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        FontFamily="Consolas"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="DisplayTextBlockStyle" />
+                        
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </controls:ControlExample>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

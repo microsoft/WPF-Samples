@@ -1,0 +1,137 @@
+﻿<Page x:Class="Win11ThemeGallery.Views.IconsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Win11ThemeGallery.Views"
+      xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="IconsPage">
+
+    <Page.Resources>
+        <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Padding" Value="0 0 0 12" />
+            <Setter Property="Foreground" Value="{StaticResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Margin" Value="0,4,0,16" />
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
+            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
+        </StackPanel>
+        <Expander 
+            Grid.Row="1" 
+            Header="Instructions on how to use Segoe Fluent Icons"
+            IsExpanded="False" >
+            <TextBlock TextWrapping="Wrap">
+                <Run FontWeight="SemiBold">
+                    How to get the font
+                </Run>
+                <LineBreak />
+                <Span>
+                    On Windows 11: There's nothing you need to do, the font comes with Windows.
+                    <LineBreak />
+                    On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+                </Span>
+                <LineBreak/>
+                <LineBreak/>
+                <Span FontWeight="SemiBold">
+                    How to use the font
+                </Span>
+                <LineBreak/>
+                <Span>
+                    If you don't specify a FontFamily,
+                    or you specify a FontFamily that is not available on the system at runtime,
+                    the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.
+                </Span>
+                <LineBreak/>
+                <Span>
+                    An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
+                    For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
+                </Span>
+                <LineBreak/>
+                <Span>
+                    All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
+                </Span>
+                <LineBreak/>
+                <LineBreak/>
+                <Run FontWeight="SemiBold">
+                    XAML
+                </Run>
+                <LineBreak/>
+                <Span>
+                    &lt;Grid&gt;
+                </Span>
+                <LineBreak/>
+                <Span>
+                    &lt;TextBlock FontFamily="Segoe Fluent Icons" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
+                </Span>
+                <LineBreak/>
+                <Span>
+                    &#x09;&lt;TextBlock FontFamily="Segoe Fluent Icons" Text="&amp;#xEB51;" /&gt;
+                </Span>
+                <LineBreak/>
+                <Span>
+                    &lt;/Grid&gt;
+                </Span>
+            </TextBlock>
+        </Expander>
+        <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="0,24,0,10" Grid.Row="2"/>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="296"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="4" CornerRadius="8" Background="{DynamicResource ButtonBackground}">
+                            <Grid Width="96" Height="96" ToolTip="{Binding Name}" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" FontFamily="Segoe Fluent Icons" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{StaticResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListView>
+            <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}">
+                <StackPanel Orientation="Vertical" Margin="16">
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="Segoe Fluent Icons" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Text="Icon Name"/>
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <TextBlock Text="Unicode point"/>
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Code}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <TextBlock Text="Text glyph"/>
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.TextGlyph}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <TextBlock Text="Code glyph"/>
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.CodeGlyph}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <TextBlock Text="XAML"/>
+                    <TextBlock Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+    </Grid>
+</Page>

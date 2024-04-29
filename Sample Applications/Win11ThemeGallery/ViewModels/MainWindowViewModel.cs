@@ -27,6 +27,7 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
+
             Name = "Design Guidance",
             PageType = typeof(DesignGuidancePage),
             Icon = "\xE8FD",
@@ -37,6 +38,18 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
+            Name = "Typography",
+            PageType = typeof(TypographyPage),
+            Icon = "\xE8D2"
+        },
+        new NavigationItem
+        {
+            Name = "Icons",
+            PageType = typeof(IconsPage),
+            Icon = "\xED58"
+        },
+        new NavigationItem
+        {
             Name = "Samples",
             PageType = typeof(SamplesPage),
             Icon = "\xEF58",
@@ -44,6 +57,12 @@ public partial class MainWindowViewModel : ObservableObject
             {
                 new NavigationItem("User Dashboard", typeof(UserDashboardPage)),
             }
+        },
+        new NavigationItem
+        {
+            Name = "All Samples",
+            PageType = typeof(AllSamplesPage),
+            Icon = "\xE71D",
         },
         new NavigationItem
         {
@@ -149,6 +168,12 @@ public partial class MainWindowViewModel : ObservableObject
     public void Settings()
     {
         _navigationService.NavigateTo(typeof(SettingsPage));
+    }
+
+    [RelayCommand]
+    public void About()
+    {
+        _navigationService.NavigateTo(typeof(AboutPage));
     }
 
     [RelayCommand]

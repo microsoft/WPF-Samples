@@ -79,6 +79,8 @@ public partial class App : Application
 
             services.AddTransient<LayoutPage>();
             services.AddTransient<LayoutPageViewModel>();
+            services.AddTransient<AllSamplesPage>();
+            services.AddTransient<AllSamplesPageViewModel>();
             services.AddTransient<BasicInputPage>();
             services.AddTransient<BasicInputPageViewModel>();
             services.AddTransient<CollectionsPage>();
@@ -101,8 +103,17 @@ public partial class App : Application
             services.AddTransient<UserDashboardPage>();
             services.AddTransient<UserDashboardPageViewModel>();
 
+            services.AddTransient<TypographyPage>();
+            services.AddTransient<TypographyPageViewModel>();
+
+            services.AddTransient<IconsPage>();
+            services.AddTransient<IconsPageViewModel>();
+
             services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsPageViewModel>();
+
+            services.AddSingleton<AboutPage>();
+            services.AddSingleton<AboutPageViewModel>();
         }).Build();
 
 
