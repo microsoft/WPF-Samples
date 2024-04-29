@@ -28,27 +28,20 @@ namespace Win11ThemeGallery.ViewModels
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ColorPaletteResources.png"))},
                 Description = "Guide showing how to use colors in your app"
             },
-            // new NavigationCard
-            // {
-            //     Name = "ListBox",
-            //     PageType = typeof(ListBoxPage),
-            //     Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ListBox.png"))},
-            //     Description = "A control that presents an inline list of items that the user can select from."
-            // },
-            // new NavigationCard
-            // {
-            //     Name = "ListView",
-            //     PageType = typeof(ListViewPage),
-            //     Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ListView.png"))},
-            //     Description = "A control that presents a collection of items in a vertical list."
-            // },
-            // new NavigationCard
-            // {
-            //     Name = "TreeView",
-            //     PageType = typeof(TreeViewPage),
-            //     Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TreeView.png"))},
-            //     Description = "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items."
-            // },
+            new NavigationCard
+            {
+                Name = "Typography",
+                PageType = typeof(TypographyPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBlock.png"))},
+                Description = "Guide showing how to use typography in your app"
+            },
+            new NavigationCard
+            {
+                Name = "Icons",
+                PageType = typeof(IconsPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/IconElement.png"))},
+                Description = "Guide showing how to use icons in your app"
+            },
         };
 
         private readonly INavigationService _navigationService;

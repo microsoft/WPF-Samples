@@ -8,8 +8,6 @@ namespace Win11ThemeGallery.Models;
 
 public class User
 {
-    public AvatarColor UserAvatarColor { get; set; } = AvatarColor.White;
-
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
@@ -34,6 +32,7 @@ public class User
     // DatePicker
     public DateTime DateOfJoining { get; set; } = DateTime.Now.Date;
 
+    // CheckBox
     public bool IsNewGraduate { get; set; }
 
     public User(string firstName, string lastName)
@@ -49,7 +48,6 @@ public class User
     public User(User user)
     {
         ImageId = user.ImageId;
-        UserAvatarColor = user.UserAvatarColor;
         FirstName = user.FirstName;
         LastName = user.LastName;
         Company = user.Company;
@@ -57,24 +55,6 @@ public class User
         Age = user.Age;
         DateOfJoining = user.DateOfJoining;
         IsNewGraduate = user.IsNewGraduate;
-    }
-
-    public User(string firstName, string lastName,string company, string address) 
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        Company = company;
-        Address = address;
-    }
-
-    public User(AvatarColor avatarColor, string? firstName, string? lastName, string? company, string? address, bool isNewGraduate= false)
-    {
-        UserAvatarColor = avatarColor;
-        FirstName = firstName;
-        LastName = lastName;
-        Company = company;
-        Address = address;
-        IsNewGraduate = isNewGraduate;
     }
 
     public User(string imageID, string? firstName, string? lastName, string? company, string? address, bool isNewGraduate = false)

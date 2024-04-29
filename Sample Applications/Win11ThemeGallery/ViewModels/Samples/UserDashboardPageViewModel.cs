@@ -143,7 +143,6 @@ namespace Win11ThemeGallery.ViewModels.Samples
                 "",
             };
 
-            int ncolors = Enum.GetNames<AvatarColor>().Length;
             for (int i = 0; i < 20; i++)
                 users.Add(
                     new User(
