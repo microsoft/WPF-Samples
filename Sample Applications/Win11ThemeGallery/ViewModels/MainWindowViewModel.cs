@@ -239,4 +239,62 @@ public partial class MainWindowViewModel : ObservableObject
         }
         return null;
     }
+
+    internal List<NavigationItem> GetNavigationItemHierarchyFromPageType(Type? pageType)
+    {
+        List<NavigationItem> list = new List<NavigationItem>();
+        Stack<NavigationItem> _stack = new Stack<NavigationItem>();
+        Stack<NavigationItem> _revStack = new Stack<NavigationItem>();
+        
+        if(pageType == null)
+        {
+            return list;
+        }
+
+        bool found = false;
+
+        foreach(var item in Controls)
+        {
+            _stack.Push(item);
+            found = FindNavigationItemsHierarchyFromPageType(pageType, item.Children, ref _stack);
+            if(found)
+            {
+                break;
+            }
+            _stack.Pop();
+        }
+
+        while(_stack.Count > 0)
+        {
+            _revStack.Push(_stack.Pop());
+        }
+
+        foreach(var item in _revStack)
+        {
+            list.Add(item);
+        }
+
+        return list;
+    }
+
+    private bool FindNavigationItemsHierarchyFromPageType(Type pageType, ICollection<NavigationItem> pages, ref Stack<NavigationItem> stack)
+    {
+        var item = stack.Peek();
+        bool found = false;
+
+        if(pageType == item.PageType)
+        {
+            return true;
+        }
+
+        foreach(var child in item.Children)
+        {
+            stack.Push(child);
+            found = FindNavigationItemsHierarchyFromPageType(pageType, child.Children, ref stack);
+            if(found) { return true; }
+            stack.Pop();
+        }
+
+        return false;
+    }
 }
