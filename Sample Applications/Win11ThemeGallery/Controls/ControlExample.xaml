@@ -41,7 +41,7 @@
 
                         <Expander
                             Grid.Row="2"
-                            Header="Source code">
+                            Header="Source code" AutomationProperties.Name="View">
                             <StackPanel>
                                 <StackPanel x:Name="XamlCodeBlock">
                                     <TextBlock
@@ -57,6 +57,7 @@
                                         BorderThickness="0"
                                         IsReadOnly="True"
                                         TextWrapping="Wrap"
+                                        AutomationProperties.Name="XAML Source Code"
                                         Text="{TemplateBinding XamlCode}" />
                                 </StackPanel>
 
@@ -79,6 +80,7 @@
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
                                         IsReadOnly="True"
+                                        AutomationProperties.Name="CSharp Source Code"
                                         Text="{TemplateBinding CsharpCode}" />
                                 </StackPanel>
                             </StackPanel>

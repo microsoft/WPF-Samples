@@ -49,14 +49,17 @@
                         Content="Option 1"
                         GroupName="radio_group_one"
                         IsChecked="True"
+                        AutomationProperties.Name="Group 1 Option 1"
                         IsEnabled="{Binding ViewModel.IsRadioButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RadioButtonPage}, Mode=OneWay}" />
                     <RadioButton
                         Content="Option 2"
                         GroupName="radio_group_one"
+                        AutomationProperties.Name="Group 1 Option 2"
                         IsEnabled="{Binding ViewModel.IsRadioButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RadioButtonPage}, Mode=OneWay}" />
                     <RadioButton
                         Content="Option 3"
                         GroupName="radio_group_one"
+                        AutomationProperties.Name="Group 1 Option 3"
                         IsEnabled="{Binding ViewModel.IsRadioButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RadioButtonPage}, Mode=OneWay}" />
                 </StackPanel>
                 <CheckBox
@@ -78,15 +81,18 @@
             <StackPanel Grid.Column="0">
                 <RadioButton
                     Content="Option 1"
+                    AutomationProperties.Name="Group 2 Option 1"
                     FlowDirection="RightToLeft"
                     GroupName="radio_group_two"
                     IsChecked="True" />
                 <RadioButton
                     Content="Option 2"
+                    AutomationProperties.Name="Group 2 Option 2"
                     FlowDirection="RightToLeft"
                     GroupName="radio_group_two" />
                 <RadioButton
                     Content="Option 3"
+                    AutomationProperties.Name="Group 2 Option 3"
                     FlowDirection="RightToLeft"
                     GroupName="radio_group_two" />
             </StackPanel>
