@@ -10,48 +10,29 @@ using Win11ThemeGallery.Views;
 
 namespace Win11ThemeGallery.ViewModels
 {
-    public partial class StatusAndInfoPageViewModel : ObservableObject
+    public partial class StatusAndInfoPageViewModel : BaseNavigablePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Status & Info";
-
-        [ObservableProperty]
-        private string _pageDescription = "Controls to show progress and extra information";
-
-        [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
+        public StatusAndInfoPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            new NavigationCard
+            PageTitle = "Status & Info";
+            PageDescription = "Controls to show progress and extra information";
+            NavigationCards = new ObservableCollection<NavigationCard>
             {
-                Name = "ProgressBar",
-                PageType = typeof(ProgressBarPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ProgressBar.png"))},
-                Description = "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."
-            },
-            new NavigationCard
-            {
-                Name = "ToolTip",
-                PageType = typeof(ToolTipPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ToolTip.png"))},
-                Description = "Displays information for an element in a pop-up window."
-            },
-        };
-
-        private readonly INavigationService _navigationService;
-
-        public StatusAndInfoPageViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
+                new NavigationCard
+                {
+                    Name = "ProgressBar",
+                    PageType = typeof(ProgressBarPage),
+                    Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ProgressBar.png"))},
+                    Description = "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."
+                },
+                new NavigationCard
+                {
+                    Name = "ToolTip",
+                    PageType = typeof(ToolTipPage),
+                    Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ToolTip.png"))},
+                    Description = "Displays information for an element in a pop-up window."
+                },
+            };
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType){
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
-        
     }
 }

@@ -10,48 +10,29 @@ using Win11ThemeGallery.Views;
 
 namespace Win11ThemeGallery.ViewModels
 {
-    public partial class NavigationPageViewModel : ObservableObject
+    public partial class NavigationPageViewModel : BaseNavigablePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Navigation Controls";
-
-        [ObservableProperty]
-        private string _pageDescription = "Controls for navigation and actions";
-
-        [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
+        public NavigationPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            new NavigationCard
+            PageTitle = "Navigation Controls";
+            PageDescription = "Controls for navigation and actions";
+            NavigationCards = new ObservableCollection<NavigationCard>
             {
-                Name = "Menu",
-                PageType = typeof(MenuPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Pivot.png"))},
-                Description = "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
-            },
-            new NavigationCard
-            {
-                Name = "TabControl",
-                PageType = typeof(TabControlPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TabView.png"))},
-                Description = "A control that displays a collection of tabs."
-            },
-        };
-
-        private readonly INavigationService _navigationService;
-
-        public NavigationPageViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
+                new NavigationCard
+                {
+                    Name = "Menu",
+                    PageType = typeof(MenuPage),
+                    Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Pivot.png"))},
+                    Description = "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
+                },
+                new NavigationCard
+                {
+                    Name = "TabControl",
+                    PageType = typeof(TabControlPage),
+                    Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TabView.png"))},
+                    Description = "A control that displays a collection of tabs."
+                },
+            };
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType){
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
-        
     }
 }

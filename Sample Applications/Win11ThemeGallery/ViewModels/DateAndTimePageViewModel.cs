@@ -10,48 +10,29 @@ using Win11ThemeGallery.Views;
 
 namespace Win11ThemeGallery.ViewModels
 {
-    public partial class DateAndTimePageViewModel : ObservableObject
+    public partial class DateAndTimePageViewModel : BaseNavigablePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Date and Calendar Controls";
-
-        [ObservableProperty]
-        private string _pageDescription = "Controls for date and calendar";
-
-        [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
+        public DateAndTimePageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            new NavigationCard
+            PageTitle = "Date and Calendar Controls";
+            PageDescription = "Controls for date and calendar";
+            NavigationCards = new ObservableCollection<NavigationCard>
             {
-                Name = "Calendar",
-                PageType = typeof(CalendarPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/CalendarView.png"))},
-                Description = "A control that presents a calendar for a user to choose a date from."
-            },
-            new NavigationCard
-            {
-                Name = "DatePicker",
-                PageType = typeof(DatePickerPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DatePicker.png"))},
-                Description = "A control that lets a user pick a date value."
-            },
-        };
-
-        private readonly INavigationService _navigationService;
-
-        public DateAndTimePageViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
+                new NavigationCard
+                {
+                    Name = "Calendar",
+                    PageType = typeof(CalendarPage),
+                    Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/CalendarView.png"))},
+                    Description = "A control that presents a calendar for a user to choose a date from."
+                },
+                new NavigationCard
+                {
+                    Name = "DatePicker",
+                    PageType = typeof(DatePickerPage),
+                    Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DatePicker.png"))},
+                    Description = "A control that lets a user pick a date value."
+                },
+            };
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType){
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
-        
     }
 }

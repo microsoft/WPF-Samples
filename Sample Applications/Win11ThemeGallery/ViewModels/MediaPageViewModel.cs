@@ -10,46 +10,27 @@ using Win11ThemeGallery.Views;
 
 namespace Win11ThemeGallery.ViewModels
 {
-    public partial class MediaPageViewModel : ObservableObject
+    public partial class MediaPageViewModel : BaseNavigablePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Media Controls";
-
-        [ObservableProperty]
-        private string _pageDescription = "Controls for media presentation";
- 
-        [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
+        public MediaPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            new NavigationCard
+            PageTitle = "Media Controls";
+            PageDescription = "Controls for media presentation";
+            NavigationCards = new ObservableCollection<NavigationCard>
             {
-                Name = "Canvas",
-                PageType = typeof(CanvasPage),
-                Description = "Canvas presenter"
-            },
-            new NavigationCard
-            {
-                Name = "Image",
-                PageType = typeof(ImagePage),
-                Description = "Image presente"
-            },
-        };
-
-        private readonly INavigationService _navigationService;
-
-        public MediaPageViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
+                new NavigationCard
+                {
+                    Name = "Canvas",
+                    PageType = typeof(CanvasPage),
+                    Description = "Canvas presenter"
+                },
+                new NavigationCard
+                {
+                    Name = "Image",
+                    PageType = typeof(ImagePage),
+                    Description = "Image presenter"
+                },
+            };
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType){
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
-        
     }
 }
