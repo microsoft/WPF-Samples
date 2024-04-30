@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Win11ThemeGallery.Views"
       xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
       mc:Ignorable="d"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Button">
 
