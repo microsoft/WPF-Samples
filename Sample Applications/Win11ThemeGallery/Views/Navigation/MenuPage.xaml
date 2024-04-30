@@ -83,6 +83,24 @@
                             <Separator />
                             <MenuItem Header="Select All" />
                         </MenuItem>
+                        <Separator />
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8DD;" FontSize="12" />
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8DB;" FontSize="12" />
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8DC;" FontSize="12" />
+                            </MenuItem.Header>
+                        </MenuItem>
                     </Menu>
                 </controls:ControlExample>
     </Grid>
