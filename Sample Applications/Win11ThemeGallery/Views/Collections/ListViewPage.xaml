@@ -56,6 +56,7 @@
                 &lt;/ListView&gt;
             </controls:ControlExample.XamlCode>-->
             <ListView
+                AutomationProperties.Name="Basic ListView"
                 Height="200"
                 ItemsSource="{Binding ViewModel.BasicListViewItems, Mode=TwoWay}"
                 SelectedIndex="2"
@@ -137,6 +138,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <ListView
+                    AutomationProperties.Name="ListView with Selection Support."
                     Grid.Column="0"
                     Height="200"
                     ItemsSource="{Binding ViewModel.BasicListViewItems, Mode=TwoWay}"
@@ -184,7 +186,7 @@
                     Margin="12,0,0,0"
                     VerticalAlignment="Top">
                     <Label Content="Selection mode" Target="{Binding ElementName=SelectionModeComboBox}" />
-                    <ComboBox x:Name="SelectionModeComboBox" SelectedIndex="{Binding ViewModel.ListViewSelectionModeComboBoxSelectedIndex, Mode=TwoWay}">
+                    <ComboBox x:Name="SelectionModeComboBox" SelectedIndex="{Binding ViewModel.ListViewSelectionModeComboBoxSelectedIndex, Mode=TwoWay}" AutomationProperties.Name="Selection Mode">
                         <ComboBoxItem Content="Single" />
                         <ComboBoxItem Content="Multiple" />
                         <ComboBoxItem Content="Extended" />

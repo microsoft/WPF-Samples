@@ -34,7 +34,7 @@
                   Margin="0"
                   HeaderText="A simple RichTextBox"
                   XamlCode="&lt;RichTextBox /&gt;">
-                    <RichTextBox/>
+                    <RichTextBox AutomationProperties.Name="simple rich text editor"/>
                 </controls:ControlExample>
             </StackPanel>
         </ScrollViewer>

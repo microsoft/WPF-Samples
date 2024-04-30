@@ -36,7 +36,7 @@
             Margin="0"
             HeaderText="Default DataGrid with ItemsSource."
             XamlCode="&lt;DataGrid ItemsSource=&quot;{Binding ViewModel.ProductsCollection, Mode=TwoWay}&quot; /&gt;">
-            <DataGrid Height="400" ItemsSource="{Binding ViewModel.ProductsCollection, Mode=TwoWay}" />
+            <DataGrid Height="400" ItemsSource="{Binding ViewModel.ProductsCollection, Mode=TwoWay}" AutomationProperties.Name="Sample Data Grid" />
         </controls:ControlExample>
 
     </StackPanel>

@@ -61,7 +61,7 @@
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Margin="0,0,6,0" Symbol="XboxConsole24" />-->
-                            <TextBlock Text="Hello" />
+                            <TextBlock Text="Hello"  AutomationProperties.Name="Header 1"/>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>
@@ -72,7 +72,7 @@
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Margin="0,0,6,0" Symbol="StoreMicrosoft16" />-->
-                            <TextBlock Text="The cake" />
+                            <TextBlock Text="The cake" AutomationProperties.Name="Header 2"/>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>
