@@ -41,7 +41,7 @@
 
                         <Expander
                             Grid.Row="2"
-                            Header="Source code" AutomationProperties.Name="View">
+                            Header="Source code" AutomationProperties.Name="View Source Code">
                             <StackPanel>
                                 <StackPanel x:Name="XamlCodeBlock">
                                     <TextBlock
