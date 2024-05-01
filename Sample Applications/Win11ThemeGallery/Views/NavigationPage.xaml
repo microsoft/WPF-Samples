@@ -15,7 +15,7 @@
             <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
         </StackPanel>
 
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding ViewModel.NavigationCards}">
+        <ItemsControl Grid.Row="1" AutomationProperties.Name="Items in group" ItemsSource="{Binding ViewModel.NavigationCards}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" Margin="10"/>
@@ -23,7 +23,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Width="360" Height="90" Margin="10" Padding="20 10" HorizontalContentAlignment="Left" Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:NavigationPage}}}" CommandParameter="{Binding PageType}">
+                    <Button Width="360" Height="90" Margin="10" Padding="20 10" HorizontalContentAlignment="Left" AutomationProperties.Name="{Binding Name}" Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:NavigationPage}}}" CommandParameter="{Binding PageType}">
                         <StackPanel Orientation="Horizontal">
                             <ContentPresenter Width="50" Height="50" Content="{Binding Icon}" Margin="0,0,8,0"/>
                             <StackPanel Orientation="Vertical">

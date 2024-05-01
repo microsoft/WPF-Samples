@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Win11ThemeGallery"
         xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
+        xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=False}"
@@ -15,7 +16,10 @@
         Width="1450"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
+      <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
+
+
+    <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
             <Setter Property="MinWidth" Value="48" />
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Template">
@@ -90,6 +94,7 @@
                     Command="{Binding ViewModel.BackCommand}"
                     Margin="5,0,0,0"
                     Grid.Column="0"
+                    AutomationProperties.Name="Back"
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     Background="Transparent"
                     BorderBrush="Transparent">
@@ -155,12 +160,14 @@
                 </Grid.RowDefinitions>
 
                 <TextBox x:Name="SearchBox" 
+                        AutomationProperties.Name="Search"
                         Margin="10" Width="250"
                         KeyUp="SearchBox_KeyUp"
                         LostFocus="SearchBox_LostFocus" />
 
 
                 <TreeView x:Name="ControlsList" 
+                        AutomationProperties.Name="Navigation Pane"
                         ItemsSource="{Binding ViewModel.Controls}"
                         SelectedItemChanged="ControlsList_SelectedItemChanged"
                         Margin="10" Grid.Row="1"
@@ -168,7 +175,7 @@
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Children}" >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
+                            <TextBlock AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}" Focusable="False" FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" Visibility="{Binding Icon, Converter={StaticResource EmptyToVisibilityConverter}}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
                             <TextBlock Text="{Binding Name}" Margin="2" VerticalAlignment="Center"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
@@ -179,6 +186,7 @@
                     <Button x:Name="AboutButton" 
                             DockPanel.Dock="Bottom" 
                             Margin="10" Width="250" 
+                            AutomationProperties.Name="About application"
                             HorizontalContentAlignment="Left"
                             Command="{Binding ViewModel.AboutCommand}">
                         <StackPanel Orientation="Horizontal">
