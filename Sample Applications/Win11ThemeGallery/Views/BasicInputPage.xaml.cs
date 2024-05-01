@@ -13,8 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using Win11ThemeGallery.ViewModels;
-namespace Win11ThemeGallery.Views
+using WPFGallery.ViewModels;
+namespace WPFGallery.Views
 {
     /// <summary>
     /// Interaction logic for BasicInputPage.xaml

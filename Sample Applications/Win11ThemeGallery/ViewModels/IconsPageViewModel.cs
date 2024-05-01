@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Win11ThemeGallery.Models;
-using Win11ThemeGallery.Navigation;
+using WPFGallery.Models;
+using WPFGallery.Navigation;
 
-namespace Win11ThemeGallery.ViewModels
+namespace WPFGallery.ViewModels
 {
     public partial class IconsPageViewModel : ObservableObject
     {

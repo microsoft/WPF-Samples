@@ -9,11 +9,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using Win11ThemeGallery.Navigation;
-using Win11ThemeGallery.ViewModels;
-using Win11ThemeGallery.Views;
+using WPFGallery.Navigation;
+using WPFGallery.ViewModels;
+using WPFGallery.Views;
 
-namespace Win11ThemeGallery;
+namespace WPFGallery;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

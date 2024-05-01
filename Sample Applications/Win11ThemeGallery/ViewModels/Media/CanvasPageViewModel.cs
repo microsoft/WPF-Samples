@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Win11ThemeGallery.ViewModels;
+namespace WPFGallery.ViewModels;
 
 public partial class CanvasPageViewModel : ObservableObject 
 {

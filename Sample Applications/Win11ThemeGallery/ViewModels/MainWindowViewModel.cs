@@ -1,16 +1,16 @@
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using Win11ThemeGallery.Navigation;
-using Win11ThemeGallery.Views;
-using Win11ThemeGallery.Views.Samples;
+using WPFGallery.Navigation;
+using WPFGallery.Views;
+using WPFGallery.Views.Samples;
 
-namespace Win11ThemeGallery.ViewModels;
+namespace WPFGallery.ViewModels;
 
 public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _applicationTitle = "WPF Win11 Theme Gallery";
+    private string _applicationTitle = "WPF Gallery";
 
     private DispatcherTimer _timer;
 

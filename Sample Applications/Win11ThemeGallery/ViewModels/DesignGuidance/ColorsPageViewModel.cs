@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Win11ThemeGallery.Navigation;
+using WPFGallery.Navigation;
 
-namespace Win11ThemeGallery.ViewModels
+namespace WPFGallery.ViewModels
 {
     public partial class ColorsPageViewModel : ObservableObject
     {

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Win11ThemeGallery.Views
+namespace WPFGallery.Views
 {
     /// <summary>
     /// Interaction logic for FillSection.xaml

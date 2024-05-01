@@ -4,13 +4,13 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Win11ThemeGallery.Navigation;
-using Win11ThemeGallery.ViewModels;
-using Win11ThemeGallery.Views;
-using Win11ThemeGallery.Views.Samples;
-using Win11ThemeGallery.ViewModels.Samples;
+using WPFGallery.Navigation;
+using WPFGallery.ViewModels;
+using WPFGallery.Views;
+using WPFGallery.Views.Samples;
+using WPFGallery.ViewModels.Samples;
 
-namespace Win11ThemeGallery;
+namespace WPFGallery;
 
 /// <summary>
 /// Interaction logic for App.xaml

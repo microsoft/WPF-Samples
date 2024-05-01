@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Win11ThemeGallery.Controls
+namespace WPFGallery.Controls
 {
     /// <summary>
     /// Interaction logic for ColorTile.xaml

@@ -1,7 +1,7 @@
 
 using System.Windows.Controls;
 
-namespace Win11ThemeGallery.ViewModels;
+namespace WPFGallery.ViewModels;
 
 /// <summary>
 /// Interaction logic for Settings.xaml

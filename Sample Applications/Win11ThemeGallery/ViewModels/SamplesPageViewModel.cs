@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Win11ThemeGallery.Navigation;
-using Win11ThemeGallery.Views.Samples;
+using WPFGallery.Navigation;
+using WPFGallery.Views.Samples;
 
-namespace Win11ThemeGallery.ViewModels
+namespace WPFGallery.ViewModels
 {
     public partial class SamplesPageViewModel : ObservableObject
     {

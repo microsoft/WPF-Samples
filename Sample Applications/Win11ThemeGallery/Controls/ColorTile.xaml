@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:Win11ThemeGallery.Controls"
-    xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers">
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:helpers="clr-namespace:WPFGallery.Helpers">
 
   <Style TargetType="{x:Type controls:ColorTile}">
         <Setter Property="Focusable" Value="False" />

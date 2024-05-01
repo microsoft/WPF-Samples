@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using Win11ThemeGallery.Navigation;
+using WPFGallery.Navigation;
 using System.Windows.Controls;
-using Win11ThemeGallery.Views;
+using WPFGallery.Views;
 
-namespace Win11ThemeGallery.ViewModels
+namespace WPFGallery.ViewModels
 {
     public partial class AllSamplesPageViewModel : ObservableObject
     {

@@ -3,7 +3,7 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
-namespace Win11ThemeGallery.ViewModels;
+namespace WPFGallery.ViewModels;
 
 public partial class MenuPageViewModel : ObservableObject 
 {

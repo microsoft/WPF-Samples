@@ -5,7 +5,7 @@
 
 using System.Windows.Controls;
 
-namespace Win11ThemeGallery.Controls;
+namespace WPFGallery.Controls;
 
 [ContentProperty(nameof(ExampleContent))]
 public class ControlExample : Control
