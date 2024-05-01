@@ -23,13 +23,13 @@
             <controls:ControlExample
                 Margin="0"
                 HeaderText="Type ramp"
-                XamlCode="&lt;TextBlock Text=&quot;Caption&quot; Style=&quot;{StaticResource CaptionTextBlockStyle}&quot; /&gt; \n
-                &lt;TextBlock Text=&quot;Body&quot; Style=&quot;{StaticResource BodyTextBlockStyle}&quot; /&gt; \n
-                &lt;TextBlock Text=&quot;Body Strong&quot; Style=&quot;{StaticResource BodyStrongTextBlockStyle}&quot; /&gt; \n
-                &lt;TextBlock Text=&quot;Subtitle&quot; Style=&quot;{StaticResource SubtitleTextBlockStyle}&quot; /&gt; \n
-                &lt;TextBlock Text=&quot;Title&quot; Style=&quot;{StaticResource TitleTextBlockStyle}&quot; /&gt; \n
-                &lt;TextBlock Text=&quot;Title Large&quot; Style=&quot;{StaticResource TitleLargeTextBlockStyle}&quot; /&gt; \n
-                &lt;TextBlock Text=&quot;Display&quot; Style=&quot;{StaticResource DisplayTextBlockStyle}&quot; /&gt; \n" >
+                XamlCode="&lt;TextBlock Text=&quot;Caption&quot; Style=&quot;{StaticResource CaptionTextBlockStyle}&quot; /&gt;
+                &#10;&lt;TextBlock Text=&quot;Body&quot; Style=&quot;{StaticResource BodyTextBlockStyle}&quot; /&gt;
+                &#10;&lt;TextBlock Text=&quot;Body Strong&quot; Style=&quot;{StaticResource BodyStrongTextBlockStyle}&quot; /&gt;
+                &#10;&lt;TextBlock Text=&quot;Subtitle&quot; Style=&quot;{StaticResource SubtitleTextBlockStyle}&quot; /&gt;
+                &#10;&lt;TextBlock Text=&quot;Title&quot; Style=&quot;{StaticResource TitleTextBlockStyle}&quot; /&gt;
+                &#10;&lt;TextBlock Text=&quot;Title Large&quot; Style=&quot;{StaticResource TitleLargeTextBlockStyle}&quot; /&gt;
+                &#10;&lt;TextBlock Text=&quot;Display&quot; Style=&quot;{StaticResource DisplayTextBlockStyle}&quot; /&gt;" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
