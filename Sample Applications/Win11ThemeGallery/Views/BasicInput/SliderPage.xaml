@@ -47,6 +47,7 @@
                     VerticalAlignment="Center"
                     Maximum="100"
                     Minimum="0"
+                    AutomationProperties.Name="Simple"
                     Value="{Binding ViewModel.SimpleSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                 <Grid Grid.Column="1">
                     <StackPanel VerticalAlignment="Center">
@@ -75,6 +76,7 @@
                     Maximum="1000"
                     Minimum="500"
                     TickFrequency="20"
+                    AutomationProperties.Name="Range and steps specified"
                     Value="{Binding ViewModel.RangeSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                 <Grid Grid.Column="1">
                     <StackPanel VerticalAlignment="Center">
@@ -104,6 +106,7 @@
                     Minimum="0"
                     TickFrequency="20"
                     TickPlacement="Both"
+                    AutomationProperties.Name="Tick marks"
                     Value="{Binding ViewModel.MarksSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                 <Grid Grid.Column="1">
                     <StackPanel VerticalAlignment="Center">
@@ -134,6 +137,7 @@
                     Orientation="Vertical"
                     TickFrequency="20"
                     TickPlacement="Both"
+                    AutomationProperties.Name="Vertical"
                     Value="{Binding ViewModel.VerticalSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                 <Grid Grid.Column="1">
                     <StackPanel VerticalAlignment="Center">

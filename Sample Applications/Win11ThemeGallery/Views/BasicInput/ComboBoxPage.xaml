@@ -38,7 +38,7 @@
             <ComboBox
                 MinWidth="200"
                 HorizontalAlignment="Left"
-                SelectedIndex="0">
+                SelectedIndex="0" AutomationProperties.Name="Sample defined inline">
                 <ComboBoxItem Content="Blue" />
                 <ComboBoxItem Content="Green" />
                 <ComboBoxItem Content="Red" />
@@ -53,6 +53,7 @@
             <ComboBox
                 MinWidth="200"
                 HorizontalAlignment="Left"
+                AutomationProperties.Name="Sample item source set"
                 ItemsSource="{Binding ViewModel.ComboBoxFontFamilies, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ComboBoxPage}, Mode=OneWay}"
                 SelectedIndex="0">
                 <ComboBox.ItemTemplate>
@@ -71,6 +72,7 @@
                 MinWidth="200"
                 HorizontalAlignment="Left"
                 IsEditable="True"
+                AutomationProperties.Name="Editable"
                 ItemsSource="{Binding ViewModel.ComboBoxFontSizes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ComboBoxPage}, Mode=OneWay}"
                 SelectedIndex="0" />
         </controls:ControlExample>

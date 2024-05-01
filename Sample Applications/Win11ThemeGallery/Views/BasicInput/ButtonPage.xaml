@@ -46,9 +46,10 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Button
-                    Grid.Column="0"
-                    Content="Standard WPF button"
-                    IsEnabled="{Binding ViewModel.IsSimpleButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ButtonPage}, Mode=OneWay}" />
+                            Grid.Column="0"
+                            Content="Standard WPF button"
+                            AutomationProperties.Name="Standard WPF"
+                            IsEnabled="{Binding ViewModel.IsSimpleButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ButtonPage}, Mode=OneWay}" />
                         <CheckBox
                     Grid.Column="1"
                     Command="{Binding ViewModel.SimpleButtonCheckboxCheckedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ButtonPage}, Mode=OneWay}"
@@ -86,7 +87,7 @@
             Margin="0,32,0,0"
             HeaderText="WPF Accent Button"
             XamlCode="&lt;Button Style=&quot;{DynamicResource DefaultAccentButtonStyle}&quot; Content=&quot;WPF Accent Button&quot; /&gt;">
-                    <Button Style="{DynamicResource DefaultAccentButtonStyle}">
+                    <Button Style="{DynamicResource DefaultAccentButtonStyle}" AutomationProperties.Name="WPF Accent">
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Symbol="Fluent24" />-->
                             <TextBlock Text="WPF Accent Button" />

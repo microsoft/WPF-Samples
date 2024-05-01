@@ -31,7 +31,7 @@
     <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
     <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample HeaderText="A 2-state CheckBox." XamlCode="&lt;CheckBox Content=&quot;Two-state CheckBox&quot; /&gt;">
-            <CheckBox Content="Two-state CheckBox" />
+            <CheckBox Content="Two-state CheckBox" AutomationProperties.Name="Sample Two State" />
         </controls:ControlExample>
 
 
@@ -41,6 +41,7 @@
             XamlCode="&lt;CheckBox IsThreeState=&quot;True&quot; Content=&quot;Three-state CheckBox&quot; IsChecked=&quot;{x:Null}&quot; /&gt;">
             <CheckBox
                 Content="Three-state CheckBox"
+                AutomationProperties.Name="Sample Three State"
                 IsChecked="{x:Null}"
                 IsThreeState="True" />
         </controls:ControlExample>
