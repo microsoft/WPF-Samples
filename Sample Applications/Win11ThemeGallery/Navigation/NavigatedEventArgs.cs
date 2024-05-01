@@ -1,4 +1,4 @@
-﻿namespace Win11ThemeGallery.Navigation
+﻿namespace WPFGallery.Navigation
 {
     public class NavigatingEventArgs
     {

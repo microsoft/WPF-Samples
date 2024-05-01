@@ -2,7 +2,7 @@ using System.Collections;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Win11ThemeGallery.Navigation;
+namespace WPFGallery.Navigation;
 
 public interface INavigationService
 {

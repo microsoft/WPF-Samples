@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Win11ThemeGallery.Models;
+using WPFGallery.Models;
 
-namespace Win11ThemeGallery.Helpers;
+namespace WPFGallery.Helpers;
 
 internal sealed class ImageIdToBrushConverter : IValueConverter
 {

@@ -1,4 +1,4 @@
-namespace Win11ThemeGallery.Helpers;
+namespace WPFGallery.Helpers;
 
 internal sealed class EmptyToVisibilityConverter : IValueConverter
 {

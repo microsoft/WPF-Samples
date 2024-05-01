@@ -1,5 +1,5 @@
 
-namespace Win11ThemeGallery.Models;
+namespace WPFGallery.Models;
 
 public class Product
 {

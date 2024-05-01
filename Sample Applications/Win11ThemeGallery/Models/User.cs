@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Win11ThemeGallery.Models;
+namespace WPFGallery.Models;
 
 public class User
 {

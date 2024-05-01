@@ -3,7 +3,7 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
-namespace Win11ThemeGallery.Helpers;
+namespace WPFGallery.Helpers;
 
 internal sealed class NameToPageTypeConverter
 {

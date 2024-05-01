@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Win11ThemeGallery.Navigation
+namespace WPFGallery.Navigation
 {
     public class NavigationItem
     {

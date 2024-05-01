@@ -1,9 +1,9 @@
-﻿<Page x:Class="Win11ThemeGallery.Views.DashboardPage"
+﻿<Page x:Class="WPFGallery.Views.DashboardPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Win11ThemeGallery.Views" mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}" d:DesignHeight="450" d:DesignWidth="800" Title="DashboardPage">
+    xmlns:local="clr-namespace:WPFGallery.Views" mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}" d:DesignHeight="450" d:DesignWidth="800" Title="DashboardPage">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,8 +16,8 @@
       </Border.Background>
     </Border>
         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-            <TextBlock Foreground="White" Text="WPF Win11 Theme Gallery" FontWeight="Bold" FontSize="28" Margin="30 0 0 0" Padding="30 0 0 5"/>
-            <TextBlock Foreground="White" FontSize="16" Margin="30 0 0 0" Padding="30 0 0 0" FontWeight="Normal">Application to showcase Win11 Theme in WPF</TextBlock>
+            <TextBlock Foreground="White" Text="WPF Fluent Theme Gallery" FontWeight="Bold" FontSize="28" Margin="30 0 0 0" Padding="30 0 0 5"/>
+            <TextBlock Foreground="White" FontSize="16" Margin="30 0 0 0" Padding="30 0 0 0" FontWeight="Normal">Application to showcase Fluent Theme in WPF</TextBlock>
         </StackPanel>
 
         <ItemsControl Grid.Row="1" AutomationProperties.Name="Items in group" ItemsSource="{Binding ViewModel.NavigationCards}">

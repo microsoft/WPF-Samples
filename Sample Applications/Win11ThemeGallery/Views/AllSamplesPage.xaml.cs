@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Win11ThemeGallery.ViewModels;
+using WPFGallery.ViewModels;
 
-namespace Win11ThemeGallery.Views
+namespace WPFGallery.Views
 {
     /// <summary>
     /// Interaction logic for AllSamplesPage.xaml

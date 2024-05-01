@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Win11ThemeGallery.Models
+namespace WPFGallery.Models
 {
     public class IconData
     {

@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Win11ThemeGallery.ViewModels.Samples;
+using WPFGallery.ViewModels.Samples;
 
-namespace Win11ThemeGallery.Views.Samples
+namespace WPFGallery.Views.Samples
 {
     /// <summary>
     /// Interaction logic for UserDashboardPage.xaml

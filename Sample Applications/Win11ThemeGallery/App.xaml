@@ -1,8 +1,8 @@
-﻿<Application x:Class="Win11ThemeGallery.App"
+﻿<Application x:Class="WPFGallery.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Win11ThemeGallery"
-             xmlns:helpers="clr-namespace:Win11ThemeGallery.Helpers">
+             xmlns:local="clr-namespace:WPFGallery"
+             xmlns:helpers="clr-namespace:WPFGallery.Helpers">
     <Application.Resources>
          <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

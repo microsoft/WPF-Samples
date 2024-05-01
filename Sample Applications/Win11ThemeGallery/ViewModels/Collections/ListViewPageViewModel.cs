@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-using Win11ThemeGallery.Models;
+using WPFGallery.Models;
 
-namespace Win11ThemeGallery.ViewModels;
+namespace WPFGallery.ViewModels;
 
 public partial class ListViewPageViewModel : ObservableObject 
 {

@@ -1,6 +1,6 @@
-### Win11 Theme Gallery Application
+### WPF Gallery Application
 
-This application showcases the new Fluent ( Win11 ) theme styles being introduced in .NET 9 Preview 4.
+This application showcases the new Fluent ( Win11 ) theme styles being introduced in WPF in .NET 9 Preview 4.
 
 Developers need to do the following changes in order to use this application:
 1. Download the latest .NET 9 preview version available [here](https://github.com/dotnet/installer?tab=readme-ov-file#table).
@@ -14,4 +14,4 @@ Developers need to do the following changes in order to use this application:
         ```
     - Build the WPF repository by running the command: `.\build.cmd -plat x64`
     - If the WPF build fails, install the components mentioned in [wpf.vsconfig](https://github.com/dotnet/wpf/blob/main/Documentation/wpf.vsconfig).
-    - Update the `WpfRepoRoot` with it's path in `Win11ThemeGallery.csproj` file.
+    - Update the `WpfRepoRoot` with it's path in `WPFGallery.csproj` file.
