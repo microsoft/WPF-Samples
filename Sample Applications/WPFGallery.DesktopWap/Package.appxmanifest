@@ -8,11 +8,11 @@
 
   <Identity
     Name="3c481b40-a233-4435-a941-c37082a63dc7"
-    Publisher="CN=dipeshkumar"
+    Publisher="CN=WPF-Gallery-Test"
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>WPF Fluent Gallery</DisplayName>
+    <DisplayName>WPF Gallery</DisplayName>
     <PublisherDisplayName>dipeshkumar</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
@@ -31,8 +31,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="WPF Fluent Gallery"
-        Description="WPF Fluent Gallery"
+        DisplayName="WPF Gallery"
+        Description="WPF Gallery"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
