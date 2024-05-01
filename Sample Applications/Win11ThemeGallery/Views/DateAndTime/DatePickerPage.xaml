@@ -34,7 +34,7 @@
             <controls:ControlExample.XamlCode>
                 &lt;DatePicker/&gt;
             </controls:ControlExample.XamlCode>
-            <DatePicker HorizontalAlignment="Left" MinWidth="200"/>
+                <DatePicker HorizontalAlignment="Left" MinWidth="200" AutomationProperties.Name="Default"/>
         </controls:ControlExample>
     </ScrollViewer>
   </Grid>

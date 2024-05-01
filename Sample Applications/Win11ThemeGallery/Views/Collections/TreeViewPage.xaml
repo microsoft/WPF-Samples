@@ -51,7 +51,7 @@
             &#10;&#9;&#9;&lt;/TreeViewItem&gt;
             &#10;&#9;&lt;/TreeViewItem&gt;
             &#10;&lt;/TreeViewItem&gt;">
-                    <TreeView AllowDrop="True" ScrollViewer.CanContentScroll="False">
+                    <TreeView AllowDrop="True" ScrollViewer.CanContentScroll="False" AutomationProperties.Name="Sample TreeView">
                 <TreeViewItem
                     Header="Work Documents"
                     IsExpanded="True"

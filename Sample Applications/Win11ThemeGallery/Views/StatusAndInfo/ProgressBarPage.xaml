@@ -35,14 +35,14 @@
                     Margin="0"
                     HeaderText="A simple progress bar."
                     XamlCode="&lt;ProgressBar Value=&quot;40&quot; /&gt;">
-                    <ProgressBar Margin="24" Value="40" />
+                    <ProgressBar Margin="24" Value="40" AutomationProperties.Name="A determinate" />
                 </controls:ControlExample>
 
                 <controls:ControlExample
                     Margin="0,32,0,0"
                     HeaderText="An indeterminate progress bar."
                     XamlCode="&lt;ProgressBar IsIndeterminate=&quot;True&quot; /&gt;">
-                    <ProgressBar Margin="24" IsIndeterminate="True" />
+                    <ProgressBar Margin="24" IsIndeterminate="True" AutomationProperties.Name="An indeterminate"/>
                 </controls:ControlExample>
             </StackPanel>
         </ScrollViewer>

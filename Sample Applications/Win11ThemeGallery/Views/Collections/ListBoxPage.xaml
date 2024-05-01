@@ -46,7 +46,7 @@
                 \t&lt;ListBoxItem Content=&quot;Green&quot;/&gt;\n
                 &lt;/ListBox&gt;
             </controls:ControlExample.XamlCode>-->
-            <ListBox SelectedIndex="0">
+            <ListBox AutomationProperties.Name="Color ListBox" SelectedIndex="0">
                 <ListBoxItem>Blue</ListBoxItem>
                 <ListBoxItem>Green</ListBoxItem>
                 <ListBoxItem>Red</ListBoxItem>
@@ -59,6 +59,7 @@
             HeaderText="A ListBox with its ItemsSource and Height set."
             XamlCode="&lt;ListBox Height=&quot;100&quot; ItemsSource=&quot;{Binding ViewModel.MyItems}&quot; SelectedIndex=&quot;2&quot; /&gt;">
             <ListBox
+                AutomationProperties.Name="Font ListBox" 
                 Height="164"
                 ItemsSource="{Binding ViewModel.ListBoxItems, Mode=TwoWay}"
                 SelectedIndex="2" />

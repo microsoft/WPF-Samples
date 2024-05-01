@@ -57,22 +57,22 @@
             &#10;&#9;&lt;/TabItem&gt;
             &#10;&lt;/TabControl&gt;">
             <TabControl Margin="0,8,0,0">
-                <TabItem>
+                <TabItem AutomationProperties.Name="Hello Tab">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Margin="0,0,6,0" Symbol="XboxConsole24" />-->
-                            <TextBlock Text="Hello" />
+                            <TextBlock Text="Hello"/>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>
                         <TextBlock Margin="12" Text="World" />
                     </Grid>
                 </TabItem>
-                <TabItem IsSelected="True">
+                <TabItem IsSelected="True"  AutomationProperties.Name="The cake Tab">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Margin="0,0,6,0" Symbol="StoreMicrosoft16" />-->
-                            <TextBlock Text="The cake" />
+                            <TextBlock Text="The cake"/>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>

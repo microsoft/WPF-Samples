@@ -55,7 +55,7 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="I am a Label of the TextBox below." />
                 <!--  Target="{Binding ElementName=TextBoxForLabel}"  -->
-                <TextBox Grid.Row="1" />
+                <TextBox Grid.Row="1" AutomationProperties.Name="Simple Text Box"/>
             </Grid>
         </controls:ControlExample>
     </StackPanel>

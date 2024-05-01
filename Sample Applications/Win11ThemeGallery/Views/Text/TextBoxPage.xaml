@@ -31,14 +31,14 @@
     <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
     <StackPanel Margin="0,0,0,24">
         <controls:ControlExample HeaderText="A simple TextBox." XamlCode="&lt;TextBox /&gt;">
-            <TextBox />
+            <TextBox AutomationProperties.Name="simple TextBox"/>
         </controls:ControlExample>
 
         <controls:ControlExample
             Margin="0,36,0,0"
             HeaderText="A multi-line TextBox."
             XamlCode="&lt;TextBox TextWrapping=&quot;Wrap&quot; AcceptsReturn=&quot;True&quot; /&gt;">
-                <TextBox TextWrapping="Wrap" AcceptsReturn="True" />
+                <TextBox TextWrapping="Wrap" AcceptsReturn="True" AutomationProperties.Name="multi-line TextBox"/>
         </controls:ControlExample>
     </StackPanel>
 

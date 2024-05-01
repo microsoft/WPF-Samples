@@ -34,7 +34,7 @@
             <controls:ControlExample.XamlCode>
                 &lt;Calendar/&gt;
             </controls:ControlExample.XamlCode>
-            <Calendar HorizontalAlignment="Left" />
+            <Calendar HorizontalAlignment="Left" AutomationProperties.Name="Default"/>
         </controls:ControlExample>
     </ScrollViewer>
   </Grid>
