@@ -106,8 +106,8 @@ public partial class App : Application
             services.AddTransient<TypographyPage>();
             services.AddTransient<TypographyPageViewModel>();
 
-            services.AddTransient<IconsPage>();
-            services.AddTransient<IconsPageViewModel>();
+            services.AddSingleton<IconsPage>();
+            services.AddSingleton<IconsPageViewModel>();
 
             services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsPageViewModel>();

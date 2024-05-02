@@ -8,6 +8,7 @@
       mc:Ignorable="d" 
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
       Title="IconsPage">
 
     <Page.Resources>
@@ -98,7 +99,7 @@
             <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VirtualizingPanel.IsVirtualizing="True"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ItemsControl.ItemTemplate>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFGallery.ViewModels;
+using WPFGallery.Models;
 
 namespace WPFGallery.Views
 {
@@ -30,5 +31,16 @@ namespace WPFGallery.Views
 
         public IconsPageViewModel ViewModel { get; }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.ContextIdle, new Action(() =>
+            {
+                if(ViewModel.Icons.Count != IconsDataSource.GetIconsData().Count)
+                {
+                    Debug.WriteLine("Reloading icons data.");
+                    ViewModel.Icons = IconsDataSource.GetIconsData();
+                }
+            }));
+        }
     }
 }

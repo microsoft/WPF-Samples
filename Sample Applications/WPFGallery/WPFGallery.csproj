@@ -21,7 +21,7 @@
 		<Resource Include="Assets\ControlImages\*" />
 		<Resource Include="Assets\WPFGallery-Icon.png" />
 		<Resource Include="Assets\win11-dashboard.png" />
-		<Resource Include="Assets\*-100x100.jpg" />
+		<Resource Include="Assets\UserDashboard\*" />
 	</ItemGroup>
 	
 	<PropertyGroup>

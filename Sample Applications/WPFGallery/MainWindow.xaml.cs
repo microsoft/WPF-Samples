@@ -12,6 +12,7 @@ using System.Windows.Shell;
 using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery;
 
@@ -47,6 +48,11 @@ public partial class MainWindow : Window
         );
 
         this.StateChanged += MainWindow_StateChanged;
+
+        Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+        {
+            IconsDataSource.InitializeData();  
+        }));
     }
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
