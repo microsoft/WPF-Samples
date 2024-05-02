@@ -26,7 +26,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "User Dashboard",
                 PageType = typeof(UserDashboardPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/PersonPicture.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
                 Description = "User Dashboard Page"
             },
         };

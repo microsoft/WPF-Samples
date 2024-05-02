@@ -26,7 +26,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "Calendar",
                 PageType = typeof(CalendarPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/CalendarView.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarLtr24 },
                 Description = "A control that presents a calendar for a user to choose a date from."
             },
             new NavigationCard
@@ -34,7 +33,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "DatePicker",
                 PageType = typeof(DatePickerPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DatePicker.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarSearch20 },
                 Description = "A control that lets a user pick a date value."
             },
         };

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Win11ThemeGallery.ViewModels;
+using Win11ThemeGallery.Models;
 
 namespace Win11ThemeGallery.Views
 {
@@ -30,5 +31,15 @@ namespace Win11ThemeGallery.Views
 
         public IconsPageViewModel ViewModel { get; }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.ContextIdle, new Action(() =>
+            {
+                if(ViewModel.Icons.Count != IconsDataSource.GetIconsData().Count)
+                {
+                    ViewModel.Icons = IconsDataSource.GetIconsData();
+                }
+            }));
+        }
     }
 }

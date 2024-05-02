@@ -26,7 +26,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "Menu",
                 PageType = typeof(MenuPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Pivot.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.RowTriple24 },
                 Description = "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
             },
             new NavigationCard
@@ -34,7 +33,6 @@ namespace Win11ThemeGallery.ViewModels
                 Name = "TabControl",
                 PageType = typeof(TabControlPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TabView.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.TabDesktopBottom24 },
                 Description = "A control that displays a collection of tabs."
             },
         };

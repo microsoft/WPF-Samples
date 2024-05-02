@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using Win11ThemeGallery.Models;
 using Win11ThemeGallery.Navigation;
 using Win11ThemeGallery.ViewModels;
 using Win11ThemeGallery.Views;
@@ -47,6 +48,11 @@ public partial class MainWindow : Window
         );
 
         this.StateChanged += MainWindow_StateChanged;
+
+        Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+        {
+            IconsDataSource.InitializeData();  
+        }));
     }
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
