@@ -1,0 +1,109 @@
+﻿<Page x:Class="WPFGallery.Views.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFGallery.Views"
+      xmlns:controls="clr-namespace:WPFGallery.Controls" 
+      mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuPage">
+
+  <Grid x:Name="ContentPagePane" Height="Auto">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid Margin="0 0 0 32" Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <StackPanel Grid.Column="0">
+        <TextBlock Grid.Column="0" FontSize="32" FontWeight="Bold" Text="{Binding ViewModel.PageTitle}" />
+        <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" />
+      </StackPanel>
+
+    </Grid>
+
+    <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
+    <Grid Margin="0,0,0,24">
+                <controls:ControlExample 
+                    Margin="0" 
+                    HeaderText="Standard Menu." 
+                    XamlCode="&lt;Menu&gt;
+                    &#10;&#9;&lt;MenuItem Header=&quot;File&quot;&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;New&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;New window&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Open...&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save As...&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Exit&quot; /&gt;
+                    &#10;&#9;&lt;/MenuItem&gt;
+                    &#10;&#9;&lt;MenuItem Header=&quot;Edit&quot;&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Undo&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Cut&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Copy&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Paste&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem IsEnabled=&quot;False&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Search with browser&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find...&quot; /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find Next&quot; /&gt;
+                    &#10;&#9;&#9;&lt;Separator /&gt;
+                    &#10;&#9;&#9;&lt;MenuItem Header=&quot;Select All&quot; /&gt;
+                    &#10;&#9;&lt;/MenuItem&gt;
+                    &#10;&lt;/Menu&gt;">
+                    <Menu FontSize="14">
+                        <MenuItem Header="File">
+                            <MenuItem Header="New" />
+                            <MenuItem Header="New window" />
+                            <MenuItem Header="Open..." />
+                            <MenuItem Header="Save" />
+                            <MenuItem Header="Save As..." />
+                            <Separator />
+                            <MenuItem Header="Exit" />
+                        </MenuItem>
+                        <MenuItem Header="Edit">
+                            <MenuItem Header="Undo" />
+                            <Separator />
+                            <MenuItem Header="Cut" />
+                            <MenuItem Header="Copy" />
+                            <MenuItem Header="Paste" />
+                            <MenuItem IsEnabled="False" />
+                            <Separator />
+                            <MenuItem Header="Search with browser" />
+                            <MenuItem Header="Find..." />
+                            <MenuItem Header="Find next" />
+                            <Separator />
+                            <MenuItem Header="Select All" />
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8DD;" FontSize="12" />
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8DB;" FontSize="12" />
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8DC;" FontSize="12" />
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </Menu>
+                </controls:ControlExample>
+    </Grid>
+    </ScrollViewer>
+  </Grid>
+</Page>

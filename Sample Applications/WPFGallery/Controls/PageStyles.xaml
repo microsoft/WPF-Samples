@@ -1,0 +1,71 @@
+ <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:helpers="clr-namespace:WPFGallery.Helpers">
+
+  <sys:Double x:Key="CaptionTextBlockFontSize">12</sys:Double>
+  <sys:Double x:Key="BodyTextBlockFontSize">14</sys:Double>
+  <sys:Double x:Key="SubtitleTextBlockFontSize">20</sys:Double>
+  <sys:Double x:Key="TitleTextBlockFontSize">28</sys:Double>
+  <sys:Double x:Key="TitleLargeTextBlockFontSize">40</sys:Double>
+  <sys:Double x:Key="DisplayTextBlockFontSize">68</sys:Double>
+
+  <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+    <Setter Property="FontSize" Value="{StaticResource BodyTextBlockFontSize}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+    <Setter Property="LineStackingStrategy" Value="MaxHeight" />
+  </Style>
+  <Style x:Key="CaptionTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource CaptionTextBlockFontSize}" />
+    <Setter Property="FontWeight" Value="Normal" />
+  </Style>
+  <Style x:Key="BodyTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontWeight" Value="Normal" />
+  </Style>
+  <Style x:Key="BodyStrongTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}" />
+  <Style x:Key="SubtitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource SubtitleTextBlockFontSize}" />
+  </Style>
+  <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource TitleTextBlockFontSize}" />
+  </Style>
+  <Style x:Key="TitleLargeTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource TitleLargeTextBlockFontSize}" />
+  </Style>
+  <Style x:Key="DisplayTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Setter Property="FontSize" Value="{StaticResource DisplayTextBlockFontSize}" />
+  </Style>
+
+  <ImageBrush x:Key="p64" ImageSource="pack://application:,,,/Assets/UserDashboard/64-100x100.jpg" />
+  <ImageBrush x:Key="p65" ImageSource="pack://application:,,,/Assets/UserDashboard/65-100x100.jpg" />
+  <ImageBrush x:Key="p91" ImageSource="pack://application:,,,/Assets/UserDashboard/91-100x100.jpg" />
+  <ImageBrush x:Key="p103" ImageSource="pack://application:,,,/Assets/UserDashboard/103-100x100.jpg" />
+  <ImageBrush x:Key="p177" ImageSource="pack://application:,,,/Assets/UserDashboard/177-100x100.jpg" />
+  <ImageBrush x:Key="p334" ImageSource="pack://application:,,,/Assets/UserDashboard/334-100x100.jpg" />
+  <ImageBrush x:Key="p338" ImageSource="pack://application:,,,/Assets/UserDashboard/338-100x100.jpg" />
+  <ImageBrush x:Key="p342" ImageSource="pack://application:,,,/Assets/UserDashboard/342-100x100.jpg" />
+  <ImageBrush x:Key="p349" ImageSource="pack://application:,,,/Assets/UserDashboard/349-100x100.jpg" />
+  <ImageBrush x:Key="p366" ImageSource="pack://application:,,,/Assets/UserDashboard/366-100x100.jpg" />
+  <ImageBrush x:Key="p367" ImageSource="pack://application:,,,/Assets/UserDashboard/367-100x100.jpg" />
+  <ImageBrush x:Key="p373" ImageSource="pack://application:,,,/Assets/UserDashboard/373-100x100.jpg" />
+  <ImageBrush x:Key="p375" ImageSource="pack://application:,,,/Assets/UserDashboard/375-100x100.jpg" />
+  <ImageBrush x:Key="p378" ImageSource="pack://application:,,,/Assets/UserDashboard/378-100x100.jpg" />
+  <ImageBrush x:Key="p399" ImageSource="pack://application:,,,/Assets/UserDashboard/399-100x100.jpg" />
+  <ImageBrush x:Key="p447" ImageSource="pack://application:,,,/Assets/UserDashboard/447-100x100.jpg" />
+  <ImageBrush x:Key="p453" ImageSource="pack://application:,,,/Assets/UserDashboard/453-100x100.jpg" />
+  <ImageBrush x:Key="p473" ImageSource="pack://application:,,,/Assets/UserDashboard/473-100x100.jpg" />
+  <ImageBrush x:Key="p469" ImageSource="pack://application:,,,/Assets/UserDashboard/469-100x100.jpg" />
+  <ImageBrush x:Key="p505" ImageSource="pack://application:,,,/Assets/UserDashboard/505-100x100.jpg" />
+
+  <Style x:Key="ColorTilesPanelStyle" TargetType="{x:Type Border}">
+    <Style.Setters>
+        <Setter Property="Background" Value="{DynamicResource ControlExampleDisplayBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style.Setters>
+  </Style>
+</ResourceDictionary>
