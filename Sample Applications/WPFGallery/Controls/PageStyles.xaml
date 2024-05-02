@@ -39,26 +39,26 @@
     <Setter Property="FontSize" Value="{StaticResource DisplayTextBlockFontSize}" />
   </Style>
 
-  <ImageBrush x:Key="p64" ImageSource="pack://application:,,,/Assets/64-100x100.jpg" />
-  <ImageBrush x:Key="p65" ImageSource="pack://application:,,,/Assets/65-100x100.jpg" />
-  <ImageBrush x:Key="p91" ImageSource="pack://application:,,,/Assets/91-100x100.jpg" />
-  <ImageBrush x:Key="p103" ImageSource="pack://application:,,,/Assets/103-100x100.jpg" />
-  <ImageBrush x:Key="p177" ImageSource="pack://application:,,,/Assets/177-100x100.jpg" />
-  <ImageBrush x:Key="p334" ImageSource="pack://application:,,,/Assets/334-100x100.jpg" />
-  <ImageBrush x:Key="p338" ImageSource="pack://application:,,,/Assets/338-100x100.jpg" />
-  <ImageBrush x:Key="p342" ImageSource="pack://application:,,,/Assets/342-100x100.jpg" />
-  <ImageBrush x:Key="p349" ImageSource="pack://application:,,,/Assets/349-100x100.jpg" />
-  <ImageBrush x:Key="p366" ImageSource="pack://application:,,,/Assets/366-100x100.jpg" />
-  <ImageBrush x:Key="p367" ImageSource="pack://application:,,,/Assets/367-100x100.jpg" />
-  <ImageBrush x:Key="p373" ImageSource="pack://application:,,,/Assets/373-100x100.jpg" />
-  <ImageBrush x:Key="p375" ImageSource="pack://application:,,,/Assets/375-100x100.jpg" />
-  <ImageBrush x:Key="p378" ImageSource="pack://application:,,,/Assets/378-100x100.jpg" />
-  <ImageBrush x:Key="p399" ImageSource="pack://application:,,,/Assets/399-100x100.jpg" />
-  <ImageBrush x:Key="p447" ImageSource="pack://application:,,,/Assets/447-100x100.jpg" />
-  <ImageBrush x:Key="p453" ImageSource="pack://application:,,,/Assets/453-100x100.jpg" />
-  <ImageBrush x:Key="p473" ImageSource="pack://application:,,,/Assets/473-100x100.jpg" />
-  <ImageBrush x:Key="p469" ImageSource="pack://application:,,,/Assets/469-100x100.jpg" />
-  <ImageBrush x:Key="p505" ImageSource="pack://application:,,,/Assets/505-100x100.jpg" />
+  <ImageBrush x:Key="p64" ImageSource="pack://application:,,,/Assets/UserDashboard/64-100x100.jpg" />
+  <ImageBrush x:Key="p65" ImageSource="pack://application:,,,/Assets/UserDashboard/65-100x100.jpg" />
+  <ImageBrush x:Key="p91" ImageSource="pack://application:,,,/Assets/UserDashboard/91-100x100.jpg" />
+  <ImageBrush x:Key="p103" ImageSource="pack://application:,,,/Assets/UserDashboard/103-100x100.jpg" />
+  <ImageBrush x:Key="p177" ImageSource="pack://application:,,,/Assets/UserDashboard/177-100x100.jpg" />
+  <ImageBrush x:Key="p334" ImageSource="pack://application:,,,/Assets/UserDashboard/334-100x100.jpg" />
+  <ImageBrush x:Key="p338" ImageSource="pack://application:,,,/Assets/UserDashboard/338-100x100.jpg" />
+  <ImageBrush x:Key="p342" ImageSource="pack://application:,,,/Assets/UserDashboard/342-100x100.jpg" />
+  <ImageBrush x:Key="p349" ImageSource="pack://application:,,,/Assets/UserDashboard/349-100x100.jpg" />
+  <ImageBrush x:Key="p366" ImageSource="pack://application:,,,/Assets/UserDashboard/366-100x100.jpg" />
+  <ImageBrush x:Key="p367" ImageSource="pack://application:,,,/Assets/UserDashboard/367-100x100.jpg" />
+  <ImageBrush x:Key="p373" ImageSource="pack://application:,,,/Assets/UserDashboard/373-100x100.jpg" />
+  <ImageBrush x:Key="p375" ImageSource="pack://application:,,,/Assets/UserDashboard/375-100x100.jpg" />
+  <ImageBrush x:Key="p378" ImageSource="pack://application:,,,/Assets/UserDashboard/378-100x100.jpg" />
+  <ImageBrush x:Key="p399" ImageSource="pack://application:,,,/Assets/UserDashboard/399-100x100.jpg" />
+  <ImageBrush x:Key="p447" ImageSource="pack://application:,,,/Assets/UserDashboard/447-100x100.jpg" />
+  <ImageBrush x:Key="p453" ImageSource="pack://application:,,,/Assets/UserDashboard/453-100x100.jpg" />
+  <ImageBrush x:Key="p473" ImageSource="pack://application:,,,/Assets/UserDashboard/473-100x100.jpg" />
+  <ImageBrush x:Key="p469" ImageSource="pack://application:,,,/Assets/UserDashboard/469-100x100.jpg" />
+  <ImageBrush x:Key="p505" ImageSource="pack://application:,,,/Assets/UserDashboard/505-100x100.jpg" />
 
   <Style x:Key="ColorTilesPanelStyle" TargetType="{x:Type Border}">
     <Style.Setters>

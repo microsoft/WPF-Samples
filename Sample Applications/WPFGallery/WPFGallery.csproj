@@ -19,19 +19,21 @@
 
 	<ItemGroup>
 		<Resource Include="Assets\ControlImages\*" />
-		<Resource Include="Assets\win11.png" />
+		<Resource Include="Assets\WPFGallery-Icon.png" />
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\*-100x100.jpg" />
 	</ItemGroup>
 	
 	<PropertyGroup>
 		<WpfRepoRoot>E:\repos\wpf</WpfRepoRoot>
+		<ApplicationIcon>Assets\WPFGallery-Icon.ico</ApplicationIcon>
 	</PropertyGroup>
 	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
 	<ItemGroup>
 	  <None Remove="Models\IconsData.json" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Content Include="Assets\WPFGallery-Icon.ico" />
 	  <Content Include="Models\IconsData.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>

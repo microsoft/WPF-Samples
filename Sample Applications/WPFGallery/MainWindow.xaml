@@ -104,7 +104,7 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <Image
                     VerticalAlignment="Center"
-                    Source="pack://application:,,,/Assets/win11.png" Height="20" Width="20" Margin="5,5,0,5"/>
+                    Source="pack://application:,,,/Assets/WPFGallery-Icon.png" Height="20" Width="20" Margin="5,5,0,5"/>
             
             <TextBlock Text="WPF Gallery Application" 
                     VerticalAlignment="Center"
