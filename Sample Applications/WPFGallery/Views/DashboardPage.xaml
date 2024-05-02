@@ -16,8 +16,8 @@
       </Border.Background>
     </Border>
         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-            <TextBlock Foreground="White" Text="WPF Fluent Theme Gallery" FontWeight="Bold" FontSize="28" Margin="30 0 0 0" Padding="30 0 0 5"/>
-            <TextBlock Foreground="White" FontSize="16" Margin="30 0 0 0" Padding="30 0 0 0" FontWeight="Normal">Application to showcase Fluent Theme in WPF</TextBlock>
+            <TextBlock Foreground="White" Text="WPF Gallery" FontWeight="Bold" FontSize="28" Margin="30 0 0 0" Padding="30 0 0 5"/>
+            <TextBlock Foreground="White" FontSize="16" Margin="30 0 0 0" Padding="30 0 0 0" FontWeight="Normal">Application to showcase Fluent Theme in WPF in .NET 9</TextBlock>
         </StackPanel>
 
         <ItemsControl Grid.Row="1" AutomationProperties.Name="Items in group" ItemsSource="{Binding ViewModel.NavigationCards}">
