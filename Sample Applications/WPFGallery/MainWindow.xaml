@@ -159,12 +159,15 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBox x:Name="SearchBox" 
+                <!--<TextBox x:Name="SearchBox" 
                         AutomationProperties.Name="Search"
                         Margin="10" Width="250"
                         KeyUp="SearchBox_KeyUp"
-                        LostFocus="SearchBox_LostFocus" />
+                        LostFocus="SearchBox_LostFocus" />-->
 
+                <ComboBox x:Name="SearchComboBox" Margin="10" MinWidth="250" HorizontalAlignment="Left" StaysOpenOnEdit="True"
+                          SelectionChanged="ComboBox_SelectionChanged" IsEditable="True" TextBoxBase.TextChanged="SearchComboBox_TextChanged" 
+                          GotFocus="SearchComboBox_GotFocus" LostFocus="SearchComboBox_LostFocus" IsTextSearchEnabled="False"/>
 
                 <TreeView x:Name="ControlsList" 
                         AutomationProperties.Name="Navigation Pane"

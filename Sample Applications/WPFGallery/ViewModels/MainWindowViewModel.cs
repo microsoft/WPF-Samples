@@ -169,6 +169,9 @@ public partial class MainWindowViewModel : ObservableObject
     private NavigationItem? _selectedControl;
     private INavigationService _navigationService;
 
+    [ObservableProperty]
+    private ICollection<NavigationItem> _navigationItemsForSearchBox = new ObservableCollection<NavigationItem>();
+
     [RelayCommand]
     public void Settings()
     {
@@ -192,6 +195,17 @@ public partial class MainWindowViewModel : ObservableObject
     {
         _navigationService.NavigateForward();
     }
+    private void GetAllTheNavigationItems()
+    {
+        foreach (var con in Controls)
+        {
+            NavigationItemsForSearchBox.Add((NavigationItem)con);
+            foreach (var child in con.Children)
+            {
+                NavigationItemsForSearchBox.Add((NavigationItem)child);
+            }
+        }
+    }
 
     public MainWindowViewModel(INavigationService navigationService)
     {
@@ -199,6 +213,7 @@ public partial class MainWindowViewModel : ObservableObject
         _timer = new DispatcherTimer();
         _timer.Interval = TimeSpan.FromMilliseconds(400);
         _timer.Tick += PerformSearchNavigation;
+        GetAllTheNavigationItems();
     }
 
     public void UpdateSearchText(string searchText)

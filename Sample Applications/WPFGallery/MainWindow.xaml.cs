@@ -47,6 +47,7 @@ public partial class MainWindow : Window
         );
 
         this.StateChanged += MainWindow_StateChanged;
+        SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox;
     }
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
@@ -107,7 +108,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SearchBox_KeyUp(object sender, KeyEventArgs e)
+    /*private void SearchBox_KeyUp(object sender, KeyEventArgs e)
     {
         ViewModel.UpdateSearchText(SearchBox.Text);
     }
@@ -116,7 +117,7 @@ public partial class MainWindow : Window
     {
         SearchBox.Text = "";
         ViewModel.UpdateSearchText(SearchBox.Text);
-    }
+    }*/
 
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
@@ -167,5 +168,46 @@ public partial class MainWindow : Window
                 selectedTreeViewItem.IsSelected = true;
             }
         }
+    }
+    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        NavigationItem selectedItem = SearchComboBox.SelectedItem as NavigationItem;
+
+        if (selectedItem is not null)
+        {
+            _navigationService.NavigateTo(selectedItem.PageType);
+            var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(selectedItem) as TreeViewItem;
+            if (tvi != null)
+            {
+                tvi.IsExpanded = true;
+                tvi.BringIntoView();
+            }
+
+            SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox;
+            SearchComboBox.SelectedItem = null;
+        }
+
+        SearchComboBox.IsDropDownOpen = false;
+        Keyboard.ClearFocus();
+    }
+
+    private void SearchComboBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        Task.Delay(300);
+        string searchText = (sender as ComboBox).Text;
+        SearchComboBox.IsDropDownOpen = true;
+        SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox.Where(item => item.Name.Contains(searchText));
+    }
+
+    private void SearchComboBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+        SearchComboBox.IsDropDownOpen = true;
+        SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox;
+    }
+
+    private void SearchComboBox_LostFocus(object sender, RoutedEventArgs e)
+    {
+        SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox;
+        SearchComboBox.IsDropDownOpen = false;
     }
 }
