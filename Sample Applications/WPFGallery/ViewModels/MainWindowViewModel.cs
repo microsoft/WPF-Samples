@@ -197,10 +197,10 @@ public partial class MainWindowViewModel : ObservableObject
     }
     private void GetAllTheNavigationItems()
     {
-        foreach (var con in Controls)
+        foreach (var control in Controls)
         {
-            NavigationItemsForSearchBox.Add((NavigationItem)con);
-            foreach (var child in con.Children)
+            NavigationItemsForSearchBox.Add((NavigationItem)control);
+            foreach (var child in control.Children)
             {
                 NavigationItemsForSearchBox.Add((NavigationItem)child);
             }
