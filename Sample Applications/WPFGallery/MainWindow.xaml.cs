@@ -188,6 +188,7 @@ public partial class MainWindow : Window
         }
 
         SearchComboBox.IsDropDownOpen = false;
+        PlaceholderText.Visibility = Visibility.Visible;
         Keyboard.ClearFocus();
     }
 
@@ -201,6 +202,7 @@ public partial class MainWindow : Window
 
     private void SearchComboBox_GotFocus(object sender, RoutedEventArgs e)
     {
+        PlaceholderText.Visibility = Visibility.Hidden;
         SearchComboBox.IsDropDownOpen = true;
         SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox;
     }
@@ -209,5 +211,6 @@ public partial class MainWindow : Window
     {
         SearchComboBox.ItemsSource = ViewModel.NavigationItemsForSearchBox;
         SearchComboBox.IsDropDownOpen = false;
+        PlaceholderText.Visibility = Visibility.Visible;
     }
 }

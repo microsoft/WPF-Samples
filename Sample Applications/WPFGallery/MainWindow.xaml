@@ -165,6 +165,8 @@
                         KeyUp="SearchBox_KeyUp"
                         LostFocus="SearchBox_LostFocus" />-->
 
+                <TextBox x:Name="PlaceholderText" Text="Search" Margin="10"/>
+
                 <ComboBox x:Name="SearchComboBox" Margin="10" MinWidth="250" HorizontalAlignment="Left" StaysOpenOnEdit="True"
                           SelectionChanged="ComboBox_SelectionChanged" IsEditable="True" TextBoxBase.TextChanged="SearchComboBox_TextChanged" 
                           GotFocus="SearchComboBox_GotFocus" LostFocus="SearchComboBox_LostFocus" IsTextSearchEnabled="False"/>
