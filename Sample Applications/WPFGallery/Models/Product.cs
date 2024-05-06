@@ -1,6 +1,9 @@
 
 namespace WPFGallery.Models;
 
+/// <summary>
+/// Product class for DataGrid page
+/// </summary>
 public class Product
 {
     public int ProductId { get; set; }

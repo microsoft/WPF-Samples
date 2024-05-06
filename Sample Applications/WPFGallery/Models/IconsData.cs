@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace WPFGallery.Models
 {
+    /// <summary>
+    /// IconData class for icons in icon page
+    /// </summary>
     public class IconData
     {
         public string Name { get; set; }

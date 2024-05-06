@@ -7,6 +7,10 @@ using System.Windows.Controls;
 
 namespace WPFGallery.Controls;
 
+/// <summary>
+/// A control that displays an example of a control
+/// </summary>
+
 [ContentProperty(nameof(ExampleContent))]
 public class ControlExample : Control
 {

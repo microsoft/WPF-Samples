@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFGallery.Models;
 
+/// <summary>
+/// User class for UserDashboard Page
+/// </summary>
 public class User
 {
     public string? FirstName { get; set; }

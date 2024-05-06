@@ -4,6 +4,9 @@ using System.Windows.Navigation;
 
 namespace WPFGallery.Navigation;
 
+/// <summary>
+/// Interface for the NavigationService
+/// </summary>
 public interface INavigationService
 {
     void Navigate(Type type);
@@ -19,7 +22,9 @@ public interface INavigationService
     event EventHandler<NavigatingEventArgs> Navigating;
 }
 
-
+/// <summary>
+/// Service for navigating between pages.
+/// </summary>
 public class NavigationService : INavigationService
 {
     private Frame _frame;
