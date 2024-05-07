@@ -50,6 +50,7 @@
                                     Margin="0,12,12,0"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
+                                    Background="Transparent"
                                     BorderBrush="Transparent"
                                     Foreground="{TemplateBinding Foreground}"
                                     Command="ApplicationCommands.Copy"
