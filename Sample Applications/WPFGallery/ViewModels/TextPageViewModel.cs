@@ -13,7 +13,7 @@ namespace WPFGallery.ViewModels
     public partial class TextPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Text Controls";
+        private string _pageTitle = "Text";
 
         [ObservableProperty]
         private string _pageDescription = "Controls for displaying and editing text";

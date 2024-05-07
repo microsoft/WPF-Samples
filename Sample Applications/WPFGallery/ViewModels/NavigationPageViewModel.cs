@@ -13,7 +13,7 @@ namespace WPFGallery.ViewModels
     public partial class NavigationPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Navigation Controls";
+        private string _pageTitle = "Navigation";
 
         [ObservableProperty]
         private string _pageDescription = "Controls for navigation and actions";
