@@ -13,7 +13,7 @@ namespace WPFGallery.ViewModels
     public partial class DateAndTimePageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Date and Calendar Controls";
+        private string _pageTitle = "Date & Calendar";
 
         [ObservableProperty]
         private string _pageDescription = "Controls for date and calendar";

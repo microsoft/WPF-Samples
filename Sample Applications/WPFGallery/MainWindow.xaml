@@ -1,25 +1,26 @@
-﻿<Window x:Class="WPFGallery.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFGallery"
-        xmlns:controls="clr-namespace:WPFGallery.Controls"
-        xmlns:helpers="clr-namespace:WPFGallery.Helpers"
-        mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance local:MainWindow,
+﻿<Window
+    x:Class="WPFGallery.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:WPFGallery.Helpers"
+    xmlns:local="clr-namespace:WPFGallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding ViewModel.ApplicationTitle}"
+    Width="1450"
+    Height="802"
+    d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=False}"
-        d:DesignHeight="650"
-        d:DesignWidth="1000"
-        Title="{Binding ViewModel.ApplicationTitle}" 
-        Height="802" 
-        Width="1450"
-        WindowStartupLocation="CenterScreen">
+    d:DesignHeight="650"
+    d:DesignWidth="1000"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Window.Resources>
-      <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
+        <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
 
-    <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
+        <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
             <Setter Property="MinWidth" Value="48" />
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Template">
@@ -31,10 +32,11 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="True">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                      RecognizesAccessKey="True"/>
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
@@ -53,15 +55,16 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border
-                    x:Name="EnclosingBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    SnapsToDevicePixels="True">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                              RecognizesAccessKey="True"/>
+                            x:Name="EnclosingBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
@@ -89,64 +92,89 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="BackButton"
+            <Button
+                x:Name="BackButton"
+                Grid.Column="0"
+                Margin="5,0,0,0"
+                VerticalAlignment="Center"
+                AutomationProperties.Name="Back"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Command="{Binding ViewModel.BackCommand}"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <TextBlock
                     VerticalAlignment="Center"
-                    Command="{Binding ViewModel.BackCommand}"
-                    Margin="5,0,0,0"
-                    Grid.Column="0"
-                    AutomationProperties.Name="Back"
-                    WindowChrome.IsHitTestVisibleInChrome="True"
-                    Background="Transparent"
-                    BorderBrush="Transparent">
-                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE72B;" VerticalAlignment="Center" FontSize="12"/>
+                    FontFamily="Segoe Fluent Icons"
+                    FontSize="12"
+                    Text="&#xE72B;" />
             </Button>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <Image
+                    Width="20"
+                    Height="20"
+                    Margin="5,5,0,5"
                     VerticalAlignment="Center"
-                    Source="pack://application:,,,/Assets/WPFGallery-Icon.png" Height="20" Width="20" Margin="5,5,0,5"/>
-            
-            <TextBlock Text="WPF Gallery Application" 
+                    Source="pack://application:,,,/Assets/WPFGallery-Icon.png" />
+
+                <TextBlock
+                    Margin="10"
                     VerticalAlignment="Center"
-                    FontSize="12" 
-                    Margin="10"/>
+                    FontSize="12"
+                    Text="WPF Gallery" />
             </StackPanel>
 
-            <Button x:Name="MinimizeButton"
+            <Button
+                x:Name="MinimizeButton"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="MinimizeWindow"
+                Style="{StaticResource TitleBarDefaultButtonStyle}"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <TextBlock
                     VerticalAlignment="Center"
-                    Grid.Column="2"
-                    WindowChrome.IsHitTestVisibleInChrome="True"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="MinimizeWindow"
-                    Style="{StaticResource TitleBarDefaultButtonStyle}">
-                    <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE921;" VerticalAlignment="Center" FontSize="12"/>
+                    FontFamily="Segoe Fluent Icons"
+                    FontSize="12"
+                    Text="&#xE921;" />
 
             </Button>
 
-            <Button x:Name="MaximizeButton"
+            <Button
+                x:Name="MaximizeButton"
+                Grid.Column="3"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="MaximizeWindow"
+                Style="{StaticResource TitleBarDefaultButtonStyle}"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <TextBlock
+                    x:Name="MaximizeIcon"
                     VerticalAlignment="Center"
-                    Grid.Column="3"
-                    WindowChrome.IsHitTestVisibleInChrome="True"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="MaximizeWindow"
-                    Style="{StaticResource TitleBarDefaultButtonStyle}">
-                    <TextBlock x:Name="MaximizeIcon" FontFamily="Segoe Fluent Icons" Text="&#xE922;" VerticalAlignment="Center" FontSize="12"/>
+                    FontFamily="Segoe Fluent Icons"
+                    FontSize="12"
+                    Text="&#xE922;" />
             </Button>
 
-                <Button x:Name="CloseButton"
+            <Button
+                x:Name="CloseButton"
+                Grid.Column="4"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="CloseWindow"
+                Style="{StaticResource TitleBarDefaultCloseButtonStyle}"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <TextBlock
                     VerticalAlignment="Center"
-                    Grid.Column="4"
-                    WindowChrome.IsHitTestVisibleInChrome="True"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="CloseWindow"
-                    Style="{StaticResource TitleBarDefaultCloseButtonStyle}">
-                    <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE711;" VerticalAlignment="Center" FontSize="14"/>
-                </Button> 
+                    FontFamily="Segoe Fluent Icons"
+                    FontSize="14"
+                    Text="&#xE711;" />
+            </Button>
         </Grid>
-      
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -159,44 +187,65 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBox x:Name="SearchBox" 
-                        AutomationProperties.Name="Search"
-                        Margin="10" Width="250"
-                        KeyUp="SearchBox_KeyUp"
-                        LostFocus="SearchBox_LostFocus" />
+                <TextBox
+                    x:Name="SearchBox"
+                    Width="250"
+                    Margin="10"
+                    AutomationProperties.Name="Search"
+                    KeyUp="SearchBox_KeyUp"
+                    LostFocus="SearchBox_LostFocus" />
 
 
-                <TreeView x:Name="ControlsList" 
-                        AutomationProperties.Name="Navigation Pane"
-                        ItemsSource="{Binding ViewModel.Controls}"
-                        SelectedItemChanged="ControlsList_SelectedItemChanged"
-                        Margin="10" Grid.Row="1"
-                        >
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Children}" >
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}" Focusable="False" FontFamily="Segoe Fluent Icons" Text="{Binding Icon}" Visibility="{Binding Icon, Converter={StaticResource EmptyToVisibilityConverter}}" VerticalAlignment="Center" FontSize="14" Margin="2,4,7,2"/>
-                            <TextBlock Text="{Binding Name}" Margin="2" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+                <TreeView
+                    x:Name="ControlsList"
+                    Grid.Row="1"
+                    Margin="10"
+                    AutomationProperties.Name="Navigation Pane"
+                    ItemsSource="{Binding ViewModel.Controls}"
+                    SelectedItemChanged="ControlsList_SelectedItemChanged">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="2,4,7,2"
+                                    VerticalAlignment="Center"
+                                    AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}"
+                                    Focusable="False"
+                                    FontFamily="Segoe Fluent Icons"
+                                    FontSize="14"
+                                    Text="{Binding Icon}"
+                                    Visibility="{Binding Icon, Converter={StaticResource EmptyToVisibilityConverter}}" />
+                                <TextBlock
+                                    Margin="2"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Name}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
 
                 <DockPanel Grid.Row="2">
-                    <Button x:Name="AboutButton" 
-                            DockPanel.Dock="Bottom" 
-                            Margin="10" Width="250" 
-                            AutomationProperties.Name="About application"
-                            HorizontalContentAlignment="Left"
-                            Command="{Binding ViewModel.AboutCommand}">
+                    <Button
+                        x:Name="AboutButton"
+                        Width="250"
+                        Margin="10"
+                        HorizontalContentAlignment="Left"
+                        AutomationProperties.Name="About application"
+                        Command="{Binding ViewModel.AboutCommand}"
+                        DockPanel.Dock="Bottom">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe Fluent Icons" Margin="0 4 0 0">&#xE946;</TextBlock>
-                            <TextBlock Text="About" Margin="8 0 0 0" />
+                            <TextBlock Margin="0,4,0,0" FontFamily="Segoe Fluent Icons">&#xE946;</TextBlock>
+                            <TextBlock Margin="8,0,0,0" Text="About" />
                         </StackPanel>
                     </Button>
                 </DockPanel>
             </Grid>
-      <Border Padding="16" Grid.Column="1" CornerRadius="8,0,0,0" Background="{DynamicResource ControlFillColorTertiaryBrush}" Margin="12,12,0,0">
+            <Border
+                Grid.Column="1"
+                Margin="12,0,0,0"
+                Padding="16"
+                Background="{DynamicResource ControlFillColorTertiaryBrush}"
+                CornerRadius="8,0,0,0">
                 <Frame x:Name="RootContentFrame" />
             </Border>
         </Grid>
