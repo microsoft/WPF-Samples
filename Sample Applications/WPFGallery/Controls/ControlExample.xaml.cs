@@ -10,6 +10,35 @@ namespace WPFGallery.Controls;
 [ContentProperty(nameof(ExampleContent))]
 public class ControlExample : Control
 {
+    static ControlExample()
+    {
+        if (DefaultStyleKeyProperty.GetMetadata(typeof(ControlExample)).DefaultValue == null)
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ControlExample), new FrameworkPropertyMetadata(typeof(ControlExample)));
+        }
+    }
+    
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        var myButton = GetTemplateChild("MyButton") as Button;
+        var myTextBox = GetTemplateChild("XamlCode") as TextBox;
+
+        if (myButton != null)
+        {
+            myButton.Click += (s, e) =>
+            {
+                if (myTextBox != null)
+                {
+                    Clipboard.SetText(myTextBox.Text);
+                }
+
+                var copyBlock = GetTemplateChild("CopyTextBlock") as TextBlock;
+            };
+        }
+    }
+
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(
         nameof(HeaderText),
         typeof(string),
@@ -121,6 +150,72 @@ public class ControlExample : Control
         {
             Debug.WriteLine(e);
             return e.ToString();
+        }
+    }
+
+    private void CopyText_Click(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show("Ok");
+    }
+}
+
+public class RelayCommand : ICommand
+{
+    private readonly Action<object> _execute;
+
+    public RelayCommand(Action<object> execute)
+    {
+        _execute = execute;
+    }
+
+    public event EventHandler CanExecuteChanged
+    {
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
+    }
+
+    public bool CanExecute(object parameter)
+    {
+        return true;
+    }
+
+    public void Execute(object parameter)
+    {
+        _execute(parameter);
+    }
+}
+
+public static class ButtonClickCommand
+{
+    public static readonly DependencyProperty CommandProperty = DependencyProperty.RegisterAttached(
+        "Command",
+        typeof(ICommand),
+        typeof(ButtonClickCommand),
+        new PropertyMetadata(null, OnCommandPropertyChanged));
+
+    public static void SetCommand(DependencyObject d, ICommand value)
+    {
+        d.SetValue(CommandProperty, value);
+    }
+
+    public static ICommand GetCommand(DependencyObject d)
+    {
+        return (ICommand)d.GetValue(CommandProperty);
+    }
+
+    private static void OnCommandPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        Button button = d as Button;
+        if (button != null)
+        {
+            button.Click += (s, args) =>
+            {
+                ICommand command = GetCommand(button);
+                if (command != null)
+                {
+                    command.Execute(button.DataContext);
+                }
+            };
         }
     }
 }

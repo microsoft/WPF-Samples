@@ -44,13 +44,28 @@
                             Header="Source code" AutomationProperties.Name="View Source Code">
                             <StackPanel>
                                 <StackPanel x:Name="XamlCodeBlock">
-                                    <TextBlock
-                                        Margin="0,0,0,5"
-                                        FontWeight="Bold"
-                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                        Text="XAML" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            Margin="0,0,0,5"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                            Text="XAML" />
+
+                                        <Button Grid.Column="1" x:Name="MyButton" Padding="8"
+                                                controls:ButtonClickCommand.Command="{Binding CopyCommand}" >
+                                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;" x:Name="CopyTextBlock" />
+                                        </Button>
+                                    </Grid>
+                                    
 
                                     <TextBox
+                                        x:Name="XamlCode"
                                         Padding="0"
                                         Background="Transparent"
                                         BorderBrush="Transparent"
@@ -59,6 +74,8 @@
                                         TextWrapping="Wrap"
                                         AutomationProperties.Name="XAML Source Code"
                                         Text="{TemplateBinding XamlCode}" />
+
+                                    
                                 </StackPanel>
 
                                 <Border
