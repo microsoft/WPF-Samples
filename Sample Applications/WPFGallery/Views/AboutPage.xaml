@@ -15,6 +15,7 @@
         </Style>
         <Style x:Key="DefaultHyperlinkStyle" TargetType="Hyperlink">
             <Setter Property="TextDecorations" Value="None" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColorPrimaryBrush}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" />
@@ -90,7 +91,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="To clone this repository" />
-                                <TextBlock Grid.Column="2" Text="git clone https://github.com/microsoft/WPF-Samples.git" />
+                                <TextBlock Grid.Column="2" Style="{StaticResource SelectionTextBox}" Text="git clone https://github.com/microsoft/WPF-Samples.git" />
                             </Grid>
                         </Border>
 

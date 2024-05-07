@@ -7,6 +7,15 @@
 
     <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
 
+    <Style x:Key="SelectionTextBox" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+     
     <Style TargetType="{x:Type controls:ControlExample}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -53,6 +62,7 @@
                                         Text="XAML" />
 
                                     <TextBox
+                                        Style="{StaticResource SelectionTextBox}"
                                         Padding="0"
                                         AutomationProperties.Name="XAML Source Code"
                                         Background="Transparent"
