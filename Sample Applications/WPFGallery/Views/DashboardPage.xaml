@@ -17,30 +17,28 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border
-            Grid.Row="0"
-            Height="220"
+            Height="286"
             Margin="4,12,4,12"
+            Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
+            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
             CornerRadius="{DynamicResource OverlayCornerRadius}">
-            <Border.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
-            </Border.Background>
+
+            <Grid>
+                <Border CornerRadius="{DynamicResource OverlayCornerRadius}" Opacity="0.8">
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
+                    </Border.Background>
+                </Border>
+                <StackPanel Margin="24,-24,0,0" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" />
+                    <TextBlock
+                        Margin="0,8,0,0"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                        Text="Showcasing Fluent Theming for WPF in .NET 9" />
+                </StackPanel>
+            </Grid>
         </Border>
-        <StackPanel Grid.Row="0" VerticalAlignment="Center">
-            <TextBlock
-                Margin="30,0,0,0"
-                Padding="30,0,0,5"
-                Foreground="White"
-                Style="{StaticResource TitleTextBlockStyle}"
-                Text="WPF Gallery" />
-            <TextBlock
-                Margin="30,0,0,0"
-                Padding="30,0,0,0"
-                FontSize="16"
-                FontWeight="Normal"
-                Foreground="White">
-                Application to showcase Fluent Theme in WPF in .NET 9
-            </TextBlock>
-        </StackPanel>
 
         <ItemsControl
             Grid.Row="1"
