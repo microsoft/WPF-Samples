@@ -53,6 +53,8 @@
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                     Foreground="{TemplateBinding Foreground}"
+                                    Command="ApplicationCommands.Copy"
+                                    FocusManager.IsFocusScope="True"
                                     ToolTipService.ToolTip="Copy brush name">
                                     <TextBlock FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE8C8;" />
                                 </Button>

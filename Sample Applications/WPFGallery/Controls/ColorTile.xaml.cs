@@ -20,6 +20,11 @@ namespace WPFGallery.Controls
     /// </summary>
     public partial class ColorTile : UserControl
     {
+        static ColorTile()
+        {
+            CommandManager.RegisterClassCommandBinding(typeof(ColorTile), new CommandBinding(ApplicationCommands.Copy, Copy_ColorBrushName));
+        }
+
         public CornerRadius TileRadius
         {
             get { return (CornerRadius)GetValue(TileRadiusProperty); }
@@ -81,6 +86,23 @@ namespace WPFGallery.Controls
         // Using a DependencyProperty as the backing store for ShowSeparator.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowWarningProperty =
             DependencyProperty.Register("ShowWarning", typeof(bool), typeof(ColorTile), new PropertyMetadata(false));
- 
+
+        private static void Copy_ColorBrushName(object sender, RoutedEventArgs e)
+        {
+            if(sender is ColorTile colorTile)
+            {
+                if(!string.IsNullOrEmpty(colorTile.ColorBrushName))
+                {
+                    try
+                    {
+                        Clipboard.SetText(colorTile.ColorBrushName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error copying to clipboard: " + ex.Message);
+                    }
+                }
+            }
+        }
     }
 }
