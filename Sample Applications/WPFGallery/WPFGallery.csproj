@@ -25,7 +25,7 @@
 	</ItemGroup>
 	
 	<PropertyGroup>
-		<WpfRepoRoot>E:\repos\wpf</WpfRepoRoot>
+		<WpfRepoRoot>D:\wpf</WpfRepoRoot>
 		<ApplicationIcon>Assets\WPFGallery-Icon.ico</ApplicationIcon>
 	</PropertyGroup>
 	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />

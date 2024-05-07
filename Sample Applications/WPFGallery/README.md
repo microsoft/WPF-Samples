@@ -1,4 +1,4 @@
-### WPF Gallery Application
+### WPF Gallery
 
 This application showcases the new Fluent ( Win11 ) theme styles being introduced in WPF in .NET 9 Preview 4.
 

@@ -13,7 +13,7 @@ namespace WPFGallery.ViewModels
     public partial class LayoutPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Layout Controls";
+        private string _pageTitle = "Layout";
 
         [ObservableProperty]
         private string _pageDescription = "Controls for layouting";

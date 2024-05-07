@@ -13,7 +13,7 @@ namespace WPFGallery.ViewModels
     public partial class CollectionsPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Collection Controls";
+        private string _pageTitle = "Collections";
 
         [ObservableProperty]
         private string _pageDescription = "Controls for collection presentation";
