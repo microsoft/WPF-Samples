@@ -10,6 +10,11 @@ namespace WPFGallery.Controls;
 [ContentProperty(nameof(ExampleContent))]
 public class ControlExample : Control
 {
+    static ControlExample()
+    {
+        CommandManager.RegisterClassCommandBinding(typeof(ControlExample), new CommandBinding(ApplicationCommands.Copy, Copy_SourceCode));
+    }
+
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(
         nameof(HeaderText),
         typeof(string),
@@ -102,6 +107,34 @@ public class ControlExample : Control
     private void OnCsharpCodeSourceChanged(Uri uri)
     {
         CsharpCode = LoadResource(uri);
+    }
+
+    private static void Copy_SourceCode(object sender, RoutedEventArgs e)
+    {
+        if (sender is ControlExample controlExample)
+        {
+            if(!string.IsNullOrEmpty(controlExample.XamlCode))
+            {
+                try
+                {
+                    switch (((ExecutedRoutedEventArgs)e).Parameter.ToString())
+                    {
+                        case "Copy_XamlCode":
+                            Clipboard.SetText(controlExample.XamlCode);
+                            break;
+                        case "Copy_CsharpCode":
+                            Clipboard.SetText(controlExample.CsharpCode);
+                            break;
+                        default:
+                            throw new InvalidOperationException();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error copying to clipboard: " + ex.Message);
+                }
+            }
+        }
     }
 
     private static string LoadResource(Uri uri)
