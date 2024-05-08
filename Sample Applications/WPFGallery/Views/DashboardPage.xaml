@@ -18,19 +18,17 @@
         </Grid.RowDefinitions>
         <Border
             Height="286"
-            Margin="4,12,4,12"
+            Margin="-24,-16,-1,12"
             Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
-            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-            BorderThickness="1"
-            CornerRadius="{DynamicResource OverlayCornerRadius}">
+            CornerRadius="8,0,0,0">
 
             <Grid>
-                <Border CornerRadius="{DynamicResource OverlayCornerRadius}" Opacity="0.8">
+                <Border CornerRadius="8,0,0,0" Opacity="0.8">
                     <Border.Background>
                         <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
                     </Border.Background>
                 </Border>
-                <StackPanel Margin="24,-24,0,0" VerticalAlignment="Center">
+                <StackPanel Margin="36,-24,0,0" VerticalAlignment="Center">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" />
                     <TextBlock
                         Margin="0,8,0,0"
