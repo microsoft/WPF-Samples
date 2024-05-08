@@ -14,7 +14,8 @@
         Title="{Binding ViewModel.ApplicationTitle}" 
         Height="802" 
         Width="1450"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Loaded="MainWindow_Loaded">
     <Window.Resources>
       <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
@@ -168,8 +169,12 @@
                 <TextBox x:Name="PlaceholderText" Text="Search" Margin="10"/>
 
                 <ComboBox x:Name="SearchComboBox" Margin="10" MinWidth="250" HorizontalAlignment="Left" StaysOpenOnEdit="True"
-                          SelectionChanged="ComboBox_SelectionChanged" IsEditable="True" TextBoxBase.TextChanged="SearchComboBox_TextChanged" 
-                          GotFocus="SearchComboBox_GotFocus" LostFocus="SearchComboBox_LostFocus" IsTextSearchEnabled="False"/>
+                          SelectionChanged="ComboBox_SelectionChanged" 
+                          IsEditable="True" TextBoxBase.TextChanged="SearchComboBox_TextChanged" 
+                          ItemsSource="{Binding ViewModel.NavigationItemsForSearchBox}"
+                          GotFocus="SearchComboBox_GotFocus" 
+                          MaxDropDownHeight="300"
+                          LostFocus="SearchComboBox_LostFocus" IsTextSearchEnabled="False"/>
 
                 <TreeView x:Name="ControlsList" 
                         AutomationProperties.Name="Navigation Pane"
