@@ -57,9 +57,9 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <DependsOnNETStandard>false</DependsOnNETStandard>
-    <EntryPointProjectUniqueName>..\Win11ThemeGallery\Win11ThemeGallery.csproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\WPFGallery\WPFGallery.csproj</EntryPointProjectUniqueName>
     <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
-    <PackageCertificateKeyFile>build\WPF-Gallery-Test.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>test-cert\WPF-Gallery-Test.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -116,6 +116,6 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win11ThemeGallery\Win11ThemeGallery.csproj" SkipGetTargetFrameworkProperties="true" />
+    <ProjectReference Include="..\WPFGallery\WPFGallery.csproj" SkipGetTargetFrameworkProperties="true" />
   </ItemGroup>
 </Project>

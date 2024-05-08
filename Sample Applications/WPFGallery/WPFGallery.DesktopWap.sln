@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win11ThemeGallery", "Win11ThemeGallery.csproj", "{249DB69E-5516-43B8-A159-4071258F6B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFGallery", "WPFGallery.csproj", "{249DB69E-5516-43B8-A159-4071258F6B75}"
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "WPFGallery.DesktopWap.Package", "..\WPFGallery.DesktopWap\WPFGallery.DesktopWap.Package.wapproj", "{C652518A-D79A-4CEC-B902-0093B93A8CEB}"
 EndProject
@@ -41,9 +41,9 @@ Global
 		{249DB69E-5516-43B8-A159-4071258F6B75}.Release|x64.Build.0 = Release|x64
 		{249DB69E-5516-43B8-A159-4071258F6B75}.Release|x86.ActiveCfg = Release|x64
 		{249DB69E-5516-43B8-A159-4071258F6B75}.Release|x86.Build.0 = Release|x64
-		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|Any CPU.Build.0 = Debug|x64
+		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|ARM.ActiveCfg = Debug|ARM
 		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|ARM.Build.0 = Debug|ARM
 		{C652518A-D79A-4CEC-B902-0093B93A8CEB}.Debug|ARM.Deploy.0 = Debug|ARM

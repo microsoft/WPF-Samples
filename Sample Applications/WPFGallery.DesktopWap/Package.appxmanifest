@@ -9,7 +9,7 @@
   <Identity
     Name="3c481b40-a233-4435-a941-c37082a63dc7"
     Publisher="CN=WPF-Gallery-Test"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <Properties>
     <DisplayName>WPF Gallery</DisplayName>
