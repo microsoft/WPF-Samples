@@ -91,7 +91,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="To clone this repository" />
-                                <TextBlock Grid.Column="2" Style="{StaticResource SelectionTextBox}" Text="git clone https://github.com/microsoft/WPF-Samples.git" />
+                                <TextBox Grid.Column="2" Style="{StaticResource SelectionTextBox}" Text="git clone https://github.com/microsoft/WPF-Samples.git" />
                             </Grid>
                         </Border>
 
