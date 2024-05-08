@@ -117,7 +117,17 @@ public class ControlExample : Control
             {
                 try
                 {
-                    Clipboard.SetText(controlExample.XamlCode);
+                    switch (((ExecutedRoutedEventArgs)e).Parameter.ToString())
+                    {
+                        case "Copy_XamlCode":
+                            Clipboard.SetText(controlExample.XamlCode);
+                            break;
+                        case "Copy_CsharpCode":
+                            Clipboard.SetText(controlExample.CsharpCode);
+                            break;
+                        default:
+                            throw new InvalidOperationException();
+                    }
                 }
                 catch (Exception ex)
                 {

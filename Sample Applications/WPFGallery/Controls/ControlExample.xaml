@@ -57,7 +57,7 @@
                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                             Text="XAML" />
 
-                                        <Button Grid.Column="1" x:Name="MyButton" Padding="8" Command="ApplicationCommands.Copy" FocusManager.IsFocusScope="True" >
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_XamlCode" FocusManager.IsFocusScope="True" >
                                             <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;" />
                                         </Button>
                                     </Grid>
@@ -81,11 +81,22 @@
                                     Visibility="Visible" />
 
                                 <StackPanel x:Name="CsharpCodeBlock">
-                                    <TextBlock
-                                        Margin="0,0,0,5"
-                                        FontWeight="Bold"
-                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                        Text="C#" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock
+                                            Margin="0,0,0,5"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                            Text="C#" />
+
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CsharpCode" FocusManager.IsFocusScope="True" >
+                                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;" />
+                                        </Button>
+                                    </Grid>
 
                                     <TextBox
                                         Padding="0"
