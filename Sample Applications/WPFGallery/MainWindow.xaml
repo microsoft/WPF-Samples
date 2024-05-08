@@ -83,7 +83,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Height="50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -95,7 +95,7 @@
             <Button
                 x:Name="BackButton"
                 Grid.Column="0"
-                Margin="5,0,0,0"
+                Margin="8,0,0,0"
                 VerticalAlignment="Center"
                 AutomationProperties.Name="Back"
                 Background="Transparent"
@@ -187,13 +187,13 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBox
+                <!--<TextBox
                     x:Name="SearchBox"
                     Width="250"
                     Margin="10"
                     AutomationProperties.Name="Search"
                     KeyUp="SearchBox_KeyUp"
-                    LostFocus="SearchBox_LostFocus" />
+                    LostFocus="SearchBox_LostFocus" />-->
 
 
                 <TreeView

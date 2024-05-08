@@ -107,16 +107,16 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SearchBox_KeyUp(object sender, KeyEventArgs e)
-    {
-        ViewModel.UpdateSearchText(SearchBox.Text);
-    }
+    //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
+    //{
+    //    ViewModel.UpdateSearchText(SearchBox.Text);
+    //}
 
-    private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
-    {
-        SearchBox.Text = "";
-        ViewModel.UpdateSearchText(SearchBox.Text);
-    }
+    //private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+    //{
+    //    SearchBox.Text = "";
+    //    ViewModel.UpdateSearchText(SearchBox.Text);
+    //}
 
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
