@@ -20,6 +20,8 @@
             Height="286"
             Margin="-24,-16,-1,12"
             Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
+            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+            BorderThickness="0,0,0,1"
             CornerRadius="8,0,0,0">
 
             <Grid>
@@ -28,7 +30,7 @@
                         <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
                     </Border.Background>
                 </Border>
-                <StackPanel Margin="36,-24,0,0" VerticalAlignment="Center">
+                <StackPanel Margin="36,88,0,0" VerticalAlignment="Top">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" />
                     <TextBlock
                         Margin="0,8,0,0"
