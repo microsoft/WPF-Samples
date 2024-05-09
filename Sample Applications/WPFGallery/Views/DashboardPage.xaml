@@ -55,7 +55,7 @@
                     <Button
                         Width="360"
                         Height="90"
-                        Margin="4"
+                        Margin="7"
                         Padding="20,10"
                         HorizontalContentAlignment="Left"
                         AutomationProperties.Name="{Binding Name}"
