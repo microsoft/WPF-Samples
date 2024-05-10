@@ -151,7 +151,7 @@ namespace WPFGallery.ViewModels.Samples
                         surnames[random.Next(0, surnames.Length)],
                         companies[random.Next(0, companies.Length)],
                         addresses[random.Next(0, addresses.Length)],
-                        random.Next(2) == 1 ? true : false
+                        random.Next(2) == 1
                     )
                 );
 

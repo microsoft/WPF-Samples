@@ -12,7 +12,7 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private string _applicationTitle = "WPF Gallery";
 
-    private DispatcherTimer _timer;
+    private readonly DispatcherTimer _timer;
 
     private string _searchText = string.Empty;
 
@@ -167,7 +167,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty]
     private NavigationItem? _selectedControl;
-    private INavigationService _navigationService;
+    private readonly INavigationService _navigationService;
 
     [RelayCommand]
     public void Settings()

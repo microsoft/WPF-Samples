@@ -26,9 +26,9 @@ public class NavigationService : INavigationService
 
     private Type _currentPageType = null;
 
-    private Stack<Type> _history;
+    private readonly Stack<Type> _history;
 
-    private Stack<Type> _future;
+    private readonly Stack<Type> _future;
 
     private readonly IServiceProvider _serviceProvider;
 
