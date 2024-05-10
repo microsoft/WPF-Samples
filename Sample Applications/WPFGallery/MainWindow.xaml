@@ -250,7 +250,7 @@
             <Border
                 Grid.Column="1"
                 Margin="16,0,0,0"
-                Padding="24,16,0,0"
+                Padding="24,16,24,0"
                 Background="{DynamicResource LayerFillColorDefaultBrush}"
                 BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"

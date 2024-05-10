@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Border
             Height="286"
-            Margin="-24,-16,-1,12"
+            Margin="-24,-16,-24,12"
             Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
             BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
             BorderThickness="0,0,0,1"
