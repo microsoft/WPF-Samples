@@ -35,7 +35,7 @@
                     <TextBlock
                         Margin="0,8,0,0"
                         Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="Showcasing Fluent Theming for WPF in .NET 9" />
+                        Text="A collection of controls, guidelines and samples to build great WPF applications" />
                 </StackPanel>
             </Grid>
         </Border>
