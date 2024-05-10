@@ -79,11 +79,14 @@
     </Window.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="32" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="2" Height="50">
+        <Grid
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Height="50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -95,7 +98,7 @@
             <Button
                 x:Name="BackButton"
                 Grid.Column="0"
-                Margin="8,0,0,0"
+                Margin="4,0,0,0"
                 VerticalAlignment="Center"
                 AutomationProperties.Name="Back"
                 Background="Transparent"
@@ -109,18 +112,18 @@
                     Text="&#xE72B;" />
             </Button>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <StackPanel
+                Grid.Column="1"
+                Margin="4,0,0,0"
+                Orientation="Horizontal">
                 <Image
-                    Width="20"
-                    Height="20"
-                    Margin="5,5,0,5"
+                    Width="16"
                     VerticalAlignment="Center"
                     Source="pack://application:,,,/Assets/WPFGallery-Icon.png" />
-
                 <TextBlock
-                    Margin="10"
+                    Margin="16,0,0,0"
                     VerticalAlignment="Center"
-                    FontSize="12"
+                    Style="{StaticResource CaptionTextBlockStyle}"
                     Text="WPF Gallery" />
             </StackPanel>
 
@@ -138,7 +141,6 @@
                     FontFamily="Segoe Fluent Icons"
                     FontSize="12"
                     Text="&#xE921;" />
-
             </Button>
 
             <Button
@@ -199,27 +201,32 @@
                 <TreeView
                     x:Name="ControlsList"
                     Grid.Row="1"
-                    Margin="10"
+                    Margin="8,24,0,0"
                     AutomationProperties.Name="Navigation Pane"
                     ItemsSource="{Binding ViewModel.Controls}"
                     SelectedItemChanged="ControlsList_SelectedItemChanged">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <Grid MinHeight="30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
                                 <TextBlock
-                                    Margin="2,4,7,2"
+                                    MaxWidth="16"
                                     VerticalAlignment="Center"
                                     AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}"
                                     Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
-                                    FontSize="14"
+                                    FontSize="16"
                                     Text="{Binding Icon}"
                                     Visibility="{Binding Icon, Converter={StaticResource EmptyToVisibilityConverter}}" />
                                 <TextBlock
-                                    Margin="2"
+                                    Grid.Column="2"
                                     VerticalAlignment="Center"
                                     Text="{Binding Name}" />
-                            </StackPanel>
+                            </Grid>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
@@ -242,9 +249,11 @@
             </Grid>
             <Border
                 Grid.Column="1"
-                Margin="12,0,0,0"
-                Padding="16"
-                Background="{DynamicResource ControlFillColorTertiaryBrush}"
+                Margin="16,0,0,0"
+                Padding="24,16,0,0"
+                Background="{DynamicResource LayerFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
                 CornerRadius="8,0,0,0">
                 <Frame x:Name="RootContentFrame" />
             </Border>
