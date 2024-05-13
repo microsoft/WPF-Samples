@@ -103,16 +103,16 @@ stages:
         configuration: '$(_Configuration)'
         msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
-     - task: VSBuild@1
-       continueOnError: true
-       displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
-       inputs:
-        vsVersion: latest
-        solution: '$(msbuildonlysolution)'
-        platform: '$(_Platform)'
-        msbuildArchitecture: '$(_ToolPlatform)'
-        configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+    #  - task: VSBuild@1
+    #    continueOnError: true
+    #    displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
+    #    inputs:
+    #     vsVersion: latest
+    #     solution: '$(msbuildonlysolution)'
+    #     platform: '$(_Platform)'
+    #     msbuildArchitecture: '$(_ToolPlatform)'
+    #     configuration: '$(_Configuration)'
+    #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: PublishBuildArtifacts@1
        continueOnError: true
