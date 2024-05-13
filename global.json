@@ -7,6 +7,7 @@
         "netcoreapp3.1": "3.1.300",
         "net6.0-windows": "6.0.417",
         "net7.0-windows": "7.0.404",
-        "net8.0-windows": "8.0.100"     
+        "net8.0-windows": "8.0.100",
+        "net9.0-windows": "9.0.0-preview.4.24256.2"    
     }
 }
