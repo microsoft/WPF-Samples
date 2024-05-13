@@ -1,6 +1,6 @@
 {
     "sdk": {
-        "version": "9.0.100-alpha.1.23620.14",
+        "version": "9.0.0-preview.4.24256.2",
         "rollForward": "latestFeature"
     },
     "altsdk": {
