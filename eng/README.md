@@ -42,7 +42,7 @@ PARAMETERS
         in project files im this repo.
 
         Alternative TargetFramework can be supplied to build. Currently, netcoreapp3.1 (default),
-        net6.0-windows, net7.0-windows and net8.0-windows are supported.
+        net6.0-windows, net7.0-windows, net8.0-windows and net9.0-windows are supported.
 
     -DryRun [<SwitchParameter>]
         When this switch is specified, the build is simulated, but the actual build is not run.
@@ -64,9 +64,9 @@ PARAMETERS
 
     Builds the repo
     -------------------------- EXAMPLE 2 --------------------------
-    PS C:\>build.ps1 -TargetFramework net8.0-windows -UseMsBuild
+    PS C:\>build.ps1 -TargetFramework net9.0-windows -UseMsBuild
 
-    Builds the repo using MSBuild for net8.0-windows TFM
+    Builds the repo using MSBuild for net9.0-windows TFM
     -------------------------- EXAMPLE 3 --------------------------
     PS C:\>build.ps1 -UseMsBuild -Platform x86 -Configuration Release
 

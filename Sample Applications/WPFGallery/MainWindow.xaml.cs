@@ -61,8 +61,8 @@ public partial class MainWindow : Window
         }
     }
 
-    private IServiceProvider _serviceProvider;
-    private INavigationService _navigationService;
+    private readonly IServiceProvider _serviceProvider;
+    private readonly INavigationService _navigationService;
 
     public MainWindowViewModel ViewModel { get; }
 
