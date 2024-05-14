@@ -94,6 +94,11 @@ stages:
        inputs:
         restoreSolution: '$(msbuildonlysolution)'
 
+     - task: NuGetCommand@2
+       displayName: 'Restore WPF Gallery Using NuGet'
+       inputs:
+        restoreSolution: '$(wpfgallerysolution)'
+
      - task: VSBuild@1
        continueOnError: true
        displayName: 'Build .NET Core Samples using VSBuild'
@@ -153,7 +158,17 @@ stages:
         projects: '$(solution)'
         feedsToUse: 'config'
         nugetConfigPath: 'NuGet.config'
-        
+
+     - task: DotNetCoreCLI@2
+       continueOnError: true
+       displayName: 'Restore .NET Core Samples using dotnet.exe'
+       inputs:
+        command: 'restore'
+        configuration: $(_Configuration)
+        projects: '$(wpfgallerysolution)'
+        feedsToUse: 'config'
+        nugetConfigPath: 'NuGet.config'
+
      - task: DotNetCoreCLI@2
        continueOnError: true
        displayName: 'Build .NET Core Samples using dotnet.exe'
