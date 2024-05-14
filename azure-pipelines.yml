@@ -99,16 +99,16 @@ stages:
        inputs:
         restoreSolution: '$(wpfgallerysolution)'
 
-     - task: VSBuild@1
-       continueOnError: true
-       displayName: 'Build .NET Core Samples using VSBuild'
-       inputs:
-        vsVersion: latest
-        solution: '$(solution)'
-        platform: '$(_Platform)'
-        msbuildArchitecture: '$(_ToolPlatform)'
-        configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+    #  - task: VSBuild@1
+    #    continueOnError: true
+    #    displayName: 'Build .NET Core Samples using VSBuild'
+    #    inputs:
+    #     vsVersion: latest
+    #     solution: '$(solution)'
+    #     platform: '$(_Platform)'
+    #     msbuildArchitecture: '$(_ToolPlatform)'
+    #     configuration: '$(_Configuration)'
+    #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
     #  - task: VSBuild@1
     #    continueOnError: true
@@ -131,6 +131,7 @@ stages:
         msbuildArchitecture: '$(_ToolPlatform)'
         configuration: '$(_Configuration)'
         msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\wpfgallery.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+       condition: ne(variables[_Platform], 'x86')
        
      - task: PublishBuildArtifacts@1
        continueOnError: true
@@ -186,6 +187,7 @@ stages:
         projects: '$(wpfgallerysolution)'
         configuration: $(_Configuration)
         arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:Platform="$(_Platform)" /p:LangVersion=$(LangVersion)'
+       condition: ne(variables[_Platform], 'x86')
 
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
