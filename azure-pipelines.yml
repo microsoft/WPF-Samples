@@ -117,7 +117,7 @@ stages:
     #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: VSBuild@1
-       cotninueOnError: true
+       continueOnError: true
        displayName: 'Build WPF Gallery using VSBuild'
        inputs:
         vsVersion: latest
