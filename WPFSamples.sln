@@ -521,8 +521,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomDictionaries", "Docum
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDialogs", "Windows\CommonDialog\CommonDialogs.csproj", "{F1A89776-516D-4196-9E4F-1F92090E8D5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFGallery", "Sample Applications\WPFGallery\WPFGallery.csproj", "{353EEE3D-6150-46B0-987F-ABBCB89024C5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -3878,22 +3876,6 @@ Global
 		{F1A89776-516D-4196-9E4F-1F92090E8D5B}.Release|x64.Build.0 = Release|Any CPU
 		{F1A89776-516D-4196-9E4F-1F92090E8D5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1A89776-516D-4196-9E4F-1F92090E8D5B}.Release|x86.Build.0 = Release|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|x64.ActiveCfg = Debug|x64
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|x64.Build.0 = Debug|x64
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Debug|x86.Build.0 = Debug|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|ARM64.Build.0 = Release|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|x64.ActiveCfg = Release|x64
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|x64.Build.0 = Release|x64
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|x86.ActiveCfg = Release|Any CPU
-		{353EEE3D-6150-46B0-987F-ABBCB89024C5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
