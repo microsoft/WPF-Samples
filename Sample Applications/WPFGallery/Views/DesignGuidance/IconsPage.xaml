@@ -95,7 +95,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="296"/>
             </Grid.ColumnDefinitions>
-            <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
+            <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
