@@ -60,7 +60,7 @@ public partial class ListViewPageViewModel : ObservableObject
             "Arielle",
             "Arielle",
             "Jamie",
-            "Alexzander"
+            "Alexander"
         };
         var surnames = new[]
         {
@@ -80,13 +80,13 @@ public partial class ListViewPageViewModel : ObservableObject
         };
         var companies = new[]
         {
-            "Pineapple Inc.",
-            "Macrosoft Redmond",
-            "Amazing Basics Ltd",
-            "Megabyte Computers Inc",
-            "Roude Mics",
-            "XD Projekt Red S.A.",
-            "Lepo.co"
+            "Luminary Nexus",
+            "CrestWave Dynamics",
+            "Horizon Ventures",
+            "Sapphire Pulse Technologies",
+            "EmberLight Industries",
+            "StellarEdge Ventrues",
+            "Elysium Crest Holdings"
         };
 
         for (int i = 0; i < 50; i++)
