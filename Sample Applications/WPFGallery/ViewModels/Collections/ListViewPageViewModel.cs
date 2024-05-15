@@ -81,7 +81,7 @@ public partial class ListViewPageViewModel : ObservableObject
         var companies = new[]
         {
             "Pineapple Inc.",
-            "Macrosoft Redmond",
+            "Microsoft Redmond",
             "Amazing Basics Ltd",
             "Megabyte Computers Inc",
             "Roude Mics",
