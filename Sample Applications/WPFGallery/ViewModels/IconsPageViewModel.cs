@@ -25,8 +25,9 @@ namespace WPFGallery.ViewModels
 
         public IconsPageViewModel()
         {
-            var jsonText = File.ReadAllText("Models/IconsData.json");
-            _icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
+            // HACK to avoid delay in loading the icons, rest of the icons are loaded after the Page is loaded.
+            // Find a better way to load the icons
+            _icons = IconsDataSource.GetFirstIconsData(200);
             _selectedIcon = _icons.FirstOrDefault();
         }
     }
