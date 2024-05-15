@@ -63,7 +63,7 @@
                             Height="20"
                             Margin="10,5,10,5"
                             VerticalAlignment="Center"
-                            Source="pack://application:,,,/Assets/WPFGallery-Icon.png" />
+                            Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
 
                         <StackPanel
                             Grid.Column="1"
