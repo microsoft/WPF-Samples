@@ -115,12 +115,12 @@ namespace WPFGallery.ViewModels.Samples
 
             var companies = new[]
             {
-                "Pineapple Inc.",
-                "Microsoft Redmond",
-                "Amazing Basics Ltd",
-                "Megabyte Computers Inc",
-                "Roude Mics",
-                "XD Projekt Red S.A.",
+                "Luminary Nexus",
+                "CrestWave Dynamics",
+                "Horizon Ventures",
+                "Sapphire Pulse Technologies",
+                "EmberLight Industries",
+                "StellarEdge Ventrues",
             };
 
             var addresses = new[]
