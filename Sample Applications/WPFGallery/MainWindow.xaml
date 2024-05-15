@@ -119,7 +119,7 @@
                 <Image
                     Width="16"
                     VerticalAlignment="Center"
-                    Source="pack://application:,,,/Assets/WPFGallery-Icon.png" />
+                    Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
                 <TextBlock
                     Margin="16,0,0,0"
                     VerticalAlignment="Center"
