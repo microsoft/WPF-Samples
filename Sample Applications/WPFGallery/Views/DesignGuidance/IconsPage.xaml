@@ -29,12 +29,10 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
-                            <TextBlock Grid.Column="1" Style="{StaticResource CodeValuePresenterStyle}" >
-                                <Button Padding="8" FocusManager.IsFocusScope="True" Command="ApplicationCommands.Copy" CommandParameter="{TemplateBinding Content}">
-                                    <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
-                                </Button>
-                            </TextBlock>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                            <Button Grid.Column="1" Padding="8" FocusManager.IsFocusScope="True" Command="ApplicationCommands.Copy" CommandParameter="{TemplateBinding Content}">
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
+                            </Button>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

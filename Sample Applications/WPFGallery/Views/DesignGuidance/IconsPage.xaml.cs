@@ -24,8 +24,8 @@ namespace WPFGallery.Views
     {
         public IconsPage(IconsPageViewModel viewModel)
         {
-            CommandManager.RegisterClassCommandBinding(typeof(IconsPage), new CommandBinding(ApplicationCommands.Copy, Copy_Content));
             InitializeComponent();
+            CommandManager.RegisterClassCommandBinding(typeof(IconsPage), new CommandBinding(ApplicationCommands.Copy, Copy_Content));
             ViewModel = viewModel;
             DataContext = this;
         }
@@ -34,13 +34,16 @@ namespace WPFGallery.Views
 
         public void Copy_Content(object sender, RoutedEventArgs e)
         {
-            try
+            if (!string.IsNullOrEmpty(((ExecutedRoutedEventArgs)e).Parameter.ToString()))
             {
-                Clipboard.SetText(((ExecutedRoutedEventArgs)e).Parameter.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error copying to clipboard: " + ex.Message);
+                try
+                {
+                    Clipboard.SetText(((ExecutedRoutedEventArgs)e).Parameter.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error copying to clipboard: " + ex.Message);
+                }
             }
         }
 
