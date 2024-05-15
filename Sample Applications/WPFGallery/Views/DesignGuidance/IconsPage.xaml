@@ -20,18 +20,36 @@
         </Style>
 
         <Style x:Key="IconData" TargetType="{x:Type ContentControl}">
-            <Setter Property="Template">
+      <Setter Property="Margin" Value="0,0,0,12" />
+      <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContentControl}">
-                        <Grid>
+                        <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                            <TextBlock Padding="0,6" Grid.Column="0" VerticalAlignment="Center" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
                             <Button Grid.Column="1" Padding="8" FocusManager.IsFocusScope="True" Command="ApplicationCommands.Copy" CommandParameter="{TemplateBinding Content}">
-                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
+                                <Grid>
+                                    <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
+                                    <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
+                                </Grid>
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                        <Storyboard BeginTime="00:00:00">
+                                            <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="0" />
+                                            <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="SuccessGlyph_TextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="CopyGlyph_TextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
+                                        </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                    </EventTrigger>   
+                                </Button.Triggers>
                             </Button>
                         </Grid>
                     </ControlTemplate>
@@ -39,7 +57,6 @@
             </Setter>
         </Style>
 
-        
     </Page.Resources>
 
     <Grid>
