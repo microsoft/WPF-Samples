@@ -13,11 +13,35 @@
     <Page.Resources>
         <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
             <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Padding" Value="0 0 0 12" />
+            <Setter Property="Padding" Value="0 0 0 4" />
             <Setter Property="Foreground" Value="{StaticResource TextFillColorSecondaryBrush}" />
-            <Setter Property="Margin" Value="0,4,0,16" />
+            <Setter Property="Margin" Value="0,4,0,4" />
             <Setter Property="FontSize" Value="14"/>
         </Style>
+
+        <Style x:Key="IconData" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource CodeValuePresenterStyle}" >
+                                <Button Padding="8" FocusManager.IsFocusScope="True" Command="ApplicationCommands.Copy" CommandParameter="{TemplateBinding Content}">
+                                    <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
+                                </Button>
+                            </TextBlock>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        
     </Page.Resources>
 
     <Grid>
@@ -121,15 +145,16 @@
                     <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
                     <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="Segoe Fluent Icons" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <TextBlock Text="Icon Name"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}"/>
                     <TextBlock Text="Unicode point"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Code}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}"/>
                     <TextBlock Text="Text glyph"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.TextGlyph}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}"/>
                     <TextBlock Text="Code glyph"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.CodeGlyph}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}"/>
                     <TextBlock Text="XAML"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" />
                 </StackPanel>
             </Grid>
         </Grid>
