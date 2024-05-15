@@ -19,7 +19,7 @@
             <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
         </StackPanel>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+    <ScrollViewer Margin="0,0,0,24" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
             <controls:ControlExample
                 Margin="0"
                 HeaderText="Type ramp"
