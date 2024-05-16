@@ -124,7 +124,7 @@
                     Margin="16,0,0,0"
                     VerticalAlignment="Center"
                     Style="{StaticResource CaptionTextBlockStyle}"
-                    Text="WPF Gallery" />
+                    Text="WPF Gallery Preview" />
             </StackPanel>
 
             <Button
