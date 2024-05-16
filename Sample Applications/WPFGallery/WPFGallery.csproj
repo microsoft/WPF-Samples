@@ -27,14 +27,13 @@
 	<PropertyGroup>
 		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
 	</PropertyGroup>
-	<ItemGroup>
-	  <None Remove="Models\IconsData.json" />
-	</ItemGroup>
+
 	<ItemGroup>
 	  <Content Include="Assets\WPFGalleryPreviewIcon.ico" />
-	  <Content Include="Models\IconsData.json">
+	  <!-- <Content Include="Models\IconsData.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
+	  </Content> -->
+	  <EmbeddedResource Include="Models\IconsData.json" />
 	</ItemGroup>
 
 	<ItemGroup>
