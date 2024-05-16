@@ -13,6 +13,6 @@ namespace WPFGallery.ViewModels
         private string _pageTitle = "Typography";
 
         [ObservableProperty]
-        private string _pageDescription = "Type helps provide structure and hierarchy to UI. The default font for Windows is Segoe UI Variable. Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.";
+        private string _pageDescription = "Guide showing how to use typography in your app";
     }
 }
