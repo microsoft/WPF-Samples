@@ -54,6 +54,7 @@
                                     BorderBrush="Transparent"
                                     Foreground="{TemplateBinding Foreground}"
                                     Command="ApplicationCommands.Copy"
+                                    CommandTarget="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:ColorTile}}}"
                                     FocusManager.IsFocusScope="True"
                                     ToolTipService.ToolTip="Copy brush name">
                                     <Grid>
