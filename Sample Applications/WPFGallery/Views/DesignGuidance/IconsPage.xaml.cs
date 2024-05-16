@@ -22,17 +22,20 @@ namespace WPFGallery.Views
     /// </summary>
     public partial class IconsPage : Page
     {
+        static IconsPage()
+        {
+            CommandManager.RegisterClassCommandBinding(typeof(IconsPage), new CommandBinding(ApplicationCommands.Copy, Copy_Content));
+        }
         public IconsPage(IconsPageViewModel viewModel)
         {
             InitializeComponent();
-            CommandManager.RegisterClassCommandBinding(typeof(IconsPage), new CommandBinding(ApplicationCommands.Copy, Copy_Content));
             ViewModel = viewModel;
             DataContext = this;
         }
 
         public IconsPageViewModel ViewModel { get; }
 
-        public void Copy_Content(object sender, RoutedEventArgs e)
+        public static void Copy_Content(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(((ExecutedRoutedEventArgs)e).Parameter.ToString()))
             {

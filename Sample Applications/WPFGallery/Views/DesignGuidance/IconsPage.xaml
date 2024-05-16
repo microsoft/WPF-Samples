@@ -31,7 +31,12 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Padding="0,6" Grid.Column="0" VerticalAlignment="Center" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
-                            <Button Grid.Column="1" Padding="8" FocusManager.IsFocusScope="True" Command="ApplicationCommands.Copy" CommandParameter="{TemplateBinding Content}">
+                            <Button Grid.Column="1" 
+                                    Padding="8" 
+                                    FocusManager.IsFocusScope="True" 
+                                    Command="ApplicationCommands.Copy" 
+                                    CommandParameter="{TemplateBinding Content}"
+                                    CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">
                                 <Grid>
                                     <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
                                     <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
