@@ -10,7 +10,7 @@ namespace WPFGallery.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _applicationTitle = "WPF Gallery";
+    private string _applicationTitle = "WPF Gallery Preview";
 
     private readonly DispatcherTimer _timer;
 
