@@ -16,7 +16,7 @@ namespace WPFGallery.ViewModels
         private string _pageTitle = "Design Guidance";
 
         [ObservableProperty]
-        private string _pageDescription = "";       
+        private string _pageDescription = "Design guidelines on how to use colors, typography, and icons in your app.";       
 
         [ObservableProperty]
         private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>

@@ -13,7 +13,7 @@ namespace WPFGallery.ViewModels
     public partial class AllSamplesPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "All Samples";
+        private string _pageTitle = "All Controls";
 
         [ObservableProperty]
         private string _pageDescription = "";

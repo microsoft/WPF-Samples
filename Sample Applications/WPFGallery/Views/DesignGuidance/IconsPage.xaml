@@ -97,12 +97,6 @@
                 </Span>
                 <LineBreak/>
                 <Span>
-                    If you don't specify a FontFamily,
-                    or you specify a FontFamily that is not available on the system at runtime,
-                    the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.
-                </Span>
-                <LineBreak/>
-                <Span>
                     An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
                     For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
                 </Span>

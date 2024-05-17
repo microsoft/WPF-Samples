@@ -21,7 +21,7 @@
             Margin="0,10,0,20"
             VerticalAlignment="Center">
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-            <!--<TextBlock Text="{Binding ViewModel.PageDescription}"/>-->
+            <TextBlock Text="{Binding ViewModel.PageDescription}"/>
         </StackPanel>
 
         <ItemsControl
