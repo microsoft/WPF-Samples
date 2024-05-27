@@ -103,11 +103,9 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="File a bug or request a new sample" />
-                                <TextBlock
-                                    Grid.Column="2"
-                                    FontFamily="Segoe Fluent Icons"
-                                    MouseDown="Open_Issues"
-                                    Text="&#xe8a7;" />
+                                <Button Grid.Column="2" Padding="8" FocusManager.IsFocusScope="True" Click="Open_Issues">
+                                    <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xe8a7;" />
+                                </Button>
                             </Grid>
                         </Border>
 
