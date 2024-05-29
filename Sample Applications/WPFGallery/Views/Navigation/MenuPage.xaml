@@ -63,27 +63,33 @@
                             <MenuItem Header="Select All" />
                         </MenuItem>
                         <Separator />
-                        <MenuItem>
+                        <MenuItem AutomationProperties.Name="Bold">
                             <MenuItem.Header>
                                 <TextBlock
+                                    AutomationProperties.Name="Bold"
+                                    Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="12"
                                     Text="&#xE8DD;" />
                             </MenuItem.Header>
                         </MenuItem>
 
-                        <MenuItem>
+                        <MenuItem AutomationProperties.Name="Italic">
                             <MenuItem.Header>
                                 <TextBlock
+                                    AutomationProperties.Name="Italic"
+                                    Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="12"
                                     Text="&#xE8DB;" />
                             </MenuItem.Header>
                         </MenuItem>
 
-                        <MenuItem>
+                        <MenuItem AutomationProperties.Name="Underlined">
                             <MenuItem.Header>
                                 <TextBlock
+                                    AutomationProperties.Name="Underlined"
+                                    Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="12"
                                     Text="&#xE8DC;" />

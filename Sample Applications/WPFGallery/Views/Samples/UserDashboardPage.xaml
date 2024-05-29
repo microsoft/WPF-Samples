@@ -30,6 +30,7 @@
             </Grid.RowDefinitions>
 
             <ListView
+                AutomationProperties.Name="Users"
                 Grid.Row="0"
                 Width="300"
                 ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}"
@@ -190,30 +191,31 @@
                                 Margin="0,0,10,0"
                                 Orientation="Vertical">
                                 <Label Content="First Name" FontWeight="SemiBold" />
-                                <TextBox Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" />
+                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical">
                                 <Label Content="Last Name" FontWeight="SemiBold" />
-                                <TextBox Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" />
+                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" />
                             </StackPanel>
                         </Grid>
 
 
                         <Label Content="Company" FontWeight="SemiBold" />
-                        <TextBox Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" />
+                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" />
 
                         <Label Content="Address" FontWeight="SemiBold" />
-                        <TextBox Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" />
+                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" />
 
                         <Label Content="Age" FontWeight="SemiBold" />
                         <Slider
                             Margin="0,5,0,15"
+                            AutomationProperties.Name="Age"
                             Maximum="62"
                             Minimum="21"
                             Value="{Binding ViewModel.EditableUser.Age}" />
 
                         <Label Content="Date of Joining" FontWeight="SemiBold" />
-                        <DatePicker Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" />
+                        <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" />
 
                         <StackPanel Margin="0,5,0,15" Orientation="Horizontal">
                             <Label
@@ -221,7 +223,7 @@
                                 VerticalAlignment="Center"
                                 Content="Is user a new graduate ?"
                                 FontWeight="SemiBold" />
-                            <CheckBox VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" />
+                            <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" />
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">

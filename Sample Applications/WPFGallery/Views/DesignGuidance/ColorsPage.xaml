@@ -46,7 +46,7 @@
             </Span>
           </TextBlock>
         
-          <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" >
+          <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" AutomationProperties.Name="Page Selector">
             <sys:String>Text</sys:String>
             <sys:String>Fill</sys:String>
             <sys:String>Stroke</sys:String>

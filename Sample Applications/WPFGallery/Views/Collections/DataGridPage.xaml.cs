@@ -26,8 +26,8 @@ namespace WPFGallery.Views
         public DataGridPage(DataGridPageViewModel viewModel)
         {
             ViewModel = viewModel;
-DataContext = this;
-InitializeComponent();
+            DataContext = this;
+            InitializeComponent();
         }
     }
 }

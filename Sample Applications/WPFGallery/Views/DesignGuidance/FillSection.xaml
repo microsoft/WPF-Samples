@@ -96,7 +96,7 @@
             Title="Control Alt Fill"
             Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Fill used for the 'off' states of toggle controls">
-            <CheckBox />
+            <CheckBox Focusable="False"/>
         </controls:ColorPageExample>
         <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
             <Grid.ColumnDefinitions>
@@ -156,6 +156,7 @@
             Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Fills used for Sliders thumb control to cover the track beneath it.">
             <Slider
+                Focusable="False"
                 MinWidth="240"
                 Maximum="100"
                 Value="40" />
@@ -182,6 +183,7 @@
             Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Used for controls that must meet contrast ratio requirements of 3:1.">
             <ScrollBar
+                Focusable="False"
                 Width="200"
                 Height="20"
                 Orientation="Horizontal"
