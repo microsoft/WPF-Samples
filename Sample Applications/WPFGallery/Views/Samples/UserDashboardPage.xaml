@@ -217,6 +217,7 @@
                             AutomationProperties.Name="Age"
                             Maximum="62"
                             Minimum="21"
+                            IsSnapToTickEnabled="True"
                             Value="{Binding ViewModel.EditableUser.Age}" />
 
                         <Label Content="Date of Joining" FontWeight="SemiBold" />
