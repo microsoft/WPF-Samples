@@ -24,8 +24,8 @@
       </Grid.ColumnDefinitions>
 
       <StackPanel Grid.Column="0">
-        <TextBlock Grid.Column="0" FontSize="32" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-        <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" />
+                <TextBlock Grid.Column="0" FontSize="32" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+                <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
       </StackPanel>
 
     </Grid>

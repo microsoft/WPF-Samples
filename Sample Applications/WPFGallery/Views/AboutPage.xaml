@@ -44,7 +44,7 @@
             Grid.Row="0"
             Margin="0,0,0,40"
             VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="0,0,0,24">

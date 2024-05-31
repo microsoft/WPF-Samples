@@ -33,7 +33,7 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
                 <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
