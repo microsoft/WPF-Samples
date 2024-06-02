@@ -24,8 +24,8 @@
       </Grid.ColumnDefinitions>
 
       <StackPanel Grid.Column="0">
-                <TextBlock Grid.Column="0" FontSize="32" Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
+          <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+          <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
       </StackPanel>
 
     </Grid>
@@ -41,7 +41,7 @@
           <Run FontWeight="SemiBold">Using Colors</Run>
           <LineBreak />
           <Span>
-            The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"
+              The colors below are provided as part of WPF in .NET 9 Preview 4. You can reference them in your app using DynamicResource bindings. For example: Color="{DynamicResource CardBackgroundFillColorDefault}"
           </Span>
         </TextBlock>
         

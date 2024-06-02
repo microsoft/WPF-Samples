@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel>
-                <TextBlock Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
                 <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
