@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFGallery.Controls;
 using WPFGallery.ViewModels;
 
 namespace WPFGallery.Views
@@ -21,6 +22,10 @@ namespace WPFGallery.Views
     /// </summary>
     public partial class IconsPage : Page
     {
+        static IconsPage()
+        {
+            CommandManager.RegisterClassCommandBinding(typeof(IconsPage), new CommandBinding(ApplicationCommands.Copy, Copy_Content));
+        }
         public IconsPage(IconsPageViewModel viewModel)
         {
             InitializeComponent();
@@ -29,6 +34,21 @@ namespace WPFGallery.Views
         }
 
         public IconsPageViewModel ViewModel { get; }
+
+        public static void Copy_Content(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(((ExecutedRoutedEventArgs)e).Parameter.ToString()))
+            {
+                try
+                {
+                    Clipboard.SetText(((ExecutedRoutedEventArgs)e).Parameter.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error copying to clipboard: " + ex.Message);
+                }
+            }
+        }
 
     }
 }

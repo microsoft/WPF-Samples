@@ -63,13 +63,13 @@
                             Height="20"
                             Margin="10,5,10,5"
                             VerticalAlignment="Center"
-                            Source="pack://application:,,,/Assets/WPFGallery-Icon.png" />
+                            Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
 
                         <StackPanel
                             Grid.Column="1"
                             Margin="12"
                             Orientation="Vertical">
-                            <TextBlock Text="WPF Gallery" />
+                            <TextBlock Text="WPF Gallery Preview" />
                             <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
                         </StackPanel>
                     </Grid>

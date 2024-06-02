@@ -12,23 +12,24 @@
 
     <Grid x:Name="ContentPagePane" Height="Auto">
 
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-    <Grid Margin="0 0 0 32" Grid.Row="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
-      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+    
+      <Grid Margin="0 0 0 32" Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
       <StackPanel Grid.Column="0">
           <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
           <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
       </StackPanel>
 
-    </Grid>
+      </Grid>
 
     <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
       <StackPanel Margin="0,0,0,24">
@@ -45,19 +46,20 @@
           </Span>
         </TextBlock>
         
-        <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" >
-          <sys:String>Text</sys:String>
-          <sys:String>Fill</sys:String>
-          <sys:String>Stroke</sys:String>
-          <sys:String>Background</sys:String>
-          <sys:String>Signal</sys:String>
-          <sys:String>HighContrast</sys:String>
-        </ComboBox>
+          <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" >
+            <sys:String>Text</sys:String>
+            <sys:String>Fill</sys:String>
+            <sys:String>Stroke</sys:String>
+            <sys:String>Background</sys:String>
+            <sys:String>Signal</sys:String>
+            <sys:String>HighContrast</sys:String>
+          </ComboBox>
 
-        <Frame x:Name="ColorSubpageNavigationFrame" />
+          <Frame x:Name="ColorSubpageNavigationFrame" />
 
-      </StackPanel>
+        </StackPanel>
 
-    </ScrollViewer>
-  </Grid>
+      </ScrollViewer>
+  
+    </Grid>
 </Page>

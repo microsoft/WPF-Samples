@@ -13,11 +13,55 @@
     <Page.Resources>
         <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
             <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Padding" Value="0 0 0 12" />
+            <Setter Property="Padding" Value="0 0 0 4" />
             <Setter Property="Foreground" Value="{StaticResource TextFillColorSecondaryBrush}" />
-            <Setter Property="Margin" Value="0,4,0,16" />
+            <Setter Property="Margin" Value="0,4,0,4" />
             <Setter Property="FontSize" Value="14"/>
         </Style>
+
+        <Style x:Key="IconData" TargetType="{x:Type ContentControl}">
+      <Setter Property="Margin" Value="0,0,0,12" />
+      <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Padding="0,6" Grid.Column="0" VerticalAlignment="Center" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                            <Button Grid.Column="1" 
+                                    Padding="8" 
+                                    FocusManager.IsFocusScope="True" 
+                                    Command="ApplicationCommands.Copy" 
+                                    CommandParameter="{TemplateBinding Content}"
+                                    CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">
+                                <Grid>
+                                    <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
+                                    <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
+                                </Grid>
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                        <Storyboard BeginTime="00:00:00">
+                                            <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="0" />
+                                            <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="SuccessGlyph_TextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="CopyGlyph_TextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
+                                        </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                    </EventTrigger>   
+                                </Button.Triggers>
+                            </Button>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Page.Resources>
 
     <Grid>
@@ -50,12 +94,6 @@
                 <LineBreak/>
                 <Span FontWeight="SemiBold">
                     How to use the font
-                </Span>
-                <LineBreak/>
-                <Span>
-                    If you don't specify a FontFamily,
-                    or you specify a FontFamily that is not available on the system at runtime,
-                    the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.
                 </Span>
                 <LineBreak/>
                 <Span>
@@ -95,7 +133,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="296"/>
             </Grid.ColumnDefinitions>
-            <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
+            <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
@@ -121,15 +159,16 @@
                     <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
                     <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="Segoe Fluent Icons" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <TextBlock Text="Icon Name"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}"/>
                     <TextBlock Text="Unicode point"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Code}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}"/>
                     <TextBlock Text="Text glyph"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.TextGlyph}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}"/>
                     <TextBlock Text="Code glyph"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.CodeGlyph}" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}"/>
                     <TextBlock Text="XAML"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
+                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" />
                 </StackPanel>
             </Grid>
         </Grid>

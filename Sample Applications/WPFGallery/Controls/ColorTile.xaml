@@ -54,9 +54,27 @@
                                     BorderBrush="Transparent"
                                     Foreground="{TemplateBinding Foreground}"
                                     Command="ApplicationCommands.Copy"
+                                    CommandTarget="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:ColorTile}}}"
                                     FocusManager.IsFocusScope="True"
                                     ToolTipService.ToolTip="Copy brush name">
-                                    <TextBlock FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE8C8;" />
+                                    <Grid>
+                                        <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE8C8;" />
+                                        <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE73E;" Opacity="0" />
+                                    </Grid>
+                                    <Button.Triggers>
+                                        <EventTrigger RoutedEvent="Button.Click">
+                                        <EventTrigger.Actions>
+                                            <BeginStoryboard>
+                                            <Storyboard BeginTime="00:00:00">
+                                                <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="0" />
+                                                <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+                                                <DoubleAnimation Storyboard.TargetName="SuccessGlyph_TextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
+                                                <DoubleAnimation Storyboard.TargetName="CopyGlyph_TextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
+                                            </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger.Actions>
+                                        </EventTrigger>   
+                                    </Button.Triggers>
                                 </Button>
 
                                 <TextBlock

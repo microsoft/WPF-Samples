@@ -64,7 +64,7 @@
                 <controls:ControlExample
                     Margin="0,32,0,0"
                     HeaderText="A slider with steps and range specified."
-                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; &#10;&#9;Maximum=&quot;1000&quot; Minimum=&quot;500&quot; TickFrequency=&quot;20&quot;/&gt;">
+                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; &#10;&#9;Maximum=&quot;1000&quot; Minimum=&quot;500&quot; TickFrequency=&quot;50&quot;/&gt;">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -79,7 +79,7 @@
                             IsSnapToTickEnabled="True"
                             Maximum="1000"
                             Minimum="500"
-                            TickFrequency="20"
+                            TickFrequency="50"
                             Value="{Binding ViewModel.RangeSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                         <Grid Grid.Column="1">
                             <StackPanel VerticalAlignment="Center">

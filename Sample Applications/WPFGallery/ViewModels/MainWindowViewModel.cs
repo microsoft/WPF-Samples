@@ -10,7 +10,7 @@ namespace WPFGallery.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _applicationTitle = "WPF Gallery";
+    private string _applicationTitle = "WPF Gallery Preview";
 
     private readonly DispatcherTimer _timer;
 
@@ -30,7 +30,7 @@ public partial class MainWindowViewModel : ObservableObject
 
             Name = "Design Guidance",
             PageType = typeof(DesignGuidancePage),
-            Icon = "\xE8FD",
+            Icon = "\xEB3C",
             Children = new ObservableCollection<NavigationItem>
             {
                 new NavigationItem
@@ -65,7 +65,7 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
-            Name = "All Samples",
+            Name = "All Controls",
             PageType = typeof(AllSamplesPage),
             Icon = "\xE71D",
         },

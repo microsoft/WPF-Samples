@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -19,22 +19,22 @@
 
 	<ItemGroup>
 		<Resource Include="Assets\ControlImages\*" />
-		<Resource Include="Assets\WPFGallery-Icon.png" />
+		<Resource Include="Assets\README_Images\*" />
+		<Resource Include="Assets\WPFGalleryPreviewIcon.png" />
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\UserDashboard\*" />
 	</ItemGroup>
 	
 	<PropertyGroup>
-		<ApplicationIcon>Assets\WPFGallery-Icon.ico</ApplicationIcon>
+		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
 	</PropertyGroup>
+
 	<ItemGroup>
-	  <None Remove="Models\IconsData.json" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Content Include="Assets\WPFGallery-Icon.ico" />
-	  <Content Include="Models\IconsData.json">
+	  <Content Include="Assets\WPFGalleryPreviewIcon.ico" />
+	  <!-- <Content Include="Models\IconsData.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
+	  </Content> -->
+	  <EmbeddedResource Include="Models\IconsData.json" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -19,8 +19,17 @@
             <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
         </StackPanel>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Row="1">
-            <controls:ControlExample
+    <ScrollViewer Margin="0,0,0,24" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+      <StackPanel Margin="0,0,0,24" Orientation="Vertical">
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" >
+          Type helps provide structure and hierarchy to UI. The default font for Windows is Segoe UI Variable.</TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap">
+          Best practice is to use Regular weight for most text, use Semibold for titles.
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,0,0,12">
+          The minimum values should be 12px Regular, 14px Semibold.
+        </TextBlock>
+        <controls:ControlExample
                 Margin="0"
                 HeaderText="Type ramp"
                 XamlCode="&lt;TextBlock Text=&quot;Caption&quot; Style=&quot;{StaticResource CaptionTextBlockStyle}&quot; /&gt;
@@ -286,7 +295,8 @@
                     </StackPanel>
                 </Grid>
             </controls:ControlExample>
-        </ScrollViewer>
+      </StackPanel>
+    </ScrollViewer>
 
     </Grid>
 </Page>
