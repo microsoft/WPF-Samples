@@ -40,7 +40,7 @@ namespace WPFGallery.Views
             Process.Start(new ProcessStartInfo("https://go.microsoft.com/fwlink/?LinkId=521839") { UseShellExecute = true });
         }
 
-        private void Open_Issues(object sender, MouseButtonEventArgs e)
+        private void Open_Issues(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://github.com/microsoft/WPF-Samples/issues/new") { UseShellExecute = true });
         }
