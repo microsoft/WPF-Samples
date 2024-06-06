@@ -211,7 +211,14 @@
                         <Label Content="Address" FontWeight="SemiBold" />
                         <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" />
 
-                        <Label Content="Age" FontWeight="SemiBold" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Age" Grid.Column="0" FontWeight="SemiBold" />
+                            <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}"/>
+                        </Grid>
                         <Slider
                             Margin="0,5,0,15"
                             AutomationProperties.Name="Age"
