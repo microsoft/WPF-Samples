@@ -68,7 +68,7 @@
                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                             Text="XAML" />
 
-                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_XamlCode" FocusManager.IsFocusScope="True" ToolTipService.ToolTip="Copy to clipboard" >
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_XamlCode" FocusManager.IsFocusScope="True" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy XAML Code" >
                                           <Grid>
                                             <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
                                             <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
