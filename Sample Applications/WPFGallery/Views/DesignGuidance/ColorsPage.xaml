@@ -24,27 +24,27 @@
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-          <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-          <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" />
-        </StackPanel>
+      <StackPanel Grid.Column="0">
+          <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+          <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
+      </StackPanel>
 
       </Grid>
 
-      <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
-        <StackPanel Margin="0,0,0,24">
-          <TextBlock TextWrapping="Wrap" Margin="0,0,0,24">
-            <Run> 
-              Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
-            </Run>
-            <LineBreak />
-            <LineBreak />
-            <Run FontWeight="SemiBold">Using Colors</Run>
-            <LineBreak />
-            <Span>
+    <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
+      <StackPanel Margin="0,0,0,24">
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,24">
+          <Run> 
+            Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
+          </Run>
+          <LineBreak />
+          <LineBreak />
+          <Run FontWeight="SemiBold">Using Colors</Run>
+          <LineBreak />
+          <Span>
               The colors below are provided as part of WPF in .NET 9 Preview 4. You can reference them in your app using DynamicResource bindings. For example: Color="{DynamicResource CardBackgroundFillColorDefault}"
-            </Span>
-          </TextBlock>
+          </Span>
+        </TextBlock>
         
           <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" AutomationProperties.Name="Page Selector">
             <sys:String>Text</sys:String>

@@ -124,6 +124,7 @@
                     Margin="16,0,0,0"
                     VerticalAlignment="Center"
                     Style="{StaticResource CaptionTextBlockStyle}"
+                    AutomationProperties.HeadingLevel="Level1"
                     Text="WPF Gallery Preview" />
             </StackPanel>
 

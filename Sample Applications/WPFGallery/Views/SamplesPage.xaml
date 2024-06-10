@@ -20,8 +20,8 @@
             Grid.Row="0"
             Margin="0,0,0,40"
             VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-            <TextBlock Text="{Binding ViewModel.PageDescription}" />
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+            <TextBlock Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
         </StackPanel>
 
         <ItemsControl Margin="-12,0,0,0"
@@ -55,7 +55,8 @@
                                 <TextBlock
                                     Margin="10,0,0,0"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name}"
+                                     AutomationProperties.HeadingLevel="Level3" />
                                 <TextBlock
                                     Width="240"
                                     Margin="10,0,0,0"

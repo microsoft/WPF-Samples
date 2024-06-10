@@ -29,7 +29,7 @@
                 <TextBlock
                     Grid.Column="0"
                     Style="{StaticResource TitleTextBlockStyle}"
-                    Text="{Binding ViewModel.PageTitle}" />
+                    Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
                 <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 

@@ -11,8 +11,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-            <TextBlock Text="{Binding ViewModel.PageDescription}"/>
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+            <TextBlock Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
         </StackPanel>
 
         <ItemsControl Margin="-12,0,0,0" Grid.Row="1" AutomationProperties.Name="Items in group" ItemsSource="{Binding ViewModel.NavigationCards}" Focusable="False">
@@ -27,7 +27,7 @@
                         <StackPanel Orientation="Horizontal">
                             <ContentPresenter Width="50" Height="50" Content="{Binding Icon}" Margin="0,0,8,0"/>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="10 0 0 0"/>
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="10 0 0 0"  AutomationProperties.HeadingLevel="Level3" />
                                 <TextBlock Text="{Binding Description}" Foreground="{StaticResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Margin="10 0 0 0" Width="240" />
                             </StackPanel>
                         </StackPanel>
