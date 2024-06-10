@@ -98,7 +98,8 @@
                                         BorderThickness="0"
                                         IsReadOnly="True"
                                         Text="{TemplateBinding XamlCode}"
-                                        TextWrapping="Wrap" />
+                                        TextWrapping="Wrap" 
+                                        Focusable="False"/>
                                 </StackPanel>
 
                                 <Border

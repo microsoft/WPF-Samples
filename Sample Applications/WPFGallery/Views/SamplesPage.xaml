@@ -27,7 +27,8 @@
         <ItemsControl Margin="-12,0,0,0"
             Grid.Row="1"
             AutomationProperties.Name="Items in group"
-            ItemsSource="{Binding ViewModel.NavigationCards}">
+            ItemsSource="{Binding ViewModel.NavigationCards}"
+            Focusable="False">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Margin="10" Orientation="Horizontal" />

@@ -11,7 +11,7 @@
       Foreground="{DynamicResource WindowForeground}">
 
     <StackPanel Margin="0,12,0,0">
-        <TextBlock Text="Below are the default highcontrast themes shown. The brush names are the same, and the OS will chose the right colors based on the selected theme." Margin="0,0,0,8"/>
+        <TextBlock Text="Below are the default highcontrast themes shown. The brush names are the same, and the OS will chose the right colors based on the selected theme." Margin="0,0,0,8" TextWrapping="Wrap"/>
         <!--  Aquatic  -->
         <TextBlock
             Margin="0,12"
