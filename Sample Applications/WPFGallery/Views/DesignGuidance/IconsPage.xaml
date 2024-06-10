@@ -36,6 +36,7 @@
                                     Padding="8" 
                                     FocusManager.IsFocusScope="True" 
                                     Command="ApplicationCommands.Copy" 
+                                    ToolTipService.ToolTip="Copy to clipboard"
                                     CommandParameter="{TemplateBinding Content}"
                                     CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">
                                 <Grid>
