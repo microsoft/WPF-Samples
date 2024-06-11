@@ -40,7 +40,7 @@
                 <DatePicker
                     MinWidth="200"
                     HorizontalAlignment="Left"
-                    AutomationProperties.Name="Default" />
+                    AutomationProperties.Name="Pick a date" />
             </controls:ControlExample>
         </ScrollViewer>
     </Grid>

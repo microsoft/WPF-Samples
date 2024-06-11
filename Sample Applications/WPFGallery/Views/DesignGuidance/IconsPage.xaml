@@ -36,6 +36,7 @@
                                     Padding="8" 
                                     FocusManager.IsFocusScope="True" 
                                     Command="ApplicationCommands.Copy" 
+                                    AutomationProperties.Name="Copy to clipboard"
                                     ToolTipService.ToolTip="Copy to clipboard"
                                     CommandParameter="{TemplateBinding Content}"
                                     CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">

@@ -39,7 +39,7 @@
                             Margin="7"
                             Padding="20,10"
                             HorizontalContentAlignment="Left"
-                            AutomationProperties.Name="{Binding Name}"
+                            AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}"
                             Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AllSamplesPage}}}"
                             CommandParameter="{Binding PageType}">
                             <StackPanel Orientation="Horizontal">
