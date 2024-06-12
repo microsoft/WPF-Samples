@@ -104,7 +104,8 @@
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Command="{Binding ViewModel.BackCommand}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                ToolTipService.ToolTip="Back">
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="Segoe Fluent Icons"
