@@ -15,10 +15,10 @@
         </Style>
         <Style x:Key="DefaultHyperlinkStyle" TargetType="Hyperlink">
             <Setter Property="TextDecorations" Value="None" />
-            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColorPrimaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" />
+                    <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorSecondaryBrush}" />
                     <Setter Property="TextDecorations" Value="Underline" />
                 </Trigger>
             </Style.Triggers>
@@ -70,7 +70,7 @@
                             Margin="12"
                             Orientation="Vertical">
                             <TextBlock Text="WPF Gallery Preview" />
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
+                            <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
                         </StackPanel>
                     </Grid>
                 </Expander.Header>

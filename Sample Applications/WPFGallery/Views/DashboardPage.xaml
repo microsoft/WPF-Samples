@@ -31,7 +31,7 @@
                     </Border.Background>
                 </Border>
                 <StackPanel Margin="36,88,0,0" VerticalAlignment="Top">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" />
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" AutomationProperties.HeadingLevel="Level1" />
                     <TextBlock
                         Margin="0,8,0,0"
                         Style="{StaticResource BodyStrongTextBlockStyle}"
@@ -72,11 +72,11 @@
                                 <TextBlock
                                     Margin="10,0,0,0"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name}" AutomationProperties.HeadingLevel="Level3" />
                                 <TextBlock
                                     Width="240"
                                     Margin="10,0,0,0"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" 
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="{Binding Description}" />
                             </StackPanel>

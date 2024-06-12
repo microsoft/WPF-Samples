@@ -60,22 +60,26 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Example" />
                             <TextBlock
                         Grid.Column="1"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Variable Font" />
                             <TextBlock
                         Grid.Column="2"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Size/Line height" />
                             <TextBlock
                         Grid.Column="3"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Style" />
                         </Grid>
