@@ -31,7 +31,7 @@
 
       </Grid>
 
-    <ScrollViewer Margin="0,0,0,24" Grid.Row="1">
+    <ScrollViewer Margin="0,0,0,24" Grid.Row="1" Padding="0,0,24,0">
       <StackPanel Margin="0,0,0,24">
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,24">
           <Run> 

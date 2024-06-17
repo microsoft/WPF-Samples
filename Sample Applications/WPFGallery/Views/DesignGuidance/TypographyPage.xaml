@@ -19,7 +19,7 @@
             <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
         </StackPanel>
 
-    <ScrollViewer Margin="0,0,0,24" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+    <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
       <StackPanel Margin="0,0,0,24" Orientation="Vertical">
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" >
           Type helps provide structure and hierarchy to UI. The default font for Windows is Segoe UI Variable.</TextBlock>
