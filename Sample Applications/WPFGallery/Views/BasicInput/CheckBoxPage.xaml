@@ -35,7 +35,7 @@
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample HeaderText="A 2-state CheckBox." XamlCode="&lt;CheckBox Content=&quot;Two-state CheckBox&quot; /&gt;">
                     <CheckBox AutomationProperties.Name="Sample Two State" Content="Two-state CheckBox" />

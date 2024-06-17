@@ -32,7 +32,7 @@
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <controls:ControlExample Margin="0" HeaderText="A basic DatePicker control.">
                 <controls:ControlExample.XamlCode>
                     &lt;DatePicker/&gt;
