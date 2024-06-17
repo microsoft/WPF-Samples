@@ -21,7 +21,7 @@
                 Width="60"
                 Height="30"
                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="4" />
         </controls:ColorPageExample>
