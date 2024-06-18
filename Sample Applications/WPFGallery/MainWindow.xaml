@@ -96,20 +96,35 @@
             </Grid.ColumnDefinitions>
 
             <Button
-                x:Name="BackButton"
-                Grid.Column="0"
-                Margin="4,0,0,0"
-                VerticalAlignment="Center"
-                AutomationProperties.Name="Back"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Command="{Binding ViewModel.BackCommand}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+x:Name="BackButton"
+Grid.Column="0"
+Margin="4,0,0,0"
+VerticalAlignment="Center"
+AutomationProperties.Name="Back"
+Background="Transparent"
+BorderBrush="Transparent"
+Command="{Binding ViewModel.BackCommand}"
+WindowChrome.IsHitTestVisibleInChrome="True" 
+IsEnabled="{Binding ElementName=RootContentFrame, Path=CanGoBack, Mode=OneWay}">
                 <TextBlock
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
-                    FontSize="12"
-                    Text="&#xE72B;" />
+                x:Name="BackButtonText"
+    VerticalAlignment="Center"
+    FontFamily="Segoe Fluent Icons"
+    FontSize="12"
+    Text="&#xE72B;"
+    IsEnabled="{Binding ElementName=RootContentFrame, Path=CanGoBack,Mode=OneWay}"
+                >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}">
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Button>
 
             <StackPanel
