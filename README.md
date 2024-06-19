@@ -12,7 +12,7 @@ The samples in this repo are generally about illustrating specific concepts and 
 * [CustomComboBox](https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/CustomComboBox)
 * [EditingExaminerDemo](https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/EditingExaminerDemo)
 
-For additional WPF samples, see [here](https://github.com/Microsoft/WPF-Samples).
+For WPF samples using .NET Framework, visit [here](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/wpf-samples?view=netframeworkdesktop-4.8).
 
 ## License
 Unless otherwise mentioned, the samples are released under the [MIT license](https://github.com/Microsoft/WPF-Samples/blob/main/LICENSE)
