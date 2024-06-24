@@ -21,7 +21,7 @@ namespace DocumentSerialization
     /// recognizes tokens as groups of characters separated by arbitrary amounts of whitespace
     /// also classifies tokens according to type
     /// </summary>
-    internal class HtmlLexicalAnalyzer
+    internal class HtmlLexicalAnalyzer : IDisposable
     {
         // ---------------------------------------------------------------------
         //
@@ -68,7 +68,7 @@ namespace DocumentSerialization
         /// and identifies its type
         /// if no valid token is found, the output parameters are set to null
         /// if end of stream is reached without matching any token, token type
-        /// paramter is set to EOF
+        /// parameter is set to EOF
         /// </summary>
         internal void GetNextContentToken()
         {
@@ -188,7 +188,7 @@ namespace DocumentSerialization
                 _nextToken.Append("/>");
                 this.GetNextCharacter();
                 this.GetNextCharacter();
-                _ignoreNextWhitespace = false; // Whitespace after no-scope tags are sifnificant
+                _ignoreNextWhitespace = false; // Whitespace after no-scope tags are significant
             }
             else if (IsGoodForNameStart(this.NextCharacter))
             {
@@ -208,7 +208,7 @@ namespace DocumentSerialization
             }
             else
             {
-                // Unexpected type of token for a tag. Reprot one character as Atom, expecting that HtmlParser will ignore it.
+                // Unexpected type of token for a tag. Report one character as Atom, expecting that HtmlParser will ignore it.
                 _nextTokenType = HtmlTokenType.Atom;
                 _nextToken.Append(this.NextCharacter);
                 this.GetNextCharacter();
@@ -313,7 +313,7 @@ namespace DocumentSerialization
 
         /// <summary>
         /// Advances a reading position by one character code
-        /// and reads the next availbale character from a stream.
+        /// and reads the next available character from a stream.
         /// This character becomes available as NextCharacter property.
         /// </summary>
         /// <remarks>
@@ -365,7 +365,7 @@ namespace DocumentSerialization
                     }
                     else
                     {
-                        // not an entity, set next character to the current lookahread character
+                        // not an entity, set next character to the current lookahead character
                         // we would have eaten up some digits
                         _nextCharacter = _lookAheadCharacter;
                         _nextCharacterCode = _lookAheadCharacterCode;
@@ -673,7 +673,7 @@ namespace DocumentSerialization
             // verify that we are at a processing directive
             Debug.Assert(_nextCharacter == '<' && _lookAheadCharacter == '?');
 
-            // advance twice, once to get the lookahead character and then to reach the start of the drective
+            // advance twice, once to get the lookahead character and then to reach the start of the directive
             this.GetNextCharacter();
             this.GetNextCharacter();
 
@@ -692,6 +692,21 @@ namespace DocumentSerialization
 
                 // then advance past it to the next character after processing directive
                 this.GetNextCharacter();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Dispose managed resources
+                _inputStringReader?.Dispose();
             }
         }
 

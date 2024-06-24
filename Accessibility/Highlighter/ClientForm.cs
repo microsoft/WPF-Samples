@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Drawing;
@@ -49,7 +49,6 @@ namespace Highlighter
             _eventTimer.Elapsed += OnTimerTick;
             _eventTimer.Enabled = false;
             _eventTimer.AutoReset = false;
-            _timerInterval = tbInterval.Value;
             _eventTimer.Interval = _timerInterval;
 
             // Create highlight rectangle.
@@ -127,7 +126,7 @@ namespace Highlighter
         /// <summary>
         ///     Updates the highlight rectangle.
         /// </summary>
-        /// <param name="sender">Ojbect that raised the event.</param>
+        /// <param name="sender">Object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
         /// <remarks>The timer stops because AutoReset is false.</remarks>
         private void OnTimerTick(object sender, EventArgs e)

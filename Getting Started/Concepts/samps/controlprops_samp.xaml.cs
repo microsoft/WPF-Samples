@@ -1,5 +1,5 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Windows;
@@ -10,8 +10,8 @@ namespace ControlProperties //needs to match the .xaml page
 {
     public partial class Page1 : Page
     {
-        private FontFamily _ffamily;
-        private double _fsize;
+        private FontFamily _fontFamily;
+        private double _fontSize;
         // Begin inserting any c# code-behind content here. These methods handle events in XAML files and can be ported from samples. Access modifiers may need to be updated.
 
 
@@ -207,8 +207,8 @@ namespace ControlProperties //needs to match the .xaml page
 
         private void ChangeFontFamily(object sender, RoutedEventArgs e)
         {
-            _ffamily = btn2.FontFamily;
-            _str = _ffamily.ToString();
+            _fontFamily = btn2.FontFamily;
+            _str = _fontFamily.ToString();
             if (_str == ("Arial Black"))
             {
                 btn2.FontFamily = new FontFamily("Arial");
@@ -223,8 +223,9 @@ namespace ControlProperties //needs to match the .xaml page
 
         private void ChangeFontSize(object sender, RoutedEventArgs e)
         {
-            _fsize = btn3.FontSize;
-            if (_fsize == 16.0)
+            _fontSize = btn3.FontSize;
+            double epsilon = 0.0001; // Choose an appropriate epsilon value
+            if (Math.Abs(_fontSize - 16.0) < epsilon)
             {
                 btn3.FontSize = 10.0;
                 btn3.Content = "FontSize";

@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Globalization;
@@ -31,7 +31,7 @@ namespace DrawingVisual
         // the child visual objects.
         private void MyVisualHost_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // Retreive the coordinates of the mouse button event.
+            // Retrieve the coordinates of the mouse button event.
             Point pt = e.GetPosition((UIElement) sender);
 
             // Initiate the hit test by setting up a hit test result callback method.
@@ -43,8 +43,12 @@ namespace DrawingVisual
         {
             if (result.VisualHit.GetType() == typeof (System.Windows.Media.DrawingVisual))
             {
+                double targetOpacity = 1.0;
+                double epsilon = 0.0001; // Define a small tolerance
+                double opacity = ((System.Windows.Media.DrawingVisual)result.VisualHit).Opacity;
+
                 ((System.Windows.Media.DrawingVisual) result.VisualHit).Opacity =
-                    ((System.Windows.Media.DrawingVisual) result.VisualHit).Opacity == 1.0 ? 0.4 : 1.0;
+                    Math.Abs(opacity - targetOpacity) < epsilon ? 0.4 : 1.0;
             }
 
             // Stop the hit test enumeration of objects in the visual tree.
