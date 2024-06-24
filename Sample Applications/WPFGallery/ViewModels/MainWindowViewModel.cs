@@ -168,6 +168,8 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private NavigationItem? _selectedControl;
     private readonly INavigationService _navigationService;
+    [ObservableProperty]
+    private bool _navigationServiceCanGoBack;
 
     [RelayCommand]
     public void Settings()
@@ -301,5 +303,10 @@ public partial class MainWindowViewModel : ObservableObject
         }
 
         return false;
+    }
+
+    internal void UpdateNavigationBackStatus()
+    {
+        NavigationServiceCanGoBack = _navigationService.CanGoBack();  
     }
 }

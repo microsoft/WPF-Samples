@@ -71,7 +71,6 @@ public partial class MainWindow : Window
         if (ControlsList.SelectedItem is NavigationItem navItem)
         {
             _navigationService.Navigate(navItem.PageType);
-
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
@@ -167,5 +166,10 @@ public partial class MainWindow : Window
                 selectedTreeViewItem.IsSelected = true;
             }
         }
+    }
+
+    private void RootContentFrame_Navigated(object sender, NavigationEventArgs e)
+    {
+        ViewModel.UpdateNavigationBackStatus();
     }
 }

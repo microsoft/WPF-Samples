@@ -105,14 +105,14 @@ Background="Transparent"
 BorderBrush="Transparent"
 Command="{Binding ViewModel.BackCommand}"
 WindowChrome.IsHitTestVisibleInChrome="True" 
-IsEnabled="{Binding ElementName=RootContentFrame, Path=CanGoBack, Mode=OneWay}">
+IsEnabled="{Binding ViewModel.NavigationServiceCanGoBack}">
                 <TextBlock
                 x:Name="BackButtonText"
     VerticalAlignment="Center"
     FontFamily="Segoe Fluent Icons"
     FontSize="12"
     Text="&#xE72B;"
-    IsEnabled="{Binding ElementName=RootContentFrame, Path=CanGoBack,Mode=OneWay}"
+    IsEnabled="{Binding ViewModel.NavigationServiceCanGoBack}"
                 >
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
@@ -271,7 +271,7 @@ IsEnabled="{Binding ElementName=RootContentFrame, Path=CanGoBack, Mode=OneWay}">
                 BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="8,0,0,0">
-                <Frame x:Name="RootContentFrame" />
+                <Frame x:Name="RootContentFrame" Navigated="RootContentFrame_Navigated"/>
             </Border>
         </Grid>
     </Grid>
