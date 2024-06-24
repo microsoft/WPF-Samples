@@ -13,7 +13,7 @@ public class Product
 
     public double UnitPrice { get; set; }
 
-    public string UnitPriceString => UnitPrice.ToString("F2");
+   // public string UnitPriceString => UnitPrice.ToString("F2");
 
     public int UnitsInStock { get; set; }
 
