@@ -96,24 +96,22 @@
             </Grid.ColumnDefinitions>
 
             <Button
-x:Name="BackButton"
-Grid.Column="0"
-Margin="4,0,0,0"
-VerticalAlignment="Center"
-AutomationProperties.Name="Back"
-Background="Transparent"
-BorderBrush="Transparent"
-Command="{Binding ViewModel.BackCommand}"
-WindowChrome.IsHitTestVisibleInChrome="True" 
-IsEnabled="{Binding ViewModel.NavigationServiceCanGoBack}">
+                x:Name="BackButton"
+                Grid.Column="0"
+                Margin="4,0,0,0"
+                VerticalAlignment="Center"
+                AutomationProperties.Name="Back"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Command="{Binding ViewModel.BackCommand}"
+                WindowChrome.IsHitTestVisibleInChrome="True" 
+                IsEnabled="{Binding ViewModel.NavigationServiceCanGoBack}">
                 <TextBlock
-                x:Name="BackButtonText"
-    VerticalAlignment="Center"
-    FontFamily="Segoe Fluent Icons"
-    FontSize="12"
-    Text="&#xE72B;"
-    IsEnabled="{Binding ViewModel.NavigationServiceCanGoBack}"
-                >
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe Fluent Icons"
+                    FontSize="12"
+                    Text="&#xE72B;"
+                    IsEnabled="{Binding ViewModel.NavigationServiceCanGoBack}">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
