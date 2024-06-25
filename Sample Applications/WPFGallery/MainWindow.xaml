@@ -8,14 +8,13 @@
     xmlns:local="clr-namespace:WPFGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding ViewModel.ApplicationTitle}"
-    Width="1450"
-    Height="802"
     d:DataContext="{d:DesignInstance local:MainWindow, IsDesignTimeCreatable=False}"
     d:DesignHeight="650"
     d:DesignWidth="1000"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d"
-    MinWidth="1000">
+    MinWidth="780"
+    MinHeight="450">
     <Window.Resources>
         <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
