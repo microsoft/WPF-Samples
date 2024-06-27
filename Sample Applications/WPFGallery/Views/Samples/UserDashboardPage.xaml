@@ -34,7 +34,7 @@
                 Grid.Row="0"
                 Width="300"
                 ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}"
-                SelectedItem="{Binding ViewModel.SelectedUser}"
+                SelectedItem="{Binding ViewModel.SelectedUser, Mode=TwoWay}"
                 SelectionMode="Single">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -126,7 +126,7 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <StackPanel
+                    <!--<StackPanel
                         Grid.Column="1"
                         VerticalAlignment="Center"
                         Orientation="Vertical">
@@ -160,9 +160,9 @@
                                 Text="{Binding ViewModel.SelectedUser.DateOfJoining, StringFormat='D'}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
-                    </StackPanel>
+                    </StackPanel>-->
                 </Grid>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <!--<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                     <Button
                         Margin="10"
                         Command="{Binding ViewModel.EditUserStartCommand}"
@@ -172,13 +172,13 @@
                         Command="{Binding ViewModel.RemoveUserCommand}"
                         CommandParameter="{Binding ViewModel.SelectedUser}"
                         Content="Delete" />
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
 
             <Grid
                 Grid.Row="1"
                 Margin="20,10,20,10"
-                Visibility="{Binding ViewModel.EditableUser, Converter={StaticResource NullToVisibilityConverter}}">
+                Visibility="{Binding ViewModel.SelectedUser, Converter={StaticResource NullToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -196,20 +196,20 @@
                                 Margin="0,0,10,0"
                                 Orientation="Vertical">
                                 <Label Content="First Name" FontWeight="SemiBold" />
-                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" />
+                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical">
                                 <Label Content="Last Name" FontWeight="SemiBold" />
-                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" />
+                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
                         </Grid>
 
 
                         <Label Content="Company" FontWeight="SemiBold" />
-                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" />
+                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
                         <Label Content="Address" FontWeight="SemiBold" />
-                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" />
+                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -217,7 +217,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Age" Grid.Column="0" FontWeight="SemiBold" />
-                            <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}"/>
+                            <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}" />
                         </Grid>
                         <Slider
                             Margin="0,5,0,15"
@@ -225,10 +225,10 @@
                             Maximum="62"
                             Minimum="21"
                             IsSnapToTickEnabled="True"
-                            Value="{Binding ViewModel.EditableUser.Age}" />
+                            Value="{Binding ViewModel.EditableUser.Age}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
                         <Label Content="Date of Joining" FontWeight="SemiBold" />
-                        <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" />
+                        <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
                         <StackPanel Margin="0,5,0,15" Orientation="Horizontal">
                             <Label
@@ -236,17 +236,30 @@
                                 VerticalAlignment="Center"
                                 Content="Is user a new graduate ?"
                                 FontWeight="SemiBold" />
-                            <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" />
+                            <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" IsEnabled="{Binding ViewModel.IsEditing}"/>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <Button
                                 Margin="10"
+                                Command="{Binding ViewModel.EditUserStartCommand}"
+                                Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Content="Edit" />
+                            <Button
+                                Margin="10"
+                                Command="{Binding ViewModel.RemoveUserCommand}"
+                                CommandParameter="{Binding ViewModel.SelectedUser}"
+                                Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Content="Delete" />
+                            <Button
+                                Margin="10"
                                 Command="{Binding ViewModel.EditUserCommitCommand}"
+                                Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Content="Save" />
                             <Button
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserCancelCommand}"
+                                Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Content="Cancel" />
                         </StackPanel>
                     </StackPanel>
