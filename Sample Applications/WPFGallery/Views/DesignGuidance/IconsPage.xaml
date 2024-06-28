@@ -79,6 +79,7 @@
             <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
         </StackPanel>
         <Expander 
+            Margin="5"
             Grid.Row="1" 
             Header="Instructions on how to use Segoe Fluent Icons"
             IsExpanded="False" >
@@ -143,7 +144,7 @@
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                         <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
                     </Style>
                 </ListView.ItemContainerStyle>

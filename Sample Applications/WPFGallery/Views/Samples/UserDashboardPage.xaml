@@ -37,7 +37,7 @@
                 SelectedItem="{Binding ViewModel.SelectedUser}"
                 SelectionMode="Single">
                 <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                         <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
                     </Style>
                 </ListView.ItemContainerStyle>

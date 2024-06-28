@@ -37,7 +37,7 @@
                             Style="{StaticResource BodyStrongTextBlockStyle}"
                             Text="{TemplateBinding HeaderText}"
                             Visibility="{TemplateBinding HeaderText,
-                                                         Converter={StaticResource NullToVisibilityConverter}}" />
+                            Converter={StaticResource NullToVisibilityConverter}}" />
 
                         <Border
                             Grid.Row="1"
