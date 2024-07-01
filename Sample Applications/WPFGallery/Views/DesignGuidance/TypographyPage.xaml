@@ -30,7 +30,7 @@
           The minimum values should be 12px Regular, 14px Semibold.
         </TextBlock>
         <controls:ControlExample
-                Margin="0"
+                Margin="10"
                 HeaderText="Type ramp"
                 XamlCode="&lt;TextBlock Text=&quot;Caption&quot; Style=&quot;{StaticResource CaptionTextBlockStyle}&quot; /&gt;
                 &#10;&lt;TextBlock Text=&quot;Body&quot; Style=&quot;{StaticResource BodyTextBlockStyle}&quot; /&gt;

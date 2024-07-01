@@ -27,14 +27,13 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
 
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <controls:ControlExample
-                Margin="0"
+                Margin="10"
                 HeaderText="A button with a simple ToolTip."
                 XamlCode="&lt;Button          &#10;&#9;Content=&quot;Button with a simple ToolTip.&quot;          &#10;&#9;ToolTipService.InitialShowDelay=&quot;100&quot;          &#10;&#9;ToolTipService.Placement=&quot;MousePoint&quot;         &#10;&#9;ToolTipService.ToolTip=&quot;Simple ToolTip&quot;/&gt;">
                 <Button

@@ -23,7 +23,7 @@
 
         <ScrollViewer
             Grid.Row="1"
-            Margin="-16,0,0,0"
+            Margin="-13,0,0,0"
             VerticalScrollBarVisibility="Auto">
             <ItemsControl AutomationProperties.Name="Items in group" ItemsSource="{Binding ViewModel.NavigationCards}" Focusable="False">
                 <ItemsControl.ItemsPanel>

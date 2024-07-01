@@ -33,12 +33,12 @@
 
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
-                <controls:ControlExample HeaderText="A simple TextBox." XamlCode="&lt;TextBox /&gt;">
+                <controls:ControlExample Margin="10" HeaderText="A simple TextBox." XamlCode="&lt;TextBox /&gt;">
                     <TextBox AutomationProperties.Name="simple TextBox" />
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="A multi-line TextBox."
                     XamlCode="&lt;TextBox TextWrapping=&quot;Wrap&quot; AcceptsReturn=&quot;True&quot; /&gt;">
                     <TextBox

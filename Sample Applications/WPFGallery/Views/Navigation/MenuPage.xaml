@@ -27,7 +27,6 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
@@ -35,7 +34,7 @@
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <Grid Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Standard Menu."
                     XamlCode="&lt;Menu&gt;                     &#10;&#9;&lt;MenuItem Header=&quot;File&quot;&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;New&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;New window&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Open...&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save As...&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Exit&quot; /&gt;                     &#10;&#9;&lt;/MenuItem&gt;                     &#10;&#9;&lt;MenuItem Header=&quot;Edit&quot;&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Undo&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Cut&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Copy&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Paste&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem IsEnabled=&quot;False&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Search with browser&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find...&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find Next&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Select All&quot; /&gt;                     &#10;&#9;&lt;/MenuItem&gt;                     &#10;&lt;/Menu&gt;">
                     <Menu FontSize="14">

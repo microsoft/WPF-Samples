@@ -47,8 +47,8 @@
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0,0,0,24">
-            <Expander>
+        <StackPanel Grid.Row="1" Margin="5,5,5,24">
+            <Expander AutomationProperties.Name="WPF Gallery Preview">
                 <Expander.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -116,10 +116,10 @@
                                     <Hyperlink Click="Open_ToolkitInformation" Style="{StaticResource DefaultHyperlinkStyle}">CommunityToolkit.Mvvm</Hyperlink>
                                 </TextBlock>
                                 <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_DIInformation" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.DependencyInjection</Hyperlink>
+                                    <Hyperlink Click="Open_DIInformation" AutomationProperties.Name="Link to Dependency Injection NuGet Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.DependencyInjection</Hyperlink>
                                 </TextBlock>
                                 <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_HostingInformation" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.Hosting</Hyperlink>
+                                    <Hyperlink Click="Open_HostingInformation" AutomationProperties.Name="Link to .NET Generic Host Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.Hosting</Hyperlink>
                                 </TextBlock>
                             </StackPanel>
                         </Border>
