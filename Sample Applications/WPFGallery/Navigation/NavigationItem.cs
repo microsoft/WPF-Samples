@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFGallery.Navigation
 {
+    /// <summary>
+    /// NavigationItem class
+    /// </summary>
     public class NavigationItem
     {
         public string Name { get; set; } = "";

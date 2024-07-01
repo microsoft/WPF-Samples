@@ -1,5 +1,8 @@
 namespace WPFGallery.Helpers;
 
+/// <summary>
+/// Converts an empty string to Visibility.Collapsed
+/// </summary>
 internal sealed class EmptyToVisibilityConverter : IValueConverter
 {
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)

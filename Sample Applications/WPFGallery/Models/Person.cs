@@ -1,6 +1,9 @@
 
 namespace WPFGallery.Models;
 
+/// <summary>
+/// Person class for User Dashboard page
+/// </summary>
 public record Person
 {
     public string FirstName { get; init; }
