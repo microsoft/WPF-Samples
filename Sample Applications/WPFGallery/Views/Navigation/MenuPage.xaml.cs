@@ -23,8 +23,11 @@ namespace WPFGallery.Views
         {
             if (sender is MenuItem menuItem)
             {
-                StatusMenuItem.Visibility = Visibility.Visible;
-                StatusMenuItem.Text = (menuItem.Tag != null) ?  $"You pressed {menuItem.Tag}" : $"You pressed {menuItem.Header}";
+                if (e.OriginalSource is MenuItem originalMenuItem && originalMenuItem == menuItem)
+                {
+                    StatusMenuItem.Visibility = Visibility.Visible;
+                    StatusMenuItem.Text = (menuItem.Tag != null) ? $"You pressed {menuItem.Tag}" : $"You pressed {menuItem.Header}";
+                }
             }
         }
     }
