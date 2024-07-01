@@ -165,6 +165,7 @@ public partial class MainWindow : Window
             if(selectedTreeViewItem != null)
             {
                 selectedTreeViewItem.IsSelected = true;
+                ControlsList_SelectedItemChanged();
             }
         }
     }
