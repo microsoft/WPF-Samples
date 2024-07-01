@@ -43,11 +43,9 @@
             </LinearGradientBrush>
 
 
-
             <Style TargetType="{x:Type RadioButton}">
                 <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
                 <Setter Property="Template">
-                    <Setter.Value>
                         <ControlTemplate TargetType="{x:Type RadioButton}">
                             <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="true">
                                 <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" 
@@ -94,9 +92,7 @@
                                     <Setter Property ="Rectangle.Stroke" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="outerRectangle" />
                                     <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
                                     <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
-                                        <Setter.Value>
                                             <BlurBitmapEffect Radius="1" />
-                                        </Setter.Value>
                                     </Setter>
                                 </MultiTrigger>
                                 <Trigger Property="IsChecked" Value="true">
@@ -141,7 +137,6 @@
                                 </EventTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Setter.Value>
                 </Setter>
             </Style>
             <Style TargetType="{x:Type TextBlock}">
@@ -152,13 +147,11 @@
 
             <Style x:Key="MyAnimatedRectangleStyle">
                 <Setter Property="Rectangle.Fill">
-                    <Setter.Value>
                         <ImageBrush ImageSource="sampleImages\purpleblock.jpg" TileMode="FlipXY" Opacity="0.25">
                             <ImageBrush.Transform>
                                 <RotateTransform Angle="0" />
                             </ImageBrush.Transform>
                         </ImageBrush>
-                    </Setter.Value>
                 </Setter>
                 <Style.Triggers>
                     <EventTrigger RoutedEvent="Rectangle.Loaded">

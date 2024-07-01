@@ -61,7 +61,6 @@
         <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
             <Setter Property="Margin" Value="10,10,10,0" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
                         <Grid>
                             <Rectangle x:Name="GelBackground" RadiusX="9" RadiusY="9"
@@ -107,7 +106,6 @@
                             </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="true">

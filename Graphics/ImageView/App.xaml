@@ -12,14 +12,12 @@
         </Style>
         <Style x:Key="DarkVerGradient" TargetType="{x:Type Border}">
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0" Color="#E5E5E5" />
                             <GradientStop Offset="1" Color="#000000" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
         </Style>
         <Style x:Key="Header2" TargetType="{x:Type TextBlock}">

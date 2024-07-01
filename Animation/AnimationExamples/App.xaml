@@ -122,14 +122,12 @@
 
         <Style x:Key="MyIntroTextBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Background">
-                <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0.0" Color="#CCCCFF" />
                             <GradientStop Offset="0.0" Color="White" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Setter.Value>
             </Setter>
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="BorderBrush" Value="Gray" />
@@ -153,17 +151,10 @@
             <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
 
-
-
         <Style TargetType="{x:Type Button}" x:Key="GelButtonStyle">
-
-
             <Setter Property="MinWidth" Value="120" />
             <Setter Property="Background" Value="#330033FF" />
-
-
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
 
                         <StackPanel Background="Transparent">
@@ -339,34 +330,25 @@
                                 </EventTrigger.Actions>
                             </EventTrigger>
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
 
         <Style TargetType="{x:Type RadioButton}" x:Key="GlassRadioButtonStyle">
-
             <Setter Property="Margin" Value="1" />
             <Setter Property="Background">
-                <Setter.Value>
-
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0.0" Color="#CCCCFF" />
                             <GradientStop Offset="1.0" Color="DarkGray" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-
-                </Setter.Value>
             </Setter>
 
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RadioButton}">
                         <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" 
               ClipToBounds="true">
-
 
                             <Rectangle x:Name="outerRectangle" 
                 HorizontalAlignment="Stretch" 
@@ -396,7 +378,6 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
 
-
                             <DockPanel Margin="10">
 
                                 <Viewbox Stretch="Uniform">
@@ -408,7 +389,6 @@
                             </DockPanel>
                             <Rectangle Fill="Transparent" />
                         </Grid>
-
 
                         <ControlTemplate.Triggers>
                             <MultiTrigger>
@@ -461,11 +441,8 @@
                             </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
-
-
 
 
         <!-- 3D Models -->

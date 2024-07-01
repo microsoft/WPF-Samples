@@ -8,7 +8,6 @@
             <Setter Property="Margin" Value="1,2,1,2"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Canvas>
                             <Rectangle
@@ -43,17 +42,14 @@
                         <ControlTemplate.Triggers >
                             <Trigger Property="Button.IsFocused" Value="True" >
                                 <Setter TargetName="mainRect" Property="Fill">
-                                    <Setter.Value>
                                         <RadialGradientBrush GradientOrigin="0.5,0.5">
                                             <GradientStop Color="LightSkyBlue" Offset="0.0" />
                                             <GradientStop Color="RoyalBlue" Offset="1.0" />
                                         </RadialGradientBrush>
-                                    </Setter.Value>
                                 </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Application.Resources>

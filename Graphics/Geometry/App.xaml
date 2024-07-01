@@ -107,12 +107,9 @@
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
 
-
-
         <Style TargetType="{x:Type RadioButton}">
             <Setter Property="Background" Value="White" />
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RadioButton}">
                         <Grid Width="{TemplateBinding Width}" 
               Height="{TemplateBinding Height}">
@@ -245,7 +242,6 @@
                             </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Application.Resources>

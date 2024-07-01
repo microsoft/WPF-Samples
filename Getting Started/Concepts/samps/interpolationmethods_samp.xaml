@@ -222,9 +222,7 @@
       <Setter Property="Rectangle.Height" Value="230"/>
       <Setter Property="Rectangle.Width" Value="50"/>     
       <Setter Property="Rectangle.Fill">
-        <Setter.Value>
-          <SolidColorBrush Color="Gray" Opacity="0.25" />                    
-        </Setter.Value>
+          <SolidColorBrush Color="Gray" Opacity="0.25" />  
       </Setter>
     </Style>
 </Canvas.Resources>

@@ -9,7 +9,6 @@
     <Window.Resources>
         <Style TargetType="{x:Type local:Gauge}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:Gauge}">
                         <StackPanel>
                             <Label Target="{Binding ElementName=MinReadingSlider}">MinReading</Label>
@@ -35,12 +34,10 @@
                             <TextBlock Foreground="Red" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MaxReading}"/>
                         </StackPanel>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
         <Style x:Key="ChaserGauge" TargetType="{x:Type local:Gauge}">
             <Setter Property="Template">
-                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:Gauge}">
                         <StackPanel>
                             <Label Target="{Binding ElementName=MinReadingSlider}">MinReading</Label>
@@ -54,7 +51,6 @@
                             <TextBlock Foreground="DarkRed" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MaxReading,Mode=TwoWay}"/>
                         </StackPanel>
                     </ControlTemplate>
-                </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>

@@ -13,7 +13,6 @@
                 <StackPanel.Resources>
                     <Style x:Key="ScrollingListBox" TargetType="{x:Type ListBox}">
                         <Setter Property="Template">
-                            <Setter.Value>
                                 <ControlTemplate>
                                     <Border 
                               BorderThickness ="{TemplateBinding BorderThickness}"
@@ -24,7 +23,6 @@
                                         </ScrollViewer>
                                     </Border>
                                 </ControlTemplate>
-                            </Setter.Value>
                         </Setter>
                     </Style>
                     <Style x:Key="ThumbnailStyle" TargetType="{x:Type Border}">
@@ -35,14 +33,12 @@
                     </Style>
                     <Style x:Key="ImageListStyle">
                         <Setter Property="Control.Template">
-                            <Setter.Value>
                                 <ControlTemplate>
                                     <DockPanel Width="100px" Margin="3">
                                         <Image Source="{Binding Path=FullName}" />
                                         <TextBlock Text="{Binding Path=FullName}" />
                                     </DockPanel>
                                 </ControlTemplate>
-                            </Setter.Value>
                         </Setter>
                     </Style>
                 </StackPanel.Resources>

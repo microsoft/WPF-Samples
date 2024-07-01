@@ -157,7 +157,6 @@
       <Style x:Key="ImageToggleButtonStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type ToggleButton}">
               <Grid x:Name="ButtonGrid">
                 <Rectangle Margin="-3" x:Name="BackgroundRectangle" Fill="transparent" RadiusX="5" RadiusY="5" />
@@ -180,7 +179,6 @@
                 </Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
 
@@ -193,7 +191,6 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type NavigationWindow}">
               <Border Name="NavigationBarRoot"
                       Background="{TemplateBinding Background}"
@@ -224,7 +221,6 @@
                 </MultiTrigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
 
@@ -233,11 +229,9 @@
         <Setter Property="IsTabStop" Value="false" />
         <Setter Property="Focusable" Value="false" />
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type RepeatButton}">
               <Border Background="Transparent" />
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
       </Style>
 
@@ -252,7 +246,6 @@
         <Setter Property="Width" Value="104" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type Slider}">
               <Grid ClipToBounds="false">
                 <Grid.ColumnDefinitions>
@@ -304,7 +297,6 @@
                 </Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
 
       </Style>
@@ -314,7 +306,6 @@
         <Setter Property="Width" Value="14" />
         <Setter Property="Height" Value="22" />
         <Setter Property="Template">
-          <Setter.Value>
             <ControlTemplate TargetType="{x:Type Thumb}">
               <Grid>
                 <Path StrokeThickness="0.75" Stroke="{StaticResource ApplicationIconBrush}" StrokeMiterLimit="1" Width="12" Height="18.0654487609863" x:Name="Path1" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeLineJoin="Round" StrokeEndLineCap="Round" StrokeDashCap="Round">
@@ -356,7 +347,6 @@
                 </Path>
               </Grid>
             </ControlTemplate>
-          </Setter.Value>
         </Setter>
         <Style.Triggers>
           <Trigger Property="IsDragging" Value="true">
