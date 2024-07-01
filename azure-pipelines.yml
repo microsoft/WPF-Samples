@@ -15,7 +15,6 @@ variables:
     value: latest
 
 trigger:
-- main
 - release/*
 
 pool:
