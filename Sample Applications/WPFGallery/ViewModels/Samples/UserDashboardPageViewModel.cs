@@ -21,52 +21,81 @@ namespace WPFGallery.ViewModels.Samples
         [ObservableProperty]
         private User? _editableUser;
 
+        [ObservableProperty]
+        private bool _isRead = true;
+
         partial void OnSelectedUserChanged(User? oldValue, User? newValue)
         {
-            EditableUser = null;
+            if (SelectedUser == null)
+            {
+                //Console.WriteLine("hello world");
+            }
+            else if (SelectedUser != EditableUser)
+            {
+                EditableUser = new User(SelectedUser);
+                IsRead = true;
+                IsEditing = false;
+            }
         }
 
         [RelayCommand]
         private void AddUser()
-        { 
+        {
             Users.Add(new User("New User", ""));
             SelectedUser = Users.Last();
             EditableUser = new User(SelectedUser);
+            IsRead = false;
+            IsEditing = true;
         }
 
         [RelayCommand]
         private void RemoveUser(object selectedUser)
         {
-            if(selectedUser is User user)
+            if (selectedUser is User user)
             {
                 Users.Remove(user);
                 SelectedUser = null;
+                IsRead = true;
+                IsEditing = false;
             }
         }
 
         [RelayCommand]
         private void EditUserStart()
         {
-            EditableUser = new User(SelectedUser);
+            
+            if (SelectedUser != null)
+            {
+                
+                IsRead = false;
+                IsEditing = true;
+            }
         }
 
 
         [RelayCommand]
         private void EditUserCommit()
         {
-            if(EditableUser != null && SelectedUser != null)
+            if (EditableUser != null && SelectedUser != null)
             {
                 int index = Users.IndexOf(SelectedUser);
-                Users[index] = EditableUser;
+                Users.RemoveAt(index);
+                Users.Insert(index, EditableUser);
                 SelectedUser = Users[index];
-                EditableUser = null;
+                IsRead = true;
+                IsEditing = false;
+
             }
         }
+
 
         [RelayCommand]
         private void EditUserCancel()
         {
             EditableUser = null;
+            EditableUser= new User(SelectedUser);
+            IsRead = true;
+            IsEditing = false;
         }
 
         public UserDashboardPageViewModel()
@@ -79,7 +108,14 @@ namespace WPFGallery.ViewModels.Samples
             var random = new Random();
             var users = new ObservableCollection<User>();
 
-            var imageids = new[] { "64","65", "91", "103", "177", "334", "338", "342", "349", "366", "367", "373", 
+            DateTime startDate = new DateTime(2020, 1, 1);
+            DateTime endDate = DateTime.Now.Date;
+            int range = (endDate - startDate).Days;
+            
+            //Console.WriteLine(randomDate.ToString());
+            //System.Diagnostics.Debug.WriteLine("hello");
+
+            var imageids = new[] { "64","65", "91", "103", "177", "334", "338", "342", "349", "366", "367", "373",
                                     "375", "378", "399", "447", "453", "473", "469", "505"};
             var names = new[]
             {
@@ -143,17 +179,26 @@ namespace WPFGallery.ViewModels.Samples
                 "",
             };
 
+            
             for (int i = 0; i < 20; i++)
+            {
+                int randomDays = random.Next(range + 1);
                 users.Add(
+
                     new User(
                         imageids[random.Next(0, imageids.Length)],
                         names[random.Next(0, names.Length)],
                         surnames[random.Next(0, surnames.Length)],
                         companies[random.Next(0, companies.Length)],
                         addresses[random.Next(0, addresses.Length)],
+                        random.Next(21, 63),
+                        startDate.AddDays(randomDays),
                         random.Next(2) == 1
+
                     )
                 );
+            }
+                
 
             return users;
         }
