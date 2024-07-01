@@ -66,7 +66,7 @@ public partial class MainWindow : Window
 
     public MainWindowViewModel ViewModel { get; }
 
-    private void ControlsList_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+    private void ControlsList_SelectedItemChanged()
     {
         if (ControlsList.SelectedItem is NavigationItem navItem)
         {
@@ -165,7 +165,21 @@ public partial class MainWindow : Window
             if(selectedTreeViewItem != null)
             {
                 selectedTreeViewItem.IsSelected = true;
+                ControlsList_SelectedItemChanged();
             }
         }
+    }
+
+    private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter) 
+        {
+            ControlsList_SelectedItemChanged();
+        }
+    }
+
+    private void ControlsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    {
+        ControlsList_SelectedItemChanged();
     }
 }

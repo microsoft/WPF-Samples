@@ -206,7 +206,8 @@
                     Margin="8,24,0,0"
                     AutomationProperties.Name="Navigation Pane"
                     ItemsSource="{Binding ViewModel.Controls}"
-                    SelectedItemChanged="ControlsList_SelectedItemChanged">
+                    PreviewKeyDown="ControlsList_PreviewKeyDown"
+                    PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                             <Grid MinHeight="30">
