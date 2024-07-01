@@ -15,8 +15,8 @@ namespace WPFGallery.Models
         private string? _address;
         private bool _isNewGraduate;
         private string _imageId = "91";
-        private int _age = 25;
-        private DateTime _dateOfJoining = DateTime.Now.Date;
+        private int _age;
+        private DateTime _dateOfJoining;
 
         public string? FirstName
         {
@@ -159,7 +159,7 @@ namespace WPFGallery.Models
             IsNewGraduate = user.IsNewGraduate;
         }
 
-        public User(string imageID, string? firstName, string? lastName, string? company, string? address, bool isNewGraduate = false)
+        public User(string imageID, string? firstName, string? lastName, string? company, string? address, int age, DateTime doj, bool isNewGraduate = false)
         {
             ImageId = imageID;
             FirstName = firstName;
@@ -167,6 +167,9 @@ namespace WPFGallery.Models
             Company = company;
             Address = address;
             IsNewGraduate = isNewGraduate;
+            Age = age;
+            DateOfJoining = doj;
+            
         }
     }
 }

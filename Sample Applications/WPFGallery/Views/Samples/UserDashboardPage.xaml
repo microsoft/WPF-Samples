@@ -102,7 +102,6 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <StackPanel
@@ -126,53 +125,8 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <!--<StackPanel
-                        Grid.Column="1"
-                        VerticalAlignment="Center"
-                        Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <Label
-                                Width="80"
-                                Content="Address :"
-                                FontWeight="SemiBold" />
-                            <TextBlock
-                                MaxWidth="250"
-                                Text="{Binding ViewModel.SelectedUser.Address}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label
-                                Width="80"
-                                Content="Age :"
-                                FontWeight="SemiBold" />
-                            <TextBlock
-                                MaxWidth="300"
-                                Text="{Binding ViewModel.SelectedUser.Age}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label
-                                Width="80"
-                                Content="DOJ :"
-                                FontWeight="SemiBold" />
-                            <TextBlock
-                                MaxWidth="300"
-                                Text="{Binding ViewModel.SelectedUser.DateOfJoining, StringFormat='D'}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                    </StackPanel>-->
                 </Grid>
-                <!--<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button
-                        Margin="10"
-                        Command="{Binding ViewModel.EditUserStartCommand}"
-                        Content="Edit" />
-                    <Button
-                        Margin="10"
-                        Command="{Binding ViewModel.RemoveUserCommand}"
-                        CommandParameter="{Binding ViewModel.SelectedUser}"
-                        Content="Delete" />
-                </StackPanel>-->
+                
             </StackPanel>
 
             <Grid
