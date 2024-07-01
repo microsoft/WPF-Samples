@@ -15,6 +15,13 @@
     <Page.Resources>
         <helpers:ImageIdToBrushConverter x:Key="ImageIdToBrushConverter" />
         <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+
+        <Style TargetType="Label" x:Key="GenericLabelStyle">
+            <Setter Property="Opacity" Value="0.67"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+        </Style>
+
     </Page.Resources>
 
     <Grid>
@@ -73,7 +80,8 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="12,0,0,6"
-                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                Opacity="0.67"
                                 Text="{Binding Company, Mode=OneWay}" />
                         </Grid>
                     </DataTemplate>
@@ -131,30 +139,27 @@
                         VerticalAlignment="Center"
                         Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <Label
+                            <Label Style="{StaticResource GenericLabelStyle}"
                                 Width="80"
-                                Content="Address :"
-                                FontWeight="SemiBold" />
+                                Content="Address :" />
                             <TextBlock
                                 MaxWidth="250"
                                 Text="{Binding ViewModel.SelectedUser.Address}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label
+                            <Label Style="{StaticResource GenericLabelStyle}"
                                 Width="80"
-                                Content="Age :"
-                                FontWeight="SemiBold" />
+                                Content="Age :" />
                             <TextBlock
                                 MaxWidth="300"
                                 Text="{Binding ViewModel.SelectedUser.Age}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label
+                            <Label Style="{StaticResource GenericLabelStyle}"
                                 Width="80"
-                                Content="DOJ :"
-                                FontWeight="SemiBold" />
+                                Content="DOJ :" />
                             <TextBlock
                                 MaxWidth="300"
                                 Text="{Binding ViewModel.SelectedUser.DateOfJoining, StringFormat='D'}"
@@ -195,20 +200,20 @@
                                 Grid.Column="0"
                                 Margin="0,0,10,0"
                                 Orientation="Vertical">
-                                <Label Content="First Name" FontWeight="SemiBold" />
+                                <Label Style="{StaticResource GenericLabelStyle}" Content="First Name" />
                                 <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical">
-                                <Label Content="Last Name" FontWeight="SemiBold" />
+                                <Label Style="{StaticResource GenericLabelStyle}" Content="Last Name" />
                                 <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" />
                             </StackPanel>
                         </Grid>
 
 
-                        <Label Content="Company" FontWeight="SemiBold" />
+                        <Label Style="{StaticResource GenericLabelStyle}" Content="Company" />
                         <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" />
 
-                        <Label Content="Address" FontWeight="SemiBold" />
+                        <Label Style="{StaticResource GenericLabelStyle}" Content="Address" />
                         <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" />
 
                         <Grid>
@@ -216,7 +221,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Age" Grid.Column="0" FontWeight="SemiBold" />
+                            <Label Style="{StaticResource GenericLabelStyle}" Content="Age" Grid.Column="0" />
                             <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}"/>
                         </Grid>
                         <Slider
@@ -227,15 +232,14 @@
                             IsSnapToTickEnabled="True"
                             Value="{Binding ViewModel.EditableUser.Age}" />
 
-                        <Label Content="Date of Joining" FontWeight="SemiBold" />
+                        <Label Style="{StaticResource GenericLabelStyle}" Content="Date of Joining" />
                         <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" />
 
                         <StackPanel Margin="0,5,0,15" Orientation="Horizontal">
-                            <Label
+                            <Label Style="{StaticResource GenericLabelStyle}"
                                 Margin="0,0,10,0"
                                 VerticalAlignment="Center"
-                                Content="Is user a new graduate ?"
-                                FontWeight="SemiBold" />
+                                Content="Is user a new graduate ?" />
                             <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" />
                         </StackPanel>
 

@@ -37,7 +37,7 @@
                     Margin="10"
                     HeaderText="A simple Label."
                     XamlCode="&lt;Label Content=&quot;I am a Label.&quot; /&gt;">
-                    <Label Content="I am a Label." />
+                    <Label Content="I am a Label." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" />
                 </controls:ControlExample>
 
                 <controls:ControlExample
@@ -49,7 +49,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="I am a Label of the TextBox below." />
+                        <Label Grid.Row="0" Content="I am a Label of the TextBox below." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" />
                         <!--  Target="{Binding ElementName=TextBoxForLabel}"  -->
                         <TextBox Grid.Row="1" AutomationProperties.Name="Simple Text Box" />
                     </Grid>
