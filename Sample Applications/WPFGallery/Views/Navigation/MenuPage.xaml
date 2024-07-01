@@ -37,64 +37,72 @@
                     Margin="10"
                     HeaderText="Standard Menu."
                     XamlCode="&lt;Menu&gt;                     &#10;&#9;&lt;MenuItem Header=&quot;File&quot;&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;New&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;New window&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Open...&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Save As...&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Exit&quot; /&gt;                     &#10;&#9;&lt;/MenuItem&gt;                     &#10;&#9;&lt;MenuItem Header=&quot;Edit&quot;&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Undo&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Cut&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Copy&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Paste&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem IsEnabled=&quot;False&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Search with browser&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find...&quot; /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Find Next&quot; /&gt;                     &#10;&#9;&#9;&lt;Separator /&gt;                     &#10;&#9;&#9;&lt;MenuItem Header=&quot;Select All&quot; /&gt;                     &#10;&#9;&lt;/MenuItem&gt;                     &#10;&lt;/Menu&gt;">
-                    <Menu FontSize="14">
-                        <MenuItem Header="File">
-                            <MenuItem Header="New" />
-                            <MenuItem Header="New window" />
-                            <MenuItem Header="Open..." />
-                            <MenuItem Header="Save" />
-                            <MenuItem Header="Save As..." />
+                    <StackPanel>
+                        <StackPanel.Resources>
+                            <Style TargetType="MenuItem">
+                                <EventSetter Event="Click" Handler="MenuItem_Click"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock x:Name="StatusMenuItem" Text="" />
+                        <Menu FontSize="14">
+                            <MenuItem Header="File">
+                                <MenuItem Header="New" />
+                                <MenuItem Header="New window" />
+                                <MenuItem Header="Open" />
+                                <MenuItem Header="Save" />
+                                <MenuItem Header="Save As" />
+                                <Separator />
+                                <MenuItem Header="Exit" />
+                            </MenuItem>
+                            <MenuItem Header="Edit">
+                                <MenuItem Header="Undo" />
+                                <Separator />
+                                <MenuItem Header="Cut" />
+                                <MenuItem Header="Copy" />
+                                <MenuItem Header="Paste" />
+                                <MenuItem IsEnabled="False" />
+                                <Separator />
+                                <MenuItem Header="Search with browser" />
+                                <MenuItem Header="Find" />
+                                <MenuItem Header="Find next" />
+                                <Separator />
+                                <MenuItem Header="Select All" />
+                            </MenuItem>
                             <Separator />
-                            <MenuItem Header="Exit" />
-                        </MenuItem>
-                        <MenuItem Header="Edit">
-                            <MenuItem Header="Undo" />
-                            <Separator />
-                            <MenuItem Header="Cut" />
-                            <MenuItem Header="Copy" />
-                            <MenuItem Header="Paste" />
-                            <MenuItem IsEnabled="False" />
-                            <Separator />
-                            <MenuItem Header="Search with browser" />
-                            <MenuItem Header="Find..." />
-                            <MenuItem Header="Find next" />
-                            <Separator />
-                            <MenuItem Header="Select All" />
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem AutomationProperties.Name="Bold">
-                            <MenuItem.Header>
-                                <TextBlock
+                            <MenuItem AutomationProperties.Name="Bold" Tag="Bold" >
+                                <MenuItem.Header>
+                                    <TextBlock
                                     AutomationProperties.Name="Bold"
                                     Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="12"
                                     Text="&#xE8DD;" />
-                            </MenuItem.Header>
-                        </MenuItem>
+                                </MenuItem.Header>
+                            </MenuItem>
 
-                        <MenuItem AutomationProperties.Name="Italic">
-                            <MenuItem.Header>
-                                <TextBlock
+                            <MenuItem AutomationProperties.Name="Italic" Tag="Italic" >
+                                <MenuItem.Header>
+                                    <TextBlock
                                     AutomationProperties.Name="Italic"
                                     Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="12"
                                     Text="&#xE8DB;" />
-                            </MenuItem.Header>
-                        </MenuItem>
+                                </MenuItem.Header>
+                            </MenuItem>
 
-                        <MenuItem AutomationProperties.Name="Underlined">
-                            <MenuItem.Header>
-                                <TextBlock
+                            <MenuItem AutomationProperties.Name="Underlined" Tag="Underlined" >
+                                <MenuItem.Header>
+                                    <TextBlock
                                     AutomationProperties.Name="Underlined"
                                     Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="12"
                                     Text="&#xE8DC;" />
-                            </MenuItem.Header>
-                        </MenuItem>
-                    </Menu>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </Menu>
+                    </StackPanel>
                 </controls:ControlExample>
             </Grid>
         </ScrollViewer>
