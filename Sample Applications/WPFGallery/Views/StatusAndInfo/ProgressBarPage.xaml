@@ -34,7 +34,7 @@
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="A simple progress bar."
                     XamlCode="&lt;ProgressBar Value=&quot;40&quot; /&gt;">
                     <ProgressBar
@@ -44,7 +44,7 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="An indeterminate progress bar."
                     XamlCode="&lt;ProgressBar IsIndeterminate=&quot;True&quot; /&gt;">
                     <ProgressBar
