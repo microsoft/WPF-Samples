@@ -192,8 +192,17 @@
                                 FontWeight="SemiBold" />
                             <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" IsEnabled="{Binding ViewModel.IsEditing}"/>
                         </StackPanel>
-
+                        
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <TextBlock Padding="30" HorizontalAlignment="Left" Visibility="{Binding ViewModel.IsSaved, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                Save operation completed successfully!
+                            </TextBlock>
+        
+                            <TextBlock Padding="30" HorizontalAlignment="Left" Visibility="{Binding ViewModel.IsDeleted, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                 <Run Text="User" />
+                                 <Run Text="{Binding ViewModel.Deletedname, Mode=OneWay}" />
+                                 <Run Text="deleted successfully!" />
+                            </TextBlock>
                             <Button
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserStartCommand}"
@@ -215,7 +224,10 @@
                                 Command="{Binding ViewModel.EditUserCancelCommand}"
                                 Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Content="Cancel" />
+                            
                         </StackPanel>
+                        
+                        
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

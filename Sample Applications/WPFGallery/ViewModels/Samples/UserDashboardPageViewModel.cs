@@ -24,11 +24,19 @@ namespace WPFGallery.ViewModels.Samples
         [ObservableProperty]
         private bool _isRead = true;
 
+        [ObservableProperty]
+        private bool isSaved;
+
+        [ObservableProperty]
+        private bool isDeleted=false;
+
+        [ObservableProperty]
+        private string _deletedname;
         partial void OnSelectedUserChanged(User? oldValue, User? newValue)
         {
             if (SelectedUser == null)
             {
-                //Console.WriteLine("hello world");
+                
             }
             else if (SelectedUser != EditableUser)
             {
@@ -53,10 +61,19 @@ namespace WPFGallery.ViewModels.Samples
         {
             if (selectedUser is User user)
             {
+        
+                Deletedname = user.Name;
+                IsDeleted = true;
+
+                Task.Delay(2000).ContinueWith(_ => IsDeleted = false, TaskScheduler.FromCurrentSynchronizationContext());
+                int index = Users.IndexOf(user);
+                
+                SelectedUser = Users[index+1];
                 Users.Remove(user);
-                SelectedUser = null;
                 IsRead = true;
                 IsEditing = false;
+
+                
             }
         }
 
@@ -84,7 +101,9 @@ namespace WPFGallery.ViewModels.Samples
                 SelectedUser = Users[index];
                 IsRead = true;
                 IsEditing = false;
+                IsSaved = true;
 
+                Task.Delay(2000).ContinueWith(_ => IsSaved = false, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }
 
@@ -112,9 +131,7 @@ namespace WPFGallery.ViewModels.Samples
             DateTime endDate = DateTime.Now.Date;
             int range = (endDate - startDate).Days;
             
-            //Console.WriteLine(randomDate.ToString());
-            //System.Diagnostics.Debug.WriteLine("hello");
-
+            
             var imageids = new[] { "64","65", "91", "103", "177", "334", "338", "342", "349", "366", "367", "373",
                                     "375", "378", "399", "447", "453", "473", "469", "505"};
             var names = new[]
