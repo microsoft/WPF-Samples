@@ -29,7 +29,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ListView
+            <ListView      
                 AutomationProperties.Name="Users"
                 Grid.Row="0"
                 Width="300"
@@ -138,8 +138,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <ScrollViewer Grid.Column="1">
-                    <StackPanel Margin="20,0,20,0">
+                <ScrollViewer Grid.Column="1" Focusable="False">
+                    <StackPanel Margin="20,0,20,0" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -204,9 +204,11 @@
                                  <Run Text="deleted successfully!" />
                             </TextBlock>
                             <Button
+                                x:Name="edit_button"
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserStartCommand}"
                                 Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="EditButton_Click"
                                 Content="Edit" />
                             <Button
                                 Margin="10"
@@ -215,10 +217,12 @@
                                 Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Content="Delete" />
                             <Button
+                                x:Name="save_button"
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserCommitCommand}"
                                 Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                Content="Save" />
+                                Click="SaveButton_Click"
+                                Content="Save"/>
                             <Button
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserCancelCommand}"

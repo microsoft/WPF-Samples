@@ -32,8 +32,26 @@ namespace WPFGallery.Views.Samples
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            var command = (sender as Button)?.Command;
+            var commandParameter = (sender as Button)?.CommandParameter;
+            if (command != null && command.CanExecute(commandParameter))
+            {
+                command.Execute(commandParameter);
+            }
 
+            save_button.Focus();
         }
 
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var command = (sender as Button)?.Command;
+            var commandParameter = (sender as Button)?.CommandParameter;
+            if (command != null && command.CanExecute(commandParameter))
+            {
+                command.Execute(commandParameter);
+            }
+
+            edit_button.Focus();
+        }
     }
 }
