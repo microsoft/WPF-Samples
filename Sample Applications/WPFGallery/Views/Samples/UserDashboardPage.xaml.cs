@@ -53,5 +53,17 @@ namespace WPFGallery.Views.Samples
 
             edit_button.Focus();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            var command = (sender as Button)?.Command;
+            var commandParameter = (sender as Button)?.CommandParameter;
+            if (command != null && command.CanExecute(commandParameter))
+            {
+                command.Execute(commandParameter);
+            }
+
+            edit_button.Focus();
+        }
     }
 }

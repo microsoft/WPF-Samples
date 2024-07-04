@@ -227,6 +227,7 @@
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserCancelCommand}"
                                 Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="CancelButton_Click"
                                 Content="Cancel" />
                             
                         </StackPanel>
