@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,7 +47,27 @@ public partial class MainWindow : Window
             }
         );
 
+        SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         this.StateChanged += MainWindow_StateChanged;
+    }
+
+    private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+    {
+        Dispatcher.Invoke(() =>
+        {
+            if (SystemParameters.HighContrast)
+            {
+                MinimizeButton.Visibility = Visibility.Visible;
+                MaximizeButton.Visibility = Visibility.Visible;
+                CloseButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MinimizeButton.Visibility = Visibility.Collapsed;
+                MaximizeButton.Visibility = Visibility.Collapsed;
+                CloseButton.Visibility = Visibility.Collapsed;
+            }
+        });
     }
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
@@ -98,9 +119,30 @@ public partial class MainWindow : Window
             {
                 if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
                 {
-                    MinimizeButton.Visibility = Visibility.Collapsed;
-                    MaximizeButton.Visibility = Visibility.Collapsed;
-                    CloseButton.Visibility = Visibility.Collapsed;
+                    if (SystemParameters.HighContrast == true)
+                    {
+                        MinimizeButton.VerticalAlignment = VerticalAlignment.Center;
+                        MinimizeButton.MinWidth = 48;
+                        MinimizeButton.MinHeight = 32;
+                        MinimizeButton.Margin = new Thickness(4);
+
+                        MaximizeButton.VerticalAlignment = VerticalAlignment.Center;
+                        MaximizeButton.MinWidth = 48;
+                        MaximizeButton.MinHeight = 32;
+                        MaximizeButton.Margin = new Thickness(4);
+
+                        CloseButton.VerticalAlignment = VerticalAlignment.Center;
+                        CloseButton.MinWidth = 48;
+                        CloseButton.MinHeight = 32;
+                        CloseButton.Margin = new Thickness(4);
+                    }
+                    else
+                    {
+                        MinimizeButton.Visibility = Visibility.Collapsed;
+                        MaximizeButton.Visibility = Visibility.Collapsed;
+                        CloseButton.Visibility = Visibility.Collapsed;
+                    }
+
                     break;
                 }
             }
