@@ -8,6 +8,7 @@
     Title="AboutPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="LinkTextBlockStyle" TargetType="TextBlock">
