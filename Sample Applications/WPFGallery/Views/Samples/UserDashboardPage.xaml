@@ -36,12 +36,12 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ListView
+            <ListView      
                 AutomationProperties.Name="Users"
                 Grid.Row="0"
                 Width="300"
                 ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}"
-                SelectedItem="{Binding ViewModel.SelectedUser}"
+                SelectedItem="{Binding ViewModel.SelectedUser, Mode=TwoWay}"
                 SelectionMode="Single">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
@@ -110,7 +110,6 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <StackPanel
@@ -133,64 +132,21 @@
                             <TextBlock FontSize="16" Text="{Binding ViewModel.SelectedUser.Company}" />
                         </StackPanel>
                     </StackPanel>
-
-                    <StackPanel
-                        Grid.Column="1"
-                        VerticalAlignment="Center"
-                        Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Style="{StaticResource GenericLabelStyle}"
-                                Width="80"
-                                Content="Address :" />
-                            <TextBlock
-                                MaxWidth="250"
-                                Text="{Binding ViewModel.SelectedUser.Address}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Style="{StaticResource GenericLabelStyle}"
-                                Width="80"
-                                Content="Age :" />
-                            <TextBlock
-                                MaxWidth="300"
-                                Text="{Binding ViewModel.SelectedUser.Age}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Style="{StaticResource GenericLabelStyle}"
-                                Width="80"
-                                Content="DOJ :" />
-                            <TextBlock
-                                MaxWidth="300"
-                                Text="{Binding ViewModel.SelectedUser.DateOfJoining, StringFormat='D'}"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                    </StackPanel>
                 </Grid>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button
-                        Margin="10"
-                        Command="{Binding ViewModel.EditUserStartCommand}"
-                        Content="Edit" />
-                    <Button
-                        Margin="10"
-                        Command="{Binding ViewModel.RemoveUserCommand}"
-                        CommandParameter="{Binding ViewModel.SelectedUser}"
-                        Content="Delete" />
-                </StackPanel>
+                
             </StackPanel>
 
             <Grid
                 Grid.Row="1"
                 Margin="20,10,20,10"
-                Visibility="{Binding ViewModel.EditableUser, Converter={StaticResource NullToVisibilityConverter}}">
+                Visibility="{Binding ViewModel.SelectedUser, Converter={StaticResource NullToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <ScrollViewer Grid.Column="1">
-                    <StackPanel Margin="20,0,20,0">
+                <ScrollViewer Grid.Column="1" Focusable="False">
+                    <StackPanel Margin="20,0,20,0" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -200,29 +156,28 @@
                                 Grid.Column="0"
                                 Margin="0,0,10,0"
                                 Orientation="Vertical">
-                                <Label Style="{StaticResource GenericLabelStyle}" Content="First Name" />
-                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" />
+                                <Label Content="First Name" FontWeight="SemiBold" />
+                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical">
-                                <Label Style="{StaticResource GenericLabelStyle}" Content="Last Name" />
-                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" />
+                                <Label Content="Last Name" FontWeight="SemiBold" />
+                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
                         </Grid>
 
+                        <Label Content="Company" FontWeight="SemiBold" />
+                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
-                        <Label Style="{StaticResource GenericLabelStyle}" Content="Company" />
-                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" />
-
-                        <Label Style="{StaticResource GenericLabelStyle}" Content="Address" />
-                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" />
+                        <Label Content="Address" FontWeight="SemiBold" />
+                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource GenericLabelStyle}" Content="Age" Grid.Column="0" />
-                            <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}"/>
+                            <Label Content="Age" Grid.Column="0" FontWeight="SemiBold" />
+                            <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}" />
                         </Grid>
                         <Slider
                             Margin="0,5,0,15"
@@ -230,29 +185,58 @@
                             Maximum="62"
                             Minimum="21"
                             IsSnapToTickEnabled="True"
-                            Value="{Binding ViewModel.EditableUser.Age}" />
+                            Value="{Binding ViewModel.EditableUser.Age}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
-                        <Label Style="{StaticResource GenericLabelStyle}" Content="Date of Joining" />
-                        <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" />
+                        <Label Content="Date of Joining" FontWeight="SemiBold" />
+                        <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
                         <StackPanel Margin="0,5,0,15" Orientation="Horizontal">
                             <Label Style="{StaticResource GenericLabelStyle}"
                                 Margin="0,0,10,0"
                                 VerticalAlignment="Center"
-                                Content="Is user a new graduate ?" />
-                            <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" />
+                                Content="Is user a new graduate ?"
+                                FontWeight="SemiBold" />
+                            <CheckBox AutomationProperties.Name="Is user a new graduate ?" VerticalAlignment="Center" IsChecked="{Binding ViewModel.EditableUser.IsNewGraduate}" IsEnabled="{Binding ViewModel.IsEditing}"/>
                         </StackPanel>
-
+                        
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <TextBlock Padding="30" HorizontalAlignment="Left" Visibility="{Binding ViewModel.IsSaved, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                Save operation completed successfully!
+                            </TextBlock>
+        
+                            <TextBlock Padding="30" HorizontalAlignment="Left" Visibility="{Binding ViewModel.IsDeleted, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                 <Run Text="User" />
+                                 <Run Text="{Binding ViewModel.Deletedname, Mode=OneWay}" />
+                                 <Run Text="deleted successfully!" />
+                            </TextBlock>
+                            <Button
+                                x:Name="edit_button"
+                                Margin="10"
+                                Command="{Binding ViewModel.EditUserStartCommand}"
+                                Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="EditButton_Click"
+                                Content="Edit" />
                             <Button
                                 Margin="10"
+                                Command="{Binding ViewModel.RemoveUserCommand}"
+                                CommandParameter="{Binding ViewModel.SelectedUser}"
+                                Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Content="Delete" />
+                            <Button
+                                x:Name="save_button"
+                                Margin="10"
                                 Command="{Binding ViewModel.EditUserCommitCommand}"
-                                Content="Save" />
+                                Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="SaveButton_Click"
+                                Content="Save"/>
                             <Button
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserCancelCommand}"
+                                Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="CancelButton_Click"
                                 Content="Cancel" />
-                        </StackPanel>
+                            
+                      </StackPanel>                
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
