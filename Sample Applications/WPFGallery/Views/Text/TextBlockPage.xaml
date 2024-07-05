@@ -34,14 +34,14 @@
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="A simple TextBlock."
                     XamlCode="&lt;TextBlock Text=&quot;I am a text block.&quot; /&gt;">
                     <TextBlock Text="I am a text block." />
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="A TextBlock with style applied."
                     XamlCode="&lt;TextBlock Text=&quot;I am a styled TextBlock.&quot; FontFamily=&quot;Comic Sans MS&quot; FontStyle=&quot;Italic&quot; /&gt;">
                     <TextBlock
@@ -51,11 +51,11 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="A TextBlock with inline text elements."
                     XamlCode="&lt;TextBlock FontSize=&quot;14&quot;&gt;             &#10;&#9;&lt;Run FontFamily=&quot;Times New Roman&quot; Foreground=&quot;DarkGray&quot;&gt;             &#10;&#9;&#9;Text in a TextBlock doesn&#39;t have to be a simple string.             &#10;&#9;&lt;/Run&gt;             &#10;&#9;&lt;LineBreak /&gt;             &#10;&#9;&lt;Span&gt;             &#10;&#9;&#9;Text can be &lt;Bold&gt;bold&lt;/Bold&gt;             &#10;&#9;&#9;, &lt;Italic&gt;italic&lt;/Italic&gt;             &#10;&#9;&#9;, or &lt;Underline&gt;underlined&lt;/Underline&gt;.             &#10;&#9;&lt;/Span&gt;             &#10;&lt;/TextBlock&gt;">
                     <TextBlock FontSize="14">
-                        <Run FontFamily="Times New Roman" Foreground="DarkGray">
+                        <Run FontFamily="Times New Roman" Foreground="{DynamicResource TextFillColorPrimaryBrush}" >
                             Text in a TextBlock doesn't have to be a simple string.
                         </Run>
                         <LineBreak />
@@ -67,7 +67,7 @@
                     </TextBlock>
                 </controls:ControlExample>
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="A TextBlock with wrap property."
                     XamlCode="&lt;TextBlock FontSize=&quot;14&quot; TextWrapping=&quot;Wrap&quot;&gt;             &#10;               The TextBlock control provides flexible text support for WPF applications.              &#10;               The element is targeted primarily toward basic UI scenarios that do not require more than one paragraph of text.              &#10;               It supports a number of properties that enable precise control of presentation, such as FontFamily, FontSize, FontWeight, TextEffects, and TextWrapping.             &#10;&lt;/TextBlock&gt;">
 

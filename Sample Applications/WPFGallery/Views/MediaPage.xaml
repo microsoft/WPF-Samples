@@ -58,7 +58,7 @@
                                 <TextBlock
                                     Width="240"
                                     Margin="10,0,0,0"
-                                    Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                                    Foreground="{StaticResource TextFillColorPrimaryBrush}" Opacity="0.7" 
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="{Binding Description}" />
                             </StackPanel>

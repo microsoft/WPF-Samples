@@ -5,6 +5,9 @@
 
 namespace WPFGallery.Helpers;
 
+/// <summary>
+/// Converts a null value to Visibility.Collapsed
+/// </summary>
 internal sealed class NullToVisibilityConverter : IValueConverter
 {
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)

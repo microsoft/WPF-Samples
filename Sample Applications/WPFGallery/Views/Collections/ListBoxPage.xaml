@@ -34,7 +34,7 @@
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="ListBox with items defined inline."
                     XamlCode="&lt;ListBox SelectedIndex=&quot;0&quot;&gt;             &#10;&#9;&lt;ListBoxItem&gt;Blue&lt;/ListBoxItem&gt;             &#10;&#9;&lt;ListBoxItem&gt;Green&lt;/ListBoxItem&gt;             &#10;&#9;&lt;ListBoxItem&gt;Red&lt;/ListBoxItem&gt;             &#10;&#9;&lt;ListBoxItem&gt;Yellow&lt;/ListBoxItem&gt;             &#10;&lt;/ListBox&gt;">
                     <!--<controls:ControlExample.XamlCode>
@@ -52,7 +52,7 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="A ListBox with its ItemsSource and Height set."
                     XamlCode="&lt;ListBox Height=&quot;100&quot; ItemsSource=&quot;{Binding ViewModel.MyItems}&quot; SelectedIndex=&quot;2&quot; /&gt;">
                     <ListBox

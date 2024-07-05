@@ -30,7 +30,7 @@
           The minimum values should be 12px Regular, 14px Semibold.
         </TextBlock>
         <controls:ControlExample
-                Margin="0"
+                Margin="10"
                 HeaderText="Type ramp"
                 XamlCode="&lt;TextBlock Text=&quot;Caption&quot; Style=&quot;{StaticResource CaptionTextBlockStyle}&quot; /&gt;
                 &#10;&lt;TextBlock Text=&quot;Body&quot; Style=&quot;{StaticResource BodyTextBlockStyle}&quot; /&gt;
@@ -60,22 +60,26 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Example" />
                             <TextBlock
                         Grid.Column="1"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Variable Font" />
                             <TextBlock
                         Grid.Column="2"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Size/Line height" />
                             <TextBlock
                         Grid.Column="3"
-                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                        Opacity="0.7"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Style" />
                         </Grid>

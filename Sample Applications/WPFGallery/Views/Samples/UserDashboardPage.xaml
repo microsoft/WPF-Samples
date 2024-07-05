@@ -15,6 +15,13 @@
     <Page.Resources>
         <helpers:ImageIdToBrushConverter x:Key="ImageIdToBrushConverter" />
         <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+
+        <Style TargetType="Label" x:Key="GenericLabelStyle">
+            <Setter Property="Opacity" Value="0.67"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+        </Style>
+
     </Page.Resources>
 
     <Grid>
@@ -37,7 +44,7 @@
                 SelectedItem="{Binding ViewModel.SelectedUser, Mode=TwoWay}"
                 SelectionMode="Single">
                 <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                         <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
                     </Style>
                 </ListView.ItemContainerStyle>
@@ -73,7 +80,8 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="12,0,0,6"
-                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                Opacity="0.67"
                                 Text="{Binding Company, Mode=OneWay}" />
                         </Grid>
                     </DataTemplate>
@@ -124,7 +132,6 @@
                             <TextBlock FontSize="16" Text="{Binding ViewModel.SelectedUser.Company}" />
                         </StackPanel>
                     </StackPanel>
-
                 </Grid>
                 
             </StackPanel>
@@ -158,7 +165,6 @@
                             </StackPanel>
                         </Grid>
 
-
                         <Label Content="Company" FontWeight="SemiBold" />
                         <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
@@ -185,7 +191,7 @@
                         <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
                         <StackPanel Margin="0,5,0,15" Orientation="Horizontal">
-                            <Label
+                            <Label Style="{StaticResource GenericLabelStyle}"
                                 Margin="0,0,10,0"
                                 VerticalAlignment="Center"
                                 Content="Is user a new graduate ?"
@@ -230,9 +236,7 @@
                                 Click="CancelButton_Click"
                                 Content="Cancel" />
                             
-                        </StackPanel>
-                        
-                        
+                      </StackPanel>                
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

@@ -34,14 +34,14 @@
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="A simple Label."
                     XamlCode="&lt;Label Content=&quot;I am a Label.&quot; /&gt;">
-                    <Label Content="I am a Label." />
+                    <Label Content="I am a Label." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" />
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="A Label for TextBox."
                     XamlCode="&lt;Grid&gt;             &#10;&#9;&lt;Grid.RowDefinitions&gt;             &#10;&#9;&#9;&lt;RowDefinition Height=&quot;Auto&quot; /&gt;             &#10;&#9;&#9;&lt;RowDefinition Height=&quot;Auto&quot; /&gt;             &#10;&#9;&lt;/Grid.RowDefinitions&gt;             &#10;&#9;&lt;Label Grid.Row=&quot;0&quot; Content=&quot;I am a Label of the TextBox below.&quot; /&gt;             &#10;&#9;&lt;TextBox Grid.Row=&quot;1&quot; /&gt;             &#10;&lt;/Grid&gt;">
                     <Grid>
@@ -49,7 +49,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="I am a Label of the TextBox below." />
+                        <Label Grid.Row="0" Content="I am a Label of the TextBox below." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" />
                         <!--  Target="{Binding ElementName=TextBoxForLabel}"  -->
                         <TextBox Grid.Row="1" AutomationProperties.Name="Simple Text Box" />
                     </Grid>
