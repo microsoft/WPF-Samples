@@ -34,6 +34,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock 
+                                    Name="ColorNameTextBlock"
                                     Margin="12,12,0,6"
                                     Foreground="{TemplateBinding Foreground}"
                                     Style="{DynamicResource BodyStrongTextBlockStyle}"
@@ -78,6 +79,7 @@
                                 </Button>
 
                                 <TextBlock
+                                    Name="ColorExplanationTextBlock"
                                     Grid.Row="1"
                                     Margin="12,-4,0,0"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
@@ -85,6 +87,7 @@
                                     TextWrapping="Wrap" />
 
                                 <TextBlock
+                                    Name="ColorBrushNameTextBlock"
                                     Margin="12,0,0,18"
                                     Grid.Row="3"
                                     Grid.ColumnSpan="2"
@@ -117,6 +120,18 @@
                                 Visibility="{TemplateBinding ShowSeparator}" />
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="ColorExplanationTextBlock" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="ColorExplanationTextBlock" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="ColorBrushNameTextBlock" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="ColorBrushNameTextBlock" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="ColorNameTextBlock" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="ColorNameTextBlock" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="CopyBrushNameButton" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="CopyBrushNameButton" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
