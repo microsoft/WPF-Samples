@@ -133,7 +133,7 @@
                 </TextBlock>
             </Expander>
                 <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="0,24,0,10" Grid.Row="2"/>
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="296"/>
