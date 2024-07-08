@@ -27,8 +27,8 @@ namespace WPFGallery.Views
         public ListViewPage(ListViewPageViewModel viewModel)
         {
             ViewModel = viewModel;
-DataContext = this;
-InitializeComponent();
+            DataContext = this;
+            InitializeComponent();
         }
     }
 }

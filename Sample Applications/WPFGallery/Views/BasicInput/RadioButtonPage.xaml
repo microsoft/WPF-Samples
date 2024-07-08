@@ -27,15 +27,14 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Standard RadioButton."
                     XamlCode="&lt;StackPanel&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 1&quot; GroupName=&quot;radio_group_one&quot; IsChecked=&quot;True&quot;/&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 2&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 3&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&lt;/StackPanel&gt;">
                     <Grid>
@@ -70,7 +69,7 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="RadioButton with right to left flow direction."
                     XamlCode="&lt;StackPanel&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 1&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; IsChecked=&quot;True&quot;/&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 2&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 3&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&lt;/StackPanel&gt;">
                     <StackPanel Grid.Column="0">

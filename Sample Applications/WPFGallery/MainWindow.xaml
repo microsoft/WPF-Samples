@@ -104,8 +104,9 @@
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Command="{Binding ViewModel.BackCommand}"
-                WindowChrome.IsHitTestVisibleInChrome="True" 
                 IsEnabled="{Binding ViewModel.CanNavigateBack}">
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                ToolTipService.ToolTip="Back">
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="Segoe Fluent Icons"
@@ -218,7 +219,8 @@
                     Margin="8,24,0,0"
                     AutomationProperties.Name="Navigation Pane"
                     ItemsSource="{Binding ViewModel.Controls}"
-                    SelectedItemChanged="ControlsList_SelectedItemChanged">
+                    PreviewKeyDown="ControlsList_PreviewKeyDown"
+                    PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                             <Grid MinHeight="30">

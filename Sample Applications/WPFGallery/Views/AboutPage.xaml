@@ -8,6 +8,7 @@
     Title="AboutPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="LinkTextBlockStyle" TargetType="TextBlock">
@@ -15,10 +16,10 @@
         </Style>
         <Style x:Key="DefaultHyperlinkStyle" TargetType="Hyperlink">
             <Setter Property="TextDecorations" Value="None" />
-            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColorPrimaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" />
+                    <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorSecondaryBrush}" />
                     <Setter Property="TextDecorations" Value="Underline" />
                 </Trigger>
             </Style.Triggers>
@@ -47,8 +48,8 @@
             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0,0,0,24">
-            <Expander>
+        <StackPanel Grid.Row="1" Margin="5,5,5,24">
+            <Expander AutomationProperties.Name="WPF Gallery Preview">
                 <Expander.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -70,7 +71,7 @@
                             Margin="12"
                             Orientation="Vertical">
                             <TextBlock Text="WPF Gallery Preview" />
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
+                            <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
                         </StackPanel>
                     </Grid>
                 </Expander.Header>
@@ -116,10 +117,10 @@
                                     <Hyperlink Click="Open_ToolkitInformation" Style="{StaticResource DefaultHyperlinkStyle}">CommunityToolkit.Mvvm</Hyperlink>
                                 </TextBlock>
                                 <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_DIInformation" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.DependencyInjection</Hyperlink>
+                                    <Hyperlink Click="Open_DIInformation" AutomationProperties.Name="Link to Dependency Injection NuGet Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.DependencyInjection</Hyperlink>
                                 </TextBlock>
                                 <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_HostingInformation" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.Hosting</Hyperlink>
+                                    <Hyperlink Click="Open_HostingInformation" AutomationProperties.Name="Link to .NET Generic Host Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.Hosting</Hyperlink>
                                 </TextBlock>
                             </StackPanel>
                         </Border>

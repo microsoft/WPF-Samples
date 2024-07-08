@@ -23,7 +23,7 @@
 
         <ScrollViewer
             Grid.Row="1"
-            Margin="-16,0,0,0"
+            Margin="-13,0,0,0"
             VerticalScrollBarVisibility="Auto">
             <ItemsControl AutomationProperties.Name="Items in group" ItemsSource="{Binding ViewModel.NavigationCards}" Focusable="False">
                 <ItemsControl.ItemsPanel>
@@ -56,7 +56,7 @@
                                     <TextBlock
                                         Width="240"
                                         Margin="10,0,0,0"
-                                        Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                                        Foreground="{StaticResource TextFillColorPrimaryBrush}" Opacity="0.7" 
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="{Binding Description}" />
                                 </StackPanel>

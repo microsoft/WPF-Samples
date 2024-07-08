@@ -27,15 +27,14 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel>
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Simple Button"
                     XamlCode="&lt;Button Content=&quot;Standard WPF button&quot; /&gt;">
                     <Grid>
@@ -84,7 +83,7 @@
                 </controls:ControlExample>-->
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="WPF Accent Button"
                     XamlCode="&lt;Button Style=&quot;{DynamicResource DefaultAccentButtonStyle}&quot; Content=&quot;WPF Accent Button&quot; /&gt;">
                     <Button AutomationProperties.Name="WPF Accent" Style="{DynamicResource DefaultAccentButtonStyle}">

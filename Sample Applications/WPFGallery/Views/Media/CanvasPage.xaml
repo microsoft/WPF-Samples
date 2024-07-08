@@ -32,9 +32,9 @@
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <Grid Margin="0,0,0,24">
-                <controls:ControlExample Margin="0" HeaderText="A basic Canvas inside the ViewBox">
+                <controls:ControlExample Margin="10" HeaderText="A basic Canvas inside the ViewBox">
                     <controls:ControlExample.XamlCode>
                         &lt;Viewbox Width=&quot;200&quot; Height=&quot;200&quot; &gt;\n
                         \t&lt;Canvas Width=&quot;47&quot; Height=&quot;123&quot;&gt;\n
