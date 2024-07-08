@@ -170,6 +170,6 @@ public partial class MainWindow : Window
 
     private void RootContentFrame_Navigated(object sender, NavigationEventArgs e)
     {
-        ViewModel.UpdateNavigationBackStatus();
+        ViewModel.UpdateCanNavigateBack();
     }
 }

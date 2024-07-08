@@ -16,7 +16,7 @@ public interface INavigationService
 
     void NavigateForward();
 
-    bool CanGoBack();
+    bool IsBackHistoryNonEmpty();
 
     event EventHandler<NavigatingEventArgs> Navigating;
 }
@@ -101,7 +101,7 @@ public class NavigationService : INavigationService
         Navigating?.Invoke(this, new NavigatingEventArgs(type));
     }
 
-    public bool CanGoBack()
+    public bool IsBackHistoryNonEmpty()
     {
         var item = _history.Peek();
         if (item == null)
