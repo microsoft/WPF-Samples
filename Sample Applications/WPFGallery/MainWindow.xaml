@@ -104,13 +104,26 @@
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Command="{Binding ViewModel.BackCommand}"
+                IsEnabled="{Binding ViewModel.CanNavigateBack}">
                 WindowChrome.IsHitTestVisibleInChrome="True"
                 ToolTipService.ToolTip="Back">
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="Segoe Fluent Icons"
                     FontSize="12"
-                    Text="&#xE72B;" />
+                    Text="&#xE72B;"
+                    IsEnabled="{Binding ViewModel.CanNavigateBack}">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}">
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Button>
 
             <StackPanel
@@ -258,7 +271,7 @@
                 BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="8,0,0,0">
-                <Frame x:Name="RootContentFrame" />
+                <Frame x:Name="RootContentFrame" Navigated="RootContentFrame_Navigated"/>
             </Border>
         </Grid>
     </Grid>

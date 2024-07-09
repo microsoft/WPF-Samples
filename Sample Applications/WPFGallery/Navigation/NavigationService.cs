@@ -19,6 +19,8 @@ public interface INavigationService
 
     void NavigateForward();
 
+    bool IsBackHistoryNonEmpty();
+
     event EventHandler<NavigatingEventArgs> Navigating;
 }
 
@@ -104,4 +106,16 @@ public class NavigationService : INavigationService
         Navigating?.Invoke(this, new NavigatingEventArgs(type));
     }
 
+    public bool IsBackHistoryNonEmpty()
+    {
+        var item = _history.Peek();
+        if (item == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
