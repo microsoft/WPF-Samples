@@ -132,7 +132,7 @@
             <Button
                 x:Name="MinimizeButton"
                 Grid.Column="2"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="MinimizeWindow"
@@ -148,7 +148,7 @@
             <Button
                 x:Name="MaximizeButton"
                 Grid.Column="3"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="MaximizeWindow"
@@ -165,7 +165,7 @@
             <Button
                 x:Name="CloseButton"
                 Grid.Column="4"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="CloseWindow"
@@ -174,7 +174,7 @@
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="Segoe Fluent Icons"
-                    FontSize="14"
+                    FontSize="16"
                     Text="&#xE711;" />
             </Button>
         </Grid>

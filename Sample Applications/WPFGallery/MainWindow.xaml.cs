@@ -119,29 +119,9 @@ public partial class MainWindow : Window
             {
                 if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
                 {
-                    if (SystemParameters.HighContrast == true)
-                    {
-                        MinimizeButton.VerticalAlignment = VerticalAlignment.Center;
-                        MinimizeButton.MinWidth = 48;
-                        MinimizeButton.MinHeight = 32;
-                        MinimizeButton.Margin = new Thickness(4);
-
-                        MaximizeButton.VerticalAlignment = VerticalAlignment.Center;
-                        MaximizeButton.MinWidth = 48;
-                        MaximizeButton.MinHeight = 32;
-                        MaximizeButton.Margin = new Thickness(4);
-
-                        CloseButton.VerticalAlignment = VerticalAlignment.Center;
-                        CloseButton.MinWidth = 48;
-                        CloseButton.MinHeight = 32;
-                        CloseButton.Margin = new Thickness(4);
-                    }
-                    else
-                    {
                         MinimizeButton.Visibility = Visibility.Collapsed;
                         MaximizeButton.Visibility = Visibility.Collapsed;
                         CloseButton.Visibility = Visibility.Collapsed;
-                    }
 
                     break;
                 }
