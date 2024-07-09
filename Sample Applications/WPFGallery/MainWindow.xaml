@@ -104,15 +104,14 @@
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Command="{Binding ViewModel.BackCommand}"
-                IsEnabled="{Binding ViewModel.CanNavigateBack}">
+                IsEnabled="{Binding ViewModel.CanNavigateback}"
                 WindowChrome.IsHitTestVisibleInChrome="True"
                 ToolTipService.ToolTip="Back">
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="Segoe Fluent Icons"
                     FontSize="12"
-                    Text="&#xE72B;"
-                    IsEnabled="{Binding ViewModel.CanNavigateBack}">
+                    Text="&#xE72B;">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
