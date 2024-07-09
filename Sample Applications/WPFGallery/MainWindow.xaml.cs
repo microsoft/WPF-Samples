@@ -119,9 +119,18 @@ public partial class MainWindow : Window
             {
                 if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
                 {
+                    if (SystemParameters.HighContrast == true)
+                    {
+                        MinimizeButton.Visibility = Visibility.Visible;
+                        MaximizeButton.Visibility = Visibility.Visible;
+                        CloseButton.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
                         MinimizeButton.Visibility = Visibility.Collapsed;
                         MaximizeButton.Visibility = Visibility.Collapsed;
                         CloseButton.Visibility = Visibility.Collapsed;
+                    }
 
                     break;
                 }
