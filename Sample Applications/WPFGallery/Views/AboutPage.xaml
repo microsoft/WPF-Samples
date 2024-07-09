@@ -70,7 +70,7 @@
                             Grid.Column="1"
                             Margin="12"
                             Orientation="Vertical">
-                            <TextBlock Text="WPF Gallery Preview" />
+                            <TextBlock Text="WPF Gallery Preview Version 1.0.3" />
                             <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
                         </StackPanel>
                     </Grid>
