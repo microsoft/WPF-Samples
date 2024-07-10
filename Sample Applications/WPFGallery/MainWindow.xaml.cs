@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,7 +47,27 @@ public partial class MainWindow : Window
             }
         );
 
+        SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         this.StateChanged += MainWindow_StateChanged;
+    }
+
+    private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+    {
+        Dispatcher.Invoke(() =>
+        {
+            if (SystemParameters.HighContrast)
+            {
+                MinimizeButton.Visibility = Visibility.Visible;
+                MaximizeButton.Visibility = Visibility.Visible;
+                CloseButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MinimizeButton.Visibility = Visibility.Collapsed;
+                MaximizeButton.Visibility = Visibility.Collapsed;
+                CloseButton.Visibility = Visibility.Collapsed;
+            }
+        });
     }
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
@@ -97,9 +118,19 @@ public partial class MainWindow : Window
             {
                 if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
                 {
-                    MinimizeButton.Visibility = Visibility.Collapsed;
-                    MaximizeButton.Visibility = Visibility.Collapsed;
-                    CloseButton.Visibility = Visibility.Collapsed;
+                    if (SystemParameters.HighContrast == true)
+                    {
+                        MinimizeButton.Visibility = Visibility.Visible;
+                        MaximizeButton.Visibility = Visibility.Visible;
+                        CloseButton.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        MinimizeButton.Visibility = Visibility.Collapsed;
+                        MaximizeButton.Visibility = Visibility.Collapsed;
+                        CloseButton.Visibility = Visibility.Collapsed;
+                    }
+
                     break;
                 }
             }
