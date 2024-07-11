@@ -28,6 +28,14 @@ namespace WPFGallery.Views
                     StatusMenuItem.Visibility = Visibility.Visible;
                     StatusMenuItem.Text = (menuItem.Tag != null) ? $"You pressed {menuItem.Tag}" : $"You pressed {menuItem.Header}";
                 }
+                if (menuItem.Parent is MenuItem parentMenuItem)
+                {
+                    parentMenuItem.Focus();
+                }
+                else
+                {
+                    menuItem.Focus();
+                }
             }
         }
     }
