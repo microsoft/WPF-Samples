@@ -11,7 +11,7 @@
     <!-- Setting the Directory to the relative path pointing to the Media folder.-->
     <!-- Giving this an x:Key. Now controls in this Window can bind to the videos in the Media folder.-->
     <Window.Resources>
-        <local:MyVideos Directory="../../media" x:Key="Vids" />
+        <local:MyVideos Directory="../../../media" x:Key="Vids" />
 
         <DataTemplate x:Key="MainScreenTemplate">
             <Border BorderBrush="LimeGreen" BorderThickness="2"
