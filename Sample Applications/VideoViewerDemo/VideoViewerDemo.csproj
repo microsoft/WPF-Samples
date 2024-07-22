@@ -84,10 +84,18 @@
   <ItemGroup>
     <Resource Include="images\crystal.jpg" />
     <Resource Include="images\preview.png" />
-    <Content Include="media\day7.wmv" />
-    <Content Include="media\msdn news.wmv" />
-    <Content Include="media\my xbox clip.wmv" />
-    <Content Include="media\the dotnet show.wmv" />
+    <Content Include="media\day7.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\msdn news.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\my xbox clip.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="media\the dotnet show.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
