@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using System.Printing;
+using System.Timers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using WPFGallery.Navigation;
@@ -13,9 +15,10 @@ public partial class MainWindowViewModel : ObservableObject
     private string _applicationTitle = "WPF Gallery Preview";
 
     private readonly DispatcherTimer _timer;
-
+    private int index = 0;
     private string _searchText = string.Empty;
-
+    private DispatcherTimer _timertest;
+    private List<NavigationItem> flattenedlist; 
     [ObservableProperty]
     private ICollection<NavigationItem> _controls = new ObservableCollection<NavigationItem>
     {
@@ -189,10 +192,48 @@ public partial class MainWindowViewModel : ObservableObject
         _navigationService.NavigateBack();
     }
 
+
+    
     [RelayCommand]
     public void Forward()
     {
         _navigationService.NavigateForward();
+    }
+
+    [RelayCommand]
+    public void Navigatetest()
+    {
+        _timertest.Start();
+    }
+
+    public static List<NavigationItem> FlattenNavigationItems(ICollection<NavigationItem> items)
+    {
+        var flattenedList = new List<NavigationItem>();
+
+        foreach (var item in items)
+        {
+            flattenedList.Add(item);
+            if (item.Children != null && item.Children.Any())
+            {
+                flattenedList.AddRange(FlattenNavigationItems(item.Children));
+            }
+        }
+
+        return flattenedList;
+    }
+
+    public void TestingMethod(object? sender, EventArgs e)
+    {
+        if (index >= flattenedlist.Count())
+        {
+            _timertest.Stop();
+        }
+        else
+        {
+            _navigationService.Navigate(flattenedlist[index].PageType);
+            index++;
+        }
+        
     }
 
     public MainWindowViewModel(INavigationService navigationService)
@@ -201,8 +242,12 @@ public partial class MainWindowViewModel : ObservableObject
         _timer = new DispatcherTimer();
         _timer.Interval = TimeSpan.FromMilliseconds(400);
         _timer.Tick += PerformSearchNavigation;
+        flattenedlist = FlattenNavigationItems(_controls);
+        _timertest = new DispatcherTimer();
+        _timertest.Interval = TimeSpan.FromMilliseconds(700);
+        _timertest.Tick += TestingMethod;
+       
     }
-
     public void UpdateSearchText(string searchText)
     {
         _searchText = searchText;

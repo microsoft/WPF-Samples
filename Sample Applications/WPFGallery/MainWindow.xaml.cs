@@ -217,4 +217,62 @@ public partial class MainWindow : Window
     {
         ControlsList_SelectedItemChanged();
     }
+
+    //private void applicationtheme_Click(object sender, RoutedEventArgs e)
+    //{
+    //    Application.Current.Theme = "None";
+    //}
+
+    //private void windowtheme_Click(object sender, RoutedEventArgs e)
+    //{
+    //    this.Theme = "None";
+    //}
+
+    //private void comboboxtheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    //{
+    //    var combobox = sender as ComboBox;
+    //    var selecteditem = combobox.SelectedItem as string;
+
+    //    if (selecteditem == "None")
+    //    {
+    //        Application.Current.Theme = "None";
+    //    }
+    //    else if (selecteditem == "Light")
+    //    {
+    //        Application.Current.Theme = "Light";
+    //    }
+    //    else if (selecteditem == "Dark")
+    //    {
+    //        Application.Current.Theme = "Dark";
+    //    }
+    //    else
+    //    {
+    //        Application.Current.Theme = "System";
+    //    }
+
+    //}
+
+    //private void windowtheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    //{
+    //    var combobox = sender as ComboBox;
+    //    var selecteditem = combobox.SelectedItem as string;
+
+    //    if (selecteditem == "None")
+    //    {
+    //        this.Theme = "None";
+    //    }
+    //    else if (selecteditem == "Light")
+    //    {
+    //        this.Theme = "Light";
+    //    }
+    //    else if (selecteditem == "Dark")
+    //    {
+    //        this.Theme = "Dark";
+    //    }
+    //    else
+    //    {
+    //        this.Theme = "System";
+    //    }
+
+    //}
 }

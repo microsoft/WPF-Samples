@@ -11,6 +11,10 @@
 		<StartupObject>WPFGallery.App</StartupObject>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<WpfRepoRoot>C:\Users\siagupta\source\repos\wpf</WpfRepoRoot>
+	</PropertyGroup>
+	<Import Project="C:\Users\siagupta\source\repos\wpf\eng\wpf-debug.targets" />
 	
 	<ItemGroup>
 	  <ApplicationDefinition Remove="App.xaml" />

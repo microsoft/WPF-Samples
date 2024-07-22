@@ -247,6 +247,45 @@
                 </TreeView>
 
                 <DockPanel Grid.Row="2">
+
+                    <!--<ComboBox Name="windowtheme" Width="250" Margin="10" HorizontalContentAlignment="left" DockPanel.Dock="Top" SelectedIndex="0" SelectionChanged="windowtheme_SelectionChanged">
+                        <ComboBoxItem Content="None"/>
+                        <ComboBoxItem Content="System"/>
+                        <ComboBoxItem Content="Light"/>
+                        <ComboBoxItem Content="Dark"/>
+                    </ComboBox>
+                    
+                    <ComboBox Name="comboboxtheme" Width="250" Margin="10" HorizontalContentAlignment="left" DockPanel.Dock="Top" SelectedIndex="0" SelectionChanged="comboboxtheme_SelectionChanged">
+                        <ComboBoxItem Content="None"/>
+                        <ComboBoxItem Content="System"/>
+                        <ComboBoxItem Content="Light"/>
+                        <ComboBoxItem Content="Dark"/>
+                    </ComboBox>-->
+                    <!--<Button
+                        x:Name="windowtheme"
+                        Width="250"
+                        Margin="10"
+                        HorizontalContentAlignment="Left"
+                        DockPanel.Dock="Top"
+                        Content="windowtheme"
+                        Click="windowtheme_Click"/>
+                    <Button
+                        x:Name="applicationtheme"
+                        Width="250"
+                        Margin="10"
+                        HorizontalContentAlignment="Left"
+                        DockPanel.Dock="Top"
+                        Content="theming"
+                        Click="applicationtheme_Click"/>-->
+                    <Button
+                        x:Name="navigate"
+                        Width="250"
+                        Margin="10"
+                        HorizontalContentAlignment="Left"
+                        DockPanel.Dock="Top"
+                        Content="navigate"
+                        Command="{Binding ViewModel.NavigatetestCommand}"/>
+
                     <Button
                         x:Name="AboutButton"
                         Width="250"
