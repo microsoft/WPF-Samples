@@ -4,6 +4,9 @@ using System.Windows.Navigation;
 
 namespace WPFGallery.Navigation;
 
+/// <summary>
+/// Interface for the NavigationService
+/// </summary>
 public interface INavigationService
 {
     void Navigate(Type type);
@@ -16,10 +19,14 @@ public interface INavigationService
 
     void NavigateForward();
 
+    bool IsBackHistoryNonEmpty();
+
     event EventHandler<NavigatingEventArgs> Navigating;
 }
 
-
+/// <summary>
+/// Service for navigating between pages.
+/// </summary>
 public class NavigationService : INavigationService
 {
     private Frame _frame;
@@ -99,4 +106,16 @@ public class NavigationService : INavigationService
         Navigating?.Invoke(this, new NavigatingEventArgs(type));
     }
 
+    public bool IsBackHistoryNonEmpty()
+    {
+        var item = _history.Peek();
+        if (item == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

@@ -27,15 +27,14 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="A ComboBox with items defined inline."
                     XamlCode="&lt;ComboBox MinWidth=&quot;200&quot; HorizontalAlignment=&quot;Left&quot; SelectedIndex=&quot;0&quot;&gt;&#10;&#9;&lt;ComboBoxItem Content=&quot;Blue&quot; /&gt;&#10;&#9;&lt;ComboBoxItem Content=&quot;Green&quot; /&gt;&#10;&#9;&lt;ComboBoxItem Content=&quot;Red&quot; /&gt;&#10;&#9;&lt;ComboBoxItem Content=&quot;Yellow&quot; /&gt;&#10;&lt;/ComboBox&gt;">
                     <ComboBox
@@ -51,7 +50,7 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="A ComboBox with ItemsSource set."
                     XamlCode="&lt;ComboBox MinWidth=&quot;200&quot; HorizontalAlignment=&quot;Left&quot; ItemsSource=&quot;{Binding FontFamilies}&quot; SelectedIndex=&quot;0&quot; /&gt;">
                     <ComboBox
@@ -69,7 +68,7 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="An editable ComboBox."
                     XamlCode="&lt;ComboBox MinWidth=&quot;200&quot; HorizontalAlignment=&quot;Left&quot; ItemsSource=&quot;{Binding FontSizes}&quot; SelectedIndex=&quot;0&quot; IsEditable=&quot;True&quot; /&gt;">
                     <ComboBox

@@ -7,6 +7,9 @@ using System.Windows.Controls;
 
 namespace WPFGallery.Navigation
 {
+    /// <summary>
+    /// Represents a navigation card that can be used to navigate to a page.
+    /// </summary>
     public class NavigationCard
     {
         public string Name { get; set; } = "";

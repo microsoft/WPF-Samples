@@ -160,7 +160,7 @@
             Title="Card Stroke"
             Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Used for card and layer colors.">
-            <Button>
+            <Button BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}">
                 <TextBlock Width="60" />
             </Button>
         </controls:ColorPageExample>
@@ -278,14 +278,14 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource SurfaceStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}">
                 <Border
                     Width="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
-                    BorderBrush="{DynamicResource DividerStrokeColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                     BorderThickness="1" />
             </Border>
         </controls:ColorPageExample>

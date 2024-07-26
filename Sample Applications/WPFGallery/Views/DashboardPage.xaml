@@ -25,18 +25,25 @@
             CornerRadius="8,0,0,0">
 
             <Grid>
-                <Border CornerRadius="8,0,0,0" Opacity="0.8">
+                <Border  CornerRadius="8,0,0,0" Opacity="0.8">
                     <Border.Background>
                         <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
                     </Border.Background>
+                    
                 </Border>
+                
                 <StackPanel Margin="36,88,0,0" VerticalAlignment="Top">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" />
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" Margin="0,0,0,8" AutomationProperties.HeadingLevel="Level1" />
+                    <Border Background="{DynamicResource ControlFillColorDisabledBrush}" CornerRadius="8,8,8,8" MaxWidth="300" HorizontalAlignment="Left">
                     <TextBlock
-                        Margin="0,8,0,0"
+                        MaxWidth="300"
+                        Margin="0,0,0,0"
                         Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="A collection of controls, guidelines and samples to build great WPF applications" />
+                        Text="A collection of controls, guidelines and samples to build great WPF applications"
+                        TextAlignment="Left" HorizontalAlignment="Left" Padding="12,8,12,8"/>
+                    </Border>
                 </StackPanel>
+                
             </Grid>
         </Border>
 
@@ -72,11 +79,11 @@
                                 <TextBlock
                                     Margin="10,0,0,0"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name}" AutomationProperties.HeadingLevel="Level3" />
                                 <TextBlock
                                     Width="240"
                                     Margin="10,0,0,0"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" 
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="{Binding Description}" />
                             </StackPanel>
@@ -85,5 +92,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        
     </Grid>
 </Page>

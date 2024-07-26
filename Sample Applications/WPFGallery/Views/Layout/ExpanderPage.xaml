@@ -27,15 +27,14 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="An Expander with text in the header and content areas"
                     XamlCode="&lt;Expander Header=&quot;This text is in the header&quot; Content=&quot;This is in the content&quot; /&gt;">
                     <Grid>

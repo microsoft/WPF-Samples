@@ -5,6 +5,9 @@
 
 namespace WPFGallery.Helpers;
 
+/// <summary>
+/// Converts a page name to a page type
+/// </summary>
 internal sealed class NameToPageTypeConverter
 {
     private static readonly Type[] PageTypes = Assembly

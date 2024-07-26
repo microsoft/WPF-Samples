@@ -14,7 +14,8 @@
         <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Padding" Value="0 0 0 4" />
-            <Setter Property="Foreground" Value="{StaticResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextFillColorPrimaryBrush}" />
+            <Setter Property="Opacity" Value="0.7"/>
             <Setter Property="Margin" Value="0,4,0,4" />
             <Setter Property="FontSize" Value="14"/>
         </Style>
@@ -71,20 +72,21 @@
         <ScrollViewer>
             <Grid>
                 <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
-            </StackPanel>
-                <Expander 
-                Grid.Row="1" 
-                Header="Instructions on how to use Segoe Fluent Icons"
-                IsExpanded="False" >
-                <TextBlock TextWrapping="Wrap">
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
+                </StackPanel>
+                <Expander Grid.Row="1" 
+                  Header="Instructions on how to use Segoe Fluent Icons"
+                  IsExpanded="False" 
+                  Margin="5">
+                
+                  <TextBlock TextWrapping="Wrap">
                     <Run FontWeight="SemiBold">
                         How to get the font
                     </Run>
@@ -130,22 +132,22 @@
                     <Span>
                         &lt;/Grid&gt;
                     </Span>
-                </TextBlock>
-            </Expander>
+                    </TextBlock>
+                </Expander>
                 <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="0,24,0,10" Grid.Row="2"/>
-                <Grid Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid Grid.Row="3" MaxHeight="620">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="296"/>
                     </Grid.ColumnDefinitions>
-                    <ListView AutomationProperties.Name="Icons" Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" Height="540">
+                    <ListView AutomationProperties.Name="Icons" Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                                 <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
                             </Style>
                         </ListView.ItemContainerStyle>
@@ -164,7 +166,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ListView>
-                    <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}" Height="510">
+                    <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}">
                         <StackPanel Orientation="Vertical" Margin="16">
                             <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
                             <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="Segoe Fluent Icons" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>

@@ -1,6 +1,9 @@
 
 namespace WPFGallery.Models;
 
+/// <summary>
+/// Product class for DataGrid page
+/// </summary>
 public class Product
 {
     public int ProductId { get; set; }
@@ -13,7 +16,7 @@ public class Product
 
     public double UnitPrice { get; set; }
 
-    public string UnitPriceString => UnitPrice.ToString("F2");
+   // public string UnitPriceString => UnitPrice.ToString("F2");
 
     public int UnitsInStock { get; set; }
 

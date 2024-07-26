@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,7 +47,27 @@ public partial class MainWindow : Window
             }
         );
 
+        SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         this.StateChanged += MainWindow_StateChanged;
+    }
+
+    private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+    {
+        Dispatcher.Invoke(() =>
+        {
+            if (SystemParameters.HighContrast)
+            {
+                MinimizeButton.Visibility = Visibility.Visible;
+                MaximizeButton.Visibility = Visibility.Visible;
+                CloseButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MinimizeButton.Visibility = Visibility.Collapsed;
+                MaximizeButton.Visibility = Visibility.Collapsed;
+                CloseButton.Visibility = Visibility.Collapsed;
+            }
+        });
     }
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
@@ -66,12 +87,11 @@ public partial class MainWindow : Window
 
     public MainWindowViewModel ViewModel { get; }
 
-    private void ControlsList_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+    private void ControlsList_SelectedItemChanged()
     {
         if (ControlsList.SelectedItem is NavigationItem navItem)
         {
             _navigationService.Navigate(navItem.PageType);
-
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
@@ -98,9 +118,19 @@ public partial class MainWindow : Window
             {
                 if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
                 {
-                    MinimizeButton.Visibility = Visibility.Collapsed;
-                    MaximizeButton.Visibility = Visibility.Collapsed;
-                    CloseButton.Visibility = Visibility.Collapsed;
+                    if (SystemParameters.HighContrast == true)
+                    {
+                        MinimizeButton.Visibility = Visibility.Visible;
+                        MaximizeButton.Visibility = Visibility.Visible;
+                        CloseButton.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        MinimizeButton.Visibility = Visibility.Collapsed;
+                        MaximizeButton.Visibility = Visibility.Collapsed;
+                        CloseButton.Visibility = Visibility.Collapsed;
+                    }
+
                     break;
                 }
             }
@@ -165,7 +195,26 @@ public partial class MainWindow : Window
             if(selectedTreeViewItem != null)
             {
                 selectedTreeViewItem.IsSelected = true;
+                ControlsList_SelectedItemChanged();
             }
         }
+    }
+
+    private void RootContentFrame_Navigated(object sender, NavigationEventArgs e)
+    {
+        ViewModel.UpdateCanNavigateBack();
+    }
+
+    private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter) 
+        {
+            ControlsList_SelectedItemChanged();
+        }
+    }
+
+    private void ControlsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    {
+        ControlsList_SelectedItemChanged();
     }
 }

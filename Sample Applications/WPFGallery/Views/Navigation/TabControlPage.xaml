@@ -27,15 +27,14 @@
 
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
             </StackPanel>
 
         </Grid>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <Grid Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Standard TabControl."
                     XamlCode="&lt;TabControl Margin=&quot;0,8,0,0&quot;&gt;             &#10;&#9;&lt;TabItem&gt;             &#10;&#9;&#9;&lt;TabItem.Header&gt;             &#10;&#9;&#9;&#9;&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;             &#10;&#9;&#9;&#9;&#9;&lt;TextBlock Text=&quot;Hello&quot; /&gt;             &#10;&#9;&#9;&#9;&lt;/StackPanel&gt;             &#10;&#9;&#9;&lt;/TabItem.Header&gt;             &#10;&#9;&#9;&lt;Grid&gt;             &#10;&#9;&#9;&#9;&lt;TextBlock Margin=&quot;12&quot; Text=&quot;World&quot; /&gt;             &#10;&#9;&#9;&lt;/Grid&gt;             &#10;&#9;&lt;/TabItem&gt;             &#10;&#9;&lt;TabItem IsSelected=&quot;True&quot;&gt;             &#10;&#9;&#9;&lt;TabItem.Header&gt;             &#10;&#9;&#9;&#9;&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;             &#10;&#9;&#9;&#9;&#9;&lt;TextBlock Text=&quot;The cake&quot; /&gt;             &#10;&#9;&#9;&#9;&lt;/StackPanel&gt;             &#10;&#9;&#9;&lt;/TabItem.Header&gt;             &#10;&#9;&#9;&lt;Grid&gt;             &#10;&#9;&#9;&#9;&lt;TextBlock Margin=&quot;12&quot; Text=&quot;Is a lie.&quot; /&gt;             &#10;&#9;&#9;&lt;/Grid&gt;             &#10;&#9;&lt;/TabItem&gt;             &#10;&lt;/TabControl&gt;">
                     <TabControl Margin="0,8,0,0">

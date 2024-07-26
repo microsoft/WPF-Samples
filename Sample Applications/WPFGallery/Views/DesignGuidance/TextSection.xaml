@@ -127,7 +127,6 @@
         <!--  Text on accent  -->
         <controls:ColorPageExample
             Title="Text On Accent"
-            Background="{DynamicResource AccentFillColorDefaultBrush}"
             Description="Used for text on accent colored controls or fills"
             Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}">
             <TextBlock

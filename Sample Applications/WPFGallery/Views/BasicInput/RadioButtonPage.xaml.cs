@@ -30,4 +30,13 @@ namespace WPFGallery.Views;
 
         InitializeComponent();
     }
+
+    private void RadioButton_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+    {
+        var radioButton = sender as RadioButton;
+        if (radioButton != null)
+        {
+            radioButton.IsChecked = true;
+        }
     }
+}
