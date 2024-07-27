@@ -16,19 +16,25 @@
                 "UniqueId": "Colors",
                 "Title": "Colors",
                 "PageName": "ColorsPage",
-                "IconGlyph": "\uE790"
+                "IconGlyph": "\uE790",
+                "Description": "Guide showing how to use colors in your app.",
+                "ImagePath": "Assets/ControlImages/ColorPaletteResources.png"
             },
             {
                 "UniqueId": "Typography",
                 "Title": "Typography",
                 "PageName": "TypographyPage",
-                "IconGlyph": "\uE8D2"
+                "IconGlyph": "\uE8D2",
+                "Description": "Guide showing how to use typography in your app.",
+                "ImagePath": "Assets/ControlImages/TextBlock.png"
             },
             {
                 "UniqueId": "Icons",
                 "Title": "Icons",
                 "PageName": "IconsPage",
-                "IconGlyph": "\uED58"
+                "IconGlyph": "\uED58",
+                "Description": "Guide showing how to use icons in your app.",
+                "ImagePath": "Assets/ControlImages/IconElement.png"
             }
         ]
     },
@@ -42,7 +48,9 @@
             {
                 "UniqueId": "User Dashboard",
                 "Title": "User Dashboard",
-                "PageName": "UserDashboardPage"
+                "PageName": "UserDashboardPage",
+                "Description": "A dashboard for a user to view and interact with.",
+                "ImagePath": "Assets/ControlImages/PersonPicture.png"
             }
         ]
     },
@@ -57,6 +65,8 @@
         "Title": "Basic Input",
         "PageName": "BasicInputPage",
         "IconGlyph": "\uE73A",
+        "Description": "Button, CheckBox, ComboBox, RadioButton, Slider.",
+        "ImagePath": "Assets/ControlImages/Button.png",
         "IsGroup": true,
         "Items": [
             {
@@ -101,6 +111,8 @@
         "Title": "Collections",
         "PageName": "CollectionsPage",
         "IconGlyph": "\uE80A",
+        "Description": "DataGrid, ListBox, ListView, TreeView.",
+        "ImagePath": "Assets/ControlImages/DataGrid.png",
         "IsGroup": true,
         "Items": [
             {
@@ -138,13 +150,15 @@
         "Title": "Date & Calendar",
         "PageName": "DateAndTimePage",
         "IconGlyph": "\uEC92",
+        "Description": "Calendar, DatePicker.",
+        "ImagePath": "Assets/ControlImages/CalendarView.png",
         "IsGroup": true,
         "Items": [
             {
                 "UniqueId": "Calendar",
                 "Title": "Calendar",
                 "PageName": "CalendarPage",
-                "ImagePath": "Assets/ControlImages/CalenderView.png",
+                "ImagePath": "Assets/ControlImages/CalendarView.png",
                 "Description": "A control that presents a calendar for a user to choose a date from."
             },
             {
@@ -161,6 +175,8 @@
         "Title": "Layout",
         "PageName": "LayoutPage",
         "IconGlyph": "\uF246",
+        "Description": "Expander",
+        "ImagePath": "Assets/ControlImages/Expander.png",
         "IsGroup": true,
         "Items": [
             {
@@ -177,6 +193,8 @@
         "Title": "Navigation",
         "PageName": "NavigationPage",
         "IconGlyph": "\uE700",
+        "Description": "Menu, TabControl.",
+        "ImagePath": "Assets/ControlImages/Pivot.png",
         "IsGroup": true,
         "Items": [
             {
@@ -200,6 +218,8 @@
         "Title": "Status & Info",
         "PageName": "StatusAndInfoPage",
         "IconGlyph": "\uE8F2",
+        "Description": "ProgressBar, ToolTip.",
+        "ImagePath": "Assets/ControlImages/ProgressBar.png",
         "IsGroup": true,
         "Items": [
             {
@@ -223,6 +243,8 @@
         "Title": "Text",
         "PageName": "TextPage",
         "IconGlyph": "\uE8D2",
+        "Description": "Label, TextBox, TextBlock, RichTextEdit, PasswordBox.",
+        "ImagePath": "Assets/ControlImages/TextBlock.png",
         "IsGroup": true,
         "Items": [
             {

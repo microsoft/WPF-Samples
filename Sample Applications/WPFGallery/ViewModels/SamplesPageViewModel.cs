@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WPFGallery.Navigation;
 using WPFGallery.Views.Samples;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -19,17 +20,7 @@ namespace WPFGallery.ViewModels
         private string _pageDescription = "Sample pages for common scenarios";
 
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "User Dashboard",
-                PageType = typeof(UserDashboardPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/PersonPicture.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.CheckboxChecked24 },
-                Description = "User Dashboard Page"
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Samples");
 
         private readonly INavigationService _navigationService;
 

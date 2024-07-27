@@ -66,7 +66,7 @@
                         Margin="7"
                         Padding="20,10"
                         HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="{Binding Name}"
+                        AutomationProperties.Name="{Binding Title}"
                         Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:DashboardPage}}}"
                         CommandParameter="{Binding PageType}">
                         <StackPanel Orientation="Horizontal">
@@ -74,12 +74,16 @@
                                 Width="50"
                                 Height="50"
                                 Margin="0,0,8,0"
-                                Content="{Binding Icon}" />
+                                >
+                                <ContentPresenter.Content>
+                                    <Image Source="{Binding ImageSource}" />
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
                             <StackPanel Margin="10,0,10,0" Orientation="Vertical">
                                 <TextBlock
                                     Margin="10,0,0,0"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" AutomationProperties.HeadingLevel="Level3" />
+                                    Text="{Binding Title}" AutomationProperties.HeadingLevel="Level3" />
                                 <TextBlock
                                     Width="240"
                                     Margin="10,0,0,0"

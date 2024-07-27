@@ -92,5 +92,27 @@ namespace WPFGallery.Models
             return ControlsInfo.Where(x => x.UniqueId == groupName).FirstOrDefault().Items;
         }
 
+        public ICollection<ControlInfoDataItem> GetAllControlsInfo()
+        {
+            ICollection<ControlInfoDataItem> allControls = new ObservableCollection<ControlInfoDataItem>();
+            foreach (ControlInfoDataItem ci in ControlsInfo)
+            {
+                if(ci.UniqueId != "Samples")
+                {
+                    var items = ci.Items;
+                    foreach (ControlInfoDataItem item in items)
+                    {
+                        allControls.Add(item);
+                    }
+                }
+            }
+
+            return allControls;
+        }
+
+        public ICollection<ControlInfoDataItem> GetGroupedControlsInfo()
+        {
+            return ControlsInfo.Where(x => x.IsGroup == true && x.UniqueId != "Design Guidance" && x.UniqueId != "Samples").ToList();
+        }
     }
 }
