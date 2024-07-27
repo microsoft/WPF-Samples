@@ -220,7 +220,7 @@
                     PreviewKeyDown="ControlsList_PreviewKeyDown"
                     PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp">
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <HierarchicalDataTemplate ItemsSource="{Binding Items}">
                             <Grid MinHeight="30">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -230,16 +230,16 @@
                                 <TextBlock
                                     MaxWidth="16"
                                     VerticalAlignment="Center"
-                                    AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}"
+                                    AutomationProperties.Name="{Binding Title, StringFormat='{}{0} Page'}"
                                     Focusable="False"
                                     FontFamily="Segoe Fluent Icons"
                                     FontSize="16"
-                                    Text="{Binding Icon}"
-                                    Visibility="{Binding Icon, Converter={StaticResource EmptyToVisibilityConverter}}" />
+                                    Text="{Binding IconGlyph}"
+                                    Visibility="{Binding IconGlyph, Converter={StaticResource EmptyToVisibilityConverter}}" />
                                 <TextBlock
                                     Grid.Column="2"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Title}" />
                             </Grid>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>

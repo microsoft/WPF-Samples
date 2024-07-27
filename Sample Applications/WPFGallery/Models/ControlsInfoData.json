@@ -1,0 +1,265 @@
+[
+    {
+        "UniqueId": "Home",
+        "Title": "Home",
+        "PageName": "DashboardPage",
+        "IconGlyph": "\uE80F"
+    },
+    {
+        "UniqueId": "Design Guidance",
+        "Title": "Design Guidance",
+        "PageName": "DesignGuidancePage",
+        "IconGlyph": "\uEB3C",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Colors",
+                "Title": "Colors",
+                "PageName": "ColorsPage",
+                "IconGlyph": "\uE790"
+            },
+            {
+                "UniqueId": "Typography",
+                "Title": "Typography",
+                "PageName": "TypographyPage",
+                "IconGlyph": "\uE8D2"
+            },
+            {
+                "UniqueId": "Icons",
+                "Title": "Icons",
+                "PageName": "IconsPage",
+                "IconGlyph": "\uED58"
+            }
+        ]
+    },
+    {
+        "UniqueId": "Samples",
+        "Title": "Samples",
+        "PageName": "SamplesPage",
+        "IconGlyph": "\uEF58",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "User Dashboard",
+                "Title": "User Dashboard",
+                "PageName": "UserDashboardPage"
+            }
+        ]
+    },
+    {
+        "UniqueId": "All Controls",
+        "Title": "All Controls",
+        "PageName": "AllSamplesPage",
+        "IconGlyph": "\uE71D"
+    },
+    {
+        "UniqueId": "Basic Input",
+        "Title": "Basic Input",
+        "PageName": "BasicInputPage",
+        "IconGlyph": "\uE73A",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Button",
+                "Title": "Button",
+                "PageName": "ButtonPage",
+                "ImagePath": "Assets/ControlImages/Button.png",
+                "Description": "A control that responds to user input and raises a Click event."
+            },
+            {
+                "UniqueId": "CheckBox",
+                "Title": "CheckBox",
+                "PageName": "CheckBoxPage",
+                "ImagePath": "Assets/ControlImages/CheckBox.png",
+                "Description": "A control that a user can select or clear."
+            },
+            {
+                "UniqueId": "ComboBox",
+                "Title": "ComboBox",
+                "PageName": "ComboBoxPage",
+                "ImagePath": "Assets/ControlImages/CheckBox.png",
+                "Description": "A drop-down list of items a user can select from."
+            },
+            {
+                "UniqueId": "RadioButton",
+                "Title": "RadioButton",
+                "PageName": "RadioButtonPage",
+                "ImagePath": "Assets/ControlImages/RadioButton.png",
+                "Description": "A control that allows a user to select a single option from a group of options."
+            },
+            {
+                "UniqueId": "Slider",
+                "Title": "Slider",
+                "PageName": "SliderPage",
+                "ImagePath": "Assets/ControlImages/Slider.png",
+                "Description": "A control that lets the user select from a range of values by moving a Thumb control along a track."
+            }
+        ]
+    },
+    {
+        "UniqueId": "Collections",
+        "Title": "Collections",
+        "PageName": "CollectionsPage",
+        "IconGlyph": "\uE80A",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "DataGrid",
+                "Title": "DataGrid",
+                "PageName": "DataGridPage",
+                "ImagePath": "Assets/ControlImages/DataGrid.png",
+                "Description": "The DataGrid control presents data in a customizable table of rows and columns."
+            },
+            {
+                "UniqueId": "ListBox",
+                "Title": "ListBox",
+                "PageName": "ListBoxPage",
+                "ImagePath": "Assets/ControlImages/Listbox.png",
+                "Description": "A control that presents an inline list of items that the user can select from."
+            },
+            {
+                "UniqueId": "ListView",
+                "Title": "ListView",
+                "PageName": "ListViewPage",
+                "ImagePath": "Assets/ControlImages/ListView.png",
+                "Description": "A control that presents a collection of items in a vertical list."
+            },
+            {
+                "UniqueId": "TreeView",
+                "Title": "TreeView",
+                "PageName": "TreeViewPage",
+                "ImagePath": "Assets/ControlImages/TreeView.png",
+                "Description": "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items."
+            }
+        ]
+    },
+    {
+        "UniqueId": "Date & Calendar",
+        "Title": "Date & Calendar",
+        "PageName": "DateAndTimePage",
+        "IconGlyph": "\uEC92",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Calendar",
+                "Title": "Calendar",
+                "PageName": "CalendarPage",
+                "ImagePath": "Assets/ControlImages/CalenderView.png",
+                "Description": "A control that presents a calendar for a user to choose a date from."
+            },
+            {
+                "UniqueId": "DatePicker",
+                "Title": "DatePicker",
+                "PageName": "DatePickerPage",
+                "ImagePath": "Assets/ControlImages/DatePicker.png",
+                "Description": "A control that lets a user pick a date value."
+            }
+        ]
+    },
+    {
+        "UniqueId": "Layout",
+        "Title": "Layout",
+        "PageName": "LayoutPage",
+        "IconGlyph": "\uF246",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Expander",
+                "Title": "Expander",
+                "PageName": "ExpanderPage",
+                "ImagePath": "Assets/ControlImages/Expander.png",
+                "Description": "A container with a header that can be expanded to show a body with more content."
+            }
+        ]
+    },
+    {
+        "UniqueId": "Navigation",
+        "Title": "Navigation",
+        "PageName": "NavigationPage",
+        "IconGlyph": "\uE700",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Menu",
+                "Title": "Menu",
+                "PageName": "MenuPage",
+                "ImagePath": "Assets/ControlImages/Pivot.png",
+                "Description": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
+            },
+            {
+                "UniqueId": "TabControl",
+                "Title": "TabControl",
+                "PageName": "TabControlPage",
+                "ImagePath": "Assets/ControlImages/TabView.png",
+                "Description": "A control that displays a collection of tabs."
+            }
+        ]
+    },
+    {
+        "UniqueId": "Status & Info",
+        "Title": "Status & Info",
+        "PageName": "StatusAndInfoPage",
+        "IconGlyph": "\uE8F2",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "ProgressBar",
+                "Title": "ProgressBar",
+                "PageName": "ProgressBarPage",
+                "ImagePath": "Assets/ControlImages/ProgressBar.png",
+                "Description": "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."
+            },
+            {
+                "UniqueId": "ToolTip",
+                "Title": "ToolTip",
+                "PageName": "ToolTipPage",
+                "ImagePath": "Assets/ControlImages/ToolTip.png",
+                "Description": "Displays information for an element in a pop-up window."
+            }
+        ]
+    },
+    {
+        "UniqueId": "Text",
+        "Title": "Text",
+        "PageName": "TextPage",
+        "IconGlyph": "\uE8D2",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Label",
+                "Title": "Label",
+                "PageName": "LabelPage",
+                "ImagePath": "Assets/ControlImages/Button.png",
+                "Description": "Caption of an item."
+            },
+            {
+                "UniqueId": "TextBox",
+                "Title": "TextBox",
+                "PageName": "TextBoxPage",
+                "ImagePath": "Assets/ControlImages/TextBox.png",
+                "Description": "A single-line or multi-line plain text field."
+            },
+            {
+                "UniqueId": "TextBlock",
+                "Title": "TextBlock",
+                "PageName": "TextBlockPage",
+                "ImagePath": "Assets/ControlImages/TextBlock.png",
+                "Description": "A lightweight control for displaying small amounts of text."
+            },
+            {
+                "UniqueId": "RichTextEdit",
+                "Title": "RichTextEdit",
+                "PageName": "RichTextEditPage",
+                "ImagePath": "Assets/ControlImages/RichEditBox.png",
+                "Description": "A control that displays formatted text, hyperlinks, inline images, and other rich content."
+            },
+            {
+                "UniqueId": "PasswordBox",
+                "Title": "PasswordBox",
+                "PageName": "PasswordBoxPage",
+                "ImagePath": "Assets/ControlImages/PasswordBox.png",
+                "Description": "A control for entering passwords."
+            }
+        ]
+    }
+]
