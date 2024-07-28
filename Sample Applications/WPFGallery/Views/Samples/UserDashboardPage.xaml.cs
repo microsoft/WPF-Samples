@@ -1,5 +1,4 @@
-﻿using System.Windows.Controls;
-using WPFGallery.ViewModels.Samples;
+﻿using WPFGallery.ViewModels.Samples;
 
 namespace WPFGallery.Views.Samples
 {

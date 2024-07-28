@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System.Windows.Controls;
 using System.Windows.Shell;
 using System.Windows.Navigation;
 using WPFGallery.Navigation;

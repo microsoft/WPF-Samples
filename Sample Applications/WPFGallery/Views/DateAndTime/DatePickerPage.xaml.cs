@@ -1,5 +1,4 @@
-﻿using System.Windows.Controls;
-
+﻿
 using WPFGallery.ViewModels;
 
 namespace WPFGallery.Views;

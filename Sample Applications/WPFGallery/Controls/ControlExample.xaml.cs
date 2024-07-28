@@ -5,7 +5,6 @@
 
 using System.Diagnostics;
 using System.Windows.Markup;
-using System.Windows.Controls;
 
 namespace WPFGallery.Controls;
 

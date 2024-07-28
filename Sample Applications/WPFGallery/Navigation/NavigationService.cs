@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Windows.Controls;
 
 namespace WPFGallery.Navigation;
 
