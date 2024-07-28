@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels;

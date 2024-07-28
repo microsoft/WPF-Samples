@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WPFGallery.Models;
+﻿using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels.Samples
 {
