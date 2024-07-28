@@ -7,13 +7,8 @@ using WPFGallery.Navigation;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class ColorsPageViewModel : ObservableObject
+    public partial class ColorsPageViewModel : BasePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Colors";
-
-        [ObservableProperty]
-        private string _pageDescription = "Guide showing how to use colors in your app";
-
+        public ColorsPageViewModel() : base("Colors", "Guide showing how to use colors in your app") { }
     }
 }

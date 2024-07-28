@@ -9,14 +9,8 @@ using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels;
 
-public partial class ListViewPageViewModel : ObservableObject 
+public partial class ListViewPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "ListView";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
     private int _listViewSelectionModeComboBoxSelectedIndex = 0;
 
     public int ListViewSelectionModeComboBoxSelectedIndex
@@ -35,7 +29,7 @@ public partial class ListViewPageViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<Person> _basicListViewItems;
 
-    public ListViewPageViewModel()
+    public ListViewPageViewModel() : base("ListView")
     {
         _basicListViewItems = GeneratePersons();
     }

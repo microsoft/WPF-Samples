@@ -7,13 +7,7 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class CalendarPageViewModel : ObservableObject 
+public partial class CalendarPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "Calendar";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-
+	public CalendarPageViewModel() : base("Calendar") {}
 }

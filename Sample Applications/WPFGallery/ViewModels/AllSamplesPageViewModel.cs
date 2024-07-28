@@ -11,31 +11,13 @@ using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class AllSamplesPageViewModel : ObservableObject
+    public partial class AllSamplesPageViewModel : BaseSectionPageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "All Controls";
-
-        [ObservableProperty]
-        private string _pageDescription = "";
-
-        [ObservableProperty]
-        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetAllControlsInfo();
-        private readonly INavigationService _navigationService;
-
-        public AllSamplesPageViewModel(INavigationService navigationService)
+        public AllSamplesPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _navigationService = navigationService;
+            PageTitle = "All Controls";
+            PageDescription = "This page contains all the controls available in the gallery.";
+            NavigationCards = ControlsInfoDataSource.Instance.GetAllControlsInfo();
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType)
-        {
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
     }
 }

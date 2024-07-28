@@ -5,14 +5,8 @@
 
 namespace WPFGallery.ViewModels;
 
-public partial class MenuPageViewModel : ObservableObject 
+public partial class MenuPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "Menu";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-
+	public MenuPageViewModel() : base("Menu") {}
 }
 

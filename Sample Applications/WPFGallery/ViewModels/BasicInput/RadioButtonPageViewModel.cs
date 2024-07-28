@@ -7,13 +7,9 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class RadioButtonPageViewModel : ObservableObject 
+public partial class RadioButtonPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "RadioButton";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
+    public RadioButtonPageViewModel() : base("RadioButton") {}
 
     [ObservableProperty]
     private bool _isRadioButtonEnabled = true;

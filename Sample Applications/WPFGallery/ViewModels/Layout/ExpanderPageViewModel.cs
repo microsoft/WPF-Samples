@@ -7,13 +7,7 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class ExpanderPageViewModel : ObservableObject 
+public partial class ExpanderPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "Expander";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-    public ExpanderPageViewModel() { }
+	public ExpanderPageViewModel() : base("Expander") {}
 }

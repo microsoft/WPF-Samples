@@ -7,13 +7,9 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class CheckBoxPageViewModel : ObservableObject 
+public partial class CheckBoxPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "CheckBox";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
+    public CheckBoxPageViewModel() : base("CheckBox") {}
 
     [ObservableProperty]
     private bool? _selectAllCheckBoxChecked = null;

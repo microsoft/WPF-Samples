@@ -7,13 +7,7 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class TreeViewPageViewModel : ObservableObject 
+public partial class TreeViewPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "TreeView";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-
+	public TreeViewPageViewModel() : base("TreeView") {}
 }

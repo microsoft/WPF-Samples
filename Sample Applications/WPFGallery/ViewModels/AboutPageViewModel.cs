@@ -9,9 +9,8 @@ using WPFGallery.Views;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class AboutPageViewModel : ObservableObject
+    public partial class AboutPageViewModel : BasePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "About";
+        public AboutPageViewModel() : base("About") {}
     }
 }

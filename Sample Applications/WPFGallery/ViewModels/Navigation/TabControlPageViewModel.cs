@@ -5,14 +5,8 @@
 
 namespace WPFGallery.ViewModels;
 
-public partial class TabControlPageViewModel : ObservableObject 
+public partial class TabControlPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "TabControl";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-
+	public TabControlPageViewModel() : base("TabControl") {}
 }
 

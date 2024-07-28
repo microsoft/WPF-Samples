@@ -7,13 +7,7 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class DatePickerPageViewModel : ObservableObject 
+public partial class DatePickerPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "DatePicker";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-
+	public DatePickerPageViewModel() : base("DatePicker") {}
 }

@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class TextBlockPageViewModel : ObservableObject 
+    public partial class TextBlockPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "TextBlock";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
+	public TextBlockPageViewModel() : base("TextBlock") {}
     }
 }

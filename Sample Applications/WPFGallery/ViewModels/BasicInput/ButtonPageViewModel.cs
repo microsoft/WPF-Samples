@@ -6,13 +6,9 @@ namespace WPFGallery.ViewModels;
 /// <summary>
 /// Interaction logic for Button.xaml
 /// </summary>
-public partial class ButtonPageViewModel : ObservableObject 
+public partial class ButtonPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "Button";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
+    public ButtonPageViewModel() : base("Button") {}
 
     [ObservableProperty]
     private string _message = "Hello World!";

@@ -7,18 +7,12 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class ListBoxPageViewModel : ObservableObject 
+public partial class ListBoxPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "ListBox";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
     [ObservableProperty]
     private ObservableCollection<string> _listBoxItems;
 
-    public ListBoxPageViewModel()
+    public ListBoxPageViewModel() : base("ListBox")
     {
         _listBoxItems = new ObservableCollection<string>
         {

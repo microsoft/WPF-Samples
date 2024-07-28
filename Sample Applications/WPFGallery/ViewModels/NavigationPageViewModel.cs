@@ -11,32 +11,13 @@ using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class NavigationPageViewModel : ObservableObject
+    public partial class NavigationPageViewModel : BaseSectionPageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Navigation";
-
-        [ObservableProperty]
-        private string _pageDescription = "Controls for navigation and actions";
-
-        [ObservableProperty]
-        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Navigation");
-
-        private readonly INavigationService _navigationService;
-
-        public NavigationPageViewModel(INavigationService navigationService)
+        public NavigationPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _navigationService = navigationService;
+            PageTitle = "Navigation";
+            PageDescription = "Controls for navigation and actions";
+            NavigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Navigation");
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType){
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
-        
     }
 }

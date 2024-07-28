@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class RichTextEditPageViewModel : ObservableObject 
+    public partial class RichTextEditPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "RichTextEdit";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
+	public RichTextEditPageViewModel() : base("RichTextEdit") {}
     }
 }

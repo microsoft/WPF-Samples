@@ -9,18 +9,12 @@ using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels;
 
-public partial class DataGridPageViewModel : ObservableObject 
+public partial class DataGridPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "DataGrid";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
     [ObservableProperty]
     private ObservableCollection<Product> _productsCollection;
 
-    public DataGridPageViewModel()
+    public DataGridPageViewModel() : base("DataGrid")
     {
         _productsCollection = GenerateProducts();
     }

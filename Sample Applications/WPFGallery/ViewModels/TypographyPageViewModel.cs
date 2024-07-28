@@ -7,12 +7,12 @@ using WPFGallery.Navigation;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class TypographyPageViewModel : ObservableObject
+    public partial class TypographyPageViewModel : BasePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Typography";
-
-        [ObservableProperty]
-        private string _pageDescription = "Guide showing how to use typography in your app";
+        public TypographyPageViewModel()
+        {
+            PageTitle = "Typography";
+            PageDescription = "Controls for text presentation";
+        }
     }
 }

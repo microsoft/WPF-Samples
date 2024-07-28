@@ -11,27 +11,11 @@ using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class DashboardPageViewModel : ObservableObject
+    public partial class DashboardPageViewModel : BaseSectionPageViewModel
     {
-
-        [ObservableProperty]
-        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetGroupedControlsInfo();
-
-        private readonly INavigationService _navigationService;
-
-        public DashboardPageViewModel(INavigationService navigationService)
+        public DashboardPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _navigationService = navigationService;
+            NavigationCards = ControlsInfoDataSource.Instance.GetGroupedControlsInfo();
         }
-
-        [RelayCommand]
-        public void Navigate(object pageType){
-            if (pageType is Type page)
-            {
-                _navigationService.NavigateTo(page);
-            }
-        }
-
-        
     }
 }

@@ -11,14 +11,8 @@ using System.Reflection;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class IconsPageViewModel : ObservableObject
+    public partial class IconsPageViewModel : BasePageViewModel
     {
-        [ObservableProperty]
-        private string _pageTitle = "Icons";
-
-        [ObservableProperty]
-        private string _pageDescription = "Guide showing how to use icons in your application.";
-
         [ObservableProperty]
         private ICollection<IconData> _icons;
 
@@ -27,6 +21,8 @@ namespace WPFGallery.ViewModels
 
         public IconsPageViewModel()
         {
+            PageTitle = "Icons";
+            PageDescription = "Guide showing how to use icons in your application.";
             var jsonText = ReadIconData();
             _icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
             _selectedIcon = _icons.FirstOrDefault();

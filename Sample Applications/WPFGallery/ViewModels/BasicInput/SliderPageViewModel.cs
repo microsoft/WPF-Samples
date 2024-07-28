@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 namespace WPFGallery.ViewModels;
 
 
-public partial class SliderPageViewModel : ObservableObject 
+public partial class SliderPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "Slider";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
+    public SliderPageViewModel() : base("Slider") {}
+    
     [ObservableProperty]
     private int _simpleSliderValue = 0;
 

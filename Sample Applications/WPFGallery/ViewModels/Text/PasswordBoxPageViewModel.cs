@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFGallery.ViewModels
 {
-    public partial class PasswordBoxPageViewModel : ObservableObject 
+    public partial class PasswordBoxPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "PasswordBox";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
+	public PasswordBoxPageViewModel() : base("PasswordBox") {}
     }
 }

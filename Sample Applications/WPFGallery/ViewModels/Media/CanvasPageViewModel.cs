@@ -7,13 +7,7 @@ using System.Windows.Controls;
 
 namespace WPFGallery.ViewModels;
 
-public partial class CanvasPageViewModel : ObservableObject 
+public partial class CanvasPageViewModel : BasePageViewModel 
 {
-	[ObservableProperty]
-	private string _pageTitle = "Canvas";
-
-	[ObservableProperty]
-	private string _pageDescription = "";
-
-
+	public CanvasPageViewModel() : base("Canvas") {}
 }
