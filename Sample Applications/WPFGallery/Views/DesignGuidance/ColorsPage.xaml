@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFGallery.Views"
+      xmlns:controls="clr-namespace:WPFGallery.Controls"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -17,19 +18,7 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
     
-      <Grid Margin="0 0 0 32" Grid.Row="0">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-      <StackPanel Grid.Column="0">
-          <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-          <TextBlock FontWeight="Light" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
-      </StackPanel>
-
-      </Grid>
+      <controls:PageHeader  Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
     <ScrollViewer Margin="0,0,0,24" Grid.Row="1" Padding="0,0,24,0">
       <StackPanel Margin="0,0,0,24">

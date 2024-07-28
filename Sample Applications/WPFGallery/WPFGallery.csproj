@@ -9,6 +9,10 @@
 		<PlatformTarget>x64</PlatformTarget>
 		<Platforms>AnyCPU;x64</Platforms>
 		<StartupObject>WPFGallery.App</StartupObject>
+
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <AnalysisLevel>latest</AnalysisLevel>
 	</PropertyGroup>
 
 	

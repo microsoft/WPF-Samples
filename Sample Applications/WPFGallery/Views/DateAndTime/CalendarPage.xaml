@@ -18,18 +18,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,0,32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-            </StackPanel>
-
-        </Grid>
+        <controls:PageHeader  Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
 
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <controls:ControlExample Margin="10" HeaderText="A basic Calendar control.">
