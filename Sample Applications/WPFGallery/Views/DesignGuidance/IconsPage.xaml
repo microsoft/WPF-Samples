@@ -78,7 +78,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <controls:PageHeader  Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
+                <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
                 <Expander Grid.Row="1" 
                   Header="Instructions on how to use Segoe Fluent Icons"

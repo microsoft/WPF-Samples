@@ -15,7 +15,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <controls:PageHeader  Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
     <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
       <StackPanel Margin="0,0,0,24" Orientation="Vertical">
