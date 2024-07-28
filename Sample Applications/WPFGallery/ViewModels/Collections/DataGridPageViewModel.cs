@@ -1,10 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-
 using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels;
@@ -19,7 +14,7 @@ public partial class DataGridPageViewModel : BasePageViewModel
         _productsCollection = GenerateProducts();
     }
 
-    private ObservableCollection<Product> GenerateProducts()
+    private static ObservableCollection<Product> GenerateProducts()
     {
         var random = new Random();
         var products = new ObservableCollection<Product> { };
