@@ -10,9 +10,9 @@ public class Product
 
     public int ProductCode { get; set; }
 
-    public string ProductName { get; set; }
+    public string ProductName { get; set; } = string.Empty;
 
-    public string QuantityPerUnit { get; set; }
+    public string QuantityPerUnit { get; set; } = string.Empty;
 
     public double UnitPrice { get; set; }
 

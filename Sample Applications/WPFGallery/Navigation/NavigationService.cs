@@ -1,119 +1,112 @@
-using System.Collections;
+using WPFGallery.Models;
+using WPFGallery.ViewModels;
+using WPFGallery.Views;
 
 namespace WPFGallery.Navigation;
 
-/// <summary>
-/// Interface for the NavigationService
-/// </summary>
 public interface INavigationService
 {
-    void Navigate(Type type);
-
-    void NavigateTo(Type type);
-
-    void SetFrame(Frame frame);
-
+    void Navigate(ControlInfoDataItem item);
+    void NavigateTo(ControlInfoDataItem item);
     void NavigateBack();
-
     void NavigateForward();
-
-    bool IsBackHistoryNonEmpty();
-
+    void SetFrame(Frame frame);
+    bool CanNavigateBack();
+    bool CanNavigateForward();
     event EventHandler<NavigatingEventArgs> Navigating;
 }
 
-/// <summary>
-/// Service for navigating between pages.
-/// </summary>
 public class NavigationService : INavigationService
 {
     private Frame _frame;
-
-    private Type _currentPageType = null;
-
-    private readonly Stack<Type> _history;
-
-    private readonly Stack<Type> _future;
-
+    private ControlInfoDataItem _currentPage;
+    private readonly Stack<ControlInfoDataItem> _history;
+    private readonly Stack<ControlInfoDataItem> _future;
     private readonly IServiceProvider _serviceProvider;
 
     public event EventHandler<NavigatingEventArgs> Navigating;
 
-
     public NavigationService(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        _history = new Stack<Type>();
-        _future = new Stack<Type>();
+        _history = new Stack<ControlInfoDataItem>();
+        _future = new Stack<ControlInfoDataItem>();
     }
 
-    public void SetFrame(Frame frame)
-    {
-        _frame = frame;
-    }
+    public void SetFrame(Frame frame) => _frame = frame;
 
-    public void NavigateTo(Type type)
+    public void Navigate(ControlInfoDataItem item)
     {
-        if (type != null)
+        if (item != null)
         {
-            _future.Clear();
-            RaiseNavigatingEvent(type);
+            _history.Push(_currentPage);
+            _currentPage = item;
+            _frame.Navigate(GetPage(item));
         }
     }
 
-    public void Navigate(Type type)
+    public void NavigateTo(ControlInfoDataItem item)
     {
-        if(type != null)
+        if (item != null)
         {
-            _history.Push(_currentPageType);
-            _currentPageType = type;
-            var page = _serviceProvider.GetRequiredService(type);
-            _frame.Navigate(page);
+            _future.Clear();
+            RaiseNavigatingEvent(item);
         }
     }
 
     public void NavigateBack()
     {
-        if(_history.Count > 0)
+        if (_history.Count > 0)
         {
-            Type type = _history.Pop();
-            if (type != null)
-            {
-                _future.Push(type);
-                RaiseNavigatingEvent(type);
-                _history.Pop();
-            }
+            ControlInfoDataItem item = _history.Pop();
+            _future.Push(_currentPage);
+            RaiseNavigatingEvent(_history.Peek());
         }
     }
 
     public void NavigateForward()
     {
-        if(_future.Count > 0)
+        if (_future.Count > 0)
         {
-            Type type = _future.Pop();
-            if (type != null)
-            {
-                _history.Push(type);
-                RaiseNavigatingEvent(type);
-            }
+            ControlInfoDataItem item = _future.Pop();
+            _history.Push(item);
+            RaiseNavigatingEvent(item);
         }
     }
 
-    public void RaiseNavigatingEvent(Type type)
+    public bool CanNavigateBack()
     {
-        Navigating?.Invoke(this, new NavigatingEventArgs(type));
+        return _history.Count > 0;
     }
 
-    public bool IsBackHistoryNonEmpty()
+    public bool CanNavigateForward()
     {
-        var item = _history.Peek();
-        if (item == null)
+        return _future.Count > 0;
+    }
+
+    private void RaiseNavigatingEvent(ControlInfoDataItem item)
+    {
+        Navigating?.Invoke(this, new NavigatingEventArgs(item));
+    }
+
+    private object GetPage(ControlInfoDataItem item)
+    {
+        if(item.PageType != typeof(SectionPage))
         {
-            return false;
+            return _serviceProvider.GetRequiredService(item.PageType);
         }
-        else
-        {
-            return true;
-        }
+
+        SectionPage page = (SectionPage)_serviceProvider.GetRequiredService(item.PageType);
+        page.ViewModel = GetSectionPageViewModel(item);
+        return page;
+    }
+
+    private BaseSectionPageViewModel GetSectionPageViewModel(ControlInfoDataItem item)
+    {
+        var viewModel = _serviceProvider.GetRequiredService<BaseSectionPageViewModel>();
+        viewModel.PageTitle = item.Title;
+        viewModel.PageDescription = item.Description;
+        viewModel.NavigationCards = ControlsInfoDataSource.Instance.GetControlsInfo(item.UniqueId);
+        return viewModel;
     }
 }

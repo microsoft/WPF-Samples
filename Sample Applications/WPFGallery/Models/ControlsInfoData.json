@@ -8,7 +8,7 @@
     {
         "UniqueId": "Design Guidance",
         "Title": "Design Guidance",
-        "PageName": "DesignGuidancePage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uEB3C",
         "IsGroup": true,
         "Items": [
@@ -41,7 +41,7 @@
     {
         "UniqueId": "Samples",
         "Title": "Samples",
-        "PageName": "SamplesPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uEF58",
         "IsGroup": true,
         "Items": [
@@ -57,13 +57,13 @@
     {
         "UniqueId": "All Controls",
         "Title": "All Controls",
-        "PageName": "AllSamplesPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uE71D"
     },
     {
         "UniqueId": "Basic Input",
         "Title": "Basic Input",
-        "PageName": "BasicInputPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uE73A",
         "Description": "Button, CheckBox, ComboBox, RadioButton, Slider.",
         "ImagePath": "Assets/ControlImages/Button.png",
@@ -109,7 +109,7 @@
     {
         "UniqueId": "Collections",
         "Title": "Collections",
-        "PageName": "CollectionsPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uE80A",
         "Description": "DataGrid, ListBox, ListView, TreeView.",
         "ImagePath": "Assets/ControlImages/DataGrid.png",
@@ -148,7 +148,7 @@
     {
         "UniqueId": "Date & Calendar",
         "Title": "Date & Calendar",
-        "PageName": "DateAndTimePage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uEC92",
         "Description": "Calendar, DatePicker.",
         "ImagePath": "Assets/ControlImages/CalendarView.png",
@@ -173,7 +173,7 @@
     {
         "UniqueId": "Layout",
         "Title": "Layout",
-        "PageName": "LayoutPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uF246",
         "Description": "Expander",
         "ImagePath": "Assets/ControlImages/Expander.png",
@@ -191,7 +191,7 @@
     {
         "UniqueId": "Navigation",
         "Title": "Navigation",
-        "PageName": "NavigationPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uE700",
         "Description": "Menu, TabControl.",
         "ImagePath": "Assets/ControlImages/Pivot.png",
@@ -216,7 +216,7 @@
     {
         "UniqueId": "Status & Info",
         "Title": "Status & Info",
-        "PageName": "StatusAndInfoPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uE8F2",
         "Description": "ProgressBar, ToolTip.",
         "ImagePath": "Assets/ControlImages/ProgressBar.png",
@@ -241,7 +241,7 @@
     {
         "UniqueId": "Text",
         "Title": "Text",
-        "PageName": "TextPage",
+        "PageName": "SectionPage",
         "IconGlyph": "\uE8D2",
         "Description": "Label, TextBox, TextBlock, RichTextEdit, PasswordBox.",
         "ImagePath": "Assets/ControlImages/TextBlock.png",

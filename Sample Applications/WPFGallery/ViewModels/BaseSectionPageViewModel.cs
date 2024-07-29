@@ -19,7 +19,7 @@ public partial class BaseSectionPageViewModel : BasePageViewModel
     public void Navigate(object navCard){
         if (navCard is ControlInfoDataItem dataItem)
         {
-            _navigationService.NavigateTo(dataItem.PageType);
+            _navigationService.NavigateTo(dataItem);
         }
     }
 }

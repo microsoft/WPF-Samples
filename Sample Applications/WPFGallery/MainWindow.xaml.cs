@@ -13,9 +13,8 @@ namespace WPFGallery;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow(MainWindowViewModel viewModel, IServiceProvider serviceProvider, INavigationService navigationService)
+    public MainWindow(MainWindowViewModel viewModel, INavigationService navigationService)
     {
-        _serviceProvider = serviceProvider;
         ViewModel = viewModel;
         DataContext = this;
         InitializeComponent();
@@ -25,7 +24,7 @@ public partial class MainWindow : Window
         _navigationService = navigationService;
         _navigationService.Navigating += OnNavigating;
         _navigationService.SetFrame(this.RootContentFrame);
-        _navigationService.Navigate(typeof(DashboardPage));
+        _navigationService.Navigate(ControlsInfoDataSource.Instance.GetControlInfo("Home"));
 
         WindowChrome.SetWindowChrome(
             this,
@@ -64,17 +63,9 @@ public partial class MainWindow : Window
 
     private void MainWindow_StateChanged(object sender, EventArgs e)
     {
-        if (this.WindowState == WindowState.Maximized)
-        {
-            MainGrid.Margin = new Thickness(8);
-        }
-        else
-        {
-            MainGrid.Margin = default;
-        }
+        MainGrid.Margin = this.WindowState == WindowState.Maximized ? new Thickness(8) : default;
     }
 
-    private readonly IServiceProvider _serviceProvider;
     private readonly INavigationService _navigationService;
 
     public MainWindowViewModel ViewModel { get; }
@@ -83,7 +74,7 @@ public partial class MainWindow : Window
     {
         if (ControlsList.SelectedItem is ControlInfoDataItem navItem)
         {
-            _navigationService.Navigate(navItem.PageType);
+            _navigationService.Navigate(navItem);
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
@@ -129,17 +120,6 @@ public partial class MainWindow : Window
         }
     }
 
-    //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
-    //{
-    //    ViewModel.UpdateSearchText(SearchBox.Text);
-    //}
-
-    //private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
-    //{
-    //    SearchBox.Text = "";
-    //    ViewModel.UpdateSearchText(SearchBox.Text);
-    //}
-
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
         this.WindowState = WindowState.Minimized;
@@ -166,7 +146,7 @@ public partial class MainWindow : Window
 
     private void OnNavigating(object? sender, NavigatingEventArgs e)
     {
-        List<ControlInfoDataItem> list = ViewModel.GetNavigationItemHierarchyFromPageType(e.PageType);
+        List<ControlInfoDataItem> list = ViewModel.GetNavigationItemHierarchyFromPageType(e?.DataItem);
         
         if (list.Count > 0)
         {

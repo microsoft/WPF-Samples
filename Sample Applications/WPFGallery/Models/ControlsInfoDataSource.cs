@@ -87,6 +87,11 @@ namespace WPFGallery.Models
             return ControlsInfo.Where(x => x.UniqueId == groupName).FirstOrDefault().Items;
         }
 
+        public ControlInfoDataItem GetControlInfo(string uniqueId)
+        {
+            return ControlsInfo.Where(x => x.UniqueId == uniqueId).FirstOrDefault();
+        }
+
         public ICollection<ControlInfoDataItem> GetAllControlsInfo()
         {
             ICollection<ControlInfoDataItem> allControls = new ObservableCollection<ControlInfoDataItem>();

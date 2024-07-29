@@ -27,6 +27,9 @@ public partial class App : Application
             services.AddTransient<DashboardPage>();
             services.AddTransient<DashboardPageViewModel>();
 
+            services.AddTransient<SectionPage>();
+            services.AddTransient<BaseSectionPageViewModel>();
+
             services.AddTransient<ButtonPage>();
             services.AddTransient<ButtonPageViewModel>();
             services.AddTransient<CheckBoxPage>();

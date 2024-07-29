@@ -10,9 +10,10 @@
 		<Platforms>AnyCPU;x64</Platforms>
 		<StartupObject>WPFGallery.App</StartupObject>
 
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <AnalysisLevel>latest</AnalysisLevel>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<NoWarn>CA1515;CA5394</NoWarn>
 	</PropertyGroup>
 
 	

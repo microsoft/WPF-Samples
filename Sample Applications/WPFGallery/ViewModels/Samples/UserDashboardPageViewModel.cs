@@ -95,10 +95,6 @@ namespace WPFGallery.ViewModels.Samples
                 IsSaved = true;
 
                 Task.Delay(2000).ContinueWith(_ => IsSaved = false, TaskScheduler.FromCurrentSynchronizationContext());
-
-                
-
-
             }
         }
 

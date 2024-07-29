@@ -1,7 +1,5 @@
 using WPFGallery.ViewModels;
 
-using WPFGallery.ViewModels;
-
 namespace WPFGallery.Views
 {
     /// <summary>
