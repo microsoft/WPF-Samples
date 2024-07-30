@@ -1,6 +1,7 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,7 +12,7 @@ namespace CursorType
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
         private readonly Cursor _customCursor;
         private bool _cursorScopeElementOnly = true;
@@ -122,7 +123,7 @@ namespace CursorType
         // If the RadioButton rbScopeElement is selected, then the cursor
         // will only change on the display element.
         // 
-        // If the Radiobutton rbScopeApplication is selected, then the cursor
+        // If the RadioButton rbScopeApplication is selected, then the cursor
         // will be changed for the entire application
         //
         private void CursorScopeSelected(object sender, RoutedEventArgs e)
@@ -152,9 +153,24 @@ namespace CursorType
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            // When the UI is finished loading, make the arrorw cursor
-            // the default cursor in the CursorSelector combobox
+            // When the UI is finished loading, make the arrow cursor
+            // the default cursor in the CursorSelector comboBox
             ((ComboBoxItem) CursorSelector.Items[2]).IsSelected = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Dispose managed resources
+                _customCursor?.Dispose();
+            }
         }
     }
 }

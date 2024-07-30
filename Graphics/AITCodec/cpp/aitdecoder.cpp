@@ -631,9 +631,9 @@ STDMETHODIMP AitDecoder::QueryCapability(IStream *pIStream, DWORD *pCapability)
         // If this is our format, we can do everything
         if (strcmp(bh.Name, "AIT") == 0)
         {
-            *pCapability = WICBitmapDecoderCapabilityCanDecodeAllImages ||
-                           WICBitmapDecoderCapabilityCanDecodeThumbnail ||
-                           WICBitmapDecoderCapabilityCanEnumerateMetadata ||
+            *pCapability = WICBitmapDecoderCapabilityCanDecodeAllImages |
+                           WICBitmapDecoderCapabilityCanDecodeThumbnail |
+                           WICBitmapDecoderCapabilityCanEnumerateMetadata |
                            WICBitmapDecoderCapabilitySameEncoder;
         }
     }

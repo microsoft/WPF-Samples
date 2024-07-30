@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Collections;
@@ -42,7 +42,7 @@ namespace EditingExaminerDemo
             object left;
             var str = commandLine.Replace("  ", " ");
             str = str.Trim();
-            //Asignment
+            //Assignment
             if (str.Contains("="))
             {
                 var strs = str.Split('=');
@@ -51,11 +51,9 @@ namespace EditingExaminerDemo
                     Result.Error = "syntax error: Don't know how to do Assignment!";
                     return;
                 }
-                strLeft = strRight = string.Empty;
-                strLeft = strs[0];
-                strRight = strs[1];
-                strLeft = strLeft.Trim();
-                strRight = strRight.Trim();
+
+                strLeft = strs[0].Trim();
+                strRight = strs[1].Trim();
                 Result = new CommandLine(strRight, _table).Result;
 
                 //Set a value to a variable in the Table.
@@ -112,10 +110,10 @@ namespace EditingExaminerDemo
                     str = str.Substring(strRight.LastIndexOf(".", StringComparison.Ordinal) + 1);
                 }
 
-                Result.Value = InvokMethod(str, left);
+                Result.Value = InvokeMethod(str, left);
             }
 
-            //Retrive data
+            //Retrieve data
             else
             {
                 if (_table.Contains(str))
@@ -152,14 +150,14 @@ namespace EditingExaminerDemo
         /// <summary>
         ///     Create an object.
         ///     1. new a object: new abc(p1, p2, p3...)
-        ///     2. Create a instance for a primative values. for example
+        ///     2. Create a instance for a primitive values. for example
         ///     3. Create instance for Enum.
         ///     4. create a instance for struct.
         /// </summary>
         /// <param name="commandLine"></param>
         /// <param name="objectInstance"></param>
         /// <returns></returns>
-        private object InvokMethod(string commandLine, object objectInstance)
+        private object InvokeMethod(string commandLine, object objectInstance)
         {
             string name;
             string arg;
@@ -173,8 +171,7 @@ namespace EditingExaminerDemo
             arg = commandLine.Substring(commandLine.IndexOf("(", StringComparison.Ordinal) + 1,
                 commandLine.IndexOf(")", StringComparison.Ordinal) -
                 (commandLine.IndexOf("(", StringComparison.Ordinal) + 1));
-            arg = commandLine.Substring(commandLine.IndexOf("(", StringComparison.Ordinal) + 1);
-            arg = arg.Substring(0, arg.Length - 1);
+
             if (arg.Length > 0)
             {
                 args = arg.Trim().Split(',');
@@ -187,7 +184,7 @@ namespace EditingExaminerDemo
             }
             else
             {
-                objs = new object[0];
+                objs = [];
             }
             //If there is an instance, we should invoke a instance methods. 
             if (objectInstance != null)
@@ -215,7 +212,7 @@ namespace EditingExaminerDemo
         }
 
         /// <summary>
-        ///     This method helps recursivly retrieve propeties.
+        ///     This method helps recursively retrieve properties.
         /// </summary>
         /// <param name="o"></param>
         /// <param name="name"></param>

@@ -121,9 +121,11 @@ namespace Matrix
 
                 case "rb6":
                 {
-                    // Changes a Matrix into an identity matrix
-                    var matrix1 = new System.Windows.Media.Matrix(5, 10, 15, 20, 25, 30);
-                    matrix1 = System.Windows.Media.Matrix.Identity;
+                        // Changes a Matrix into an identity matrix
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+                        var matrix1 = new System.Windows.Media.Matrix(5, 10, 15, 20, 25, 30);
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
+                        matrix1 = System.Windows.Media.Matrix.Identity;
                     // matrix1 is now equal to (1,0,0,1,0,0)
                     //Displaying Results
                     syntaxString = "matrix1 = Matrix.Identity;";
@@ -135,16 +137,14 @@ namespace Matrix
                 case "rb7":
                 {
                     // Converts a string representation of a matrix into a Matrix structure
-                    var matrixResult = new System.Windows.Media.Matrix();
+                    var matrixResult = System.Windows.Media.Matrix.Parse("1,2,3,4,5,6");
 
-                    matrixResult = System.Windows.Media.Matrix.Parse("1,2,3,4,5,6");
-                    // matrixResult is equal to (1,2,3,4,5,6)
-
-                    //Displaying Results
+                    // Displaying Results
                     syntaxString = "matrixResult = Matrix.Parse(\"1,2,3,4,5,6\");";
                     resultType = "Matrix";
                     operationString = "Convert a string into a Matrix structure";
                     ShowResults(matrixResult.ToString(), syntaxString, resultType, operationString);
+
                     break;
                 }
                 case "rb8":
@@ -346,12 +346,11 @@ namespace Matrix
                     // Multiplies a Matrix by another Matrix
                     var matrix1 = new System.Windows.Media.Matrix(5, 10, 15, 20, 25, 30);
                     var matrix2 = new System.Windows.Media.Matrix(2, 4, 6, 8, 10, 12);
-                    var matrixResult = new System.Windows.Media.Matrix();
 
-                    matrixResult = System.Windows.Media.Matrix.Multiply(matrix2, matrix1);
-                    // matrixResult is equal to (70, 100, 150, 220, 255, 370)    
+                    // Multiply matrix1 and matrix2 directly into matrixResult
+                    var matrixResult = System.Windows.Media.Matrix.Multiply(matrix2, matrix1);
 
-                    //Displaying Results
+                    // Displaying Results
                     syntaxString = "matrixResult = Matrix.Multiply(matrix2, matrix1);";
                     resultType = "Matrix";
                     operationString = "Multiplying matrix1 and matrix2";
@@ -364,13 +363,10 @@ namespace Matrix
                     // Multiplies a Matrix by another Matrix using the overloaded * operator
                     var matrix1 = new System.Windows.Media.Matrix(5, 10, 15, 20, 25, 30);
                     var matrix2 = new System.Windows.Media.Matrix(2, 4, 6, 8, 10, 12);
-                    var matrixResult = new System.Windows.Media.Matrix();
+                    var matrixResult = matrix1 * matrix2; // Directly assign the result of the multiplication operation
 
-                    matrixResult = matrix1*matrix2;
-                    // matrixResult is equal to (70, 100, 150, 220, 240, 352)   
-
-                    //Displaying Results
-                    syntaxString = " matrixResult = matrix1 * matrix2;";
+                    // Displaying Results
+                    syntaxString = "matrixResult = matrix1 * matrix2;";
                     resultType = "Matrix";
                     operationString = "Multiplying matrix1 and matrix2";
                     ShowResults(matrixResult.ToString(), syntaxString, resultType, operationString);
@@ -475,12 +471,11 @@ namespace Matrix
                     // Transform a point by a matrix
                     var matrix1 = new System.Windows.Media.Matrix(5, 10, 15, 20, 25, 30);
                     var point1 = new Point(15, 25);
-                    var pointResult = new Point();
 
-                    pointResult = matrix1.Transform(point1);
-                    // pointResult is equal to (475, 680)
+                    // Transform point1 by matrix1
+                    var pointResult = matrix1.Transform(point1);
 
-                    //Displaying Results
+                    // Displaying Results
                     syntaxString = "pointResult = matrix1.Transform(point1)";
                     resultType = "Point";
                     operationString = "Transforming a point1 by matrix1";
