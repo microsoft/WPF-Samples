@@ -42,4 +42,9 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 	</ItemGroup>
+
+  <PropertyGroup>
+    <WpfRepoRoot>D:\WPF\wpf</WpfRepoRoot>
+  </PropertyGroup>
+  <Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
 </Project>

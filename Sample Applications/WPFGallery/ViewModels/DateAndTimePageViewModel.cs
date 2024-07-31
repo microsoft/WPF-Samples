@@ -13,10 +13,10 @@ namespace WPFGallery.ViewModels
     public partial class DateAndTimePageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Date & Calendar";
+        private string _pageTitle = "Date & Time";
 
         [ObservableProperty]
-        private string _pageDescription = "Controls for date and calendar";
+        private string _pageDescription = "Controls for date and Time";
 
         [ObservableProperty]
         private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
@@ -36,6 +36,14 @@ namespace WPFGallery.ViewModels
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DatePicker.png"))},
                // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarSearch20 },
                 Description = "A control that lets a user pick a date value."
+            },
+            new NavigationCard
+            {
+                Name = "TimePicker",
+                PageType = typeof(TimePickerPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TimePicker.png"))},
+               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarSearch20 },
+                Description = "A control that lets a user pick a time value."
             },
         };
 

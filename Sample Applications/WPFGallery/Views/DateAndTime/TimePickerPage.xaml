@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="WPFGallery.Views.TimePickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFGallery.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TimePicker"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentPagePane" Height="Auto">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,0,0,32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+            <controls:ControlExample Margin="10" HeaderText="A basic TimePicker control.">
+                <controls:ControlExample.XamlCode>
+                    &lt;TimePicker/&gt;
+                </controls:ControlExample.XamlCode>
+                <TimePicker
+                    MinWidth="200"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Pick a Time" />
+            </controls:ControlExample>
+        </ScrollViewer>
+    </Grid>
+</Page>

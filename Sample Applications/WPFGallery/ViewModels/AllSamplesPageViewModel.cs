@@ -111,6 +111,14 @@ namespace WPFGallery.ViewModels
             },
             new NavigationCard
             {
+                Name = "TimePicker",
+                PageType = typeof(TimePickerPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TimePicker.png"))},
+               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarSearch20 },
+                Description = "A control that lets a user pick a time value."
+            },
+            new NavigationCard
+            {
                 Name = "Expander",
                 PageType = typeof(ExpanderPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Expander.png"))},

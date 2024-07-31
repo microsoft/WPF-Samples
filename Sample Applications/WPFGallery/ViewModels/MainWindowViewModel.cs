@@ -98,13 +98,14 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
-            Name="Date & Calendar",
+            Name="Date & Time",
             PageType = typeof(DateAndTimePage),
             Icon = "\xEC92",
             Children = new ObservableCollection<NavigationItem>
             {
                 new NavigationItem("Calendar", typeof(CalendarPage)),
                 new NavigationItem("DatePicker", typeof(DatePickerPage)),
+                new NavigationItem("TimePicker", typeof(TimePickerPage)),
             }
         },
         new NavigationItem

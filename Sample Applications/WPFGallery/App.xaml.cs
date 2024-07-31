@@ -42,6 +42,8 @@ public partial class App : Application
             services.AddTransient<CalendarPageViewModel>();
             services.AddTransient<DatePickerPage>();
             services.AddTransient<DatePickerPageViewModel>();
+            services.AddTransient<TimePickerPage>();
+            services.AddTransient<TimePickerPageViewModel>();
             services.AddTransient<TabControlPage>();
             services.AddTransient<TabControlPageViewModel>();
             services.AddTransient<ProgressBarPage>();
