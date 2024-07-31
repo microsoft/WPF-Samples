@@ -356,7 +356,7 @@
             Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Used for accent fills on controls">
             <StackPanel>
-                <Button Content="Text" Style="{DynamicResource DefaultAccentButtonStyle}" />
+                <Button Content="Text" Style="{DynamicResource AccentButtonStyle}" />
             </StackPanel>
         </controls:ColorPageExample>
 
