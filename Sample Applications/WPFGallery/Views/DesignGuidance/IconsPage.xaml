@@ -160,7 +160,7 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <TextBlock Focusable="False" Grid.Row="0" FontFamily="Segoe Fluent Icons" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{StaticResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
+                                        <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
