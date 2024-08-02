@@ -14,7 +14,7 @@
         <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Padding" Value="0 0 0 4" />
-            <Setter Property="Foreground" Value="{StaticResource TextFillColorPrimaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             <Setter Property="Opacity" Value="0.7"/>
             <Setter Property="Margin" Value="0,4,0,4" />
             <Setter Property="FontSize" Value="14"/>
@@ -160,7 +160,7 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <TextBlock Focusable="False" Grid.Row="0" FontFamily="Segoe Fluent Icons" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{StaticResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
+                                        <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
