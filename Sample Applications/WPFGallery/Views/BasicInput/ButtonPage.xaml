@@ -85,8 +85,8 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="WPF Accent Button"
-                    XamlCode="&lt;Button Style=&quot;{DynamicResource DefaultAccentButtonStyle}&quot; Content=&quot;WPF Accent Button&quot; /&gt;">
-                    <Button AutomationProperties.Name="WPF Accent" Style="{DynamicResource DefaultAccentButtonStyle}">
+                    XamlCode="&lt;Button Style=&quot;{DynamicResource AccentButtonStyle}&quot; Content=&quot;WPF Accent Button&quot; /&gt;">
+                    <Button AutomationProperties.Name="WPF Accent" Style="{DynamicResource AccentButtonStyle}">
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Symbol="Fluent24" />-->
                             <TextBlock Text="WPF Accent Button" />

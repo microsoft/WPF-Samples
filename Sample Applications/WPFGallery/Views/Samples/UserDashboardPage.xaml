@@ -93,7 +93,7 @@
                 HorizontalAlignment="Center"
                 Command="{Binding ViewModel.AddUserCommand}"
                 Content="Add New User"
-                Style="{DynamicResource DefaultAccentButtonStyle}" />
+                Style="{DynamicResource AccentButtonStyle}" />
         </Grid>
 
         <Grid Grid.Column="1">
