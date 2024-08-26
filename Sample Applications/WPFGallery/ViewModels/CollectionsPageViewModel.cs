@@ -1,5 +1,6 @@
 using WPFGallery.Navigation;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -13,41 +14,7 @@ namespace WPFGallery.ViewModels
 
 
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "Data Grid",
-                PageType = typeof(DataGridPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DataGrid.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.GridKanban20 },
-                Description = "The DataGrid control presents data in a customizable table of rows and columns."
-            },
-            new NavigationCard
-            {
-                Name = "ListBox",
-                PageType = typeof(ListBoxPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ListBox.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.AppsListDetail24 },
-                Description = "A control that presents an inline list of items that the user can select from."
-            },
-            new NavigationCard
-            {
-                Name = "ListView",
-                PageType = typeof(ListViewPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ListView.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.GroupList24 },
-                Description = "A control that presents a collection of items in a vertical list."
-            },
-            new NavigationCard
-            {
-                Name = "TreeView",
-                PageType = typeof(TreeViewPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TreeView.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.TextBulletListTree24 },
-                Description = "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items."
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Collections");
 
         private readonly INavigationService _navigationService;
 

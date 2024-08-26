@@ -1,5 +1,6 @@
 using WPFGallery.Navigation;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -12,25 +13,7 @@ namespace WPFGallery.ViewModels
         private string _pageDescription = "Controls for date and calendar";
 
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "Calendar",
-                PageType = typeof(CalendarPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/CalendarView.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarLtr24 },
-                Description = "A control that presents a calendar for a user to choose a date from."
-            },
-            new NavigationCard
-            {
-                Name = "DatePicker",
-                PageType = typeof(DatePickerPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/DatePicker.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarSearch20 },
-                Description = "A control that lets a user pick a date value."
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Date & Calendar");
 
         private readonly INavigationService _navigationService;
 
