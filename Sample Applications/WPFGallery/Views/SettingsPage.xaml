@@ -12,9 +12,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-        </StackPanel>
+
+        <controls:PageHeader
+            Grid.Row="0"
+            Margin="0,0,0,40"
+            Title="{Binding ViewModel.PageTitle}"
+            Description="{Binding ViewModel.PageDescription}"
+            ShowDescription="False" />
 
         <StackPanel Margin="10 0 10 24" Grid.Row="1">
             <TextBlock Margin="10 0 0 16" FontSize="24" FontWeight="SemiBold" Text="Appearance &amp; behavior" />

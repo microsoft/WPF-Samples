@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Resources/Templates.xaml" />
 
                 <ResourceDictionary Source="Controls/ControlExample.xaml" />
+                <ResourceDictionary Source="Controls/PageHeader.xaml" />
                 <ResourceDictionary Source="Controls/ColorPageExample.xaml" />
                 <ResourceDictionary Source="Controls/ColorTile.xaml" />
 

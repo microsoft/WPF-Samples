@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFGallery.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
     Title="AllSamplesPage"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
@@ -14,12 +15,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel
+        <controls:PageHeader
             Grid.Row="0"
             Margin="0,0,0,40"
-            VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-        </StackPanel>
+            Title="{Binding ViewModel.PageTitle}"
+            Description="{Binding ViewModel.PageDescription}" />
 
         <ScrollViewer
             Grid.Row="1"
