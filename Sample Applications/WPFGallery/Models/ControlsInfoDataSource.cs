@@ -23,8 +23,7 @@ namespace WPFGallery.Models
         {
             get
             {
-                var assembly = typeof(ControlsInfoDataSource).Assembly;
-                return assembly.GetType($"WPFGallery.Views.{PageName}");
+                return _assembly.GetType($"WPFGallery.Views.{PageName}");
             }
         }
 
@@ -42,6 +41,8 @@ namespace WPFGallery.Models
         {
             return Title;
         }
+
+        private static Assembly _assembly = typeof(ControlsInfoDataSource).Assembly;
     }
 
     public sealed class ControlsInfoDataSource

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFGallery.ViewModels.Samples;
 
-namespace WPFGallery.Views.Samples
+namespace WPFGallery.Views
 {
     /// <summary>
     /// Interaction logic for UserDashboardPage.xaml
