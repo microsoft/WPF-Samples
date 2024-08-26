@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WPFGallery.Navigation;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -19,25 +20,7 @@ namespace WPFGallery.ViewModels
         private string _pageDescription = "Controls for navigation and actions";
 
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "Menu",
-                PageType = typeof(MenuPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/Pivot.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.RowTriple24 },
-                Description = "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
-            },
-            new NavigationCard
-            {
-                Name = "TabControl",
-                PageType = typeof(TabControlPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TabView.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.TabDesktopBottom24 },
-                Description = "A control that displays a collection of tabs."
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Navigation");
 
         private readonly INavigationService _navigationService;
 

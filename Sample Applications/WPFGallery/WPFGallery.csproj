@@ -35,6 +35,7 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content> -->
 	  <EmbeddedResource Include="Models\IconsData.json" />
+	  <EmbeddedResource Include="Models\ControlsInfoData.json" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
+using WPFGallery.Models;
 using WPFGallery.Views;
 
 namespace WPFGallery;
@@ -89,7 +90,7 @@ public partial class MainWindow : Window
 
     private void ControlsList_SelectedItemChanged()
     {
-        if (ControlsList.SelectedItem is NavigationItem navItem)
+        if (ControlsList.SelectedItem is ControlInfoDataItem navItem)
         {
             _navigationService.Navigate(navItem.PageType);
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
@@ -174,13 +175,13 @@ public partial class MainWindow : Window
 
     private void OnNavigating(object? sender, NavigatingEventArgs e)
     {
-        List<NavigationItem> list = ViewModel.GetNavigationItemHierarchyFromPageType(e.PageType);
+        List<ControlInfoDataItem> list = ViewModel.GetNavigationItemHierarchyFromPageType(e.PageType);
         
         if (list.Count > 0)
         {
             TreeViewItem selectedTreeViewItem = null;
             ItemsControl itemsControl = ControlsList;
-            foreach(NavigationItem item in list)
+            foreach(ControlInfoDataItem item in list)
             {
                 var tvi = itemsControl.ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
                 if(tvi != null)
