@@ -29,46 +29,8 @@
             Margin="-12,0,0,0"
             AutomationProperties.Name="Items in group"
             ItemsSource="{Binding ViewModel.NavigationCards}"
-            Focusable="False">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Margin="10" Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button
-                        Width="360"
-                        Height="90"
-                        Margin="7"
-                        Padding="20,10"
-                        HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="{Binding Name}"
-                        Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:TextPage}}}"
-                        CommandParameter="{Binding PageType}">
-                        <StackPanel Orientation="Horizontal">
-                            <ContentPresenter
-                                Width="50"
-                                Height="50"
-                                Margin="0,0,8,0"
-                                Content="{Binding Icon}" />
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock
-                                    Margin="10,0,0,0"
-                                    Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" 
-                                    AutomationProperties.HeadingLevel="Level3" />
-                                <TextBlock
-                                    Width="240"
-                                    Margin="10,0,0,0"
-                                    Foreground="{StaticResource TextFillColorPrimaryBrush}" Opacity="0.7" 
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="{Binding Description}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            Focusable="False"
+            ItemsPanel="{StaticResource WrapPanelTemplate}"
+            ItemTemplate="{StaticResource NavigationCardTemplate}" />
     </Grid>
 </Page>

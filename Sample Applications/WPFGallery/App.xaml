@@ -8,8 +8,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml" />
 
+                <ResourceDictionary Source="Resources/PageStyles.xaml" />
+                <ResourceDictionary Source="Resources/Templates.xaml" />
+
                 <ResourceDictionary Source="Controls/ControlExample.xaml" />
-                <ResourceDictionary Source="Controls/PageStyles.xaml" />
                 <ResourceDictionary Source="Controls/ColorPageExample.xaml" />
                 <ResourceDictionary Source="Controls/ColorTile.xaml" />
 
