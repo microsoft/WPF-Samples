@@ -43,6 +43,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Slider
+                            x:Name="simple_slider"
                             Width="200"
                             Margin="0"
                             HorizontalAlignment="Left"
@@ -51,7 +52,16 @@
                             IsSnapToTickEnabled="True"
                             Maximum="100"
                             Minimum="0"
-                            Value="{Binding ViewModel.SimpleSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
+                            ToolTipService.Placement="Center"
+                            ToolTipService.HorizontalOffset="10"
+                            ToolTipService.VerticalOffset="-30"
+                            ToolTipService.InitialShowDelay="0"
+                            MouseEnter="Slider_MouseEnter"
+                            MouseLeave="Slider_MouseLeave"
+                            ValueChanged="Slider_ValueChanged"
+                            Value="{Binding ViewModel.SimpleSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}"/>
+
+
                         <Grid Grid.Column="1">
                             <StackPanel VerticalAlignment="Center">
                                 <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="Output:" />
@@ -71,6 +81,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Slider
+                            x:Name="range_slider"
                             Width="200"
                             Margin="0"
                             HorizontalAlignment="Left"
@@ -80,6 +91,13 @@
                             Maximum="1000"
                             Minimum="500"
                             TickFrequency="50"
+                            ToolTipService.Placement="Center"
+                            ToolTipService.HorizontalOffset="10"
+                            ToolTipService.VerticalOffset="-30"
+                            ToolTipService.InitialShowDelay="0"
+                            MouseEnter="Slider_MouseEnter"
+                            MouseLeave="Slider_MouseLeave"
+                            ValueChanged="Slider_ValueChanged"
                             Value="{Binding ViewModel.RangeSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                         <Grid Grid.Column="1">
                             <StackPanel VerticalAlignment="Center">
@@ -100,6 +118,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Slider
+                            x:Name="ticks_slider"
                             Width="200"
                             Margin="0"
                             HorizontalAlignment="Left"
@@ -110,6 +129,13 @@
                             Minimum="0"
                             TickFrequency="20"
                             TickPlacement="Both"
+                            ToolTipService.Placement="Center"
+                            ToolTipService.HorizontalOffset="10"
+                            ToolTipService.VerticalOffset="-30"
+                            ToolTipService.InitialShowDelay="0"
+                            MouseEnter="Slider_MouseEnter"
+                            MouseLeave="Slider_MouseLeave"
+                            ValueChanged="Slider_ValueChanged"
                             Value="{Binding ViewModel.MarksSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                         <Grid Grid.Column="1">
                             <StackPanel VerticalAlignment="Center">
@@ -130,6 +156,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Slider
+                            x:Name="vertical_slider"
                             Width="200"
                             Margin="0"
                             HorizontalAlignment="Left"
@@ -141,6 +168,13 @@
                             Orientation="Vertical"
                             TickFrequency="20"
                             TickPlacement="Both"
+                            ToolTipService.Placement="Center"
+                            ToolTipService.HorizontalOffset="-30"
+                            ToolTipService.VerticalOffset="-5"
+                            ToolTipService.InitialShowDelay="0"
+                            MouseEnter="Slider_MouseEnter"
+                            MouseLeave="Slider_MouseLeave"
+                            ValueChanged="Slider_ValueChanged"
                             Value="{Binding ViewModel.VerticalSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
                         <Grid Grid.Column="1">
                             <StackPanel VerticalAlignment="Center">
