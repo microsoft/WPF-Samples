@@ -3,7 +3,6 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 using WPFGallery.Navigation;
 using WPFGallery.Views;
-using WPFGallery.Views.Samples;
 using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels;

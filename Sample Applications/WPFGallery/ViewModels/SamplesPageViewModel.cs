@@ -1,4 +1,4 @@
-﻿using WPFGallery.Navigation;
+using WPFGallery.Navigation;
 using WPFGallery.Views.Samples;
 using WPFGallery.Models;
 

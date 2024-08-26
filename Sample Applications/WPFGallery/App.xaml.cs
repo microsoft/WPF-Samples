@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Views;
-using WPFGallery.Views.Samples;
 using WPFGallery.ViewModels.Samples;
 
 namespace WPFGallery;
