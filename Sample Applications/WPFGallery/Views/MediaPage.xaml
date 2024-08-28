@@ -41,20 +41,23 @@
                         Margin="7"
                         Padding="20,10"
                         HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="{Binding Name}"
+                        AutomationProperties.Name="{Binding Title}"
                         Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MediaPage}}}"
                         CommandParameter="{Binding PageType}">
                         <StackPanel Orientation="Horizontal">
                             <ContentPresenter
                                 Width="50"
                                 Height="50"
-                                Margin="0,0,8,0"
-                                Content="{Binding Icon}" />
+                                Margin="0,0,8,0">
+                                <ContentPresenter.Content>
+                                	<Image Source="{Binding ImageSource}" />
+                                </ContentPresenter.Content>
+                                </ContentPresenter>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock
                                     Margin="10,0,0,0"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Title}" />
                                 <TextBlock
                                     Width="240"
                                     Margin="10,0,0,0"

@@ -1,6 +1,7 @@
 
 using WPFGallery.Navigation;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -13,23 +14,7 @@ namespace WPFGallery.ViewModels
         private string _pageDescription = "Controls for media presentation";
  
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "Canvas",
-                PageType = typeof(CanvasPage),
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.InkStroke24 },
-                Description = "Canvas presenter"
-            },
-            new NavigationCard
-            {
-                Name = "Image",
-                PageType = typeof(ImagePage),
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.ImageMultiple24 },
-                Description = "Image presente"
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Media");
 
         private readonly INavigationService _navigationService;
 
