@@ -29,7 +29,6 @@
                     <Border.Background>
                         <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
                     </Border.Background>
-                    
                 </Border>
                 
                 <StackPanel Margin="36,88,0,0" VerticalAlignment="Top">
@@ -73,8 +72,7 @@
                             <ContentPresenter
                                 Width="50"
                                 Height="50"
-                                Margin="0,0,8,0"
-                                >
+                                Margin="0,0,8,0">
                                 <ContentPresenter.Content>
                                     <Image Source="{Binding ImageSource}" />
                                 </ContentPresenter.Content>

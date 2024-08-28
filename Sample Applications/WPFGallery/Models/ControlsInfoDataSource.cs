@@ -90,7 +90,7 @@ namespace WPFGallery.Models
 
         public ICollection<ControlInfoDataItem> GetControlsInfo(string groupName)
         {
-            return ControlsInfo.Where(x => x.UniqueId == groupName).FirstOrDefault().Items;
+            return ControlsInfo.Where(x => x.UniqueId == groupName).FirstOrDefault()?.Items;
         }
 
         public ICollection<ControlInfoDataItem> GetAllControlsInfo()
