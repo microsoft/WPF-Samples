@@ -218,7 +218,8 @@
                     AutomationProperties.Name="Navigation Pane"
                     ItemsSource="{Binding ViewModel.Controls}"
                     PreviewKeyDown="ControlsList_PreviewKeyDown"
-                    PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp">
+                    PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp"
+                    Loaded="ControlsList_Loaded">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Items}">
                             <Grid MinHeight="30">
