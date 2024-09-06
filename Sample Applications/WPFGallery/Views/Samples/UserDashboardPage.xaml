@@ -11,7 +11,8 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    SizeChanged="Page_SizeChanged">
     <Page.Resources>
         <helpers:ImageIdToBrushConverter x:Key="ImageIdToBrushConverter" />
         <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
@@ -24,25 +25,36 @@
 
     </Page.Resources>
 
-    <Grid>
+    <Grid Margin="-24,-16,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
+        <Button x:Name="ToggleListButton" Grid.Column="0" Grid.Row="0" Content="☰" Visibility="Collapsed" Click="ToggleListButton_Click" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent"/>
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" x:Name="ListViewGrid" Background="{DynamicResource ControlSolidFillColorDefaultBrush}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ListView      
+            <Button Grid.Row="0" x:Name="CollapseUserList" Click="CollapseUserList_Click"  Content="☰" Background="Transparent" BorderBrush="Transparent"/>
+            <ListView
+                x:Name="UsersList"
                 AutomationProperties.Name="Users"
-                Grid.Row="0"
+                Grid.Row="1"
                 Width="300"
                 ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}"
                 SelectedItem="{Binding ViewModel.SelectedUser, Mode=TwoWay}"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                Loaded="ListView_Loaded"
+                SelectionChanged="UsersList_SelectionChanged">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                         <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
@@ -88,7 +100,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button
-                Grid.Row="1"
+                Grid.Row="2"
                 Margin="10"
                 HorizontalAlignment="Center"
                 Command="{Binding ViewModel.AddUserCommand}"
@@ -96,7 +108,8 @@
                 Style="{DynamicResource AccentButtonStyle}" />
         </Grid>
 
-        <Grid Grid.Column="1">
+
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="ContentGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

@@ -54,5 +54,65 @@ namespace WPFGallery.Views
 
             edit_button.Focus();
         }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width < 800) // Collapse ListView when screen is narrow
+            {
+                ListViewGrid.Visibility = Visibility.Collapsed;
+                ToggleListButton.Visibility = Visibility.Visible;
+                Grid.SetColumnSpan(ContentGrid, 2);
+                Grid.SetRowSpan(ContentGrid, 2);
+                Grid.SetRow(ContentGrid, 0);
+                Grid.SetColumn(ContentGrid, 0);
+            }
+            else // Show ListView when screen is wide
+            {
+                ListViewGrid.Visibility = Visibility.Visible;
+                ToggleListButton.Visibility = Visibility.Collapsed;
+                Grid.SetColumnSpan(ContentGrid, 1);
+                Grid.SetRowSpan(ContentGrid, 1);
+                Grid.SetRow(ContentGrid, 1);
+                Grid.SetColumn(ContentGrid, 1);
+            }
+        }
+
+        private void ToggleListButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewGrid.Visibility == Visibility.Collapsed)
+            {
+                ListViewGrid.Visibility = Visibility.Visible;
+                Panel.SetZIndex(ListViewGrid, 1);
+            }
+            else
+            {
+                ListViewGrid.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (UsersList.Items.Count > 0)
+            {
+                ListViewItem firstItem = (ListViewItem)UsersList.ItemContainerGenerator.ContainerFromItem(UsersList.Items[0]);
+                if (firstItem != null)
+                {
+                    firstItem.IsSelected = true;
+                }
+            }
+        }
+
+        private void UsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ToggleListButton.Visibility == Visibility.Visible)
+            {
+                ListViewGrid.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void CollapseUserList_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewGrid.Visibility = Visibility.Collapsed;
+        }
     }
 }
