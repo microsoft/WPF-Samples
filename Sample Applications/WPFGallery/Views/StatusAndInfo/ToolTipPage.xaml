@@ -40,7 +40,7 @@
                     Content="Button with a simple ToolTip."
                     ToolTipService.InitialShowDelay="100"
                     ToolTipService.Placement="MousePoint"
-                    AutomationProperties.Name="Tooltip Button"
+                    AutomationProperties.Name="TooltipButton"
                     ToolTipService.ToolTip="Simple ToolTip" />
             </controls:ControlExample>
         </ScrollViewer>
