@@ -89,7 +89,7 @@ public partial class MainWindow : Window
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
-                tvi.IsExpanded = true;
+                tvi.IsExpanded = !tvi.IsExpanded;
                 tvi.BringIntoView();
             }
         }
