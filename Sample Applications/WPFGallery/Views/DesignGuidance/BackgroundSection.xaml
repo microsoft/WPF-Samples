@@ -65,7 +65,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </controls:ColorPageExample>
@@ -229,7 +229,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="4" />
         </controls:ColorPageExample>
