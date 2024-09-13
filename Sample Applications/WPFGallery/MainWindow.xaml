@@ -253,6 +253,7 @@
                         HorizontalContentAlignment="Left"
                         AutomationProperties.Name="About application"
                         Command="{Binding ViewModel.AboutCommand}"
+                        Click="AboutButton_Click"
                         DockPanel.Dock="Bottom">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0,4,0,0" FontFamily="Segoe Fluent Icons">&#xE946;</TextBlock>
