@@ -88,6 +88,9 @@ namespace WPFGallery.Views
             {
                 ListViewGrid.Visibility = Visibility.Collapsed;
             }
+
+            ToggleListButton.Visibility = Visibility.Collapsed;
+            CollapseUserList.Focus();
         }
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
@@ -102,17 +105,11 @@ namespace WPFGallery.Views
             }
         }
 
-        private void UsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(ToggleListButton.Visibility == Visibility.Visible)
-            {
-                ListViewGrid.Visibility = Visibility.Collapsed;
-            }
-        }
-
         private void CollapseUserList_Click(object sender, RoutedEventArgs e)
         {
             ListViewGrid.Visibility = Visibility.Collapsed;
+            ToggleListButton.Visibility = Visibility.Visible;
+            ToggleListButton.Focus();
         }
     }
 }

@@ -35,7 +35,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="ToggleListButton" Grid.Column="0" Grid.Row="0" Content="☰" Visibility="Collapsed" Click="ToggleListButton_Click" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent"/>
+        <Button x:Name="ToggleListButton" Grid.Column="0" Grid.Row="0" Padding="8" Visibility="Collapsed" Click="ToggleListButton_Click" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent">
+            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE700;"/>
+        </Button>
 
         <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" x:Name="ListViewGrid" Background="{DynamicResource ControlSolidFillColorDefaultBrush}">
             <Grid.RowDefinitions>
@@ -44,7 +46,9 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" x:Name="CollapseUserList" Click="CollapseUserList_Click"  Content="☰" Background="Transparent" BorderBrush="Transparent"/>
+            <Button Grid.Row="0" x:Name="CollapseUserList" Click="CollapseUserList_Click" Padding="8" Background="Transparent" BorderBrush="Transparent">
+                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE700;"/>
+            </Button>
             <ListView
                 x:Name="UsersList"
                 AutomationProperties.Name="Users"
@@ -53,8 +57,7 @@
                 ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}"
                 SelectedItem="{Binding ViewModel.SelectedUser, Mode=TwoWay}"
                 SelectionMode="Single"
-                Loaded="ListView_Loaded"
-                SelectionChanged="UsersList_SelectionChanged">
+                Loaded="ListView_Loaded">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                         <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
