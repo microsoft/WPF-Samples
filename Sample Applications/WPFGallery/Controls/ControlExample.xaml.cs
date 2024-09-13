@@ -4,6 +4,8 @@
 // All Rights Reserved.
 
 using System.IO;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation;
 
 namespace WPFGallery.Controls;
 
@@ -125,6 +127,13 @@ public class ControlExample : Control
                     {
                         case "Copy_XamlCode":
                             Clipboard.SetText(controlExample.XamlCode);
+                            AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)e.OriginalSource);
+                            peer.RaiseNotificationEvent(
+                                AutomationNotificationKind.Other,
+                                AutomationNotificationProcessing.ImportantMostRecent,
+                                "Source Code Copied",
+                                "ButtonClickedActivity"
+                            );
                             break;
                         case "Copy_CsharpCode":
                             Clipboard.SetText(controlExample.CsharpCode);
