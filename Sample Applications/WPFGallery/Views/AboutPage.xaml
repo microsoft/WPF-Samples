@@ -110,35 +110,39 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="2" Style="{StaticResource AboutCardStyle}">
-                            <StackPanel Margin="48,0,16,0" Orientation="Vertical">
-                                <TextBlock Margin="0,0,0,12" Text="Dependencies and References" />
-                                <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_ToolkitInformation" Style="{StaticResource DefaultHyperlinkStyle}">CommunityToolkit.Mvvm</Hyperlink>
-                                </TextBlock>
-                                <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_DIInformation" AutomationProperties.Name="Link to Dependency Injection NuGet Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.DependencyInjection</Hyperlink>
-                                </TextBlock>
-                                <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Open_HostingInformation" AutomationProperties.Name="Link to .NET Generic Host Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.Hosting</Hyperlink>
-                                </TextBlock>
-                            </StackPanel>
-                        </Border>
+                        <GroupBox Grid.Row="2" AutomationProperties.Name="Dependencies and References" BorderThickness="0">
+                            <Border Style="{StaticResource AboutCardStyle}">
+                                <StackPanel Margin="48,0,16,0" Orientation="Vertical">
+                                    <TextBlock Margin="0,0,0,12" Text="Dependencies and References" />
+                                    <TextBlock Style="{StaticResource LinkTextBlockStyle}">
+                                        <Hyperlink Click="Open_ToolkitInformation" Style="{StaticResource DefaultHyperlinkStyle}">CommunityToolkit.Mvvm</Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock Style="{StaticResource LinkTextBlockStyle}">
+                                        <Hyperlink Click="Open_DIInformation" AutomationProperties.Name="Link to Dependency Injection NuGet Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.DependencyInjection</Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock Style="{StaticResource LinkTextBlockStyle}">
+                                        <Hyperlink Click="Open_HostingInformation" AutomationProperties.Name="Link to .NET Generic Host Package" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft.Extensions.Hosting</Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </GroupBox>
 
-                        <Border Grid.Row="3" Style="{StaticResource BottomAboutCardStyle}">
-                            <StackPanel Margin="48,0,16,0" Orientation="Vertical">
-                                <TextBlock
-                                    Margin="0,0,0,12"
-                                    Text="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE."
-                                    TextWrapping="Wrap" />
-                                <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Services_Click" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft Services Agreement</Hyperlink>
-                                </TextBlock>
-                                <TextBlock Style="{StaticResource LinkTextBlockStyle}">
-                                    <Hyperlink Click="Privacy_Click" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft Privacy Statement</Hyperlink>
-                                </TextBlock>
-                            </StackPanel>
-                        </Border>
+                        <GroupBox Grid.Row="3" AutomationProperties.Name="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE." BorderThickness="0">
+                            <Border Style="{StaticResource BottomAboutCardStyle}">
+                                <StackPanel Margin="48,0,16,0" Orientation="Vertical">
+                                    <TextBlock
+                                        Margin="0,0,0,12"
+                                        Text="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE."
+                                        TextWrapping="Wrap" />
+                                    <TextBlock Style="{StaticResource LinkTextBlockStyle}">
+                                        <Hyperlink Click="Services_Click" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft Services Agreement</Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock Style="{StaticResource LinkTextBlockStyle}">
+                                        <Hyperlink Click="Privacy_Click" Style="{StaticResource DefaultHyperlinkStyle}">Microsoft Privacy Statement</Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </GroupBox>
                     </Grid>
                 </Expander.Content>
             </Expander>
