@@ -35,7 +35,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="ToggleListButton" Grid.Column="0" Grid.Row="0" Padding="8" Visibility="Collapsed" Click="ToggleListButton_Click" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent">
+        <Button x:Name="ToggleListButton" Grid.Column="0" Grid.Row="0" Padding="8" Visibility="Collapsed" Click="ToggleListButton_Click" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" AutomationProperties.Name="ToggleList">
             <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE700;"/>
         </Button>
 
@@ -46,7 +46,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" x:Name="CollapseUserList" Click="CollapseUserList_Click" Padding="8" Background="Transparent" BorderBrush="Transparent">
+            <Button Grid.Row="0" x:Name="CollapseUserList" Click="CollapseUserList_Click" Padding="8" Background="Transparent" BorderBrush="Transparent" AutomationProperties.Name="ToggleList">
                 <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE700;"/>
             </Button>
             <ListView
