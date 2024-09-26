@@ -75,13 +75,14 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Margin="12,6,0,0"
-                                Text="{Binding Name, Mode=OneWay}" />
+                                Text="{Binding Name, Mode=OneWay}" 
+                                AutomationProperties.HeadingLevel="Level3" />
                             <TextBlock
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="12,0,0,6"
                                 Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                Opacity="0.67"
+                                Opacity="0.8"
                                 Text="{Binding Company, Mode=OneWay}" />
                         </Grid>
                     </DataTemplate>
