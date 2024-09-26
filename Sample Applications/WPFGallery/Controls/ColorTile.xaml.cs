@@ -1,4 +1,6 @@
-﻿using System.Windows.Documents;
+﻿using System.Windows.Automation.Peers;
+using System.Windows.Automation;
+using System.Windows.Documents;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -85,6 +87,14 @@ namespace WPFGallery.Controls
                     try
                     {
                         Clipboard.SetText(colorTile.ColorBrushName);
+                        AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((ColorTile)e.OriginalSource);
+                        peer.RaiseNotificationEvent(
+                           AutomationNotificationKind.Other,
+                            AutomationNotificationProcessing.ImportantMostRecent,
+                            "Color Brush Name Copied",
+                            "ButtonClickedActivity"
+                        );
+
                     }
                     catch (Exception ex)
                     {

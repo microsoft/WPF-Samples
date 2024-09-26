@@ -75,13 +75,14 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Margin="12,6,0,0"
-                                Text="{Binding Name, Mode=OneWay}" />
+                                Text="{Binding Name, Mode=OneWay}" 
+                                AutomationProperties.HeadingLevel="Level3" />
                             <TextBlock
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="12,0,0,6"
                                 Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                Opacity="0.67"
+                                Opacity="0.8"
                                 Text="{Binding Company, Mode=OneWay}" />
                         </Grid>
                     </DataTemplate>
@@ -156,19 +157,19 @@
                                 Grid.Column="0"
                                 Margin="0,0,10,0"
                                 Orientation="Vertical">
-                                <Label Content="First Name" FontWeight="SemiBold" />
+                                <Label Content="First Name" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                                 <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical">
-                                <Label Content="Last Name" FontWeight="SemiBold" />
+                                <Label Content="Last Name" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                                 <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
                         </Grid>
 
-                        <Label Content="Company" FontWeight="SemiBold" />
+                        <Label Content="Company" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                         <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
-                        <Label Content="Address" FontWeight="SemiBold" />
+                        <Label Content="Address" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                         <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" IsReadOnly="{Binding ViewModel.IsRead}"/>
 
                         <Grid>
@@ -176,7 +177,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Age" Grid.Column="0" FontWeight="SemiBold" />
+                            <Label Style="{StaticResource GenericLabelStyle}" Content="Age" Grid.Column="0" FontWeight="SemiBold" />
                             <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}" />
                         </Grid>
                         <Slider
@@ -187,7 +188,7 @@
                             IsSnapToTickEnabled="True"
                             Value="{Binding ViewModel.EditableUser.Age}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
-                        <Label Content="Date of Joining" FontWeight="SemiBold" />
+                        <Label Content="Date of Joining" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                         <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" IsEnabled="{Binding ViewModel.IsEditing}"/>
 
                         <StackPanel Margin="0,5,0,15" Orientation="Horizontal">

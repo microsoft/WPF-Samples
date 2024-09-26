@@ -7,7 +7,9 @@ using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Models;
 using WPFGallery.Views;
-using System.Windows.Controls;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation;
+using WPFGallery.Controls;
 
 namespace WPFGallery;
 
@@ -222,6 +224,29 @@ public partial class MainWindow : Window
         if (isExpanded == true)
         {
             tvi.IsExpanded = false;
+        }
+    }
+
+    private void AboutButton_Click(object sender, RoutedEventArgs e)
+    {
+        AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
+        peer.RaiseNotificationEvent(
+           AutomationNotificationKind.Other,
+            AutomationNotificationProcessing.ImportantMostRecent,
+            "About Page Opened",
+            "ButtonClickedActivity"
+        );
+    }
+
+    private void ControlsList_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (ControlsList.Items.Count > 0)
+        {
+            TreeViewItem firstItem = (TreeViewItem)ControlsList.ItemContainerGenerator.ContainerFromItem(ControlsList.Items[0]);
+            if (firstItem != null)
+            {
+                firstItem.IsSelected = true;
+            }
         }
     }
 }
