@@ -225,4 +225,16 @@ public partial class MainWindow : Window
             "ButtonClickedActivity"
         );
     }
+
+    private void ControlsList_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (ControlsList.Items.Count > 0)
+        {
+            TreeViewItem firstItem = (TreeViewItem)ControlsList.ItemContainerGenerator.ContainerFromItem(ControlsList.Items[0]);
+            if (firstItem != null)
+            {
+                firstItem.IsSelected = true;
+            }
+        }
+    }
 }
