@@ -7,6 +7,9 @@ using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Models;
 using WPFGallery.Views;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation;
+using WPFGallery.Controls;
 
 namespace WPFGallery;
 
@@ -210,6 +213,17 @@ public partial class MainWindow : Window
     private void ControlsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         ControlsList_SelectedItemChanged();
+    }
+
+    private void AboutButton_Click(object sender, RoutedEventArgs e)
+    {
+        AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
+        peer.RaiseNotificationEvent(
+           AutomationNotificationKind.Other,
+            AutomationNotificationProcessing.ImportantMostRecent,
+            "About Page Opened",
+            "ButtonClickedActivity"
+        );
     }
 
     private void ControlsList_Loaded(object sender, RoutedEventArgs e)
