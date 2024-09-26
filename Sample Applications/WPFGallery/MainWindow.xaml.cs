@@ -7,6 +7,7 @@ using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Models;
 using WPFGallery.Views;
+using System.Windows.Controls;
 
 namespace WPFGallery;
 
@@ -89,7 +90,7 @@ public partial class MainWindow : Window
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
-                tvi.IsExpanded = !tvi.IsExpanded;
+                tvi.IsExpanded = true;
                 tvi.BringIntoView();
             }
         }
@@ -203,12 +204,24 @@ public partial class MainWindow : Window
     {
         if (e.Key == Key.Enter) 
         {
+            var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem;
+            bool? isExpanded = tvi?.IsExpanded;
             ControlsList_SelectedItemChanged();
+            if(isExpanded == true)
+            {
+                tvi.IsExpanded = false;
+            }
         }
     }
 
     private void ControlsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
+        var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem;
+        bool? isExpanded = tvi?.IsExpanded;
         ControlsList_SelectedItemChanged();
+        if (isExpanded == true)
+        {
+            tvi.IsExpanded = false;
+        }
     }
 }
