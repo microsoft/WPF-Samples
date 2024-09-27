@@ -10,6 +10,7 @@ using WPFGallery.Views;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation;
 using WPFGallery.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace WPFGallery;
 
@@ -218,6 +219,10 @@ public partial class MainWindow : Window
 
     private void ControlsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
+        if (e.OriginalSource is ToggleButton)
+        {
+            return;
+        }
         var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem;
         bool? isExpanded = tvi?.IsExpanded;
         ControlsList_SelectedItemChanged();
