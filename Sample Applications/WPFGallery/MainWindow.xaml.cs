@@ -10,6 +10,7 @@ using WPFGallery.Views;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation;
 using WPFGallery.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace WPFGallery;
 
@@ -92,7 +93,6 @@ public partial class MainWindow : Window
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
-                tvi.IsExpanded = true;
                 tvi.BringIntoView();
             }
         }
@@ -202,17 +202,30 @@ public partial class MainWindow : Window
         ViewModel.UpdateCanNavigateBack();
     }
 
+    private void SelectedItemChanged(TreeViewItem? tvi)
+    {
+        ControlsList_SelectedItemChanged();
+        if (tvi != null)
+        {
+            tvi.IsExpanded = !tvi.IsExpanded;
+        }
+    }
+
     private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter) 
         {
-            ControlsList_SelectedItemChanged();
+            SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
         }
     }
 
     private void ControlsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
-        ControlsList_SelectedItemChanged();
+        if (e.OriginalSource is ToggleButton)
+        {
+            return;
+        }
+        SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
     }
 
     private void AboutButton_Click(object sender, RoutedEventArgs e)
