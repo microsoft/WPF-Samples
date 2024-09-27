@@ -11,7 +11,8 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    SizeChanged="Page_SizeChanged">
     <Page.Resources>
         <helpers:ImageIdToBrushConverter x:Key="ImageIdToBrushConverter" />
         <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
@@ -29,17 +30,23 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MaxHeight="280"/>
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0">
+        <Grid x:Name="UserListGrid" Grid.Column="0" Grid.RowSpan="2" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ListView      
+            <ListView
+                x:Name="UserList"
                 AutomationProperties.Name="Users"
                 Grid.Row="0"
                 Width="300"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                 ItemsSource="{Binding ViewModel.Users, Mode=TwoWay}"
                 SelectedItem="{Binding ViewModel.SelectedUser, Mode=TwoWay}"
                 SelectionMode="Single">
@@ -89,6 +96,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button
+                x:Name="NewUserButton"
                 Grid.Row="1"
                 Margin="10"
                 HorizontalAlignment="Center"
@@ -97,7 +105,7 @@
                 Style="{DynamicResource AccentButtonStyle}" />
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid x:Name="UserDetailsGrid" Grid.Column="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -201,14 +209,14 @@
                         </StackPanel>
                         
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <TextBlock Padding="30" HorizontalAlignment="Left" Visibility="{Binding ViewModel.IsSaved, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                Save operation completed successfully!
+                            <TextBlock FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ViewModel.IsSaved, Converter={StaticResource BooleanToVisibilityConverter}}" FontStyle="Italic">
+                                Saved!
                             </TextBlock>
-        
-                            <TextBlock Padding="30" HorizontalAlignment="Left" Visibility="{Binding ViewModel.IsDeleted, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                            <TextBlock FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ViewModel.IsDeleted, Converter={StaticResource BooleanToVisibilityConverter}}" FontStyle="Italic">
                                  <Run Text="User" />
                                  <Run Text="{Binding ViewModel.Deletedname, Mode=OneWay}" />
-                                 <Run Text="deleted successfully!" />
+                                 <Run Text="Deleted!" />
                             </TextBlock>
                             <Button
                                 x:Name="edit_button"

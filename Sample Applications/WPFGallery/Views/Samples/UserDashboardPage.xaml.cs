@@ -54,5 +54,35 @@ namespace WPFGallery.Views
 
             edit_button.Focus();
         }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if(e.NewSize.Width < 800)
+            {
+                Grid.SetColumnSpan(UserListGrid,2);
+                Grid.SetRowSpan(UserListGrid, 1);
+                Grid.SetRow(UserListGrid, 0);
+                Grid.SetColumn(UserListGrid, 0);
+                Grid.SetColumnSpan(UserDetailsGrid, 2);
+                Grid.SetRowSpan(UserDetailsGrid, 1);
+                Grid.SetRow(UserDetailsGrid, 1);
+                Grid.SetColumn(UserDetailsGrid, 0);
+                UserList.ClearValue(WidthProperty);
+                NewUserButton.HorizontalAlignment = HorizontalAlignment.Right;
+            }
+            else
+            {
+                Grid.SetColumnSpan(UserListGrid, 1);
+                Grid.SetRowSpan(UserListGrid, 2);
+                Grid.SetRow(UserListGrid, 0);
+                Grid.SetColumn(UserListGrid, 0);
+                Grid.SetColumnSpan(UserDetailsGrid, 1);
+                Grid.SetRowSpan(UserDetailsGrid, 2);
+                Grid.SetRow(UserDetailsGrid, 0);
+                Grid.SetColumn(UserDetailsGrid, 1);
+                UserList.Width = 300;
+                NewUserButton.HorizontalAlignment = HorizontalAlignment.Center;
+            }
+        }
     }
 }
