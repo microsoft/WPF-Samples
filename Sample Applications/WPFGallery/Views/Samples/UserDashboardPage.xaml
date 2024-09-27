@@ -112,40 +112,34 @@
             </Grid.RowDefinitions>
 
             <StackPanel
+                x:Name="UserDetailHeader"
                 Grid.Row="0"
                 Margin="20,10,20,10"
-                Orientation="Vertical"
+                Orientation="Horizontal"
                 Visibility="{Binding ViewModel.SelectedUser, Converter={StaticResource NullToVisibilityConverter}}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel
-                        Grid.Column="0"
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                        <Ellipse
-                            x:Name="UserAvatar"
-                            Width="96"
-                            Height="96"
-                            Margin="12"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                            <Ellipse.Fill>
-                                <Binding Converter="{StaticResource ImageIdToBrushConverter}" Path="ViewModel.SelectedUser.ImageKey" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                            <TextBlock FontSize="24" Text="{Binding ViewModel.SelectedUser.Name}" />
-                            <TextBlock FontSize="16" Text="{Binding ViewModel.SelectedUser.Company}" />
-                        </StackPanel>
+                    <Ellipse
+                      x:Name="UserAvatar"
+                      Width="96"
+                      Height="96"
+                      Margin="12"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                        <Ellipse.Fill>
+                            <Binding Converter="{StaticResource ImageIdToBrushConverter}" Path="ViewModel.SelectedUser.ImageKey" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <StackPanel x:Name="UserDetailHeaderPanel" Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBlock 
+                          x:Name="UserDetailHeaderNameBox"
+                          FontSize="24" Text="{Binding ViewModel.SelectedUser.Name}" />
+                        <TextBlock 
+                          x:Name="UserDetailHeaderCompanyBox"
+                          FontSize="16" Text="{Binding ViewModel.SelectedUser.Company}" />
                     </StackPanel>
-                </Grid>
-                
             </StackPanel>
 
             <Grid
+                x:Name="UserDetailFormGrid"
                 Grid.Row="1"
                 Margin="20,10,20,10"
                 Visibility="{Binding ViewModel.SelectedUser, Converter={StaticResource NullToVisibilityConverter}}">
@@ -156,19 +150,22 @@
 
                 <ScrollViewer Grid.Column="1" Focusable="False">
                     <StackPanel Margin="20,0,20,0" >
-                        <Grid>
+                        <Grid x:Name="NameInputGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <StackPanel
-                                Grid.Column="0"
-                                Margin="0,0,10,0"
-                                Orientation="Vertical">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel x:Name="FirstNamePanel" 
+                                Grid.Column="0" Margin="0,0,10,0" Orientation="Vertical">
                                 <Label Content="First Name" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                                 <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <StackPanel x:Name="LastNamePanel"
+                                Grid.Column="1" Orientation="Vertical">
                                 <Label Content="Last Name" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                                 <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
                             </StackPanel>
