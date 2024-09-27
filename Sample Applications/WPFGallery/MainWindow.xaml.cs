@@ -93,7 +93,6 @@ public partial class MainWindow : Window
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
             if(tvi != null)
             {
-                tvi.IsExpanded = true;
                 tvi.BringIntoView();
             }
         }
@@ -203,17 +202,20 @@ public partial class MainWindow : Window
         ViewModel.UpdateCanNavigateBack();
     }
 
+    private void SelectedItemChanged(TreeViewItem? tvi)
+    {
+        ControlsList_SelectedItemChanged();
+        if (tvi != null)
+        {
+            tvi.IsExpanded = !tvi.IsExpanded;
+        }
+    }
+
     private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter) 
         {
-            var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem;
-            bool? isExpanded = tvi?.IsExpanded;
-            ControlsList_SelectedItemChanged();
-            if(isExpanded == true)
-            {
-                tvi.IsExpanded = false;
-            }
+            SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
         }
     }
 
@@ -223,13 +225,7 @@ public partial class MainWindow : Window
         {
             return;
         }
-        var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem;
-        bool? isExpanded = tvi?.IsExpanded;
-        ControlsList_SelectedItemChanged();
-        if (isExpanded == true)
-        {
-            tvi.IsExpanded = false;
-        }
+        SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
     }
 
     private void AboutButton_Click(object sender, RoutedEventArgs e)
