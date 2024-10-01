@@ -108,7 +108,7 @@
                 ToolTipService.ToolTip="Back">
                 <TextBlock
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="12"
                     Text="&#xE72B;">
                     <TextBlock.Style>
@@ -151,7 +151,7 @@
                 WindowChrome.IsHitTestVisibleInChrome="True">
                 <TextBlock
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="12"
                     Text="&#xE921;" />
             </Button>
@@ -168,7 +168,7 @@
                 <TextBlock
                     x:Name="MaximizeIcon"
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="12"
                     Text="&#xE922;" />
             </Button>
@@ -184,7 +184,7 @@
                 WindowChrome.IsHitTestVisibleInChrome="True">
                 <TextBlock
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="16"
                     Text="&#xE711;" />
             </Button>
@@ -233,7 +233,7 @@
                                     VerticalAlignment="Center"
                                     AutomationProperties.Name="{Binding Title, StringFormat='{}{0} Page'}"
                                     Focusable="False"
-                                    FontFamily="Segoe Fluent Icons"
+                                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                                     FontSize="16"
                                     Text="{Binding IconGlyph}"
                                     Visibility="{Binding IconGlyph, Converter={StaticResource EmptyToVisibilityConverter}}" />
@@ -257,7 +257,7 @@
                         Click="AboutButton_Click"
                         DockPanel.Dock="Bottom">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,4,0,0" FontFamily="Segoe Fluent Icons">&#xE946;</TextBlock>
+                            <TextBlock Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE946;</TextBlock>
                             <TextBlock Margin="8,0,0,0" Text="About" />
                         </StackPanel>
                     </Button>
