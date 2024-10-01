@@ -31,9 +31,6 @@
 
 	<ItemGroup>
 	  <Content Include="Assets\WPFGalleryPreviewIcon.ico" />
-	  <!-- <Content Include="Models\IconsData.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content> -->
 	  <EmbeddedResource Include="Models\IconsData.json" />
 	  <EmbeddedResource Include="Models\ControlsInfoData.json" />
 	</ItemGroup>
