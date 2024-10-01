@@ -210,6 +210,13 @@
                     KeyUp="SearchBox_KeyUp"
                     LostFocus="SearchBox_LostFocus" />-->
 
+                <ComboBox x:Name="SearchBox"
+                    IsEditable="True"
+                    Text="{Binding ViewModel.SearchBoxText, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding ViewModel.FilteredSearchItems}"
+                    Margin="10"
+                    IsTextSearchEnabled="False"
+                    PreviewKeyDown="ComboBox_PreviewKeyDown" />
 
                 <TreeView
                     x:Name="ControlsList"

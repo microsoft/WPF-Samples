@@ -250,4 +250,14 @@ public partial class MainWindow : Window
             }
         }
     }
+
+    private void ComboBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        if(!string.IsNullOrWhiteSpace(comboBox.Text))
+        {
+            comboBox.IsDropDownOpen = true;
+        }
+    }
 }
