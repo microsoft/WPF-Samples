@@ -105,7 +105,7 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="File a bug or request a new sample" />
                                 <Button AutomationProperties.Name="Open Issues" Grid.Column="2" Padding="8" FocusManager.IsFocusScope="True" Click="Open_Issues">
-                                    <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xe8a7;" />
+                                    <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xe8a7;" />
                                 </Button>
                             </Grid>
                         </Border>

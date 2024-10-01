@@ -70,8 +70,8 @@
 
                                         <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_XamlCode" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy XAML Code" >
                                           <Grid>
-                                            <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
-                                            <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
+                                                <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;"/>
+                                                <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE73E;" Opacity="0" />
                                           </Grid>  
                                             <Button.Triggers>
                                               <EventTrigger RoutedEvent="Button.Click">
@@ -122,7 +122,7 @@
                                             Text="C#" />
 
                                         <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CsharpCode" FocusManager.IsFocusScope="True" >
-                                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;" />
+                                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;" />
                                         </Button>
                                     </Grid>
                                     <TextBox

@@ -42,8 +42,8 @@
                                     CommandParameter="{TemplateBinding Content}"
                                     CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">
                                 <Grid>
-                                    <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
-                                    <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
+                                    <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;"/>
+                                    <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE73E;" Opacity="0" />
                                 </Grid>
                                 <Button.Triggers>
                                     <EventTrigger RoutedEvent="Button.Click">
@@ -122,11 +122,11 @@
                     </Span>
                     <LineBreak/>
                     <Span>
-                        &lt;TextBlock FontFamily="Segoe Fluent Icons" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
+                        &lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
                     </Span>
                     <LineBreak/>
                     <Span>
-                        &#x09;&lt;TextBlock FontFamily="Segoe Fluent Icons" Text="&amp;#xEB51;" /&gt;
+                        &#x09;&lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" /&gt;
                     </Span>
                     <LineBreak/>
                     <Span>
@@ -159,7 +159,7 @@
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <TextBlock Focusable="False" Grid.Row="0" FontFamily="Segoe Fluent Icons" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
                                     </Grid>
                                 </Border>
@@ -169,7 +169,7 @@
                     <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}">
                         <StackPanel Orientation="Vertical" Margin="16">
                             <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="Segoe Fluent Icons" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="Icon Name"/>
                             <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}"/>
                             <TextBlock Text="Unicode point"/>
@@ -179,7 +179,7 @@
                             <TextBlock Text="Code glyph"/>
                             <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}"/>
                             <TextBlock Text="XAML"/>
-                            <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
+                            <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;{{StaticResource SymbolThemeFontFamily}}&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
                             <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" />
                         </StackPanel>
                     </Grid>

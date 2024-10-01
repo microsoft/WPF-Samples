@@ -59,8 +59,8 @@
                                     FocusManager.IsFocusScope="True"
                                     ToolTipService.ToolTip="Copy brush name">
                                     <Grid>
-                                        <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE8C8;" />
-                                        <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE73E;" Opacity="0" />
+                                        <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Text="&#xE8C8;" />
+                                        <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Text="&#xE73E;" Opacity="0" />
                                     </Grid>
                                     <Button.Triggers>
                                         <EventTrigger RoutedEvent="Button.Click">
@@ -105,7 +105,7 @@
                                     <TextBlock
                                         FontSize="16"
                                         Foreground="{DynamicResource SystemFillColorCriticalBrush}"
-                                        FontFamily="Segoe Fluent Icons"
+                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
                                         Text="&#xE7BA;" />
                                 </Grid>
                             </Grid>
