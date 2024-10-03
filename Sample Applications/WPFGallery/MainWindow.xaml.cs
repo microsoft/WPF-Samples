@@ -134,17 +134,6 @@ public partial class MainWindow : Window
         }
     }
 
-    //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
-    //{
-    //    ViewModel.UpdateSearchText(SearchBox.Text);
-    //}
-
-    //private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
-    //{
-    //    SearchBox.Text = "";
-    //    ViewModel.UpdateSearchText(SearchBox.Text);
-    //}
-
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
         this.WindowState = WindowState.Minimized;
@@ -259,5 +248,22 @@ public partial class MainWindow : Window
         {
             comboBox.IsDropDownOpen = true;
         }
+    }
+
+    private void ComboBox_DropDownClosed(object sender, EventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        if (comboBox.SelectedItem != null)
+        {
+            _navigationService.Navigate(comboBox.SelectedItem.ToString());
+        }
+    }
+
+    private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        comboBox.IsDropDownOpen = true;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Windows.Navigation;
+using WPFGallery.Views;
 
 namespace WPFGallery.Navigation;
 
@@ -9,6 +10,8 @@ namespace WPFGallery.Navigation;
 public interface INavigationService
 {
     void Navigate(Type type);
+
+    void Navigate(string str);
 
     void NavigateTo(Type type);
 
@@ -40,12 +43,59 @@ public class NavigationService : INavigationService
 
     public event EventHandler<NavigatingEventArgs> Navigating;
 
+    private Dictionary<string, Type> pageNameToTypeMapping;
+
 
     public NavigationService(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         _history = new Stack<Type>();
         _future = new Stack<Type>();
+
+        initializeMapping();
+    }
+
+    private void initializeMapping()
+    {
+        pageNameToTypeMapping = new Dictionary<string, Type>()
+        {
+            { "home", typeof(DashboardPage) },
+            { "design guidance", typeof(DesignGuidancePage) },
+            { "colors", typeof(ColorsPage) },
+            { "typography", typeof(TypographyPage) },
+            { "icons", typeof(IconsPage) },
+            { "samples", typeof(SamplesPage) },
+            { "user dashboard", typeof(UserDashboardPage) },
+            { "all controls", typeof(AllSamplesPage) },
+            { "basic input", typeof(BasicInputPage) },
+            { "button", typeof(ButtonPage) },
+            { "checkbox", typeof(CheckBoxPage) },
+            { "radiobutton", typeof(RadioButtonPage) },
+            { "combobox", typeof(ComboBoxPage) },
+            { "slider", typeof(SliderPage) },
+            { "date & calendar", typeof(DateAndTimePage) },
+            { "calendar", typeof(CalendarPage) },
+            { "datepicker", typeof(DatePickerPage) },
+            { "layout", typeof(LayoutPage) },
+            { "expander", typeof(ExpanderPage) },
+            { "navigation", typeof(NavigationPage) },
+            { "menu", typeof(MenuPage) },
+            { "tabcontrol", typeof(TabControlPage) },
+            { "collections", typeof(CollectionsPage) },
+            { "datagrid", typeof(DataGridPage) },
+            { "listbox", typeof(ListBoxPage) },
+            { "listview", typeof(ListViewPage) },
+            { "treeview", typeof(TreeViewPage) },
+            { "status & info", typeof(StatusAndInfoPage) },
+            { "progressbar", typeof(ProgressBarPage) },
+            { "tooltip", typeof(ToolTipPage) },
+            { "text", typeof(TextPage) },
+            { "label", typeof(LabelPage) },
+            { "textbox", typeof(TextBoxPage) },
+            { "textblock", typeof(TextBlockPage) },
+            { "richtextedit", typeof(RichTextEditPage) },
+            { "passwordbox", typeof(PasswordBoxPage) }
+        };
     }
 
     public void SetFrame(Frame frame)
@@ -70,6 +120,15 @@ public class NavigationService : INavigationService
             _currentPageType = type;
             var page = _serviceProvider.GetRequiredService(type);
             _frame.Navigate(page);
+        }
+    }
+
+    public void Navigate(string? pageName)
+    {
+        if(!string.IsNullOrEmpty(pageName) && pageNameToTypeMapping.ContainsKey(pageName.ToLower()))
+        {
+            Type currentPage = pageNameToTypeMapping[pageName.ToLower()];
+            Navigate(currentPage);
         }
     }
 

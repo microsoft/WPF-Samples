@@ -89,17 +89,18 @@ public partial class MainWindowViewModel : ObservableObject
         _timer.Interval = TimeSpan.FromMilliseconds(400);
         _timer.Tick += PerformSearchNavigation;
 
-        SearchItems = new ObservableCollection<string>
+        SearchItems = new();
+        
+        foreach (var mainPage in Controls)
         {
-            "Apple",
-            "Banana",
-            "Cherry",
-            "Cheese",
-            "Choix",
-            "Date",
-            "Dragon Fruit",
-            "Dairy"
-        };
+
+            SearchItems.Add(mainPage.ToString());
+
+            foreach (ControlInfoDataItem controlsPage in mainPage.Items)
+            {
+                SearchItems.Add(controlsPage.ToString());
+            }
+        }
 
         FilteredSearchItems = new ObservableCollection<string>(SearchItems);
     }
