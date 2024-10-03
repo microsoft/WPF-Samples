@@ -12,8 +12,9 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private string _applicationTitle = "WPF Gallery Preview";
 
+    private ObservableCollection<string> SearchItems { get; set; }
+
     public ObservableCollection<string> FilteredSearchItems { get; set; }
-    public ObservableCollection<string> SearchItems { get; set; }
 
     private string _searchBoxText;
 
@@ -91,9 +92,8 @@ public partial class MainWindowViewModel : ObservableObject
 
         SearchItems = new();
         
-        foreach (var mainPage in Controls)
+        foreach (ControlInfoDataItem mainPage in Controls)
         {
-
             SearchItems.Add(mainPage.ToString());
 
             foreach (ControlInfoDataItem controlsPage in mainPage.Items)

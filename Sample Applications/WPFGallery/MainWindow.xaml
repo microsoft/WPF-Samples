@@ -218,9 +218,9 @@
                     ItemsSource="{Binding ViewModel.FilteredSearchItems}" 
                     Margin="10"
                     IsTextSearchEnabled="False"
-                    PreviewKeyDown="ComboBox_PreviewKeyDown"
+                    PreviewKeyDown="SearchBox_PreviewKeyDown"
                     GotFocus="SearchBox_GotFocus"
-                    DropDownClosed="ComboBox_DropDownClosed" />
+                    DropDownClosed="SearchBox_DropDownClosed" />
 
                 <TreeView
                     x:Name="ControlsList"

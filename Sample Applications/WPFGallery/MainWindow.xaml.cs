@@ -240,7 +240,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void ComboBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    private void SearchBox_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         var comboBox = sender as ComboBox;
 
@@ -250,7 +250,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void ComboBox_DropDownClosed(object sender, EventArgs e)
+    private void SearchBox_DropDownClosed(object sender, EventArgs e)
     {
         var comboBox = sender as ComboBox;
 
