@@ -18,6 +18,26 @@ public partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty]
     private ICollection<ControlInfoDataItem> _controls;
+
+    [ObservableProperty]
+    private ICollection<ControlInfoDataItem> _allPages;
+
+    public ObservableCollection<ControlInfoDataItem> FilteredSearchItems { get; set; }
+
+    private string _searchBoxText;
+
+    public string SearchBoxText
+    {
+        get => _searchBoxText;
+        set
+        {
+            _searchBoxText = value;
+            OnPropertyChanged(nameof(SearchBoxText));
+
+            FilterItems();
+        }
+    }
+
     [ObservableProperty]
     private ControlInfoDataItem? _selectedControl;
     private readonly INavigationService _navigationService;
@@ -51,6 +71,20 @@ public partial class MainWindowViewModel : ObservableObject
     public MainWindowViewModel(INavigationService navigationService)
     {
         _controls = ControlsInfoDataSource.Instance.ControlsInfo;
+
+        _allPages = new ObservableCollection<ControlInfoDataItem>();
+        foreach (ControlInfoDataItem groupControl in _controls)
+        {
+            _allPages.Add(groupControl);
+
+            foreach(ControlInfoDataItem control in groupControl.Items)
+            {
+                _allPages.Add(control);
+            }
+        }
+
+        FilteredSearchItems = new ObservableCollection<ControlInfoDataItem>(AllPages);
+
         _navigationService = navigationService;
 
         _timer = new DispatcherTimer();
@@ -63,6 +97,22 @@ public partial class MainWindowViewModel : ObservableObject
         _searchText = searchText;
         _timer.Stop();
         _timer.Start();
+    }
+
+    private void FilterItems()
+    {
+        if(string.IsNullOrEmpty(SearchBoxText))
+        {
+            FilteredSearchItems = new ObservableCollection<ControlInfoDataItem>(AllPages);
+        }
+        else
+        {
+            FilteredSearchItems = new ObservableCollection<ControlInfoDataItem>(
+                AllPages.Where(item => item.Title.ToLower().Contains(SearchBoxText.ToLower()))
+            );
+        }
+
+        OnPropertyChanged(nameof(FilteredSearchItems));
     }
 
     private void PerformSearchNavigation(object? sender, EventArgs e)
