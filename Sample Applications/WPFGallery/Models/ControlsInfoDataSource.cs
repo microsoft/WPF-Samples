@@ -115,5 +115,25 @@ namespace WPFGallery.Models
         {
             return ControlsInfo.Where(x => x.IsGroup == true && x.UniqueId != "Design Guidance" && x.UniqueId != "Samples").ToList();
         }
+    
+        public ObservableCollection<string> GetAllPagesForSearch()
+        {
+            ObservableCollection<string> allPagesForSearch = new ObservableCollection<string>();
+
+            ICollection<ControlInfoDataItem> allPages = ControlsInfoDataSource.Instance.ControlsInfo;
+
+            foreach (ControlInfoDataItem item in allPages)
+            {
+                allPagesForSearch.Add(item.Title);
+
+                foreach (ControlInfoDataItem individualItem in item.Items)
+                {
+                    allPagesForSearch.Add(individualItem.Title);
+                }
+            }
+
+            return allPagesForSearch;
+
+        }
     }
 }

@@ -47,6 +47,13 @@ public partial class MainWindow : Window
 
         SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         this.StateChanged += MainWindow_StateChanged;
+
+        ChangeSearchBoxStyle();
+    }
+
+    private void ChangeSearchBoxStyle()
+    {
+        var template = SearchBox.Template;
     }
 
     private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
