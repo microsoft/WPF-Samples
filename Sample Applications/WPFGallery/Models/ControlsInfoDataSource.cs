@@ -53,6 +53,8 @@ namespace WPFGallery.Models
 
         private static readonly ControlsInfoDataSource _instance;
 
+        private ICollection<ControlInfoDataItem> _allPages;
+
         public static ControlsInfoDataSource Instance
         {
             get
@@ -70,6 +72,8 @@ namespace WPFGallery.Models
         {
             var jsonText = ReadControlsData();
             ControlsInfo = JsonSerializer.Deserialize<List<ControlInfoDataItem>>(jsonText);
+
+            GetAllPages();
         }
 
         #endregion
@@ -109,6 +113,39 @@ namespace WPFGallery.Models
             }
 
             return allControls;
+        }
+
+        private void GetAllPages()
+        {
+            _allPages = new ObservableCollection<ControlInfoDataItem>();
+
+            foreach (ControlInfoDataItem groupPage in ControlsInfo)
+            {
+                _allPages.Add(groupPage);
+
+                foreach (ControlInfoDataItem controlPage in groupPage.Items)
+                {
+                    _allPages.Add(controlPage);
+                }
+            }
+        }
+
+        public ObservableCollection<ControlInfoDataItem> FilterItems(string filterText)
+        {
+            ObservableCollection<ControlInfoDataItem> filteredItems = new();
+
+            if (string.IsNullOrEmpty(filterText))
+            {
+                filteredItems = new ObservableCollection<ControlInfoDataItem>(_allPages);
+            }
+            else
+            {
+                filteredItems = new ObservableCollection<ControlInfoDataItem>(
+                    _allPages.Where(item => item.Title.ToLower().Contains(filterText.ToLower()))
+                );
+            }
+
+            return filteredItems;
         }
 
         public ICollection<ControlInfoDataItem> GetGroupedControlsInfo()

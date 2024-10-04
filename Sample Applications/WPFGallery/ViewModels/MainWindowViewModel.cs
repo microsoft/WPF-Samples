@@ -101,16 +101,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     private void FilterItems()
     {
-        if(string.IsNullOrEmpty(SearchBoxText))
-        {
-            FilteredSearchItems = new ObservableCollection<ControlInfoDataItem>(AllPages);
-        }
-        else
-        {
-            FilteredSearchItems = new ObservableCollection<ControlInfoDataItem>(
-                AllPages.Where(item => item.Title.ToLower().Contains(SearchBoxText.ToLower()))
-            );
-        }
+        FilteredSearchItems = ControlsInfoDataSource.Instance.FilterItems(SearchBoxText);
 
         OnPropertyChanged(nameof(FilteredSearchItems));
     }
