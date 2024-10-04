@@ -78,14 +78,14 @@
     </Window.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
+            <RowDefinition Height="44" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid
             Grid.Row="0"
             Grid.ColumnSpan="2"
-            Height="50">
+            Height="44">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -97,7 +97,9 @@
             <Button
                 x:Name="BackButton"
                 Grid.Column="0"
-                Margin="4,0,0,0"
+                Height="32"
+                Width="40"
+                Margin="4,0"
                 VerticalAlignment="Center"
                 AutomationProperties.Name="Back"
                 Background="Transparent"
@@ -106,6 +108,10 @@
                 IsEnabled="{Binding ViewModel.CanNavigateback}"
                 WindowChrome.IsHitTestVisibleInChrome="True"
                 ToolTipService.ToolTip="Back">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Transparent" />
+                    <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                </Button.Resources>
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="{StaticResource SymbolThemeFontFamily}"
@@ -129,7 +135,7 @@
                 Margin="4,0,0,0"
                 Orientation="Horizontal">
                 <Image
-                    Width="16"
+                    Width="20"
                     VerticalAlignment="Center"
                     Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
                 <TextBlock
@@ -214,7 +220,7 @@
                 <TreeView
                     x:Name="ControlsList"
                     Grid.Row="1"
-                    Margin="8,24,0,0"
+                    Margin="8,8,0,0"
                     AutomationProperties.Name="Navigation Pane"
                     ItemsSource="{Binding ViewModel.Controls}"
                     PreviewKeyDown="ControlsList_PreviewKeyDown"
@@ -265,7 +271,7 @@
             </Grid>
             <Border
                 Grid.Column="1"
-                Margin="16,0,0,0"
+                Margin="4,0,0,0"
                 Padding="24,16,24,0"
                 Background="{DynamicResource LayerFillColorDefaultBrush}"
                 BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
