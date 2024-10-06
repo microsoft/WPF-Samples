@@ -13,10 +13,6 @@ using System.Xml;
 
 namespace HtmlToXamlDemo
 {
-    // DependencyProperty
-
-    // TextElement
-
     /// <summary>
     ///     HtmlToXamlConverter is a static class that takes an HTML string
     ///     and converts it into XAML
@@ -29,7 +25,7 @@ namespace HtmlToXamlDemo
         //
         // ----------------------------------------------------------------
 
-        // The constants reprtesent all Xaml names used in a conversion
+        // The constants represent all Xaml names used in a conversion
         public const string XamlFlowDocument = "FlowDocument";
         public const string XamlRun = "Run";
         public const string XamlSpan = "Span";
@@ -87,6 +83,7 @@ namespace HtmlToXamlDemo
         public const string XamlTextDecorationsUnderline = "Underline";
         public const string XamlTextIndent = "TextIndent";
         public const string XamlTextAlignment = "TextAlignment";
+
         // ---------------------------------------------------------------------
         //
         // Private Fields
@@ -111,12 +108,12 @@ namespace HtmlToXamlDemo
         ///     Converts an html string into xaml string.
         /// </summary>
         /// <param name="htmlString">
-        ///     Input html which may be badly formated xml.
+        ///     Input html which may be badly formatted xml.
         /// </param>
         /// <param name="asFlowDocument">
         ///     true indicates that we need a FlowDocument as a root element;
         ///     false means that Section or Span elements will be used
-        ///     dependeing on StartFragment/EndFragment comments locations.
+        ///     depending on StartFragment/EndFragment comments locations.
         /// </param>
         /// <returns>
         ///     Well-formed xml representing XAML equivalent for the input html string.
@@ -231,7 +228,7 @@ namespace HtmlToXamlDemo
         /// <param name="sourceContext"></param>
         /// <returns>
         ///     Last processed html node. Normally it should be the same htmlElement
-        ///     as was passed as a paramater, but in some irregular cases
+        ///     as was passed as a parameter, but in some irregular cases
         ///     it could one of its following siblings.
         ///     The caller must use this node to get to next sibling from it.
         /// </returns>
@@ -258,8 +255,8 @@ namespace HtmlToXamlDemo
                 if (htmlElementNamespace != HtmlParser.XhtmlNamespace)
                 {
                     // Non-html element. skip it
-                    // Isn't it too agressive? What if this is just an error in html tag name?
-                    // TODO: Consider skipping just a wparrer in recursing into the element tree,
+                    // Isn't it too aggressive? What if this is just an error in html tag name?
+                    // TODO: Consider skipping just a wrapper in recursing into the element tree,
                     // which may produce some garbage though coming from xml fragments.
                     return htmlElement;
                 }
@@ -452,7 +449,7 @@ namespace HtmlToXamlDemo
                 // Decide whether we can unwrap this element as not having any formatting significance.
                 if (!xamlElement.HasAttributes)
                 {
-                    // This elements is a group of block elements whitout any additional formatting.
+                    // This elements is a group of block elements without any additional formatting.
                     // We can add blocks directly to xamlParentElement and avoid
                     // creating unnecessary Sections nesting.
                     xamlElement = xamlParentElement;
@@ -913,8 +910,15 @@ namespace HtmlToXamlDemo
         ///     XmlNode representing the first non-li node in the input after one or more li's have been processed.
         /// </returns>
         private static XmlElement AddOrphanListItems(XmlElement xamlParentElement, XmlElement htmlLiElement,
-            Hashtable inheritedProperties, CssStylesheet stylesheet, List<XmlElement> sourceContext)
+    Hashtable inheritedProperties, CssStylesheet stylesheet, List<XmlElement> sourceContext)
         {
+            if (htmlLiElement == null)
+            {
+                // Handle the case where htmlLiElement is null
+                // For example, you might throw an exception or return early
+                throw new ArgumentNullException(nameof(htmlLiElement));
+            }
+
             Debug.Assert(htmlLiElement.LocalName.ToLower() == "li");
 
             XmlElement lastProcessedListItemElement = null;
@@ -925,7 +929,7 @@ namespace HtmlToXamlDemo
             if (xamlListItemElementPreviousSibling != null && xamlListItemElementPreviousSibling.LocalName == XamlList)
             {
                 // Previously added Xaml element was a list. We will add the new li to it
-                xamlListElement = (XmlElement) xamlListItemElementPreviousSibling;
+                xamlListElement = (XmlElement)xamlListItemElementPreviousSibling;
             }
             else
             {
@@ -944,8 +948,8 @@ namespace HtmlToXamlDemo
             // Use properties inherited from xamlParentElement for context 
             while (htmlChildNode != null && htmlChildNodeName == "li")
             {
-                AddListItem(xamlListElement, (XmlElement) htmlChildNode, inheritedProperties, stylesheet, sourceContext);
-                lastProcessedListItemElement = (XmlElement) htmlChildNode;
+                AddListItem(xamlListElement, (XmlElement)htmlChildNode, inheritedProperties, stylesheet, sourceContext);
+                lastProcessedListItemElement = (XmlElement)htmlChildNode;
                 htmlChildNode = htmlChildNode.NextSibling;
                 htmlChildNodeName = htmlChildNode?.LocalName.ToLower();
             }
@@ -1012,10 +1016,10 @@ namespace HtmlToXamlDemo
         ///     Parent xaml element to which a converted table must be added.
         /// </param>
         /// <param name="htmlTableElement">
-        ///     XmlElement reprsenting the Html table element to be converted
+        ///     XmlElement representing the Html table element to be converted
         /// </param>
         /// <param name="inheritedProperties">
-        ///     Hashtable representing properties inherited from parent context.
+        ///     HashTable representing properties inherited from parent context.
         /// </param>
         private static void AddTable(XmlElement xamlParentElement, XmlElement htmlTableElement,
             Hashtable inheritedProperties,
@@ -1213,7 +1217,7 @@ namespace HtmlToXamlDemo
         ///     XmlElement representing a source html table.
         /// </param>
         /// <param name="xamlTableElement">
-        ///     XmlElement repesenting a resulting xaml table.
+        ///     XmlElement representing a resulting xaml table.
         /// </param>
         /// <param name="columnStartsAllRows">
         ///     Array of doubles - column start coordinates.
@@ -1230,7 +1234,7 @@ namespace HtmlToXamlDemo
         {
             // Flow document table requires <Table.Columns> element to include <TableColumn/> element as 
             // defined in https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/how-to-define-a-table-with-xaml
-            // Notic: CreateElement("Table", "Columns", XamlNamespace) would add xmlns attribute to <Table.Columns> and lead to XMLReader crash.
+            // Notice: CreateElement("Table", "Columns", XamlNamespace) would add xmlns attribute to <Table.Columns> and lead to XMLReader crash.
             XmlElement xamlTableColumnGroupElement = xamlTableElement.OwnerDocument.CreateElement(null, XamlTableColumnGroup, XamlNamespace);
             // Add column information
             if (columnStartsAllRows != null)
@@ -1353,7 +1357,7 @@ namespace HtmlToXamlDemo
         ///     XmlElement representing the first tr child of the tbody element to be read
         /// </param>
         /// <param name="currentProperties">
-        ///     Hashtable representing current properties of the tbody element that are generated and applied in the
+        ///     HashTable representing current properties of the tbody element that are generated and applied in the
         ///     AddTable function; to be used as inheritedProperties when adding tr elements
         /// </param>
         /// <param name="columnStarts"></param>
@@ -1370,7 +1374,7 @@ namespace HtmlToXamlDemo
             Debug.Assert(xamlTableBodyElement.LocalName == XamlTableRowGroup);
             Debug.Assert(currentProperties != null);
 
-            // Initialize child node for iteratimg through children to the first tr element
+            // Initialize child node for iterating through children to the first tr element
             var htmlChildNode = htmlTrStartNode;
             ArrayList activeRowSpans = null;
             if (columnStarts != null)
@@ -1589,7 +1593,7 @@ namespace HtmlToXamlDemo
         /// <returns>
         ///     ArrayList of type double which contains the function output. If analysis is successful, this ArrayList contains
         ///     all the points which are the starting position of any column in the table, ordered from left to right.
-        ///     In case if analisys was impossible we return null.
+        ///     In case if analysis was impossible we return null.
         /// </returns>
         private static ArrayList AnalyzeTableStructure(XmlElement htmlTableElement, CssStylesheet stylesheet)
         {
@@ -1630,7 +1634,7 @@ namespace HtmlToXamlDemo
                         {
                             // Tbody analysis may return 0, probably due to unprocessable format. 
                             // We should also fail.
-                            columnWidthsAvailable = false; // interrupt the analisys
+                            columnWidthsAvailable = false; // interrupt the analysis
                         }
                         break;
                     case "tr":
@@ -1644,13 +1648,13 @@ namespace HtmlToXamlDemo
                         }
                         else if (trWidth == 0)
                         {
-                            columnWidthsAvailable = false; // interrupt the analisys
+                            columnWidthsAvailable = false; // interrupt the analysis
                         }
                         break;
                     case "td":
                         // Incorrect formatting, too deep to analyze at this level. Return null.
                         // TODO: implement analysis at this level, possibly by creating a new tr
-                        columnWidthsAvailable = false; // interrupt the analisys
+                        columnWidthsAvailable = false; // interrupt the analysis
                         break;
                     default:
                         // Element should not occur directly in table. Ignore it.
@@ -1764,7 +1768,7 @@ namespace HtmlToXamlDemo
         /// </param>
         /// <param name="tableWidth">
         ///     Double value representing the current width of the table.
-        ///     Return 0 if analisys was insuccessful.
+        ///     Return 0 if analysis was unsuccessful.
         /// </param>
         private static double AnalyzeTrStructure(XmlElement htmlTrElement, ArrayList columnStarts,
             ArrayList activeRowSpans,
@@ -1834,7 +1838,7 @@ namespace HtmlToXamlDemo
                             // we are either adding after another column of the same row, in which case it should not inherit
                             // the previous column's span. Otherwise we are adding after the last column of some previous
                             // row, and assuming the table widths line up, we should not be spanned by it. If there is
-                            // an incorrect tbale structure where a columns starts in the middle of a row span, we do not
+                            // an incorrect table structure where a columns starts in the middle of a row span, we do not
                             // guarantee correct output
                             columnStarts.Add(columnStart);
                             activeRowSpans.Add(0);
@@ -1943,7 +1947,7 @@ namespace HtmlToXamlDemo
         }
 
         /// <summary>
-        ///     Gets index at which a column should be inseerted into the columnStarts ArrayList. This is
+        ///     Gets index at which a column should be inserted into the columnStarts ArrayList. This is
         ///     decided by the value columnStart. The columnStarts ArrayList is ordered in ascending order.
         ///     Returns an integer representing the index at which the column should be inserted
         /// </summary>
@@ -1955,8 +1959,8 @@ namespace HtmlToXamlDemo
         /// </param>
         /// <param name="columnIndex">
         ///     Int representing the current column index. This acts as a clue while finding the insertion index.
-        ///     If the value of columnStarts at columnIndex is the same as columnStart, then this position alrady exists
-        ///     in the array and we can jsut return columnIndex.
+        ///     If the value of columnStarts at columnIndex is the same as columnStart, then this position already exists
+        ///     in the array and we can just return columnIndex.
         /// </param>
         /// <returns></returns>
         private static int GetNextColumnIndex(int columnIndex, double columnWidth, ArrayList columnStarts,
@@ -2062,13 +2066,10 @@ namespace HtmlToXamlDemo
 
         private static double GetColumnWidth(XmlElement htmlTdElement)
         {
-            string columnWidthAsString;
-            double columnWidth;
+            string columnWidthAsString = null;
+            double columnWidth = -1;
 
-            columnWidthAsString = null;
-            columnWidth = -1;
-
-            // Get string valkue for the width
+            // Get string value for the width
             columnWidthAsString = GetAttribute(htmlTdElement, "width") ??
                                   GetCssAttribute(GetAttribute(htmlTdElement, "style"), "width");
 
@@ -2091,30 +2092,28 @@ namespace HtmlToXamlDemo
         ///     Width of the current column
         /// </param>
         /// <param name="columnStarts">
-        ///     ArrayList repsenting starting coordinates of all columns
+        ///     ArrayList representing starting coordinates of all columns
         /// </param>
         private static int CalculateColumnSpan(int columnIndex, double columnWidth, ArrayList columnStarts)
         {
             // Current status of column width. Indicates the amount of width that has been scanned already
             double columnSpanningValue;
             int columnSpanningIndex;
-            int columnSpan;
             double subColumnWidth; // Width of the smallest-grain columns in the table
 
             Debug.Assert(columnStarts != null);
             Debug.Assert(columnIndex < columnStarts.Count - 1);
-            Debug.Assert((double) columnStarts[columnIndex] >= 0);
+            Debug.Assert((double)columnStarts[columnIndex] >= 0);
             Debug.Assert(columnWidth > 0);
 
             columnSpanningIndex = columnIndex;
             columnSpanningValue = 0;
-            columnSpan = 0;
             subColumnWidth = 0;
 
             while (columnSpanningValue < columnWidth && columnSpanningIndex < columnStarts.Count - 1)
             {
-                subColumnWidth = (double) columnStarts[columnSpanningIndex + 1] -
-                                 (double) columnStarts[columnSpanningIndex];
+                subColumnWidth = (double)columnStarts[columnSpanningIndex + 1] -
+                                 (double)columnStarts[columnSpanningIndex];
                 Debug.Assert(subColumnWidth > 0);
                 columnSpanningValue += subColumnWidth;
                 columnSpanningIndex++;
@@ -2122,7 +2121,7 @@ namespace HtmlToXamlDemo
 
             // Now, we have either covered the width we needed to cover or reached the end of the table, in which
             // case the column spans all the columns until the end
-            columnSpan = columnSpanningIndex - columnIndex;
+            int columnSpan = columnSpanningIndex - columnIndex;
             Debug.Assert(columnSpan > 0);
 
             return columnSpan;
@@ -2163,7 +2162,7 @@ namespace HtmlToXamlDemo
         ///     XmlElement representing Xaml element to which properties are to be applied
         /// </param>
         /// <param name="localProperties">
-        ///     Hashtable representing local properties of Html element that is converted into xamlElement
+        ///     HashTable representing local properties of Html element that is converted into xamlElement
         /// </param>
         private static void ApplyLocalProperties(XmlElement xamlElement, Hashtable localProperties, bool isBlock)
         {
@@ -2253,7 +2252,7 @@ namespace HtmlToXamlDemo
 
                     case "width":
                     case "height":
-                        //  Decide what to do with width and height propeties
+                        //  Decide what to do with width and height properties
                         break;
 
                     case "margin-top":
@@ -2418,7 +2417,7 @@ namespace HtmlToXamlDemo
             string top, string bottom)
         {
             // Xaml syntax:
-            // We have a reasonable interpreation for one value (all four edges), two values (horizontal, vertical),
+            // We have a reasonable interpretation for one value (all four edges), two values (horizontal, vertical),
             // and four values (left, top, right, bottom).
             //  switch (i) {
             //    case 1: return new Thickness(lengths[0]);
@@ -2489,7 +2488,7 @@ namespace HtmlToXamlDemo
         /// <param name="sourceContext"></param>
         /// <returns>
         ///     returns a combination of previous context with local set of properties.
-        ///     This value is not used in the current code - inntended for the future development.
+        ///     This value is not used in the current code - intended for the future development.
         /// </returns>
         private static Hashtable GetElementProperties(XmlElement htmlElement, Hashtable inheritedProperties,
             out Hashtable localProperties, CssStylesheet stylesheet, List<XmlElement> sourceContext)
@@ -2642,7 +2641,7 @@ namespace HtmlToXamlDemo
         ///     A name of css attribute to extract
         /// </param>
         /// <returns>
-        ///     A string rrepresentation of an attribute value if found;
+        ///     A string representation of an attribute value if found;
         ///     null if there is no such attribute in a given string.
         /// </returns>
         private static string GetCssAttribute(string cssStyle, string attributeName)
@@ -2726,7 +2725,7 @@ namespace HtmlToXamlDemo
 
         // .................................................................
         //
-        // Pasring Color Attribute
+        // Parsing Color Attribute
         //
         // .................................................................
 

@@ -1,5 +1,7 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 
 namespace GraphingCalculatorDemo.Parser
 {
@@ -31,16 +33,16 @@ namespace GraphingCalculatorDemo.Parser
             if (leftConst != null && rightConst != null)
             {
                 // two constants;  just evaluate it;
-                if (rightConst.Value == 0)
+                if (Math.Abs(rightConst.Value - 0) < double.Epsilon)
                 {
                     throw new InvalidExpressionException("Divide by zero detected in function");
                 }
                 return new ConstantExpression(leftConst.Value/rightConst.Value);
             }
-            if (leftConst != null && leftConst.Value == 0)
+            if (leftConst != null && Math.Abs(leftConst.Value - 0) < double.Epsilon)
             {
                 // 0 / y;  return 0;
-                if (rightConst != null && rightConst.Value == 0)
+                if (rightConst != null && Math.Abs(rightConst.Value - 0) < double.Epsilon)
                 {
                     throw new InvalidExpressionException("Divide by zero detected in function");
                 }
@@ -48,17 +50,17 @@ namespace GraphingCalculatorDemo.Parser
             }
             if (rightConst != null)
             {
-                if (rightConst.Value == 0)
+                if (Math.Abs(rightConst.Value - 0) < double.Epsilon)
                 {
                     // x / 0;
                     throw new InvalidExpressionException("Divide by zero detected in function");
                 }
-                if (rightConst.Value == 1)
+                if (Math.Abs(rightConst.Value - 1) < double.Epsilon)
                 {
                     // x / 1;  return x;
                     return newLeft;
                 }
-                if (rightConst.Value == -1)
+                if (Math.Abs(rightConst.Value - (-1)) < double.Epsilon)
                 {
                     // x / -1;  return -x;
                     if (leftNegate != null)

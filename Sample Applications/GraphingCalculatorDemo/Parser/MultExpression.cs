@@ -1,5 +1,7 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 
 namespace GraphingCalculatorDemo.Parser
 {
@@ -34,17 +36,17 @@ namespace GraphingCalculatorDemo.Parser
             }
             if (leftConst != null)
             {
-                if (leftConst.Value == 0)
+                if (Math.Abs(leftConst.Value - 0) < double.Epsilon)
                 {
                     // 0 * y;  return 0;
                     return new ConstantExpression(0);
                 }
-                if (leftConst.Value == 1)
+                if (Math.Abs(leftConst.Value - 1) < double.Epsilon)
                 {
                     // 1 * y;  return y;
                     return newRight;
                 }
-                if (leftConst.Value == -1)
+                if (Math.Abs(leftConst.Value - (-1)) < double.Epsilon)
                 {
                     // -1 * y;  return -y
                     if (rightNegate != null)
@@ -57,17 +59,17 @@ namespace GraphingCalculatorDemo.Parser
             }
             else if (rightConst != null)
             {
-                if (rightConst.Value == 0)
+                if (Math.Abs(rightConst.Value - 0) < double.Epsilon)
                 {
                     // x * 0;  return 0;
                     return new ConstantExpression(0);
                 }
-                if (rightConst.Value == 1)
+                if (Math.Abs(rightConst.Value - 1) < double.Epsilon)
                 {
                     // x * 1;  return x;
                     return newLeft;
                 }
-                if (rightConst.Value == -1)
+                if (Math.Abs(rightConst.Value - (-1)) < double.Epsilon)
                 {
                     // x * -1;  return -x;
                     if (leftNegate != null)

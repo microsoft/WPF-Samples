@@ -1,6 +1,8 @@
 // // Copyright (c) Microsoft. All rights reserved.
 // // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
+
 namespace GraphingCalculatorDemo.Parser
 {
     /// <summary>
@@ -30,7 +32,7 @@ namespace GraphingCalculatorDemo.Parser
                 // two constants;  just evaluate it;
                 return new ConstantExpression(leftConst.Value - rightConst.Value);
             }
-            if (leftConst != null && leftConst.Value == 0)
+            if (leftConst != null && Math.Abs(leftConst.Value - 0) < double.Epsilon)
             {
                 // 0 - y;  return -y;
                 if (rightNegate != null)
@@ -40,7 +42,7 @@ namespace GraphingCalculatorDemo.Parser
                 }
                 return new NegateExpression(newRight);
             }
-            if (rightConst != null && rightConst.Value == 0)
+            if (rightConst != null && Math.Abs(rightConst.Value - 0) < double.Epsilon)
             {
                 // x - 0;  return x;
                 return newLeft;
