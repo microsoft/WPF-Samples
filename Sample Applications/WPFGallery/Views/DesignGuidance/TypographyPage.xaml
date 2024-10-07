@@ -14,10 +14,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" AutomationProperties.HeadingLevel="Level1" />
-            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}" AutomationProperties.HeadingLevel="Level2" />
-        </StackPanel>
+
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
     <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
       <StackPanel Margin="0,0,0,24" Orientation="Vertical">
