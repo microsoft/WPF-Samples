@@ -49,6 +49,38 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="5,5,5,24">
+            <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="Appearance &amp; behavior" FontWeight="Bold" Margin="10" FontSize="13"/>
+            <Grid Background="Transparent" Margin="0,0,0,20">
+                <Border Background="{DynamicResource ExpanderHeaderBackground}" BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}" BorderThickness="{StaticResource ExpanderBorderThemeThickness}" Padding="{StaticResource ExpanderPadding}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0" Width="20" Height="20"  Margin="10,5,10,5" VerticalAlignment="Center" FontFamily="Segoe Fluent Icons" Text="&#xE790;" FontSize="20"/>
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Margin="12"
+                            Orientation="Vertical">
+                            <TextBlock Text="App theme" />
+                            <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">Select which app theme to display</TextBlock>
+                        </StackPanel>
+
+                        
+                        <ComboBox x:Name="Change_ThemeMode" MinWidth="200" HorizontalAlignment="Right" SelectedIndex="2" Grid.Column="2" AutomationProperties.Name="Change ThemeMode" SelectionChanged="Change_ThemeMode_SelectionChanged" Margin="10">
+                            <ComboBoxItem Content="Light" />
+                            <ComboBoxItem Content="Dark" />
+                            <ComboBoxItem Content="Use system setting" />
+                           
+                        </ComboBox>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="About" FontWeight="Bold" Margin="10" FontSize="13"/>
             <Expander AutomationProperties.Name="WPF Gallery Preview">
                 <Expander.Header>
                     <Grid>

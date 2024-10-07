@@ -9,6 +9,7 @@
 		<PlatformTarget>x64</PlatformTarget>
 		<Platforms>AnyCPU;x64</Platforms>
 		<StartupObject>WPFGallery.App</StartupObject>
+		<NoWarn>$(NoWarn);WPF0001</NoWarn>
 	</PropertyGroup>
 
 	
