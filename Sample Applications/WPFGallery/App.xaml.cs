@@ -109,9 +109,6 @@ public partial class App : Application
 
             services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsPageViewModel>();
-
-            services.AddSingleton<AboutPage>();
-            services.AddSingleton<AboutPageViewModel>();
         }).Build();
 
 

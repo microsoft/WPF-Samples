@@ -27,13 +27,7 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     public void Settings()
     {
-        _navigationService.NavigateTo(typeof(SettingsPage));
-    }
-
-    [RelayCommand]
-    public void About()
-    {
-        _navigationService.Navigate(typeof(AboutPage));
+        _navigationService.Navigate(typeof(SettingsPage));
     }
 
     [RelayCommand]
