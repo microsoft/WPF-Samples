@@ -113,7 +113,7 @@ public partial class MainWindow : Window
         {
             foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
             {
-                if (mergedDictionary.Source != null && mergedDictionary.Source.ToString().EndsWith("Fluent.xaml"))
+                if(Application.Current.ThemeMode != ThemeMode.None)
                 {
                     if (SystemParameters.HighContrast == true)
                     {
