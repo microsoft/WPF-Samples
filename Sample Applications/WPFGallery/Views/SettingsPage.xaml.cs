@@ -58,17 +58,14 @@ namespace WPFGallery.Views
                 switch (selectedValue)
                 {
                     case "Light":
-
                         Application.Current.ThemeMode = ThemeMode.Light;
                         break;
 
                     case "Dark":
-
                         Application.Current.ThemeMode = ThemeMode.Dark;
                         break;
 
                     case "Use system setting":
-
                         Application.Current.ThemeMode = ThemeMode.System;
                         break;
 
