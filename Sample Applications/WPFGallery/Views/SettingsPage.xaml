@@ -58,8 +58,8 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        
-                        <TextBlock Grid.Column="0" Width="20" Height="20"  Margin="10,5,10,5" VerticalAlignment="Center" FontFamily="Segoe Fluent Icons" Text="&#xE790;" FontSize="20"/>
+
+                        <TextBlock x:Name="AppIcon" AutomationProperties.Name="App Icon" Grid.Column="0" Width="20" Height="20"  Margin="10,5,10,5" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE790;" FontSize="20"/>
 
                         <StackPanel
                             Grid.Column="1"

@@ -258,12 +258,12 @@
                         Width="250"
                         Margin="10"
                         HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="Settings button"
+                        AutomationProperties.Name="Settings"
                         Command="{Binding ViewModel.SettingsCommand}"
                         Click="SettingsButton_Click"
                         DockPanel.Dock="Bottom">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE713;</TextBlock>
+                            <TextBlock x:Name="SettingsIcon" Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE713;</TextBlock>
                             <TextBlock Margin="8,0,0,0" Text="Settings" />
                         </StackPanel>
                     </Button>
