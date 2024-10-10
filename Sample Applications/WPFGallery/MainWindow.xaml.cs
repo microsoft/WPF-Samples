@@ -250,4 +250,33 @@ public partial class MainWindow : Window
             }
         }
     }
+
+    private void SearchBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        if(!string.IsNullOrWhiteSpace(comboBox.Text))
+        {
+            comboBox.IsDropDownOpen = true;
+        }
+    }
+
+    private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        comboBox.IsDropDownOpen = true;
+    }
+
+    private void SearchBox_DropDownClosed(object sender, EventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        if (comboBox.SelectedItem != null)
+        {
+            Type currentPageType = ((ControlInfoDataItem)comboBox.SelectedItem).PageType;
+
+            _navigationService.Navigate(currentPageType);
+        }
+    }
 }
