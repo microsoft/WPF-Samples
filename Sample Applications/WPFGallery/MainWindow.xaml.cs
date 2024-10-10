@@ -228,13 +228,13 @@ public partial class MainWindow : Window
         SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
     }
 
-    private void AboutButton_Click(object sender, RoutedEventArgs e)
+    private void SettingsButton_Click(object sender, RoutedEventArgs e)
     {
         AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
         peer.RaiseNotificationEvent(
            AutomationNotificationKind.Other,
             AutomationNotificationProcessing.ImportantMostRecent,
-            "About Page Opened",
+            "Settings Page Opened",
             "ButtonClickedActivity"
         );
     }

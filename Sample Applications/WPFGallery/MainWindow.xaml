@@ -254,17 +254,17 @@
 
                 <DockPanel Grid.Row="2">
                     <Button
-                        x:Name="AboutButton"
+                        x:Name="SettingsButton"
                         Width="250"
                         Margin="10"
                         HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="About application"
-                        Command="{Binding ViewModel.AboutCommand}"
-                        Click="AboutButton_Click"
+                        AutomationProperties.Name="Settings"
+                        Command="{Binding ViewModel.SettingsCommand}"
+                        Click="SettingsButton_Click"
                         DockPanel.Dock="Bottom">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE946;</TextBlock>
-                            <TextBlock Margin="8,0,0,0" Text="About" />
+                            <TextBlock x:Name="SettingsIcon" Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE713;</TextBlock>
+                            <TextBlock Margin="8,0,0,0" Text="Settings" />
                         </StackPanel>
                     </Button>
                 </DockPanel>
