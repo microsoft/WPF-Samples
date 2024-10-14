@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Windows.Navigation;
+using WPFGallery.Models;
 
 namespace WPFGallery.Navigation;
 
@@ -9,6 +8,8 @@ namespace WPFGallery.Navigation;
 public interface INavigationService
 {
     void Navigate(Type type);
+
+    void Navigate(string str);
 
     void NavigateTo(Type type);
 
@@ -40,12 +41,33 @@ public class NavigationService : INavigationService
 
     public event EventHandler<NavigatingEventArgs> Navigating;
 
+    private Dictionary<string, Type> _pageNameToTypeMapping;
+
 
     public NavigationService(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         _history = new Stack<Type>();
         _future = new Stack<Type>();
+
+        InitializeMapping();
+    }
+
+    private void InitializeMapping()
+    {
+        ICollection<ControlInfoDataItem> allPages = ControlsInfoDataSource.Instance.ControlsInfo;
+
+        _pageNameToTypeMapping = new();
+
+        foreach (ControlInfoDataItem item in allPages)
+        {
+            _pageNameToTypeMapping[item.Title] = item.PageType;
+
+            foreach (ControlInfoDataItem individualItem in item.Items)
+            {
+                _pageNameToTypeMapping[individualItem.Title] = individualItem.PageType;
+            }
+        }        
     }
 
     public void SetFrame(Frame frame)
@@ -70,6 +92,15 @@ public class NavigationService : INavigationService
             _currentPageType = type;
             var page = _serviceProvider.GetRequiredService(type);
             _frame.Navigate(page);
+        }
+    }
+
+    public void Navigate(string? pageName)
+    {
+        if (!string.IsNullOrEmpty(pageName) && _pageNameToTypeMapping.ContainsKey(pageName))
+        {
+            Type currentPage = _pageNameToTypeMapping[pageName];
+            Navigate(currentPage);
         }
     }
 

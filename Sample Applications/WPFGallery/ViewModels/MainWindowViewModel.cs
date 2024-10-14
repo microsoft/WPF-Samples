@@ -12,6 +12,39 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private string _applicationTitle = "WPF Gallery Preview";
 
+    private ObservableCollection<string> SearchItems { get; set; }
+
+    public ObservableCollection<string> FilteredSearchItems { get; set; }
+
+    private string _searchBoxText;
+
+    public string SearchBoxText
+    {
+        get => _searchBoxText;
+        set
+        {
+            _searchBoxText = value;
+            OnPropertyChanged(nameof(SearchBoxText));
+            FilterItems();
+        }
+    }
+
+    private void FilterItems()
+    {
+        if (string.IsNullOrEmpty(SearchBoxText))
+        {
+            FilteredSearchItems = new ObservableCollection<string>(SearchItems);
+        }
+        else
+        {
+            FilteredSearchItems = new ObservableCollection<string>(
+                SearchItems.Where(item => item.ToLower().Contains(SearchBoxText.ToLower()))
+            );
+        }
+
+        OnPropertyChanged(nameof(FilteredSearchItems));
+    }
+
     private readonly DispatcherTimer _timer;
 
     private string _searchText = string.Empty;
@@ -50,6 +83,20 @@ public partial class MainWindowViewModel : ObservableObject
         _timer = new DispatcherTimer();
         _timer.Interval = TimeSpan.FromMilliseconds(400);
         _timer.Tick += PerformSearchNavigation;
+
+        SearchItems = new();
+        
+        foreach (ControlInfoDataItem mainPage in Controls)
+        {
+            SearchItems.Add(mainPage.ToString());
+
+            foreach (ControlInfoDataItem controlsPage in mainPage.Items)
+            {
+                SearchItems.Add(controlsPage.ToString());
+            }
+        }
+
+        FilteredSearchItems = new ObservableCollection<string>(SearchItems);
     }
 
     public void UpdateSearchText(string searchText)
