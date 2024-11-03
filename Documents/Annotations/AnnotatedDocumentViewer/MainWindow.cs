@@ -1,5 +1,5 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace AnnotatedDocumentViewer
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
         private IAnchorInfo _info;
         private AnnotationService _service;
@@ -92,6 +92,21 @@ namespace AnnotatedDocumentViewer
             var view = CollectionViewSource.GetDefaultView(annotationsListBox.DataContext);
             view.SortDescriptions.Clear();
             view.SortDescriptions.Add(sortDescription);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Dispose managed resources
+                _store?.Dispose();
+            }
         }
     }
 }

@@ -73,7 +73,7 @@ public:
         {
             T *obj = new T();
 
-            if (NULL != obj)
+            if (obj)
             {
                 result = obj->QueryInterface(riid, ppv);
             }
