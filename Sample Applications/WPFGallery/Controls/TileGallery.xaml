@@ -11,17 +11,18 @@
             <Setter Property="Border.CornerRadius" Value="4" />
         </Style>
     </UserControl.Resources>
-        <Grid>
-            <ScrollViewer x:Name="RootScrollViewer" 
+    <Grid>
+        <ScrollViewer x:Name="RootScrollViewer" 
                           VerticalScrollBarVisibility="Disabled" 
                           HorizontalScrollBarVisibility="Hidden"
                           SizeChanged="RootScrollViewer_SizeChanged">
-                <StackPanel x:Name="TilesPanel"
+            <StackPanel x:Name="TilesPanel"
                     Orientation="Horizontal">
                 <local:HeaderTile
                             Title="Getting started"
                             Description="An overview of app development options, tools, and samples."
-                            Link="https://learn.microsoft.com/windows/apps/get-started/">
+                            Link="https://learn.microsoft.com/windows/apps/get-started/"
+                            Margin="24 0 6 0">
                     <local:HeaderTile.Source>
                         <Image Source="pack://application:,,,/Assets/HomeHeaderTiles/WPFGallery-Icon.ico" />
                     </local:HeaderTile.Source>
@@ -36,7 +37,7 @@
                 </local:HeaderTile>
                 <local:HeaderTile
                                 Title="WPF GitHub"
-                                Description="The well-established framework for your Windows desktop applications."
+                                Description="A robust UI framework for your desktop applications."
                                 Link="https://github.com/dotnet/wpf">
                     <local:HeaderTile.Source>
                         <Viewbox Height="52" Margin="-20 0 0 0">
@@ -63,8 +64,8 @@
                     </local:HeaderTile.Source>
                 </local:HeaderTile>
             </StackPanel>
-            </ScrollViewer>
-            <Button x:Name="ScrollBackButton"
+        </ScrollViewer>
+        <Button x:Name="ScrollBackButton"
                           Width="16"
                           Height="38"
                           Margin="8,-16,0,0"
@@ -73,9 +74,9 @@
                           Click="ScrollBackButton_Click"
                           ToolTip="Scroll left"
                           Visibility="Visible">
-                <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="8" Text="&#xEDD9;" />
-            </Button>
-            <Button x:Name="ScrollForwardButton"
+            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="8" Text="&#xEDD9;" />
+        </Button>
+        <Button x:Name="ScrollForwardButton"
                           Width="16"
                           Height="38"
                           Padding="0"
@@ -85,7 +86,7 @@
                           Click="ScrollForwardButton_Click"
                           ToolTip="Scroll right"
                           Visibility="Visible">
-                <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="8" Text="&#xEDDA;" />
-            </Button>
-        </Grid>
+            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="8" Text="&#xEDDA;" />
+        </Button>
+    </Grid>
 </UserControl>

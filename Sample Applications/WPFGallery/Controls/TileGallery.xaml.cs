@@ -31,28 +31,34 @@ namespace WPFGallery.Controls
         {
             double newOffSet = RootScrollViewer.HorizontalOffset - 210;
             RootScrollViewer.ScrollToHorizontalOffset(newOffSet);
-            UpdateScrollButtonsVisibility();
+            UpdateScrollButtonsVisibility(newOffSet);
         }
 
         private void ScrollForwardButton_Click(object sender, RoutedEventArgs e)
         {
             double newOffSet = RootScrollViewer.HorizontalOffset + 210;
             RootScrollViewer.ScrollToHorizontalOffset(newOffSet);
-            UpdateScrollButtonsVisibility();
+            UpdateScrollButtonsVisibility(newOffSet);
         }
 
         private void UpdateScrollButtonsVisibility()
+        {
+            double offset = RootScrollViewer.HorizontalOffset;
+            UpdateScrollButtonsVisibility(offset);
+        }
+
+        private void UpdateScrollButtonsVisibility(double newOffset)
         {
             ScrollBackButton.Visibility = Visibility.Visible;
             ScrollForwardButton.Visibility = Visibility.Visible;
 
             if (RootScrollViewer.ActualWidth < TilesPanel.ActualWidth)
             {
-                if(RootScrollViewer.HorizontalOffset == 0)
+                if(newOffset == 0)
                 {
                     ScrollBackButton.Visibility = Visibility.Collapsed;
                 }
-                else if(RootScrollViewer.HorizontalOffset >= RootScrollViewer.ScrollableWidth)
+                else if(newOffset >= RootScrollViewer.ScrollableWidth)
                 {
                     ScrollForwardButton.Visibility = Visibility.Collapsed;
                 }
