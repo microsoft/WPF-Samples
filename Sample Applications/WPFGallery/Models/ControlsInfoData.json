@@ -55,6 +55,12 @@
         ]
     },
     {
+        "UniqueId": "What's New",
+        "Title": "What's New",
+        "PageName": "WhatsNewPage",
+        "IconGlyph": "\uEB51"        
+    },
+    {
         "UniqueId": "All Controls",
         "Title": "All Controls",
         "PageName": "AllSamplesPage",
