@@ -6,6 +6,12 @@
         "IconGlyph": "\uE80F"
     },
     {
+        "UniqueId": "What's New",
+        "Title": "What's New",
+        "PageName": "WhatsNewPage",
+        "IconGlyph": "\uEB51"        
+    },
+    {
         "UniqueId": "Design Guidance",
         "Title": "Design Guidance",
         "PageName": "DesignGuidancePage",
@@ -53,12 +59,6 @@
                 "ImagePath": "Assets/ControlImages/PersonPicture.png"
             }
         ]
-    },
-    {
-        "UniqueId": "What's New",
-        "Title": "What's New",
-        "PageName": "WhatsNewPage",
-        "IconGlyph": "\uEB51"        
     },
     {
         "UniqueId": "All Controls",
