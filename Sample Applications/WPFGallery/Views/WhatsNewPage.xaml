@@ -55,13 +55,13 @@
                                     <Setter Property="Width" Value="30" />
                                 </Style>
                             </StackPanel.Resources>
-                            <Border CornerRadius="2 0 0 2" Background="{x:Static SystemColors.AccentColorDark3Brush}" />
-                            <Border Background="{x:Static SystemColors.AccentColorDark2Brush}" />
-                            <Border Background="{x:Static SystemColors.AccentColorDark1Brush}" />
-                            <Border Background="{x:Static SystemColors.AccentColorBrush}" />
-                            <Border Background="{x:Static SystemColors.AccentColorLight1Brush}" />
-                            <Border Background="{x:Static SystemColors.AccentColorLight2Brush}" />
-                            <Border CornerRadius="0 2 2 0" Background="{x:Static SystemColors.AccentColorLight3Brush}" />
+                            <Border CornerRadius="2 0 0 2" Background="{DynamicResource {x:Static SystemColors.AccentColorDark3BrushKey}}" />
+                            <Border Background="{DynamicResource {x:Static SystemColors.AccentColorDark2BrushKey}}" />
+                            <Border Background="{DynamicResource {x:Static SystemColors.AccentColorDark1BrushKey}}" />
+                            <Border Background="{DynamicResource {x:Static SystemColors.AccentColorBrushKey}}" />
+                            <Border Background="{DynamicResource {x:Static SystemColors.AccentColorLight1BrushKey}}" />
+                            <Border Background="{DynamicResource {x:Static SystemColors.AccentColorLight2BrushKey}}" />
+                            <Border CornerRadius="0 2 2 0" Background="{DynamicResource {x:Static SystemColors.AccentColorLight3BrushKey}}" />
                         </StackPanel>
                     </Grid>
                 </controls:ControlExample>
