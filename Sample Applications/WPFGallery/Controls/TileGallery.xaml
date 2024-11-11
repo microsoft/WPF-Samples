@@ -7,8 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <SolidColorBrush x:Key="ButtonBackground" Color="{StaticResource AcrylicBackgroundFillColorDefault}" />
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource AcrylicBackgroundFillColorDefault}" />
+        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource AcrylicBackgroundFillColorDefault}" />
+
         <Style x:Key="TileGalleryScrollButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
             <Setter Property="Border.CornerRadius" Value="4" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="Padding" Value="0" />
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -66,26 +73,20 @@
             </StackPanel>
         </ScrollViewer>
         <Button x:Name="ScrollBackButton"
-                          Width="16"
-                          Height="38"
+                          Style="{DynamicResource TileGalleryScrollButtonStyle}"
                           Margin="8,-16,0,0"
-                          Padding="0"
                           AutomationProperties.Name="Scroll left"
                           Click="ScrollBackButton_Click"
-                          ToolTip="Scroll left"
-                          Visibility="Visible">
+                          ToolTip="Scroll left">
             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="8" Text="&#xEDD9;" />
         </Button>
         <Button x:Name="ScrollForwardButton"
-                          Width="16"
-                          Height="38"
-                          Padding="0"
+                          Style="{DynamicResource TileGalleryScrollButtonStyle}"
                           Margin="0,-16,8,0"
                           HorizontalAlignment="Right"
                           AutomationProperties.Name="Scroll right"
                           Click="ScrollForwardButton_Click"
-                          ToolTip="Scroll right"
-                          Visibility="Visible">
+                          ToolTip="Scroll right">
             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="8" Text="&#xEDDA;" />
         </Button>
     </Grid>
