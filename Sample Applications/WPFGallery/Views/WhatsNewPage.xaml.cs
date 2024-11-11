@@ -29,6 +29,14 @@ namespace WPFGallery.Views
             DataContext = this;
         }
 
-        
+        private void Open_WhatsNewPage(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://learn.microsoft.com/en-in/dotnet/desktop/wpf/whats-new/net90") { UseShellExecute = true });
+        }
+
+        private void Open_UsingFluentInWPFPage(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://aka.ms/wpf-fluentdoc") { UseShellExecute = true });
+        }
     }
 }

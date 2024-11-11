@@ -15,6 +15,20 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
+
+        <Style x:Key="LinkTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,4,0,4" />
+        </Style>
+        <Style x:Key="DefaultHyperlinkStyle" TargetType="Hyperlink">
+            <Setter Property="TextDecorations" Value="None" />
+            <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorSecondaryBrush}" />
+                    <Setter Property="TextDecorations" Value="Underline" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid x:Name="ContentPagePane" Height="Auto">
@@ -85,12 +99,20 @@
                         Since the API is experimental, the usage of ThemeMode from 
                         code-behind is a bit restricted. To use ThemeMode from 
                         code-behind, the developer either needs to configure 
-                        the project to ignore the WPF0001 warning for the project 
+                        the project to ignore the 
+                    </Run>
+                    <Bold> WPF0001 </Bold>
+                    <Run>
+                        warning for the project 
                         or suppress the warning where needed.
                     </Run>
-                    <!--<LineBreak />
                     <LineBreak />
-                    <Run>For more information on how to use ThemeMode API, visit : <Hyperlink></Hyperlink></Run>-->
+                    <LineBreak />
+                    <Run>See </Run>
+                    <Hyperlink 
+                        Style="{StaticResource DefaultHyperlinkStyle}"
+                        Click="Open_UsingFluentInWPFPage">Using Fluent theme in WPF in .NET 9</Hyperlink>
+                    <Run> for more information.</Run>
                 </TextBlock>
 
                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0 24 0 12">
@@ -115,6 +137,14 @@
                     </StackPanel>
                 </controls:ControlExample>
 
+                <TextBlock TextWrapping="Wrap" Margin="0 24 0 12">
+                    <Run>See </Run>
+                    <Hyperlink Click="Open_WhatsNewPage"
+                               Style="{DynamicResource DefaultHyperlinkStyle}">
+                        What's New in WPF for .NET 9
+                    </Hyperlink>
+                    <Run> for more details.</Run>
+                </TextBlock>
             </StackPanel>
         </ScrollViewer>
     </Grid>
