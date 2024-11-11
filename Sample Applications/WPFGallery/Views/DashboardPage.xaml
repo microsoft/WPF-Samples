@@ -38,7 +38,7 @@
                 BorderThickness="0,0,0,1"
                 CornerRadius="8,0,0,0">
 
-                <StackPanel Margin="36,64,0,0" VerticalAlignment="Top" TextElement.Foreground="Black">
+                <StackPanel Margin="36,48,0,0" VerticalAlignment="Top" TextElement.Foreground="Black">
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text=".NET 9" Margin="0,0,0,2" AutomationProperties.HeadingLevel="Level1" />
                     <TextBlock Style="{StaticResource TitleLargeTextBlockStyle}" Text="WPF Gallery" Margin="0,0,0,8" AutomationProperties.HeadingLevel="Level1" />
                     <Border Background="Transparent" CornerRadius="8,8,8,8" MaxWidth="300" HorizontalAlignment="Left">
