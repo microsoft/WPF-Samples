@@ -5,55 +5,63 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFGallery.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
     Title="DashboardPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
+    <ScrollViewer Margin="-24,-16,-24,12">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Border
-            Height="286"
-            Margin="-24,-16,-24,12"
-            Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
-            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-            BorderThickness="0,0,0,1"
-            CornerRadius="8,0,0,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <Grid>
-                <Border  CornerRadius="8,0,0,0" Opacity="0.8">
-                    <Border.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.png" Stretch="UniformToFill" />
-                    </Border.Background>
-                </Border>
-                
-                <StackPanel Margin="36,88,0,0" VerticalAlignment="Top">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WPF Gallery" Margin="0,0,0,8" AutomationProperties.HeadingLevel="Level1" />
-                    <Border Background="{DynamicResource ControlFillColorDisabledBrush}" CornerRadius="8,8,8,8" MaxWidth="300" HorizontalAlignment="Left">
-                    <TextBlock
-                        MaxWidth="300"
-                        Margin="0,0,0,0"
-                        Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="A collection of controls, guidelines and samples to build great WPF applications"
-                        TextAlignment="Left" HorizontalAlignment="Left" Padding="12,8,12,8"/>
+            <Border CornerRadius="8,0,0,0" 
+                    Grid.RowSpan="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.light.png" Stretch="UniformToFill" />
+                </Border.Background>
+                <Border.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="Black" Offset="0.6" />
+                        <GradientStop Color="Transparent" Offset="0.9" />
+                    </LinearGradientBrush>
+                </Border.OpacityMask>
+            </Border>
+
+            <Border
+                Height="220"
+                BorderThickness="0,0,0,1"
+                CornerRadius="8,0,0,0">
+
+                <StackPanel Margin="36,48,0,0" VerticalAlignment="Top" TextElement.Foreground="Black">
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text=".NET 9" Margin="0,0,0,2" AutomationProperties.HeadingLevel="Level1" />
+                    <TextBlock Style="{StaticResource TitleLargeTextBlockStyle}" Text="WPF Gallery" Margin="0,0,0,8" AutomationProperties.HeadingLevel="Level1" />
+                    <Border Background="Transparent" CornerRadius="8,8,8,8" MaxWidth="300" HorizontalAlignment="Left">
+                        <TextBlock
+                            MaxWidth="300"
+                            Margin="0,0,0,0"
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="A collection of controls, guidelines and samples to build great WPF applications"
+                            TextAlignment="Left" HorizontalAlignment="Left" Padding="0,8,12,8"/>
                     </Border>
                 </StackPanel>
-                
-            </Grid>
-        </Border>
+            </Border>
+            
+            <controls:TileGallery Grid.Row="1" HorizontalAlignment="Stretch" Margin="0"/>
 
-        <ItemsControl
-            Grid.Row="1"
-            Margin="-12,0,0,0"
-            AutomationProperties.Name="Items in group"
-            ItemsSource="{Binding ViewModel.NavigationCards}"
-            Focusable="False"
-            ItemsPanel="{StaticResource WrapPanelTemplate}"
-            ItemTemplate="{StaticResource NavigationCardTemplate}" />
-        
-    </Grid>
+            <ItemsControl
+                Grid.Row="2"
+                Margin="12,0,0,0"
+                AutomationProperties.Name="Items in group"
+                ItemsSource="{Binding ViewModel.NavigationCards}"
+                Focusable="False"
+                ItemsPanel="{StaticResource WrapPanelTemplate}"
+                ItemTemplate="{StaticResource NavigationCardTemplate}" />
+        </Grid>
+    </ScrollViewer>
 </Page>
