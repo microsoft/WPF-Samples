@@ -1,6 +1,6 @@
 {
     "sdk": {
-        "version": "9.0.100-rc.1.24381.10",
+        "version": "9.0.100-rc.2.24474.11",
         "rollForward": "latestFeature"
     },
     "altsdk": {
@@ -8,6 +8,6 @@
         "net6.0-windows": "6.0.417",
         "net7.0-windows": "7.0.404",
         "net8.0-windows": "8.0.100",
-        "net9.0-windows": "9.0.100-preview.4.24257.5"
+        "net9.0-windows": "9.0.100-rc.2.24474.11"
     }
 }
