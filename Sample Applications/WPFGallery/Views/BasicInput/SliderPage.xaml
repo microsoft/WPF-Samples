@@ -18,26 +18,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,0,32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
 
-            <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
-            </StackPanel>
-
-        </Grid>
-
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="A simple slider."
-                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; &#10;&#9;Maximum=&quot;100&quot; Minimum=&quot;0&quot;/&gt;">
+                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; Maximum=&quot;100&quot; Minimum=&quot;0&quot;/&gt;">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -49,6 +37,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             AutomationProperties.Name="Simple"
+                            IsSnapToTickEnabled="True"
                             Maximum="100"
                             Minimum="0"
                             Value="{Binding ViewModel.SimpleSliderValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:SliderPage}, Mode=TwoWay}" />
@@ -62,9 +51,9 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="A slider with steps and range specified."
-                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; &#10;&#9;Maximum=&quot;1000&quot; Minimum=&quot;500&quot; TickFrequency=&quot;50&quot;/&gt;">
+                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; Maximum=&quot;1000&quot; Minimum=&quot;500&quot; TickFrequency=&quot;50&quot;/&gt;">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -91,9 +80,9 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="A slider with tick marks."
-                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; &#10;&#9;Maximum=&quot;100&quot; Minimum=&quot;0&quot; TickFrequency=&quot;20&quot; TickPlacement=&quot;Both&quot;/&gt;">
+                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; Maximum=&quot;100&quot; Minimum=&quot;0&quot; TickFrequency=&quot;20&quot; TickPlacement=&quot;Both&quot;/&gt;">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -121,9 +110,9 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="A vertical slider with range and tick marks specified."
-                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; &#10;&#9;Maximum=&quot;100&quot; Minimum=&quot;0&quot; Orientation=&quot;Vertical&quot; TickFrequency=&quot;20&quot; TickPlacement=&quot;Both&quot;/&gt;">
+                    XamlCode="&lt;Slider Width=&quot;200&quot; Margin=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Center&quot; IsSnapToTickEnabled=&quot;True&quot; Maximum=&quot;100&quot; Minimum=&quot;0&quot; Orientation=&quot;Vertical&quot; TickFrequency=&quot;20&quot; TickPlacement=&quot;Both&quot;/&gt;">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />

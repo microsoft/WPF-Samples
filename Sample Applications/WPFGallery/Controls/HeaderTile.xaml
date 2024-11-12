@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="WPFGallery.Controls.HeaderTile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFGallery.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="198" Height="220"
+    mc:Ignorable="d">
+    <Button
+        x:Name="RootButton"
+        Margin="6"
+        BorderThickness="1"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        HorizontalContentAlignment="Stretch"
+        VerticalContentAlignment="Stretch"
+        AutomationProperties.Name="{Binding Title, RelativeSource={RelativeSource AncestorType=local:HeaderTile}}"
+        Click="RootButton_Click"
+        Padding="24">
+        <Button.Resources>
+            <SolidColorBrush x:Key="ButtonBackground" Color="{DynamicResource AcrylicBackgroundFillColorDefault}" Opacity="0.8" />
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{DynamicResource AcrylicBackgroundFillColorDefault}" Opacity="0.9" />
+            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{DynamicResource AcrylicBackgroundFillColorDefault}" Opacity="1.0" />
+
+            <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
+                <Setter Property="Border.CornerRadius" Value="8" />
+            </Style>
+        </Button.Resources>
+        <Grid x:Name="ContentGrid"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="56" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.RowSpan="3"
+                Margin="-12"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                FontSize="16"
+                FontFamily="Segoe Fluent Icons"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                Text="&#xE8A7;" />
+            <ContentPresenter
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding Source, RelativeSource={RelativeSource AncestorType=local:HeaderTile}}" />
+
+            <StackPanel
+                Grid.Row="1"
+                Orientation="Vertical"
+                Margin="0 16 0 0">
+                <TextBlock
+                    x:Name="TitleText"
+                    FontSize="18"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:HeaderTile}}"
+                    Margin="0 0 0 8"/>
+                <TextBlock
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    TextTrimming="CharacterEllipsis"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="{Binding Description, RelativeSource={RelativeSource AncestorType=local:HeaderTile}}" />
+            </StackPanel>
+        </Grid>
+    </Button>
+</UserControl>
+

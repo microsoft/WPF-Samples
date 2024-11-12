@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFGallery.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
     Title="DateAndTimePage"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -16,57 +17,20 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel
+
+        <controls:PageHeader
             Grid.Row="0"
             Margin="0,0,0,40"
-            VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-            <TextBlock Text="{Binding ViewModel.PageDescription}" />
-        </StackPanel>
+            Title="{Binding ViewModel.PageTitle}"
+            Description="{Binding ViewModel.PageDescription}" />
 
         <ItemsControl
             Grid.Row="1"
             Margin="-12,0,0,0"
             AutomationProperties.Name="Items in group"
-            ItemsSource="{Binding ViewModel.NavigationCards}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Margin="10" Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button
-                        Width="360"
-                        Height="90"
-                        Margin="7"
-                        Padding="20,10"
-                        HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="{Binding Name}"
-                        Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:DateAndTimePage}}}"
-                        CommandParameter="{Binding PageType}">
-                        <StackPanel Orientation="Horizontal">
-                            <ContentPresenter
-                                Width="50"
-                                Height="50"
-                                Margin="0,0,8,0"
-                                Content="{Binding Icon}" />
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock
-                                    Margin="10,0,0,0"
-                                    Style="{StaticResource BodyStrongTextBlockStyle}"
-                                    Text="{Binding Name}" />
-                                <TextBlock
-                                    Width="240"
-                                    Margin="10,0,0,0"
-                                    Foreground="{StaticResource TextFillColorSecondaryBrush}"
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="{Binding Description}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            ItemsSource="{Binding ViewModel.NavigationCards}"
+            Focusable="False"
+            ItemsPanel="{StaticResource WrapPanelTemplate}"
+            ItemTemplate="{StaticResource NavigationCardTemplate}" />
     </Grid>
 </Page>

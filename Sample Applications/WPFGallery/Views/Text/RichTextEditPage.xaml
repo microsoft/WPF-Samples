@@ -17,24 +17,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,0,32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
-            <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
-            </StackPanel>
-
-        </Grid>
-
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="A simple RichTextBox"
                     XamlCode="&lt;RichTextBox /&gt;">
                     <RichTextBox AutomationProperties.Name="simple rich text editor" />

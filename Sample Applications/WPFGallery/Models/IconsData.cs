@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace WPFGallery.Models
 {
+    /// <summary>
+    /// IconData class for icons in icon page
+    /// </summary>
     public class IconData
     {
         public string Name { get; set; }

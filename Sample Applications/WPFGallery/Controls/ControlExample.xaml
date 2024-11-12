@@ -37,7 +37,7 @@
                             Style="{StaticResource BodyStrongTextBlockStyle}"
                             Text="{TemplateBinding HeaderText}"
                             Visibility="{TemplateBinding HeaderText,
-                                                         Converter={StaticResource NullToVisibilityConverter}}" />
+                            Converter={StaticResource NullToVisibilityConverter}}" />
 
                         <Border
                             Grid.Row="1"
@@ -51,7 +51,7 @@
 
                         <Expander
                             Grid.Row="2"
-                            AutomationProperties.Name="View Source Code"
+                            AutomationProperties.Name="{Binding HeaderText, RelativeSource={RelativeSource TemplatedParent}, StringFormat=View Source Code for {0}}"
                             Header="Source code">
                             <StackPanel>
                                 <StackPanel x:Name="XamlCodeBlock">
@@ -68,20 +68,20 @@
                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                             Text="XAML" />
 
-                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_XamlCode" FocusManager.IsFocusScope="True" >
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_XamlCode" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy XAML Code" >
                                           <Grid>
-                                            <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
-                                            <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
+                                                <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;"/>
+                                                <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE73E;" Opacity="0" />
                                           </Grid>  
                                             <Button.Triggers>
                                               <EventTrigger RoutedEvent="Button.Click">
                                                 <EventTrigger.Actions>
                                                   <BeginStoryboard>
                                                     <Storyboard BeginTime="00:00:00">
-                                                      <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="0" />
-                                                      <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="1" />
-                                                      <DoubleAnimation Storyboard.TargetName="SuccessGlyph_TextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
-                                                      <DoubleAnimation Storyboard.TargetName="CopyGlyph_TextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
+                                                      <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="0" />
+                                                      <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+                                                      <DoubleAnimation Storyboard.TargetName="SuccessGlyphTextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
+                                                      <DoubleAnimation Storyboard.TargetName="CopyGlyphTextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
                                                     </Storyboard>
                                                   </BeginStoryboard>
                                                 </EventTrigger.Actions>
@@ -98,7 +98,8 @@
                                         BorderThickness="0"
                                         IsReadOnly="True"
                                         Text="{TemplateBinding XamlCode}"
-                                        TextWrapping="Wrap" />
+                                        TextWrapping="Wrap" 
+                                        Focusable="False"/>
                                 </StackPanel>
 
                                 <Border
@@ -121,7 +122,7 @@
                                             Text="C#" />
 
                                         <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CsharpCode" FocusManager.IsFocusScope="True" >
-                                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE8C8;" />
+                                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;" />
                                         </Button>
                                     </Grid>
                                     <TextBox

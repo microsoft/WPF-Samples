@@ -18,24 +18,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,0,32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
 
-            <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
-            </StackPanel>
-
-        </Grid>
-
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Standard RadioButton."
                     XamlCode="&lt;StackPanel&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 1&quot; GroupName=&quot;radio_group_one&quot; IsChecked=&quot;True&quot;/&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 2&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 3&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&lt;/StackPanel&gt;">
                     <Grid>
@@ -43,22 +31,25 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0" KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.DirectionalNavigation="Cycle">
                             <RadioButton
-                                AutomationProperties.Name="Group 1 Option 1"
+                                AutomationProperties.Name="Standard RadioButton Option 1"
                                 Content="Option 1"
                                 GroupName="radio_group_one"
                                 IsChecked="True"
+                                GotKeyboardFocus="RadioButton_GotKeyboardFocus"
                                 IsEnabled="{Binding ViewModel.IsRadioButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RadioButtonPage}, Mode=OneWay}" />
                             <RadioButton
-                                AutomationProperties.Name="Group 1 Option 2"
+                                AutomationProperties.Name="Standard RadioButton Option 2"
                                 Content="Option 2"
                                 GroupName="radio_group_one"
+                                GotKeyboardFocus="RadioButton_GotKeyboardFocus"
                                 IsEnabled="{Binding ViewModel.IsRadioButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RadioButtonPage}, Mode=OneWay}" />
                             <RadioButton
-                                AutomationProperties.Name="Group 1 Option 3"
+                                AutomationProperties.Name="Standard RadioButton Option 3"
                                 Content="Option 3"
                                 GroupName="radio_group_one"
+                                GotKeyboardFocus="RadioButton_GotKeyboardFocus"
                                 IsEnabled="{Binding ViewModel.IsRadioButtonEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RadioButtonPage}, Mode=OneWay}" />
                         </StackPanel>
                         <CheckBox
@@ -70,25 +61,28 @@
                 </controls:ControlExample>
 
                 <controls:ControlExample
-                    Margin="0,36,0,0"
+                    Margin="10,36,10,10"
                     HeaderText="RadioButton with right to left flow direction."
                     XamlCode="&lt;StackPanel&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 1&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; IsChecked=&quot;True&quot;/&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 2&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&#9;&lt;RadioButton Content=&quot;Option 3&quot; FlowDirection=&quot;RightToLeft&quot; GroupName=&quot;radio_group_one&quot; /&gt;             &#10;&lt;/StackPanel&gt;">
-                    <StackPanel Grid.Column="0">
+                    <StackPanel Grid.Column="0" KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.DirectionalNavigation="Cycle">
                         <RadioButton
-                            AutomationProperties.Name="Group 2 Option 1"
+                            AutomationProperties.Name="Left Flow RadioButton Option 1"
                             Content="Option 1"
                             FlowDirection="RightToLeft"
                             GroupName="radio_group_two"
+                            GotKeyboardFocus="RadioButton_GotKeyboardFocus"
                             IsChecked="True" />
                         <RadioButton
-                            AutomationProperties.Name="Group 2 Option 2"
+                            AutomationProperties.Name="Left Flow RadioButton Option 2"
                             Content="Option 2"
                             FlowDirection="RightToLeft"
+                            GotKeyboardFocus="RadioButton_GotKeyboardFocus"
                             GroupName="radio_group_two" />
                         <RadioButton
-                            AutomationProperties.Name="Group 2 Option 3"
+                            AutomationProperties.Name="Left Flow RadioButton Option 3"
                             Content="Option 3"
                             FlowDirection="RightToLeft"
+                            GotKeyboardFocus="RadioButton_GotKeyboardFocus"
                             GroupName="radio_group_two" />
                     </StackPanel>
                 </controls:ControlExample>

@@ -1,13 +1,11 @@
 ﻿using System.Configuration;
 using System.Data;
-using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Views;
-using WPFGallery.Views.Samples;
 using WPFGallery.ViewModels.Samples;
 
 namespace WPFGallery;
@@ -81,6 +79,8 @@ public partial class App : Application
             services.AddTransient<LayoutPageViewModel>();
             services.AddTransient<AllSamplesPage>();
             services.AddTransient<AllSamplesPageViewModel>();
+            services.AddTransient<WhatsNewPage>();
+            services.AddTransient<WhatsNewPageViewModel>();
             services.AddTransient<BasicInputPage>();
             services.AddTransient<BasicInputPageViewModel>();
             services.AddTransient<CollectionsPage>();
@@ -111,9 +111,6 @@ public partial class App : Application
 
             services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsPageViewModel>();
-
-            services.AddSingleton<AboutPage>();
-            services.AddSingleton<AboutPageViewModel>();
         }).Build();
 
 

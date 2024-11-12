@@ -14,14 +14,16 @@
         <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Padding" Value="0 0 0 4" />
-            <Setter Property="Foreground" Value="{StaticResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Setter Property="Opacity" Value="0.7"/>
             <Setter Property="Margin" Value="0,4,0,4" />
             <Setter Property="FontSize" Value="14"/>
         </Style>
 
         <Style x:Key="IconData" TargetType="{x:Type ContentControl}">
-      <Setter Property="Margin" Value="0,0,0,12" />
-      <Setter Property="Template">
+          <Setter Property="Margin" Value="0,0,0,12" />
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContentControl}">
                         <Grid >
@@ -35,21 +37,23 @@
                                     Padding="8" 
                                     FocusManager.IsFocusScope="True" 
                                     Command="ApplicationCommands.Copy" 
+                                    AutomationProperties.Name="Copy to clipboard"
+                                    ToolTipService.ToolTip="Copy to clipboard"
                                     CommandParameter="{TemplateBinding Content}"
                                     CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">
                                 <Grid>
-                                    <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE8C8;"/>
-                                    <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" Text="&#xE73E;" Opacity="0" />
+                                    <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;"/>
+                                    <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE73E;" Opacity="0" />
                                 </Grid>
                                 <Button.Triggers>
                                     <EventTrigger RoutedEvent="Button.Click">
                                     <EventTrigger.Actions>
                                         <BeginStoryboard>
                                         <Storyboard BeginTime="00:00:00">
-                                            <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="0" />
-                                            <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="1" />
-                                            <DoubleAnimation Storyboard.TargetName="SuccessGlyph_TextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
-                                            <DoubleAnimation Storyboard.TargetName="CopyGlyph_TextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
+                                            <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="0" />
+                                            <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="SuccessGlyphTextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="CopyGlyphTextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
                                         </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger.Actions>
@@ -65,113 +69,121 @@
     </Page.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 40">
-            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding ViewModel.PageDescription}"/>
-        </StackPanel>
-        <Expander 
-            Grid.Row="1" 
-            Header="Instructions on how to use Segoe Fluent Icons"
-            IsExpanded="False" >
-            <TextBlock TextWrapping="Wrap">
-                <Run FontWeight="SemiBold">
-                    How to get the font
-                </Run>
-                <LineBreak />
-                <Span>
-                    On Windows 11: There's nothing you need to do, the font comes with Windows.
+        <ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
+
+                <Expander Grid.Row="1" 
+                  Header="Instructions on how to use Segoe Fluent Icons"
+                  IsExpanded="False" 
+                  Margin="5">
+                
+                  <TextBlock TextWrapping="Wrap">
+                    <Run FontWeight="SemiBold">
+                        How to get the font
+                    </Run>
                     <LineBreak />
-                    On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
-                </Span>
-                <LineBreak/>
-                <LineBreak/>
-                <Span FontWeight="SemiBold">
-                    How to use the font
-                </Span>
-                <LineBreak/>
-                <Span>
-                    An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
-                    For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
-                </Span>
-                <LineBreak/>
-                <Span>
-                    All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
-                </Span>
-                <LineBreak/>
-                <LineBreak/>
-                <Run FontWeight="SemiBold">
-                    XAML
-                </Run>
-                <LineBreak/>
-                <Span>
-                    &lt;Grid&gt;
-                </Span>
-                <LineBreak/>
-                <Span>
-                    &lt;TextBlock FontFamily="Segoe Fluent Icons" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
-                </Span>
-                <LineBreak/>
-                <Span>
-                    &#x09;&lt;TextBlock FontFamily="Segoe Fluent Icons" Text="&amp;#xEB51;" /&gt;
-                </Span>
-                <LineBreak/>
-                <Span>
-                    &lt;/Grid&gt;
-                </Span>
-            </TextBlock>
-        </Expander>
-        <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="0,24,0,10" Grid.Row="2"/>
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="296"/>
-            </Grid.ColumnDefinitions>
-            <ListView Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="4" CornerRadius="8" Background="{DynamicResource ButtonBackground}">
-                            <Grid Width="96" Height="96" ToolTip="{Binding Name}" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" FontFamily="Segoe Fluent Icons" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{StaticResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ListView>
-            <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}">
-                <StackPanel Orientation="Vertical" Margin="16">
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
-                    <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="Segoe Fluent Icons" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBlock Text="Icon Name"/>
-                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}"/>
-                    <TextBlock Text="Unicode point"/>
-                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}"/>
-                    <TextBlock Text="Text glyph"/>
-                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}"/>
-                    <TextBlock Text="Code glyph"/>
-                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}"/>
-                    <TextBlock Text="XAML"/>
-                    <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;Segoe Fluent Icons&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
-                    <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" />
-                </StackPanel>
+                    <Span>
+                        On Windows 11: There's nothing you need to do, the font comes with Windows.
+                        <LineBreak />
+                        On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+                    </Span>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Span FontWeight="SemiBold">
+                        How to use the font
+                    </Span>
+                    <LineBreak/>
+                    <Span>
+                        An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
+                        For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
+                    </Span>
+                    <LineBreak/>
+                    <Span>
+                        All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
+                    </Span>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run FontWeight="SemiBold">
+                        XAML
+                    </Run>
+                    <LineBreak/>
+                    <Span>
+                        &lt;Grid&gt;
+                    </Span>
+                    <LineBreak/>
+                    <Span>
+                        &lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
+                    </Span>
+                    <LineBreak/>
+                    <Span>
+                        &#x09;&lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" /&gt;
+                    </Span>
+                    <LineBreak/>
+                    <Span>
+                        &lt;/Grid&gt;
+                    </Span>
+                    </TextBlock>
+                </Expander>
+                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="0,24,0,10" Grid.Row="2"/>
+                <Grid Grid.Row="3" MaxHeight="620">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="296"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView AutomationProperties.Name="Icons" Grid.Column="0" ItemsSource="{Binding ViewModel.Icons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+                                <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="4" CornerRadius="8" Background="{DynamicResource ButtonBackground}">
+                                    <Grid Width="96" Height="96" ToolTip="{Binding Name}" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ListView>
+                    <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}">
+                        <StackPanel Orientation="Vertical" Margin="16">
+                            <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="Icon Name"/>
+                            <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}"/>
+                            <TextBlock Text="Unicode point"/>
+                            <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}"/>
+                            <TextBlock Text="Text glyph"/>
+                            <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}"/>
+                            <TextBlock Text="Code glyph"/>
+                            <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}"/>
+                            <TextBlock Text="XAML"/>
+                            <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;{{StaticResource SymbolThemeFontFamily}}&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
+                            <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
             </Grid>
-        </Grid>
-        
+        </ScrollViewer>
     </Grid>
 </Page>

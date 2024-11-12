@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -9,18 +9,22 @@
 		<Platforms>x86;x64;ARM64</Platforms> 
 		<StartupObject>WPFGallery.App</StartupObject>
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers> 
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
 	</PropertyGroup>
 
-	
+
 	<ItemGroup>
 	  <ApplicationDefinition Remove="App.xaml" />
 	  <Page Include="App.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Assets\ControlImages\*" />
+    	<Resource Include="Assets\ControlImages\*" />
+    	<Resource Include="Assets\HomeHeaderTiles\*" />
+		<Resource Include="Assets\README_Images\*" />
 		<Resource Include="Assets\WPFGalleryPreviewIcon.png" />
 		<Resource Include="Assets\win11-dashboard.png" />
+		<Resource Include="Assets\win11-dashboard.light.png" />
 		<Resource Include="Assets\UserDashboard\*" />
 	</ItemGroup>
 	
@@ -30,10 +34,8 @@
 
 	<ItemGroup>
 	  <Content Include="Assets\WPFGalleryPreviewIcon.ico" />
-	  <!-- <Content Include="Models\IconsData.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content> -->
 	  <EmbeddedResource Include="Models\IconsData.json" />
+	  <EmbeddedResource Include="Models\ControlsInfoData.json" />
 	</ItemGroup>
 
 	<ItemGroup>

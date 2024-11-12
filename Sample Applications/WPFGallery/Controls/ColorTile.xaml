@@ -34,6 +34,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock 
+                                    Name="ColorNameTextBlock"
                                     Margin="12,12,0,6"
                                     Foreground="{TemplateBinding Foreground}"
                                     Style="{DynamicResource BodyStrongTextBlockStyle}"
@@ -58,18 +59,18 @@
                                     FocusManager.IsFocusScope="True"
                                     ToolTipService.ToolTip="Copy brush name">
                                     <Grid>
-                                        <TextBlock x:Name="CopyGlyph_TextBlock" FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE8C8;" />
-                                        <TextBlock x:Name="SuccessGlyph_TextBlock" FontFamily="Segoe Fluent Icons" FontSize="16" Text="&#xE73E;" Opacity="0" />
+                                        <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Text="&#xE8C8;" />
+                                        <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Text="&#xE73E;" Opacity="0" />
                                     </Grid>
                                     <Button.Triggers>
                                         <EventTrigger RoutedEvent="Button.Click">
                                         <EventTrigger.Actions>
                                             <BeginStoryboard>
                                             <Storyboard BeginTime="00:00:00">
-                                                <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="0" />
-                                                <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyph_TextBlock" Storyboard.TargetProperty="Opacity" To="1" />
-                                                <DoubleAnimation Storyboard.TargetName="SuccessGlyph_TextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
-                                                <DoubleAnimation Storyboard.TargetName="CopyGlyph_TextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
+                                                <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="0" />
+                                                <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+                                                <DoubleAnimation Storyboard.TargetName="SuccessGlyphTextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
+                                                <DoubleAnimation Storyboard.TargetName="CopyGlyphTextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
                                             </Storyboard>
                                             </BeginStoryboard>
                                         </EventTrigger.Actions>
@@ -78,6 +79,7 @@
                                 </Button>
 
                                 <TextBlock
+                                    Name="ColorExplanationTextBlock"
                                     Grid.Row="1"
                                     Margin="12,-4,0,0"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
@@ -85,6 +87,7 @@
                                     TextWrapping="Wrap" />
 
                                 <TextBlock
+                                    Name="ColorBrushNameTextBlock"
                                     Margin="12,0,0,18"
                                     Grid.Row="3"
                                     Grid.ColumnSpan="2"
@@ -102,7 +105,7 @@
                                     <TextBlock
                                         FontSize="16"
                                         Foreground="{DynamicResource SystemFillColorCriticalBrush}"
-                                        FontFamily="Segoe Fluent Icons"
+                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
                                         Text="&#xE7BA;" />
                                 </Grid>
                             </Grid>
@@ -117,6 +120,18 @@
                                 Visibility="{TemplateBinding ShowSeparator}" />
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="ColorExplanationTextBlock" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="ColorExplanationTextBlock" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="ColorBrushNameTextBlock" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="ColorBrushNameTextBlock" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="ColorNameTextBlock" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="ColorNameTextBlock" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemColorWindowTextColorBrush}" TargetName="CopyBrushNameButton" />
+                            <Setter Property="Background" Value="{DynamicResource SystemColorWindowColorBrush}" TargetName="CopyBrushNameButton" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

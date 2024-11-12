@@ -1,37 +1,11 @@
+﻿using WPFGallery.Navigation;
+using WPFGallery.Views;
 
-using System.Windows.Controls;
-
-namespace WPFGallery.ViewModels;
-
-/// <summary>
-/// Interaction logic for Settings.xaml
-/// </summary>
-public partial class SettingsPageViewModel : ObservableObject
+namespace WPFGallery.ViewModels
 {
-    //[ObservableProperty]
-    //private string _pageTitle = "Settings";
-
-    //[ObservableProperty]
-    //private ApplicationTheme _currentApplicationTheme = ApplicationTheme.Unknown;
-
-    //private void OnThemeChanged(ApplicationTheme currentApplicationTheme, Color systemAccent)
-    //{
-    //    // Update the theme if it has been changed elsewhere than in the settings.
-    //    if (CurrentApplicationTheme != currentApplicationTheme)
-    //    {
-    //        CurrentApplicationTheme = currentApplicationTheme;
-    //    }
-    //}
-
-    //public SettingsPageViewModel()
-    //{
-    //    CurrentApplicationTheme = ApplicationThemeManager.GetAppTheme();
-    //    ApplicationThemeManager.Changed += OnThemeChanged;
-    //}
-
-    //partial void OnCurrentApplicationThemeChanged(ApplicationTheme oldValue, ApplicationTheme newValue)
-    //{
-    //    ApplicationThemeManager.Apply(newValue);
-    //}
-
+    public partial class SettingsPageViewModel : ObservableObject
+    {
+        [ObservableProperty]
+        private string _pageTitle = "Settings";
+    }
 }

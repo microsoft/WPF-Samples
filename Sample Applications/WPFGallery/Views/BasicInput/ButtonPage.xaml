@@ -18,24 +18,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,0,32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
 
-            <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
-            </StackPanel>
-
-        </Grid>
-
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel>
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Simple Button"
                     XamlCode="&lt;Button Content=&quot;Standard WPF button&quot; /&gt;">
                     <Grid>
@@ -84,10 +72,10 @@
                 </controls:ControlExample>-->
 
                 <controls:ControlExample
-                    Margin="0,32,0,0"
+                    Margin="10,32,10,10"
                     HeaderText="WPF Accent Button"
-                    XamlCode="&lt;Button Style=&quot;{DynamicResource DefaultAccentButtonStyle}&quot; Content=&quot;WPF Accent Button&quot; /&gt;">
-                    <Button AutomationProperties.Name="WPF Accent" Style="{DynamicResource DefaultAccentButtonStyle}">
+                    XamlCode="&lt;Button Style=&quot;{DynamicResource AccentButtonStyle}&quot; Content=&quot;WPF Accent Button&quot; /&gt;">
+                    <Button AutomationProperties.Name="WPF Accent" Style="{DynamicResource AccentButtonStyle}">
                         <StackPanel Orientation="Horizontal">
                             <!--<SymbolIcon Symbol="Fluent24" />-->
                             <TextBlock Text="WPF Accent Button" />

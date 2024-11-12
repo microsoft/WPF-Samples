@@ -3,9 +3,15 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
-using System.Windows.Controls;
+using System.IO;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation;
 
 namespace WPFGallery.Controls;
+
+/// <summary>
+/// A control that displays an example of a control
+/// </summary>
 
 [ContentProperty(nameof(ExampleContent))]
 public class ControlExample : Control
@@ -121,6 +127,13 @@ public class ControlExample : Control
                     {
                         case "Copy_XamlCode":
                             Clipboard.SetText(controlExample.XamlCode);
+                            AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)e.OriginalSource);
+                            peer.RaiseNotificationEvent(
+                                AutomationNotificationKind.Other,
+                                AutomationNotificationProcessing.ImportantMostRecent,
+                                "Source Code Copied",
+                                "ButtonClickedActivity"
+                            );
                             break;
                         case "Copy_CsharpCode":
                             Clipboard.SetText(controlExample.CsharpCode);

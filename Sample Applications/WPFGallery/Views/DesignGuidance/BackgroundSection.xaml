@@ -21,7 +21,7 @@
                 Width="60"
                 Height="30"
                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="4" />
         </controls:ColorPageExample>
@@ -65,7 +65,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </controls:ColorPageExample>
@@ -92,14 +92,14 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}">
                 <Border
                     Width="90"
                     HorizontalAlignment="Right"
                     Background="{DynamicResource LayerFillColorDefaultBrush}"
-                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0" />
             </Border>
         </controls:ColorPageExample>
@@ -133,14 +133,14 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}">
                 <Border
                     Width="90"
                     HorizontalAlignment="Right"
                     Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
-                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0" />
             </Border>
         </controls:ColorPageExample>
@@ -229,7 +229,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="4" />
         </controls:ColorPageExample>
@@ -321,7 +321,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </controls:ColorPageExample>
@@ -355,7 +355,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource AcrylicBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </controls:ColorPageExample>
@@ -390,7 +390,7 @@
                 Width="120"
                 Height="40"
                 Background="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </controls:ColorPageExample>

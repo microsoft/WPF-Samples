@@ -1,9 +1,9 @@
 using System.ComponentModel;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Threading;
 using WPFGallery.Navigation;
 using WPFGallery.Views;
-using WPFGallery.Views.Samples;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels;
 
@@ -17,168 +17,17 @@ public partial class MainWindowViewModel : ObservableObject
     private string _searchText = string.Empty;
 
     [ObservableProperty]
-    private ICollection<NavigationItem> _controls = new ObservableCollection<NavigationItem>
-    {
-        new NavigationItem
-        {
-            Name = "Home",
-            PageType = typeof(DashboardPage),
-            Icon = "\xE80F"
-        },
-        new NavigationItem
-        {
-
-            Name = "Design Guidance",
-            PageType = typeof(DesignGuidancePage),
-            Icon = "\xEB3C",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem
-                {
-                    Name = "Colors",
-                    PageType = typeof(ColorsPage),
-                    Icon = "\xE790"
-                },
-                new NavigationItem
-                {
-                    Name = "Typography",
-                    PageType = typeof(TypographyPage),
-                    Icon = "\xE8D2"
-                },
-                new NavigationItem
-                {
-                    Name = "Icons",
-                    PageType = typeof(IconsPage),
-                    Icon = "\xED58"
-                },
-            }
-        },
-        new NavigationItem
-        {
-            Name = "Samples",
-            PageType = typeof(SamplesPage),
-            Icon = "\xEF58",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("User Dashboard", typeof(UserDashboardPage)),
-            }
-        },
-        new NavigationItem
-        {
-            Name = "All Controls",
-            PageType = typeof(AllSamplesPage),
-            Icon = "\xE71D",
-        },
-        new NavigationItem
-        {
-            Name = "Basic Input",
-            PageType = typeof(BasicInputPage),
-            Icon = "\xE73A",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("Button", typeof(ButtonPage)),
-                new NavigationItem("CheckBox", typeof(CheckBoxPage)),
-                new NavigationItem("ComboBox", typeof(ComboBoxPage)),
-                new NavigationItem("RadioButton", typeof(RadioButtonPage)),
-                new NavigationItem("Slider", typeof(SliderPage)),
-            }
-        },
-        new NavigationItem
-        {
-            Name="Collections",
-            PageType = typeof(CollectionsPage),
-            Icon = "\xE80A",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("DataGrid", typeof(DataGridPage)),
-                new NavigationItem("ListBox", typeof(ListBoxPage)),
-                new NavigationItem("ListView", typeof(ListViewPage)),
-                new NavigationItem("TreeView", typeof(TreeViewPage)),
-            }
-        },
-        new NavigationItem
-        {
-            Name="Date & Calendar",
-            PageType = typeof(DateAndTimePage),
-            Icon = "\xEC92",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("Calendar", typeof(CalendarPage)),
-                new NavigationItem("DatePicker", typeof(DatePickerPage)),
-            }
-        },
-        new NavigationItem
-        {
-            Name = "Layout",
-            PageType = typeof(LayoutPage),
-            Icon = "\xF246",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("Expander", typeof(ExpanderPage)),
-            }
-        },
-        // new NavigationItem
-        // {
-        //     Name = "Media",
-        //     PageType = typeof(MediaPage),
-        //     Children = new ObservableCollection<NavigationItem>
-        //     {
-        //         new NavigationItem("Canvas", typeof(CanvasPage)),
-        //         new NavigationItem("Image", typeof(ImagePage)),
-        //     }
-        // },
-        new NavigationItem
-        {
-            Name = "Navigation",
-            PageType = typeof(NavigationPage),
-            Icon = "\xE700",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("Menu", typeof(MenuPage)),
-                new NavigationItem("TabControl", typeof(TabControlPage)),
-            }
-        },
-        new NavigationItem
-        {
-            Name = "Status & Info",
-            PageType = typeof(StatusAndInfoPage),
-            Icon = "\xE8F2",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("ProgressBar", typeof(ProgressBarPage)),
-                new NavigationItem("ToolTip", typeof(ToolTipPage)),
-            }
-        },
-        new NavigationItem
-        {
-            Name = "Text",
-            PageType = typeof(TextPage),
-            Icon = "\xE8D2",
-            Children = new ObservableCollection<NavigationItem>
-            {
-                new NavigationItem("Label", typeof(LabelPage)),
-                new NavigationItem("TextBox", typeof(TextBoxPage)),
-                new NavigationItem("TextBlock", typeof(TextBlockPage)),
-                new NavigationItem("RichTextEdit", typeof(RichTextEditPage)),
-                new NavigationItem("PasswordBox", typeof(PasswordBoxPage)),
-            }
-        },
-    };
-
+    private ICollection<ControlInfoDataItem> _controls;
     [ObservableProperty]
-    private NavigationItem? _selectedControl;
+    private ControlInfoDataItem? _selectedControl;
     private readonly INavigationService _navigationService;
+    [ObservableProperty]
+    private bool _canNavigateback;
 
     [RelayCommand]
     public void Settings()
     {
-        _navigationService.NavigateTo(typeof(SettingsPage));
-    }
-
-    [RelayCommand]
-    public void About()
-    {
-        _navigationService.Navigate(typeof(AboutPage));
+        _navigationService.Navigate(typeof(SettingsPage));
     }
 
     [RelayCommand]
@@ -195,7 +44,9 @@ public partial class MainWindowViewModel : ObservableObject
 
     public MainWindowViewModel(INavigationService navigationService)
     {
+        _controls = ControlsInfoDataSource.Instance.ControlsInfo;
         _navigationService = navigationService;
+
         _timer = new DispatcherTimer();
         _timer.Interval = TimeSpan.FromMilliseconds(400);
         _timer.Tick += PerformSearchNavigation;
@@ -219,7 +70,7 @@ public partial class MainWindowViewModel : ObservableObject
         _navigationService.NavigateTo(GetNavigationPageTypeFromName(_searchText, _controls));
     }
 
-    private Type? GetNavigationPageTypeFromName(string name, ICollection<NavigationItem> pages)
+    private Type? GetNavigationPageTypeFromName(string name, ICollection<ControlInfoDataItem> pages)
     {
         Type? type = null;
 
@@ -230,12 +81,12 @@ public partial class MainWindowViewModel : ObservableObject
 
         foreach(var item in pages)
         {
-            if (item.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+            if (item.Title.Equals(name, StringComparison.OrdinalIgnoreCase))
             {
                 return item.PageType!;
             }
 
-            type = GetNavigationPageTypeFromName(name, item.Children);
+            type = GetNavigationPageTypeFromName(name, item.Items);
 
             if(type != null)
             {
@@ -245,11 +96,11 @@ public partial class MainWindowViewModel : ObservableObject
         return null;
     }
 
-    internal List<NavigationItem> GetNavigationItemHierarchyFromPageType(Type? pageType)
+    internal List<ControlInfoDataItem> GetNavigationItemHierarchyFromPageType(Type? pageType)
     {
-        List<NavigationItem> list = new List<NavigationItem>();
-        Stack<NavigationItem> _stack = new Stack<NavigationItem>();
-        Stack<NavigationItem> _revStack = new Stack<NavigationItem>();
+        List<ControlInfoDataItem> list = new List<ControlInfoDataItem>();
+        Stack<ControlInfoDataItem> _stack = new Stack<ControlInfoDataItem>();
+        Stack<ControlInfoDataItem> _revStack = new Stack<ControlInfoDataItem>();
         
         if(pageType == null)
         {
@@ -261,7 +112,7 @@ public partial class MainWindowViewModel : ObservableObject
         foreach(var item in Controls)
         {
             _stack.Push(item);
-            found = FindNavigationItemsHierarchyFromPageType(pageType, item.Children, ref _stack);
+            found = FindNavigationItemsHierarchyFromPageType(pageType, item.Items, ref _stack);
             if(found)
             {
                 break;
@@ -282,7 +133,7 @@ public partial class MainWindowViewModel : ObservableObject
         return list;
     }
 
-    private bool FindNavigationItemsHierarchyFromPageType(Type pageType, ICollection<NavigationItem> pages, ref Stack<NavigationItem> stack)
+    private bool FindNavigationItemsHierarchyFromPageType(Type pageType, ICollection<ControlInfoDataItem> pages, ref Stack<ControlInfoDataItem> stack)
     {
         var item = stack.Peek();
         bool found = false;
@@ -292,14 +143,20 @@ public partial class MainWindowViewModel : ObservableObject
             return true;
         }
 
-        foreach(var child in item.Children)
+        foreach(var child in item.Items)
         {
             stack.Push(child);
-            found = FindNavigationItemsHierarchyFromPageType(pageType, child.Children, ref stack);
+            found = FindNavigationItemsHierarchyFromPageType(pageType, child.Items, ref stack);
             if(found) { return true; }
             stack.Pop();
         }
 
         return false;
     }
+
+    internal void UpdateCanNavigateBack()
+    {
+        CanNavigateback = _navigationService.IsBackHistoryNonEmpty();  
+    }
+
 }

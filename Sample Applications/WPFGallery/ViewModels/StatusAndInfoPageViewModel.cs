@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using WPFGallery.Navigation;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -19,25 +13,7 @@ namespace WPFGallery.ViewModels
         private string _pageDescription = "Controls to show progress and extra information";
 
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "ProgressBar",
-                PageType = typeof(ProgressBarPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ProgressBar.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.ArrowDownload24 },
-                Description = "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."
-            },
-            new NavigationCard
-            {
-                Name = "ToolTip",
-                PageType = typeof(ToolTipPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ToolTip.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.Comment24 },
-                Description = "Displays information for an element in a pop-up window."
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Status & Info");
 
         private readonly INavigationService _navigationService;
 

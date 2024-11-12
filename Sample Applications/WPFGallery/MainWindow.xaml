@@ -8,14 +8,13 @@
     xmlns:local="clr-namespace:WPFGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding ViewModel.ApplicationTitle}"
-    Width="1450"
-    Height="802"
-    d:DataContext="{d:DesignInstance local:MainWindow,
-                                     IsDesignTimeCreatable=False}"
+    d:DataContext="{d:DesignInstance local:MainWindow, IsDesignTimeCreatable=False}"
     d:DesignHeight="650"
     d:DesignWidth="1000"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    MinWidth="780"
+    MinHeight="450">
     <Window.Resources>
         <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
@@ -79,14 +78,14 @@
     </Window.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
+            <RowDefinition Height="44" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid
             Grid.Row="0"
             Grid.ColumnSpan="2"
-            Height="50">
+            Height="44">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -98,18 +97,37 @@
             <Button
                 x:Name="BackButton"
                 Grid.Column="0"
-                Margin="4,0,0,0"
+                Height="32"
+                Width="40"
+                Margin="4,0"
                 VerticalAlignment="Center"
                 AutomationProperties.Name="Back"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Command="{Binding ViewModel.BackCommand}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+                IsEnabled="{Binding ViewModel.CanNavigateback}"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                ToolTipService.ToolTip="Back">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Transparent" />
+                    <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                </Button.Resources>
                 <TextBlock
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="12"
-                    Text="&#xE72B;" />
+                    Text="&#xE72B;">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}">
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Button>
 
             <StackPanel
@@ -117,20 +135,21 @@
                 Margin="4,0,0,0"
                 Orientation="Horizontal">
                 <Image
-                    Width="16"
+                    Width="20"
                     VerticalAlignment="Center"
                     Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
                 <TextBlock
                     Margin="16,0,0,0"
                     VerticalAlignment="Center"
                     Style="{StaticResource CaptionTextBlockStyle}"
+                    AutomationProperties.HeadingLevel="Level1"
                     Text="WPF Gallery Preview" />
             </StackPanel>
 
             <Button
                 x:Name="MinimizeButton"
                 Grid.Column="2"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="MinimizeWindow"
@@ -138,7 +157,7 @@
                 WindowChrome.IsHitTestVisibleInChrome="True">
                 <TextBlock
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="12"
                     Text="&#xE921;" />
             </Button>
@@ -146,7 +165,7 @@
             <Button
                 x:Name="MaximizeButton"
                 Grid.Column="3"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="MaximizeWindow"
@@ -155,7 +174,7 @@
                 <TextBlock
                     x:Name="MaximizeIcon"
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                     FontSize="12"
                     Text="&#xE922;" />
             </Button>
@@ -163,7 +182,7 @@
             <Button
                 x:Name="CloseButton"
                 Grid.Column="4"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="CloseWindow"
@@ -171,8 +190,8 @@
                 WindowChrome.IsHitTestVisibleInChrome="True">
                 <TextBlock
                     VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
-                    FontSize="14"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    FontSize="16"
                     Text="&#xE711;" />
             </Button>
         </Grid>
@@ -201,12 +220,14 @@
                 <TreeView
                     x:Name="ControlsList"
                     Grid.Row="1"
-                    Margin="8,24,0,0"
+                    Margin="8,8,0,0"
                     AutomationProperties.Name="Navigation Pane"
                     ItemsSource="{Binding ViewModel.Controls}"
-                    SelectedItemChanged="ControlsList_SelectedItemChanged">
+                    PreviewKeyDown="ControlsList_PreviewKeyDown"
+                    PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp"
+                    Loaded="ControlsList_Loaded">
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <HierarchicalDataTemplate ItemsSource="{Binding Items}">
                             <Grid MinHeight="30">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -216,16 +237,16 @@
                                 <TextBlock
                                     MaxWidth="16"
                                     VerticalAlignment="Center"
-                                    AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Page'}"
+                                    AutomationProperties.Name="{Binding Title, StringFormat='{}{0} Page'}"
                                     Focusable="False"
-                                    FontFamily="Segoe Fluent Icons"
+                                    FontFamily="{StaticResource SymbolThemeFontFamily}"
                                     FontSize="16"
-                                    Text="{Binding Icon}"
-                                    Visibility="{Binding Icon, Converter={StaticResource EmptyToVisibilityConverter}}" />
+                                    Text="{Binding IconGlyph}"
+                                    Visibility="{Binding IconGlyph, Converter={StaticResource EmptyToVisibilityConverter}}" />
                                 <TextBlock
                                     Grid.Column="2"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Title}" />
                             </Grid>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
@@ -233,29 +254,30 @@
 
                 <DockPanel Grid.Row="2">
                     <Button
-                        x:Name="AboutButton"
+                        x:Name="SettingsButton"
                         Width="250"
                         Margin="10"
                         HorizontalContentAlignment="Left"
-                        AutomationProperties.Name="About application"
-                        Command="{Binding ViewModel.AboutCommand}"
+                        AutomationProperties.Name="Settings"
+                        Command="{Binding ViewModel.SettingsCommand}"
+                        Click="SettingsButton_Click"
                         DockPanel.Dock="Bottom">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,4,0,0" FontFamily="Segoe Fluent Icons">&#xE946;</TextBlock>
-                            <TextBlock Margin="8,0,0,0" Text="About" />
+                            <TextBlock x:Name="SettingsIcon" Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE713;</TextBlock>
+                            <TextBlock Margin="8,0,0,0" Text="Settings" />
                         </StackPanel>
                     </Button>
                 </DockPanel>
             </Grid>
             <Border
                 Grid.Column="1"
-                Margin="16,0,0,0"
+                Margin="4,0,0,0"
                 Padding="24,16,24,0"
                 Background="{DynamicResource LayerFillColorDefaultBrush}"
                 BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="8,0,0,0">
-                <Frame x:Name="RootContentFrame" />
+                <Frame x:Name="RootContentFrame" Navigated="RootContentFrame_Navigated"/>
             </Border>
         </Grid>
     </Grid>

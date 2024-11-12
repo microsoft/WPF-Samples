@@ -15,7 +15,6 @@ variables:
     value: latest
 
 trigger:
-- main
 - release/*
 
 pool:
@@ -99,27 +98,27 @@ stages:
        inputs:
         restoreSolution: '$(wpfgallerysolution)'
 
-    #  - task: VSBuild@1
-    #    continueOnError: true
-    #    displayName: 'Build .NET Core Samples using VSBuild'
-    #    inputs:
-    #     vsVersion: latest
-    #     solution: '$(solution)'
-    #     platform: '$(_Platform)'
-    #     msbuildArchitecture: '$(_ToolPlatform)'
-    #     configuration: '$(_Configuration)'
-    #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+     - task: VSBuild@1
+       continueOnError: true
+       displayName: 'Build .NET Core Samples using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(solution)'
+        platform: '$(_Platform)'
+        msbuildArchitecture: '$(_ToolPlatform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
-    #  - task: VSBuild@1
-    #    continueOnError: true
-    #    displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
-    #    inputs:
-    #     vsVersion: latest
-    #     solution: '$(msbuildonlysolution)'
-    #     platform: '$(_Platform)'
-    #     msbuildArchitecture: '$(_ToolPlatform)'
-    #     configuration: '$(_Configuration)'
-    #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+     - task: VSBuild@1
+       continueOnError: true
+       displayName: 'Build MSBuild-only.NET Core Samples using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(msbuildonlysolution)'
+        platform: '$(_Platform)'
+        msbuildArchitecture: '$(_ToolPlatform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: VSBuild@1
        continueOnError: true
@@ -162,7 +161,7 @@ stages:
 
      - task: DotNetCoreCLI@2
        continueOnError: true
-       displayName: 'Restore .NET Core Samples using dotnet.exe'
+       displayName: 'Restore WPF Gallery using dotnet.exe'
        inputs:
         command: 'restore'
         configuration: $(_Configuration)

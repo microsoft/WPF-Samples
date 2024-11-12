@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WPFGallery.Models;
 
 namespace WPFGallery.Helpers;
 
+/// <summary>
+/// Converts an image id to a brush
+/// </summary>
 internal sealed class ImageIdToBrushConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

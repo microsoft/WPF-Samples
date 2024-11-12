@@ -18,26 +18,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,0,32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
 
-            <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ViewModel.PageTitle}" />
-                <TextBlock Text="{Binding ViewModel.PageDescription}" />
-            </StackPanel>
-
-        </Grid>
-
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24">
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <Grid Margin="0,0,0,24">
                 <controls:ControlExample
-                    Margin="0"
+                    Margin="10"
                     HeaderText="Simple TreeView."
-                    XamlCode="&lt;TreeView AllowDrop=&quot;True&quot; ScrollViewer.CanContentScroll=&quot;False&quot;&gt;             &#10;&#9;&lt;TreeViewItem             &#10;&#9;&#9;Header=&quot;Work Documents&quot;             &#10;&#9;&#9;IsExpanded=&quot;True&quot;             &#10;&#9;&#9;IsSelected=&quot;True&quot;&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Feature Schedule&quot; /&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Overall Project Plan&quot; /&gt;             &#10;&#9;&lt;/TreeViewItem&gt;             &#10;&#9;&lt;TreeViewItem Header=&quot;Personal Documents&quot;&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Contractor contact info&quot; /&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Home Remodel&quot;&gt;             &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Paint Color Scheme&quot; /&gt;             &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Flooring Woodgrain Type&quot; /&gt;             &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Kitchen Cabinet Style&quot; /&gt;             &#10;&#9;&#9;&lt;/TreeViewItem&gt;             &#10;&#9;&lt;/TreeViewItem&gt;             &#10;&lt;/TreeViewItem&gt;">
+                    XamlCode="&lt;TreeView AllowDrop=&quot;True&quot; ScrollViewer.CanContentScroll=&quot;False&quot;&gt;             &#10;&#9;&lt;TreeViewItem             &#10;&#9;&#9;Header=&quot;Work Documents&quot;             &#10;&#9;&#9;IsExpanded=&quot;True&quot;             &#10;&#9;&#9;IsSelected=&quot;True&quot;&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Feature Schedule&quot; /&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Overall Project Plan&quot; /&gt;             &#10;&#9;&lt;/TreeViewItem&gt;             &#10;&#9;&lt;TreeViewItem Header=&quot;Personal Documents&quot;&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Contractor contact info&quot; /&gt;             &#10;&#9;&#9;&lt;TreeViewItem Header=&quot;Home Remodel&quot;&gt;             &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Paint Color Scheme&quot; /&gt;             &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Flooring Woodgrain Type&quot; /&gt;             &#10;&#9;&#9;&#9;&lt;TreeViewItem Header=&quot;Kitchen Cabinet Style&quot; /&gt;             &#10;&#9;&#9;&lt;/TreeViewItem&gt;             &#10;&#9;&lt;/TreeViewItem&gt;             &#10;&lt;/TreeView&gt;">
                     <TreeView
                         AllowDrop="True"
                         AutomationProperties.Name="Sample TreeView"
