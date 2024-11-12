@@ -27,10 +27,6 @@
 		<Resource Include="Assets\win11-dashboard.light.png" />
 		<Resource Include="Assets\UserDashboard\*" />
 	</ItemGroup>
-
-  <ItemGroup>
-    <RuntimeHostConfigurationOption Include="Switch.System.Windows.Appearance.DisableFluentThemeWindowBackdrop" Value="True" />
-  </ItemGroup>
 	
 	<PropertyGroup>
 		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WPFGallery.Helpers
+﻿namespace WPFGallery.Helpers
 {
     internal static class Utility
     {
@@ -13,11 +7,7 @@ namespace WPFGallery.Helpers
             var os = Environment.OSVersion;
             var version = os.Version;
 
-            if (version.Major >= 10 && version.Build >= 22621)
-            {
-                return true;
-            }
-            return false;
+            return version.Major >= 10 && version.Build >= 22621;
         }
 
         public static bool IsBackdropDisabled()
