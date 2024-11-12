@@ -11,6 +11,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation;
 using WPFGallery.Controls;
 using System.Windows.Controls.Primitives;
+using WPFGallery.Helpers;
 
 namespace WPFGallery;
 
@@ -26,7 +27,8 @@ public partial class MainWindow : Window
         DataContext = this;
         InitializeComponent();
 
-        Toggle_TitleButtonVisibility();
+        UpdateWindowBackground();
+        UpdateTitleBarButtonsVisibility();
 
         _navigationService = navigationService;
         _navigationService.Navigating += OnNavigating;
@@ -49,26 +51,24 @@ public partial class MainWindow : Window
         this.StateChanged += MainWindow_StateChanged;
     }
 
+    private void UpdateWindowBackground()
+    {
+        if((!Utility.IsBackdropDisabled() && 
+                    !Utility.IsBackdropSupported()))
+        {
+            this.SetResourceReference(BackgroundProperty, "WindowBackground");
+        }
+    }
+
     private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
     {
         Dispatcher.Invoke(() =>
         {
-            if (SystemParameters.HighContrast)
-            {
-                MinimizeButton.Visibility = Visibility.Visible;
-                MaximizeButton.Visibility = Visibility.Visible;
-                CloseButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                MinimizeButton.Visibility = Visibility.Collapsed;
-                MaximizeButton.Visibility = Visibility.Collapsed;
-                CloseButton.Visibility = Visibility.Collapsed;
-            }
+            UpdateTitleBarButtonsVisibility();
         });
     }
 
-    private void MainWindow_StateChanged(object sender, EventArgs e)
+    private void MainWindow_StateChanged(object? sender, EventArgs e)
     {
         if (this.WindowState == WindowState.Maximized)
         {
@@ -98,39 +98,20 @@ public partial class MainWindow : Window
         }
     }
 
-    private void Toggle_TitleButtonVisibility()
+    private void UpdateTitleBarButtonsVisibility()
     {
-        var appContextBackdropData = AppContext.GetData("Switch.System.Windows.Appearance.DisableFluentThemeWindowBackdrop");
-        bool disableFluentThemeWindowBackdrop = false;
-
-        if (appContextBackdropData != null)
+        if (Utility.IsBackdropDisabled() || !Utility.IsBackdropSupported() ||
+                SystemParameters.HighContrast == true)
         {
-            disableFluentThemeWindowBackdrop = bool.Parse(Convert.ToString(appContextBackdropData));
+            MinimizeButton.Visibility = Visibility.Visible;
+            MaximizeButton.Visibility = Visibility.Visible;
+            CloseButton.Visibility = Visibility.Visible;
         }
-
-
-        if (!disableFluentThemeWindowBackdrop)
+        else
         {
-            foreach (ResourceDictionary mergedDictionary in Application.Current.Resources.MergedDictionaries)
-            {
-                if(Application.Current.ThemeMode != ThemeMode.None)
-                {
-                    if (SystemParameters.HighContrast == true)
-                    {
-                        MinimizeButton.Visibility = Visibility.Visible;
-                        MaximizeButton.Visibility = Visibility.Visible;
-                        CloseButton.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
-                        MinimizeButton.Visibility = Visibility.Collapsed;
-                        MaximizeButton.Visibility = Visibility.Collapsed;
-                        CloseButton.Visibility = Visibility.Collapsed;
-                    }
-
-                    break;
-                }
-            }
+            MinimizeButton.Visibility = Visibility.Collapsed;
+            MaximizeButton.Visibility = Visibility.Collapsed;
+            CloseButton.Visibility = Visibility.Collapsed;
         }
     }
 
