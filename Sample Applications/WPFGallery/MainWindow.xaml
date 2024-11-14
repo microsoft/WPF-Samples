@@ -18,10 +18,14 @@
     <Window.Resources>
         <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
-
         <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
             <Setter Property="MinWidth" Value="48" />
             <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -37,43 +41,39 @@
                                 RecognizesAccessKey="True"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="EnclosingBorder" Property="Background" Value="#E5EAEF" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
+                </Trigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" Value="{DynamicResource SystemColorHighlightColorBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource SystemColorHighlightTextColorBrush}" />
+                </MultiDataTrigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="TitleBarDefaultCloseButtonStyle" TargetType="Button">
-            <Setter Property="MinWidth" Value="48" />
-            <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border
-                            x:Name="EnclosingBorder"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
-                            <ContentPresenter
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="EnclosingBorder" Property="Background" Value="#C42B1C" />
-                                <Setter Property="Foreground" Value="White" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        <Style x:Key="TitleBarDefaultCloseButtonStyle" BasedOn="{StaticResource TitleBarDefaultButtonStyle}" TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#C42B1C" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" Value="{DynamicResource SystemColorHighlightColorBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource SystemColorHighlightTextColorBrush}" />
+                </MultiDataTrigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid x:Name="MainGrid">
@@ -149,45 +149,33 @@
             <Button
                 x:Name="MinimizeButton"
                 Grid.Column="2"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                BorderBrush="Transparent"
                 Click="MinimizeWindow"
-                Style="{StaticResource TitleBarDefaultButtonStyle}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+                Style="{StaticResource TitleBarDefaultButtonStyle}">
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    FontSize="12"
+                    FontSize="10"
                     Text="&#xE921;" />
             </Button>
 
             <Button
                 x:Name="MaximizeButton"
                 Grid.Column="3"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                BorderBrush="Transparent"
                 Click="MaximizeWindow"
-                Style="{StaticResource TitleBarDefaultButtonStyle}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+                Style="{StaticResource TitleBarDefaultButtonStyle}">
                 <TextBlock
                     x:Name="MaximizeIcon"
                     VerticalAlignment="Center"
                     FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    FontSize="12"
+                    FontSize="10"
                     Text="&#xE922;" />
             </Button>
 
             <Button
                 x:Name="CloseButton"
                 Grid.Column="4"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                BorderBrush="Transparent"
                 Click="CloseWindow"
-                Style="{StaticResource TitleBarDefaultCloseButtonStyle}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+                Style="{StaticResource TitleBarDefaultCloseButtonStyle}">
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="{StaticResource SymbolThemeFontFamily}"
