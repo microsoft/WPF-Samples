@@ -49,6 +49,13 @@ public partial class MainWindow : Window
 
         SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         this.StateChanged += MainWindow_StateChanged;
+
+        ChangeSearchBoxStyle();
+    }
+
+    private void ChangeSearchBoxStyle()
+    {
+        var template = SearchBox.Template;
     }
 
     private void UpdateWindowBackground()
@@ -114,17 +121,6 @@ public partial class MainWindow : Window
             CloseButton.Visibility = Visibility.Collapsed;
         }
     }
-
-    //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
-    //{
-    //    ViewModel.UpdateSearchText(SearchBox.Text);
-    //}
-
-    //private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
-    //{
-    //    SearchBox.Text = "";
-    //    ViewModel.UpdateSearchText(SearchBox.Text);
-    //}
 
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
@@ -230,5 +226,32 @@ public partial class MainWindow : Window
                 firstItem.IsSelected = true;
             }
         }
+    }
+
+    private void SearchBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        if(!string.IsNullOrWhiteSpace(comboBox.Text))
+        {
+            comboBox.IsDropDownOpen = true;
+        }
+    }
+
+    private void SearchBox_DropDownClosed(object sender, EventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        if (comboBox.SelectedItem != null)
+        {
+            _navigationService.Navigate(comboBox.SelectedItem.ToString());
+        }
+    }
+
+    private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+
+        comboBox.IsDropDownOpen = true;
     }
 }
