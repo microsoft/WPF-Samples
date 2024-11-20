@@ -1,6 +1,7 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using System.ComponentModel;
 using System.Windows.Media;
 
@@ -67,7 +68,7 @@ namespace Colors
 
         public byte Alpha
         {
-            get { return _alpha; }
+            get => _alpha;
             set
             {
                 _alpha = value;
@@ -78,7 +79,7 @@ namespace Colors
 
         public byte Red
         {
-            get { return _red; }
+            get => _red;
             set
             {
                 _red = value;
@@ -89,7 +90,7 @@ namespace Colors
 
         public byte Green
         {
-            get { return _green; }
+            get => _green;
             set
             {
                 _green = value;
@@ -100,7 +101,7 @@ namespace Colors
 
         public byte Blue
         {
-            get { return _blue; }
+            get => _blue;
             set
             {
                 _blue = value;
@@ -111,7 +112,7 @@ namespace Colors
 
         public double Hue
         {
-            get { return _hue; }
+            get => _hue;
             set
             {
                 if (value > 360.0) value = 360.0;
@@ -124,7 +125,7 @@ namespace Colors
 
         public double Saturation
         {
-            get { return _saturation; }
+            get => _saturation;
             set
             {
                 if (value > 1.0) value = 1.0;
@@ -137,7 +138,7 @@ namespace Colors
 
         public double Value
         {
-            get { return _value; }
+            get => _value;
             set
             {
                 if (value > 1.0) value = 1.0;
@@ -157,23 +158,23 @@ namespace Colors
 
         private void HsvFromRgb()
         {
-            int imax = _red, imin = _red;
-            if (_green > imax) imax = _green;
-            else if (_green < imin) imin = _green;
-            if (_blue > imax) imax = _blue;
-            else if (_blue < imin) imin = _blue;
-            double max = imax/255.0, min = imin/255.0;
+            int iMax = _red, iMin = _red;
+            if (_green > iMax) iMax = _green;
+            else if (_green < iMin) iMin = _green;
+            if (_blue > iMax) iMax = _blue;
+            else if (_blue < iMin) iMin = _blue;
+            double max = iMax/255.0, min = iMin/255.0;
 
             var value = max;
             var saturation = (max > 0) ? (max - min)/max : 0.0;
             var hue = _hue;
 
-            if (imax > imin)
+            if (iMax > iMin)
             {
                 var f = 1.0/((max - min)*255.0);
-                hue = (imax == _red)
+                hue = (iMax == _red)
                     ? 0.0 + f*(_green - _blue)
-                    : (imax == _green)
+                    : (iMax == _green)
                         ? 2.0 + f*(_blue - _red)
                         : 4.0 + f*(_red - _green);
                 hue = hue*60.0;
@@ -204,7 +205,9 @@ namespace Colors
         private void RgbFromHsv()
         {
             double red = 0.0, green = 0.0, blue = 0.0;
-            if (_saturation == 0.0)
+            double epsilon = 0.0001; // Define a small value for precision
+
+            if (Math.Abs(_saturation - 0.0) < epsilon)
             {
                 red = green = blue = _value;
             }

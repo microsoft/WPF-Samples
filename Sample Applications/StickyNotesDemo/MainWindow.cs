@@ -1,5 +1,5 @@
-﻿// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.ComponentModel;
@@ -63,99 +63,97 @@ namespace StickyNotesDemo
             if (File.Exists("NotesFile"))
             {
                 var fs = new FileStream("NotesFile", FileMode.Open);
-                if (fs != null)
+                
+                int contentIndicator;
+                double height;
+                double width;
+                double x;
+                double y;
+                bool topmost;
+                int backgroundColorIndex;
+                int foregroundColorIndex;
+                DateTime alarmTime;
+                string loadRepeatNumber;
+
+                var reader = new StreamReader(fs);
+                var str = reader.ReadLine();
+                ExtractValues(out contentIndicator, str, out height, out width, out x, out y, out topmost,
+                    out backgroundColorIndex,
+                    out foregroundColorIndex, out alarmTime, out loadRepeatNumber);
+                AppWindow.Height = height;
+                AppWindow.Width = width;
+                AppWindow.Top = y;
+                AppWindow.Left = x;
+                AppWindow.Topmost = topmost;
+
+                count = contentIndicator;
+                for (var i = 0; i < count; i++)
                 {
-                    int contentIndicator;
-                    double height;
-                    double width;
-                    double x;
-                    double y;
-                    bool topmost;
-                    int backgroundColorIndex;
-                    int foregroundColorIndex;
-                    DateTime alarmTime;
-                    string loadRepeatNumber;
+                    var line = reader.ReadLine();
 
-                    var reader = new StreamReader(fs);
-                    var str = reader.ReadLine();
-                    ExtractValues(out contentIndicator, str, out height, out width, out x, out y, out topmost,
-                        out backgroundColorIndex,
-                        out foregroundColorIndex, out alarmTime, out loadRepeatNumber);
-                    AppWindow.Height = height;
-                    AppWindow.Width = width;
-                    AppWindow.Top = y;
-                    AppWindow.Left = x;
-                    AppWindow.Topmost = topmost;
+                    ExtractValues(out contentIndicator, line, out height, out width, out x, out y, out topmost,
+                        out backgroundColorIndex, out foregroundColorIndex, out alarmTime, out loadRepeatNumber);
 
-                    count = contentIndicator;
-                    for (var i = 0; i < count; i++)
+                    var filename = i.ToString();
+                    filename = filename.Trim();
+
+                    var w2 = new Window2
                     {
-                        var line = reader.ReadLine();
+                        Title = "Sticky Note",
+                        Tag = ArrayPos,
+                        Height = height,
+                        Width = width,
+                        Left = x,
+                        Top = y,
+                        ShowInTaskbar = false,
+                        Topmost = topmost,
+                        TopmostWindow = topmost
+                    };
 
-                        ExtractValues(out contentIndicator, line, out height, out width, out x, out y, out topmost,
-                            out backgroundColorIndex, out foregroundColorIndex, out alarmTime, out loadRepeatNumber);
-
-                        var filename = i.ToString();
-                        filename = filename.Trim();
-
-                        var w2 = new Window2
-                        {
-                            Title = "Sticky Note",
-                            Tag = ArrayPos,
-                            Height = height,
-                            Width = width,
-                            Left = x,
-                            Top = y,
-                            ShowInTaskbar = false,
-                            Topmost = topmost,
-                            TopmostWindow = topmost
-                        };
-
-                        if (w2.Topmost)
-                        {
-                            try
-                            {
-                                var m = LogicalTreeHelper.FindLogicalNode(w2, "AlwaysOnTop") as MenuItem;
-                                m.IsChecked = true;
-                            }
-                            catch (Exception)
-                            {
-                            }
-                        }
-                        if (backgroundColorIndex > -1)
-                        {
-                            w2.Background = Window2.ChangeBackgroundColor(Dialog.ColorArray[backgroundColorIndex]);
-                            w2.BackgroundColorIndex = backgroundColorIndex;
-                        }
-                        if (foregroundColorIndex > -1)
-                        {
-                            w2.Foreground = Dialog.ColorArrayForeground[foregroundColorIndex];
-                            w2.ForegroundColorIndex = foregroundColorIndex;
-                        }
-                        w2.Alarm = alarmTime;
-                        w2.RepetitionNumber = loadRepeatNumber.Contains("null") ? "null" : loadRepeatNumber;
-
-
-                        CheckIfAlarmFires(w2);
-
-                        WindowArray[ArrayPos] = w2;
-                        ArrayPos++;
-
-                        var noteFiles = new FileStream(filename, FileMode.Open);
-
-                        var rtb = ((RichTextBox) ((StackPanel) (w2.Content)).Children[1]);
-                        var tr = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
+                    if (w2.Topmost)
+                    {
                         try
                         {
-                            tr.Load(noteFiles, contentIndicator == 0 ? DataFormats.XamlPackage : DataFormats.Xaml);
+                            var m = LogicalTreeHelper.FindLogicalNode(w2, "AlwaysOnTop") as MenuItem;
+                            m.IsChecked = true;
                         }
                         catch (Exception)
                         {
                         }
-                        noteFiles.Close();
                     }
-                    fs.Close();
+                    if (backgroundColorIndex > -1)
+                    {
+                        w2.Background = Window2.ChangeBackgroundColor(Dialog.ColorArray[backgroundColorIndex]);
+                        w2.BackgroundColorIndex = backgroundColorIndex;
+                    }
+                    if (foregroundColorIndex > -1)
+                    {
+                        w2.Foreground = Dialog.ColorArrayForeground[foregroundColorIndex];
+                        w2.ForegroundColorIndex = foregroundColorIndex;
+                    }
+                    w2.Alarm = alarmTime;
+                    w2.RepetitionNumber = loadRepeatNumber.Contains("null") ? "null" : loadRepeatNumber;
+
+
+                    CheckIfAlarmFires(w2);
+
+                    WindowArray[ArrayPos] = w2;
+                    ArrayPos++;
+
+                    var noteFiles = new FileStream(filename, FileMode.Open);
+
+                    var rtb = ((RichTextBox) ((StackPanel) (w2.Content)).Children[1]);
+                    var tr = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
+                    try
+                    {
+                        tr.Load(noteFiles, contentIndicator == 0 ? DataFormats.XamlPackage : DataFormats.Xaml);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    noteFiles.Close();
                 }
+                fs.Close();                
             }
             for (var i = ++count; i < 100; i++)
             {
@@ -265,10 +263,10 @@ namespace StickyNotesDemo
                     var rtb = ((RichTextBox) (((StackPanel) (w.Content)).Children[1]));
                     var tr = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
 
-                    var mstream = new MemoryStream();
-                    XamlWriter.Save(rtb.Document, mstream);
-                    mstream.Seek(0, SeekOrigin.Begin);
-                    var stringReader = new StreamReader(mstream);
+                    var mStream = new MemoryStream();
+                    XamlWriter.Save(rtb.Document, mStream);
+                    mStream.Seek(0, SeekOrigin.Begin);
+                    var stringReader = new StreamReader(mStream);
                     var str = stringReader.ReadToEnd();
                     stringReader.Close();
 
@@ -452,10 +450,10 @@ namespace StickyNotesDemo
             var rtb = ((RichTextBox) (((StackPanel) (w.Content)).Children[1]));
             var tr = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
 
-            var mstream = new MemoryStream();
-            XamlWriter.Save(rtb.Document, mstream);
-            mstream.Seek(0, SeekOrigin.Begin);
-            var stringReader = new StreamReader(mstream);
+            var mStream = new MemoryStream();
+            XamlWriter.Save(rtb.Document, mStream);
+            mStream.Seek(0, SeekOrigin.Begin);
+            var stringReader = new StreamReader(mStream);
             var str = stringReader.ReadToEnd();
             stringReader.Close();
 

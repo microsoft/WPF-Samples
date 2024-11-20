@@ -53,7 +53,7 @@ namespace StickyNotesDemo
 
             sp.Children.Add(b);
 
-            _timerClock = _timerClock = new DispatcherTimer();
+            _timerClock = new DispatcherTimer();
             _timerClock.Interval = new TimeSpan(0, 0, 5);
             _timerClock.IsEnabled = true;
             _timerClock.Tick += TimerClock_Tick;

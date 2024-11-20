@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Diagnostics;
@@ -10,11 +10,6 @@ using System.Text;
 
 namespace EditingExaminerDemo
 {
-
-    #region Namespaces.
-
-    #endregion Namespaces.
-
     /// <summary>
     ///     Provides Reflection utility methods for test cases.
     /// </summary>
@@ -699,22 +694,6 @@ namespace EditingExaminerDemo
             BindingFlags defaultFlags;
             object resultObject;
 
-            //if (ActionManager.IsInvokeTypeStatic(invokeType))
-            //{
-            //    if (String.IsNullOrEmpty(className))
-            //    {
-            //        throw new ArgumentException(
-            //            "className cannot be null or empty for static invocations",
-            //            "className");
-            //    }
-            //    type = ReflectionUtils.FindType(className);
-            //    if (type == null)
-            //    {
-            //       throw new InvalidOperationException("FindType fails");
-            //    }
-            //}
-            //else
-            //{
             if (parameters == null || parameters.Length == 0)
             {
                 throw new ArgumentException(
@@ -727,8 +706,8 @@ namespace EditingExaminerDemo
                     "parameters cannot have a null first element for instance invocations",
                     nameof(parameters));
             }
+
             type = parameters[0].GetType();
-            //}
             Debug.Assert(type != null);
 
             defaultFlags = BindingFlags.ExactBinding | BindingFlags.Public;
@@ -800,13 +779,18 @@ namespace EditingExaminerDemo
                                 invokeType == InvokeType.GetStaticProperty;
                 if (parameters.Length > 0 && isGetProperty)
                 {
+                    // Handle the missing method exception here
+                    // Log it or perform any necessary action
+                    // Then rethrow the exception or return a default value
                 }
-                throw e;
+                throw; // Rethrow the original exception
             }
-            catch (AmbiguousMatchException e)
+            catch (AmbiguousMatchException)
             {
-                throw e;
+                // Handle the ambiguous match exception if necessary
+                throw; // Rethrow the original exception
             }
+
             return resultObject;
         }
 
