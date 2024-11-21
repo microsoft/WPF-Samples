@@ -58,9 +58,17 @@ namespace WPFGallery.ViewModels.Samples
 
                 Task.Delay(2000).ContinueWith(_ => IsDeleted = false, TaskScheduler.FromCurrentSynchronizationContext());
                 int index = Users.IndexOf(user);
-                
-                SelectedUser = Users[index+1];
+
                 Users.Remove(user);
+                if (index == Users.Count)
+                {
+                    SelectedUser = Users.Count > 0 ? Users[index - 1] : null;
+                }
+                else
+                {
+                    SelectedUser = Users[index];
+                }
+
                 IsRead = true;
                 IsEditing = false;
 
