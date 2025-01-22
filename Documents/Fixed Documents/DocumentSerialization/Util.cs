@@ -19,7 +19,7 @@ namespace DocumentSerialization
     {
         public static Stream ConvertTextToStream(string text)
         {
-            System.Text.Encoding encoding = System.Text.Encoding.Unicode;
+            Encoding encoding = Encoding.Unicode;
             byte[] encodedBytes = encoding.GetBytes(text);
             byte[] preamble = encoding.GetPreamble();
             byte[] identifiableContent;
@@ -78,7 +78,7 @@ namespace DocumentSerialization
 
             path = Directory.GetCurrentDirectory();
 
-            path = System.IO.Path.Combine(path, savedXamlFileName);
+            path = Path.Combine(path, savedXamlFileName);
             return path;
         }
 
@@ -212,12 +212,12 @@ namespace DocumentSerialization
                         xmlReader.Read();
                         break;
                     case XmlNodeType.Text:
-                        string origValue = xmlReader.Value;
-                        origValue = origValue.Replace("&", "&amp;");
-                        origValue = origValue.Replace("<", "&lt;");
-                        origValue = origValue.Replace(">", "&gt;");
-                        origValue = origValue.Replace("\"", "&quot;");
-                        indentedXAML += origValue;
+                        string originalValue = xmlReader.Value;
+                        originalValue = originalValue.Replace("&", "&amp;");
+                        originalValue = originalValue.Replace("<", "&lt;");
+                        originalValue = originalValue.Replace(">", "&gt;");
+                        originalValue = originalValue.Replace("\"", "&quot;");
+                        indentedXAML += originalValue;
                         xmlReader.Read();
                         break;
                     case XmlNodeType.EndElement:
@@ -283,11 +283,11 @@ namespace DocumentSerialization
 
         public static string FindNumeric(string content)
         {
-            string[] values = content.Split(' ');
-            if (values != null)
+            if (content != null)
             {
+                string[] values = content.Split(' ');
                 return values[0];
-            }
+            }            
 
             return "none";
         }
@@ -835,47 +835,45 @@ namespace DocumentSerialization
 
         public static List<UIElement> UIElementsInElement(FrameworkContentElement parent)
         {
-            List<UIElement> UIEresults = new List<UIElement>();
-            GetUIElementsRecursively(parent as DependencyObject, UIEresults);
+            List<UIElement> UIEResults = [];
+            GetUIElementsRecursively(parent, UIEResults);
 
-            return UIEresults;
+            return UIEResults;
         }
 
-        static void GetUIElementsRecursively(DependencyObject dObj, List<UIElement> UIresults)
+        static void GetUIElementsRecursively(DependencyObject dObj, List<UIElement> UIResults)
         {
             if (dObj == null)
             {
                 return;
             }
 
-            UIElement uiElement = dObj as UIElement;
-            if (uiElement != null)
+            if (dObj is UIElement uiElement)
             {
-                UIresults.Add(uiElement);
+                UIResults.Add(uiElement);
             }
 
             foreach (object o in LogicalTreeHelper.GetChildren(dObj))
             {
-                GetUIElementsRecursively(o as DependencyObject, UIresults);
+                GetUIElementsRecursively(o as DependencyObject, UIResults);
             }
         }
 
-        static void GetContentElementsRecursively(DependencyObject dObj, List<ContentElement> CEresults)
+        static void GetContentElementsRecursively(DependencyObject dObj, List<ContentElement> CEResults)
         {
             if (dObj == null)
             {
                 return;
             }
 
-            ContentElement ceElement = dObj as ContentElement;
-            if (ceElement != null)
+            if (dObj is ContentElement ceElement)
             {
-                CEresults.Add(ceElement);
+                CEResults.Add(ceElement);
             }
 
             foreach (object o in LogicalTreeHelper.GetChildren(dObj))
             {
-                GetContentElementsRecursively(o as DependencyObject, CEresults);
+                GetContentElementsRecursively(o as DependencyObject, CEResults);
             }
         }
 
@@ -886,8 +884,7 @@ namespace DocumentSerialization
 
             if (suspect.Inlines.Count == 1)
             {
-                Run r = suspect.Inlines.FirstInline as Run;
-                if (r != null)
+                if (suspect.Inlines.FirstInline is Run r)
                 {
                     if (r.Text == "")
                     {

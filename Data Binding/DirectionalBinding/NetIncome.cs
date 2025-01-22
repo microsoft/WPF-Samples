@@ -1,5 +1,5 @@
-// // Copyright (c) Microsoft. All rights reserved.
-// // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.ComponentModel;
 
@@ -20,7 +20,7 @@ namespace DirectionalBinding
 
         public int TotalIncome
         {
-            get { return _totalIncome; }
+            get => _totalIncome;
             set
             {
                 if (TotalIncome != value)
@@ -33,7 +33,7 @@ namespace DirectionalBinding
 
         public int Rent
         {
-            get { return _rent; }
+            get => _rent;
             set
             {
                 if (Rent != value)
@@ -47,7 +47,7 @@ namespace DirectionalBinding
 
         public int Food
         {
-            get { return _food; }
+            get => _food;
             set
             {
                 if (Food != value)
@@ -61,7 +61,7 @@ namespace DirectionalBinding
 
         public int Misc
         {
-            get { return _misc; }
+            get => _misc;
             set
             {
                 if (Misc != value)
@@ -75,7 +75,7 @@ namespace DirectionalBinding
 
         public int Savings
         {
-            get { return _savings; }
+            get => _savings;
             set
             {
                 if (Savings != value)
@@ -92,12 +92,6 @@ namespace DirectionalBinding
         private void UpdateSavings()
         {
             Savings = TotalIncome - (Rent + Misc + Food);
-            if (Savings < 0)
-            {
-            }
-            else if (Savings >= 0)
-            {
-            }
         }
 
         private void OnPropertyChanged(string info)

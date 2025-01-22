@@ -62,48 +62,47 @@ static HRESULT EndBlock(IStream *stream)
 {
     HRESULT result = S_OK;
 
+    // Validate the input stream
     if (NULL == stream)
     {
-        result = E_INVALIDARG;
+        return E_INVALIDARG;
     }
 
     // Remember where we are
     ULARGE_INTEGER curPos = { 0 };
 
-    if (SUCCEEDED(result))
+    result = stream->Seek(zero, STREAM_SEEK_CUR, &curPos);
+    if (FAILED(result))
     {
-        LARGE_INTEGER zero = { 0 };
-        result = stream->Seek(zero, STREAM_SEEK_CUR, &curPos);
+        return result;
     }
 
     // Move to where the size of the last block is stored
-    if (SUCCEEDED(result))
-    {
-        LARGE_INTEGER newPos;
+    LARGE_INTEGER newPos;
         newPos.QuadPart = static_cast<LONGLONG>(lastBlockPos.QuadPart) + 2*sizeof(UINT);
 
-        result = stream->Seek(newPos, STREAM_SEEK_SET, NULL);
+    result = stream->Seek(newPos, STREAM_SEEK_SET, NULL);
+    if (FAILED(result))
+    {
+        return result;
     }
 
     // Store the size
-    if (SUCCEEDED(result))
+    UINT size = static_cast<UINT>(curPos.QuadPart - lastBlockPos.QuadPart) - 3*sizeof(UINT);
+    result = OutputValue(stream, size);
+    if (FAILED(result))
     {
-        UINT size = static_cast<UINT>(curPos.QuadPart - lastBlockPos.QuadPart) - 3*sizeof(UINT);
-
-        result = OutputValue(stream, size);
+        return result;
     }
 
     // Move back to where we should be
-    if (SUCCEEDED(result))
-    {
-        LARGE_INTEGER cp;
-        cp.QuadPart = static_cast<LONGLONG>(curPos.QuadPart);
+    LARGE_INTEGER cp;
+    cp.QuadPart = static_cast<LONGLONG>(curPos.QuadPart);
 
-        result = stream->Seek(cp, STREAM_SEEK_SET, NULL);
-    }
-
+    result = stream->Seek(cp, STREAM_SEEK_SET, NULL);
     return result;
 }
+
 
 static HRESULT OutputBitmapSource(IStream *stream, LPCSTR name, UINT frameNum,
                                   double dpiX, double dpiY,
@@ -116,7 +115,7 @@ static HRESULT OutputBitmapSource(IStream *stream, LPCSTR name, UINT frameNum,
         UINT width = 0, height = 0;
         UINT stride = 0;
         WICPixelFormatGUID pixelFormat;
-        BYTE *pixels = NULL;
+        BYTE* pixels = nullptr;
 
         result = S_OK;
 
@@ -154,7 +153,7 @@ static HRESULT OutputBitmapSource(IStream *stream, LPCSTR name, UINT frameNum,
         {
             pixels = new BYTE[stride * height];
 
-            if (NULL == pixels)
+            if (!pixels)
             {
                 result = E_OUTOFMEMORY;
             }
@@ -182,14 +181,11 @@ static HRESULT OutputBitmapSource(IStream *stream, LPCSTR name, UINT frameNum,
             OutputValue(stream, dpiY);
             OutputValue(stream, stride);
             OutputValue(stream, pixelFormat);
-            OutputValues(stream, pixels, stride*height);
+            OutputValues(stream, pixels, stride * height);
             result = EndBlock(stream);
         }
 
-        if (pixels)
-        {
-            delete[] pixels;
-        }
+        delete[] pixels;
     }
 
     return result;
@@ -213,7 +209,6 @@ static HRESULT OutputBitmapPalette(IStream *stream, UINT frameNum, IWICPalette *
 
         if (colorCount > 0)
         {
-
             if (SUCCEEDED(result))
             {
                 colors = new WICColor[colorCount];
@@ -238,10 +233,7 @@ static HRESULT OutputBitmapPalette(IStream *stream, UINT frameNum, IWICPalette *
                 result = EndBlock(stream);
             }
 
-            if (colors)
-            {
-                delete[] colors;
-            }
+            delete[] colors;
         }
     }
 
@@ -258,7 +250,7 @@ static HRESULT OutputColorContext(IStream *stream, UINT frameNum, UINT colorCont
         {
             UINT numBytes = 0;
             BYTE *bytes = NULL;
-    
+
             result = S_OK;
 
             if (SUCCEEDED(result))
@@ -271,7 +263,7 @@ static HRESULT OutputColorContext(IStream *stream, UINT frameNum, UINT colorCont
                 if (SUCCEEDED(result))
                 {
                     bytes = new BYTE[numBytes];
-    
+
                     if (NULL == bytes)
                     {
                         result = E_OUTOFMEMORY;
@@ -284,18 +276,15 @@ static HRESULT OutputColorContext(IStream *stream, UINT frameNum, UINT colorCont
                 }
 
                 if (SUCCEEDED(result))
-                {                    
+                {
                     OutputValue(stream, numBytes);
-                    OutputValues(stream, bytes, numBytes);                    
+                    OutputValues(stream, bytes, numBytes);
                 }
 
-                if (bytes)
-                {
-                    delete[] bytes;
-                }
+                delete[] bytes;
             }
-       }
-       result = EndBlock(stream);
+        }
+        result = EndBlock(stream);
     }
     return result;
 }
@@ -315,6 +304,7 @@ AitFrameEncode::~AitFrameEncode()
 {
 }
 
+#pragma warning(disable: 519)  // Disable warning 519 for this function
 STDMETHODIMP AitFrameEncode::Commit()
 {
     HRESULT result = E_UNEXPECTED;
@@ -353,6 +343,7 @@ STDMETHODIMP AitFrameEncode::Commit()
 
     return result;
 }
+#pragma warning(default: 519)  // Re-enable warning 519
 
 STDMETHODIMP AitFrameEncode::GetMetadataQueryWriter(IWICMetadataQueryWriter **ppIMetadataQueryWriter)
 {

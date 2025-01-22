@@ -35,7 +35,7 @@ namespace DocumentSerialization
         /// Converts a xaml string into html string.
         /// </summary>
         /// <param name="xamlString">
-        /// Xaml strinng to convert.
+        /// Xaml string to convert.
         /// </param>
         /// <returns>
         /// Html string produced from a source xaml.
@@ -89,7 +89,7 @@ namespace DocumentSerialization
 
             if (xamlReader.NodeType != XmlNodeType.Element || xamlReader.Name != "FlowDocument")
             {
-                // Root FlowDocument elemet is missing
+                // Root FlowDocument element is missing
                 return false;
             }
 
@@ -146,7 +146,7 @@ namespace DocumentSerialization
 
                 switch (xamlReader.Name)
                 {
-                    // Character fomatting properties
+                    // Character formatting properties
                     // ------------------------------
                     case "Background":
                         css = "background-color:" + ParseXamlColor(xamlReader.Value) + ";";
@@ -252,7 +252,7 @@ namespace DocumentSerialization
         {
             if (color.StartsWith("#"))
             {
-                // Remove transparancy value
+                // Remove transparency value
                 color = "#" + color.Substring(3);
             }
             return color;
@@ -304,7 +304,7 @@ namespace DocumentSerialization
         /// </param>
         /// <param name="htmlWriter">
         /// May be null, in which case we are skipping the xaml element;
-        /// witout producing any output to html.
+        /// without producing any output to html.
         /// </param>
         /// <param name="inlineStyle">
         /// StringBuilder used for collecting css properties for inline STYLE attribute.
@@ -381,7 +381,7 @@ namespace DocumentSerialization
         }
 
         /// <summary>
-        /// Conberts an element notation of complex property into
+        /// Converts an element notation of complex property into
         /// </summary>
         /// <param name="xamlReader">
         /// On entry this XmlTextReader must be on Element start tag;
@@ -428,8 +428,7 @@ namespace DocumentSerialization
             }
             else
             {
-                string htmlElementName = null;
-
+                string htmlElementName;
                 switch (xamlReader.Name)
                 {
                     case "Run" :
@@ -488,7 +487,7 @@ namespace DocumentSerialization
                         break;
                 }
 
-                if (htmlWriter != null && htmlElementName != null)
+                if (htmlElementName != null)
                 {
                     htmlWriter.WriteStartElement(htmlElementName);
 
@@ -564,14 +563,5 @@ namespace DocumentSerialization
 
         #endregion Private Methods
 
-        // ---------------------------------------------------------------------
-        //
-        // Private Fields
-        //
-        // ---------------------------------------------------------------------
-
-        #region Private Fields
-
-        #endregion Private Fields
     }
 }

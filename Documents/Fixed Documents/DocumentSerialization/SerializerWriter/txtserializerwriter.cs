@@ -18,6 +18,7 @@ namespace DocumentSerialization
             _stream = stream;
             _writer = new StreamWriter(_stream);
         }
+
         /// <summary>
         /// Write a single DependencyObject and close package
         /// </summary>
@@ -319,17 +320,16 @@ namespace DocumentSerialization
 
         private void SerializeVisualTree(DependencyObject objectTree)
         {
-            List<GlyphRun> glyphrunList = new List<GlyphRun>();
-            WalkVisualTree(glyphrunList, objectTree);
-
+            List<GlyphRun> glyphRunList = [];
+            WalkVisualTree(glyphRunList, objectTree);
   
             try
             {
-                // NOTE:  this is not gaurenteed to get the text in any reasonable order
+                // NOTE:  this is not guaranteed to get the text in any reasonable order
                 // To correct this the transforms associated with the parent drawing groups
                 // can be collected and the glyph runs sorted into text blocks
-                // This is a complex algorythem out side the scope of this sampel
-                foreach (GlyphRun glyphRun in glyphrunList)
+                // This is a complex algorithm out side the scope of this sample
+                foreach (GlyphRun glyphRun in glyphRunList)
                 {
                     StringBuilder builder = new StringBuilder(glyphRun.Characters.Count);
                     foreach (char ch in glyphRun.Characters)
@@ -344,22 +344,21 @@ namespace DocumentSerialization
             finally
             {
             }
-
         }
 
         private void WalkVisualTree(List<GlyphRun> textObjects, DependencyObject treeObject)
         {
-            System.Windows.Media.Drawing content = VisualTreeHelper.GetDrawing(treeObject as Visual);
-            BuildGlypeTree(textObjects, content);
+            Drawing content = VisualTreeHelper.GetDrawing(treeObject as Visual);
+            BuildGlyphTree(textObjects, content);
             int childCount = VisualTreeHelper.GetChildrenCount( treeObject );
             for (int i = 0; i < childCount; i++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(treeObject, i);
                 WalkVisualTree(textObjects, child);
             }
-
         }
-        private void BuildGlypeTree(List<GlyphRun> textObjects, System.Windows.Media.Drawing drawing)
+
+        private void BuildGlyphTree(List<GlyphRun> textObjects, Drawing drawing)
         {
             if (drawing is GlyphRunDrawing)
             {
@@ -370,9 +369,8 @@ namespace DocumentSerialization
                 DrawingCollection children = (drawing as DrawingGroup).Children;
                 for (int i = 0; i < children.Count; i++)
                 {
-                    BuildGlypeTree(textObjects, children[i]);
+                    BuildGlyphTree(textObjects, children[i]);
                 }
-
             }
         }
 
@@ -414,14 +412,10 @@ namespace DocumentSerialization
             Point aPoint = a.BaselineOrigin;
             Point bPoint = b.BaselineOrigin;
             int result = 0;
-            //Vertical takes priorty over horizontal
+            //Vertical takes priority over horizontal
             if (aPoint.Y > bPoint.Y)
             {
-                return -1;
-            }
-            else if (aPoint.Y > bPoint.Y)
-            {
-                result = 1;
+                result = -1;
             }
             else if (aPoint.X < bPoint.X)
             {
@@ -432,7 +426,6 @@ namespace DocumentSerialization
                 result = 1;
             }
              return result;
-        }
-        
+        }        
     }
 }

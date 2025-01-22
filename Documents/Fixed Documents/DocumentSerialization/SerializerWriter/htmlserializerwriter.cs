@@ -18,6 +18,7 @@ namespace DocumentSerialization
         {
             _stream = stream;
         }
+
         /// <summary>
         /// Write a single Visual and close package
         /// </summary>
@@ -321,13 +322,10 @@ namespace DocumentSerialization
             }
             finally
             {
-                if (writer != null)
-                    writer.Close();
+                writer?.Close();
             }
-
         }
 
         private Stream _stream;
-
     }
 }
