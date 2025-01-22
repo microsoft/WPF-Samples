@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<Platforms>x86;x64;ARM64</Platforms> 
+		<StartupObject>WPFGallery.App</StartupObject>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers> 
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+	  <ApplicationDefinition Remove="App.xaml" />
+	  <Page Include="App.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+    	<Resource Include="Assets\ControlImages\*" />
+    	<Resource Include="Assets\HomeHeaderTiles\*" />
+		<Resource Include="Assets\README_Images\*" />
+		<Resource Include="Assets\WPFGalleryPreviewIcon.png" />
+		<Resource Include="Assets\win11-dashboard.png" />
+		<Resource Include="Assets\win11-dashboard.light.png" />
+		<Resource Include="Assets\UserDashboard\*" />
+	</ItemGroup>
+	
+	<PropertyGroup>
+		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="Assets\WPFGalleryPreviewIcon.ico" />
+	  <EmbeddedResource Include="Models\IconsData.json" />
+	  <EmbeddedResource Include="Models\ControlsInfoData.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+	</ItemGroup>
+</Project>

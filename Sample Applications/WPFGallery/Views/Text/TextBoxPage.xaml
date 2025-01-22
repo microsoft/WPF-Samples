@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="WPFGallery.Views.TextBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFGallery.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TextBoxPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentPagePane" Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+            <StackPanel Margin="0,0,0,24">
+                <controls:ControlExample Margin="10" HeaderText="A simple TextBox." XamlCode="&lt;TextBox /&gt;">
+                    <TextBox AutomationProperties.Name="simple TextBox" />
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,36,10,10"
+                    HeaderText="A multi-line TextBox."
+                    XamlCode="&lt;TextBox TextWrapping=&quot;Wrap&quot; AcceptsReturn=&quot;True&quot; /&gt;">
+                    <TextBox
+                        AcceptsReturn="True"
+                        AutomationProperties.Name="multi-line TextBox"
+                        TextWrapping="Wrap" />
+                </controls:ControlExample>
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+
+</Page>

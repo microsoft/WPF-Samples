@@ -1,0 +1,424 @@
+﻿<Page x:Class="WPFGallery.Views.FillSection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFGallery.Views"
+      xmlns:controls="clr-namespace:WPFGallery.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FillSection"
+      Foreground="{DynamicResource WindowForeground}">
+
+    <StackPanel>
+
+        <!--  Control Fill  -->
+        <controls:ColorPageExample
+            Title="Control Fill"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Fill used for standard controls">
+            <Button Content="Text" />
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource ControlFillColorDefaultBrush}"
+                ColorBrushName="ControlFillColorDefaultBrush"
+                ColorExplanation="Rest"
+                TileRadius="8,0,0,8"
+                ColorName="Control / Default"
+                ColorValue="#FFFFFF (B3, 70%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlFillColorSecondaryBrush}"
+                ColorBrushName="ControlFillColorSecondaryBrush"
+                ColorExplanation="Hover"
+                ColorName="Control / Secondary"
+                ColorValue="#F9F9F9 (50, 50%)" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlFillColorTertiaryBrush}"
+                ColorBrushName="ControlFillColorTertiaryBrush"
+                ColorExplanation="Pressed"
+                ColorName="Control / Tertiary"
+                ColorValue="#F9F9F9 (4D, 30%)" />
+            <controls:ColorTile
+                Grid.Column="3"
+                Background="{DynamicResource ControlFillColorTertiaryBrush}"
+                ColorBrushName="ControlFillColorQuarternaryBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Rest (Pill Button control)"
+                ColorName="Control / Quartenary"
+                ColorValue="#F9F9F9 (C2, 30%)"
+                ShowSeparator="False"
+                ShowWarning="True" />
+        </Grid></Border>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Grid.Column="0"
+                Background="{DynamicResource ControlFillColorDisabledBrush}"
+                ColorBrushName="ControlFillColorDisabledBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Disabled"
+                ColorName="Control / Disabled"
+                ColorValue="#F3F3F3 (FD, 30%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlFillColorTransparentBrush}"
+                ColorBrushName="ControlFillColorTransparentBrush"
+                ColorExplanation="Rest"
+                ColorName="Control / Transparent"
+                ColorValue="#FFFFFF (00, 0%)" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlFillColorInputActiveBrush}"
+                ColorBrushName="ControlFillColorInputActiveBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Active/focused text input fields"
+                ColorName="Control / Input Active"
+                ColorValue="#FFFFFF (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+
+        <!--  Control Alt Fill  -->
+        <controls:ColorPageExample
+            Title="Control Alt Fill"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Fill used for the 'off' states of toggle controls">
+            <CheckBox Focusable="False"/>
+        </controls:ColorPageExample>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource ControlAltFillColorTransparentBrush}"
+                ColorBrushName="ControlAltFillColorTransparentBrush"
+                TileRadius="8,0,0,8"
+                ColorName="Control Alt / Transparent"
+                ColorValue="#FFFFFF (00, 0%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlAltFillColorSecondaryBrush}"
+                ColorBrushName="ControlAltFillColorSecondaryBrush"
+                ColorExplanation="Rest"
+                ColorName="Control Alt / Secondary"
+                ColorValue="#000000 (06, 2.41%)" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlAltFillColorTertiaryBrush}"
+                ColorBrushName="ControlAltFillColorTertiaryBrush"
+                ColorExplanation="Hover"
+                TileRadius="0,8,8,0"
+                ColorName="Control Alt / Tertiary"
+                ColorValue="#000000 (0F, 5.78%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource ControlAltFillColorQuarternaryBrush}"
+                ColorBrushName="ControlAltFillColorQuarternaryBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Pressed"
+                ColorName="Control Alt / Quarternary"
+                ColorValue="#000000 (12, 6.58%)" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlAltFillColorDisabledBrush}"
+                ColorBrushName="ControlAltFillColorDisabledBrush"
+                ColorExplanation="Disabled"
+                TileRadius="0,8,8,0"
+                ColorName="Control Alt / Disabled"
+                ColorValue="#FFFFFF (00, 0%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <!--  Control Solid  -->
+        <controls:ColorPageExample
+            Title="Control Solid"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Fills used for Sliders thumb control to cover the track beneath it.">
+            <Slider
+                Focusable="False"
+                MinWidth="240"
+                Maximum="100"
+                Value="40" />
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource ControlSolidFillColorDefaultBrush}"
+                ColorBrushName="ControlStrongFillColorDefaultBrush"
+                ColorExplanation="Rest"
+                TileRadius="8,8,8,8"
+                ColorName="Control Solid / Default"
+                ColorValue="#FFFFFF (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+        <!--  Control Strong Fill  -->
+        <controls:ColorPageExample
+            Title="Control Strong Fill"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for controls that must meet contrast ratio requirements of 3:1.">
+            <ScrollBar
+                Focusable="False"
+                Width="200"
+                Height="20"
+                Orientation="Horizontal"
+                Visibility="Visible" />
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource ControlStrongFillColorDefaultBrush}"
+                ColorBrushName="ControlStrongFillColorDefaultBrush"
+                ColorExplanation="Rest or hover"
+                TileRadius="8,0,0,8"
+                ColorName="Control Strong / Default"
+                ColorValue="#000000 (72, 44.58%)"
+                Foreground="{DynamicResource TextFillColorInverseBrush}"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlStrongFillColorDisabledBrush}"
+                ColorBrushName="ControlStrongFillColorDisabledBrush"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorName="Control Strong / Disabled"
+                TileRadius="0,8,8,0"
+                ColorValue="#FFFFFF (51, 31.73%)"
+                Foreground="{DynamicResource TextFillColorInverseBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+
+        <!--  Subtle fill  -->
+        <controls:ColorPageExample
+            Title="Subtle Fill"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for list items and fills that are transparent at rest and appear upon interaction.">
+            <StackPanel Orientation="Vertical">
+                <Grid>
+                    <TextBlock Margin="8" Text="Rest" />
+                </Grid>
+                <Border
+                    MinWidth="120"   
+                    Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                    CornerRadius="{StaticResource ControlCornerRadius}">
+                  <TextBlock Padding="12" Text="Hover" />
+                </Border>
+
+            </StackPanel>
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource SubtleFillColorTransparentBrush}"
+                ColorBrushName="SubtleFillColorTransparentBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Rest"
+                ColorName="Subtle / Transparent "
+                ColorValue="#000000 (00, 0%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                ColorBrushName="SubtleFillColorSecondaryBrush"
+                ColorExplanation="Hover"
+                ColorName="Subtle / Secondary"
+                ColorValue="#000000, (09,3.73%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource SubtleFillColorTertiaryBrush}"
+                ColorBrushName="SubtleFillColorTertiaryBrush"
+                ColorExplanation="Pressed"
+                ColorName="Subtle / Tertiary "
+                ColorValue=" #000000 (06, 2.41%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="3"
+                Background="{DynamicResource SubtleFillColorDisabledBrush}"
+                ColorBrushName="SubtleFillColorDisabledBrush"
+                ColorExplanation="Disabled only (not accessible)"
+                TileRadius="0,8,8,0"
+                ColorName="Subtle / Disabled"
+                ColorValue="#000000 (00, 0%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+
+        <!--  Control On Image Fill  -->
+        <controls:ColorPageExample
+            Title="Control On Image Fill"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for controls living on top of imagery.">
+            <Border CornerRadius="{StaticResource ControlCornerRadius}">
+              <Grid>
+                <Image MaxHeight="150" Source="/Assets/win11-dashboard.png" />
+                  <Border
+                    Width="20"
+                    Height="20"
+                    Margin="8"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="{DynamicResource ControlOnImageFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{StaticResource ControlCornerRadius}" />
+              </Grid>
+            </Border>
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ColorTile
+                Background="{DynamicResource ControlOnImageFillColorDefaultBrush}"
+                ColorBrushName="ControlOnImageFillColorDefaultBrush"
+                ColorExplanation="Rest"
+                TileRadius="8,0,0,8"
+                ColorName="Control On Image Fill Default"
+                ColorValue="#FFFFFF (C9, 79%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource ControlOnImageFillColorSecondaryBrush}"
+                ColorBrushName="ControlOnImageFillColorSecondaryBrush"
+                ColorExplanation="Hover"
+                ColorName="Control On Image Fill Secondary"
+                ColorValue="#F3F3F3 (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource ControlOnImageFillColorTertiaryBrush}"
+                ColorBrushName="ControlOnImageFillColorTertiaryBrush"
+                ColorExplanation="Pressed"
+                ColorName="Control On Image Fill Tertiary"
+                ColorValue="#EBEBEB (FF, 100%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <controls:ColorTile
+                Grid.Column="3"
+                Background="{DynamicResource ControlOnImageFillColorDisabledBrush}"
+                ColorBrushName="ControlOnImageFillColorDisabledBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorName="Control On Image Fill Disabled"
+                ColorValue="#FFFFFF (00, 0%)"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+
+        <!--  Accent fill  -->
+        <controls:ColorPageExample
+            Title="Accent Fill"
+            Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for accent fills on controls">
+            <StackPanel>
+                <Button Content="Text" Style="{DynamicResource AccentButtonStyle}" />
+            </StackPanel>
+        </controls:ColorPageExample>
+
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource AccentFillColorDefaultBrush}"
+                ColorBrushName="AccentFillColorDefaultBrush"
+                ColorExplanation="Rest"
+                TileRadius="8,0,0,8"
+                ColorName="Accent / Default"
+                ColorValue="Dark 1 (100%)"
+                Foreground="{DynamicResource TextOnAccentFillColorDefaultBrush}"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource AccentFillColorSecondaryBrush}"
+                ColorBrushName="AccentFillColorSecondaryBrush"
+                ColorExplanation="Hover"
+                ColorName="Accent / Secondary"
+                ColorValue="Dark 1 (90%)"
+                Foreground="{DynamicResource TextOnAccentFillColorDefaultBrush}"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="2"
+                Background="{DynamicResource AccentFillColorTertiaryBrush}"
+                ColorBrushName="AccentFillColorTertiaryBrush"
+                ColorExplanation="Pressed"
+                TileRadius="0,8,8,0"
+                ColorName="Accent / Tertiary"
+                ColorValue="Dark 1 (80%)"
+                Foreground="{DynamicResource TextOnAccentFillColorDefaultBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+        <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:ColorTile
+                Background="{DynamicResource AccentFillColorDisabledBrush}"
+                ColorBrushName="AccentFillColorDisabledBrush"
+                TileRadius="8,0,0,8"
+                ColorExplanation="Disabled"
+                ColorName="Accent / Disabled"
+                ColorValue="#000000 (37, 21.09%)"
+                ShowSeparator="False" />
+            <controls:ColorTile
+                Grid.Column="1"
+                Background="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}"
+                ColorBrushName="AccentFillColorSelectedTextBackgroundBrush"
+                TileRadius="0,8,8,0"
+                ColorExplanation="Highighted/selected text background"
+                ColorName="Accent / Selected Text Background"
+                ColorValue="Accent Base"
+                Foreground="{DynamicResource TextOnAccentFillColorDefaultBrush}"
+                ShowSeparator="False" />
+        </Grid></Border>
+
+    </StackPanel>
+</Page>

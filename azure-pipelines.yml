@@ -9,11 +9,12 @@ variables:
     value: 'WPFSamples.sln'
   - name: msbuildonlysolution
     value: 'WPFSamples.msbuild.sln'
+  - name: wpfgallerysolution
+    value: './Sample Applications/WPFGallery/WPFGallery.sln'
   - name: LangVersion
     value: latest
 
 trigger:
-- main
 - release/*
 
 pool:
@@ -34,38 +35,38 @@ stages:
      - name: _ToolPlatform
        value: x86
      - name: _TargetFramework
-       value: 'net8.0-windows'
+       value: 'net9.0-windows'
     strategy:
      matrix:
       Debug-AnyCPU:
         _Configuration: Debug
         _Platform: 'Any CPU'
-        _TargetFramework: 'net8.0-windows'
+        _TargetFramework: 'net9.0-windows'
         _ToolPlatform: x86
       Debug-x64:
         _Configuration: Debug
         _Platform: 'x64'
-        _TargetFramework: 'net8.0-windows'
+        _TargetFramework: 'net9.0-windows'
         _ToolPlatform: x64
       Debug-x86:
         _Configuration: Debug
         _Platform: 'x86'
-        _TargetFramework: 'net8.0-windows'
+        _TargetFramework: 'net9.0-windows'
         _ToolPlatform: x86
       Release-AnyCPU:
         _Configuration: Release
         _Platform: 'Any CPU'
-        _TargetFramework: 'net8.0-windows'
+        _TargetFramework: 'net9.0-windows'
         _ToolPlatform: x86
       Release-x64:
         _Configuration: Release
         _Platform: 'x64'
-        _TargetFramework: 'net8.0-windows'
+        _TargetFramework: 'net9.0-windows'
         _ToolPlatform: x64
       Release-x86:
         _Configuration: Release
         _Platform: 'x86'
-        _TargetFramework: 'net8.0-windows'
+        _TargetFramework: 'net9.0-windows'
         _ToolPlatform: x86
     steps:
      - task: NuGetToolInstaller@1
@@ -92,6 +93,11 @@ stages:
        inputs:
         restoreSolution: '$(msbuildonlysolution)'
 
+     - task: NuGetCommand@2
+       displayName: 'Restore WPF Gallery Using NuGet'
+       inputs:
+        restoreSolution: '$(wpfgallerysolution)'
+
      - task: VSBuild@1
        continueOnError: true
        displayName: 'Build .NET Core Samples using VSBuild'
@@ -114,6 +120,18 @@ stages:
         configuration: '$(_Configuration)'
         msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
+     - task: VSBuild@1
+       continueOnError: true
+       displayName: 'Build WPF Gallery using VSBuild'
+       inputs:
+        vsVersion: latest
+        solution: '$(wpfgallerysolution)'
+        platform: '$(_Platform)'
+        msbuildArchitecture: '$(_ToolPlatform)'
+        configuration: '$(_Configuration)'
+        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\wpfgallery.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+       condition: ne(variables['_Platform'], 'x86')
+       
      - task: PublishBuildArtifacts@1
        continueOnError: true
        displayName: 'Publish .NET Core VSBuild Build Logs'
@@ -140,7 +158,17 @@ stages:
         projects: '$(solution)'
         feedsToUse: 'config'
         nugetConfigPath: 'NuGet.config'
-        
+
+     - task: DotNetCoreCLI@2
+       continueOnError: true
+       displayName: 'Restore WPF Gallery using dotnet.exe'
+       inputs:
+        command: 'restore'
+        configuration: $(_Configuration)
+        projects: '$(wpfgallerysolution)'
+        feedsToUse: 'config'
+        nugetConfigPath: 'NuGet.config'
+
      - task: DotNetCoreCLI@2
        continueOnError: true
        displayName: 'Build .NET Core Samples using dotnet.exe'
@@ -150,13 +178,26 @@ stages:
         configuration: $(_Configuration)
         arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:Platform="$(_Platform)" /p:LangVersion=$(LangVersion)'
 
+     - task: DotNetCoreCLI@2
+       continueOnError: true
+       displayName: 'Build WPF Gallery using dotnet.exe'
+       inputs:
+        command: 'build'
+        projects: '$(wpfgallerysolution)'
+        configuration: $(_Configuration)
+        arguments: '/bl:"$(Build.ArtifactStagingDirectory)\netcore\dotnet.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:Platform="$(_Platform)" /p:LangVersion=$(LangVersion)'
+       condition: ne(variables['_Platform'], 'x86')
+
      - task: PublishBuildArtifacts@1
        displayName: 'Publish .NET Core Dotnet.exe Build Logs'
        inputs:
         PathtoPublish: $(Build.ArtifactStagingDirectory)\netcore
         ArtifactName: 'Build Logs'
         publishLocation: 'Container'
-        
+    
+     - task: ComponentGovernanceComponentDetection@0
+       displayName: "Component Detection"
+
      - task: PowerShell@2
        displayName: 'Clean Files From Previous Builds'
        inputs:

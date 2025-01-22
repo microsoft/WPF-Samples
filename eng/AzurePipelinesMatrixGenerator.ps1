@@ -7,7 +7,7 @@ Function IIf($If, $Then, $Else) {
 
 $config = @('Debug', 'Release')
 $platform = @('Any CPU', 'x86', 'x64')
-$tfm = @('netcoreapp3.1', 'net6.0-windows', 'net7.0-windows', 'net8.0-windows')
+$tfm = @('netcoreapp3.1', 'net6.0-windows', 'net7.0-windows', 'net8.0-windows','net9.0-windows')
 
 $entries = @{}
 
