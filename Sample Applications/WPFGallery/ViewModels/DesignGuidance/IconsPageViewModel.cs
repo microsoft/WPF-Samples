@@ -38,7 +38,6 @@ namespace WPFGallery.ViewModels
         {
             PropertyChanged += IconsPageViewModel_PropertyChanged;
         }
-
         private static async Task<IList<IconData>> ReadIconData()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -50,16 +49,14 @@ namespace WPFGallery.ViewModels
         private void IconsPageViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(e.PropertyName) && e.PropertyName.Equals(nameof(SearchText)))
-            {
-                var filteredItems = AllIcons.AsParallel()
-                                            .Where(icon => icon.Name.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0);
-                                            
-
+            {                                           
+                
                 //cache the name here to set the selected item after clearing and repopulating the list
                 var selectedIconName = SelectedIcon?.Name;
-
                 SearchFilteredIcons.Clear();
-                foreach (var item in filteredItems)
+
+                var searchFilteredIconData = AllIcons.Where(icon => icon.Name.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0);
+                foreach (var item in searchFilteredIconData)
                 {
                     SearchFilteredIcons.Add(item);
                 }
