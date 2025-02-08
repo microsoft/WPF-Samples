@@ -34,10 +34,6 @@ namespace WPFGallery.ViewModels
             SearchFilteredIcons = new ObservableCollection<IconData>(AllIcons);
         }
 
-        public IconsPageViewModel()
-        {
-            PropertyChanged += IconsPageViewModel_PropertyChanged;
-        }
         private static async Task<IList<IconData>> ReadIconData()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -46,32 +42,27 @@ namespace WPFGallery.ViewModels
             using Stream stream = assembly.GetManifestResourceStream(resourceName);
             return await JsonSerializer.DeserializeAsync<List<IconData>>(stream);
         }
-        private void IconsPageViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+
+        partial void OnSearchTextChanged(string value)
         {
-            if (!string.IsNullOrEmpty(e.PropertyName) && e.PropertyName.Equals(nameof(SearchText)))
-            {                                           
-                
-                //cache the name here to set the selected item after clearing and repopulating the list
-                var selectedIconName = SelectedIcon?.Name;
-                SearchFilteredIcons.Clear();
+            //cache the name here to set the selected item after clearing and repopulating the list
+            var selectedIconName = SelectedIcon?.Name;
+            SearchFilteredIcons.Clear();
 
-                var searchFilteredIconData = AllIcons.Where(icon => icon.Name.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0);
-                foreach (var item in searchFilteredIconData)
-                {
-                    SearchFilteredIcons.Add(item);
-                }
-
-                //keep the selected icon the same if it exists in the search results, if not select the first one
-                Func<IconData, bool> predicate =
-                  !string.IsNullOrWhiteSpace(selectedIconName) &&
-                  SearchFilteredIcons.Any(icon => icon.Name.Equals(selectedIconName)) ?
-                  icon => icon.Name.Equals(selectedIconName) :
-                  icon => true;
-
-                SelectedIcon = SearchFilteredIcons.FirstOrDefault(predicate);
+            var searchFilteredIconData = AllIcons.Where(icon => icon.Name.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0);
+            foreach (var item in searchFilteredIconData)
+            {
+                SearchFilteredIcons.Add(item);
             }
-        }
 
-        
+            //keep the selected icon the same if it exists in the search results, if not select the first one
+            Func<IconData, bool> predicate =
+              !string.IsNullOrWhiteSpace(selectedIconName) &&
+              SearchFilteredIcons.Any(icon => icon.Name.Equals(selectedIconName)) ?
+              icon => icon.Name.Equals(selectedIconName) :
+              icon => true;
+
+            SelectedIcon = SearchFilteredIcons.FirstOrDefault(predicate);
+        }   
     }
 }
