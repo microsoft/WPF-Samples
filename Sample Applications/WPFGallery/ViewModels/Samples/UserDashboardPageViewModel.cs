@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Windows.Threading;
 using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels.Samples
@@ -18,22 +18,19 @@ namespace WPFGallery.ViewModels.Samples
         private User? _editableUser;
 
         [ObservableProperty]
-        private bool _isRead = true;
+        private bool _isReadOnly = true;
 
         [ObservableProperty]
         private bool _isSaved;
 
         [ObservableProperty]
-        private bool _isDeleted = false;
-
-        [ObservableProperty]
-        private string _deletedname;
+        private string _deletedName;
         partial void OnSelectedUserChanged(User? oldValue, User? newValue)
         {
             if (SelectedUser != null && SelectedUser != EditableUser)
             {
                 EditableUser = new User(SelectedUser);
-                IsRead = true;
+                IsReadOnly = true;
                 IsEditing = false;
             }
         }
@@ -43,41 +40,56 @@ namespace WPFGallery.ViewModels.Samples
         {
             Users.Add(new User("New User", ""));
             SelectedUser = Users.Last();
-            EditableUser = new User(SelectedUser);
-            IsRead = false;
+           
+            IsReadOnly = false;
             IsEditing = true;
         }
 
+        private CancellationTokenSource cancelTokenSource = new();
+        private Task displayMessageTask = Task.CompletedTask;
+        partial void OnDeletedNameChanged(string? oldValue, string newValue)
+        {
+            if(string.IsNullOrEmpty(newValue))
+            {               
+                return;
+            }
+
+            cancelTokenSource = new();          
+            displayMessageTask = Task.Delay(2000, cancelTokenSource.Token).ContinueWith(_ =>
+            {
+                DeletedName = string.Empty;
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
         [RelayCommand]
-        private void RemoveUser(User selectedUser)
+        private async Task RemoveUser(User selectedUser)
         {
 
-            Deletedname = selectedUser.Name;
-            IsDeleted = true;
+            cancelTokenSource.Cancel();
+            await displayMessageTask;
 
-            Task.Delay(2000).ContinueWith(_ => IsDeleted = false, TaskScheduler.FromCurrentSynchronizationContext());
+            DeletedName = selectedUser.Name;
 
             int index = Users.Last().Equals(selectedUser) ?
-                         Users.IndexOf(selectedUser) - 1 :
-                         Users.IndexOf(selectedUser) + 1;
+                Users.IndexOf(selectedUser) - 1 :
+                Users.IndexOf(selectedUser) + 1;
 
             SelectedUser = index >= 0 ?
                            Users[index] :
                            null;
 
             Users.Remove(selectedUser);
-            IsRead = true;
+            IsReadOnly = true;
             IsEditing = false;
         }
 
         [RelayCommand]
         private void EditUserStart()
-        {
-
+        {           
             if (SelectedUser != null)
             {
-
-                IsRead = false;
+                EditableUser = new User(SelectedUser);
+                IsReadOnly = false;
                 IsEditing = true;
             }
         }
@@ -92,15 +104,11 @@ namespace WPFGallery.ViewModels.Samples
                 Users.RemoveAt(index);
                 Users.Insert(index, EditableUser);
                 SelectedUser = Users[index];
-                IsRead = true;
+                IsReadOnly = true;
                 IsEditing = false;
                 IsSaved = true;
 
                 Task.Delay(2000).ContinueWith(_ => IsSaved = false, TaskScheduler.FromCurrentSynchronizationContext());
-
-
-
-
             }
         }
 
@@ -110,7 +118,7 @@ namespace WPFGallery.ViewModels.Samples
         {
             EditableUser = null;
             EditableUser = new User(SelectedUser);
-            IsRead = true;
+            IsReadOnly = true;
             IsEditing = false;
         }
 
@@ -119,7 +127,7 @@ namespace WPFGallery.ViewModels.Samples
             _users = GenerateUsers();
         }
 
-        private ObservableCollection<User> GenerateUsers()
+        private static ObservableCollection<User> GenerateUsers()
         {
             var random = new Random();
             var users = new ObservableCollection<User>();
