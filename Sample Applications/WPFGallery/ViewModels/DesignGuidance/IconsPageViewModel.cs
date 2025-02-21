@@ -43,7 +43,7 @@ namespace WPFGallery.ViewModels
             return await JsonSerializer.DeserializeAsync<List<IconData>>(stream);
         }
 
-        partial void OnSearchTextChanged(string value)
+        partial void OnSearchTextChanged(string searchText)
         {
             //cache the name here to set the selected item after clearing and repopulating the list
             var selectedIconName = SelectedIcon?.Name;
