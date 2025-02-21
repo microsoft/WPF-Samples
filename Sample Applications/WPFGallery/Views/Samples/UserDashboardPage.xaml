@@ -10,12 +10,14 @@
     Title="UserDashboardPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    d:DataContext="{d:DesignInstance Type=local:UserDashboardPage}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d"
     SizeChanged="Page_SizeChanged">
     <Page.Resources>
         <helpers:ImageIdToBrushConverter x:Key="ImageIdToBrushConverter" />
         <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
         <Style TargetType="Label" x:Key="GenericLabelStyle">
             <Setter Property="Opacity" Value="0.67"/>
@@ -162,20 +164,20 @@
                             <StackPanel x:Name="FirstNamePanel" 
                                 Grid.Column="0" Margin="0,0,10,0" Orientation="Vertical">
                                 <Label Content="First Name" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
-                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
+                                <TextBox AutomationProperties.Name="First Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.FirstName}" IsReadOnly="{Binding ViewModel.IsReadOnly}"/>
                             </StackPanel>
                             <StackPanel x:Name="LastNamePanel"
                                 Grid.Column="1" Orientation="Vertical">
                                 <Label Content="Last Name" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
-                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" IsReadOnly="{Binding ViewModel.IsRead}"/>
+                                <TextBox AutomationProperties.Name="Last Name" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.LastName}" IsReadOnly="{Binding ViewModel.IsReadOnly}"/>
                             </StackPanel>
                         </Grid>
 
                         <Label Content="Company" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
-                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" IsReadOnly="{Binding ViewModel.IsRead}"/>
+                        <TextBox AutomationProperties.Name="Company" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Company}" IsReadOnly="{Binding ViewModel.IsReadOnly}"/>
 
                         <Label Content="Address" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
-                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" IsReadOnly="{Binding ViewModel.IsRead}"/>
+                        <TextBox AutomationProperties.Name="Address" Margin="0,5,0,15" Text="{Binding ViewModel.EditableUser.Address}" IsReadOnly="{Binding ViewModel.IsReadOnly}"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -210,23 +212,23 @@
                                 Saved!
                             </TextBlock>
 
-                            <TextBlock FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ViewModel.IsDeleted, Converter={StaticResource BooleanToVisibilityConverter}}" FontStyle="Italic">
+                            <TextBlock FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ViewModel.DeletedName, Converter={StaticResource EmptyToVisibilityConverter }}" FontStyle="Italic">
                                  <Run Text="User" />
-                                 <Run Text="{Binding ViewModel.Deletedname, Mode=OneWay}" />
+                                 <Run Text="{Binding ViewModel.DeletedName, Mode=OneWay}" />
                                  <Run Text="Deleted!" />
                             </TextBlock>
                             <Button
                                 x:Name="edit_button"
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserStartCommand}"
-                                Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Visibility="{Binding ViewModel.IsReadOnly, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Click="EditButton_Click"
                                 Content="Edit" />
                             <Button
                                 Margin="10"
                                 Command="{Binding ViewModel.RemoveUserCommand}"
                                 CommandParameter="{Binding ViewModel.SelectedUser}"
-                                Visibility="{Binding ViewModel.IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Visibility="{Binding ViewModel.IsReadOnly, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Content="Delete" />
                             <Button
                                 x:Name="save_button"
