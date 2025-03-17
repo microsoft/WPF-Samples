@@ -24,7 +24,7 @@ namespace WPFGallery.ViewModels.Samples
         private bool _isSaved;
 
         [ObservableProperty]
-        private string _deletedName;
+        private string _deletedName = string.Empty;
         partial void OnSelectedUserChanged(User? oldValue, User? newValue)
         {
             if (SelectedUser != null && SelectedUser != EditableUser)
