@@ -1,4 +1,5 @@
-﻿using WPFGallery.Models;
+﻿using System.Windows.Threading;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels.Samples
 {
@@ -17,22 +18,19 @@ namespace WPFGallery.ViewModels.Samples
         private User? _editableUser;
 
         [ObservableProperty]
-        private bool _isRead = true;
+        private bool _isReadOnly = true;
 
         [ObservableProperty]
         private bool _isSaved;
 
         [ObservableProperty]
-        private bool _isDeleted=false;
-
-        [ObservableProperty]
-        private string _deletedname;
+        private string _deletedName = string.Empty;
         partial void OnSelectedUserChanged(User? oldValue, User? newValue)
         {
             if (SelectedUser != null && SelectedUser != EditableUser)
             {
                 EditableUser = new User(SelectedUser);
-                IsRead = true;
+                IsReadOnly = true;
                 IsEditing = false;
             }
         }
@@ -42,40 +40,56 @@ namespace WPFGallery.ViewModels.Samples
         {
             Users.Add(new User("New User", ""));
             SelectedUser = Users.Last();
-            EditableUser = new User(SelectedUser);
-            IsRead = false;
+           
+            IsReadOnly = false;
             IsEditing = true;
         }
 
-        [RelayCommand]
-        private void RemoveUser(object selectedUser)
+        private CancellationTokenSource cancelTokenSource = new();
+        private Task displayMessageTask = Task.CompletedTask;
+        partial void OnDeletedNameChanged(string? oldValue, string newValue)
         {
-            if (selectedUser is User user)
-            {
-        
-                Deletedname = user.Name;
-                IsDeleted = true;
-
-                Task.Delay(2000).ContinueWith(_ => IsDeleted = false, TaskScheduler.FromCurrentSynchronizationContext());
-                int index = Users.IndexOf(user);
-                
-                SelectedUser = Users[index+1];
-                Users.Remove(user);
-                IsRead = true;
-                IsEditing = false;
-
-                
+            if(string.IsNullOrEmpty(newValue))
+            {               
+                return;
             }
+
+            cancelTokenSource = new();          
+            displayMessageTask = Task.Delay(2000, cancelTokenSource.Token).ContinueWith(_ =>
+            {
+                DeletedName = string.Empty;
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        [RelayCommand]
+        private async Task RemoveUser(User selectedUser)
+        {
+
+            cancelTokenSource.Cancel();
+            await displayMessageTask;
+
+            DeletedName = selectedUser.Name;
+
+            int index = Users.Last().Equals(selectedUser) ?
+                Users.IndexOf(selectedUser) - 1 :
+                Users.IndexOf(selectedUser) + 1;
+
+            SelectedUser = index >= 0 ?
+                           Users[index] :
+                           null;
+
+            Users.Remove(selectedUser);
+            IsReadOnly = true;
+            IsEditing = false;
         }
 
         [RelayCommand]
         private void EditUserStart()
-        {
-            
+        {           
             if (SelectedUser != null)
             {
-                
-                IsRead = false;
+                EditableUser = new User(SelectedUser);
+                IsReadOnly = false;
                 IsEditing = true;
             }
         }
@@ -90,15 +104,11 @@ namespace WPFGallery.ViewModels.Samples
                 Users.RemoveAt(index);
                 Users.Insert(index, EditableUser);
                 SelectedUser = Users[index];
-                IsRead = true;
+                IsReadOnly = true;
                 IsEditing = false;
                 IsSaved = true;
 
                 Task.Delay(2000).ContinueWith(_ => IsSaved = false, TaskScheduler.FromCurrentSynchronizationContext());
-
-                
-
-
             }
         }
 
@@ -107,8 +117,8 @@ namespace WPFGallery.ViewModels.Samples
         private void EditUserCancel()
         {
             EditableUser = null;
-            EditableUser= new User(SelectedUser);
-            IsRead = true;
+            EditableUser = new User(SelectedUser);
+            IsReadOnly = true;
             IsEditing = false;
         }
 
@@ -117,7 +127,7 @@ namespace WPFGallery.ViewModels.Samples
             _users = GenerateUsers();
         }
 
-        private ObservableCollection<User> GenerateUsers()
+        private static ObservableCollection<User> GenerateUsers()
         {
             var random = new Random();
             var users = new ObservableCollection<User>();
@@ -125,8 +135,8 @@ namespace WPFGallery.ViewModels.Samples
             DateTime startDate = new DateTime(2020, 1, 1);
             DateTime endDate = DateTime.Now.Date;
             int range = (endDate - startDate).Days;
-            
-            
+
+
             var imageids = new[] { "64","65", "91", "103", "177", "334", "338", "342", "349", "366", "367", "373",
                                     "375", "378", "399", "447", "453", "473", "469", "505"};
             var names = new[]
@@ -191,7 +201,7 @@ namespace WPFGallery.ViewModels.Samples
                 "",
             };
 
-            
+
             for (int i = 0; i < 20; i++)
             {
                 int randomDays = random.Next(range + 1);
@@ -210,7 +220,7 @@ namespace WPFGallery.ViewModels.Samples
                     )
                 );
             }
-                
+
 
             return users;
         }
