@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Win32;
+
 namespace WPFGallery.Controls
 {
     /// <summary>
@@ -10,12 +12,15 @@ namespace WPFGallery.Controls
         {
             InitializeComponent();
             UpdateButtonResources();
-            SystemParameters.StaticPropertyChanged += SystemParameters_StaticPropertyChanged;
+            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         }
 
-        private void SystemParameters_StaticPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
-            UpdateButtonResources();
+            Dispatcher.Invoke(() =>
+            {
+                UpdateButtonResources();
+            });
         }
 
         private void UpdateButtonResources()

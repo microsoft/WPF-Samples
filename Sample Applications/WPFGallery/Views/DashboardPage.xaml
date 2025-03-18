@@ -22,8 +22,7 @@
             </Grid.RowDefinitions>
 
             <Border CornerRadius="8,0,0,0" 
-                    Grid.RowSpan="2"
-                    Panel.ZIndex="1">
+                    Grid.RowSpan="2">
                 <Border.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Assets/win11-dashboard.light.png" Stretch="UniformToFill" />
                 </Border.Background>
@@ -38,8 +37,7 @@
             <Border
                 Height="220"
                 BorderThickness="0,0,0,1"
-                CornerRadius="8,0,0,0"
-                Panel.ZIndex="1">
+                CornerRadius="8,0,0,0">
 
                 <StackPanel Margin="36,48,0,0" VerticalAlignment="Top" TextElement.Foreground="Black">
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text=".NET 9" Margin="0,0,0,2" AutomationProperties.HeadingLevel="Level1" />
@@ -55,7 +53,7 @@
                 </StackPanel>
             </Border>
             
-            <controls:TileGallery Grid.Row="1" HorizontalAlignment="Stretch" Margin="0" Panel.ZIndex="2"/>
+            <controls:TileGallery Grid.Row="1" HorizontalAlignment="Stretch" Margin="0"/>
 
             <ItemsControl
                 Grid.Row="2"

@@ -47,14 +47,8 @@ public partial class MainWindow : Window
             }
         );
 
-        //SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
-        SystemParameters.StaticPropertyChanged += SystemParameters_StaticPropertyChanged;
+        SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         this.StateChanged += MainWindow_StateChanged;
-    }
-
-    private void SystemParameters_StaticPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
-    {
-        UpdateTitleBarButtonsVisibility();
     }
 
     private void UpdateWindowBackground()
