@@ -9,6 +9,31 @@ namespace WPFGallery.Controls
         public HeaderTile()
         {
             InitializeComponent();
+            UpdateButtonResources();
+            SystemParameters.StaticPropertyChanged += SystemParameters_StaticPropertyChanged;
+        }
+
+        private void SystemParameters_StaticPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            UpdateButtonResources();
+        }
+
+        private void UpdateButtonResources()
+        {
+            if (!SystemParameters.HighContrast)
+            {
+                Color? color = (Color)Application.Current!.FindResource("AcrylicBackgroundFillColorDefault");
+
+                RootButton.Resources["ButtonBackground"] = new SolidColorBrush { Color = color ?? Colors.Gray, Opacity = 0.8 };
+                RootButton.Resources["ButtonBackgroundPointerOver"] = new SolidColorBrush { Color = color ?? Colors.Gray, Opacity = 0.9 };
+                RootButton.Resources["ButtonBackgroundPressed"] = new SolidColorBrush { Color = color ?? Colors.Gray, Opacity = 1.0 };
+            }
+            else
+            {
+                RootButton.Resources["ButtonBackground"] = SystemColors.ControlBrush;
+                RootButton.Resources["ButtonBackgroundPointerOver"] = SystemColors.ControlBrush;
+                RootButton.Resources["ButtonBackgroundPressed"] = SystemColors.ControlBrush;
+            }
         }
 
         public string Title
