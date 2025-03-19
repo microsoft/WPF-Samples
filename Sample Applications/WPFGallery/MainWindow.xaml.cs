@@ -106,12 +106,26 @@ public partial class MainWindow : Window
             MinimizeButton.Visibility = Visibility.Visible;
             MaximizeButton.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
+
+            if(SystemParameters.HighContrast == true)
+            {
+                HighContrastBorder.SetResourceReference(BorderBrushProperty, SystemColors.ActiveCaptionBrushKey);
+                HighContrastBorder.BorderThickness = new Thickness(8, 2, 8, 8);
+            }
+            else
+            {
+                HighContrastBorder.BorderBrush = Brushes.Transparent;
+                HighContrastBorder.BorderThickness = new Thickness(0);
+            }
         }
         else
         {
             MinimizeButton.Visibility = Visibility.Collapsed;
             MaximizeButton.Visibility = Visibility.Collapsed;
             CloseButton.Visibility = Visibility.Collapsed;
+
+            HighContrastBorder.BorderThickness = new Thickness(0);
+            HighContrastBorder.BorderBrush = Brushes.Transparent;
         }
     }
 
@@ -231,4 +245,5 @@ public partial class MainWindow : Window
             }
         }
     }
+
 }

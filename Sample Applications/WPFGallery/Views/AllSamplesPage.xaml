@@ -23,7 +23,7 @@
 
         <ScrollViewer
             Grid.Row="1"
-            Margin="-13,0,0,0"
+            Margin="0"
             VerticalScrollBarVisibility="Auto">
             <ItemsControl
                 Grid.Row="1"
