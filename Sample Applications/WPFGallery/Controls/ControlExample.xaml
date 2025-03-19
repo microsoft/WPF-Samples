@@ -98,8 +98,8 @@
                                         BorderThickness="0"
                                         IsReadOnly="True"
                                         Text="{TemplateBinding XamlCode}"
-                                        TextWrapping="Wrap" 
-                                        Focusable="False"/>
+                                        TextWrapping="Wrap"
+                                        KeyboardNavigation.IsTabStop="False"/>
                                 </StackPanel>
 
                                 <Border
