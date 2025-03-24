@@ -23,7 +23,7 @@ namespace WPFGallery.ViewModels
         }
 
         [RelayCommand]
-        public void Navigate(object pageType){
+        public void Navigate(Type pageType){
             if (pageType is Type page)
             {
                 _navigationService.NavigateTo(page);

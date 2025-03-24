@@ -186,11 +186,18 @@
         "IsGroup": true,
         "Items": [
             {
-                "UniqueId": "Expander",
-                "Title": "Expander",
-                "PageName": "ExpanderPage",
-                "ImagePath": "Assets/ControlImages/Expander.png",
-                "Description": "A container with a header that can be expanded to show a body with more content."
+              "UniqueId": "Expander",
+              "Title": "Expander",
+              "PageName": "ExpanderPage",
+              "ImagePath": "Assets/ControlImages/Expander.png",
+              "Description": "A container with a header that can be expanded to show a body with more content."
+            },
+            {
+              "UniqueId": "GridSplitter",
+              "Title": "GridSplitter",
+              "PageName": "GridSplitterPage",
+              "ImagePath": "Assets/ControlImages/GridSplitter.png",
+              "Description": "The GridSplitter redistributes space between columns or rows of a Grid control."
             }
         ]
     },

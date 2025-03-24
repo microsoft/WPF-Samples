@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
@@ -12,6 +12,10 @@
     <NoWarn>$(NoWarn);WPF0001</NoWarn>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<WpfRepoRoot>C:\Users\siagupta\source\repos\wpf-sg</WpfRepoRoot>
+	</PropertyGroup>
+	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
 
 	<ItemGroup>
 	  <ApplicationDefinition Remove="App.xaml" />
@@ -30,6 +34,7 @@
 	
 	<PropertyGroup>
 		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
+		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 
 	<ItemGroup>
