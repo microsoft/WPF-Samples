@@ -11,23 +11,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFGallery.ViewModels;
-using WPFGallery.ViewModels.Layout;
 
 namespace WPFGallery.Views
 {
     /// <summary>
-    /// Interaction logic for GridSplitterPage.xaml
+    /// Interaction logic for GroupBoxPage.xaml
     /// </summary>
-    public partial class GridSplitterPage : Page
+    public partial class GroupBoxPage : Page
     {
-        public GridSplitterPage(GridSplitterPageViewModel viewModel)
+        public GroupBoxPage(GroupBoxPageViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
             InitializeComponent();
         }
 
-        public GridSplitterPageViewModel ViewModel { get; }
-
+        public GroupBoxPageViewModel ViewModel { get; }
     }
 }

@@ -108,9 +108,9 @@
                                 <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="{StaticResource SampleText2}"/>
                                 <TextBlock Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Text="{StaticResource SampleText2}"/>
                                 <TextBlock Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Text="{StaticResource SampleText}"/>
-                                <GridSplitter Grid.RowSpan="5" Grid.Column="1" />
-                                <GridSplitter Grid.Row="1" Grid.ColumnSpan="3"/>
-                                <GridSplitter Grid.Row="3" Grid.ColumnSpan="1"/>
+                                <GridSplitter Grid.RowSpan="5" Grid.Column="1" ResizeDirection="Columns"/>
+                                <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" ResizeDirection="Rows"/>
+                                <GridSplitter Grid.Row="3" Grid.ColumnSpan="1" ResizeDirection="Rows"/>
                             </Grid>
                         </Border>
                     </Grid>

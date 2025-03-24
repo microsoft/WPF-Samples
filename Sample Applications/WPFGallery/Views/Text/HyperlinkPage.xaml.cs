@@ -11,23 +11,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFGallery.ViewModels;
-using WPFGallery.ViewModels.Layout;
 
 namespace WPFGallery.Views
 {
     /// <summary>
-    /// Interaction logic for GridSplitterPage.xaml
+    /// Interaction logic for HyperlinkPage.xaml
     /// </summary>
-    public partial class GridSplitterPage : Page
+    public partial class HyperlinkPage : Page
     {
-        public GridSplitterPage(GridSplitterPageViewModel viewModel)
+        public HyperlinkPage(HyperlinkPageViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
             InitializeComponent();
         }
 
-        public GridSplitterPageViewModel ViewModel { get; }
+        public HyperlinkPageViewModel ViewModel { get; }
 
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+            e.Handled = true;
+        }
     }
 }

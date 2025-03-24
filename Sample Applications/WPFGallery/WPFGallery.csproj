@@ -12,11 +12,6 @@
     <NoWarn>$(NoWarn);WPF0001</NoWarn>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<WpfRepoRoot>C:\Users\siagupta\source\repos\wpf-sg</WpfRepoRoot>
-	</PropertyGroup>
-	<Import Project="$(WpfRepoRoot)\eng\wpf-debug.targets" />
-
 	<ItemGroup>
 	  <ApplicationDefinition Remove="App.xaml" />
 	  <Page Include="App.xaml" />
@@ -31,10 +26,9 @@
 		<Resource Include="Assets\win11-dashboard.light.png" />
 		<Resource Include="Assets\UserDashboard\*" />
 	</ItemGroup>
-	
+
 	<PropertyGroup>
 		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
-		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -55,6 +55,8 @@ public partial class App : Application
             services.AddTransient<ExpanderPageViewModel>();
             services.AddTransient<GridSplitterPage>();
             services.AddTransient<GridSplitterPageViewModel>();
+            services.AddTransient<GroupBoxPage>();
+            services.AddTransient<GroupBoxPageViewModel>();
             services.AddTransient<ImagePage>();
             services.AddTransient<ImagePageViewModel>();
             services.AddTransient<DataGridPage>();
@@ -75,6 +77,8 @@ public partial class App : Application
             services.AddTransient<RichTextEditPageViewModel>();
             services.AddTransient<PasswordBoxPage>();
             services.AddTransient<PasswordBoxPageViewModel>();
+            services.AddTransient<HyperlinkPage>();
+            services.AddTransient<HyperlinkPageViewModel>();
             services.AddTransient<ColorsPage>();
             services.AddTransient<ColorsPageViewModel>();
             services.AddTransient<LayoutPage>();
