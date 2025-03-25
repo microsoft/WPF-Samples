@@ -192,20 +192,27 @@
               "ImagePath": "Assets/ControlImages/Expander.png",
               "Description": "A container with a header that can be expanded to show a body with more content."
             },
-          {
-            "UniqueId": "GridSplitter",
-            "Title": "GridSplitter",
-            "PageName": "GridSplitterPage",
-            "ImagePath": "Assets/ControlImages/GridSplitter.png",
-            "Description": "The GridSplitter redistributes space between columns or rows of a Grid control."
-          },
-          {
-            "UniqueId": "GroupBox",
-            "Title": "GroupBox",
-            "PageName": "GroupBoxPage",
-            "ImagePath": "Assets/ControlImages/GroupBox.png",
-            "Description": "A control that visually groups controls together while maintaining layout and accessibility."
-          }
+            {
+                "UniqueId": "GridSplitter",
+                "Title": "GridSplitter",
+                "PageName": "GridSplitterPage",
+                "ImagePath": "Assets/ControlImages/GridSplitter.png",
+                "Description": "The GridSplitter redistributes space between columns or rows of a Grid control."
+            },
+            {
+                "UniqueId": "GroupBox",
+                "Title": "GroupBox",
+                "PageName": "GroupBoxPage",
+                "ImagePath": "Assets/ControlImages/GroupBox.png",
+                "Description": "A control that visually groups controls together while maintaining layout and accessibility."
+            },
+            {
+                "UniqueId": "ResizeGrip",
+                "Title": "ResizeGrip",
+                "PageName": "ResizeGripPage",
+                "ImagePath": "Assets/ControlImages/ResizeGrip.png",
+                "Description": "A control that enables users to resize a Window."
+            }
         ]
     },
     {
