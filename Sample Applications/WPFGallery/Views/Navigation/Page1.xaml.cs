@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace WPFGallery.Views
 {
     /// <summary>
-    /// Interaction logic for FramePage2.xaml
+    /// Interaction logic for FramePage1.xaml
     /// </summary>
-    public partial class FramePage2 : Page
+    public partial class Page1 : Page
     {
-        public FramePage2()
+        public Page1()
         {
             InitializeComponent();
         }
