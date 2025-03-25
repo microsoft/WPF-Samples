@@ -21,14 +21,20 @@
                 <StackPanel Margin="0,0,0,24">
                     <controls:ControlExample
                         Margin="10"
-                        HeaderText="A Navigation Window"
-                        XamlCode="">
-                        <Button 
-                            x:Name="OpenNavigationWindow"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Content="Open window to view NavigationWindow"
-                            Click="OpenNavigationWindow_Click" />
+                        HeaderText="Navigation Window"
+                        XamlCode="&lt;NavigationWindow Source=&quot;FramePage1.xaml&quot; Width=&quot;600&quot; Height=&quot;450&quot;/&gt;">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" Margin="0 0 0 12">
+                                <Run Text="NavigationWindow is very similar to Frame in respect to functionality and appearance. Both of them have the same navigation capabilities." />
+                                <LineBreak />
+                                <Run Text="However, NavigationWindow unlike Frame, is a subclass of Window and can act as a top-level window for WPF applications." />
+                            </TextBlock>
+                            <Button 
+                                x:Name="OpenNavigationWindow"
+                                VerticalAlignment="Center"
+                                Content="Open a NavigationWindow"
+                                Click="OpenNavigationWindow_Click" />
+                        </StackPanel>
                     </controls:ControlExample>
                 </StackPanel>
             </ScrollViewer>

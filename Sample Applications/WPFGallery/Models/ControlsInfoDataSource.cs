@@ -115,5 +115,12 @@ namespace WPFGallery.Models
         {
             return ControlsInfo.Where(x => x.IsGroup == true && x.UniqueId != "Design Guidance" && x.UniqueId != "Samples").ToList();
         }
+
+        public ICollection<ControlInfoDataItem> GetNewControlsInfo()
+        {
+            return GetAllControlsInfo().Where(x => _newControlsInfo.Any(c => c == x.UniqueId)).ToList();
+        }
+
+        private List<string> _newControlsInfo = [ "GridSplitter", "GroupBox", "ResizeGrip", "Hyperlink", "Frame", "NavigationWindow" ];
     }
 }

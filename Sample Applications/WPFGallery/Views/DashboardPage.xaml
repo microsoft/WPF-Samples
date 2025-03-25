@@ -18,6 +18,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -55,14 +56,27 @@
             
             <controls:TileGallery Grid.Row="1" HorizontalAlignment="Stretch" Margin="0"/>
 
-            <ItemsControl
-                Grid.Row="2"
-                Margin="12,0,0,0"
-                AutomationProperties.Name="Items in group"
-                ItemsSource="{Binding ViewModel.NavigationCards}"
-                Focusable="False"
-                ItemsPanel="{StaticResource WrapPanelTemplate}"
-                ItemTemplate="{StaticResource NavigationCardTemplate}" />
+            <StackPanel Grid.Row="2" Orientation="Vertical" Margin="32 32 0 0">
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Recently Added Styles ( .NET 10 Preview 3 )" Margin="4 0 0 6"/>
+                <ItemsControl
+                    Margin="-12 0 0 0"
+                    AutomationProperties.Name="Recently Added Styles"
+                    ItemsSource="{Binding ViewModel.NewControlStyles}"
+                    Focusable="False"
+                    ItemsPanel="{StaticResource WrapPanelTemplate}"
+                    ItemTemplate="{StaticResource NavigationCardTemplate}" />   
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Orientation="Vertical" Margin="32 32 0 0">
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Control Groups" Margin="4 0 0 6"/>
+                <ItemsControl
+                    Margin="-12 0 0 0"
+                    AutomationProperties.Name="Items in group"
+                    ItemsSource="{Binding ViewModel.NavigationCards}"
+                    Focusable="False"
+                    ItemsPanel="{StaticResource WrapPanelTemplate}"
+                    ItemTemplate="{StaticResource NavigationCardTemplate}" />
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </Page>

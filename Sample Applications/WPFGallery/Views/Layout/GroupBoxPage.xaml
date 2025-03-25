@@ -21,7 +21,7 @@
                 <StackPanel Margin="0,0,0,24">
                     <controls:ControlExample
                         Margin="10"
-                        HeaderText="A GroupBox"
+                        HeaderText="A GroupBox control example."
                         XamlCode="&lt;GroupBox &#10;
    Header=&quot;User Information&quot; &#10;
    HorizontalAlignment=&quot;Center&quot; &#10;
@@ -38,24 +38,30 @@
         &lt;/StackPanel&gt;&#10;
         &lt;Button Content=&quot;Submit&quot; HorizontalAlignment=&quot;Right&quot; Width=&quot;100&quot; Margin=&quot;0,10,0,0&quot; /&gt;&#10;
     &lt;/StackPanel&gt;&#10;&lt;/GroupBox&gt;">
-                        <GroupBox
-                          Header="User Information" 
-                          HorizontalAlignment="Center" 
-                          VerticalAlignment="Center" 
-                          Width="300">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="60" Text="Name:" />
-                                    <TextBox Name="NameTextBox" Width="200" Margin="10,0,0,20"/>
-                                </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <GroupBox
+                              Header="User Information" 
+                              HorizontalAlignment="Left" 
+                              VerticalAlignment="Center" 
+                              Width="300">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="60" Text="Name:" />
+                                        <TextBox Name="NameTextBox" Width="200" Margin="10,0,0,20"/>
+                                    </StackPanel>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="60" Text="Gender:" Margin="0,10,0,0"/>
-                                    <TextBox Name="GenderTextBox" Width="200" Margin="10,0,0,20"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="60" Text="Gender:" Margin="0,10,0,0"/>
+                                        <TextBox Name="GenderTextBox" Width="200" Margin="10,0,0,20"/>
+                                    </StackPanel>
+                                    <Button Content="Submit" HorizontalAlignment="Right" Width="100" Margin="0,10,0,0" />
                                 </StackPanel>
-                                <Button Content="Submit" HorizontalAlignment="Right" Width="100" Margin="0,10,0,0" />
-                            </StackPanel>
-                        </GroupBox>
+                            </GroupBox>
+                            <TextBlock TextWrapping="Wrap">
+                                <Run Text="NOTE:" FontWeight="Bold" />
+                                <Run Text="In the new Fluent style for GroupBox, there is no visual border to demarcate the boundary of the control which is in contrast with the previous styles for GroupBox"/>
+                            </TextBlock>
+                        </StackPanel>
                     </controls:ControlExample>
                 </StackPanel>
             </ScrollViewer>

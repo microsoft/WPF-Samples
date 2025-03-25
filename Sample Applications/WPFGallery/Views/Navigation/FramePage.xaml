@@ -26,7 +26,6 @@
                         <Button 
                             x:Name="OpenFrameWindow"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
                             Content="Open window to view Frame"
                             Click="OpenFrameWindow_Click" />
                     </controls:ControlExample>

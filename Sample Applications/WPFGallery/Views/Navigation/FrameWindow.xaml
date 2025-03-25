@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFGallery.Views"
         mc:Ignorable="d"
-        Title="FrameWindow" Height="450" Width="800">
-    <Grid>
-        <Frame Source="Page1.xaml" NavigationUIVisibility="Visible"/>
+        Title="FrameWindow" Height="600" Width="800">
+    <Grid Margin="24 12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Frame Sample" Margin="0 0 0 12"/>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Margin="0 0 0 12" Grid.Row="1">
+            <Run Text="Frame is a control which is used to host different pages in an application, and provides an inbuilt navigaiton facility." />
+            <Run Text="NOTE:" FontWeight="Bold" />
+            <Run Text="Frame and NavigationWindow share the same navigation bar, and are very similar in appearance." />
+        </TextBlock>
+        <Frame Source="Page1.xaml" NavigationUIVisibility="Visible" BorderThickness="1" Grid.Row="2" BorderBrush="{DynamicResource ControlElevationBorderBrush}"/>
     </Grid>
 </Window>

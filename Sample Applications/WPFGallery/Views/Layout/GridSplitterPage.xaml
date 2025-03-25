@@ -34,7 +34,7 @@
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
                 Margin="10"
-                HeaderText="A GridSplitter"
+                HeaderText="A Grid using GridSplitter control for Row and Column resizing"
                 XamlCode="&lt;Grid Height=&quot;400&quot;&gt;&#10;
     &lt;Grid.RowDefinitions&gt;&#10;
         &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;
@@ -75,21 +75,15 @@
     &lt;/Border&gt;&#10;
 &lt;/Grid&gt;
 ">
-                    <Grid Height="400">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Style="{DynamicResource TitleTextBlockStyle}" Text="Grid Splitter" Margin="0 0 0 10"/>
                         <Border BorderBrush="{DynamicResource ControlElevationBorderBrush}" 
+                             Background="{DynamicResource ControlAltFillColorSecondaryBrush}"
                              BorderThickness="2" 
-                             Grid.Row="1"
                              Padding="10"
-                             CornerRadius="4">
-                            <Grid Background="{DynamicResource ControlAltFillColorSecondaryBrush}">
+                             CornerRadius="4"
+                             Height="400" Width="600"
+                             HorizontalAlignment="Left">
+                            <Grid >
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
@@ -113,7 +107,6 @@
                                 <GridSplitter Grid.Row="3" Grid.ColumnSpan="1" ResizeDirection="Rows"/>
                             </Grid>
                         </Border>
-                    </Grid>
                 </controls:ControlExample>
             </StackPanel>
         </ScrollViewer>
