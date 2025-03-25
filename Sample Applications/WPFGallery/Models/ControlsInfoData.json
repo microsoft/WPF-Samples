@@ -186,12 +186,26 @@
         "IsGroup": true,
         "Items": [
             {
-                "UniqueId": "Expander",
-                "Title": "Expander",
-                "PageName": "ExpanderPage",
-                "ImagePath": "Assets/ControlImages/Expander.png",
-                "Description": "A container with a header that can be expanded to show a body with more content."
-            }
+              "UniqueId": "Expander",
+              "Title": "Expander",
+              "PageName": "ExpanderPage",
+              "ImagePath": "Assets/ControlImages/Expander.png",
+              "Description": "A container with a header that can be expanded to show a body with more content."
+            },
+          {
+            "UniqueId": "GridSplitter",
+            "Title": "GridSplitter",
+            "PageName": "GridSplitterPage",
+            "ImagePath": "Assets/ControlImages/GridSplitter.png",
+            "Description": "The GridSplitter redistributes space between columns or rows of a Grid control."
+          },
+          {
+            "UniqueId": "GroupBox",
+            "Title": "GroupBox",
+            "PageName": "GroupBoxPage",
+            "ImagePath": "Assets/ControlImages/GroupBox.png",
+            "Description": "A control that visually groups controls together while maintaining layout and accessibility."
+          }
         ]
     },
     {
@@ -281,13 +295,20 @@
                 "ImagePath": "Assets/ControlImages/RichEditBox.png",
                 "Description": "A control that displays formatted text, hyperlinks, inline images, and other rich content."
             },
-            {
-                "UniqueId": "PasswordBox",
-                "Title": "PasswordBox",
-                "PageName": "PasswordBoxPage",
-                "ImagePath": "Assets/ControlImages/PasswordBox.png",
-                "Description": "A control for entering passwords."
-            }
+          {
+            "UniqueId": "PasswordBox",
+            "Title": "PasswordBox",
+            "PageName": "PasswordBoxPage",
+            "ImagePath": "Assets/ControlImages/PasswordBox.png",
+            "Description": "A control for entering passwords."
+          },
+          {
+            "UniqueId": "Hyperlink",
+            "Title": "Hyperlink",
+            "PageName": "HyperlinkPage",
+            "ImagePath": "Assets/ControlImages/HyperlinkButton.png",
+            "Description": "A control to navigate to another document, webpage, or section within the same page."
+          }
         ]
     }
 ]
