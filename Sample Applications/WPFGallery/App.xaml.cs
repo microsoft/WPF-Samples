@@ -7,6 +7,7 @@ using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Views;
 using WPFGallery.ViewModels.Samples;
+using WPFGallery.ViewModels.Layout;
 
 namespace WPFGallery;
 
@@ -52,6 +53,10 @@ public partial class App : Application
             services.AddTransient<CanvasPageViewModel>();
             services.AddTransient<ExpanderPage>();
             services.AddTransient<ExpanderPageViewModel>();
+            services.AddTransient<GridSplitterPage>();
+            services.AddTransient<GridSplitterPageViewModel>();
+            services.AddTransient<GroupBoxPage>();
+            services.AddTransient<GroupBoxPageViewModel>();
             services.AddTransient<ImagePage>();
             services.AddTransient<ImagePageViewModel>();
             services.AddTransient<DataGridPage>();
@@ -72,9 +77,10 @@ public partial class App : Application
             services.AddTransient<RichTextEditPageViewModel>();
             services.AddTransient<PasswordBoxPage>();
             services.AddTransient<PasswordBoxPageViewModel>();
+            services.AddTransient<HyperlinkPage>();
+            services.AddTransient<HyperlinkPageViewModel>();
             services.AddTransient<ColorsPage>();
             services.AddTransient<ColorsPageViewModel>();
-
             services.AddTransient<LayoutPage>();
             services.AddTransient<LayoutPageViewModel>();
             services.AddTransient<AllSamplesPage>();

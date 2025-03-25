@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
@@ -11,7 +11,6 @@
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers> 
     <NoWarn>$(NoWarn);WPF0001</NoWarn>
 	</PropertyGroup>
-
 
 	<ItemGroup>
 	  <ApplicationDefinition Remove="App.xaml" />
@@ -27,7 +26,7 @@
 		<Resource Include="Assets\win11-dashboard.light.png" />
 		<Resource Include="Assets\UserDashboard\*" />
 	</ItemGroup>
-	
+
 	<PropertyGroup>
 		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
 	</PropertyGroup>
