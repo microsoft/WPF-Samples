@@ -7,7 +7,7 @@ namespace WPFGallery.ViewModels
     public partial class GroupBoxPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _pageTitle = "Hyperlink";
+        private string _pageTitle = "GroupBox";
 
         [ObservableProperty]
         private string _pageDescription = "";
