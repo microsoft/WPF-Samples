@@ -211,12 +211,19 @@
                 "Description": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
             },
             {
-                "UniqueId": "TabControl",
-                "Title": "TabControl",
-                "PageName": "TabControlPage",
-                "ImagePath": "Assets/ControlImages/TabView.png",
-                "Description": "A control that displays a collection of tabs."
-            }
+              "UniqueId": "TabControl",
+              "Title": "TabControl",
+              "PageName": "TabControlPage",
+              "ImagePath": "Assets/ControlImages/TabView.png",
+              "Description": "A control that displays a collection of tabs."
+            },
+          {
+            "UniqueId": "Frame",
+            "Title": "Frame",
+            "PageName": "FramePage",
+            "ImagePath": "Assets/ControlImages/MenuBar.png",
+            "Description": "A navigation control that allows displaying different Page content within an application."
+          }
         ]
     },
     {
