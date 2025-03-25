@@ -185,13 +185,20 @@
         "ImagePath": "Assets/ControlImages/Expander.png",
         "IsGroup": true,
         "Items": [
-            {
-                "UniqueId": "Expander",
-                "Title": "Expander",
-                "PageName": "ExpanderPage",
-                "ImagePath": "Assets/ControlImages/Expander.png",
-                "Description": "A container with a header that can be expanded to show a body with more content."
-            }
+          {
+            "UniqueId": "Expander",
+            "Title": "Expander",
+            "PageName": "ExpanderPage",
+            "ImagePath": "Assets/ControlImages/Expander.png",
+            "Description": "A container with a header that can be expanded to show a body with more content."
+          },
+          {
+            "UniqueId": "ResizeGrip",
+            "Title": "ResizeGrip",
+            "PageName": "ResizeGripPage",
+            "ImagePath": "Assets/ControlImages/ResizeGrip.png",
+            "Description": "A control that enables users to resize a Window."
+          }
         ]
     },
     {

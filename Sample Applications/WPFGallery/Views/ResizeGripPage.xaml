@@ -4,11 +4,42 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFGallery.Views"
+      xmlns:controls="clr-namespace:WPFGallery.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ResizeGripPage">
+      Title="ResizeGripPage"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}">
 
     <Grid>
-        
+        <Grid x:Name="ContentPagePane" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+            <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+                <StackPanel Margin="0,0,0,24">
+                    <controls:ControlExample
+                        Margin="10"
+                        HeaderText="A ResizeGrip"
+                        XamlCode="">
+                        <StackPanel Orientation="Vertical" Grid.Row="1">
+                            <TextBlock Margin="0 10 0 40">
+                                Resize grip control is only used along with a Window in WPF. 
+                                <LineBreak/>
+                                It can not be used in other places as such. 
+                                To see the resize grip in action click the button.
+                            </TextBlock>
+                            <Button 
+                                x:Name="OpenResizeGripWindow"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="Open window with resize grip"
+                                Click="OpenResizeGripWindow_Click" />
+                        </StackPanel>
+                    </controls:ControlExample>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

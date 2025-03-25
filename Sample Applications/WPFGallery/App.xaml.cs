@@ -52,6 +52,8 @@ public partial class App : Application
             services.AddTransient<CanvasPageViewModel>();
             services.AddTransient<ExpanderPage>();
             services.AddTransient<ExpanderPageViewModel>();
+            services.AddTransient<ResizeGripPage>();
+            services.AddTransient<ResizeGripPageViewModel>();
             services.AddTransient<ImagePage>();
             services.AddTransient<ImagePageViewModel>();
             services.AddTransient<DataGridPage>();
