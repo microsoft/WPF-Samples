@@ -11,9 +11,12 @@
         <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="IsReadOnly" Value="True" />
         <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
     </Style>
      
     <Style TargetType="{x:Type controls:ControlExample}">
@@ -91,15 +94,8 @@
                                     </Grid>
                                     <TextBox
                                         Style="{StaticResource SelectionTextBox}"
-                                        Padding="0"
                                         AutomationProperties.Name="XAML Source Code"
-                                        Background="Transparent"
-                                        BorderBrush="Transparent"
-                                        BorderThickness="0"
-                                        IsReadOnly="True"
-                                        Text="{TemplateBinding XamlCode}"
-                                        TextWrapping="Wrap" 
-                                        Focusable="False"/>
+                                        Text="{TemplateBinding XamlCode}"/>
                                 </StackPanel>
 
                                 <Border
@@ -126,12 +122,8 @@
                                         </Button>
                                     </Grid>
                                     <TextBox
-                                        Padding="0"
+                                        Style="{StaticResource SelectionTextBox}"
                                         AutomationProperties.Name="CSharp Source Code"
-                                        Background="Transparent"
-                                        BorderBrush="Transparent"
-                                        BorderThickness="0"
-                                        IsReadOnly="True"
                                         Text="{TemplateBinding CsharpCode}" />
                                 </StackPanel>
                             </StackPanel>
