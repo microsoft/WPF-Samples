@@ -1,17 +1,14 @@
-﻿using Microsoft.Win32;
-using System.Windows.Documents;
+﻿using System.Windows.Automation;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Shell;
+using Microsoft.Win32;
+using WPFGallery.Helpers;
+using WPFGallery.Models;
 using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
-using WPFGallery.Models;
 using WPFGallery.Views;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation;
-using WPFGallery.Controls;
-using System.Windows.Controls.Primitives;
-using WPFGallery.Helpers;
 
 namespace WPFGallery;
 
@@ -43,7 +40,8 @@ public partial class MainWindow : Window
                 CornerRadius = default,
                 GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = ResizeMode == ResizeMode.NoResize ? default : new Thickness(4),
-                UseAeroCaptionButtons = true
+                UseAeroCaptionButtons = true,
+                NonClientFrameEdges = NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left
             }
         );
 
