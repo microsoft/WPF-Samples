@@ -125,7 +125,6 @@ public partial class MainWindow : Window
         }
     }
 
-
     //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
     //{
     //    ViewModel.UpdateSearchText(SearchBox.Text);
@@ -136,8 +135,6 @@ public partial class MainWindow : Window
     //    SearchBox.Text = "";
     //    ViewModel.UpdateSearchText(SearchBox.Text);
     //}
-
-    #region Title Bar Buttons Click Event Handlers
 
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
@@ -162,8 +159,6 @@ public partial class MainWindow : Window
     {
         Application.Current.Shutdown();
     }
-
-    #endregion
 
     private void OnNavigating(object? sender, NavigatingEventArgs e)
     {
@@ -198,7 +193,6 @@ public partial class MainWindow : Window
         ViewModel.UpdateCanNavigateBack();
     }
 
-    #region ControlsList Events Handlers
     private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter) 
@@ -249,8 +243,6 @@ public partial class MainWindow : Window
             }
         }
     }
-
-    #endregion
 
     private void SettingsButton_Click(object sender, RoutedEventArgs e)
     {
