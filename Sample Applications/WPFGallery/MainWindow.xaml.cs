@@ -25,7 +25,7 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         UpdateWindowBackground();
-        UpdateTitleBarButtonsVisibility();
+        UpdateMainWindowVisuals();
 
         _navigationService = navigationService;
         _navigationService.Navigating += OnNavigating;
@@ -37,22 +37,24 @@ public partial class MainWindow : Window
             new WindowChrome
             {
                 CaptionHeight = 50,
-                CornerRadius = default,
+                CornerRadius = new CornerRadius(12),
                 GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = ResizeMode == ResizeMode.NoResize ? default : new Thickness(4),
                 UseAeroCaptionButtons = true,
-                NonClientFrameEdges = NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left
+                NonClientFrameEdges = SystemParameters.HighContrast ? NonClientFrameEdges.None :
+                    NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left
             }
         );
 
         SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
-        this.StateChanged += MainWindow_StateChanged;
+        this.StateChanged += (s, e) => UpdateMainWindowVisuals();
+        this.Activated += (s, e) => UpdateMainWindowVisuals();
+        this.Deactivated += (s, e) => UpdateMainWindowVisuals();
     }
 
     private void UpdateWindowBackground()
     {
-        if((!Utility.IsBackdropDisabled() && 
-                    !Utility.IsBackdropSupported()))
+        if((!Utility.IsBackdropDisabled() && !Utility.IsBackdropSupported()))
         {
             this.SetResourceReference(BackgroundProperty, "WindowBackground");
         }
@@ -62,39 +64,14 @@ public partial class MainWindow : Window
     {
         Dispatcher.Invoke(() =>
         {
-            UpdateTitleBarButtonsVisibility();
+            UpdateMainWindowVisuals();
         });
-    }
-
-    private void MainWindow_StateChanged(object? sender, EventArgs e)
-    {
-        if (this.WindowState == WindowState.Maximized)
-        {
-            MainGrid.Margin = new Thickness(8);
-        }
-        else
-        {
-            MainGrid.Margin = default;
-        }
     }
 
     private readonly IServiceProvider _serviceProvider;
     private readonly INavigationService _navigationService;
 
     public MainWindowViewModel ViewModel { get; }
-
-    private void ControlsList_SelectedItemChanged()
-    {
-        if (ControlsList.SelectedItem is ControlInfoDataItem navItem)
-        {
-            _navigationService.Navigate(navItem.PageType);
-            var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
-            if(tvi != null)
-            {
-                tvi.BringIntoView();
-            }
-        }
-    }
 
     private void UpdateTitleBarButtonsVisibility()
     {
@@ -104,28 +81,50 @@ public partial class MainWindow : Window
             MinimizeButton.Visibility = Visibility.Visible;
             MaximizeButton.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
-
-            if(SystemParameters.HighContrast == true)
-            {
-                HighContrastBorder.SetResourceReference(BorderBrushProperty, SystemColors.ActiveCaptionBrushKey);
-                HighContrastBorder.BorderThickness = new Thickness(8, 2, 8, 8);
-            }
-            else
-            {
-                HighContrastBorder.BorderBrush = Brushes.Transparent;
-                HighContrastBorder.BorderThickness = new Thickness(0);
-            }
         }
         else
         {
             MinimizeButton.Visibility = Visibility.Collapsed;
             MaximizeButton.Visibility = Visibility.Collapsed;
             CloseButton.Visibility = Visibility.Collapsed;
-
-            HighContrastBorder.BorderThickness = new Thickness(0);
-            HighContrastBorder.BorderBrush = Brushes.Transparent;
         }
     }
+
+    private void UpdateMainWindowVisuals()
+    {
+        MainGrid.Margin = default;
+        if(WindowState == WindowState.Maximized)
+        {
+            MainGrid.Margin = SystemParameters.HighContrast ? new Thickness(0,8,0,0) : new Thickness(8);
+        }
+
+        UpdateTitleBarButtonsVisibility();
+    
+        if(SystemParameters.HighContrast == true)
+        {
+            HighContrastBorder.SetResourceReference(BorderBrushProperty, IsActive ? SystemColors.ActiveCaptionBrushKey : 
+                                                                                    SystemColors.InactiveCaptionBrushKey);
+            HighContrastBorder.BorderThickness = new Thickness(8, 1, 8, 8);
+            
+            WindowChrome wc = WindowChrome.GetWindowChrome(this);
+            if(wc is not null)
+            {
+                wc.NonClientFrameEdges = NonClientFrameEdges.None;
+            }
+        }
+        else
+        {
+            HighContrastBorder.BorderBrush = Brushes.Transparent;
+            HighContrastBorder.BorderThickness = new Thickness(0);
+
+            var wc = WindowChrome.GetWindowChrome(this);
+            if(wc is not null)
+            {
+                wc.NonClientFrameEdges = NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
+            }
+        }
+    }
+
 
     //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
     //{
@@ -137,6 +136,8 @@ public partial class MainWindow : Window
     //    SearchBox.Text = "";
     //    ViewModel.UpdateSearchText(SearchBox.Text);
     //}
+
+    #region Title Bar Buttons Click Event Handlers
 
     private void MinimizeWindow(object sender, RoutedEventArgs e)
     {
@@ -161,6 +162,8 @@ public partial class MainWindow : Window
     {
         Application.Current.Shutdown();
     }
+
+    #endregion
 
     private void OnNavigating(object? sender, NavigatingEventArgs e)
     {
@@ -195,15 +198,7 @@ public partial class MainWindow : Window
         ViewModel.UpdateCanNavigateBack();
     }
 
-    private void SelectedItemChanged(TreeViewItem? tvi)
-    {
-        ControlsList_SelectedItemChanged();
-        if (tvi != null)
-        {
-            tvi.IsExpanded = !tvi.IsExpanded;
-        }
-    }
-
+    #region ControlsList Events Handlers
     private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter) 
@@ -221,17 +216,6 @@ public partial class MainWindow : Window
         SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
     }
 
-    private void SettingsButton_Click(object sender, RoutedEventArgs e)
-    {
-        AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
-        peer.RaiseNotificationEvent(
-           AutomationNotificationKind.Other,
-            AutomationNotificationProcessing.ImportantMostRecent,
-            "Settings Page Opened",
-            "ButtonClickedActivity"
-        );
-    }
-
     private void ControlsList_Loaded(object sender, RoutedEventArgs e)
     {
         if (ControlsList.Items.Count > 0)
@@ -244,4 +228,38 @@ public partial class MainWindow : Window
         }
     }
 
+    private void SelectedItemChanged(TreeViewItem? tvi)
+    {
+        ControlsList_SelectedItemChanged();
+        if (tvi != null)
+        {
+            tvi.IsExpanded = !tvi.IsExpanded;
+        }
+    }
+
+    private void ControlsList_SelectedItemChanged()
+    {
+        if (ControlsList.SelectedItem is ControlInfoDataItem navItem)
+        {
+            _navigationService.Navigate(navItem.PageType);
+            var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
+            if(tvi != null)
+            {
+                tvi.BringIntoView();
+            }
+        }
+    }
+
+    #endregion
+
+    private void SettingsButton_Click(object sender, RoutedEventArgs e)
+    {
+        AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
+        peer.RaiseNotificationEvent(
+           AutomationNotificationKind.Other,
+            AutomationNotificationProcessing.ImportantMostRecent,
+            "Settings Page Opened",
+            "ButtonClickedActivity"
+        );
+    }
 }
