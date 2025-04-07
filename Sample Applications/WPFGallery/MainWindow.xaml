@@ -76,7 +76,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Border x:Name="HighContrastBorder" BorderBrush="Transparent" BorderThickness="8 2 8 8">
+    <Border x:Name="HighContrastBorder" BorderBrush="Transparent" BorderThickness="8 1 8 8">
         <Grid x:Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="44" />
