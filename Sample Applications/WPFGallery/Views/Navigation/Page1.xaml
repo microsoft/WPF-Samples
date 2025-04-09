@@ -1,0 +1,19 @@
+﻿<Page x:Class="WPFGallery.Views.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFGallery.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="This is Page 1" FontSize="20" Margin="10" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+            <TextBlock>
+         <Hyperlink NavigateUri="Page2.xaml">This is the link to Page 2</Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>
