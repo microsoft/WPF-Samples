@@ -56,6 +56,13 @@
                         system accent colors and their variations.
                     </Run>
                 </TextBlock>
+
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 12">
+                    <Bold>NOTE : </Bold>
+                    <Run>
+                        In HighContrast mode, all the AccentColor brushes and colors have the same value, and we won't see a difference in the brushes.
+                    </Run>
+                </TextBlock>
                 
                 <controls:ControlExample
                     Margin="2 10"

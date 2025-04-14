@@ -26,7 +26,7 @@
     in project files im this repo. 
     
     Alternative TargetFramework can be supplied to build. Currently, netcoreapp3.1 (default),
-    net6.0-windows, net7.0-windows, net8.0-windows and net9.0-windows are supported.
+    net6.0-windows, net7.0-windows, net8.0-windows, net9.0-windows and net10.0-windows are supported.
 .PARAMETER DryRun 
     When this switch is specified, the build is simulated, but the actual build is not run. 
 .PARAMETER UseMsBuild 
@@ -44,9 +44,9 @@
     build.ps1
     Builds the repo 
 .EXAMPLE 
-    build.ps1 -TargetFramework net8.0-windows -UseMsBuild
+    build.ps1 -TargetFramework net10.0-windows -UseMsBuild
     
-    Builds the repo using MSBuild for net8.0-windows TFM 
+    Builds the repo using MSBuild for net10.0-windows TFM 
 .EXAMPLE 
     build.ps1 -UseMsBuild -Platform x86 -Configuration Release
     
@@ -65,7 +65,7 @@ param(
 
   [string] [Alias('f')]
   [Parameter(HelpMessage='TargetFramework to match from global.json/altsdk section for an alternate SDK version')]
-  [ValidateSet('', $null, 'netcoreapp3.1', 'net6.0-windows', 'net7.0-windows', 'net8.0-windows', 'net9.0-windows', IgnoreCase=$true)]
+  [ValidateSet('', $null, 'netcoreapp3.1', 'net6.0-windows', 'net7.0-windows', 'net8.0-windows', 'net9.0-windows', 'net10.0-windows', IgnoreCase=$true)]
   $TargetFramework='', 
 
   [switch]
@@ -174,7 +174,8 @@ Function Get-Tfm {
         'net6.0-windows',
         'net7.0-windows',
         'net8.0-windows',
-        'net9.0-windows'
+        'net9.0-windows',
+        'net10.0-windows'
     )
 
     $tfm1 = ('netcoreapp' + $SdkVersion.Substring(0,3)).Trim().ToLowerInvariant()
