@@ -7,6 +7,7 @@ using WPFGallery.Navigation;
 using WPFGallery.ViewModels;
 using WPFGallery.Views;
 using WPFGallery.ViewModels.Samples;
+using WPFGallery.ViewModels.Layout;
 
 namespace WPFGallery;
 
@@ -46,6 +47,10 @@ public partial class App : Application
             services.AddTransient<ProgressBarPageViewModel>();
             services.AddTransient<MenuPage>();
             services.AddTransient<MenuPageViewModel>();
+            services.AddTransient<FramePage>();
+            services.AddTransient<FramePageViewModel>();
+            services.AddTransient<NavigationWindowPage>();
+            services.AddTransient<NavigationWindowPageViewModel>();
             services.AddTransient<ToolTipPage>();
             services.AddTransient<ToolTipPageViewModel>();
             services.AddTransient<CanvasPage>();
@@ -54,6 +59,10 @@ public partial class App : Application
             services.AddTransient<ExpanderPageViewModel>();
             services.AddTransient<ResizeGripPage>();
             services.AddTransient<ResizeGripPageViewModel>();
+            services.AddTransient<GridSplitterPage>();
+            services.AddTransient<GridSplitterPageViewModel>();
+            services.AddTransient<GroupBoxPage>();
+            services.AddTransient<GroupBoxPageViewModel>();
             services.AddTransient<ImagePage>();
             services.AddTransient<ImagePageViewModel>();
             services.AddTransient<DataGridPage>();
@@ -74,9 +83,10 @@ public partial class App : Application
             services.AddTransient<RichTextEditPageViewModel>();
             services.AddTransient<PasswordBoxPage>();
             services.AddTransient<PasswordBoxPageViewModel>();
+            services.AddTransient<HyperlinkPage>();
+            services.AddTransient<HyperlinkPageViewModel>();
             services.AddTransient<ColorsPage>();
             services.AddTransient<ColorsPageViewModel>();
-
             services.AddTransient<LayoutPage>();
             services.AddTransient<LayoutPageViewModel>();
             services.AddTransient<AllSamplesPage>();

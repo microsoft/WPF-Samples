@@ -1,0 +1,37 @@
+﻿<Page x:Class="WPFGallery.Views.HyperlinkPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFGallery.Views"
+      xmlns:controls="clr-namespace:WPFGallery.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HyperlinkPage"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+
+    <Grid>
+        <Grid x:Name="ContentPagePane" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+            <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+                <StackPanel Margin="0,0,0,24">
+                    <controls:ControlExample
+                        Margin="10"
+                        HeaderText="A Hyperlink"
+                        XamlCode="&lt;TextBlock Margin=&quot;20&quot;&gt;&#10;    &lt;Hyperlink NavigateUri=&quot;https://www.microsoft.com&quot; RequestNavigate=&quot;Hyperlink_RequestNavigate&quot;&gt;&#10;        Lorem Ipsum link&#10;    &lt;/Hyperlink&gt;&#10;&lt;/TextBlock&gt;">
+                        <TextBlock Margin="20">
+                                <Hyperlink NavigateUri="https://www.microsoft.com" RequestNavigate="Hyperlink_RequestNavigate">
+                                    Hyperlink
+                                </Hyperlink>
+                        </TextBlock>
+                    </controls:ControlExample>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Page>

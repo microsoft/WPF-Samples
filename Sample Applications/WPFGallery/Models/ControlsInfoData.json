@@ -198,6 +198,20 @@
             "PageName": "ResizeGripPage",
             "ImagePath": "Assets/ControlImages/ResizeGrip.png",
             "Description": "A control that enables users to resize a Window."
+            },
+          {
+            "UniqueId": "GridSplitter",
+            "Title": "GridSplitter",
+            "PageName": "GridSplitterPage",
+            "ImagePath": "Assets/ControlImages/GridSplitter.png",
+            "Description": "The GridSplitter redistributes space between columns or rows of a Grid control."
+          },
+          {
+            "UniqueId": "GroupBox",
+            "Title": "GroupBox",
+            "PageName": "GroupBoxPage",
+            "ImagePath": "Assets/ControlImages/GroupBox.png",
+            "Description": "A control that visually groups controls together while maintaining layout and accessibility."
           }
         ]
     },
@@ -218,12 +232,26 @@
                 "Description": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems."
             },
             {
-                "UniqueId": "TabControl",
-                "Title": "TabControl",
-                "PageName": "TabControlPage",
-                "ImagePath": "Assets/ControlImages/TabView.png",
-                "Description": "A control that displays a collection of tabs."
-            }
+              "UniqueId": "TabControl",
+              "Title": "TabControl",
+              "PageName": "TabControlPage",
+              "ImagePath": "Assets/ControlImages/TabView.png",
+              "Description": "A control that displays a collection of tabs."
+            },
+            {
+              "UniqueId": "Frame",
+              "Title": "Frame",
+              "PageName": "FramePage",
+              "ImagePath": "Assets/ControlImages/MenuBar.png",
+              "Description": "A navigation control that allows displaying different Page content within an application."
+            },
+          {
+            "UniqueId": "NavigationWindow",
+            "Title": "NavigationWindow",
+            "PageName": "NavigationWindowPage",
+            "ImagePath": "Assets/ControlImages/CreateMultipleWindows.png",
+            "Description": "A control that supports navigation between pages, similar to a web browser."
+          }
         ]
     },
     {
@@ -288,13 +316,20 @@
                 "ImagePath": "Assets/ControlImages/RichEditBox.png",
                 "Description": "A control that displays formatted text, hyperlinks, inline images, and other rich content."
             },
-            {
-                "UniqueId": "PasswordBox",
-                "Title": "PasswordBox",
-                "PageName": "PasswordBoxPage",
-                "ImagePath": "Assets/ControlImages/PasswordBox.png",
-                "Description": "A control for entering passwords."
-            }
+          {
+            "UniqueId": "PasswordBox",
+            "Title": "PasswordBox",
+            "PageName": "PasswordBoxPage",
+            "ImagePath": "Assets/ControlImages/PasswordBox.png",
+            "Description": "A control for entering passwords."
+          },
+          {
+            "UniqueId": "Hyperlink",
+            "Title": "Hyperlink",
+            "PageName": "HyperlinkPage",
+            "ImagePath": "Assets/ControlImages/HyperlinkButton.png",
+            "Description": "A control to navigate to another document, webpage, or section within the same page."
+          }
         ]
     }
 ]
