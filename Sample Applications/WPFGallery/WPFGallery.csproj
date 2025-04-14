@@ -12,7 +12,6 @@
     <NoWarn>$(NoWarn);WPF0001</NoWarn>
 	</PropertyGroup>
 
-
 	<ItemGroup>
 	  <ApplicationDefinition Remove="App.xaml" />
 	  <Page Include="App.xaml" />
