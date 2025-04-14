@@ -47,6 +47,10 @@ public partial class App : Application
             services.AddTransient<ProgressBarPageViewModel>();
             services.AddTransient<MenuPage>();
             services.AddTransient<MenuPageViewModel>();
+            services.AddTransient<FramePage>();
+            services.AddTransient<FramePageViewModel>();
+            services.AddTransient<NavigationWindowPage>();
+            services.AddTransient<NavigationWindowPageViewModel>();
             services.AddTransient<ToolTipPage>();
             services.AddTransient<ToolTipPageViewModel>();
             services.AddTransient<CanvasPage>();
