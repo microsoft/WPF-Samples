@@ -46,12 +46,12 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="60" Text="Name:" />
-                                    <TextBox Name="NameTextBox" Width="200" Margin="10,0,0,20"/>
+                                    <TextBox Name="NameTextBox" Width="200" Margin="10,0,0,20" AutomationProperties.Name="Name Field"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="60" Text="Gender:" Margin="0,10,0,0"/>
-                                    <TextBox Name="GenderTextBox" Width="200" Margin="10,0,0,20"/>
+                                    <TextBox Name="GenderTextBox" Width="200" Margin="10,0,0,20" AutomationProperties.Name="Gender Field"/>
                                 </StackPanel>
                                 <Button Content="Submit" HorizontalAlignment="Right" Width="100" Margin="0,10,0,0" />
                             </StackPanel>
