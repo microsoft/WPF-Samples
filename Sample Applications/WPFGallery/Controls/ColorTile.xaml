@@ -43,7 +43,7 @@
 
                                 <Button
                                     x:Name="CopyBrushNameButton"
-                                    AutomationProperties.Name="Copy brush name"
+                                    AutomationProperties.Name="{Binding ColorBrushName, StringFormat='{}Copy brush name {0} to clipboard', RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                     Grid.RowSpan="4"
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
