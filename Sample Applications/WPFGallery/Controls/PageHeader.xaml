@@ -12,20 +12,31 @@
                 <ControlTemplate TargetType="{x:Type controls:PageHeader}">
                     <StackPanel
                         VerticalAlignment="Center">
-                        <TextBlock
-                            Style="{StaticResource TitleTextBlockStyle}"
-                            Text="{TemplateBinding Title}"
-                            AutomationProperties.HeadingLevel="Level1"/>
-                        <TextBlock
-                            x:Name="DescriptionTextBlock"
-                            Text="{TemplateBinding Description}"
+                        <Label
+                            x:Name="TitleTextBlock"
+                            AutomationProperties.Name="{Binding Title, StringFormat='{}{0} Page', RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            AutomationProperties.HeadingLevel="Level1"
+                            KeyboardNavigation.IsTabStop="True"
+                            KeyboardNavigation.TabIndex="0"
+                            Focusable="True">
+                            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                                       Text="{TemplateBinding Title}" />
+                        </Label>
+
+                        <Label
                             AutomationProperties.HeadingLevel="Level2"
-                            Visibility="{TemplateBinding Description,
-                                Converter={StaticResource NullToVisibilityConverter}}"/>
+                            KeyboardNavigation.IsTabStop="True"
+                            KeyboardNavigation.TabIndex="1"
+                            Focusable="True">
+                            <TextBlock
+                                x:Name="DescriptionTextBlock"
+                                Text="{TemplateBinding Description}"
+                                Visibility="{TemplateBinding Description, Converter={StaticResource NullToVisibilityConverter}}"
+                                Style="{StaticResource BodyTextBlockStyle}"/>
+                        </Label>
                     </StackPanel>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="ShowDescription"
-                                Value="False">
+                        <Trigger Property="ShowDescription" Value="False">
                             <Setter TargetName="DescriptionTextBlock"
                                     Property="Visibility"
                                     Value="Hidden"/>
