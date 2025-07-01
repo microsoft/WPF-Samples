@@ -185,7 +185,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Style="{StaticResource GenericLabelStyle}" Content="Age" Grid.Column="0" FontWeight="SemiBold" />
-                            <TextBlock Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}" />
+                            <TextBlock x:Name="AgeIndicatorBox" Padding="10 0 0 0" Grid.Column="1" Text="{Binding ViewModel.EditableUser.Age}" VerticalAlignment="Center" />
                         </Grid>
                         <Slider
                             Margin="0,5,0,15"
@@ -193,7 +193,9 @@
                             Maximum="62"
                             Minimum="21"
                             IsSnapToTickEnabled="True"
-                            Value="{Binding ViewModel.EditableUser.Age}" IsEnabled="{Binding ViewModel.IsEditing}"/>
+                            Value="{Binding ViewModel.EditableUser.Age}" 
+                            ValueChanged="AgeSlider_ValueChanged"
+                            IsEnabled="{Binding ViewModel.IsEditing}"/>
 
                         <Label Content="Date of Joining" Style="{StaticResource GenericLabelStyle}" FontWeight="SemiBold" />
                         <DatePicker AutomationProperties.Name="Date of Joining" Margin="0,5,0,15" SelectedDate="{Binding ViewModel.EditableUser.DateOfJoining}" IsEnabled="{Binding ViewModel.IsEditing}"/>
@@ -225,10 +227,12 @@
                                 Click="EditButton_Click"
                                 Content="Edit" />
                             <Button
+                                x:Name="delete_button"
                                 Margin="10"
                                 Command="{Binding ViewModel.RemoveUserCommand}"
                                 CommandParameter="{Binding ViewModel.SelectedUser}"
                                 Visibility="{Binding ViewModel.IsReadOnly, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="DeleteButton_Click"
                                 Content="Delete" />
                             <Button
                                 x:Name="save_button"
@@ -238,6 +242,7 @@
                                 Click="SaveButton_Click"
                                 Content="Save"/>
                             <Button
+                                x:Name="cancel_button"
                                 Margin="10"
                                 Command="{Binding ViewModel.EditUserCancelCommand}"
                                 Visibility="{Binding ViewModel.IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"

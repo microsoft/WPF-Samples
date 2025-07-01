@@ -1,6 +1,11 @@
-﻿using System.Windows.Documents;
+﻿using System.ComponentModel;
+using System.Windows.Automation;
+using System.Windows.Automation.Peers;
+using System.Windows.Documents;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFGallery.Controls;
+using WPFGallery.Models;
 using WPFGallery.ViewModels.Samples;
 
 namespace WPFGallery.Views
@@ -35,10 +40,41 @@ namespace WPFGallery.Views
         {
             var command = (sender as Button)?.Command;
             var commandParameter = (sender as Button)?.CommandParameter;
+
+            string currentUserName = ViewModel.EditableUser?.Name ?? ""; 
+
             if (command != null && command.CanExecute(commandParameter))
             {
                 command.Execute(commandParameter);
             }
+
+            AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
+            peer.RaiseNotificationEvent(
+               AutomationNotificationKind.Other,
+                AutomationNotificationProcessing.ImportantMostRecent,
+                $"User {currentUserName} saved",
+                "ButtonClickedActivity"
+            );
+
+            edit_button.Focus();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var command = (sender as Button)?.Command;
+            var commandParameter = (sender as Button)?.CommandParameter;
+            if (command != null && command.CanExecute(commandParameter))
+            {
+                command.Execute(commandParameter);
+            }
+
+            AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement((Button)sender);
+            peer.RaiseNotificationEvent(
+               AutomationNotificationKind.Other,
+                AutomationNotificationProcessing.ImportantMostRecent,
+                $"User {ViewModel.DeletedName} deleted",
+                "ButtonClickedActivity"
+            );
 
             edit_button.Focus();
         }
@@ -113,6 +149,22 @@ namespace WPFGallery.Views
             Grid.SetColumn(uiElement, column);
             Grid.SetRowSpan(uiElement, rowSpan);
             Grid.SetColumnSpan(uiElement, columnSpan);
+        }
+
+        private void AgeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (sender is not Slider slider)
+                return;
+
+            int newAge = (int)e.NewValue;
+
+            AutomationPeer peer = UIElementAutomationPeer.CreatePeerForElement(slider);
+            peer.RaiseNotificationEvent(
+               AutomationNotificationKind.Other,
+                AutomationNotificationProcessing.ImportantMostRecent,
+                $"New age {newAge}",
+                "SliderValueChangedActivity"
+            );
         }
     }
 }
