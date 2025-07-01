@@ -8,7 +8,7 @@ namespace WPFGallery.Navigation;
 /// </summary>
 public interface INavigationService
 {
-    void Navigate(Type type);
+    void Navigate(Type type, bool adjustFocus = true);
 
     void NavigateTo(Type type);
 
@@ -62,14 +62,29 @@ public class NavigationService : INavigationService
         }
     }
 
-    public void Navigate(Type type)
+    public void Navigate(Type type, bool adjustFocus)
     {
         if(type != null)
         {
             _history.Push(_currentPageType);
             _currentPageType = type;
             var page = _serviceProvider.GetRequiredService(type);
+            
+            if(adjustFocus && page is Page pg)
+            {
+                pg.Loaded += MoveFocusToPage;
+            }
+
             _frame.Navigate(page);
+        }
+    }
+
+    private void MoveFocusToPage(object sender, RoutedEventArgs e)
+    {
+        if(sender is Page page)
+        {
+            page.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+            page.Loaded -= MoveFocusToPage;
         }
     }
 

@@ -30,7 +30,7 @@ public partial class MainWindow : Window
         _navigationService = navigationService;
         _navigationService.Navigating += OnNavigating;
         _navigationService.SetFrame(this.RootContentFrame);
-        _navigationService.Navigate(typeof(DashboardPage));
+        _navigationService.Navigate(typeof(DashboardPage), false);
 
         WindowChrome.SetWindowChrome(
             this,

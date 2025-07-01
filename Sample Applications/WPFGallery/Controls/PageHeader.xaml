@@ -7,6 +7,7 @@
     <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
 
     <Style TargetType="{x:Type controls:PageHeader}">
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:PageHeader}">
