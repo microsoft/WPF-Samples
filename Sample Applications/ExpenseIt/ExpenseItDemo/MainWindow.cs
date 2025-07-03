@@ -34,8 +34,6 @@ namespace ExpenseItDemo
 
             InitializeComponent();
 
-            employeeTypeRadioButtons.SelectionChanged += employeeTypeRadioButtons_SelectionChanged;
-
             // Bind CreateExpenseReportCommand
             var commandBindingCreateExpenseReport = new CommandBinding(CreateExpenseReportCommand);
             commandBindingCreateExpenseReport.Executed += commandBindingCreateExpenseReport_Executed;
@@ -55,8 +53,9 @@ namespace ExpenseItDemo
         private void MainWindow_Initialized(object sender, EventArgs e)
         {
             // Select the first employee type radio button
-            employeeTypeRadioButtons.SelectedIndex = 0;
-            RefreshEmployeeList();
+            RadioButton radioButton = (RadioButton)employeeTypeRadioButtonGroup.Children[0];
+            radioButton.IsChecked = true;
+            RefreshEmployeeList(radioButton.Content);
         }
 
         private void commandBindingCreateExpenseReport_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -79,25 +78,28 @@ namespace ExpenseItDemo
                 MessageBoxImage.Information);
         }
 
-        private void employeeTypeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RadioButton_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            RefreshEmployeeList();
+            var radioButton = sender as RadioButton;
+            if (radioButton != null)
+            {
+                radioButton.IsChecked = true;
+                RefreshEmployeeList(radioButton.Content);
+            }
         }
 
         /// <summary>
         ///     Select the employees who have the employment type that is specified
         ///     by the currently checked employee type radio button
         /// </summary>
-        private void RefreshEmployeeList()
+        private void RefreshEmployeeList(object selected)
         {
-            var selectedItem = (ListBoxItem) employeeTypeRadioButtons.SelectedItem;
-
             // Get employees data source
-            var employeesDataSrc = (XmlDataProvider) FindResource("Employees");
+            var employeesDataSrc = (XmlDataProvider)FindResource("Employees");
 
             // Select the employees who have of the specified employment type
             var query = string.Format(CultureInfo.InvariantCulture, "/Employees/Employee[@Type='{0}']",
-                selectedItem.Content);
+                selected);
             employeesDataSrc.XPath = query;
 
             // Apply the selection
