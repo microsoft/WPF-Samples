@@ -49,7 +49,6 @@
     <!-- DataGrid header style -->
     <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Focusable" Value="True" />
-        <Setter Property="Height" Value="35" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#3274CD" />
         <Setter Property="BorderBrush" Value="#3274CD" />
@@ -70,6 +69,18 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
                 <Setter Property="BorderThickness" Value="1"/>
             </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+                    <Condition Binding="{Binding Path=IsKeyboardFocused, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -93,5 +104,5 @@
         <Setter Property="Margin" Value="0,10,0,0" />
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
- 
+
 </ResourceDictionary>
