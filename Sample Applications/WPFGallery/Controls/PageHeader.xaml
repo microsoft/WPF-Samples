@@ -28,11 +28,11 @@
                             AutomationProperties.HeadingLevel="Level2"
                             KeyboardNavigation.IsTabStop="True"
                             KeyboardNavigation.TabIndex="1"
+                            Visibility="{TemplateBinding Description, Converter={StaticResource NullToVisibilityConverter}}"
                             Focusable="True">
                             <TextBlock
                                 x:Name="DescriptionTextBlock"
                                 Text="{TemplateBinding Description}"
-                                Visibility="{TemplateBinding Description, Converter={StaticResource NullToVisibilityConverter}}"
                                 Style="{StaticResource BodyTextBlockStyle}"/>
                         </Label>
                     </StackPanel>
