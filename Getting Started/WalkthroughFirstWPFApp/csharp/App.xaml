@@ -7,6 +7,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/ExpenseIt9;component/Styles.xaml">
                 </ResourceDictionary>
+                <ResourceDictionary Source="/NavigationWindowKeyboardAccessibleStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
