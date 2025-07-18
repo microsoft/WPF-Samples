@@ -213,8 +213,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <StackPanel KeyboardNavigation.TabNavigation="Once" IsItemsHost="True" Orientation="Horizontal"
-                                    Height="25" />
+                    <StackPanel KeyboardNavigation.TabNavigation="Once" IsItemsHost="True" Orientation="Horizontal" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -256,6 +255,7 @@
     </Style>
 
     <Style x:Key="LeftAlignedColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -280,7 +280,7 @@
     
     <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}" >
         <Setter Property="TextBlock.TextAlignment" Value="Right" />
-        
+        <Setter Property="Focusable" Value="True" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
@@ -292,6 +292,7 @@
 
     <Style x:Key="LeftAlignedCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource RightAlignedCell}">
         <Setter Property="TextBlock.TextAlignment" Value="Left" />
+        <Setter Property="Focusable" Value="True" />
     </Style>
 
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource TotalDataGrid}">

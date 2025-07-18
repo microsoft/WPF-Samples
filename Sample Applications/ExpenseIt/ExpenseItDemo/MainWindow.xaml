@@ -118,31 +118,19 @@
                 </ComboBox>
 
                 <!-- Employee Type List -->
-                <Label Style="{StaticResource Label}" Target="{Binding ElementName=employeeTypeRadioButtons}"
+                <Label Style="{StaticResource Label}" Target="{Binding ElementName=employeeTypeRadioButtonGroup}"
                        Grid.Column="0" Grid.Row="3">
                     E_mployees:
                 </Label>
-                <ListBox Name="employeeTypeRadioButtons" AutomationProperties.Name="Employees" Style="{StaticResource HorizontalRadioList}" Grid.Column="1"
-                         Grid.Row="3">
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
-                        FTE
-                        <ListBoxItem.ToolTip>
-                            <TextBlock>FTE employee type</TextBlock>
-                        </ListBoxItem.ToolTip>
-                    </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
-                        CSG
-                        <ListBoxItem.ToolTip>
-                            <TextBlock>CSG employee type</TextBlock>
-                        </ListBoxItem.ToolTip>
-                    </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource HorizontalRadio}">
-                        Vendor
-                        <ListBoxItem.ToolTip>
-                            <TextBlock>Vendor employee type</TextBlock>
-                        </ListBoxItem.ToolTip>
-                    </ListBoxItem>
-                </ListBox>  
+                <StackPanel x:Name="employeeTypeRadioButtonGroup" Orientation="Horizontal" VerticalAlignment="Center"
+                            Grid.Row="3" Grid.Column="1" KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.DirectionalNavigation="Cycle">
+                    <RadioButton Content="FTE" GroupName="employeeTypeGroup" Margin="0 5 5 0"
+                                 ToolTip="FTE employee type" GotKeyboardFocus="RadioButton_GotKeyboardFocus"/>
+                    <RadioButton Content="CSG" GroupName="employeeTypeGroup" Margin="5 5 5 0"
+                                 ToolTip="CSG employee type" GotKeyboardFocus="RadioButton_GotKeyboardFocus"/>
+                    <RadioButton Content="Vendor" GroupName="employeeTypeGroup" Margin="5 5 5 0"
+                                 ToolTip="Vendor employee type" GotKeyboardFocus="RadioButton_GotKeyboardFocus"/>
+                </StackPanel>
 
                 <!-- Employee List -->
                 <ListBox Style="{StaticResource EmployeeList}"
