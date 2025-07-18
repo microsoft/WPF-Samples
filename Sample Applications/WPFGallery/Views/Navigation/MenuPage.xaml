@@ -40,7 +40,7 @@
                             </Style>
                         </StackPanel.Resources>
                         <TextBlock x:Name="StatusMenuItem" Text="" />
-                        <Menu FontSize="14">
+                        <Menu>
                             <MenuItem Header="File">
                                 <MenuItem Header="New" />
                                 <MenuItem Header="New window" />
