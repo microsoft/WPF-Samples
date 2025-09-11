@@ -14,7 +14,7 @@ This sample shows how to use key frame animations to animate along a set of targ
 ## Build the sample
 The easiest way to use these samples without using Git is to download the zip file containing the current version (using the link below or by clicking the "Download ZIP" button on the [repo](https://github.com/microsoft/WPF-Samples?tab=readme-ov-file) page). You can then unzip the entire archive and use the samples in [Visual Studio 2022](https://www.visualstudio.com/wpf-vs).
 
-[Download the samples ZIP](../../archive/main.zip)
+[Download the samples ZIP](../../../../archive/main.zip)
 
 ### Deploying the sample
 - Select Build > Deploy Solution. 
