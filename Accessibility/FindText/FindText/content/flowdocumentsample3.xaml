@@ -111,14 +111,14 @@
         </TableCell>
       </TableRow>
 
-      <!-- Sub-title row for the outter planets. -->
+      <!-- Sub-title row for the outer planets. -->
       <TableRow>
         <TableCell ColumnSpan="4">
           <Paragraph FontSize="14pt" FontWeight="Bold">The Major Outer Planets</Paragraph>
         </TableCell>
       </TableRow>
 
-      <!-- Four data rows for the major outter planets. -->
+      <!-- Four data rows for the major outer planets. -->
       <TableRow>
         <TableCell>
           <Paragraph>Jupiter</Paragraph>
