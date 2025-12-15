@@ -331,5 +331,30 @@
             "Description": "A control to navigate to another document, webpage, or section within the same page."
           }
         ]
+    },
+    {
+        "UniqueId": "System",
+        "Title": "System",
+        "PageName": "SystemPage",
+        "IconGlyph": "\uE7F8",
+        "Description": "Storage Pickers, MessageBox.",
+        "ImagePath": "Assets/ControlImages/FilePicker.png",
+        "IsGroup": true,
+        "Items": [
+            {
+                "UniqueId": "Storage Pickers",
+                "Title": "Storage Pickers",
+                "PageName": "StoragePickersPage",
+                "ImagePath": "Assets/ControlImages/FilePicker.png",
+                "Description": "File and folder picker dialogs for opening and saving files."
+            },
+            {
+                "UniqueId": "MessageBox",
+                "Title": "MessageBox",
+                "PageName": "MessageBoxPage",
+                "ImagePath": "Assets/ControlImages/ContentDialog.png",
+                "Description": "Display messages and get user responses through dialog boxes."
+            }
+        ]
     }
 ]

@@ -1,0 +1,102 @@
+<!--
+    This Source Code Form is subject to the terms of the MIT License.
+    If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
+    Copyright (C) Leszek Pomianowski and WPF UI Contributors.
+    All Rights Reserved.
+-->
+
+<Page
+    x:Class="WPFGallery.Views.StoragePickersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFGallery.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Storage Pickers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentPagePane" Height="Auto">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+            <StackPanel>
+                <controls:ControlExample
+                    Margin="10"
+                    HeaderText="Pick Single File"
+                    XamlCode="&lt;Button Content=&quot;Pick Single File&quot; Click=&quot;PickSingleFileButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Pick a single file" 
+                            Click="PickSingleFileButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.SingleFilePath}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Pick Multiple Files"
+                    XamlCode="&lt;Button Content=&quot;Pick Multiple Files&quot; Click=&quot;PickMultipleFilesButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Pick multiple files" 
+                            Click="PickMultipleFilesButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.MultipleFilesPath}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Save File"
+                    XamlCode="&lt;Button Content=&quot;Save File&quot; Click=&quot;SaveFileButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <TextBox 
+                            Text="{Binding ViewModel.FileContent, UpdateSourceTrigger=PropertyChanged}"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            MinHeight="100"
+                            Margin="0,0,0,10"
+                            VerticalScrollBarVisibility="Auto" />
+                        <Button 
+                            Content="Save a file" 
+                            Click="SaveFileButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.SavedFilePath}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Pick Folder"
+                    XamlCode="&lt;Button Content=&quot;Pick Folder&quot; Click=&quot;PickFolderButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Pick a folder" 
+                            Click="PickFolderButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.SelectedFolderPath}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

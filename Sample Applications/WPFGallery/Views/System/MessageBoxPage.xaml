@@ -1,0 +1,140 @@
+<!--
+    This Source Code Form is subject to the terms of the MIT License.
+    If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
+    Copyright (C) Leszek Pomianowski and WPF UI Contributors.
+    All Rights Reserved.
+-->
+
+<Page
+    x:Class="WPFGallery.Views.MessageBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFGallery.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MessageBox"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentPagePane" Height="Auto">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+            <StackPanel>
+                <controls:ControlExample
+                    Margin="10"
+                    HeaderText="Simple Message (OK Button)"
+                    XamlCode="&lt;Button Content=&quot;Show Message&quot; Click=&quot;ShowSimpleMessageButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show simple message" 
+                            Click="ShowSimpleMessageButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.SimpleMessageResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Message with Title"
+                    XamlCode="&lt;Button Content=&quot;Show Message with Title&quot; Click=&quot;ShowMessageWithTitleButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show message with title" 
+                            Click="ShowMessageWithTitleButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.MessageWithTitleResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Yes/No/Cancel Question"
+                    XamlCode="&lt;Button Content=&quot;Show Question&quot; Click=&quot;ShowYesNoCancelButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show Yes/No/Cancel question" 
+                            Click="ShowYesNoCancelButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.YesNoCancelResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Error Message"
+                    XamlCode="&lt;Button Content=&quot;Show Error&quot; Click=&quot;ShowErrorButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show error message" 
+                            Click="ShowErrorButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.ErrorResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Warning with OK/Cancel"
+                    XamlCode="&lt;Button Content=&quot;Show Warning&quot; Click=&quot;ShowWarningButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show warning message" 
+                            Click="ShowWarningButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.WarningResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Information Message"
+                    XamlCode="&lt;Button Content=&quot;Show Information&quot; Click=&quot;ShowInformationButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show information message" 
+                            Click="ShowInformationButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.InformationResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Custom Default Button"
+                    XamlCode="&lt;Button Content=&quot;Show with Default Button&quot; Click=&quot;ShowCustomDefaultButton_Click&quot; /&gt;">
+                    <StackPanel>
+                        <Button 
+                            Content="Show with second button as default" 
+                            Click="ShowCustomDefaultButton_Click"
+                            Margin="0,0,0,10" />
+                        <TextBlock 
+                            Text="{Binding ViewModel.CustomDefaultResult}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </controls:ControlExample>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
