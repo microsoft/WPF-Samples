@@ -178,7 +178,7 @@
                                                 <RowDefinition Height="*" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Margin="0,4,0,4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                             <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
                                         </Grid>
                                     </Border>
