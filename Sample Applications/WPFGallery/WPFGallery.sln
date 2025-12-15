@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.002.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11308.173 main
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFGallery", "WPFGallery.csproj", "{31F40A27-7EAB-4152-823A-5D7B785F4946}"
 EndProject
@@ -19,8 +19,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|Any CPU.Build.0 = Debug|x64
 		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|ARM.Build.0 = Debug|Any CPU
 		{31F40A27-7EAB-4152-823A-5D7B785F4946}.Debug|ARM64.ActiveCfg = Debug|Any CPU
