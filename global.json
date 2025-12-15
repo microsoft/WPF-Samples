@@ -1,7 +1,7 @@
 {
   "sdk": {
-    "version": "10.0.101",
-    "rollForward": "latestFeature"
+    "version": "9.0.200",
+    "rollForward": "latestMajor"
   },
   "altsdk": {
     "netcoreapp3.1": "3.1.300",
