@@ -25,13 +25,13 @@ Help us improve out samples by sending us a pull-request or opening a [GitHub Is
 
 These samples require Visual Studio 2026(v18.1) to build, test, and deploy, and also require the most recent .NET 10 SDK.
 
-   [Get a free copy of Visual Studio 2026 Community Edition](https://visualstudio.microsoft.com/downloads/)
+   [Get a free copy of Visual Studio 2026 Community Edition](https://aka.ms/vs)
 
    [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 ### For older .NET versions - release/x.x branches
 
-These samples require Visual Studio 2022(v17.7) to build, test, and deploy, and also require the .NET 9 SDK.
+These samples require Visual Studio 2022(v17.7) to build, test, and deploy. Depending on the version of the applications you may need different SDKs.
 
    [Get a free copy of Visual Studio 2022 Community Edition](https://visualstudio.microsoft.com/vs/older-downloads/)
 
