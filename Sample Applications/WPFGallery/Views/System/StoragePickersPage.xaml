@@ -32,7 +32,8 @@
                 <controls:ControlExample
                     Margin="10"
                     HeaderText="Pick Single File"
-                    XamlCode="&lt;Button Content=&quot;Pick Single File&quot; Click=&quot;PickSingleFileButton_Click&quot; /&gt;">
+                    XamlCode="&lt;Button Content=&quot;Pick Single File&quot; Click=&quot;PickSingleFileButton_Click&quot; /&gt;"
+                    CSharpCode="private void PickSingleFileButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var openFileDialog = new OpenFileDialog&#x0a;    {&#x0a;        Title = &quot;Select a file&quot;,&#x0a;        Filter = &quot;All files (*.*)|*.*|Text files (*.txt)|*.txt&quot;,&#x0a;        Multiselect = false&#x0a;    };&#x0a;&#x0a;    if (openFileDialog.ShowDialog() == true)&#x0a;    {&#x0a;        // Use the selected file&#x0a;        string filePath = openFileDialog.FileName;&#x0a;    }&#x0a;}">
                     <StackPanel>
                         <Button 
                             Content="Pick a single file" 
@@ -47,7 +48,8 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="Pick Multiple Files"
-                    XamlCode="&lt;Button Content=&quot;Pick Multiple Files&quot; Click=&quot;PickMultipleFilesButton_Click&quot; /&gt;">
+                    XamlCode="&lt;Button Content=&quot;Pick Multiple Files&quot; Click=&quot;PickMultipleFilesButton_Click&quot; /&gt;"
+                    CSharpCode="private void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var openFileDialog = new OpenFileDialog&#x0a;    {&#x0a;        Title = &quot;Select multiple files&quot;,&#x0a;        Filter = &quot;All files (*.*)|*.*|Text files (*.txt)|*.txt&quot;,&#x0a;        Multiselect = true&#x0a;    };&#x0a;&#x0a;    if (openFileDialog.ShowDialog() == true)&#x0a;    {&#x0a;        // Access all selected files&#x0a;        string[] files = openFileDialog.FileNames;&#x0a;    }&#x0a;}">
                     <StackPanel>
                         <Button 
                             Content="Pick multiple files" 
@@ -62,7 +64,8 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="Save File"
-                    XamlCode="&lt;Button Content=&quot;Save File&quot; Click=&quot;SaveFileButton_Click&quot; /&gt;">
+                    XamlCode="&lt;Button Content=&quot;Save File&quot; Click=&quot;SaveFileButton_Click&quot; /&gt;"
+                    CSharpCode="private void SaveFileButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var saveFileDialog = new SaveFileDialog&#x0a;    {&#x0a;        Title = &quot;Save file&quot;,&#x0a;        Filter = &quot;Text files (*.txt)|*.txt|All files (*.*)|*.*&quot;,&#x0a;        DefaultExt = &quot;txt&quot;&#x0a;    };&#x0a;&#x0a;    if (saveFileDialog.ShowDialog() == true)&#x0a;    {&#x0a;        try&#x0a;        {&#x0a;            System.IO.File.WriteAllText(saveFileDialog.FileName, fileContent);&#x0a;        }&#x0a;        catch (Exception ex)&#x0a;        {&#x0a;            // Handle error&#x0a;        }&#x0a;    }&#x0a;}">
                     <StackPanel>
                         <TextBox 
                             Text="{Binding ViewModel.FileContent, UpdateSourceTrigger=PropertyChanged}"
@@ -84,7 +87,8 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="Pick Folder"
-                    XamlCode="&lt;Button Content=&quot;Pick Folder&quot; Click=&quot;PickFolderButton_Click&quot; /&gt;">
+                    XamlCode="&lt;Button Content=&quot;Pick Folder&quot; Click=&quot;PickFolderButton_Click&quot; /&gt;"
+                    CSharpCode="private void PickFolderButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var folderBrowserDialog = new OpenFolderDialog&#x0a;    {&#x0a;        Title = &quot;Select a folder&quot;&#x0a;    };&#x0a;&#x0a;    if (folderBrowserDialog.ShowDialog() == true)&#x0a;    {&#x0a;        // Use the selected folder&#x0a;        string folderPath = folderBrowserDialog.FolderName;&#x0a;    }&#x0a;}">
                     <StackPanel>
                         <Button 
                             Content="Pick a folder" 
