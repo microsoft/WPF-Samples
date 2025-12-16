@@ -98,16 +98,17 @@ stages:
        inputs:
         restoreSolution: '$(wpfgallerysolution)'
 
-     - task: VSBuild@1
-       continueOnError: true
-       displayName: 'Build .NET Core Samples using VSBuild'
-       inputs:
-        vsVersion: latest
-        solution: '$(solution)'
-        platform: '$(_Platform)'
-        msbuildArchitecture: '$(_ToolPlatform)'
-        configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+    # Temporarily disabling VSBuild steps for .NET Core projects because the images are not updated to use VS2026.
+    #  - task: VSBuild@1
+    #    continueOnError: true
+    #    displayName: 'Build .NET Core Samples using VSBuild'
+    #    inputs:
+    #     vsVersion: latest
+    #     solution: '$(solution)'
+    #     platform: '$(_Platform)'
+    #     msbuildArchitecture: '$(_ToolPlatform)'
+    #     configuration: '$(_Configuration)'
+    #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
      - task: VSBuild@1
        continueOnError: true
@@ -120,17 +121,18 @@ stages:
         configuration: '$(_Configuration)'
         msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\msbuild.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
 
-     - task: VSBuild@1
-       continueOnError: true
-       displayName: 'Build WPF Gallery using VSBuild'
-       inputs:
-        vsVersion: latest
-        solution: '$(wpfgallerysolution)'
-        platform: '$(_Platform)'
-        msbuildArchitecture: '$(_ToolPlatform)'
-        configuration: '$(_Configuration)'
-        msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\wpfgallery.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
-       condition: ne(variables['_Platform'], 'x86')
+    # Temporarily disabling VSBuild steps for .NET Core projects because the images are not updated to use VS2026.
+    #  - task: VSBuild@1
+    #    continueOnError: true
+    #    displayName: 'Build WPF Gallery using VSBuild'
+    #    inputs:
+    #     vsVersion: latest
+    #     solution: '$(wpfgallerysolution)'
+    #     platform: '$(_Platform)'
+    #     msbuildArchitecture: '$(_ToolPlatform)'
+    #     configuration: '$(_Configuration)'
+    #     msbuildArgs: /m /bl:"$(Build.ArtifactStagingDirectory)\vsbuild\wpfgallery.vsbuild.$(_Configuration).$(_Platform).$(_TargetFramework).binlog" /p:LangVersion=$(LangVersion)
+    #    condition: ne(variables['_Platform'], 'x86')
        
      - task: PublishBuildArtifacts@1
        continueOnError: true
