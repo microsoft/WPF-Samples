@@ -115,6 +115,8 @@ public partial class App : Application
             services.AddTransient<SystemPageViewModel>();
             services.AddTransient<MessageBoxPage>();
             services.AddTransient<MessageBoxPageViewModel>();
+            services.AddTransient<StoragePickersPage>();
+            services.AddTransient<StoragePickersPageViewModel>();
 
             services.AddTransient<UserDashboardPage>();
             services.AddTransient<UserDashboardPageViewModel>();

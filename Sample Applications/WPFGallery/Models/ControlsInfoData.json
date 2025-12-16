@@ -337,10 +337,17 @@
         "Title": "System",
         "PageName": "SystemPage",
         "IconGlyph": "\uE7F8",
-        "Description": "MessageBox.",
+        "Description": "Storage Pickers, MessageBox.",
         "ImagePath": "Assets/ControlImages/FilePicker.png",
         "IsGroup": true,
         "Items": [
+            {
+                "UniqueId": "Storage Pickers",
+                "Title": "Storage Pickers",
+                "PageName": "StoragePickersPage",
+                "ImagePath": "Assets/ControlImages/FilePicker.png",
+                "Description": "File and folder picker dialogs for opening and saving files."
+            },
             {
                 "UniqueId": "MessageBox",
                 "Title": "MessageBox",
