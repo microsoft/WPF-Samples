@@ -75,13 +75,13 @@ public partial class MessageBoxPageViewModel : ObservableObject
 
     private void UpdateImageCodeSnippets(int index)
     {
-        string content = (MessageBoxImage)index switch
+        string content = index switch
         {
-            MessageBoxImage.None => "\tMessageBox.Show(\"Message\", \"Title\", MessageBoxButton.OK, MessageBoxImage.None);",
-            MessageBoxImage.Error => "\t// MessageBoxImage.Error (also Hand, Stop)\n\tMessageBox.Show(\"An error occurred!\", \"Error\", MessageBoxButton.OK, MessageBoxImage.Error);",
-            MessageBoxImage.Question => "\t// MessageBoxImage.Question\n\tvar result = MessageBox.Show(\"Do you want to continue?\", \"Question\", MessageBoxButton.YesNo, MessageBoxImage.Question);",
-            MessageBoxImage.Warning => "\t// MessageBoxImage.Warning (also Exclamation)\n\tMessageBox.Show(\"Warning: This action may have consequences.\", \"Warning\", MessageBoxButton.OKCancel, MessageBoxImage.Warning);",
-            MessageBoxImage.Information => "\t// MessageBoxImage.Information (also Asterisk)\n\tMessageBox.Show(\"Operation completed successfully.\", \"Information\", MessageBoxButton.OK, MessageBoxImage.Information);",
+            0 => "\tMessageBox.Show(\"Message\", \"Title\", MessageBoxButton.OK, MessageBoxImage.None);",
+            1 => "\t// MessageBoxImage.Error (also Hand, Stop)\n\tMessageBox.Show(\"An error occurred!\", \"Error\", MessageBoxButton.OK, MessageBoxImage.Error);",
+            2 => "\t// MessageBoxImage.Question\n\tvar result = MessageBox.Show(\"Do you want to continue?\", \"Question\", MessageBoxButton.YesNo, MessageBoxImage.Question);",
+            3 => "\t// MessageBoxImage.Warning (also Exclamation)\n\tMessageBox.Show(\"Warning: This action may have consequences.\", \"Warning\", MessageBoxButton.OKCancel, MessageBoxImage.Warning);",
+            4 => "\t// MessageBoxImage.Information (also Asterisk)\n\tMessageBox.Show(\"Operation completed successfully.\", \"Information\", MessageBoxButton.OK, MessageBoxImage.Information);",
             _ => "\tMessageBox.Show(\"Message\", \"Title\", MessageBoxButton.OK, MessageBoxImage.None);"
         };
 

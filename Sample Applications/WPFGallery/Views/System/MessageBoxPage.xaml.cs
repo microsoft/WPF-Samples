@@ -20,29 +20,29 @@ namespace WPFGallery.Views
             InitializeComponent();
         }
 
-        // 1. Default MessageBox
         private void ShowDefaultMessageButton_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("This is a simple message box!");
             ViewModel.DefaultMessageResult = $"Result: {result}";
         }
 
-        // 2. Custom Title and Description
         private void ShowCustomTitleButton_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("This is a detailed description of what happened or what action is needed.", "Custom Title");
             ViewModel.CustomTitleResult = $"Result: {result}";
         }
 
-        // 3. Different Buttons - Using ComboBox
         private void ShowButtonFromComboBox_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxButton buttonType = ViewModel.SelectedButtonIndex switch
             {
                 0 => MessageBoxButton.OK,
                 1 => MessageBoxButton.OKCancel,
-                2 => MessageBoxButton.YesNo,
+                2 => MessageBoxButton.AbortRetryIgnore,
                 3 => MessageBoxButton.YesNoCancel,
+                4 => MessageBoxButton.YesNo,
+                5 => MessageBoxButton.RetryCancel,
+                6 => MessageBoxButton.CancelTryContinue,
                 _ => MessageBoxButton.OK
             };
 
@@ -50,16 +50,18 @@ namespace WPFGallery.Views
             {
                 0 => "OK",
                 1 => "OK/Cancel",
-                2 => "Yes/No",
+                2 => "Abort/Retry/Ignore",
                 3 => "Yes/No/Cancel",
+                4 => "Yes/No",
+                5 => "Retry/Cancel",
+                6 => "Cancel/Try/Continue",
                 _ => "OK"
             };
 
             var result = MessageBox.Show($"This MessageBox has {buttonName} button(s).", $"{buttonName} Button(s)", buttonType);
-            ViewModel.DifferentButtonsResult = $"Buttons: {buttonName} | Result: {result}";
+            ViewModel.DifferentButtonsResult = $"Result: {result}";
         }
 
-        // 4. Different Images - Using ComboBox
         private void ShowImageFromComboBox_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxImage imageType = ViewModel.SelectedImageIndex switch
@@ -83,7 +85,7 @@ namespace WPFGallery.Views
             };
 
             var result = MessageBox.Show($"This MessageBox displays the {imageName} icon.", $"{imageName} Icon", MessageBoxButton.OK, imageType);
-            ViewModel.DifferentImagesResult = $"Image: {imageName} | Result: {result}";
+            ViewModel.DifferentImagesResult = $"Result: {result}";
         }
 
         // 6. Common Messages (Information, Error, Warning)
