@@ -111,6 +111,10 @@ public partial class App : Application
             services.AddTransient<SamplesPageViewModel>();
             services.AddTransient<DesignGuidancePage>();
             services.AddTransient<DesignGuidancePageViewModel>();
+            services.AddTransient<SystemPage>();
+            services.AddTransient<SystemPageViewModel>();
+            services.AddTransient<MessageBoxPage>();
+            services.AddTransient<MessageBoxPageViewModel>();
 
             services.AddTransient<UserDashboardPage>();
             services.AddTransient<UserDashboardPageViewModel>();

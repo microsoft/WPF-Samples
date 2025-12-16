@@ -52,20 +52,20 @@ public class ControlExample : Control
         )
     );
 
-    public static readonly DependencyProperty CsharpCodeProperty = DependencyProperty.Register(
-        nameof(CsharpCode),
+    public static readonly DependencyProperty CSharpCodeProperty = DependencyProperty.Register(
+        nameof(CSharpCode),
         typeof(string),
         typeof(ControlExample),
         new PropertyMetadata(null)
     );
 
-    public static readonly DependencyProperty CsharpCodeSourceProperty = DependencyProperty.Register(
-        nameof(CsharpCodeSource),
+    public static readonly DependencyProperty CSharpCodeSourceProperty = DependencyProperty.Register(
+        nameof(CSharpCodeSource),
         typeof(Uri),
         typeof(ControlExample),
         new PropertyMetadata(
             null,
-            static (o, args) => ((ControlExample)o).OnCsharpCodeSourceChanged((Uri)args.NewValue)
+            static (o, args) => ((ControlExample)o).OnCSharpCodeSourceChanged((Uri)args.NewValue)
         )
     );
 
@@ -93,16 +93,16 @@ public class ControlExample : Control
         set => SetValue(XamlCodeSourceProperty, value);
     }
 
-    public string? CsharpCode
+    public string? CSharpCode
     {
-        get => (string)GetValue(CsharpCodeProperty);
-        set => SetValue(CsharpCodeProperty, value);
+        get => (string)GetValue(CSharpCodeProperty);
+        set => SetValue(CSharpCodeProperty, value);
     }
 
-    public Uri? CsharpCodeSource
+    public Uri? CSharpCodeSource
     {
-        get => (Uri)GetValue(CsharpCodeSourceProperty);
-        set => SetValue(CsharpCodeSourceProperty, value);
+        get => (Uri)GetValue(CSharpCodeSourceProperty);
+        set => SetValue(CSharpCodeSourceProperty, value);
     }
 
     private void OnXamlCodeSourceChanged(Uri uri)
@@ -110,9 +110,9 @@ public class ControlExample : Control
         XamlCode = LoadResource(uri);
     }
 
-    private void OnCsharpCodeSourceChanged(Uri uri)
+    private void OnCSharpCodeSourceChanged(Uri uri)
     {
-        CsharpCode = LoadResource(uri);
+        CSharpCode = LoadResource(uri);
     }
 
     private static void Copy_SourceCode(object sender, RoutedEventArgs e)
@@ -135,8 +135,8 @@ public class ControlExample : Control
                                 "ButtonClickedActivity"
                             );
                             break;
-                        case "Copy_CsharpCode":
-                            Clipboard.SetText(controlExample.CsharpCode);
+                        case "Copy_CSharpCode":
+                            Clipboard.SetText(controlExample.CSharpCode);
                             break;
                         default:
                             throw new InvalidOperationException();

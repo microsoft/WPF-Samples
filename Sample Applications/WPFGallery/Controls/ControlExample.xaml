@@ -110,7 +110,7 @@
                                     BorderThickness="1"
                                     Visibility="Visible" />
 
-                                <StackPanel x:Name="CsharpCodeBlock">
+                                <StackPanel x:Name="CSharpCodeBlock">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -123,14 +123,14 @@
                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                             Text="C#" />
 
-                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CsharpCode" FocusManager.IsFocusScope="True" >
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CSharpCode" FocusManager.IsFocusScope="True" >
                                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;" />
                                         </Button>
                                     </Grid>
                                     <TextBox
                                         Style="{StaticResource SelectionTextBox}"
                                         AutomationProperties.Name="CSharp Source Code"
-                                        Text="{TemplateBinding CsharpCode}" />
+                                        Text="{TemplateBinding CSharpCode}" />
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
@@ -142,8 +142,8 @@
                             <Setter TargetName="Border" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
-                        <Trigger Property="CsharpCode" Value="{x:Null}">
-                            <Setter TargetName="CsharpCodeBlock" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="CSharpCode" Value="{x:Null}">
+                            <Setter TargetName="CSharpCodeBlock" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Border" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
