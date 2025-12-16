@@ -6,12 +6,12 @@
 namespace WPFGallery.ViewModels;
 
 /// <summary>
-/// Interaction logic for StoragePickersPage.xaml
+/// Interaction logic for FileAndFolderDialogsPage.xaml
 /// </summary>
-public partial class StoragePickersPageViewModel : ObservableObject 
+public partial class FileAndFolderDialogsPageViewModel : ObservableObject 
 {
 	[ObservableProperty]
-	private string _pageTitle = "Storage Pickers";
+	private string _pageTitle = "File and Folder Dialogs";
 
 	[ObservableProperty]
 	private string _pageDescription = "Use the OpenFileDialog, SaveFileDialog, and OpenFolderDialog to let users select files and folders in a secure way.";

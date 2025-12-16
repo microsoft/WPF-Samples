@@ -86,7 +86,6 @@ public partial class MessageBoxPageViewModel : ObservableObject
         };
 
         DifferentImagesCSharpCode = string.Format(_differentImagesMessageBoxSampleCSharpCodeString, content);
-        
     }
 
     [ObservableProperty]

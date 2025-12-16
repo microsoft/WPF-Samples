@@ -8,13 +8,13 @@ using WPFGallery.ViewModels;
 namespace WPFGallery.Views
 {
     /// <summary>
-    /// Interaction logic for StoragePickersPage.xaml
+    /// Interaction logic for FileAndFolderDialogsPage.xaml
     /// </summary>
-    public partial class StoragePickersPage : Page
+    public partial class FileAndFolderDialogsPage : Page
     {
-        public StoragePickersPageViewModel ViewModel { get; }
+        public FileAndFolderDialogsPageViewModel ViewModel { get; }
 
-        public StoragePickersPage(StoragePickersPageViewModel viewModel)
+        public FileAndFolderDialogsPage(FileAndFolderDialogsPageViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
