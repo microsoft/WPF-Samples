@@ -13,6 +13,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFGallery.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="clr-namespace:WPFGallery.Helpers"
     Title="TextBoxPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -30,6 +31,20 @@
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample Margin="10" HeaderText="A simple TextBox." XamlCode="&lt;TextBox /&gt;">
                     <TextBox AutomationProperties.Name="simple TextBox" />
+                </controls:ControlExample>
+
+                <controls:ControlExample Margin="10,36,10,10" 
+                                         HeaderText="A TextBox with input validation." 
+                                         XamlCode="&lt;TextBox&gt;&#xA;    &lt;TextBox.Text&gt;&#xA;        &lt;Binding Path=&quot;ViewModel.ValidatedText&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;&#xA;            &lt;Binding.ValidationRules&gt;&#xA;                &lt;helpers:AlphabeticValidationRule /&gt;&#xA;            &lt;/Binding.ValidationRules&gt;&#xA;        &lt;/Binding&gt;&#xA;    &lt;/TextBox.Text&gt;&#xA;&lt;/TextBox&gt;">
+                    <TextBox x:Name="ValidatedTextBox" AutomationProperties.Name="validated TextBox">
+                        <TextBox.Text>
+                            <Binding Path="ViewModel.ValidatedText" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <helpers:AlphabeticValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </controls:ControlExample>
 
                 <controls:ControlExample
