@@ -31,101 +31,130 @@
             <StackPanel>
                 <controls:ControlExample
                     Margin="10"
-                    HeaderText="Simple Message (OK Button)"
-                    XamlCode="&lt;Button Content=&quot;Show Message&quot; Click=&quot;ShowSimpleMessageButton_Click&quot; /&gt;">
+                    HeaderText="Simple / Default MessageBox"
+                    XamlCode="&lt;Button Content=&quot;Show Message&quot; Click=&quot;ShowDefaultMessageButton_Click&quot; /&gt;"
+                    CSharpCode="private void ShowDefaultMessageButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var result = MessageBox.Show(&quot;This is a simple message box!&quot;);&#x0a;}">
                     <StackPanel>
                         <Button 
-                            Content="Show simple message" 
-                            Click="ShowSimpleMessageButton_Click"
+                            Content="Show default message" 
+                            Click="ShowDefaultMessageButton_Click"
                             Margin="0,0,0,10" />
                         <TextBlock 
-                            Text="{Binding ViewModel.SimpleMessageResult}"
+                            Text="{Binding ViewModel.DefaultMessageResult}"
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </controls:ControlExample>
 
                 <controls:ControlExample
                     Margin="10,32,10,10"
-                    HeaderText="Message with Title"
-                    XamlCode="&lt;Button Content=&quot;Show Message with Title&quot; Click=&quot;ShowMessageWithTitleButton_Click&quot; /&gt;">
+                    HeaderText="MessageBox with Custom Title and Description"
+                    XamlCode="&lt;Button Content=&quot;Show Message&quot; Click=&quot;ShowCustomTitleButton_Click&quot; /&gt;"
+                    CSharpCode="private void ShowCustomTitleButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var result = MessageBox.Show(&#x0a;        &quot;This is a detailed description of what happened or what action is needed.&quot;,&#x0a;        &quot;Custom Title&quot;);&#x0a;}">
                     <StackPanel>
                         <Button 
-                            Content="Show message with title" 
-                            Click="ShowMessageWithTitleButton_Click"
+                            Content="Show message with custom title" 
+                            Click="ShowCustomTitleButton_Click"
                             Margin="0,0,0,10" />
                         <TextBlock 
-                            Text="{Binding ViewModel.MessageWithTitleResult}"
+                            Text="{Binding ViewModel.CustomTitleResult}"
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </controls:ControlExample>
 
                 <controls:ControlExample
                     Margin="10,32,10,10"
-                    HeaderText="Yes/No/Cancel Question"
-                    XamlCode="&lt;Button Content=&quot;Show Question&quot; Click=&quot;ShowYesNoCancelButton_Click&quot; /&gt;">
+                    HeaderText="MessageBox with Different Buttons"
+                    XamlCode="{Binding ViewModel.DifferentButtonsXamlCode}"
+                    CSharpCode="{Binding ViewModel.DifferentButtonsCSharpCode}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Button 
+                                Content="Show message with selected buttons" 
+                                Click="ShowButtonFromComboBox_Click"
+                                Margin="0,0,0,10" />
+                            <TextBlock 
+                                Text="{Binding ViewModel.DifferentButtonsResult}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="Button Type:" Margin="0,0,0,5" />
+                            <ComboBox 
+                                x:Name="ButtonTypeComboBox"
+                                SelectedIndex="{Binding ViewModel.SelectedButtonIndex}"
+                                MinWidth="150">
+                                <ComboBoxItem Content="OK" />
+                                <ComboBoxItem Content="OK/Cancel" />
+                                <ComboBoxItem Content="Yes/No" />
+                                <ComboBoxItem Content="Yes/No/Cancel" />
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="MessageBox with Different Images"
+                    XamlCode="{Binding ViewModel.DifferentImagesXamlCode}"
+                    CSharpCode="{Binding ViewModel.DifferentImagesCSharpCode}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Button 
+                                Content="Show message with selected icon" 
+                                Click="ShowImageFromComboBox_Click"
+                                Margin="0,0,0,10" />
+                            <TextBlock 
+                                Text="{Binding ViewModel.DifferentImagesResult}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="Icon Type:" Margin="0,0,0,5" />
+                            <ComboBox 
+                                x:Name="ImageTypeComboBox"
+                                SelectedIndex="{Binding ViewModel.SelectedImageIndex}"
+                                MinWidth="150">
+                                <ComboBoxItem Content="None" />
+                                <ComboBoxItem Content="Error" />
+                                <ComboBoxItem Content="Question" />
+                                <ComboBoxItem Content="Warning" />
+                                <ComboBoxItem Content="Information" />
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,32,10,10"
+                    HeaderText="Information, Error, and Warning MessageBox"
+                    XamlCode="&lt;Button Content=&quot;Information&quot; /&gt; &lt;Button Content=&quot;Error&quot; /&gt; &lt;Button Content=&quot;Warning&quot; /&gt;"
+                    CSharpCode="// Information&#x0a;MessageBox.Show(&quot;Operation completed successfully.&quot;, &quot;Information&quot;, MessageBoxButton.OK, MessageBoxImage.Information);&#x0a;&#x0a;// Error&#x0a;MessageBox.Show(&quot;An error occurred!&quot;, &quot;Error&quot;, MessageBoxButton.OK, MessageBoxImage.Error);&#x0a;&#x0a;// Warning&#x0a;MessageBox.Show(&quot;This action cannot be undone!&quot;, &quot;Warning&quot;, MessageBoxButton.OKCancel, MessageBoxImage.Warning);">
                     <StackPanel>
-                        <Button 
-                            Content="Show Yes/No/Cancel question" 
-                            Click="ShowYesNoCancelButton_Click"
-                            Margin="0,0,0,10" />
+                        <WrapPanel Margin="0,0,0,10">
+                            <Button Content="Information" Click="ShowCommonInformation_Click" Margin="0,0,5,0" />
+                            <Button Content="Error" Click="ShowCommonError_Click" Margin="0,0,5,0" />
+                            <Button Content="Warning" Click="ShowCommonWarning_Click" />
+                        </WrapPanel>
                         <TextBlock 
-                            Text="{Binding ViewModel.YesNoCancelResult}"
+                            Text="{Binding ViewModel.CommonMessagesResult}"
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </controls:ControlExample>
 
                 <controls:ControlExample
                     Margin="10,32,10,10"
-                    HeaderText="Error Message"
-                    XamlCode="&lt;Button Content=&quot;Show Error&quot; Click=&quot;ShowErrorButton_Click&quot; /&gt;">
+                    HeaderText="MessageBox with Custom Default Button"
+                    XamlCode="&lt;Button Content=&quot;Show with Default Button&quot; Click=&quot;ShowCustomDefaultButton_Click&quot; /&gt;"
+                    CSharpCode="private void ShowCustomDefaultButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // Set 'No' as the default button (focused when dialog opens)&#x0a;    var result = MessageBox.Show(&#x0a;        &quot;Do you want to save changes? Press Enter to select the default 'No' button.&quot;,&#x0a;        &quot;Save Changes&quot;,&#x0a;        MessageBoxButton.YesNoCancel,&#x0a;        MessageBoxImage.Question,&#x0a;        MessageBoxResult.No);&#x0a;}">
                     <StackPanel>
                         <Button 
-                            Content="Show error message" 
-                            Click="ShowErrorButton_Click"
-                            Margin="0,0,0,10" />
-                        <TextBlock 
-                            Text="{Binding ViewModel.ErrorResult}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </controls:ControlExample>
-
-                <controls:ControlExample
-                    Margin="10,32,10,10"
-                    HeaderText="Warning with OK/Cancel"
-                    XamlCode="&lt;Button Content=&quot;Show Warning&quot; Click=&quot;ShowWarningButton_Click&quot; /&gt;">
-                    <StackPanel>
-                        <Button 
-                            Content="Show warning message" 
-                            Click="ShowWarningButton_Click"
-                            Margin="0,0,0,10" />
-                        <TextBlock 
-                            Text="{Binding ViewModel.WarningResult}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </controls:ControlExample>
-
-                <controls:ControlExample
-                    Margin="10,32,10,10"
-                    HeaderText="Information Message"
-                    XamlCode="&lt;Button Content=&quot;Show Information&quot; Click=&quot;ShowInformationButton_Click&quot; /&gt;">
-                    <StackPanel>
-                        <Button 
-                            Content="Show information message" 
-                            Click="ShowInformationButton_Click"
-                            Margin="0,0,0,10" />
-                        <TextBlock 
-                            Text="{Binding ViewModel.InformationResult}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </controls:ControlExample>
-
-                <controls:ControlExample
-                    Margin="10,32,10,10"
-                    HeaderText="Custom Default Button"
-                    XamlCode="&lt;Button Content=&quot;Show with Default Button&quot; Click=&quot;ShowCustomDefaultButton_Click&quot; /&gt;">
-                    <StackPanel>
-                        <Button 
-                            Content="Show with second button as default" 
+                            Content="Show with 'No' as default" 
                             Click="ShowCustomDefaultButton_Click"
                             Margin="0,0,0,10" />
                         <TextBlock 
