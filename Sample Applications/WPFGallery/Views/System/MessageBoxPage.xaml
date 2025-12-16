@@ -31,12 +31,12 @@
             <StackPanel>
                 <controls:ControlExample
                     Margin="10"
-                    HeaderText="Simple / Default MessageBox"
-                    XamlCode="&lt;Button Content=&quot;Show Message&quot; Click=&quot;ShowDefaultMessageButton_Click&quot; /&gt;"
+                    HeaderText="Simple MessageBox"
+                    XamlCode="&lt;Button Content=&quot;Simple MessageBox&quot; Click=&quot;ShowDefaultMessageButton_Click&quot; /&gt;"
                     CSharpCode="private void ShowDefaultMessageButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var result = MessageBox.Show(&quot;This is a simple message box!&quot;);&#x0a;}">
                     <StackPanel>
                         <Button 
-                            Content="Show default message" 
+                            Content="Simple MessageBox" 
                             Click="ShowDefaultMessageButton_Click"
                             Margin="0,0,0,10" />
                         <TextBlock 
@@ -48,11 +48,11 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="MessageBox with Custom Title and Description"
-                    XamlCode="&lt;Button Content=&quot;Show Message&quot; Click=&quot;ShowCustomTitleButton_Click&quot; /&gt;"
+                    XamlCode="&lt;Button Content=&quot;Show MessageBox&quot; Click=&quot;ShowCustomTitleButton_Click&quot; /&gt;"
                     CSharpCode="private void ShowCustomTitleButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var result = MessageBox.Show(&#x0a;        &quot;This is a detailed description of what happened or what action is needed.&quot;,&#x0a;        &quot;Custom Title&quot;);&#x0a;}">
                     <StackPanel>
                         <Button 
-                            Content="Show message with custom title" 
+                            Content="Show MessageBox" 
                             Click="ShowCustomTitleButton_Click"
                             Margin="0,0,0,10" />
                         <TextBlock 
@@ -73,7 +73,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <Button 
-                                Content="Show message with selected buttons" 
+                                Content="Show MessageBox" 
                                 Click="ShowButtonFromComboBox_Click"
                                 Margin="0,0,0,10" />
                             <TextBlock 
@@ -88,8 +88,11 @@
                                 MinWidth="150">
                                 <ComboBoxItem Content="OK" />
                                 <ComboBoxItem Content="OK/Cancel" />
-                                <ComboBoxItem Content="Yes/No" />
+                                <ComboBoxItem Content="Abort/Retry/Ignore" />
                                 <ComboBoxItem Content="Yes/No/Cancel" />
+                                <ComboBoxItem Content="Yes/No" />
+                                <ComboBoxItem Content="Retry/Cancel" />
+                                <ComboBoxItem Content="Cancel/Try/Continue" />
                             </ComboBox>
                         </StackPanel>
                     </Grid>
@@ -107,7 +110,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <Button 
-                                Content="Show message with selected icon" 
+                                Content="Show MessageBox" 
                                 Click="ShowImageFromComboBox_Click"
                                 Margin="0,0,0,10" />
                             <TextBlock 
@@ -133,8 +136,8 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="Information, Error, and Warning MessageBox"
-                    XamlCode="&lt;Button Content=&quot;Information&quot; /&gt; &lt;Button Content=&quot;Error&quot; /&gt; &lt;Button Content=&quot;Warning&quot; /&gt;"
-                    CSharpCode="// Information&#x0a;MessageBox.Show(&quot;Operation completed successfully.&quot;, &quot;Information&quot;, MessageBoxButton.OK, MessageBoxImage.Information);&#x0a;&#x0a;// Error&#x0a;MessageBox.Show(&quot;An error occurred!&quot;, &quot;Error&quot;, MessageBoxButton.OK, MessageBoxImage.Error);&#x0a;&#x0a;// Warning&#x0a;MessageBox.Show(&quot;This action cannot be undone!&quot;, &quot;Warning&quot;, MessageBoxButton.OKCancel, MessageBoxImage.Warning);">
+                    XamlCode="{Binding ViewModel.CommonMessagesXamlCode}"
+                    CSharpCode="{Binding ViewModel.CommonMessagesCSharpCode}">
                     <StackPanel>
                         <WrapPanel Margin="0,0,0,10">
                             <Button Content="Information" Click="ShowCommonInformation_Click" Margin="0,0,5,0" />
@@ -150,7 +153,7 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="MessageBox with Custom Default Button"
-                    XamlCode="&lt;Button Content=&quot;Show with Default Button&quot; Click=&quot;ShowCustomDefaultButton_Click&quot; /&gt;"
+                    XamlCode="&lt;Button Content=&quot;Show with 'No' as default&quot; Click=&quot;ShowCustomDefaultButton_Click&quot; /&gt;"
                     CSharpCode="private void ShowCustomDefaultButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // Set 'No' as the default button (focused when dialog opens)&#x0a;    var result = MessageBox.Show(&#x0a;        &quot;Do you want to save changes? Press Enter to select the default 'No' button.&quot;,&#x0a;        &quot;Save Changes&quot;,&#x0a;        MessageBoxButton.YesNoCancel,&#x0a;        MessageBoxImage.Question,&#x0a;        MessageBoxResult.No);&#x0a;}">
                     <StackPanel>
                         <Button 
