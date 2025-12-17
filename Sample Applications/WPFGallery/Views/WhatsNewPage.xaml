@@ -37,10 +37,99 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" ShowDescription="False" />
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" ShowDescription="True" />
 
         <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0 0 0 12">
+                    .NET 10
+                </TextBlock>
+
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0 0 0 12">
+                    New and Enhanced Fluent Styles
+                </TextBlock>
+
+
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 12">
+                    <Run>
+                        Fluent styles for remaining PresentationFramework controls have been added in .NET 10, including GridSplitter, GridView, 
+                        GroupBox, Label, Frame, NavigationWindow, etc. 
+                    </Run>
+                    <Run>
+                        Apart from the added styles, styles for many other controls like text input controls, DataGrid, Expander have been updated
+                        to eliminate various issues like right-to-left layout, same height for various input controls, etc.
+                    </Run>
+                    <LineBreak />
+                    <LineBreak />
+                    <Run>See the </Run>
+                    <Bold>Recently Added</Bold>
+                    <Run> section on the Home page to see the complete list of added samples.</Run>
+                    <LineBreak />
+                </TextBlock>
+
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0 0 0 12">
+                    Grid Shorthand Syntax
+                </TextBlock>
+
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 12">
+                    <Run>
+                        The WPF Grid supports a shorthand syntax for defining row and column sizes using the RowDefinitions and ColumnDefinitions attribute. 
+                        Values are comma‑separated and follow the same rules as the longhand RowDefinition and ColumnDefinition declarations. The new syntax
+                        comes with the XAML Hot Reload support.
+                    </Run>
+                </TextBlock>
+
+                <controls:ControlExample
+                    Margin="2 10 2 24"
+                    HeaderText="Grid Shorthand Syntax Sample"
+                    XamlCode="{Binding ViewModel.GridShorthandSyntaxXamlCode}">
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto 80 *" HorizontalAlignment="Left">
+                            <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0 0 10 0">Sl. No.</TextBlock>
+                            <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold">Name</TextBlock>
+                            <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold">Description</TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="0">1</TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="1">Rectangle</TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap">Quadrilateral where all the adjacent sides form a right angle.</TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="0">2</TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="1">Circle</TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap">Set of all points that are equidistant from a fixed point.</TextBlock>
+                        </Grid>
+                </controls:ControlExample>
+
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0 0 0 12">
+                    Extended MessageBox Options
+                </TextBlock>
+
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 12">
+                    <Run>
+                        MessageBox in WPF calls into the Win32 API for displaying the message dialog box, however some of the options provided by the API
+                        was not exposed till now. Thanks to the help from the community we have exposed those options and results in WPF's Messagebox API,
+                        allowing developers to make full use of MessageBox in WPF without calling the Win32 API directly. Take a look at the API proposal
+                        for complete details on what is added : 
+                    </Run>
+                    <Hyperlink NavigateUri="https://github.com/dotnet/wpf/issues/9613">
+                        [API Proposal]: Make additional MessageBoxButton and MessagBoxResult values available    
+                    </Hyperlink>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run>Head over to the </Run>
+                    <Hyperlink Click="NavigateToMessageBoxSample">MessageBox sample </Hyperlink>
+                    <Run>for details on how to use the MessageBox in WPF.</Run>
+                </TextBlock>
+
+                <TextBlock TextWrapping="Wrap" Margin="0 12 0 24">
+                    <Run>See </Run>
+                    <Hyperlink Click="Open_WhatsNewPageNET10"
+                               Style="{DynamicResource DefaultHyperlinkStyle}">
+                        What's New in WPF for .NET 10
+                    </Hyperlink>
+                    <Run> for more details.</Run>
+                </TextBlock>
+
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0 0 0 12">
+                    .NET 9
+                </TextBlock>
+
                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0 0 0 12">
                     Accent colors as SystemColors
                 </TextBlock>
@@ -146,7 +235,7 @@
 
                 <TextBlock TextWrapping="Wrap" Margin="0 24 0 12">
                     <Run>See </Run>
-                    <Hyperlink Click="Open_WhatsNewPage"
+                    <Hyperlink Click="Open_WhatsNewPageNET9"
                                Style="{DynamicResource DefaultHyperlinkStyle}">
                         What's New in WPF for .NET 9
                     </Hyperlink>

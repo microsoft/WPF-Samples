@@ -14,13 +14,32 @@ namespace WPFGallery.ViewModels
         private string _pageTitle = "What's new in WPF";
 
         [ObservableProperty]
-        private string _pageDescription = "Lists all the new features, enhancements and APIs introduced in WPF for .NET 9";
+        private string _pageDescription = "Discover all the new features, enhancements and APIs introduced in WPF";
 
         [ObservableProperty]
         private string _accentColorXamlCode = _accentColorBrushApiXamlUsage;
 
         [ObservableProperty]
         private string _hyphenBasedLigatureXamlCode = _hyphenBasedLiagatureXamlUsage;
+
+        [ObservableProperty]
+        private string _gridShorthandSyntaxXamlCode = _gridShorthandSyntaxXamlUsage;
+
+        private readonly INavigationService _navigationService;
+
+        public WhatsNewPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        [RelayCommand]
+        public void Navigate(object pageType)
+        {
+            if (pageType is Type page)
+            {
+                _navigationService.NavigateTo(page);
+            }
+        }
 
         private const string _accentColorBrushApiXamlUsage = """
             <StackPanel Orientation="Horizontal" Height="50">
@@ -46,6 +65,20 @@ namespace WPFGallery.ViewModels
                 <TextBlock Margin="0 0 16 0" FontFamily="Cascadia Code" Text="&lt;!--" />
                 <TextBlock Margin="0 0 16 0" FontFamily="Cascadia Code" Text="&lt;--" />
             </StackPanel>
+            """;
+
+        private const string _gridShorthandSyntaxXamlUsage = """
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto 80 *" HorizontalAlignment="Left">
+                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0 0 10 0">Sl. No.</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold">Name</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold">Description</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0">1</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1">Rectangle</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap">Quadrilateral where all the adjacent sides form a right angle.</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0">2</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1">Circle</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap">Set of all points that are equidistant from a fixed point.</TextBlock>
+            </Grid>
             """;
     }
 }
