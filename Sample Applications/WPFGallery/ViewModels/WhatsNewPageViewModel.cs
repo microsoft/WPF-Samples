@@ -68,7 +68,7 @@ namespace WPFGallery.ViewModels
             """;
 
         private const string _gridShorthandSyntaxXamlUsage = """
-            <Grid MaxWidth="500" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto 80 *" HorizontalAlignment="Left">
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto 80 *" HorizontalAlignment="Left">
                 <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0 0 10 0">Sl. No.</TextBlock>
                 <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold">Name</TextBlock>
                 <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold">Description</TextBlock>
