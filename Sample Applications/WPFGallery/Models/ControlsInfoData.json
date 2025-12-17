@@ -8,7 +8,6 @@
     {
         "UniqueId": "What's New",
         "Title": "What's New",
-        "IsUpdated": true,
         "PageName": "WhatsNewPage",
         "IconGlyph": "\uEB51"        
     },
@@ -174,7 +173,6 @@
                 "UniqueId": "DatePicker",
                 "Title": "DatePicker",
                 "PageName": "DatePickerPage",
-                "IsUpdated": true,
                 "ImagePath": "Assets/ControlImages/DatePicker.png",
                 "Description": "A control that lets a user pick a date value."
             }
