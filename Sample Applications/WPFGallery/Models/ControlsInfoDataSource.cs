@@ -123,6 +123,9 @@ namespace WPFGallery.Models
             ICollection<ControlInfoDataItem> recentlyAddedOrUpdatedSamples = new ObservableCollection<ControlInfoDataItem>();
             foreach (ControlInfoDataItem ci in ControlsInfo)
             {
+                if(ci.IsNew || ci.IsUpdated)
+                    recentlyAddedOrUpdatedSamples.Add(ci);
+
                 var items = ci.Items;
                 foreach (ControlInfoDataItem item in items)
                 {
