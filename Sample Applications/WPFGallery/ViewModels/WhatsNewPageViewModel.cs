@@ -25,6 +25,22 @@ namespace WPFGallery.ViewModels
         [ObservableProperty]
         private string _gridShorthandSyntaxXamlCode = _gridShorthandSyntaxXamlUsage;
 
+        private readonly INavigationService _navigationService;
+
+        public WhatsNewPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        [RelayCommand]
+        public void Navigate(object pageType)
+        {
+            if (pageType is Type page)
+            {
+                _navigationService.NavigateTo(page);
+            }
+        }
+
         private const string _accentColorBrushApiXamlUsage = """
             <StackPanel Orientation="Horizontal" Height="50">
                 <StackPanel.Resources>

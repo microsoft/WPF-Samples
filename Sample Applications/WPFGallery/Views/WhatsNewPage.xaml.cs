@@ -29,9 +29,19 @@ namespace WPFGallery.Views
             DataContext = this;
         }
 
-        private void Open_WhatsNewPage(object sender, RoutedEventArgs e)
+        private void Open_WhatsNewPageNET10(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://learn.microsoft.com/en-in/dotnet/desktop/wpf/whats-new/net100") { UseShellExecute = true });
+        }
+
+        private void Open_WhatsNewPageNET9(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://learn.microsoft.com/en-in/dotnet/desktop/wpf/whats-new/net90") { UseShellExecute = true });
+        }
+
+        private void NavigateToMessageBoxSample(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Navigate(typeof(MessageBoxPage));
         }
 
         private void Open_UsingFluentInWPFPage(object sender, RoutedEventArgs e)

@@ -100,7 +100,7 @@
                     Extended MessageBox Options
                 </TextBlock>
 
-                <TextBlock TextWrapping="Wrap" Margin="0 0 0 24">
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 12">
                     <Run>
                         MessageBox in WPF calls into the Win32 API for displaying the message dialog box, however some of the options provided by the API
                         was not exposed till now. Thanks to the help from the community we have exposed those options and results in WPF's Messagebox API,
@@ -112,9 +112,18 @@
                     </Hyperlink>
                     <LineBreak/>
                     <LineBreak/>
-                    <Run>
-                        Head over to the sample for details on how to use the MessageBox API.
-                    </Run>
+                    <Run>Head over to the </Run>
+                    <Hyperlink Click="NavigateToMessageBoxSample">MessageBox sample </Hyperlink>
+                    <Run>for details on how to use the MessageBox in WPF.</Run>
+                </TextBlock>
+
+                <TextBlock TextWrapping="Wrap" Margin="0 12 0 24">
+                    <Run>See </Run>
+                    <Hyperlink Click="Open_WhatsNewPageNET10"
+                               Style="{DynamicResource DefaultHyperlinkStyle}">
+                        What's New in WPF for .NET 10
+                    </Hyperlink>
+                    <Run> for more details.</Run>
                 </TextBlock>
 
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0 0 0 12">
@@ -226,7 +235,7 @@
 
                 <TextBlock TextWrapping="Wrap" Margin="0 24 0 12">
                     <Run>See </Run>
-                    <Hyperlink Click="Open_WhatsNewPage"
+                    <Hyperlink Click="Open_WhatsNewPageNET9"
                                Style="{DynamicResource DefaultHyperlinkStyle}">
                         What's New in WPF for .NET 9
                     </Hyperlink>
