@@ -18,6 +18,8 @@ namespace WPFGallery.Models
         public string ImagePath { get; set; }
         public string PageName { get; set; }
         public bool IsGroup { get; set; } = false;
+        public bool IsNew { get; set; } = false;
+        public bool IsUpdated { get; set; } = false;
 
         public Type PageType
         {
@@ -114,6 +116,24 @@ namespace WPFGallery.Models
         public ICollection<ControlInfoDataItem> GetGroupedControlsInfo()
         {
             return ControlsInfo.Where(x => x.IsGroup == true && x.UniqueId != "Design Guidance" && x.UniqueId != "Samples").ToList();
+        }
+
+        public ICollection<ControlInfoDataItem> GetRecentlyAddedOrUpdatedSamplesInfo()
+        {
+            ICollection<ControlInfoDataItem> recentlyAddedOrUpdatedSamples = new ObservableCollection<ControlInfoDataItem>();
+            foreach (ControlInfoDataItem ci in ControlsInfo)
+            {
+                if (ci.IsNew || ci.IsUpdated) recentlyAddedOrUpdatedSamples.Append(ci);
+
+                var items = ci.Items;
+                foreach (ControlInfoDataItem item in items)
+                {
+                    if(item.IsNew || item.IsUpdated)
+                        recentlyAddedOrUpdatedSamples.Add(item);
+                }
+            }
+
+            return recentlyAddedOrUpdatedSamples;
         }
     }
 }

@@ -10,6 +10,9 @@ namespace WPFGallery.ViewModels
         [ObservableProperty]
         private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetGroupedControlsInfo();
 
+        [ObservableProperty]
+        private ICollection<ControlInfoDataItem> _recentlyAddedOrUpdatedSamplesInfo = ControlsInfoDataSource.Instance.GetRecentlyAddedOrUpdatedSamplesInfo();
+
         private readonly INavigationService _navigationService;
 
         public DashboardPageViewModel(INavigationService navigationService)

@@ -8,6 +8,7 @@
     {
         "UniqueId": "What's New",
         "Title": "What's New",
+        "IsUpdated": true,
         "PageName": "WhatsNewPage",
         "IconGlyph": "\uEB51"        
     },
@@ -39,6 +40,7 @@
                 "Title": "Icons",
                 "PageName": "IconsPage",
                 "IconGlyph": "\uED58",
+                "IsUpdated": true,
                 "Description": "Guide showing how to use icons in your app.",
                 "ImagePath": "Assets/ControlImages/IconElement.png"
             }
@@ -125,6 +127,7 @@
                 "UniqueId": "DataGrid",
                 "Title": "DataGrid",
                 "PageName": "DataGridPage",
+                "IsUpdated": true,
                 "ImagePath": "Assets/ControlImages/DataGrid.png",
                 "Description": "The DataGrid control presents data in a customizable table of rows and columns."
             },
@@ -171,6 +174,7 @@
                 "UniqueId": "DatePicker",
                 "Title": "DatePicker",
                 "PageName": "DatePickerPage",
+                "IsUpdated": true,
                 "ImagePath": "Assets/ControlImages/DatePicker.png",
                 "Description": "A control that lets a user pick a date value."
             }
@@ -197,6 +201,7 @@
             "Title": "ResizeGrip",
             "PageName": "ResizeGripPage",
             "ImagePath": "Assets/ControlImages/ResizeGrip.png",
+            "IsNew": true,
             "Description": "A control that enables users to resize a Window."
             },
           {
@@ -204,6 +209,7 @@
             "Title": "GridSplitter",
             "PageName": "GridSplitterPage",
             "ImagePath": "Assets/ControlImages/GridSplitter.png",
+            "IsNew": true,
             "Description": "The GridSplitter redistributes space between columns or rows of a Grid control."
           },
           {
@@ -211,6 +217,7 @@
             "Title": "GroupBox",
             "PageName": "GroupBoxPage",
             "ImagePath": "Assets/ControlImages/GroupBox.png",
+            "IsNew": true,
             "Description": "A control that visually groups controls together while maintaining layout and accessibility."
           }
         ]
@@ -242,16 +249,18 @@
               "UniqueId": "Frame",
               "Title": "Frame",
               "PageName": "FramePage",
+              "IsNew": true,
               "ImagePath": "Assets/ControlImages/MenuBar.png",
               "Description": "A navigation control that allows displaying different Page content within an application."
             },
-          {
-            "UniqueId": "NavigationWindow",
-            "Title": "NavigationWindow",
-            "PageName": "NavigationWindowPage",
-            "ImagePath": "Assets/ControlImages/CreateMultipleWindows.png",
-            "Description": "A control that supports navigation between pages, similar to a web browser."
-          }
+            {
+                "UniqueId": "NavigationWindow",
+                "Title": "NavigationWindow",
+                "PageName": "NavigationWindowPage",
+                "IsNew": true,
+                "ImagePath": "Assets/ControlImages/CreateMultipleWindows.png",
+                "Description": "A control that supports navigation between pages, similar to a web browser."
+            }
         ]
     },
     {
@@ -299,6 +308,7 @@
                 "UniqueId": "TextBox",
                 "Title": "TextBox",
                 "PageName": "TextBoxPage",
+                "IsUpdated": true,
                 "ImagePath": "Assets/ControlImages/TextBox.png",
                 "Description": "A single-line or multi-line plain text field."
             },
@@ -346,6 +356,7 @@
                 "Title": "File and Folder Dialogs",
                 "PageName": "FileAndFolderDialogsPage",
                 "ImagePath": "Assets/ControlImages/FilePicker.png",
+                "IsNew": true,
                 "Description": "File and folder picker dialogs for opening and saving files."
             },
             {
@@ -353,6 +364,7 @@
                 "Title": "MessageBox",
                 "PageName": "MessageBoxPage",
                 "ImagePath": "Assets/ControlImages/ContentDialog.png",
+                "IsNew": true,
                 "Description": "Display messages and get user responses through dialog boxes."
             }
         ]
