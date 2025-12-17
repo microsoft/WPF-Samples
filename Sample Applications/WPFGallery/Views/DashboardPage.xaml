@@ -55,14 +55,35 @@
             
             <controls:TileGallery Grid.Row="1" HorizontalAlignment="Stretch" Margin="0"/>
 
-            <ItemsControl
-                Grid.Row="2"
-                Margin="12,0,0,0"
-                AutomationProperties.Name="Items in group"
-                ItemsSource="{Binding ViewModel.NavigationCards}"
-                Focusable="False"
-                ItemsPanel="{StaticResource WrapPanelTemplate}"
-                ItemTemplate="{StaticResource NavigationCardTemplate}" />
+            <StackPanel Grid.Row="2" Margin="32,24,0,0" Orientation="Vertical">
+                <TextBlock 
+                    Style="{StaticResource BodyStrongTextBlockStyle}" 
+                    Text="Overview" 
+                    FontSize="16"
+                    AutomationProperties.HeadingLevel="Level2" />
+
+                <ItemsControl
+                    Margin="-20,0,0,0"
+                    AutomationProperties.Name="Items in group"
+                    ItemsSource="{Binding ViewModel.NavigationCards}"
+                    Focusable="False"
+                    ItemsPanel="{StaticResource WrapPanelTemplate}"
+                    ItemTemplate="{StaticResource NavigationCardTemplate}" />
+
+                <TextBlock 
+                    Style="{StaticResource BodyStrongTextBlockStyle}" 
+                    Text="Recently added and updated" 
+                    FontSize="16"
+                    AutomationProperties.HeadingLevel="Level2" />
+
+                <ItemsControl
+                    Margin="-18,0,0,0"
+                    AutomationProperties.Name="Recently Added and Updated Samples Section"
+                    ItemsSource="{Binding ViewModel.RecentlyAddedOrUpdatedSamplesInfo}"
+                    Focusable="False"
+                    ItemsPanel="{StaticResource WrapPanelTemplate}"
+                    ItemTemplate="{StaticResource NavigationCardTemplate}" />
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </Page>
