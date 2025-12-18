@@ -195,6 +195,14 @@
             "Description": "A container with a header that can be expanded to show a body with more content."
           },
           {
+            "UniqueId": "Grid",
+            "Title": "Grid",
+            "PageName": "GridPage",
+            "ImagePath": "Assets/ControlImages/Grid.png",
+            "IsNew": true,
+            "Description": "A layout panel that arranges child elements in rows and columns."
+          },
+          {
             "UniqueId": "ResizeGrip",
             "Title": "ResizeGrip",
             "PageName": "ResizeGripPage",
