@@ -126,6 +126,9 @@ public partial class App : Application
             services.AddTransient<TypographyPage>();
             services.AddTransient<TypographyPageViewModel>();
 
+            services.AddTransient<SpacingPage>();
+            services.AddTransient<SpacingPageViewModel>();
+
             services.AddSingleton<IconsPage>();
             services.AddSingleton<IconsPageViewModel>();
 

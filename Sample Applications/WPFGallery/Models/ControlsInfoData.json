@@ -35,6 +35,15 @@
                 "ImagePath": "Assets/ControlImages/TextBlock.png"
             },
             {
+                "UniqueId": "Spacing",
+                "Title": "Spacing",
+                "PageName": "SpacingPage",
+                "IconGlyph": "\uE8B3",
+                "IsNew": true,
+                "Description": "Guide showing how to use spacing in your app.",
+                "ImagePath": "Assets/ControlImages/CompactSizing.png"
+            },
+            {
                 "UniqueId": "Icons",
                 "Title": "Icons",
                 "PageName": "IconsPage",
