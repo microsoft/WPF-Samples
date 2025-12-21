@@ -2,8 +2,6 @@
 using WPFGallery.Models;
 using System.IO;
 
-
-
 namespace WPFGallery.ViewModels
 {
     public partial class IconsPageViewModel : ObservableObject
@@ -49,7 +47,12 @@ namespace WPFGallery.ViewModels
             var selectedIconName = SelectedIcon?.Name;
             SearchFilteredIcons.Clear();
 
-            var searchFilteredIconData = AllIcons.Where(icon => icon.Name.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0);
+            var comparison = StringComparison.OrdinalIgnoreCase;
+            var filterText = searchText ?? string.Empty;
+
+            var searchFilteredIconData = AllIcons.Where(icon =>
+                icon.Name.IndexOf(filterText, comparison) >= 0 ||
+                (icon.Tags?.Any(tag => tag.IndexOf(filterText, comparison) >= 0) ?? false));
             foreach (var item in searchFilteredIconData)
             {
                 SearchFilteredIcons.Add(item);
@@ -63,6 +66,6 @@ namespace WPFGallery.ViewModels
               icon => true;
 
             SelectedIcon = SearchFilteredIcons.FirstOrDefault(predicate);
-        }   
+        }
     }
 }
