@@ -41,14 +41,13 @@ namespace WPFGallery.ViewModels
             return await JsonSerializer.DeserializeAsync<List<IconData>>(stream);
         }
 
-        partial void OnSearchTextChanged(string searchText)
+        partial void OnSearchTextChanged(string value)
         {
             //cache the name here to set the selected item after clearing and repopulating the list
             var selectedIconName = SelectedIcon?.Name;
-            SearchFilteredIcons.Clear();
-
             var comparison = StringComparison.OrdinalIgnoreCase;
-            var filterText = searchText ?? string.Empty;
+            var filterText = value ?? string.Empty;
+            SearchFilteredIcons.Clear();
 
             var searchFilteredIconData = AllIcons.Where(icon =>
                 icon.Name.IndexOf(filterText, comparison) >= 0 ||
@@ -66,6 +65,24 @@ namespace WPFGallery.ViewModels
               icon => true;
 
             SelectedIcon = SearchFilteredIcons.FirstOrDefault(predicate);
+        }
+
+        [RelayCommand]
+        private void ApplyTagFilter(string? tag)
+        {
+            if (string.IsNullOrWhiteSpace(tag))
+            {
+                return;
+            }
+
+            var trimmedTag = tag.Trim();
+            if (string.Equals(trimmedTag, SearchText, StringComparison.Ordinal))
+            {
+                OnSearchTextChanged(trimmedTag);
+                return;
+            }
+
+            SearchText = trimmedTag;
         }
     }
 }

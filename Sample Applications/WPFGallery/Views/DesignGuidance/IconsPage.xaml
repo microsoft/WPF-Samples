@@ -73,13 +73,17 @@
             </Setter>
         </Style>
 
-        <Style x:Key="IconTagChipStyle" TargetType="Border">
+        <Style x:Key="IconTagChipButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Border.CornerRadius" Value="12" />
             <Setter Property="Padding" Value="8,2" />
             <Setter Property="Margin" Value="0,4,4,4" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
 
     </Page.Resources>
@@ -218,9 +222,13 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Style="{StaticResource IconTagChipStyle}">
-                                                <TextBlock Text="{Binding}" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                                            </Border>
+                                            <Button Style="{StaticResource IconTagChipButtonStyle}"
+                                                    Command="{Binding ViewModel.ApplyTagFilterCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                    CommandParameter="{Binding}">
+                                                <TextBlock Text="{Binding}"
+                                                           Style="{StaticResource CaptionTextBlockStyle}"
+                                                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                                            </Button>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
