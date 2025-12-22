@@ -234,6 +234,14 @@
             "ImagePath": "Assets/ControlImages/GroupBox.png",
             "IsNew": true,
             "Description": "A control that visually groups controls together while maintaining layout and accessibility."
+          },
+          {
+            "UniqueId": "Border",
+            "Title": "Border",
+            "PageName": "BorderPage",
+            "ImagePath": "Assets/ControlImages/Border.png",
+            "IsNew": true,
+            "Description": "A decorator that draws a border, background, or both around another element."
           }
         ]
     },
