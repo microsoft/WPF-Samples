@@ -242,6 +242,14 @@
             "ImagePath": "Assets/ControlImages/StackPanel.png",
             "IsNew": true,
             "Description": "A layout panel that arranges child elements into a single line, either horizontally or vertically."
+          },
+          {
+            "UniqueId": "Border",
+            "Title": "Border",
+            "PageName": "BorderPage",
+            "ImagePath": "Assets/ControlImages/Border.png",
+            "IsNew": true,
+            "Description": "A decorator that draws a border, background, or both around another element."
           }
         ]
     },

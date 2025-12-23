@@ -67,6 +67,8 @@ public partial class App : Application
             services.AddTransient<GroupBoxPageViewModel>();
             services.AddTransient<StackPanelPage>();
             services.AddTransient<StackPanelPageViewModel>();
+            services.AddTransient<BorderPage>();
+            services.AddTransient<BorderPageViewModel>();
             services.AddTransient<ImagePage>();
             services.AddTransient<ImagePageViewModel>();
             services.AddTransient<DataGridPage>();

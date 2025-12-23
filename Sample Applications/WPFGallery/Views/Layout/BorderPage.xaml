@@ -1,0 +1,61 @@
+<!--
+    This Source Code Form is subject to the terms of the MIT License.
+    If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
+    Copyright (C) Leszek Pomianowski and WPF UI Contributors.
+    All Rights Reserved.
+-->
+
+<Page
+    x:Class="WPFGallery.Views.BorderPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFGallery.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BorderPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentPagePane" Height="Auto">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+            <StackPanel Margin="0,0,0,24">
+                <controls:ControlExample
+                    Margin="10"
+                    HeaderText="A basic Border"
+                    XamlCode="&lt;Border BorderBrush=&quot;Gray&quot; BorderThickness=&quot;2&quot; Padding=&quot;10&quot;&gt;&#xA;    &lt;TextBlock Text=&quot;Content inside a Border&quot; /&gt;&#xA;&lt;/Border&gt;">
+                    <Border BorderBrush="Gray" BorderThickness="2" Padding="10">
+                        <TextBlock Text="Content inside a Border" />
+                    </Border>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10"
+                    HeaderText="A Border with rounded corners"
+                    XamlCode="&lt;Border BorderBrush=&quot;CornflowerBlue&quot; BorderThickness=&quot;2&quot; CornerRadius=&quot;10&quot; Padding=&quot;15&quot; Background=&quot;LightBlue&quot;&gt;&#xA;    &lt;TextBlock Text=&quot;Rounded Border&quot; /&gt;&#xA;&lt;/Border&gt;">
+                    <Border BorderBrush="CornflowerBlue" BorderThickness="2" CornerRadius="10" Padding="15" Background="LightBlue">
+                        <TextBlock Text="Rounded Border" Foreground="Black" />
+                    </Border>
+                </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10"
+                    HeaderText="A Border with different thickness on each side"
+                    XamlCode="&lt;Border BorderBrush=&quot;DarkSlateGray&quot; BorderThickness=&quot;1,2,4,8&quot; Padding=&quot;10&quot;&gt;&#xA;    &lt;TextBlock Text=&quot;Different border thickness&quot; /&gt;&#xA;&lt;/Border&gt;">
+                    <Border BorderBrush="DarkSlateGray" BorderThickness="1,2,4,8" Padding="10">
+                        <TextBlock Text="Different border thickness (Left=1, Top=2, Right=4, Bottom=8)" />
+                    </Border>
+                </controls:ControlExample>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
