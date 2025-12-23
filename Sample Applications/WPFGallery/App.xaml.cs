@@ -65,6 +65,8 @@ public partial class App : Application
             services.AddTransient<GridSplitterPageViewModel>();
             services.AddTransient<GroupBoxPage>();
             services.AddTransient<GroupBoxPageViewModel>();
+            services.AddTransient<StackPanelPage>();
+            services.AddTransient<StackPanelPageViewModel>();
             services.AddTransient<BorderPage>();
             services.AddTransient<BorderPageViewModel>();
             services.AddTransient<ImagePage>();

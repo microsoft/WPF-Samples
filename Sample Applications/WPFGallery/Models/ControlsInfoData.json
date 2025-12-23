@@ -236,6 +236,14 @@
             "Description": "A control that visually groups controls together while maintaining layout and accessibility."
           },
           {
+            "UniqueId": "StackPanel",
+            "Title": "StackPanel",
+            "PageName": "StackPanelPage",
+            "ImagePath": "Assets/ControlImages/StackPanel.png",
+            "IsNew": true,
+            "Description": "A layout panel that arranges child elements into a single line, either horizontally or vertically."
+          },
+          {
             "UniqueId": "Border",
             "Title": "Border",
             "PageName": "BorderPage",
