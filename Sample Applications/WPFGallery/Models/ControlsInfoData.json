@@ -397,6 +397,14 @@
                 "ImagePath": "Assets/ControlImages/ContentDialog.png",
                 "IsNew": true,
                 "Description": "Display messages and get user responses through dialog boxes."
+            },
+            {
+                "UniqueId": "Clipboard",
+                "Title": "Clipboard",
+                "PageName": "ClipboardPage",
+                "ImagePath": "Assets/ControlImages/Clipboard.png",
+                "IsNew": true,
+                "Description": "Access and manipulate data stored in the system clipboard."
             }
         ]
     }

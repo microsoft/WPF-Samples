@@ -123,6 +123,8 @@ public partial class App : Application
             services.AddTransient<MessageBoxPageViewModel>();
             services.AddTransient<FileAndFolderDialogsPage>();
             services.AddTransient<FileAndFolderDialogsPageViewModel>();
+            services.AddTransient<ClipboardPage>();
+            services.AddTransient<ClipboardPageViewModel>();
 
             services.AddTransient<UserDashboardPage>();
             services.AddTransient<UserDashboardPageViewModel>();
