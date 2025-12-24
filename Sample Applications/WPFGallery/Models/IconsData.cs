@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace WPFGallery.Models
+﻿namespace WPFGallery.Models
 {
     /// <summary>
     /// IconData class for icons in icon page
@@ -10,6 +7,7 @@ namespace WPFGallery.Models
     {
         public string Name { get; set; }
         public string Code { get; set; }
+        public List<string> Tags { get; set; } = [];
 
         public string Character => char.ConvertFromUtf32(Convert.ToInt32(Code, 16));
         public string CodeGlyph => "\\x" + Code;

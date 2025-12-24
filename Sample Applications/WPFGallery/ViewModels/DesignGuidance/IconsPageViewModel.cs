@@ -2,8 +2,6 @@
 using WPFGallery.Models;
 using System.IO;
 
-
-
 namespace WPFGallery.ViewModels
 {
     public partial class IconsPageViewModel : ObservableObject
@@ -43,16 +41,34 @@ namespace WPFGallery.ViewModels
             return await JsonSerializer.DeserializeAsync<List<IconData>>(stream);
         }
 
-        partial void OnSearchTextChanged(string searchText)
+        partial void OnSearchTextChanged(string value)
         {
+            var previousSelectedIcon = SelectedIcon;
+
             //cache the name here to set the selected item after clearing and repopulating the list
-            var selectedIconName = SelectedIcon?.Name;
+            var selectedIconName = previousSelectedIcon?.Name;
+            var comparison = StringComparison.OrdinalIgnoreCase;
+            var filterText = value ?? string.Empty;
             SearchFilteredIcons.Clear();
 
-            var searchFilteredIconData = AllIcons.Where(icon => icon.Name.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0);
+            var searchFilteredIconData = AllIcons.Where(icon =>
+                icon.Name.IndexOf(filterText, comparison) >= 0 ||
+                (icon.Tags?.Any(tag => tag.IndexOf(filterText, comparison) >= 0) ?? false));
             foreach (var item in searchFilteredIconData)
             {
                 SearchFilteredIcons.Add(item);
+            }
+
+            if (SearchFilteredIcons.Count == 0)
+            {
+                SelectedIcon = previousSelectedIcon;
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(filterText))
+            {
+                SelectedIcon = SearchFilteredIcons.FirstOrDefault();
+                return;
             }
 
             //keep the selected icon the same if it exists in the search results, if not select the first one
@@ -63,6 +79,23 @@ namespace WPFGallery.ViewModels
               icon => true;
 
             SelectedIcon = SearchFilteredIcons.FirstOrDefault(predicate);
-        }   
+        }
+
+        [RelayCommand]
+        private void ApplyTagFilter(string? tag)
+        {
+            if (string.IsNullOrWhiteSpace(tag))
+            {
+                return;
+            }
+
+            var trimmedTag = tag.Trim();
+            if (string.Equals(trimmedTag, SearchText, StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            SearchText = trimmedTag;
+        }
     }
 }
