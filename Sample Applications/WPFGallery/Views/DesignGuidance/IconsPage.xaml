@@ -213,8 +213,12 @@
                                 <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}" Tag="Text Glyph"/>
                                 <TextBlock Text="Code glyph"/>
                                 <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}" Tag="Code Glyph"/>
-                                <TextBlock Text="Tags"/>
-                                <ItemsControl ItemsSource="{Binding ViewModel.SelectedIcon.Tags}" Margin="0,0,0,12">
+                                <TextBlock Text="Tags"
+                                           Visibility="{Binding ElementName=TagsItemsControl, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                <ItemsControl x:Name="TagsItemsControl"
+                                              ItemsSource="{Binding ViewModel.SelectedIcon.Tags}"
+                                              Margin="0,0,0,12"
+                                              Visibility="{Binding RelativeSource={RelativeSource Self}, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel />
