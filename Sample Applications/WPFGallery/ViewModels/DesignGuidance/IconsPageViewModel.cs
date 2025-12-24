@@ -78,7 +78,6 @@ namespace WPFGallery.ViewModels
             var trimmedTag = tag.Trim();
             if (string.Equals(trimmedTag, SearchText, StringComparison.Ordinal))
             {
-                OnSearchTextChanged(trimmedTag);
                 return;
             }
 
