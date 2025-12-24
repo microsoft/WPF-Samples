@@ -8,13 +8,13 @@ using WPFGallery.ViewModels;
 namespace WPFGallery.Views
 {
     /// <summary>
-    /// Interaction logic for SpacingPage.xaml
+    /// Interaction logic for GeometryPage.xaml
     /// </summary>
-    public partial class SpacingPage : Page
+    public partial class GeometryPage : Page
     {
-        public SpacingPageViewModel ViewModel { get; }
+        public GeometryPageViewModel ViewModel { get; }
 
-        public SpacingPage(SpacingPageViewModel viewModel)
+        public GeometryPage(GeometryPageViewModel viewModel)
         {
             InitializeComponent();
             UpdateImageResources();
@@ -35,13 +35,11 @@ namespace WPFGallery.Views
         {
             if (Utility.IsLightTheme())
             {
-                DialogImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Design/Dialog.light.png"));
-                CardImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Design/Cards.light.png"));
+                GeometryImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Design/Geometry.light.png"));
             }
             else
             {
-                DialogImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Design/Dialog.dark.png"));
-                CardImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Design/Cards.dark.png"));
+                GeometryImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Design/Geometry.dark.png"));
             }
         }
     }

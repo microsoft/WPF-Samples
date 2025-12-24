@@ -1,4 +1,4 @@
-﻿using System.Configuration;
+using System.Configuration;
 using System.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -134,6 +134,9 @@ public partial class App : Application
 
             services.AddTransient<SpacingPage>();
             services.AddTransient<SpacingPageViewModel>();
+
+            services.AddTransient<GeometryPage>();
+            services.AddTransient<GeometryPageViewModel>();
 
             services.AddSingleton<IconsPage>();
             services.AddSingleton<IconsPageViewModel>();
