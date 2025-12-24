@@ -96,14 +96,14 @@
                                 Height="20"
                                 Margin="10,5,10,5"
                                 VerticalAlignment="Center"
-                                Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
+                                Source="pack://application:,,,/Assets/AppIcons/WPFGallery_48px.png" />
 
                             <StackPanel
                                 Grid.Column="1"
                                 Margin="12"
                                 Orientation="Vertical">
-                                <TextBlock Text="WPF Gallery Preview" />
-                                <TextBlock Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">© 2024 Microsoft. All rights reserved.</TextBlock>
+                                <TextBlock Text="WPF Gallery" />
+                                <TextBlock Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">© 2025 Microsoft. All rights reserved.</TextBlock>
                             </StackPanel>
                         </Grid>
                     </Expander.Header>
