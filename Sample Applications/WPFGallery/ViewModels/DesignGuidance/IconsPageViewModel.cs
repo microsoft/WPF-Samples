@@ -43,8 +43,10 @@ namespace WPFGallery.ViewModels
 
         partial void OnSearchTextChanged(string value)
         {
+            var previousSelectedIcon = SelectedIcon;
+
             //cache the name here to set the selected item after clearing and repopulating the list
-            var selectedIconName = SelectedIcon?.Name;
+            var selectedIconName = previousSelectedIcon?.Name;
             var comparison = StringComparison.OrdinalIgnoreCase;
             var filterText = value ?? string.Empty;
             SearchFilteredIcons.Clear();
@@ -55,6 +57,18 @@ namespace WPFGallery.ViewModels
             foreach (var item in searchFilteredIconData)
             {
                 SearchFilteredIcons.Add(item);
+            }
+
+            if (SearchFilteredIcons.Count == 0)
+            {
+                SelectedIcon = previousSelectedIcon;
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(filterText))
+            {
+                SelectedIcon = SearchFilteredIcons.FirstOrDefault();
+                return;
             }
 
             //keep the selected icon the same if it exists in the search results, if not select the first one
