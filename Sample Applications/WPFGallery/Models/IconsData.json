@@ -1,5 +1,16 @@
 [
   {
+    "Code": "E620",
+    "Name": "StopSlideShow",
+    "Tags": [
+      "images",
+      "presentation",
+      "gallery",
+      "photos",
+      "symbol-icon"
+    ]
+  },
+  {
     "Code": "E700",
     "Name": "GlobalNavButton",
     "Tags": [
@@ -537,6 +548,21 @@
     ]
   },
   {
+    "Code": "E72F",
+    "Name": "BlockedSite",
+    "Tags": [
+      "private",
+      "security",
+      "access",
+      "protected",
+      "safety",
+      "permission",
+      "access",
+      "protection"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "E730",
     "Name": "ReportHacked",
     "Tags": [
@@ -560,6 +586,11 @@
       "corporate",
       "business"
     ]
+  },
+  {
+    "Code": "E733",
+    "Name": "Blocked",
+    "Tags": []
   },
   {
     "Code": "E734",
@@ -934,35 +965,17 @@
   {
     "Code": "E759",
     "Name": "SIPMove",
-    "Tags": [
-      "keyboard",
-      "on-screen",
-      "move",
-      "touch",
-      "sip"
-    ]
+    "Tags": []
   },
   {
     "Code": "E75A",
     "Name": "SIPUndock",
-    "Tags": [
-      "keyboard",
-      "on-screen",
-      "undock",
-      "float",
-      "sip"
-    ]
+    "Tags": []
   },
   {
     "Code": "E75B",
     "Name": "SIPRedock",
-    "Tags": [
-      "keyboard",
-      "on-screen",
-      "dock",
-      "snap",
-      "sip"
-    ]
+    "Tags": []
   },
   {
     "Code": "E75C",
@@ -1465,15 +1478,26 @@
     ]
   },
   {
+    "Code": "E794",
+    "Name": "Effects",
+    "Tags": [
+      "AI",
+      "Filters",
+      "Visuals",
+      "Rendering"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "E799",
     "Name": "AspectRatio",
-    "Tags": [
-      "image",
-      "video",
-      "dimensions",
-      "ratio",
-      "scale"
-    ]
+    "Tags": []
+  },
+  {
+    "Code": "E7A1",
+    "Name": "Contrast",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E7A5",
@@ -1510,6 +1534,12 @@
       "cut",
       "symbol-icon"
     ]
+  },
+  {
+    "Code": "E7AA",
+    "Name": "PhotoCollection",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E7AC",
@@ -2404,13 +2434,7 @@
   {
     "Code": "E83B",
     "Name": "DirectAccess",
-    "Tags": [
-      "accessibility",
-      "direct-access",
-      "shortcuts",
-      "ease-of-access",
-      "mobility"
-    ]
+    "Tags": []
   },
   {
     "Code": "E83C",
@@ -4623,13 +4647,7 @@
   {
     "Code": "E911",
     "Name": "DullSound",
-    "Tags": [
-      "sound",
-      "audio",
-      "volume",
-      "soft",
-      "muted"
-    ]
+    "Tags": []
   },
   {
     "Code": "E912",
@@ -5526,13 +5544,7 @@
   {
     "Code": "E97C",
     "Name": "Type",
-    "Tags": [
-      "text",
-      "typing",
-      "font",
-      "input",
-      "type"
-    ]
+    "Tags": []
   },
   {
     "Code": "E97D",
@@ -5763,6 +5775,12 @@
       "mail",
       "message"
     ]
+  },
+  {
+    "Code": "E9A4",
+    "Name": "TextBulletListSquare",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E9A6",
@@ -6677,6 +6695,11 @@
     ]
   },
   {
+    "Code": "EA85",
+    "Name": "VolumeDisabled",
+    "Tags": []
+  },
+  {
     "Code": "EA86",
     "Name": "Puzzle",
     "Tags": [
@@ -6842,6 +6865,36 @@
     ]
   },
   {
+    "Code": "EAC7",
+    "Name": "DesktopLeafTwo",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EAD4",
+    "Name": "Emojiplay",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EAD5",
+    "Name": "EmojiBrush",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EAD6",
+    "Name": "EyeTracking",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EAD7",
+    "Name": "EyeTrackingText",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EADF",
     "Name": "Trackers",
     "Tags": [
@@ -6896,6 +6949,24 @@
       "fall",
       "market"
     ]
+  },
+  {
+    "Code": "EB19",
+    "Name": "ClicktoDoOff",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EB1D",
+    "Name": "ClicktoDo",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EB3B",
+    "Name": "GenericApp",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB3C",
@@ -7292,134 +7363,62 @@
   {
     "Code": "EB82",
     "Name": "NUIFPStartSlideHand",
-    "Tags": [
-      "gesture",
-      "hand",
-      "slide",
-      "start",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB83",
     "Name": "NUIFPStartSlideAction",
-    "Tags": [
-      "gesture",
-      "slide",
-      "start",
-      "action",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB84",
     "Name": "NUIFPContinueSlideHand",
-    "Tags": [
-      "gesture",
-      "hand",
-      "slide",
-      "continue",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB85",
     "Name": "NUIFPContinueSlideAction",
-    "Tags": [
-      "gesture",
-      "slide",
-      "continue",
-      "action",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB86",
     "Name": "NUIFPRollRightHand",
-    "Tags": [
-      "gesture",
-      "hand",
-      "roll",
-      "right",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB87",
     "Name": "NUIFPRollRightHandAction",
-    "Tags": [
-      "gesture",
-      "roll",
-      "right",
-      "action",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB88",
     "Name": "NUIFPRollLeftHand",
-    "Tags": [
-      "gesture",
-      "hand",
-      "roll",
-      "left",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB89",
     "Name": "NUIFPRollLeftAction",
-    "Tags": [
-      "gesture",
-      "roll",
-      "left",
-      "action",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB8A",
     "Name": "NUIFPPressHand",
-    "Tags": [
-      "gesture",
-      "hand",
-      "press",
-      "interaction",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB8B",
     "Name": "NUIFPPressAction",
-    "Tags": [
-      "gesture",
-      "press",
-      "action",
-      "nui",
-      "select"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB8C",
     "Name": "NUIFPPressRepeatHand",
-    "Tags": [
-      "gesture",
-      "hand",
-      "press",
-      "repeat",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB8D",
     "Name": "NUIFPPressRepeatAction",
-    "Tags": [
-      "gesture",
-      "press",
-      "repeat",
-      "action",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EB90",
@@ -8126,13 +8125,7 @@
   {
     "Code": "EC09",
     "Name": "Groceries",
-    "Tags": [
-      "shopping",
-      "groceries",
-      "cart",
-      "market",
-      "food"
-    ]
+    "Tags": []
   },
   {
     "Code": "EC0A",
@@ -8324,6 +8317,11 @@
       "break",
       "snack"
     ]
+  },
+  {
+    "Code": "EC34",
+    "Name": "FormatText",
+    "Tags": []
   },
   {
     "Code": "EC37",
@@ -8717,13 +8715,7 @@
   {
     "Code": "EC6D",
     "Name": "SwipeRevealArt",
-    "Tags": [
-      "gesture",
-      "swipe",
-      "reveal",
-      "touch",
-      "nui"
-    ]
+    "Tags": []
   },
   {
     "Code": "EC71",
@@ -8836,6 +8828,12 @@
     ]
   },
   {
+    "Code": "EC83",
+    "Name": "UpdateStatusDot2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EC87",
     "Name": "Draw",
     "Tags": [
@@ -8871,6 +8869,12 @@
     ]
   },
   {
+    "Code": "EC91",
+    "Name": "Uninstall",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EC92",
     "Name": "DateTime",
     "Tags": [
@@ -8887,6 +8891,12 @@
       "virtual",
       "headset"
     ]
+  },
+  {
+    "Code": "EC9C",
+    "Name": "CloudNotSynced",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "ECA5",
@@ -9237,6 +9247,12 @@
       "language",
       "cc"
     ]
+  },
+  {
+    "Code": "ED21",
+    "Name": "RestartUpdate2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "ED25",
@@ -9974,13 +9990,7 @@
   {
     "Code": "EDE0",
     "Name": "Strikethrough",
-    "Tags": [
-      "text",
-      "formatting",
-      "strikethrough",
-      "edit",
-      "typography"
-    ]
+    "Tags": []
   },
   {
     "Code": "EDE1",
@@ -10033,13 +10043,7 @@
   {
     "Code": "EDE5",
     "Name": "PinyinIMELogo",
-    "Tags": [
-      "language",
-      "pinyin",
-      "ime",
-      "keyboard",
-      "chinese"
-    ]
+    "Tags": []
   },
   {
     "Code": "EDFB",
@@ -10080,6 +10084,36 @@
       "management",
       "configuration"
     ]
+  },
+  {
+    "Code": "EE41",
+    "Name": "FullHiraganaPrivateMode",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE42",
+    "Name": "FullKatakanaPrivateMode",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE43",
+    "Name": "HalfAlphaPrivateMode",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE44",
+    "Name": "HalfKatakanaPrivateMode",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE45",
+    "Name": "FullAlphaPrivateMode",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EE47",
@@ -10206,6 +10240,12 @@
     ]
   },
   {
+    "Code": "EE7E",
+    "Name": "FIDOPasskey",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EE92",
     "Name": "TrackersMirrored",
     "Tags": [
@@ -10226,13 +10266,25 @@
   {
     "Code": "EE94",
     "Name": "Wheel",
-    "Tags": [
-      "steering",
-      "wheel",
-      "driving",
-      "vehicle",
-      "transport"
-    ]
+    "Tags": []
+  },
+  {
+    "Code": "EE95",
+    "Name": "StopSolid",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EEA0",
+    "Name": "RAM",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EEA1",
+    "Name": "CPU",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EEA3",
@@ -10472,6 +10524,12 @@
     ]
   },
   {
+    "Code": "EF60",
+    "Name": "TextEdit",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EF6B",
     "Name": "LandscapeOrientation",
     "Tags": [
@@ -10517,6 +10575,18 @@
       "audio",
       "talking"
     ]
+  },
+  {
+    "Code": "EFDA",
+    "Name": "AppIconDefaultAdd",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EFFF",
+    "Name": "CRMScheduleReports",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F000",
@@ -10628,90 +10698,42 @@
   {
     "Code": "F093",
     "Name": "ButtonA",
-    "Tags": [
-      "controller",
-      "gamepad",
-      "button",
-      "xbox",
-      "a-button"
-    ]
+    "Tags": []
   },
   {
     "Code": "F094",
     "Name": "ButtonB",
-    "Tags": [
-      "controller",
-      "gamepad",
-      "button",
-      "xbox",
-      "b-button"
-    ]
+    "Tags": []
   },
   {
     "Code": "F095",
     "Name": "ButtonY",
-    "Tags": [
-      "controller",
-      "gamepad",
-      "button",
-      "xbox",
-      "y-button"
-    ]
+    "Tags": []
   },
   {
     "Code": "F096",
     "Name": "ButtonX",
-    "Tags": [
-      "controller",
-      "gamepad",
-      "button",
-      "xbox",
-      "x-button"
-    ]
+    "Tags": []
   },
   {
     "Code": "F0AD",
     "Name": "ArrowUp8",
-    "Tags": [
-      "arrow",
-      "direction",
-      "up",
-      "compact",
-      "ui"
-    ]
+    "Tags": []
   },
   {
     "Code": "F0AE",
     "Name": "ArrowDown8",
-    "Tags": [
-      "arrow",
-      "direction",
-      "down",
-      "compact",
-      "ui"
-    ]
+    "Tags": []
   },
   {
     "Code": "F0AF",
     "Name": "ArrowRight8",
-    "Tags": [
-      "arrow",
-      "direction",
-      "right",
-      "compact",
-      "ui"
-    ]
+    "Tags": []
   },
   {
     "Code": "F0B0",
     "Name": "ArrowLeft8",
-    "Tags": [
-      "arrow",
-      "direction",
-      "left",
-      "compact",
-      "ui"
-    ]
+    "Tags": []
   },
   {
     "Code": "F0B2",
@@ -11278,13 +11300,7 @@
   {
     "Code": "F11B",
     "Name": "CtrlSpatialRight",
-    "Tags": [
-      "controller",
-      "spatial",
-      "mixed-reality",
-      "right",
-      "motion"
-    ]
+    "Tags": []
   },
   {
     "Code": "F126",
@@ -11386,57 +11402,27 @@
   {
     "Code": "F136",
     "Name": "StatusCircleOuter",
-    "Tags": [
-      "status",
-      "indicator",
-      "circle",
-      "outer",
-      "progress"
-    ]
+    "Tags": []
   },
   {
     "Code": "F137",
     "Name": "StatusCircleInner",
-    "Tags": [
-      "status",
-      "indicator",
-      "circle",
-      "inner",
-      "progress"
-    ]
+    "Tags": []
   },
   {
     "Code": "F138",
     "Name": "StatusCircleRing",
-    "Tags": [
-      "status",
-      "indicator",
-      "circle",
-      "ring",
-      "progress"
-    ]
+    "Tags": []
   },
   {
     "Code": "F139",
     "Name": "StatusTriangleOuter",
-    "Tags": [
-      "status",
-      "indicator",
-      "triangle",
-      "outer",
-      "warning"
-    ]
+    "Tags": []
   },
   {
     "Code": "F13A",
     "Name": "StatusTriangleInner",
-    "Tags": [
-      "status",
-      "indicator",
-      "triangle",
-      "inner",
-      "warning"
-    ]
+    "Tags": []
   },
   {
     "Code": "F13B",
@@ -12175,6 +12161,102 @@
     ]
   },
   {
+    "Code": "F112",
+    "Name": "ReadOutLoud",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F117",
+    "Name": "ProjectToDevice",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F120",
+    "Name": "TaskManagerApp",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F196",
+    "Name": "Beaker",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F1B1",
+    "Name": "PowerButtonUpdate2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F1E8",
+    "Name": "LeafTwo",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F232",
+    "Name": "GridViewSmall",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F27C",
+    "Name": "Earbudsingle",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F27F",
+    "Name": "HearingAid",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F285",
+    "Name": "MobSnooze",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2A3",
+    "Name": "MobNotificationBell",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2A5",
+    "Name": "MobNotificationBellFilled",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2A8",
+    "Name": "MobSnoozeFilled",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2C7",
+    "Name": "BulletedList2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2C8",
+    "Name": "BulletedList2Mirrored",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2D9",
+    "Name": "CirclePause",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F32A",
     "Name": "PassiveAuthentication",
     "Tags": [
@@ -12270,13 +12352,7 @@
   {
     "Code": "F3E7",
     "Name": "CtrlSpatialLeft",
-    "Tags": [
-      "controller",
-      "spatial",
-      "mixed-reality",
-      "left",
-      "motion"
-    ]
+    "Tags": []
   },
   {
     "Code": "F404",
@@ -12352,6 +12428,12 @@
       "person",
       "user"
     ]
+  },
+  {
+    "Code": "F432",
+    "Name": "BatterySaver",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F439",
@@ -12572,6 +12654,12 @@
       "smiley",
       "face"
     ]
+  },
+  {
+    "Code": "F4BD",
+    "Name": "Snooze",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F4BE",
@@ -13649,13 +13737,7 @@
   {
     "Code": "F63C",
     "Name": "CircleShapeSolid",
-    "Tags": [
-      "shape",
-      "circle",
-      "solid",
-      "geometry",
-      "icon"
-    ]
+    "Tags": []
   },
   {
     "Code": "F657",
@@ -13735,6 +13817,36 @@
     ]
   },
   {
+    "Code": "F67B",
+    "Name": "Pen",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F683",
+    "Name": "TextSelect",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F684",
+    "Name": "TextNavigate",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F698",
+    "Name": "PinyinIMELogo2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F69B",
+    "Name": "UserRemove",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F69E",
     "Name": "CHTLanguageBar",
     "Tags": [
@@ -13775,6 +13887,24 @@
       "emoticons",
       "input"
     ]
+  },
+  {
+    "Code": "F6C4",
+    "Name": "PhoneScreen",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F6C5",
+    "Name": "AlertUrgent",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F6C6",
+    "Name": "PhoneDesktop",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F6FA",
@@ -14560,5 +14690,83 @@
       "interaction",
       "notification"
     ]
+  },
+  {
+    "Code": "F8C0",
+    "Name": "VPNOverlay",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C1",
+    "Name": "VPNRoamingOverly",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C2",
+    "Name": "WifiVPN3",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C3",
+    "Name": "WifiVPN4",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C4",
+    "Name": "WifiVPN5",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C5",
+    "Name": "SignalBarsVPN2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C6",
+    "Name": "SignalBarsVPN3",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C7",
+    "Name": "SignalBarsVPN4",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C8",
+    "Name": "SignalBarsVPN5",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8C9",
+    "Name": "SignalBarsVPNRoaming3",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8CA",
+    "Name": "SignalBarsVPNRoaming4",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8CB",
+    "Name": "SignalBarsVPNRoaming5",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F8CC",
+    "Name": "EthernetVPN",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   }
 ]
