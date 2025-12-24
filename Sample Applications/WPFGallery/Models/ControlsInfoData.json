@@ -35,6 +35,15 @@
                 "ImagePath": "Assets/ControlImages/TextBlock.png"
             },
             {
+                "UniqueId": "Spacing",
+                "Title": "Spacing",
+                "PageName": "SpacingPage",
+                "IconGlyph": "\uE8B3",
+                "IsNew": true,
+                "Description": "Guide showing how to use spacing in your app.",
+                "ImagePath": "Assets/ControlImages/CompactSizing.png"
+            },
+            {
                 "UniqueId": "Icons",
                 "Title": "Icons",
                 "PageName": "IconsPage",
@@ -225,6 +234,22 @@
             "ImagePath": "Assets/ControlImages/GroupBox.png",
             "IsNew": true,
             "Description": "A control that visually groups controls together while maintaining layout and accessibility."
+          },
+          {
+            "UniqueId": "StackPanel",
+            "Title": "StackPanel",
+            "PageName": "StackPanelPage",
+            "ImagePath": "Assets/ControlImages/StackPanel.png",
+            "IsNew": true,
+            "Description": "A layout panel that arranges child elements into a single line, either horizontally or vertically."
+          },
+          {
+            "UniqueId": "Border",
+            "Title": "Border",
+            "PageName": "BorderPage",
+            "ImagePath": "Assets/ControlImages/Border.png",
+            "IsNew": true,
+            "Description": "A decorator that draws a border, background, or both around another element."
           }
         ]
     },
@@ -372,6 +397,14 @@
                 "ImagePath": "Assets/ControlImages/ContentDialog.png",
                 "IsNew": true,
                 "Description": "Display messages and get user responses through dialog boxes."
+            },
+            {
+                "UniqueId": "Clipboard",
+                "Title": "Clipboard",
+                "PageName": "ClipboardPage",
+                "ImagePath": "Assets/ControlImages/Clipboard.png",
+                "IsNew": true,
+                "Description": "Access and manipulate data stored in the system clipboard."
             }
         ]
     }

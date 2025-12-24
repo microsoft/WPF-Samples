@@ -65,6 +65,10 @@ public partial class App : Application
             services.AddTransient<GridSplitterPageViewModel>();
             services.AddTransient<GroupBoxPage>();
             services.AddTransient<GroupBoxPageViewModel>();
+            services.AddTransient<StackPanelPage>();
+            services.AddTransient<StackPanelPageViewModel>();
+            services.AddTransient<BorderPage>();
+            services.AddTransient<BorderPageViewModel>();
             services.AddTransient<ImagePage>();
             services.AddTransient<ImagePageViewModel>();
             services.AddTransient<DataGridPage>();
@@ -119,12 +123,17 @@ public partial class App : Application
             services.AddTransient<MessageBoxPageViewModel>();
             services.AddTransient<FileAndFolderDialogsPage>();
             services.AddTransient<FileAndFolderDialogsPageViewModel>();
+            services.AddTransient<ClipboardPage>();
+            services.AddTransient<ClipboardPageViewModel>();
 
             services.AddTransient<UserDashboardPage>();
             services.AddTransient<UserDashboardPageViewModel>();
 
             services.AddTransient<TypographyPage>();
             services.AddTransient<TypographyPageViewModel>();
+
+            services.AddTransient<SpacingPage>();
+            services.AddTransient<SpacingPageViewModel>();
 
             services.AddSingleton<IconsPage>();
             services.AddSingleton<IconsPageViewModel>();
