@@ -25,6 +25,7 @@
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\win11-dashboard.light.png" />
 		<Resource Include="Assets\UserDashboard\*" />
+		<Resource Include="Assets\Design\*" />
 	</ItemGroup>
 
 	<PropertyGroup>

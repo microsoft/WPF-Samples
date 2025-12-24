@@ -20,12 +20,39 @@
         <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
             <StackPanel Margin="0,0,0,24" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap">
-                    Consistent spacing helps create visual harmony and improves the readability and usability of your application. 
+                    Consistent spacing helps create visual harmony and improves the readability and usability of your application.
                 </TextBlock>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,0,0,12">
                     Use the following spacing values to maintain a consistent layout throughout your app.
                 </TextBlock>
-
+                <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                    <Grid VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="Page with cards layout" />
+                        <Border Grid.Row="1" Height="500">
+                            <Image x:Name="CardImage" Source="/Assets/Design/Cards.dark.png" AutomationProperties.Name="Example of spacing in a page with cards layout" />
+                        </Border>
+                    </Grid>
+                    <Grid VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="Form layout" />
+                        <Border Grid.Row="1" Height="500">
+                            <Image x:Name="DialogImage" Source="/Assets/Design/Dialog.dark.png" AutomationProperties.Name="Example of spacing in a form layout" />
+                        </Border>
+                    </Grid>
+                </StackPanel>
                 <Border
                     Margin="0,10,0,10"
                     Padding="16"
@@ -55,13 +82,13 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock
                                         Margin="16,0,0,0"
-                                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                         Opacity="0.7"
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="Value" />
                                 <TextBlock
                                         Grid.Column="2"
-                                        Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                         Opacity="0.7"
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="Usage" />
@@ -70,7 +97,7 @@
 
                         <!-- 4px -->
                         <StackPanel Grid.Row="1">
-                            <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
+                            <Grid HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90" />
                                     <ColumnDefinition Width="100" />
@@ -82,7 +109,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="4px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Height="24" Width="4" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Height="24" Width="4" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
@@ -108,7 +135,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="8px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Height="24" Width="8" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Height="24" Width="8" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
@@ -121,7 +148,7 @@
 
                         <!-- 12px -->
                         <StackPanel Grid.Row="3">
-                            <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
+                            <Grid HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90" />
                                     <ColumnDefinition Width="100" />
@@ -133,7 +160,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="12px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Width="12" Height="24" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Width="12" Height="24" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
@@ -158,7 +185,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="16px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Width="16" Height="24" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Width="16" Height="24" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
@@ -171,7 +198,7 @@
 
                         <!-- 24px -->
                         <StackPanel Grid.Row="5">
-                            <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
+                            <Grid HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90" />
                                     <ColumnDefinition Width="100" />
@@ -183,7 +210,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="24px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Width="24" Height="24" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Width="24" Height="24" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
@@ -208,7 +235,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="32px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Width="32" Height="24" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Width="32" Height="24" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
@@ -221,7 +248,7 @@
 
                         <!-- 48px -->
                         <StackPanel Grid.Row="7">
-                            <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
+                            <Grid HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" MinHeight="60">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90" />
                                     <ColumnDefinition Width="100" />
@@ -233,7 +260,7 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         Text="48px" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8">
-                                    <Border Width="48" Height="24" Background="{StaticResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
+                                    <Border Width="48" Height="24" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="4"/>
                                 </StackPanel>
                                 <TextBlock
                                         Grid.Column="2"
