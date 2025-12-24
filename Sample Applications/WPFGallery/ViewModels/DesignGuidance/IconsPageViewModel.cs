@@ -24,12 +24,29 @@ namespace WPFGallery.ViewModels
         [ObservableProperty]
         private ObservableCollection<IconData> _searchFilteredIcons = [];
 
+        [ObservableProperty]
+        private ObservableCollection<IconData> _displayedIcons = [];
+
+        [ObservableProperty]
+        private int _currentPage = 1;
+
+        [ObservableProperty]
+        private int _totalPages = 1;
+
+        [ObservableProperty]
+        private int _selectedPageSizeIndex = 2; // Default to 500
+
+        public List<string> PageSizeOptions { get; } = ["100", "200", "500", "1000", "All"];
+
+        private int PageSize => SelectedPageSizeIndex == 4 ? int.MaxValue : int.Parse(PageSizeOptions[SelectedPageSizeIndex]);
+
         [RelayCommand]
         private async Task LoadData()
         {
             AllIcons = await ReadIconData();
             SelectedIcon = AllIcons.FirstOrDefault();
             SearchFilteredIcons = new ObservableCollection<IconData>(AllIcons);
+            UpdatePagination();
         }
 
         private static async Task<IList<IconData>> ReadIconData()
@@ -59,6 +76,10 @@ namespace WPFGallery.ViewModels
                 SearchFilteredIcons.Add(item);
             }
 
+            // Reset to page 1 and update pagination
+            CurrentPage = 1;
+            UpdatePagination(false);
+
             if (SearchFilteredIcons.Count == 0)
             {
                 SelectedIcon = previousSelectedIcon;
@@ -67,18 +88,18 @@ namespace WPFGallery.ViewModels
 
             if (string.IsNullOrWhiteSpace(filterText))
             {
-                SelectedIcon = SearchFilteredIcons.FirstOrDefault();
+                SelectedIcon = DisplayedIcons.FirstOrDefault();
                 return;
             }
 
             //keep the selected icon the same if it exists in the search results, if not select the first one
             Func<IconData, bool> predicate =
               !string.IsNullOrWhiteSpace(selectedIconName) &&
-              SearchFilteredIcons.Any(icon => icon.Name.Equals(selectedIconName)) ?
+              DisplayedIcons.Any(icon => icon.Name.Equals(selectedIconName)) ?
               icon => icon.Name.Equals(selectedIconName) :
               icon => true;
 
-            SelectedIcon = SearchFilteredIcons.FirstOrDefault(predicate);
+            SelectedIcon = DisplayedIcons.FirstOrDefault(predicate);
         }
 
         [RelayCommand]
@@ -96,6 +117,81 @@ namespace WPFGallery.ViewModels
             }
 
             SearchText = trimmedTag;
+        }
+
+        partial void OnSelectedPageSizeIndexChanged(int value)
+        {
+            CurrentPage = 1;
+            UpdatePagination();
+        }
+
+        [RelayCommand(CanExecute = nameof(CanGoToPreviousPage))]
+        private void PreviousPage()
+        {
+            if (CurrentPage > 1)
+            {
+                CurrentPage--;
+                UpdateDisplayedIcons();
+            }
+        }
+
+        private bool CanGoToPreviousPage() => CurrentPage > 1;
+
+        [RelayCommand(CanExecute = nameof(CanGoToNextPage))]
+        private void NextPage()
+        {
+            if (CurrentPage < TotalPages)
+            {
+                CurrentPage++;
+                UpdateDisplayedIcons();
+            }
+        }
+
+        private bool CanGoToNextPage() => CurrentPage < TotalPages;
+
+        partial void OnCurrentPageChanged(int value)
+        {
+            PreviousPageCommand.NotifyCanExecuteChanged();
+            NextPageCommand.NotifyCanExecuteChanged();
+        }
+
+        partial void OnTotalPagesChanged(int value)
+        {
+            PreviousPageCommand.NotifyCanExecuteChanged();
+            NextPageCommand.NotifyCanExecuteChanged();
+        }
+
+        private void UpdatePagination(bool resetSelectedIcon = true)
+        {
+            var pageSize = PageSize;
+            TotalPages = pageSize == int.MaxValue ? 1 : (int)Math.Ceiling((double)SearchFilteredIcons.Count / pageSize);
+            if (TotalPages == 0) TotalPages = 1;
+            
+            if (CurrentPage > TotalPages)
+            {
+                CurrentPage = TotalPages;
+            }
+            
+            UpdateDisplayedIcons(resetSelectedIcon);
+        }
+
+        private void UpdateDisplayedIcons(bool resetSelectedIcon = true)
+        {
+            DisplayedIcons.Clear();
+            
+            var pageSize = PageSize;
+            var skip = (CurrentPage - 1) * pageSize;
+            var iconsToDisplay = pageSize == int.MaxValue ? SearchFilteredIcons : SearchFilteredIcons.Skip(skip).Take(pageSize);
+            
+            foreach (var icon in iconsToDisplay)
+            {
+                DisplayedIcons.Add(icon);
+            }
+
+            if(resetSelectedIcon)
+            {
+                SelectedIcon = DisplayedIcons.FirstOrDefault();
+            }
         }
     }
 }

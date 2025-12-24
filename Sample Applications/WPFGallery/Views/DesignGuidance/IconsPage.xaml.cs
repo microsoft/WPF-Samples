@@ -39,5 +39,42 @@ namespace WPFGallery.Views
             }
         }
 
+        private void IconsSearchBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (IconsSearchBox.Text.Length > 0)
+            {
+                IconsSearchBoxPlaceholder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                IconsSearchBoxPlaceholder.Visibility = Visibility.Visible;
+            }
+            //IconsSearchBoxPlaceholder.Visibility = Visibility.Hidden;
+        }
+
+        private void IconsSearchBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (IconsSearchBox.Text.Length > 0)
+            {
+                IconsSearchBoxPlaceholder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                IconsSearchBoxPlaceholder.Visibility = Visibility.Visible;
+            }
+            //IconsSearchBoxPlaceholder.Visibility = Visibility.Visible;
+        }
+
+        private void IconsSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(IconsSearchBox.Text.Length > 0)
+            {
+                IconsSearchBoxPlaceholder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                IconsSearchBoxPlaceholder.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

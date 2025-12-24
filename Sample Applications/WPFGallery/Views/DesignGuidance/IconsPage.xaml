@@ -86,164 +86,276 @@
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
 
+        <Style x:Key="IconsListViewItemFocusVisualStyle">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle
+                        RadiusX="4"
+                        RadiusY="4"
+                        Margin="5"
+                        Stroke="{DynamicResource KeyboardFocusBorderColorBrush}"
+                        StrokeThickness="2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PaginationButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ButtonBase}">
+                        <Border x:Name="ContentBorder" 
+                            Width="{TemplateBinding Width}" 
+                            Height="{TemplateBinding Height}" 
+                            MinWidth="{TemplateBinding MinWidth}" 
+                            MinHeight="{TemplateBinding MinHeight}" 
+                            Padding="{TemplateBinding Padding}" 
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="{TemplateBinding Border.CornerRadius}">
+                            <ContentPresenter x:Name="ContentPresenter"
+                                RecognizesAccessKey="True"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                Content="{TemplateBinding Content}" 
+                                ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource ControlAltFillColorTertiaryBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Page.Resources>
 
-    <Grid>
-        <ScrollViewer>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+    <Grid Margin="0 0 0 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-                <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
+        <controls:PageHeader Margin="2,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
-                <Expander Grid.Row="1" 
-                  Header="Instructions on how to use Segoe Fluent Icons"
-                  IsExpanded="False" 
-                  Margin="5">
+        <Expander Grid.Row="1" 
+            Header="Instructions on how to use Segoe Fluent Icons"
+            IsExpanded="False" 
+            Margin="2 -8 0 0">
+                
+            <TextBlock TextWrapping="Wrap">
+            <Run FontWeight="SemiBold">
+                How to get the font
+            </Run>
+            <LineBreak />
+            <Span>
+                On Windows 11: There's nothing you need to do, the font comes with Windows.
+                <LineBreak />
+                On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+            </Span>
+            <LineBreak/>
+            <LineBreak/>
+            <Span FontWeight="SemiBold">
+                How to use the font
+            </Span>
+            <LineBreak/>
+            <Span>
+                An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
+                For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
+            </Span>
+            <LineBreak/>
+            <Span>
+                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
+            </Span>
+            <LineBreak/>
+            <LineBreak/>
+            <Run FontWeight="SemiBold">
+                XAML
+            </Run>
+            <LineBreak/>
+            <Span>
+                &lt;Grid&gt;
+            </Span>
+            <LineBreak/>
+            <Span>
+                &lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
+            </Span>
+            <LineBreak/>
+            <Span>
+                &#x09;&lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" /&gt;
+            </Span>
+            <LineBreak/>
+            <Span>
+                &lt;/Grid&gt;
+            </Span>
+            </TextBlock>
+        </Expander>
 
-                    <TextBlock TextWrapping="Wrap">
-                    <Run FontWeight="SemiBold">
-                        How to get the font
-                    </Run>
-                    <LineBreak />
-                    <Span>
-                        On Windows 11: There's nothing you need to do, the font comes with Windows.
-                        <LineBreak />
-                        On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
-                    </Span>
-                    <LineBreak/>
-                    <LineBreak/>
-                    <Span FontWeight="SemiBold">
-                        How to use the font
-                    </Span>
-                    <LineBreak/>
-                    <Span>
-                        An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
-                        For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
-                    </Span>
-                    <LineBreak/>
-                    <Span>
-                        All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
-                    </Span>
-                    <LineBreak/>
-                    <LineBreak/>
-                    <Run FontWeight="SemiBold">
-                        XAML
-                    </Run>
-                    <LineBreak/>
-                    <Span>
-                        &lt;Grid&gt;
-                    </Span>
-                    <LineBreak/>
-                    <Span>
-                        &lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" Foreground="#C72335"/&gt;
-                    </Span>
-                    <LineBreak/>
-                    <Span>
-                        &#x09;&lt;TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&amp;#xEB51;" /&gt;
-                    </Span>
-                    <LineBreak/>
-                    <Span>
-                        &lt;/Grid&gt;
-                    </Span>
-                    </TextBlock>
-                </Expander>
-                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="0,24,0,10" Grid.Row="2"/>
-                <Grid Grid.Row="3" MaxHeight="620">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="296"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <UniformGrid Columns="2">
-                            <StackPanel Margin="10,0,0,0">
-                                <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="Search Icons by Name" Margin="10,0,0,0"/>
-                                <TextBox Text="{Binding ViewModel.SearchText, UpdateSourceTrigger=PropertyChanged, Delay=500}" 
-                                         AutomationProperties.Name="Search Icons" Margin="10,0,0,0"/>
-                            </StackPanel>
+        <TextBlock Grid.Row="2" Style="{StaticResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" Margin="2,24,0,10" />
 
-                        </UniformGrid>
-                        <ListView AutomationProperties.Name="Icons" Grid.Row="1" ItemsSource="{Binding ViewModel.SearchFilteredIcons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single">
-                            <ListView.ItemsPanel>
+        <Grid Grid.Row="3">
+            <TextBox x:Name="IconsSearchBox" Text="{Binding ViewModel.SearchText, UpdateSourceTrigger=PropertyChanged, Delay=500}" 
+                     AutomationProperties.Name="Search Icons by Name, Tag" Width="500" HorizontalAlignment="Left" VerticalAlignment="Center"
+                     GotKeyboardFocus="IconsSearchBox_GotKeyboardFocus" LostKeyboardFocus="IconsSearchBox_LostKeyboardFocus"
+                     TextChanged="IconsSearchBox_TextChanged"/>
+            <TextBlock x:Name="IconsSearchBoxPlaceholder" VerticalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}" Text="Search Icons by Name, Tag" Margin="14,0,0,0"
+                       IsHitTestVisible="False" Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+        </Grid>
+        
+        <Grid Grid.Row="4" Margin="2 10 2 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="8 0 0 8" Background="{DynamicResource SubtleFillColorSecondaryBrush}" Grid.Column="0"/>
+
+            <ListView AutomationProperties.Name="Icons" ItemsSource="{Binding ViewModel.DisplayedIcons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectedItem="{Binding ViewModel.SelectedIcon}" SelectionMode="Single" >
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+                            <Setter Property="FocusVisualStyle" Value="{StaticResource IconsListViewItemFocusVisualStyle}" />
+                            <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border x:Name="Border"
+                                            Margin="5" Padding="0"
+                                            HorizontalAlignment="Center"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{TemplateBinding Border.CornerRadius}">
+                                            <ContentPresenter
+                                                Margin="-4"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsEnabled" Value="True" />
+                                                    <Condition Property="IsMouseOver" Value="True" />
+                                                </MultiTrigger.Conditions>
+                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ListViewItemBackgroundPointerOver}" />
+                                            </MultiTrigger>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ListViewItemPillFillBrush}" />
+                                                <Setter TargetName="Border" Property="BorderThickness" Value="2" />
+                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ListViewItemBackgroundPointerOver}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="4" CornerRadius="8" Background="{DynamicResource ButtonBackground}">
+                                <Grid Width="96" Height="96" ToolTip="{Binding Name}" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ListView>
+
+            <Grid Grid.Column="1" Grid.Row="0" Background="{DynamicResource ButtonBackground}">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical" Margin="16">
+                        <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Icon Name"/>
+                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}" Tag="Icon Name"/>
+                        <TextBlock Text="Unicode point"/>
+                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}" Tag="Unicode Point"/>
+                        <TextBlock Text="Text glyph"/>
+                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}" Tag="Text Glyph"/>
+                        <TextBlock Text="Code glyph"/>
+                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}" Tag="Code Glyph"/>
+                        <TextBlock Text="Tags"
+                                    Visibility="{Binding ElementName=TagsItemsControl, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <ItemsControl x:Name="TagsItemsControl"
+                                        ItemsSource="{Binding ViewModel.SelectedIcon.Tags}"
+                                        Margin="0,0,0,12"
+                                        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    <WrapPanel />
                                 </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
-                                    <Setter Property="AutomationProperties.Name" Value="{Binding Name, Mode=OneWay}"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="4" CornerRadius="8" Background="{DynamicResource ButtonBackground}">
-                                        <Grid Width="96" Height="96" ToolTip="{Binding Name}" >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                            <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
-                                        </Grid>
-                                    </Border>
+                                    <Button Style="{StaticResource IconTagChipButtonStyle}"
+                                            Command="{Binding ViewModel.ApplyTagFilterCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                            CommandParameter="{Binding}">
+                                        <TextBlock Text="{Binding}"
+                                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                                    </Button>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                        </ListView>
-
-                    </Grid>
-                    <Grid Grid.Column="1" Background="{DynamicResource ButtonBackground}">
-                        <ScrollViewer>
-                            <StackPanel Orientation="Vertical" Margin="16">
-                                <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                <TextBlock Text="Icon Name"/>
-                                <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}" Tag="Icon Name"/>
-                                <TextBlock Text="Unicode point"/>
-                                <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}" Tag="Unicode Point"/>
-                                <TextBlock Text="Text glyph"/>
-                                <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}" Tag="Text Glyph"/>
-                                <TextBlock Text="Code glyph"/>
-                                <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}" Tag="Code Glyph"/>
-                                <TextBlock Text="Tags"
-                                           Visibility="{Binding ElementName=TagsItemsControl, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                <ItemsControl x:Name="TagsItemsControl"
-                                              ItemsSource="{Binding ViewModel.SelectedIcon.Tags}"
-                                              Margin="0,0,0,12"
-                                              Visibility="{Binding RelativeSource={RelativeSource Self}, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Button Style="{StaticResource IconTagChipButtonStyle}"
-                                                    Command="{Binding ViewModel.ApplyTagFilterCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                                                    CommandParameter="{Binding}">
-                                                <TextBlock Text="{Binding}"
-                                                           Style="{StaticResource CaptionTextBlockStyle}"
-                                                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                                            </Button>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <TextBlock Text="XAML"/>
-                                <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;{{StaticResource SymbolThemeFontFamily}}&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
-                                <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" Tag="XAML Code"/>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
-                </Grid>
+                        </ItemsControl>
+                        <TextBlock Text="XAML"/>
+                        <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;{{StaticResource SymbolThemeFontFamily}}&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
+                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" Tag="XAML Code"/>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
-        </ScrollViewer>
+
+        </Grid>
+        
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Style="{StaticResource PaginationButtonStyle}" Command="{Binding ViewModel.PreviousPageCommand}" Margin="0,0,8,0" Padding="8" ToolTip="Previous Page">
+                    <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xF08D;" FontSize="12"/>
+                </Button>
+                <TextBlock Text="{Binding ViewModel.CurrentPage, StringFormat='Page {0} of'}" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBlock Text="{Binding ViewModel.TotalPages}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                <Button Style="{StaticResource PaginationButtonStyle}" Command="{Binding ViewModel.NextPageCommand}" Padding="8" ToolTip="Next Page">
+                    <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xF08F;" FontSize="12"/>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="Icons per page" Margin="10,0,0,0"
+                           VerticalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding ViewModel.PageSizeOptions}" 
+                          SelectedIndex="{Binding ViewModel.SelectedPageSizeIndex}" 
+                          AutomationProperties.Name="Icons per page" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
