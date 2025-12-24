@@ -43,6 +43,15 @@
                 "Description": "Guide showing how to use spacing in your app.",
                 "ImagePath": "Assets/ControlImages/CompactSizing.png"
             },
+          {
+            "UniqueId": "Geometry",
+            "Title": "Geometry",
+            "PageName": "GeometryPage",
+            "IconGlyph": "\uE743",
+            "IsNew": true,
+            "Description": "Corner radius standards for your app.",
+            "ImagePath": "Assets/ControlImages/Border.png"
+          },
             {
                 "UniqueId": "Icons",
                 "Title": "Icons",
