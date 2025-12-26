@@ -18,14 +18,14 @@
     <Window.Resources>
         <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
 
-        <Style x:Key="TitleBarDefaultButtonStyle" TargetType="Button">
+        <Style x:Key="BorderlessButtonStyle" TargetType="Button">
             <Setter Property="MinWidth" Value="48" />
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Border.CornerRadius" Value="{StaticResource ControlCornerRadius}" />
             <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -34,6 +34,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding Border.CornerRadius}"
                             SnapsToDevicePixels="True">
                             <ContentPresenter
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -46,6 +47,9 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource ControlAltFillColorTertiaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
                 </Trigger>
                 <MultiDataTrigger>
@@ -57,6 +61,11 @@
                     <Setter Property="Foreground" Value="{DynamicResource SystemColorHighlightTextColorBrush}" />
                 </MultiDataTrigger>
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TitleBarDefaultButtonStyle" BasedOn="{StaticResource BorderlessButtonStyle}" TargetType="Button">
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+            <Setter Property="Border.CornerRadius" Value="0" />
         </Style>
 
         <Style x:Key="TitleBarDefaultCloseButtonStyle" BasedOn="{StaticResource TitleBarDefaultButtonStyle}" TargetType="Button">
@@ -76,6 +85,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+    
     <Border x:Name="HighContrastBorder" BorderBrush="Transparent" BorderThickness="8 1 8 8">
         <Grid x:Name="MainGrid">
             <Grid.RowDefinitions>
@@ -97,22 +107,16 @@
 
                 <Button
                     x:Name="BackButton"
-                    Grid.Column="0"
-                    Height="32"
-                    Width="40"
-                    Margin="4,0"
+                    Height="36"
+                    MinWidth="36"
+                    Margin="8,0"
                     VerticalAlignment="Center"
                     AutomationProperties.Name="Back"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
+                    Style="{StaticResource BorderlessButtonStyle}"
                     Command="{Binding ViewModel.BackCommand}"
                     IsEnabled="{Binding ViewModel.CanNavigateback}"
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     ToolTipService.ToolTip="Back">
-                    <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Transparent" />
-                        <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
-                    </Button.Resources>
                     <TextBlock
                         VerticalAlignment="Center"
                         FontFamily="{StaticResource SymbolThemeFontFamily}"
@@ -242,20 +246,27 @@
                     </TreeView>
 
                     <DockPanel Grid.Row="2">
-                        <Button
-                            x:Name="SettingsButton"
-                            Width="250"
-                            Margin="10"
-                            HorizontalContentAlignment="Left"
-                            AutomationProperties.Name="Settings"
-                            Command="{Binding ViewModel.SettingsCommand}"
-                            Click="SettingsButton_Click"
-                            DockPanel.Dock="Bottom">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="SettingsIcon" Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE713;</TextBlock>
-                                <TextBlock Margin="8,0,0,0" Text="Settings" />
-                            </StackPanel>
-                        </Button>
+                        <StackPanel Orientation="Vertical" Margin="8,10,0,10">
+                            <Separator />
+                            <Button
+                                x:Name="SettingsButton"
+                                Width="250"
+                                Height="36"
+                                Margin="0,4,0,0"
+                                Padding="{StaticResource ButtonPadding}"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center"
+                                AutomationProperties.Name="Settings"
+                                Command="{Binding ViewModel.SettingsCommand}"
+                                Style="{StaticResource BorderlessButtonStyle}"
+                                Click="SettingsButton_Click"
+                                DockPanel.Dock="Bottom">
+                                <StackPanel Orientation="Horizontal" Margin="11,0,0,0">
+                                    <TextBlock x:Name="SettingsIcon" FontFamily="{StaticResource SymbolThemeFontFamily}" VerticalAlignment="Center">&#xE713;</TextBlock>
+                                    <TextBlock Margin="8,0,0,0" Text="Settings" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </DockPanel>
                 </Grid>
                 <Border
