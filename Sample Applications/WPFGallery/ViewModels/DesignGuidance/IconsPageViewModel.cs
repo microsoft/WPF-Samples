@@ -34,9 +34,9 @@ namespace WPFGallery.ViewModels
         private int _totalPages = 1;
 
         [ObservableProperty]
-        private int _selectedPageSizeIndex = 2; // Default to 500
+        private int _selectedPageSizeIndex = 1; // Default to 250
 
-        public List<string> PageSizeOptions { get; } = ["100", "200", "500", "1000", "All"];
+        public List<string> PageSizeOptions { get; } = ["100", "250", "500", "1000", "All"];
 
         private int PageSize => SelectedPageSizeIndex == 4 ? int.MaxValue : int.Parse(PageSizeOptions[SelectedPageSizeIndex]);
 
