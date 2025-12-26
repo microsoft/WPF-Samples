@@ -98,17 +98,13 @@
                 <Button
                     x:Name="BackButton"
                     Grid.Column="0"
-                    Height="32"
-                    Width="40"
                     Margin="4,0"
                     VerticalAlignment="Center"
                     AutomationProperties.Name="Back"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
                     Command="{Binding ViewModel.BackCommand}"
                     IsEnabled="{Binding ViewModel.CanNavigateback}"
-                    WindowChrome.IsHitTestVisibleInChrome="True"
-                    ToolTipService.ToolTip="Back">
+                    ToolTipService.ToolTip="Back"
+                    Style="{StaticResource TitleBarDefaultButtonStyle}">
                     <Button.Resources>
                         <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Transparent" />
                         <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
