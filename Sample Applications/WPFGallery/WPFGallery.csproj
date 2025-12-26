@@ -21,19 +21,20 @@
     	<Resource Include="Assets\ControlImages\*" />
     	<Resource Include="Assets\HomeHeaderTiles\*" />
 		<Resource Include="Assets\README_Images\*" />
-		<Resource Include="Assets\WPFGalleryPreviewIcon.png" />
+		<Resource Include="Assets\UserDashboard\*" />
+		<Resource Include="Assets\AppIcons\*" />
+		<Resource Include="Assets\Design\*" />
+
 		<Resource Include="Assets\win11-dashboard.png" />
 		<Resource Include="Assets\win11-dashboard.light.png" />
-		<Resource Include="Assets\UserDashboard\*" />
-		<Resource Include="Assets\Design\*" />
 	</ItemGroup>
 
 	<PropertyGroup>
-		<ApplicationIcon>Assets\WPFGalleryPreviewIcon.ico</ApplicationIcon>
+		<ApplicationIcon>Assets\AppIcons\WPFGallery.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Include="Assets\WPFGalleryPreviewIcon.ico" />
+	  <Content Include="Assets\AppIcons\WPFGallery.ico" />
 	  <EmbeddedResource Include="Models\IconsData.json" />
 	  <EmbeddedResource Include="Models\ControlsInfoData.json" />
 	</ItemGroup>

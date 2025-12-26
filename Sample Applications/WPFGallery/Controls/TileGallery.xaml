@@ -27,7 +27,7 @@
                             Link="https://learn.microsoft.com/windows/apps/get-started/"
                             Margin="24 0 6 0">
                     <local:HeaderTile.Source>
-                        <Image Source="pack://application:,,,/Assets/HomeHeaderTiles/WPFGallery-Icon.ico" />
+                        <Image Source="pack://application:,,,/Assets/AppIcons/WPFGallery_48px.png" />
                     </local:HeaderTile.Source>
                 </local:HeaderTile>
                 <local:HeaderTile

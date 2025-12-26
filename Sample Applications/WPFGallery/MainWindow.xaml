@@ -138,13 +138,13 @@
                     <Image
                         Width="20"
                         VerticalAlignment="Center"
-                        Source="pack://application:,,,/Assets/WPFGalleryPreviewIcon.png" />
+                        Source="pack://application:,,,/Assets/AppIcons/WPFGallery_48px.png" />
                     <TextBlock
                         Margin="16,0,0,0"
                         VerticalAlignment="Center"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         AutomationProperties.HeadingLevel="Level1"
-                        Text="WPF Gallery Preview" />
+                        Text="WPF Gallery" />
                 </StackPanel>
 
                 <Button

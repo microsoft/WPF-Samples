@@ -16,7 +16,7 @@ The new themes adapt to system color and accent adjustments too. As depicted bel
 ## Further Information
 
 Developers need to do the following changes in order to use this application:
-1. Download the latest .NET 9 Preview 4 and above available [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
+1. Download the latest .NET 9 or above available [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 2. (Optional) Update `sdk`'s `version` to latest 9 preview, or the one available in local system, in `global.json` present in the repository root.
 
 Additionally, if developer wants to use the locally built WPF binaries, the following steps in addition to the above 2 steps needs to be done:
