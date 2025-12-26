@@ -90,7 +90,7 @@
         "Title": "Basic Input",
         "PageName": "BasicInputPage",
         "IconGlyph": "\uE73A",
-        "Description": "Button, CheckBox, ComboBox, RadioButton, Slider.",
+        "Description": "Button, CheckBox, ComboBox, RadioButton, Slider",
         "ImagePath": "Assets/ControlImages/Button.png",
         "IsGroup": true,
         "Items": [
@@ -136,7 +136,7 @@
         "Title": "Collections",
         "PageName": "CollectionsPage",
         "IconGlyph": "\uE80A",
-        "Description": "DataGrid, ListBox, ListView, TreeView.",
+        "Description": "DataGrid, ListBox, ListView, TreeView",
         "ImagePath": "Assets/ControlImages/DataGrid.png",
         "IsGroup": true,
         "Items": [
@@ -176,7 +176,7 @@
         "Title": "Date & Calendar",
         "PageName": "DateAndTimePage",
         "IconGlyph": "\uEC92",
-        "Description": "Calendar, DatePicker.",
+        "Description": "Calendar, DatePicker",
         "ImagePath": "Assets/ControlImages/CalendarView.png",
         "IsGroup": true,
         "Items": [
@@ -201,7 +201,7 @@
         "Title": "Layout",
         "PageName": "LayoutPage",
         "IconGlyph": "\uF246",
-        "Description": "Expander",
+        "Description": "Expander,Grid, ResizeGrip, GridSplitter, GroupBox, StackPanel, Border",
         "ImagePath": "Assets/ControlImages/Expander.png",
         "IsGroup": true,
         "Items": [
@@ -267,7 +267,7 @@
         "Title": "Navigation",
         "PageName": "NavigationPage",
         "IconGlyph": "\uE700",
-        "Description": "Menu, TabControl.",
+        "Description": "Menu, TabControl, Frame, NavigationWindow",
         "ImagePath": "Assets/ControlImages/Pivot.png",
         "IsGroup": true,
         "Items": [
@@ -308,7 +308,7 @@
         "Title": "Status & Info",
         "PageName": "StatusAndInfoPage",
         "IconGlyph": "\uE8F2",
-        "Description": "ProgressBar, ToolTip.",
+        "Description": "ProgressBar, ToolTip",
         "ImagePath": "Assets/ControlImages/ProgressBar.png",
         "IsGroup": true,
         "Items": [
@@ -333,7 +333,7 @@
         "Title": "Text",
         "PageName": "TextPage",
         "IconGlyph": "\uE8D2",
-        "Description": "Label, TextBox, TextBlock, RichTextEdit, PasswordBox.",
+        "Description": "Label, TextBox, TextBlock, RichTextEdit, PasswordBox",
         "ImagePath": "Assets/ControlImages/TextBlock.png",
         "IsGroup": true,
         "Items": [
@@ -387,7 +387,7 @@
         "Title": "System",
         "PageName": "SystemPage",
         "IconGlyph": "\uE7F8",
-        "Description": "File and Folder Dialogs, MessageBox.",
+        "Description": "File and Folder Dialogs, MessageBox, Clipboard",
         "ImagePath": "Assets/ControlImages/FilePicker.png",
         "IsGroup": true,
         "Items": [
