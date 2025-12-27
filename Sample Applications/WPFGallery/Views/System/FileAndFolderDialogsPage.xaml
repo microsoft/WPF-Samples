@@ -71,9 +71,11 @@
                             Text="{Binding ViewModel.FileContent, UpdateSourceTrigger=PropertyChanged}"
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
-                            MinHeight="100"
+                            MinHeight="80"
                             Margin="0,0,0,10"
-                            VerticalScrollBarVisibility="Auto" />
+                            VerticalScrollBarVisibility="Auto"
+                            AutomationProperties.Name="Save File Text Box"
+                            AutomationProperties.HelpText="The text in the textbox will be saved to a file on button click"/>
                         <Button 
                             Content="Save a file" 
                             Click="SaveFileButton_Click"
