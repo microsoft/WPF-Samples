@@ -22,7 +22,8 @@
                     <controls:ControlExample
                         Margin="10"
                         HeaderText="A Navigation Window"
-                        XamlCode="">
+                        XamlCode="&lt;NavigationWindow&#x0a;    Width=&quot;800&quot;&#x0a;    Height=&quot;450&quot;&#x0a;    Source=&quot;/Views/Navigation/Page1.xaml&quot; /&gt;"
+                        CSharpCode="private void OpenNavigationWindow_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    NavigationWindow window = new NavigationWindow()&#x0a;    {&#x0a;        Width = 800,&#x0a;        Height = 450,&#x0a;        Source = new Uri(&quot;/Views/Navigation/Page1.xaml&quot;, UriKind.Relative)&#x0a;    };&#x0a;    window.Show();&#x0a;}">
                         <Button 
                             x:Name="OpenNavigationWindow"
                             VerticalAlignment="Center"
