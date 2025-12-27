@@ -281,7 +281,7 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Focusable="False" Grid.Row="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="{Binding Character}" AutomationProperties.Name="{Binding Name, StringFormat='{}{0} Icon'}" FontSize="28" Width="28" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Focusable="False" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="6,-4,6,8"/>
                                 </Grid>
                             </Border>
@@ -293,7 +293,8 @@
                 <ScrollViewer>
                     <StackPanel Orientation="Vertical" Margin="16">
                         <TextBlock Text="{Binding ViewModel.SelectedIcon.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" 
+                                   AutomationProperties.Name="{Binding ViewModel.SelectedIcon.Name, StringFormat='{}{0} Icon'}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock Text="Icon Name"/>
                         <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}" Tag="Icon Name"/>
                         <TextBlock Text="Unicode point"/>
@@ -307,7 +308,8 @@
                         <ItemsControl x:Name="TagsItemsControl"
                                         ItemsSource="{Binding ViewModel.SelectedIcon.Tags}"
                                         Margin="0,0,0,12"
-                                        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                        AutomationProperties.Name="Selected Icon Tags">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel />
@@ -317,6 +319,7 @@
                                 <DataTemplate>
                                     <Button Style="{StaticResource IconTagChipButtonStyle}"
                                             Command="{Binding ViewModel.ApplyTagFilterCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                            AutomationProperties.Name="{Binding}"
                                             CommandParameter="{Binding}">
                                         <TextBlock Text="{Binding}"
                                                     Style="{StaticResource CaptionTextBlockStyle}"
@@ -340,12 +343,14 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Style="{StaticResource PaginationButtonStyle}" Command="{Binding ViewModel.PreviousPageCommand}" Margin="0,0,8,0" Padding="8" ToolTip="Previous Page">
+                <Button Style="{StaticResource PaginationButtonStyle}" Command="{Binding ViewModel.PreviousPageCommand}" Margin="0,0,8,0" Padding="8" ToolTip="Previous Page"
+                        AutomationProperties.Name="Previous Page">
                     <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xF08D;" FontSize="12"/>
                 </Button>
                 <TextBlock Text="{Binding ViewModel.CurrentPage, StringFormat='Page {0} of'}" VerticalAlignment="Center" Margin="0,0,4,0"/>
                 <TextBlock Text="{Binding ViewModel.TotalPages}" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                <Button Style="{StaticResource PaginationButtonStyle}" Command="{Binding ViewModel.NextPageCommand}" Padding="8" ToolTip="Next Page">
+                <Button Style="{StaticResource PaginationButtonStyle}" Command="{Binding ViewModel.NextPageCommand}" Padding="8" ToolTip="Next Page"
+                        AutomationProperties.Name="Next Page">
                     <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xF08F;" FontSize="12"/>
                 </Button>
             </StackPanel>
