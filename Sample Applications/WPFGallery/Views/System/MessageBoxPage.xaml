@@ -52,7 +52,7 @@
                     CSharpCode="private void ShowCustomTitleButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    var result = MessageBox.Show(&#x0a;        &quot;This is a detailed description of what happened or what action is needed.&quot;,&#x0a;        &quot;Custom Title&quot;);&#x0a;}">
                     <StackPanel>
                         <Button 
-                            Content="Show MessageBox" 
+                            Content="Custom MessageBox"
                             Click="ShowCustomTitleButton_Click"
                             Margin="0,0,0,10" />
                         <TextBlock 
@@ -74,6 +74,7 @@
                         <StackPanel Grid.Column="0">
                             <Button 
                                 Content="Show MessageBox" 
+                                AutomationProperties.Name="MessageBox with Different Buttons"
                                 Click="ShowButtonFromComboBox_Click"
                                 Margin="0,0,0,10" />
                             <TextBlock 
@@ -84,6 +85,7 @@
                             <TextBlock Text="Button Type:" Margin="0,0,0,5" />
                             <ComboBox 
                                 x:Name="ButtonTypeComboBox"
+                                AutomationProperties.Name="MessageBox Button Selector"
                                 SelectedIndex="{Binding ViewModel.SelectedButtonIndex}"
                                 MinWidth="150">
                                 <ComboBoxItem Content="OK" />
@@ -111,6 +113,7 @@
                         <StackPanel Grid.Column="0">
                             <Button 
                                 Content="Show MessageBox" 
+                                AutomationProperties.Name="MessageBox with different images"
                                 Click="ShowImageFromComboBox_Click"
                                 Margin="0,0,0,10" />
                             <TextBlock 
@@ -121,6 +124,7 @@
                             <TextBlock Text="Icon Type:" Margin="0,0,0,5" />
                             <ComboBox 
                                 x:Name="ImageTypeComboBox"
+                                AutomationProperties.Name="MessageBox Image Selector"
                                 SelectedIndex="{Binding ViewModel.SelectedImageIndex}"
                                 MinWidth="150">
                                 <ComboBoxItem Content="None" />
