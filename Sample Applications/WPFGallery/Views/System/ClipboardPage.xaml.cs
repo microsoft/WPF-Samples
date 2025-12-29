@@ -92,5 +92,16 @@ namespace WPFGallery.Views
                 ViewModel.PasteImageStatus = "No image in clipboard.";
             }
         }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = e.Uri.AbsoluteUri,
+                UseShellExecute = true
+            });
+
+            e.Handled = true;
+        }
     }
 }

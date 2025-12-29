@@ -23,11 +23,49 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+        
+        <controls:PageHeader Grid.Row="0" Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+        
+        <Border Grid.Row="1" 
+                Background="{DynamicResource SubtleFillColorSecondaryBrush}" 
+                BorderBrush="{DynamicResource AccentFillColorDefaultBrush}" 
+                BorderThickness="1" 
+                CornerRadius="4"
+                Padding="16,12"
+                Margin="0,0,0,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" 
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           FontSize="16"
+                           Text="&#xE946;"
+                           Foreground="{DynamicResource AccentFillColorDefaultBrush}"
+                           VerticalAlignment="Top"
+                           Margin="0,2,12,0" />
+                
+                <TextBlock Grid.Column="1" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+                    <Run FontWeight="SemiBold">Note:</Run>
+                    <Run Text=" Since .NET 9, few of the Clipboard APIs have become obsolete. For more information please read " />
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/dotnet/desktop/winforms/migration/clipboard-dataobject-net10" 
+                               RequestNavigate="Hyperlink_RequestNavigate">
+                        <Run Text="here" />
+                    </Hyperlink>
+                    <Run Text="." />
+                </TextBlock>
+            </Grid>
+        </Border>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+        <ScrollViewer Grid.Row="2" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
                     Margin="10"
