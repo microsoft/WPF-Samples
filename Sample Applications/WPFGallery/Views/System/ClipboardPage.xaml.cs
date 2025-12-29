@@ -2,6 +2,7 @@ using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 using WPFGallery.ViewModels;
 
@@ -91,6 +92,17 @@ namespace WPFGallery.Views
                 PastedImage.Source = null;
                 ViewModel.PasteImageStatus = "No image in clipboard.";
             }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = e.Uri.AbsoluteUri,
+                UseShellExecute = true
+            });
+
+            e.Handled = true;
         }
     }
 }

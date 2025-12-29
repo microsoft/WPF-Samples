@@ -23,11 +23,50 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+        
+        <controls:PageHeader Grid.Row="0" Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False" />
+        
+        <Border Grid.Row="1" 
+                Background="{DynamicResource SubtleFillColorSecondaryBrush}" 
+                BorderBrush="{DynamicResource AccentFillColorDefaultBrush}" 
+                BorderThickness="1" 
+                CornerRadius="4"
+                Padding="16,12"
+                Margin="0,0,0,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <Viewbox Grid.Column="0" 
+                         Width="16" 
+                         Height="16" 
+                         VerticalAlignment="Top"
+                         Margin="0,2,12,0">
+                    <Path Fill="{DynamicResource AccentFillColorDefaultBrush}" 
+                          Data="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </Viewbox>
+                
+                <TextBlock Grid.Column="1" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+                    <Run FontWeight="SemiBold">Note:</Run>
+                    <Run Text=" Since .NET 9, few of the Clipboard APIs have become obsolete. For more information please read " />
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/dotnet/desktop/winforms/migration/clipboard-dataobject-net10" 
+                               RequestNavigate="Hyperlink_RequestNavigate">
+                        <Run Text="here" />
+                    </Hyperlink>
+                    <Run Text="." />
+                </TextBlock>
+            </Grid>
+        </Border>
 
-        <ScrollViewer Grid.Row="1" Margin="0,0,0,24" Padding="0,0,24,0">
+        <ScrollViewer Grid.Row="2" Margin="0,0,0,24" Padding="0,0,24,0">
             <StackPanel Margin="0,0,0,24">
                 <controls:ControlExample
                     Margin="10"
