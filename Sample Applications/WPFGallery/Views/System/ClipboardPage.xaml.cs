@@ -84,11 +84,13 @@ namespace WPFGallery.Views
             {
                 BitmapSource image = Clipboard.GetImage();
                 PastedImage.Source = image;
+                PastedImage.Visibility = Visibility.Visible;
                 ViewModel.PasteImageStatus = $"Image pasted! Size: {image.PixelWidth}x{image.PixelHeight}";
             }
             else
             {
                 PastedImage.Source = null;
+                PastedImage.Visibility = Visibility.Hidden;
                 ViewModel.PasteImageStatus = "No image in clipboard.";
             }
         }

@@ -22,7 +22,8 @@
                     <controls:ControlExample
                         Margin="10"
                         HeaderText="A ResizeGrip"
-                        XamlCode="">
+                        XamlCode="&lt;Window&#x0a;    Width=&quot;500&quot;&#x0a;    Height=&quot;300&quot;&#x0a;    ResizeMode=&quot;CanResizeWithGrip&quot;&gt;&#x0a;    &lt;TextBlock&#x0a;        Text=&quot;ResizeGrip is present at the bottom right corner of the window&quot;&#x0a;        HorizontalAlignment=&quot;Center&quot;&#x0a;        VerticalAlignment=&quot;Center&quot;&#x0a;        FontSize=&quot;16&quot; /&gt;&#x0a;&lt;/Window&gt;"
+                        CSharpCode="private void OpenResizeGripWindow_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    Window window = new Window()&#x0a;    {&#x0a;        Width = 500,&#x0a;        Height = 300,&#x0a;        ResizeMode = ResizeMode.CanResizeWithGrip,&#x0a;        Content = new TextBlock&#x0a;        {&#x0a;            Text = &quot;ResizeGrip is present at the bottom right corner of the window&quot;,&#x0a;            HorizontalAlignment = HorizontalAlignment.Center,&#x0a;            VerticalAlignment = VerticalAlignment.Center,&#x0a;            FontSize = 16&#x0a;        }&#x0a;    };&#x0a;    window.Show();&#x0a;}">
                         <StackPanel Orientation="Vertical" Grid.Row="1">
                             <TextBlock Margin="0 10 0 40">
                                 Resize grip control is only used along with a Window in WPF. 

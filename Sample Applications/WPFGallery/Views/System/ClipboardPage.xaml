@@ -46,6 +46,7 @@
                            FontFamily="{StaticResource SymbolThemeFontFamily}"
                            FontSize="16"
                            Text="&#xE946;"
+                           AutomationProperties.Name="Info"
                            Foreground="{DynamicResource AccentFillColorDefaultBrush}"
                            VerticalAlignment="Top"
                            Margin="0,2,12,0" />
@@ -75,7 +76,8 @@
                     <StackPanel>
                         <TextBox 
                             x:Name="CopyTextBox"
-                            Text="Hello, Clipboard!" 
+                            Text="Hello, Clipboard!"
+                            AutomationProperties.Name="Copy To Clipboard TextBox"
                             Margin="0,0,0,10"
                             Width="300"
                             HorizontalAlignment="Left" />
@@ -103,6 +105,7 @@
                         <TextBox 
                             x:Name="PasteTextBox"
                             Text="{Binding ViewModel.PastedText, Mode=TwoWay}"
+                            AutomationProperties.Name="Paste content textbox"
                             IsReadOnly="True"
                             TextWrapping="Wrap"
                             MinHeight="60"
@@ -185,7 +188,8 @@
                             HorizontalAlignment="Left">
                             <Image 
                                 x:Name="PastedImage"
-                                Stretch="Uniform" />
+                                Stretch="Uniform" 
+                                Visibility="Collapsed"/>
                         </Border>
                         <TextBlock 
                             Text="{Binding ViewModel.PasteImageStatus}"
