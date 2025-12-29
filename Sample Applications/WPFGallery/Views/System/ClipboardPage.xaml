@@ -46,6 +46,7 @@
                            FontFamily="{StaticResource SymbolThemeFontFamily}"
                            FontSize="16"
                            Text="&#xE946;"
+                           AutomationProperties.Name="Info"
                            Foreground="{DynamicResource AccentFillColorDefaultBrush}"
                            VerticalAlignment="Top"
                            Margin="0,2,12,0" />
