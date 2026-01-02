@@ -41,8 +41,7 @@ public partial class MainWindow : Window
                 GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = ResizeMode == ResizeMode.NoResize ? default : new Thickness(4),
                 UseAeroCaptionButtons = true,
-                NonClientFrameEdges = SystemParameters.HighContrast ? NonClientFrameEdges.None :
-                    NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left
+                NonClientFrameEdges = GetPrefferedNonClientFrameEdges()
             }
         );
 
@@ -105,23 +104,18 @@ public partial class MainWindow : Window
             HighContrastBorder.SetResourceReference(BorderBrushProperty, IsActive ? SystemColors.ActiveCaptionBrushKey : 
                                                                                     SystemColors.InactiveCaptionBrushKey);
             HighContrastBorder.BorderThickness = new Thickness(8, 1, 8, 8);
-            
-            WindowChrome wc = WindowChrome.GetWindowChrome(this);
-            if(wc is not null)
-            {
-                wc.NonClientFrameEdges = NonClientFrameEdges.None;
-            }
         }
         else
         {
             HighContrastBorder.BorderBrush = Brushes.Transparent;
             HighContrastBorder.BorderThickness = new Thickness(0);
+        }
 
-            var wc = WindowChrome.GetWindowChrome(this);
+        if(Utility.IsWindows11OrGreater())
+        {
+            WindowChrome wc = WindowChrome.GetWindowChrome(this);
             if(wc is not null)
-            {
-                wc.NonClientFrameEdges = NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
-            }
+                wc.NonClientFrameEdges = GetPrefferedNonClientFrameEdges();;
         }
     }
 
@@ -253,5 +247,13 @@ public partial class MainWindow : Window
             "Settings Page Opened",
             "ButtonClickedActivity"
         );
+    }
+
+    private NonClientFrameEdges GetPrefferedNonClientFrameEdges()
+    {
+        if (SystemParameters.HighContrast == true || Utility.IsWindows11OrGreater() == false)
+            return NonClientFrameEdges.None;
+
+        return NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
     }
 }

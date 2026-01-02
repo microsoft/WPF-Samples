@@ -39,7 +39,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 FontSize="16"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="{StaticResource SymbolThemeFontFamily}"
                 Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                 Text="&#xE8A7;" />
             <ContentPresenter

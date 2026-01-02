@@ -5,6 +5,14 @@ namespace WPFGallery.Helpers
 {
     internal static class Utility
     {
+        public static bool IsWindows11OrGreater()
+        {
+            var os = Environment.OSVersion;
+            var version = os.Version;
+
+            return (version.Major >= 10 && version.Build >= 22000);
+        }
+
         public static bool IsBackdropSupported()
         {
             var os = Environment.OSVersion;
