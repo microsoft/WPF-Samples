@@ -1,6 +1,8 @@
-﻿using System.Windows.Automation;
+﻿using System.Runtime.InteropServices;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls.Primitives;
+using System.Windows.Interop;
 using System.Windows.Navigation;
 using System.Windows.Shell;
 using Microsoft.Win32;
@@ -41,8 +43,7 @@ public partial class MainWindow : Window
                 GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = ResizeMode == ResizeMode.NoResize ? default : new Thickness(4),
                 UseAeroCaptionButtons = true,
-                NonClientFrameEdges = SystemParameters.HighContrast ? NonClientFrameEdges.None :
-                    NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left
+                NonClientFrameEdges = GetPreferredNonClientFrameEdges()
             }
         );
 
@@ -50,6 +51,7 @@ public partial class MainWindow : Window
         this.StateChanged += (s, e) => UpdateMainWindowVisuals();
         this.Activated += (s, e) => UpdateMainWindowVisuals();
         this.Deactivated += (s, e) => UpdateMainWindowVisuals();
+        this.Loaded += (_, _) => ApplyWindowDarkMode();
     }
 
     private void UpdateWindowBackground()
@@ -99,29 +101,26 @@ public partial class MainWindow : Window
         }
 
         UpdateTitleBarButtonsVisibility();
+        bool shouldForceEdgeNone = ShouldForceNonClientFrameEdgesNone();
     
         if(SystemParameters.HighContrast == true)
         {
             HighContrastBorder.SetResourceReference(BorderBrushProperty, IsActive ? SystemColors.ActiveCaptionBrushKey : 
                                                                                     SystemColors.InactiveCaptionBrushKey);
             HighContrastBorder.BorderThickness = new Thickness(8, 1, 8, 8);
-            
-            WindowChrome wc = WindowChrome.GetWindowChrome(this);
-            if(wc is not null)
-            {
-                wc.NonClientFrameEdges = NonClientFrameEdges.None;
-            }
         }
         else
         {
             HighContrastBorder.BorderBrush = Brushes.Transparent;
             HighContrastBorder.BorderThickness = new Thickness(0);
+        }
 
-            var wc = WindowChrome.GetWindowChrome(this);
-            if(wc is not null)
-            {
-                wc.NonClientFrameEdges = NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
-            }
+        var wc = WindowChrome.GetWindowChrome(this);
+        if (wc is not null)
+        {
+            wc.NonClientFrameEdges = shouldForceEdgeNone
+                ? NonClientFrameEdges.None
+                : NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
         }
     }
 
@@ -254,4 +253,61 @@ public partial class MainWindow : Window
             "ButtonClickedActivity"
         );
     }
+
+    private static NonClientFrameEdges GetPreferredNonClientFrameEdges()
+    {
+        return ShouldForceNonClientFrameEdgesNone()
+            ? NonClientFrameEdges.None
+            : NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
+    }
+
+    private static bool ShouldForceNonClientFrameEdgesNone()
+    {
+        return SystemParameters.HighContrast == true || IsWindows10WithLegacyChromeBehavior();
+    }
+
+    private static bool IsWindows10WithLegacyChromeBehavior()
+    {
+        return OperatingSystem.IsWindows() &&
+               OperatingSystem.IsWindowsVersionAtLeast(10) &&
+               !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 22000);
+    }
+
+    private void ApplyWindowDarkMode()
+    {
+        if (!IsImmersiveDarkModeSupported())
+        {
+            return;
+        }
+
+        var hwnd = new WindowInteropHelper(this).Handle;
+        if (hwnd == IntPtr.Zero)
+        {
+            return;
+        }
+
+        int darkModeEnabled = 1;
+        try
+        {
+            _ = DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ref darkModeEnabled, sizeof(int));
+        }
+        catch (DllNotFoundException)
+        {
+            // dwmapi.dll is unavailable on this system.
+        }
+        catch (EntryPointNotFoundException)
+        {
+            // The immersive dark mode attribute is not supported.
+        }
+    }
+
+    private static bool IsImmersiveDarkModeSupported()
+    {
+        return OperatingSystem.IsWindows() && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17763);
+    }
+
+    [DllImport("dwmapi.dll")]
+    private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+
+    private const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
 }
