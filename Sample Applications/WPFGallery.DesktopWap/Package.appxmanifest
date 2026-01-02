@@ -9,10 +9,10 @@
   <Identity
     Name="Microsoft.WPFGallery"
     Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
-    Version="1.0.10.0" />
+    Version="1.2.0.0" />
 
   <Properties>
-    <DisplayName>WPF Gallery Preview</DisplayName>
+    <DisplayName>WPF Gallery</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
@@ -30,8 +30,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="WPF Gallery Preview"
-        Description="WPF Gallery Preview"
+        DisplayName="WPF Gallery"
+        Description="WPF Gallery - Collection of controls, guidelines and samples to create great WPF apps"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
