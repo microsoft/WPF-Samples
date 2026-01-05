@@ -76,5 +76,15 @@ namespace WPFGallery.Views
                 IconsSearchBoxPlaceholder.Visibility = Visibility.Visible;
             }
         }
+
+        private void Open_SegoeFontDownloadPage(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://learn.microsoft.com/windows/apps/design/downloads/#fonts") { UseShellExecute = true });
+        }
+
+        private void Open_IconDesignGuidelinesPage(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring") { UseShellExecute = true });
+        }
     }
 }
