@@ -19,16 +19,6 @@
         <Style x:Key="LinkTextBlockStyle" TargetType="TextBlock">
             <Setter Property="Margin" Value="0,4,0,4" />
         </Style>
-        <Style x:Key="DefaultHyperlinkStyle" TargetType="Hyperlink">
-            <Setter Property="TextDecorations" Value="None" />
-            <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorSecondaryBrush}" />
-                    <Setter Property="TextDecorations" Value="Underline" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Page.Resources>
 
     <Grid x:Name="ContentPagePane" Height="Auto">
@@ -107,7 +97,7 @@
                         allowing developers to make full use of MessageBox in WPF without calling the Win32 API directly. Take a look at the API proposal
                         for complete details on what is added : 
                     </Run>
-                    <Hyperlink NavigateUri="https://github.com/dotnet/wpf/issues/9613">
+                    <Hyperlink Click="Open_MessageBoxAPISpecNET10">
                         [API Proposal]: Make additional MessageBoxButton and MessagBoxResult values available    
                     </Hyperlink>
                     <LineBreak/>
@@ -119,8 +109,7 @@
 
                 <TextBlock TextWrapping="Wrap" Margin="0 12 0 24">
                     <Run>See </Run>
-                    <Hyperlink Click="Open_WhatsNewPageNET10"
-                               Style="{DynamicResource DefaultHyperlinkStyle}">
+                    <Hyperlink Click="Open_WhatsNewPageNET10">
                         What's New in WPF for .NET 10
                     </Hyperlink>
                     <Run> for more details.</Run>
@@ -205,9 +194,7 @@
                     <LineBreak />
                     <LineBreak />
                     <Run>See </Run>
-                    <Hyperlink 
-                        Style="{StaticResource DefaultHyperlinkStyle}"
-                        Click="Open_UsingFluentInWPFPage">Using Fluent theme in WPF in .NET 9</Hyperlink>
+                    <Hyperlink Click="Open_UsingFluentInWPFPage">Using Fluent theme in WPF in .NET 9</Hyperlink>
                     <Run> for more information.</Run>
                 </TextBlock>
 
@@ -235,8 +222,7 @@
 
                 <TextBlock TextWrapping="Wrap" Margin="0 24 0 12">
                     <Run>See </Run>
-                    <Hyperlink Click="Open_WhatsNewPageNET9"
-                               Style="{DynamicResource DefaultHyperlinkStyle}">
+                    <Hyperlink Click="Open_WhatsNewPageNET9">
                         What's New in WPF for .NET 9
                     </Hyperlink>
                     <Run> for more details.</Run>

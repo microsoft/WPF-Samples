@@ -169,7 +169,7 @@
                 On Windows 11: There's nothing you need to do, the font comes with Windows.
                 <LineBreak />
                 On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+                <Hyperlink Click="Open_SegoeFontDownloadPage">here</Hyperlink> .
             </Span>
             <LineBreak/>
             <LineBreak/>
@@ -183,7 +183,9 @@
             </Span>
             <LineBreak/>
             <Span>
-                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
+                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so 
+                <Hyperlink Click="Open_IconDesignGuidelinesPage">
+                    layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
             </Span>
             <LineBreak/>
             <LineBreak/>

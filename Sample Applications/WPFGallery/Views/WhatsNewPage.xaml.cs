@@ -39,6 +39,11 @@ namespace WPFGallery.Views
             Process.Start(new ProcessStartInfo("https://learn.microsoft.com/en-in/dotnet/desktop/wpf/whats-new/net90") { UseShellExecute = true });
         }
 
+        private void Open_MessageBoxAPISpecNET10(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/dotnet/wpf/issues/9613") { UseShellExecute = true });
+        }
+
         private void NavigateToMessageBoxSample(object sender, RoutedEventArgs e)
         {
             ViewModel.Navigate(typeof(MessageBoxPage));
