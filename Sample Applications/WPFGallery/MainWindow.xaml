@@ -75,7 +75,7 @@
                     <Setter Property="Background" Value="#C42B1C" />
                     <Setter Property="Foreground" Value="White" />
                 </Trigger>
-                <Trigger Property="IsPressed" Value="True>
+                <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="#C83C31" />
                     <Setter Property="Foreground" Value="#EDBEBB" />
                 </Trigger>
