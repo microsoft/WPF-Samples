@@ -25,6 +25,7 @@ namespace WPFControls
         public MyControl()
         {
             InitializeComponent();
+            InitializeDefaultValues();
         }
 
         public FontWeight MyControlFontWeight
@@ -109,15 +110,15 @@ namespace WPFControls
 
         public event MyControlEventHandler OnButtonClick;
 
-        private void Init(object sender, EventArgs e)
+        private void InitializeDefaultValues()
         {
             //They all have the same style, so use nameLabel to set initial values.
             _fontWeight = nameLabel.FontWeight;
             _fontSize = nameLabel.FontSize;
             _fontFamily = nameLabel.FontFamily;
             _fontStyle = nameLabel.FontStyle;
-            _foreground = (SolidColorBrush) nameLabel.Foreground;
-            _background = (SolidColorBrush) rootElement.Background;
+            _foreground = (SolidColorBrush)nameLabel.Foreground;
+            _background = (SolidColorBrush)rootElement.Background;
         }
 
         private void ButtonClicked(object sender, RoutedEventArgs e)
