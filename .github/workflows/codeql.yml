@@ -33,7 +33,7 @@ jobs:
         global-json-file: global.json
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@v4
       with:
         languages: csharp
         queries: security-extended
@@ -47,6 +47,6 @@ jobs:
       run: dotnet build WPFSamples.sln --configuration Release --no-restore /p:Platform="Any CPU" /p:LangVersion=latest
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@v4
       with:
         category: "/language:csharp"
