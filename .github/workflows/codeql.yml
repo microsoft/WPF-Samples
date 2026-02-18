@@ -38,7 +38,6 @@ jobs:
 
     - name: Restore NuGet packages
       run: |
-        nuget restore WPFSamples.sln
         dotnet restore WPFSamples.sln
 
     - name: Build solution
