@@ -33,9 +33,13 @@ public partial class ListViewPageViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<Person> _basicListViewItems;
 
+    [ObservableProperty]
+    private ObservableCollection<Person> _gridViewItems;
+
     public ListViewPageViewModel()
     {
         _basicListViewItems = GeneratePersons();
+        _gridViewItems = GeneratePersons();
     }
 
     private ObservableCollection<Person> GeneratePersons()
