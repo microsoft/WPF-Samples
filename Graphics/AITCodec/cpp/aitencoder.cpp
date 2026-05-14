@@ -71,6 +71,7 @@ static HRESULT EndBlock(IStream *stream)
     // Remember where we are
     ULARGE_INTEGER curPos = { 0 };
 
+    LARGE_INTEGER zero = { 0 };
     result = stream->Seek(zero, STREAM_SEEK_CUR, &curPos);
     if (FAILED(result))
     {
