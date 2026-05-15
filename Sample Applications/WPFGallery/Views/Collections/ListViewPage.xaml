@@ -127,6 +127,33 @@
                         </StackPanel>
                     </Grid>
                 </controls:ControlExample>
+
+                <controls:ControlExample
+                    Margin="10,36,10,10"
+                    HeaderText="ListView with GridView."
+                    XamlCode="&lt;ListView&#10;&#9;Height=&quot;280&quot;&#10;&#9;ItemsSource=&quot;{Binding ViewModel.GridViewItems}&quot;&gt;&#10;&#9;&lt;ListView.View&gt;&#10;&#9;&#9;&lt;GridView&gt;&#10;&#9;&#9;&#9;&lt;GridViewColumn&#10;&#9;&#9;&#9;&#9;Header=&quot;First Name&quot;&#10;&#9;&#9;&#9;&#9;Width=&quot;150&quot;&#10;&#9;&#9;&#9;&#9;DisplayMemberBinding=&quot;{Binding FirstName}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;GridViewColumn&#10;&#9;&#9;&#9;&#9;Header=&quot;Last Name&quot;&#10;&#9;&#9;&#9;&#9;Width=&quot;150&quot;&#10;&#9;&#9;&#9;&#9;DisplayMemberBinding=&quot;{Binding LastName}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;GridViewColumn&#10;&#9;&#9;&#9;&#9;Header=&quot;Company&quot;&#10;&#9;&#9;&#9;&#9;Width=&quot;200&quot;&#10;&#9;&#9;&#9;&#9;DisplayMemberBinding=&quot;{Binding Company}&quot; /&gt;&#10;&#9;&#9;&lt;/GridView&gt;&#10;&#9;&lt;/ListView.View&gt;&#10;&lt;/ListView&gt;">
+                    <ListView
+                        Height="280"
+                        AutomationProperties.Name="ListView with GridView"
+                        ItemsSource="{Binding ViewModel.GridViewItems}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                    Header="First Name"
+                                    Width="150"
+                                    DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn
+                                    Header="Last Name"
+                                    Width="150"
+                                    DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn
+                                    Header="Company"
+                                    Width="200"
+                                    DisplayMemberBinding="{Binding Company}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </controls:ControlExample>
             </StackPanel>
         </ScrollViewer>
     </Grid>
