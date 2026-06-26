@@ -16,9 +16,14 @@
             Margin="7"
             Padding="20,10"
             HorizontalContentAlignment="Left"
-            AutomationProperties.Name="{Binding Title, StringFormat='{}{0}Page'}"
             Command="{Binding ViewModel.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
             CommandParameter="{Binding PageType}">
+            <AutomationProperties.Name>
+                <MultiBinding StringFormat="{}{0}Page. {1}">
+                    <Binding Path="Title" />
+                    <Binding Path="Description" />
+                </MultiBinding>
+            </AutomationProperties.Name>
             <StackPanel Orientation="Horizontal">
                 <Image Source="{Binding ImageSource}"
                         Width="50"
