@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="WPFGallery.Views.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -57,7 +57,7 @@
                                 Margin="12"
                                 Orientation="Vertical">
                                 <TextBlock Text="App theme" FontSize="14"/>
-                                <TextBlock Opacity="0.7" FontSize="12" Style="{StaticResource CaptionTextBlockStyle}">Select which app theme to display</TextBlock>
+                                <TextBlock Opacity="{DynamicResource DeemphasizedTextOpacity}" FontSize="12" Style="{StaticResource CaptionTextBlockStyle}">Select which app theme to display</TextBlock>
                             </StackPanel>
 
                         
@@ -93,7 +93,7 @@
                                 Margin="12"
                                 Orientation="Vertical">
                                 <TextBlock Text="WPF Gallery" />
-                                <TextBlock Opacity="0.7" Style="{StaticResource CaptionTextBlockStyle}">© 2025 Microsoft. All rights reserved.</TextBlock>
+                                <TextBlock Opacity="{DynamicResource DeemphasizedTextOpacity}" Style="{StaticResource CaptionTextBlockStyle}">© 2025 Microsoft. All rights reserved.</TextBlock>
                             </StackPanel>
                         </Grid>
                     </Expander.Header>

@@ -33,7 +33,7 @@
                         Width="240"
                         Margin="10,0,0,0"
                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                            Opacity="0.7"
+                            Opacity="{DynamicResource DeemphasizedTextOpacity}"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="{Binding Description}"/>
                 </StackPanel>
