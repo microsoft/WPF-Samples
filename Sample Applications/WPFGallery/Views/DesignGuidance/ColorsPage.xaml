@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFGallery.Views"
       xmlns:controls="clr-namespace:WPFGallery.Controls"
-      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -36,12 +35,12 @@
         </TextBlock>
         
           <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" AutomationProperties.Name="Page Selector">
-            <sys:String>Text</sys:String>
-            <sys:String>Fill</sys:String>
-            <sys:String>Stroke</sys:String>
-            <sys:String>Background</sys:String>
-            <sys:String>Signal</sys:String>
-            <sys:String>HighContrast</sys:String>
+            <ComboBoxItem Content="Text" AutomationProperties.Name="Text" />
+            <ComboBoxItem Content="Fill" AutomationProperties.Name="Fill" />
+            <ComboBoxItem Content="Stroke" AutomationProperties.Name="Stroke" />
+            <ComboBoxItem Content="Background" AutomationProperties.Name="Background" />
+            <ComboBoxItem Content="Signal" AutomationProperties.Name="Signal" />
+            <ComboBoxItem Content="HighContrast" AutomationProperties.Name="HighContrast" />
           </ComboBox>
 
           <Frame x:Name="ColorSubpageNavigationFrame" />
