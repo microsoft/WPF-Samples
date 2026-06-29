@@ -71,6 +71,7 @@
                         MinWidth="200"
                         HorizontalAlignment="Left"
                         AutomationProperties.Name="Editable"
+                        GotKeyboardFocus="EditableComboBox_GotKeyboardFocus"
                         IsEditable="True"
                         ItemsSource="{Binding ViewModel.ComboBoxFontSizes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ComboBoxPage}, Mode=OneWay}"
                         SelectedIndex="0" />
