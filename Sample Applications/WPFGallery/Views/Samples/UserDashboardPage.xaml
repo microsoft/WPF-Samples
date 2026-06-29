@@ -189,7 +189,7 @@
                         </Grid>
                         <Slider
                             Margin="0,5,0,15"
-                            AutomationProperties.Name="Age"
+                            AutomationProperties.Name="{Binding ViewModel.EditableUser.Age, StringFormat='Age {0} years'}"
                             Maximum="62"
                             Minimum="21"
                             IsSnapToTickEnabled="True"
