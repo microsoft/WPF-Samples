@@ -33,12 +33,18 @@
                 <controls:ControlExample
                     Margin="10"
                     HeaderText="Default DataGrid with ItemsSource."
-                    XamlCode="&lt;DataGrid ItemsSource=&quot;{Binding ViewModel.ProductsCollection, Mode=TwoWay}&quot; /&gt;">
+                    XamlCode="&lt;DataGrid ItemsSource=&quot;{Binding ViewModel.ProductsCollection, Mode=TwoWay}&quot;&gt;&#10;&#9;&lt;DataGrid.ColumnHeaderStyle&gt;&#10;&#9;&#9;&lt;Style BasedOn=&quot;{StaticResource {x:Type DataGridColumnHeader}}&quot; TargetType=&quot;DataGridColumnHeader&quot;&gt;&#10;&#9;&#9;&#9;&lt;Setter Property=&quot;Focusable&quot; Value=&quot;True&quot; /&gt;&#10;&#9;&#9;&lt;/Style&gt;&#10;&#9;&lt;/DataGrid.ColumnHeaderStyle&gt;&#10;&lt;/DataGrid&gt;">
                     <DataGrid
                         x:Name="SampleDataGrid"
                         Height="400"
                         AutomationProperties.Name="Sample Data Grid"
-                        ItemsSource="{Binding ViewModel.ProductsCollection, Mode=TwoWay}" />
+                        ItemsSource="{Binding ViewModel.ProductsCollection, Mode=TwoWay}">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="DataGridColumnHeader">
+                                <Setter Property="Focusable" Value="True" />
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                    </DataGrid>
                 </controls:ControlExample>
 
             </StackPanel>
