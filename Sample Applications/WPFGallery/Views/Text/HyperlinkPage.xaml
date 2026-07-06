@@ -22,10 +22,10 @@
                     <controls:ControlExample
                         Margin="10"
                         HeaderText="A Hyperlink"
-                        XamlCode="&lt;TextBlock Margin=&quot;20&quot;&gt;&#10;    &lt;Hyperlink NavigateUri=&quot;https://www.microsoft.com&quot; RequestNavigate=&quot;Hyperlink_RequestNavigate&quot;&gt;&#10;        Lorem Ipsum link&#10;    &lt;/Hyperlink&gt;&#10;&lt;/TextBlock&gt;">
+                        XamlCode="&lt;TextBlock Margin=&quot;20&quot;&gt;&#10;                            &lt;Hyperlink NavigateUri=&quot;https://www.microsoft.com&quot; RequestNavigate=&quot;Hyperlink_RequestNavigate&quot;&gt;&#10;        Microsoft&#10;    &lt;/Hyperlink&gt;&#10;&lt;/TextBlock&gt;">
                         <TextBlock Margin="20">
                                 <Hyperlink NavigateUri="https://www.microsoft.com" RequestNavigate="Hyperlink_RequestNavigate">
-                                    Hyperlink
+                                    Microsoft
                                 </Hyperlink>
                         </TextBlock>
                     </controls:ControlExample>
