@@ -96,7 +96,7 @@
             Title="Control Alt Fill"
             Background="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Fill used for the 'off' states of toggle controls">
-            <CheckBox Focusable="False"/>
+            <CheckBox Focusable="False" AutomationProperties.Name="Control Alt Fill"/>
         </controls:ColorPageExample>
         <Border Style="{StaticResource ColorTilesPanelStyle}" Margin="0,8"><Grid>
             <Grid.ColumnDefinitions>
