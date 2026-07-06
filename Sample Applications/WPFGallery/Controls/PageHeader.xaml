@@ -4,7 +4,7 @@
     xmlns:controls="clr-namespace:WPFGallery.Controls"
     xmlns:helpers="clr-namespace:WPFGallery.Helpers">
 
-    <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    <helpers:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter"/>
 
     <Style TargetType="{x:Type controls:PageHeader}">
         <Setter Property="Focusable" Value="False"/>
@@ -25,10 +25,11 @@
                         </Label>
 
                         <Label
+                            AutomationProperties.Name="{Binding Description, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                             AutomationProperties.HeadingLevel="Level2"
                             KeyboardNavigation.IsTabStop="True"
                             KeyboardNavigation.TabIndex="1"
-                            Visibility="{TemplateBinding Description, Converter={StaticResource NullToVisibilityConverter}}"
+                            Visibility="{TemplateBinding Description, Converter={StaticResource EmptyToVisibilityConverter}}"
                             Focusable="True">
                             <TextBlock
                                 x:Name="DescriptionTextBlock"

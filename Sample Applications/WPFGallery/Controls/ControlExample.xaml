@@ -123,7 +123,7 @@
                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                             Text="C#" />
 
-                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CSharpCode" FocusManager.IsFocusScope="True" >
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CSharpCode" FocusManager.IsFocusScope="True" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy C# Code" >
                                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;" />
                                         </Button>
                                     </Grid>

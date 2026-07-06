@@ -17,7 +17,8 @@
 
         <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
-        <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+        <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto"
+            Focusable="True" IsTabStop="True" AutomationProperties.Name="Spacing guidance content" Grid.Row="1">
             <StackPanel Margin="0,0,0,24" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap">
                     Consistent spacing helps create visual harmony and improves the readability and usability of your application.
@@ -83,13 +84,13 @@
                                 <TextBlock
                                         Margin="16,0,0,0"
                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                        Opacity="0.7"
+                                        Opacity="{DynamicResource DeemphasizedTextOpacity}"
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="Value" />
                                 <TextBlock
                                         Grid.Column="2"
                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                        Opacity="0.7"
+                                        Opacity="{DynamicResource DeemphasizedTextOpacity}"
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="Usage" />
                             </Grid>

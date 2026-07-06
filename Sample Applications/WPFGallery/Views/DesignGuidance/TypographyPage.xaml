@@ -1,4 +1,4 @@
-﻿<Page x:Class="WPFGallery.Views.TypographyPage"
+<Page x:Class="WPFGallery.Views.TypographyPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -59,25 +59,25 @@
                             <TextBlock
                         Margin="16,0,0,0"
                         Foreground="{StaticResource TextFillColorPrimaryBrush}"
-                        Opacity="0.7"
+                        Opacity="{DynamicResource DeemphasizedTextOpacity}"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Example" />
                             <TextBlock
                         Grid.Column="1"
                         Foreground="{StaticResource TextFillColorPrimaryBrush}"
-                        Opacity="0.7"
+                        Opacity="{DynamicResource DeemphasizedTextOpacity}"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Variable Font" />
                             <TextBlock
                         Grid.Column="2"
                         Foreground="{StaticResource TextFillColorPrimaryBrush}"
-                        Opacity="0.7"
+                        Opacity="{DynamicResource DeemphasizedTextOpacity}"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Size/Line height" />
                             <TextBlock
                         Grid.Column="3"
                         Foreground="{StaticResource TextFillColorPrimaryBrush}"
-                        Opacity="0.7"
+                        Opacity="{DynamicResource DeemphasizedTextOpacity}"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Style" />
                         </Grid>

@@ -22,7 +22,7 @@
                    MinHeight="32"
                    Padding="0,6"
                    FontSize="14"
-                   Opacity="0.7"
+                   Opacity="{DynamicResource DeemphasizedTextOpacity}"
                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                    Text="{Binding Value, ElementName=Root}"
                    TextWrapping="Wrap" />

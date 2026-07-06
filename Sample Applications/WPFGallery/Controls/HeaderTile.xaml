@@ -14,9 +14,14 @@
         VerticalAlignment="Stretch"
         HorizontalContentAlignment="Stretch"
         VerticalContentAlignment="Stretch"
-        AutomationProperties.Name="{Binding Title, RelativeSource={RelativeSource AncestorType=local:HeaderTile}}"
         Click="RootButton_Click"
         Padding="24">
+        <AutomationProperties.Name>
+            <MultiBinding StringFormat="{}{0}. {1}">
+                <Binding Path="Title" RelativeSource="{RelativeSource AncestorType=local:HeaderTile}" />
+                <Binding Path="Description" RelativeSource="{RelativeSource AncestorType=local:HeaderTile}" />
+            </MultiBinding>
+        </AutomationProperties.Name>
         <Button.Resources>
             <SolidColorBrush x:Key="ButtonBackground" Color="{DynamicResource AcrylicBackgroundFillColorDefault}" Opacity="0.8" />
             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{DynamicResource AcrylicBackgroundFillColorDefault}" Opacity="0.9" />
