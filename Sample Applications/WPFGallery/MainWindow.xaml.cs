@@ -206,6 +206,7 @@ public partial class MainWindow : Window
 
     private void ControlsList_Loaded(object sender, RoutedEventArgs e)
     {
+        ResizeNavChevrons();
         if (ControlsList.Items.Count > 0)
         {
             TreeViewItem firstItem = (TreeViewItem)ControlsList.ItemContainerGenerator.ContainerFromItem(ControlsList.Items[0]);
@@ -214,6 +215,49 @@ public partial class MainWindow : Window
                 firstItem.IsSelected = true;
             }
         }
+    }
+
+    // Thin FontSize-10 chevron anti-aliases to ~2.6:1; enlarging it reaches ~3.9:1 (MAS 1.4.11).
+    private const double NavChevronFontSize = 12d;
+
+    // Size is baked into the sealed template, so set it on each realized top-level chevron glyph.
+    private void ResizeNavChevrons()
+    {
+        foreach (object item in ControlsList.Items)
+        {
+            if (ControlsList.ItemContainerGenerator.ContainerFromItem(item) is TreeViewItem tvi
+                && FindChevronIcon(tvi) is TextBlock chevron)
+            {
+                chevron.FontSize = NavChevronFontSize;
+            }
+        }
+    }
+
+    private static TextBlock? FindChevronIcon(DependencyObject root)
+    {
+        int count = VisualTreeHelper.GetChildrenCount(root);
+        for (int i = 0; i < count; i++)
+        {
+            DependencyObject child = VisualTreeHelper.GetChild(root, i);
+
+            // Each item owns a single chevron in its own header; don't descend into nested items.
+            if (child is TreeViewItem)
+            {
+                continue;
+            }
+
+            if (child is TextBlock { Name: "ChevronIcon" } chevron)
+            {
+                return chevron;
+            }
+
+            if (FindChevronIcon(child) is TextBlock found)
+            {
+                return found;
+            }
+        }
+
+        return null;
     }
 
     private void SelectedItemChanged(TreeViewItem? tvi)
