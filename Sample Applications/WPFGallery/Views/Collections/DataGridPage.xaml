@@ -20,6 +20,24 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style x:Key="ColumnHeaderFocusVisualStyle">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle
+                            Margin="2"
+                            RadiusX="4"
+                            RadiusY="4"
+                            SnapsToDevicePixels="True"
+                            Stroke="{DynamicResource KeyboardFocusBorderColorBrush}"
+                            StrokeThickness="2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid x:Name="ContentPagePane" Height="Auto">
 
         <Grid.RowDefinitions>
@@ -33,12 +51,19 @@
                 <controls:ControlExample
                     Margin="10"
                     HeaderText="Default DataGrid with ItemsSource."
-                    XamlCode="&lt;DataGrid ItemsSource=&quot;{Binding ViewModel.ProductsCollection, Mode=TwoWay}&quot; /&gt;">
+                    XamlCode="&lt;DataGrid ItemsSource=&quot;{Binding ViewModel.ProductsCollection, Mode=TwoWay}&quot;&gt;&#10;&#9;&lt;DataGrid.ColumnHeaderStyle&gt;&#10;&#9;&#9;&lt;Style BasedOn=&quot;{StaticResource {x:Type DataGridColumnHeader}}&quot; TargetType=&quot;DataGridColumnHeader&quot;&gt;&#10;&#9;&#9;&#9;&lt;Setter Property=&quot;Focusable&quot; Value=&quot;True&quot; /&gt;&#10;&#9;&#9;&#9;&lt;Setter Property=&quot;FocusVisualStyle&quot; Value=&quot;{StaticResource ColumnHeaderFocusVisualStyle}&quot; /&gt;&#10;&#9;&#9;&lt;/Style&gt;&#10;&#9;&lt;/DataGrid.ColumnHeaderStyle&gt;&#10;&lt;/DataGrid&gt;">
                     <DataGrid
                         x:Name="SampleDataGrid"
                         Height="400"
                         AutomationProperties.Name="Sample Data Grid"
-                        ItemsSource="{Binding ViewModel.ProductsCollection, Mode=TwoWay}" />
+                        ItemsSource="{Binding ViewModel.ProductsCollection, Mode=TwoWay}">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="DataGridColumnHeader">
+                                <Setter Property="Focusable" Value="True" />
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource ColumnHeaderFocusVisualStyle}" />
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                    </DataGrid>
                 </controls:ControlExample>
 
             </StackPanel>
