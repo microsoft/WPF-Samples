@@ -266,7 +266,6 @@
                                 <DataTemplate>
                                     <Button Style="{StaticResource IconTagChipButtonStyle}"
                                             Command="{Binding ViewModel.ApplyTagFilterCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                                            AutomationProperties.Name="{Binding}"
                                             CommandParameter="{Binding}">
                                         <TextBlock Text="{Binding}"
                                                     Style="{StaticResource CaptionTextBlockStyle}"
