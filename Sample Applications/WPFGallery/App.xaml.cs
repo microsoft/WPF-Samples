@@ -1,5 +1,6 @@
 using System.Configuration;
 using System.Data;
+using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -153,9 +154,24 @@ public partial class App : Application
 
         App app = new();
         app.InitializeComponent();
+        app.ApplyDeemphasizedTextOpacity();
         app.MainWindow = _host.Services.GetRequiredService<MainWindow>();
         app.MainWindow.Visibility = Visibility.Visible;
         app.Run();
+    }
+
+    // Dimmed text fails the 4.5:1 minimum under some high-contrast themes (e.g. Desert), so render
+    // de-emphasized text at full opacity there. DynamicResource pushes the change to every consumer.
+    private void ApplyDeemphasizedTextOpacity()
+    {
+        Resources["DeemphasizedTextOpacity"] = SystemParameters.HighContrast ? 1.0 : 0.7;
+        SystemParameters.StaticPropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName == nameof(SystemParameters.HighContrast))
+            {
+                Resources["DeemphasizedTextOpacity"] = SystemParameters.HighContrast ? 1.0 : 0.7;
+            }
+        };
     }
 }
 

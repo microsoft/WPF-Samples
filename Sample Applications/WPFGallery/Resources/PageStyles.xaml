@@ -16,6 +16,10 @@
     <sys:Double x:Key="TitleLargeTextBlockFontSize">40</sys:Double>
     <sys:Double x:Key="DisplayTextBlockFontSize">68</sys:Double>
 
+    <!-- Opacity for de-emphasized text; App overrides it to 1.0 under high contrast so dimmed
+         text keeps the 4.5:1 minimum (e.g. the Desert contrast theme). -->
+    <sys:Double x:Key="DeemphasizedTextOpacity">0.7</sys:Double>
+
     <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource BodyTextBlockFontSize}" />
         <Setter Property="FontWeight" Value="SemiBold" />

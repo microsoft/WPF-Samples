@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     This Source Code Form is subject to the terms of the MIT License.
     If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
     Copyright (C) Leszek Pomianowski and WPF UI Contributors.
@@ -32,7 +32,7 @@
                     Margin="10"
                     HeaderText="A simple Label."
                     XamlCode="&lt;Label Content=&quot;I am a Label.&quot; /&gt;">
-                    <Label Content="I am a Label." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" />
+                    <Label Content="I am a Label." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="{DynamicResource DeemphasizedTextOpacity}" />
                 </controls:ControlExample>
 
                 <controls:ControlExample
@@ -44,7 +44,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="I am a Label of the TextBox below." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="0.7" />
+                        <Label Grid.Row="0" Content="I am a Label of the TextBox below." Foreground="{DynamicResource TextFillColorPrimaryBrush}" Opacity="{DynamicResource DeemphasizedTextOpacity}" />
                         <!--  Target="{Binding ElementName=TextBoxForLabel}"  -->
                         <TextBox Grid.Row="1" AutomationProperties.Name="Simple Text Box" />
                     </Grid>
