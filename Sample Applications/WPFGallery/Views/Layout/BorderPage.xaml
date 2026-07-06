@@ -19,6 +19,12 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Page.Resources>
+
     <Grid x:Name="ContentPagePane" Height="Auto">
 
         <Grid.RowDefinitions>

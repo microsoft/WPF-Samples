@@ -26,7 +26,7 @@
    Header=&quot;User Information&quot; &#10;
    HorizontalAlignment=&quot;Left&quot; &#10;
    VerticalAlignment=&quot;Center&quot; &#10;
-   Width=&quot;400&quot;&gt;&#10;
+   MaxWidth=&quot;400&quot;&gt;&#10;
     &lt;StackPanel&gt;&#10;
         &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;
             &lt;TextBlock Width=&quot;100&quot; Text=&quot;Name:&quot; /&gt;&#10;
@@ -42,7 +42,7 @@
                           Header="User Information" 
                           HorizontalAlignment="Left" 
                           VerticalAlignment="Center" 
-                          Width="400">
+                          MaxWidth="400">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="100" Text="Name:" />
