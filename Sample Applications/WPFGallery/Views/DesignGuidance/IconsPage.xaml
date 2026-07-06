@@ -18,61 +18,6 @@
     </i:Interaction.Triggers>
 
     <Page.Resources>
-        <Style x:Key="CodeValuePresenterStyle" TargetType="TextBlock">
-            <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Padding" Value="0 0 0 4" />
-            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-            <Setter Property="Opacity" Value="{DynamicResource DeemphasizedTextOpacity}"/>
-            <Setter Property="Margin" Value="0,4,0,4" />
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-
-        <Style x:Key="IconData" TargetType="{x:Type ContentControl}">
-            <Setter Property="Margin" Value="0,0,0,12" />
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ContentControl}">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Padding="0,6" Grid.Column="0" VerticalAlignment="Center" Text="{TemplateBinding Content}" Style="{StaticResource CodeValuePresenterStyle}" TextWrapping="Wrap"/>
-                            <Button Grid.Column="1" 
-                                    Padding="8" 
-                                    FocusManager.IsFocusScope="True" 
-                                    Command="ApplicationCommands.Copy"
-                                    AutomationProperties.Name="{Binding Tag, StringFormat='{}Copy {0} to clipboard', RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                    ToolTipService.ToolTip="Copy to clipboard"
-                                    CommandParameter="{TemplateBinding Content}"
-                                    CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Page}}">
-                                <Grid>
-                                    <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;"/>
-                                    <TextBlock x:Name="SuccessGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE73E;" Opacity="0" />
-                                </Grid>
-                                <Button.Triggers>
-                                    <EventTrigger RoutedEvent="Button.Click">
-                                        <EventTrigger.Actions>
-                                            <BeginStoryboard>
-                                                <Storyboard BeginTime="00:00:00">
-                                                    <DoubleAnimation Duration="0:0:0.333" Storyboard.TargetName="CopyGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="0" />
-                                                    <DoubleAnimation Duration="0:0:0.666" BeginTime="0:0:0.333" Storyboard.TargetName="SuccessGlyphTextBlock" Storyboard.TargetProperty="Opacity" To="1" />
-                                                    <DoubleAnimation Storyboard.TargetName="SuccessGlyphTextBlock" BeginTime="0:0:2" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="0" />
-                                                    <DoubleAnimation Storyboard.TargetName="CopyGlyphTextBlock" BeginTime="0:0:2.1" Duration="0:0:0.01" Storyboard.TargetProperty="Opacity" To="1" />
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </EventTrigger.Actions>
-                                    </EventTrigger>
-                                </Button.Triggers>
-                            </Button>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <Style x:Key="IconTagChipButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
@@ -298,13 +243,13 @@
                         <TextBlock Text="{Binding ViewModel.SelectedIcon.Character}" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="50" Margin="0,12,0,32" 
                                    AutomationProperties.Name="{Binding ViewModel.SelectedIcon.Name, StringFormat='{}{0} Icon'}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock Text="Icon Name"/>
-                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Name}" Tag="Icon Name"/>
+                        <controls:IconDataField Value="{Binding ViewModel.SelectedIcon.Name}" Label="Icon Name"/>
                         <TextBlock Text="Unicode point"/>
-                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.Code}" Tag="Unicode Point"/>
+                        <controls:IconDataField Value="{Binding ViewModel.SelectedIcon.Code}" Label="Unicode Point"/>
                         <TextBlock Text="Text glyph"/>
-                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.TextGlyph}" Tag="Text Glyph"/>
+                        <controls:IconDataField Value="{Binding ViewModel.SelectedIcon.TextGlyph}" Label="Text Glyph"/>
                         <TextBlock Text="Code glyph"/>
-                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ViewModel.SelectedIcon.CodeGlyph}" Tag="Code Glyph"/>
+                        <controls:IconDataField Value="{Binding ViewModel.SelectedIcon.CodeGlyph}" Label="Code Glyph"/>
                         <TextBlock Text="Tags"
                                     Visibility="{Binding ElementName=TagsItemsControl, Path=HasItems, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         <ItemsControl x:Name="TagsItemsControl"
@@ -321,7 +266,6 @@
                                 <DataTemplate>
                                     <Button Style="{StaticResource IconTagChipButtonStyle}"
                                             Command="{Binding ViewModel.ApplyTagFilterCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                                            AutomationProperties.Name="{Binding}"
                                             CommandParameter="{Binding}">
                                         <TextBlock Text="{Binding}"
                                                     Style="{StaticResource CaptionTextBlockStyle}"
@@ -332,7 +276,7 @@
                         </ItemsControl>
                         <TextBlock Text="XAML"/>
                         <TextBlock x:Name="XAMLCode" Text="{Binding ViewModel.SelectedIcon.TextGlyph, StringFormat='&lt;TextBlock FontFamily=&#x22;{{StaticResource SymbolThemeFontFamily}}&#x22; Text=&#x22;{0}&#x22;/&gt;'}" Visibility="Collapsed"/>
-                        <ContentControl Style="{StaticResource IconData}" Content="{Binding ElementName=XAMLCode, Path=Text}" Tag="XAML Code"/>
+                        <controls:IconDataField Value="{Binding ElementName=XAMLCode, Path=Text}" Label="XAML Code"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

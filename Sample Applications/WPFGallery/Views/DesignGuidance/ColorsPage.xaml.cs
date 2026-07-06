@@ -1,4 +1,4 @@
-﻿using System.Windows.Documents;
+using System.Windows.Documents;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFGallery.ViewModels;
@@ -46,6 +46,16 @@ namespace WPFGallery.Views
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             PageSelector.SelectedItem = PageSelector.Items[0];
+
+            // A ComboBox builds its item containers lazily, only when its drop-down
+            // is first opened. Until then there are no container automation peers, so
+            // WPF raises no UI Automation selection event when the selection changes
+            // via the arrow keys on the collapsed control and Narrator stays silent.
+            // Open and immediately close the drop-down once to realize the containers
+            // up front (PopupAnimation is None, so this is not visible). The containers
+            // persist after closing, so the native selection event then fires correctly.
+            PageSelector.IsDropDownOpen = true;
+            PageSelector.IsDropDownOpen = false;
         }
     }
 }
