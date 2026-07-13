@@ -12,6 +12,7 @@
     xmlns:helpers="clr-namespace:WPFGallery.Helpers">
 
     <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <helpers:RemoveControlTypeFromNameConverter x:Key="RemoveControlTypeFromNameConverter" />
 
     <Style x:Key="SelectionTextBox" TargetType="TextBox">
         <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
@@ -60,7 +61,7 @@
 
                         <Expander
                             Grid.Row="2"
-                            AutomationProperties.Name="{Binding HeaderText, RelativeSource={RelativeSource TemplatedParent}, StringFormat=View Source Code for {0}}"
+                            AutomationProperties.Name="{Binding HeaderText, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource RemoveControlTypeFromNameConverter}, ConverterParameter=Button, StringFormat=View Source Code for {0}}"
                             Header="Source code">
                             <StackPanel>
                                 <StackPanel x:Name="XamlCodeBlock">
