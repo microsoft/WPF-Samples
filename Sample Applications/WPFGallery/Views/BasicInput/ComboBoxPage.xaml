@@ -72,6 +72,7 @@
                         HorizontalAlignment="Left"
                         AutomationProperties.Name="Editable"
                         IsEditable="True"
+                        IsTabStop="False"
                         ItemsSource="{Binding ViewModel.ComboBoxFontSizes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ComboBoxPage}, Mode=OneWay}"
                         SelectedIndex="0" />
                 </controls:ControlExample>
