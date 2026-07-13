@@ -2,6 +2,7 @@ using System.Windows.Documents;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using WPFGallery.Controls;
 using WPFGallery.ViewModels;
 
 namespace WPFGallery.Views
@@ -22,13 +23,13 @@ namespace WPFGallery.Views
 
         private void ShowDefaultMessageButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("This is a simple message box!");
+            var result = ThemedMessageBox.Show("This is a simple message box!");
             ViewModel.DefaultMessageResult = $"Result: {result}";
         }
 
         private void ShowCustomTitleButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("This is a detailed description of what happened or what action is needed.", "Custom Title");
+            var result = ThemedMessageBox.Show("This is a detailed description of what happened or what action is needed.", "Custom Title");
             ViewModel.CustomTitleResult = $"Result: {result}";
         }
 
@@ -58,7 +59,7 @@ namespace WPFGallery.Views
                 _ => "OK"
             };
 
-            var result = MessageBox.Show($"This MessageBox has {buttonName} button(s).", $"{buttonName} Button(s)", buttonType);
+            var result = ThemedMessageBox.Show($"This MessageBox has {buttonName} button(s).", $"{buttonName} Button(s)", buttonType);
             ViewModel.DifferentButtonsResult = $"Result: {result}";
         }
 
@@ -84,33 +85,33 @@ namespace WPFGallery.Views
                 _ => "None"
             };
 
-            var result = MessageBox.Show($"This MessageBox displays the {imageName} icon.", $"{imageName} Icon", MessageBoxButton.OK, imageType);
+            var result = ThemedMessageBox.Show($"This MessageBox displays the {imageName} icon.", $"{imageName} Icon", MessageBoxButton.OK, imageType);
             ViewModel.DifferentImagesResult = $"Result: {result}";
         }
 
         // 6. Common Messages (Information, Error, Warning)
         private void ShowCommonInformation_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("The operation completed successfully.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            var result = ThemedMessageBox.Show("The operation completed successfully.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             ViewModel.CommonMessagesResult = $"Type: Information | Result: {result}";
         }
 
         private void ShowCommonError_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("An error occurred! The operation could not be completed.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            var result = ThemedMessageBox.Show("An error occurred! The operation could not be completed.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             ViewModel.CommonMessagesResult = $"Type: Error | Result: {result}";
         }
 
         private void ShowCommonWarning_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("This action cannot be undone! Do you want to continue?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = ThemedMessageBox.Show("This action cannot be undone! Do you want to continue?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             ViewModel.CommonMessagesResult = $"Type: Warning | Result: {result}";
         }
 
         // 7. Custom Default Button
         private void ShowCustomDefaultButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Do you want to save changes? Press Enter to select the default 'No' button.", "Save Changes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question, MessageBoxResult.No);
+            var result = ThemedMessageBox.Show("Do you want to save changes? Press Enter to select the default 'No' button.", "Save Changes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question, MessageBoxResult.No);
             ViewModel.CustomDefaultResult = $"User selected: {result}";
         }
     }
