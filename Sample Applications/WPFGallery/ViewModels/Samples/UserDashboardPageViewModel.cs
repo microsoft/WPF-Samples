@@ -38,7 +38,7 @@ namespace WPFGallery.ViewModels.Samples
         [RelayCommand]
         private void AddUser()
         {
-            Users.Add(new User("New User", ""));
+            Users.Add(new User("New User", "") { DateOfJoining = DateTime.Today });
             SelectedUser = Users.Last();
            
             IsReadOnly = false;
