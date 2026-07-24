@@ -29,7 +29,6 @@
 
         <Button Grid.Column="1"
                 Padding="8"
-                FocusManager.IsFocusScope="True"
                 Click="CopyButton_Click"
                 AutomationProperties.Name="{Binding Label, ElementName=Root, StringFormat='{}Copy {0} to clipboard'}"
                 ToolTipService.ToolTip="Copy to clipboard">

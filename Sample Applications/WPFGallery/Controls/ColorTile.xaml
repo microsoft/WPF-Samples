@@ -56,7 +56,6 @@
                                     Foreground="{TemplateBinding Foreground}"
                                     Command="ApplicationCommands.Copy"
                                     CommandTarget="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:ColorTile}}}"
-                                    FocusManager.IsFocusScope="True"
                                     ToolTipService.ToolTip="Copy brush name">
                                     <Grid>
                                         <TextBlock x:Name="CopyGlyphTextBlock" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Text="&#xE8C8;" />
