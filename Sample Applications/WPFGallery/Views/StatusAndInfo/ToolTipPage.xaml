@@ -31,6 +31,7 @@
             <controls:ControlExample
                 Margin="10"
                 HeaderText="A button with a simple ToolTip."
+                AutomationProperties.Name="View Source Code for a control with a simple ToolTip"
                 XamlCode="&lt;Button          &#10;&#9;Content=&quot;Button with a simple ToolTip.&quot;          &#10;&#9;ToolTipService.InitialShowDelay=&quot;100&quot;          &#10;&#9;ToolTipService.Placement=&quot;MousePoint&quot;         &#10;&#9;ToolTipService.ToolTip=&quot;Simple ToolTip&quot;/&gt;">
                 <Button
                     Content="Button with a simple ToolTip."

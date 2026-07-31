@@ -157,6 +157,7 @@
                 <controls:ControlExample
                     Margin="10,32,10,10"
                     HeaderText="MessageBox with Custom Default Button"
+                    AutomationProperties.Name="View Source Code for MessageBox with a custom default"
                     XamlCode="&lt;Button Content=&quot;Show with 'No' as default&quot; Click=&quot;ShowCustomDefaultButton_Click&quot; /&gt;"
                     CSharpCode="private void ShowCustomDefaultButton_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // Set 'No' as the default button (focused when dialog opens)&#x0a;    var result = MessageBox.Show(&#x0a;        &quot;Do you want to save changes? Press Enter to select the default 'No' button.&quot;,&#x0a;        &quot;Save Changes&quot;,&#x0a;        MessageBoxButton.YesNoCancel,&#x0a;        MessageBoxImage.Question,&#x0a;        MessageBoxResult.No);&#x0a;}">
                     <StackPanel>
