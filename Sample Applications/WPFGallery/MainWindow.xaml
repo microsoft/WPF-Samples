@@ -221,7 +221,7 @@
                         Loaded="ControlsList_Loaded">
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Items}">
-                                <Grid MinHeight="30">
+                                <Grid MinHeight="30" Margin="0,0,16,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="16" />
