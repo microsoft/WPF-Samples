@@ -5,10 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelloWorld"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Icon="app.ico">
-    <Grid>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
-            Hello, World!
-        </TextBlock>
+        Title="Hello World"
+        Height="350"
+        Width="525"
+        Icon="app.ico">
+    <Grid Margin="24">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="24"
+                       HorizontalAlignment="Center"
+                       Text="Hello, World!" />
+            <TextBlock Margin="0,12,0,0"
+                       HorizontalAlignment="Center"
+                       Opacity="0.7"
+                       Text="Fluent-themed WPF sample" />
+            <Button Margin="0,24,0,0"
+                    Padding="16,8"
+                    HorizontalAlignment="Center"
+                    Content="Click Me" />
+        </StackPanel>
     </Grid>
 </Window>
