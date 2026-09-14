@@ -177,7 +177,6 @@ public partial class MainWindow : Window
             if(selectedTreeViewItem != null)
             {
                 selectedTreeViewItem.IsSelected = true;
-                ControlsList_SelectedItemChanged();
             }
         }
     }
@@ -262,16 +261,15 @@ public partial class MainWindow : Window
 
     private void SelectedItemChanged(TreeViewItem? tvi)
     {
-        ControlsList_SelectedItemChanged();
         if (tvi != null)
         {
             tvi.IsExpanded = !tvi.IsExpanded;
         }
     }
 
-    private void ControlsList_SelectedItemChanged()
+    private void ControlsList_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
     {
-        if (ControlsList.SelectedItem is ControlInfoDataItem navItem)
+        if (e.NewValue is ControlInfoDataItem navItem)
         {
             _navigationService.Navigate(navItem.PageType);
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
