@@ -23,15 +23,15 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
         global-json-file: global.json
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@db488ddef3bf6cb639b32c2e9a7c0a7ea8271d28 # v4.37.8
+      uses: github/codeql-action/init@cdf488f595d80d6e07e03d4674febd5ab45fa938 # v4.37.9
       with:
         languages: csharp
         queries: security-extended
@@ -44,6 +44,6 @@ jobs:
       run: dotnet build WPFSamples.sln --configuration Release --no-restore /p:Platform="Any CPU" /p:LangVersion=latest /p:TreatWarningsAsErrors=false
       continue-on-error: true
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@db488ddef3bf6cb639b32c2e9a7c0a7ea8271d28 # v4.37.8
+      uses: github/codeql-action/analyze@cdf488f595d80d6e07e03d4674febd5ab45fa938 # v4.37.9
       with:
         category: "/language:csharp"
