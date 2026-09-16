@@ -17,7 +17,7 @@
 
         <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" ShowDescription="False"/>
 
-        <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+        <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                 <StackPanel Margin="0,0,0,24" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap">
                     Geometry describes the shape, size and position of UI elements on screen. 
@@ -28,7 +28,7 @@
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,0,0,12">
                     You can reference built-in corner radii styles using: CornerRadius="{StaticResource ControlCornerRadius}" .
                 </TextBlock>
-				<Border Height="300" Width="500" HorizontalAlignment="Left">
+				<Border MaxHeight="300" MaxWidth="500" HorizontalAlignment="Left">
 					<Image x:Name="GeometryImage" Source="/Assets/Design/Geometry.dark.png" AutomationProperties.Name="Example of corner radius." />
 				</Border>
                 <controls:ControlExample
@@ -46,7 +46,7 @@
                             <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="148" />
-                                    <ColumnDefinition Width="400" />
+                                    <ColumnDefinition Width="2*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock
@@ -78,7 +78,7 @@
                                 <Grid HorizontalAlignment="Stretch" MinHeight="60">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="148" />
-                                        <ColumnDefinition Width="400" />
+                                        <ColumnDefinition Width="2*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" Orientation="Horizontal">
@@ -119,7 +119,7 @@
                                 <Grid HorizontalAlignment="Stretch" MinHeight="60">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="148" />
-                                        <ColumnDefinition Width="400" />
+                                        <ColumnDefinition Width="2*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" Orientation="Horizontal">
@@ -160,7 +160,7 @@
                                 <Grid HorizontalAlignment="Stretch" MinHeight="60">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="148" />
-                                        <ColumnDefinition Width="400" />
+                                        <ColumnDefinition Width="2*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" Orientation="Horizontal">

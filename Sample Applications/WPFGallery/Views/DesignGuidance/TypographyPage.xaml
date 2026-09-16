@@ -17,7 +17,7 @@
 
         <controls:PageHeader Margin="0,0,0,32" Title="{Binding ViewModel.PageTitle}" Description="{Binding ViewModel.PageDescription}" />
 
-    <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+    <ScrollViewer Margin="0,0,0,24" Padding="0,0,24,0" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
       <StackPanel Margin="0,0,0,24" Orientation="Vertical">
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" >
           Type helps provide structure and hierarchy to UI. The default font for Windows is Segoe UI Variable.</TextBlock>
@@ -37,7 +37,7 @@
                 &#10;&lt;TextBlock Text=&quot;Title&quot; Style=&quot;{StaticResource TitleTextBlockStyle}&quot; /&gt;
                 &#10;&lt;TextBlock Text=&quot;Title Large&quot; Style=&quot;{StaticResource TitleLargeTextBlockStyle}&quot; /&gt;
                 &#10;&lt;TextBlock Text=&quot;Display&quot; Style=&quot;{StaticResource DisplayTextBlockStyle}&quot; /&gt;" >
-                <Grid>
+                <Grid HorizontalAlignment="Left" MaxWidth="684">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -51,10 +51,10 @@
                     <StackPanel Grid.Row="0">
                         <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -85,10 +85,10 @@
                     <StackPanel Grid.Row="1">
                         <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -115,10 +115,10 @@
                     <StackPanel Grid.Row="2">
                         <Grid HorizontalAlignment="Stretch" MinHeight="68">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -145,10 +145,10 @@
                     <StackPanel Grid.Row="3">
                         <Grid HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -175,10 +175,10 @@
                     <StackPanel Grid.Row="4">
                         <Grid HorizontalAlignment="Stretch" MinHeight="68">
                             <Grid.ColumnDefinitions> 
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -205,10 +205,10 @@
                     <StackPanel Grid.Row="5">
                         <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -235,10 +235,10 @@
                     <StackPanel Grid.Row="6">
                         <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch" MinHeight="68">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                         Margin="16,0,0,0"
@@ -265,10 +265,10 @@
                     <StackPanel Grid.Row="7">
                         <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch" Background="{StaticResource CardBackgroundFillColorDefaultBrush}" MinHeight="68">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="112" />
-                                <ColumnDefinition Width="164" />
+                                <ColumnDefinition Width="272*" />
+                                <ColumnDefinition Width="136*" />
+                                <ColumnDefinition Width="112*" />
+                                <ColumnDefinition Width="164*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
