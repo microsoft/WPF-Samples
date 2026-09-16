@@ -217,7 +217,7 @@
                         AutomationProperties.Name="Navigation Pane"
                         ItemsSource="{Binding ViewModel.Controls}"
                         PreviewKeyDown="ControlsList_PreviewKeyDown"
-                        PreviewMouseLeftButtonUp="ControlsList_PreviewMouseLeftButtonUp"
+                        SelectedItemChanged="ControlsList_SelectedItemChanged"
                         Loaded="ControlsList_Loaded">
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Items}">
