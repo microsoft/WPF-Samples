@@ -8,7 +8,6 @@ using System.Windows.Input;
 using System.Windows.Documents;
 using System.Windows.Documents.Serialization;
 using System.IO;
-using System.Windows.Markup;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -242,23 +241,9 @@ namespace DocumentSerialization
             // Apply appropriate converter to a file content
             try
             {
-                if (fileName.EndsWith(".xaml"))
+                if (fileName.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
                 {
-                    using (FileStream inputStream = File.OpenRead(fileName))
-                    {
-                        ParserContext pc = new ParserContext();
-                        pc.BaseUri =
-                            new Uri(System.Environment.CurrentDirectory + "/");
-                        newDocument = XamlReader.Load(inputStream, pc) as object;
-                        if (newDocument == null)
-                        {
-                            MessageBox.Show(
-                                "Invalid Xaml File. Could not be parsed" +
-                                fileName, this.GetType().Name,
-                                MessageBoxButton.OK, MessageBoxImage.Error);
-                            return false;
-                        }
-                    }
+                    newDocument = LoadTextOnlyFlowDocument(fileName);
                 }
             }
             catch (Exception e)
@@ -301,6 +286,114 @@ namespace DocumentSerialization
 
             return true;
         }// end:OpenFile()
+
+        private static FlowDocument LoadTextOnlyFlowDocument(string fileName)
+        {
+            const long maxDocumentCharacters = 10 * 1024 * 1024;
+            const string presentationNamespace =
+                "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
+
+            FileInfo file = new FileInfo(fileName);
+            if (file.Length > maxDocumentCharacters)
+            {
+                throw new InvalidDataException(
+                    "The XAML document exceeds the 10 MB import limit.");
+            }
+
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Prohibit,
+                XmlResolver = null,
+                MaxCharactersInDocument = maxDocumentCharacters,
+                IgnoreComments = true,
+                IgnoreProcessingInstructions = true
+            };
+
+            FlowDocument document = new FlowDocument();
+            Stack<Paragraph> paragraphs = new Stack<Paragraph>();
+            bool foundRoot = false;
+            int resourcesDepth = -1;
+
+            using (FileStream inputStream = File.OpenRead(fileName))
+            using (XmlReader reader = XmlReader.Create(inputStream, settings))
+            {
+                while (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Element)
+                    {
+                        if (!foundRoot)
+                        {
+                            if (reader.LocalName != nameof(FlowDocument) ||
+                                reader.NamespaceURI != presentationNamespace)
+                            {
+                                throw new InvalidDataException(
+                                    "The selected file is not a WPF FlowDocument.");
+                            }
+
+                            foundRoot = true;
+                        }
+                        else if (reader.NamespaceURI != presentationNamespace)
+                        {
+                            throw new InvalidDataException(
+                                "Only WPF FlowDocument elements are supported.");
+                        }
+
+                        if (reader.LocalName == "FlowDocument.Resources")
+                        {
+                            if (!reader.IsEmptyElement)
+                            {
+                                resourcesDepth = reader.Depth;
+                            }
+                        }
+                        else if (resourcesDepth < 0 &&
+                                 reader.LocalName == nameof(Paragraph))
+                        {
+                            Paragraph paragraph = new Paragraph();
+                            document.Blocks.Add(paragraph);
+                            if (!reader.IsEmptyElement)
+                            {
+                                paragraphs.Push(paragraph);
+                            }
+                        }
+                        else if (resourcesDepth < 0 &&
+                                 reader.LocalName == nameof(LineBreak) &&
+                                 paragraphs.Count > 0)
+                        {
+                            paragraphs.Peek().Inlines.Add(new LineBreak());
+                        }
+                    }
+                    else if ((reader.NodeType == XmlNodeType.Text ||
+                              reader.NodeType == XmlNodeType.CDATA ||
+                              reader.NodeType == XmlNodeType.SignificantWhitespace) &&
+                             resourcesDepth < 0 &&
+                             paragraphs.Count > 0)
+                    {
+                        paragraphs.Peek().Inlines.Add(new Run(reader.Value));
+                    }
+                    else if (reader.NodeType == XmlNodeType.EndElement)
+                    {
+                        if (reader.Depth == resourcesDepth)
+                        {
+                            resourcesDepth = -1;
+                        }
+                        else if (resourcesDepth < 0 &&
+                                 reader.LocalName == nameof(Paragraph) &&
+                                 paragraphs.Count > 0)
+                        {
+                            paragraphs.Pop();
+                        }
+                    }
+                }
+            }
+
+            if (!foundRoot)
+            {
+                throw new InvalidDataException(
+                    "The selected file does not contain a FlowDocument.");
+            }
+
+            return document;
+        }
 
 
         // ---------------------------- CloseFile -----------------------------
@@ -348,7 +441,8 @@ namespace DocumentSerialization
 
 
         // -------------------------- OpenFileFilter --------------------------
-        private string OpenFileFilter => "XAML FlowDocuments (*.xaml)|*.xaml";
+        private string OpenFileFilter =>
+            "XAML FlowDocuments - text-only import (*.xaml)|*.xaml";
 
 
         // ---------------------------- OnNewQuery ----------------------------
@@ -1016,13 +1110,9 @@ namespace DocumentSerialization
                     new AnnotationResource( FDPV.MasterPageNumber.ToString() ) );
             }
 
-            Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-
-            string path = System.IO.Path.Combine(
-                a.Location.Remove(a.Location.LastIndexOf('\\')), "GoButton.xaml");
-
             StackPanel EntryInList =
-                XamlReader.Load(File.OpenRead(path)) as StackPanel;
+                Application.LoadComponent(
+                    new Uri("GoButton.xaml", UriKind.Relative)) as StackPanel;
 
             EntryInList.Width = BookmarkList.Width - 10;
 
@@ -1221,4 +1311,3 @@ namespace DocumentSerialization
     }// end:partial class ThumbViewer
 
 }// end:namespace DocumentSerialization
-
