@@ -1,0 +1,92 @@
+﻿<Window x:Class="WpfTreeView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTreeView"
+        Loaded="Window_Loaded"
+        mc:Ignorable="d"
+        Name="This"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.InputBindings>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding ElementName=This, Path=CopyCommand}"/>
+        <KeyBinding Key="V" Modifiers="Ctrl" Command="{Binding ElementName=This, Path=PasteCommand}"/>
+        <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding ElementName=This, Path=CutCommand}"/>
+    </Window.InputBindings>
+    <Window.Resources>
+        <BitmapImage x:Key="PythonIcon" UriSource="Images/python.png"/>
+        <BitmapImage x:Key="CSharpIcon" UriSource="Images/csharp.png"/>
+        <BitmapImage x:Key="CIcon" UriSource="Images/c.png"/>
+        <BitmapImage x:Key="CppIcon" UriSource="Images/cpp.png"/>
+        <BitmapImage x:Key="JavaIcon" UriSource="Images/java.png"/>
+        <BitmapImage x:Key="JavascriptIcon" UriSource="Images/javascript.png"/>
+        <BitmapImage x:Key="TextIcon" UriSource="Images/txt.png"/>
+        <BitmapImage x:Key="JsonIcon" UriSource="Images/json.png"/>
+        <BitmapImage x:Key="XslxIcon" UriSource="Images/xlsx.png"/>
+        <BitmapImage x:Key="PdfIcon" UriSource="Images/pdf.png"/>
+        <local:HeaderToImageConverter x:Key="ImageConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Content="Copy" Command="{Binding ElementName=This, Path=CopyCommand}"/>
+            <Button Content="Paste" Command="{Binding ElementName=This, Path=PasteCommand}"/>
+            <Button Content="Cut" Command="{Binding ElementName=This, Path=CutCommand}"/>
+        </StackPanel>
+        <TreeView x:Name="FolderView"
+                  Grid.Row="1"
+                  SelectedItemChanged="FolderView_SelectedItemChanged"
+                  Focusable="True"
+                  AllowDrop="True">
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Refresh" Command="{Binding RefreshCommand}"/>
+                    <MenuItem Header="Copy" Command="{Binding CopyCommand}"/>
+                    <MenuItem Header="Paste" Command="{Binding PasteCommand}"/>
+                    <MenuItem Header="Cut" Command="{Binding CutCommand}"/>
+                    <MenuItem Header="Open in Explorer" Command="{Binding OpenExplorerCommand}"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue"/>
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="20" Margin="3" 
+                                           Source="{Binding 
+                                                    RelativeSource={RelativeSource 
+                                                    Mode=FindAncestor, 
+                                                    AncestorType={x:Type TreeViewItem}},
+                                                    Path=Tag,
+                                                    Converter={StaticResource ImageConverter}
+                                        }" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TreeView.Resources>
+
+
+            <TreeView.ItemContainerStyle>
+                <Style TargetType ="{x:Type TreeViewItem}">
+                    <!-- We have to select the item which is right-clicked on -->
+                    <!--<EventSetter Event="TreeViewItem.DragOver" Handler="treeView_DragOver" />-->
+                    <!--<EventSetter Event="TreeViewItem.Drop" Handler="treeView_Drop" />-->
+                    <!--<EventSetter Event="TreeViewItem.MouseMove" Handler="treeView_MouseMove" />-->
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+    </Grid>
+</Window>
+
+
