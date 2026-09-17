@@ -66,6 +66,7 @@
         <Style x:Key="TitleBarDefaultButtonStyle" BasedOn="{StaticResource BorderlessButtonStyle}" TargetType="Button">
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
             <Setter Property="Border.CornerRadius" Value="0" />
+            <Setter Property="IsTabStop" Value="False" />
         </Style>
 
         <Style x:Key="TitleBarDefaultCloseButtonStyle" BasedOn="{StaticResource TitleBarDefaultButtonStyle}" TargetType="Button">
@@ -73,6 +74,10 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#C42B1C" />
                     <Setter Property="Foreground" Value="White" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#C83C31" />
+                    <Setter Property="Foreground" Value="#EDBEBB" />
                 </Trigger>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
