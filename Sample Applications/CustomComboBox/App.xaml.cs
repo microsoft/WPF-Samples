@@ -13,5 +13,9 @@ namespace CustomComboBox
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Application.Current.ThemeMode = ThemeMode.System;
+        }
     }
 }
