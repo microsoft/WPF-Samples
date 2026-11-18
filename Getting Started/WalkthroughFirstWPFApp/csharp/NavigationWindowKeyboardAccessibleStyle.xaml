@@ -447,7 +447,6 @@
         <!-- Opened work item #22122 to track this-->
         <Setter Property="OverridesDefaultStyle" 
                 Value="true"/>
-        <Setter Property="FocusVisualStyle" Value="{StaticResource NavButtonFocusVisualStyle}" />
         <Setter Property="Command" 
                 Value="NavigationCommands.BrowseForward"/>
         <Setter Property="Focusable" Value="True" />
