@@ -1,9 +1,11 @@
-﻿using System.Windows.Automation;
+﻿using Microsoft.Win32;
+using System.Runtime.InteropServices;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls.Primitives;
+using System.Windows.Interop;
 using System.Windows.Navigation;
 using System.Windows.Shell;
-using Microsoft.Win32;
 using WPFGallery.Helpers;
 using WPFGallery.Models;
 using WPFGallery.Navigation;
@@ -17,6 +19,18 @@ namespace WPFGallery;
 /// </summary>
 public partial class MainWindow : Window
 {
+    [DllImport("dwmapi.dll")]
+    private static extern int DwmSetWindowAttribute(nint hwnd, int attr, ref uint attrValue, int attrSize);
+
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool InvalidateRect(nint hwnd, nint rect, [MarshalAs(UnmanagedType.Bool)] bool erase);
+
+    private const int DWMWA_CAPTION_COLOR = 35;
+    private const uint DWMWA_COLOR_NONE = 0xFFFFFFFE;
+    private const int WM_SETTINGCHANGE = 0x001A;
+    private const int WM_NCPAINT = 0x0085;
+
     public MainWindow(MainWindowViewModel viewModel, IServiceProvider serviceProvider, INavigationService navigationService)
     {
         _serviceProvider = serviceProvider;
@@ -53,7 +67,7 @@ public partial class MainWindow : Window
 
     private void UpdateWindowBackground()
     {
-        if((!Utility.IsBackdropDisabled() && !Utility.IsBackdropSupported()))
+        if ((!Utility.IsBackdropDisabled() && !Utility.IsBackdropSupported()))
         {
             this.SetResourceReference(BackgroundProperty, "WindowBackground");
         }
@@ -92,16 +106,16 @@ public partial class MainWindow : Window
     private void UpdateMainWindowVisuals()
     {
         MainGrid.Margin = default;
-        if(WindowState == WindowState.Maximized)
+        if (WindowState == WindowState.Maximized)
         {
-            MainGrid.Margin = SystemParameters.HighContrast ? new Thickness(0,8,0,0) : new Thickness(8);
+            MainGrid.Margin = SystemParameters.HighContrast ? new Thickness(0, 8, 0, 0) : new Thickness(8);
         }
 
         UpdateTitleBarButtonsVisibility();
-    
-        if(SystemParameters.HighContrast == true)
+
+        if (SystemParameters.HighContrast == true)
         {
-            HighContrastBorder.SetResourceReference(BorderBrushProperty, IsActive ? SystemColors.ActiveCaptionBrushKey : 
+            HighContrastBorder.SetResourceReference(BorderBrushProperty, IsActive ? SystemColors.ActiveCaptionBrushKey :
                                                                                     SystemColors.InactiveCaptionBrushKey);
             HighContrastBorder.BorderThickness = new Thickness(8, 1, 8, 8);
         }
@@ -111,12 +125,22 @@ public partial class MainWindow : Window
             HighContrastBorder.BorderThickness = new Thickness(0);
         }
 
-        if(Utility.IsWindows11OrGreater())
+        if (Utility.IsWindows11OrGreater())
         {
             WindowChrome wc = WindowChrome.GetWindowChrome(this);
-            if(wc is not null)
-                wc.NonClientFrameEdges = GetPrefferedNonClientFrameEdges();;
+            if (wc is not null)
+                wc.NonClientFrameEdges = GetPrefferedNonClientFrameEdges();
+            ;
         }
+
+        nint hwnd = new WindowInteropHelper(this).Handle;
+        if (hwnd == nint.Zero)
+        {
+            return;
+        }
+
+        uint captionColor = DWMWA_COLOR_NONE;
+        DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, ref captionColor, sizeof(uint));
     }
 
     //private void SearchBox_KeyUp(object sender, KeyEventArgs e)
@@ -137,7 +161,7 @@ public partial class MainWindow : Window
 
     private void MaximizeWindow(object sender, RoutedEventArgs e)
     {
-        if(this.WindowState == WindowState.Maximized)
+        if (this.WindowState == WindowState.Maximized)
         {
             this.WindowState = WindowState.Normal;
             MaximizeIcon.Text = "\uE922";
@@ -157,15 +181,15 @@ public partial class MainWindow : Window
     private void OnNavigating(object? sender, NavigatingEventArgs e)
     {
         List<ControlInfoDataItem> list = ViewModel.GetNavigationItemHierarchyFromPageType(e.PageType);
-        
+
         if (list.Count > 0)
         {
             TreeViewItem selectedTreeViewItem = null;
             ItemsControl itemsControl = ControlsList;
-            foreach(ControlInfoDataItem item in list)
+            foreach (ControlInfoDataItem item in list)
             {
                 var tvi = itemsControl.ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
-                if(tvi != null)
+                if (tvi != null)
                 {
                     tvi.IsExpanded = true;
                     tvi.UpdateLayout();
@@ -174,7 +198,7 @@ public partial class MainWindow : Window
                 }
             }
 
-            if(selectedTreeViewItem != null)
+            if (selectedTreeViewItem != null)
             {
                 selectedTreeViewItem.IsSelected = true;
                 ControlsList_SelectedItemChanged();
@@ -189,7 +213,7 @@ public partial class MainWindow : Window
 
     private void ControlsList_PreviewKeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.Enter) 
+        if (e.Key == Key.Enter)
         {
             SelectedItemChanged(ControlsList.ItemContainerGenerator.ContainerFromItem((sender as TreeView).SelectedItem) as TreeViewItem);
         }
@@ -275,7 +299,7 @@ public partial class MainWindow : Window
         {
             _navigationService.Navigate(navItem.PageType);
             var tvi = ControlsList.ItemContainerGenerator.ContainerFromItem(navItem) as TreeViewItem;
-            if(tvi != null)
+            if (tvi != null)
             {
                 tvi.BringIntoView();
             }
@@ -299,5 +323,27 @@ public partial class MainWindow : Window
             return NonClientFrameEdges.None;
 
         return NonClientFrameEdges.Right | NonClientFrameEdges.Bottom | NonClientFrameEdges.Left;
+    }
+
+    private nint RedrawClientAreaOnFrameChange(nint hwnd, int message, nint wParam, nint lParam, ref bool handled)
+    {
+        if (message is WM_SETTINGCHANGE or WM_NCPAINT &&
+            WindowChrome.GetWindowChrome(this)?.NonClientFrameEdges is { } edges &&
+            edges != NonClientFrameEdges.None)
+        {
+            InvalidateRect(hwnd, nint.Zero, erase: true);
+        }
+
+        return nint.Zero;
+    }
+
+    protected override void OnSourceInitialized(EventArgs e)
+    {
+        base.OnSourceInitialized(e);
+
+        if (Utility.IsWindows11OrGreater() && PresentationSource.FromVisual(this) is HwndSource source)
+        {
+            source.AddHook(RedrawClientAreaOnFrameChange);
+        }
     }
 }
